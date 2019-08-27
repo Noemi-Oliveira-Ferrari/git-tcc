@@ -1,0 +1,109 @@
+/* CSS */
+
+body, html, figure, input, img, h2{
+    margin: 0;
+    padding: 0;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+header{
+    width: 100%;
+    height: 100px;
+    background-color: gray;
+}
+
+/* CONTEUDO */
+.title-caixa-escolha{
+     width:60%;
+     min-height: 50px;
+     background-color: burlywood;
+     font-size: 40px;
+     text-align: center;
+
+}
+
+.caixa-escolha{
+    width: 60%;
+    height: 500px;
+    /* background-color: darkgray; */
+    margin-bottom: 10%
+}
+
+/* caixa de escolhas */
+
+.caixa-cliente{
+    width: 45%;
+    height: inherit;
+    background-color: aliceblue;
+    float: left;
+    margin-right: 10%;
+    box-shadow: 10px 10px 15px gray                                                                                      ;
+}
+
+.caixa-profissional{
+    width: 45%;
+    height: inherit;
+    background-color: aliceblue;
+    float: left;
+    
+}
+
+/*conteudo das caixas de escolhas */
+
+.title-escolha{
+    width: 100%;
+    height: 50px;
+    background-color: gainsboro;
+    font-size: 50px;
+    text-align: center;
+    
+}
+
+.texto-escolha{
+    width: 100%;
+    height: 200px;
+    background-color: khaki;
+    box-sizing: border-box;
+    font-size: 30px;
+    padding: 40px;
+    text-align: justify;
+}
+
+.img-escolha{
+    width: 100%;
+    height: 200px;
+    background-color: lightblue;
+}
+
+.img{
+    width: 50%;
+    height: 90%;
+    background-color: black;
+}
+
+.botao-escolha{
+    width: 100%;
+    height: 50px;
+    background-color: gainsboro;
+       
+}
+
+.seta{
+    
+}
+
+
+
+
+
+/* FOOTER */
+
+footer{
+    width: 100%;
+    height: 150px;
+    background-color: gray;
+}
