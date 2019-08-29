@@ -1,0 +1,4 @@
+#Thu Aug 29 16:47:53 BRT 2019
+base.0=C\:\\Users\\18175298\\git_tcc\\mobile\\GIT-TCC\\mobile\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\2
+path.0=classes.dex
+renamed.0=classes.dex
