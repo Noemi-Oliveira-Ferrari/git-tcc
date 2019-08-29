@@ -21,7 +21,7 @@ public class Cidade {
 
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "id_microrregiao")
+	@JoinColumn(name = "id_micro")
 	private Microrregiao microrregiao;
 
 	public Long getIdCidade() {
