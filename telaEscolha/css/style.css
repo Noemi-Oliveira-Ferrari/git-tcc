@@ -5,51 +5,85 @@ body, html, figure, input, img, h2{
     padding: 0;
 }
 
+body, html{
+    height: 100%;
+}
+
+#all{
+    min-height: 100%;
+    position: relative;
+}
+
+* html #all{
+    height: 100%;
+}
+
+body{
+    background-image: linear-gradient(to bottom right, #57BC90, #77C9D4); 
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;                                                                                 ;
+}
+
+p, h1, div{
+    font-family: 'Lexend Deca', sans-serif;
+}
+
 .center{
     margin-left: auto;
     margin-right: auto;
 }
 
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 header{
     width: 100%;
     height: 100px;
-    background-color: gray;
+    background-color: white;
 }
 
 /* CONTEUDO */
 .title-caixa-escolha{
-     width:60%;
+     width:1000px;
      min-height: 50px;
-     background-color: burlywood;
+     /* background-color: burlywood; */
      font-size: 40px;
      text-align: center;
+     color: white;
 
 }
 
 .caixa-escolha{
-    width: 60%;
-    height: 500px;
+    width: 1200px;
+    height: 600px;
     /* background-color: darkgray; */
-    margin-bottom: 10%
+    margin-bottom: 100px;
+    justify-content: space-around;
 }
 
 /* caixa de escolhas */
 
 .caixa-cliente{
-    width: 45%;
+    width: 500px;
     height: inherit;
-    background-color: aliceblue;
+    background-color: white;
     float: left;
-    margin-right: 10%;
-    box-shadow: 10px 10px 15px gray                                                                                      ;
+    /* margin-right: 10%; */
+    box-shadow: 10px 10px 15px #015249;                                                                                      ;
+    border-radius: 10px;
 }
 
 .caixa-profissional{
-    width: 45%;
+    width: 500px;
     height: inherit;
-    background-color: aliceblue;
+    background-color: white;
     float: left;
-    
+    border-radius: 10px;
+    box-shadow: 10px 10px 15px #015249;                                                                                      ;
 }
 
 /*conteudo das caixas de escolhas */
@@ -57,43 +91,67 @@ header{
 .title-escolha{
     width: 100%;
     height: 50px;
-    background-color: gainsboro;
-    font-size: 50px;
+    /* background-color: gainsboro; */
+    font-size: 45px;
     text-align: center;
+    box-sizing: border-box;
+    padding-top: 20px;
+    /* color: rgb(111, 111, 112);
+     */
+    color: #84848D;
+
+
     
 }
 
 .texto-escolha{
     width: 100%;
     height: 200px;
-    background-color: khaki;
+    /* background-color: khaki; */
     box-sizing: border-box;
     font-size: 30px;
-    padding: 40px;
-    text-align: justify;
+    padding: 55px;
+    text-align: center;
+    color: #A5A5AF;
+
 }
 
 .img-escolha{
     width: 100%;
-    height: 200px;
-    background-color: lightblue;
+    height: 250px;
+    /* background-color: lightblue; */
+    /* background-color:#A5A5AF; */
+    box-sizing: border-box;
+    padding: 10px;
+    margin-top: 10px;
+
 }
 
 .img{
     width: 50%;
-    height: 90%;
-    background-color: black;
+    height: 200px;
+    /* background-color: aqua; */
+    /* background-size: cover; */
+    /* background-color:#A5A5AF; */
+    margin-left: 25%;
 }
 
 .botao-escolha{
     width: 100%;
-    height: 50px;
-    background-color: gainsboro;
+    height: 100px;
+    /* background-color: gainsboro; */
+    box-sizing: border-box;
+    padding-left: 85%;
+    padding-right: 10px;
+    margin-bottom: 0px;
        
 }
 
-.seta{
-    
+.seta img{
+    width: 50px;
+    height: 50px;
+    /* background-color: blueviolet; */
+
 }
 
 
@@ -105,5 +163,13 @@ header{
 footer{
     width: 100%;
     height: 150px;
-    background-color: gray;
+    background-color: white;
+    position: absolute;
+    bottom: 0%;
+}
+
+#espaco{
+    width: 100%;
+    height: 100px;
+    /* background-color: #015249; */
 }
