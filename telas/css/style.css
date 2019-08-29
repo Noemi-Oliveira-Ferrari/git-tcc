@@ -1,10 +1,25 @@
+@font-face {
+    font-family: "Lexend Deca";
+    src: url("../fontes/LexendDeca-Regular.ttf");
+  }
+
 /*----- Padronização -----*/
+
+#all{
+    min-height: 100%;
+    position: relative;
+}
+
+
 body
 {
     width: 100%;
     margin: 0px;
     padding: 0px;
-    background-image: url(../imagens/fundo01.jpg);
+    background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
     
 }
 
@@ -12,15 +27,8 @@ header
 {
     width: 100%;
     height: 80px;
-    background-color: #a5a5af;
-}
-
-footer
-{
-    width: 100%;
-    height: 100px;
-    background-color: #ffffff;
-    visibility: hidden;
+    background-color: #000000;
+    box-shadow: 10px 0px 30px #000000;
 }
 
 .float
@@ -50,46 +58,83 @@ footer
 }
 
 
-/*----- Conteudo -----*/
-.body
+.conteiner-conteudo
 {
     width: 100%;
-    height: 800px;
-    /*background: rgba(39, 144, 110, 0.75);*/
+    height: 100%;
+}
+
+/*----- Conteudo -----*/
+.container-login
+{
+    width: 100%;
+    height: 850px;
+    /* background: rgba(39, 144, 110, 0.75); */
+    /* background: rgba(207, 86, 30, 0.75); */
+}
+
+.container-centro
+{
+    width: 1200px;
+    height: inherit;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .caixa-texto
 {
-    width: 30%;
-    height: 600px;
+    width: 400px;
+    height: inherit;
     color: #ffffff;
-    background-color: transparent;
     text-align: right;
-    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    box-sizing: border-box;
 }
 
 
 .caixa-conteudo
 {
-    width: 70%;
-    height: 600px;
+    width: 800px;
+    height: inherit;
+    position: relative;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body, html
+{
+    height: 100%;
+
+}
+
+* html #all
+{
+    height: 100%;
 }
 
 .conteudo-caixa-texto
 {
-    font-family: georgia;
+    font-family: 'Lexend Deca';
     font-size: 40px;
     padding: 50px;
+    text-align: center;
+    /* margin-left: 130px; */
 }
 
 .label
 {
+    font-family: 'Lexend Deca';
     width: 490px;
-    font-family: Georgia;
     font-size: 20px;
     text-align: left;
-    margin-left: 80px;
+    margin-left: 40px;
 }
 
 .card-login
@@ -97,10 +142,10 @@ footer
     width: 600px;
     height: 600px;
     border-radius: 10px;
-    background-color: #CFCFCF;
-    margin-left: 100px;
-    margin-top: 100px;
-    box-shadow: 15px 15px 30px #000000;
+    background-color: rgb(235, 230, 230);
+    background-image: url(../imagens/fundo03.jpg);
+    background-size: cover;
+    box-shadow: 15px 15px 30px #015249;
 }
 
 .conteudo-card
@@ -112,20 +157,21 @@ footer
 {
     width: 80px;
     height: 80px;
-    background-color: #47525E;
+    background-color: #d6d6d6;
     border-radius: 10px;
 }
 
 .titulo
 {
-    font-family: Georgia;
+    font-family: 'Lexend Deca';
     font-size: 40px;
     font-weight: bold;
+    color: #000000;
 }
 
 .texto-card
 {
-    font-family: Georgia;
+    font-family: 'Lexend Deca';
     font-size: 20px;
     margin-top: 60px;
 }
@@ -134,18 +180,17 @@ footer
 {
     width: 490px;
     height: 40px;
-    border-radius: 25px;
+    border-radius: 8px;
     border: 0px;
     outline: none;
     padding-left: 20px;
+    background-color: #d6d6d6;
+    font-size: 18px;
 }
 
 .input:hover
 {
-    border-radius: 25px;
-    border: 5px;
-    border-color: #000000;
-    outline: none;
+    background-color: #cadbd1;
 }
 
 .btn-entrar
@@ -155,23 +200,25 @@ footer
     border-radius: 10px;
     border: 0px;
     outline: none;
-    font-family: Georgia;
     font-size: 18px;
     font-weight: bold;
     margin-top: 40px;
-    background-color: #47525E;
+    font-family: 'Lexend Deca';
+    letter-spacing: 1.5px;
+    background-color: #015249;
     color: #ffffff;
 }
 
 .btn-entrar:hover
 {
     cursor: pointer;
+    background-color: #026359;
 }
 
 .link-cadastro
 {
     text-decoration: none;
-    color: #000000;
+    color: #002420;
 }
 
 .link-cadastro:hover
@@ -182,4 +229,18 @@ footer
 .caixa-input
 {
     margin-top: 30px;
+}
+footer
+{
+    width: 100%;
+    height: 150px;
+    background-color: #ffffff;
+    position: absolute;
+    bottom: 0%;
+}
+
+#espaco{
+    width: 100%;
+    height: 100px;
+    /* background-color: #77c9d4; */
 }
