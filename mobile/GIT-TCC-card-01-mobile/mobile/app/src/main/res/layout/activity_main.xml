@@ -8,7 +8,7 @@
     android:background="@drawable/background_gradient">
 
     <Button
-        android:id="@+id/btn-entrar"
+        android:id="@+id/btn_entrar"
         android:layout_width="280dp"
         android:layout_height="46dp"
         android:layout_marginBottom="8dp"
@@ -19,13 +19,13 @@
         android:textColor="@color/colorTest2"
         android:textSize="16dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn-cadastrar"
+        app:layout_constraintBottom_toTopOf="@+id/btn_cadastrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/btn-cadastrar"
+        android:id="@+id/btn_cadastrar"
         android:layout_width="280dp"
         android:layout_height="42dp"
         android:layout_marginBottom="64dp"
@@ -42,7 +42,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/iv-logo"
+        android:id="@+id/iv_logo"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
@@ -55,7 +55,7 @@
         app:srcCompat="@color/colorWhite" />
 
     <EditText
-        android:id="@+id/et-login-email"
+        android:id="@+id/et_login_email"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="84dp"
@@ -71,10 +71,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv-logo" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
     <EditText
-        android:id="@+id/et-login-senha"
+        android:id="@+id/et_login_senha"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="85dp"
@@ -89,6 +89,6 @@
         android:textColor="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et-login-email" />
+        app:layout_constraintTop_toBottomOf="@+id/et_login_email" />
 
 </android.support.constraint.ConstraintLayout>
