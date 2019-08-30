@@ -10,13 +10,16 @@ DESC tbl_profissional;
 DESC tbl_subcategoria;
 DESC tbl_uf;
 
-SELECT * FROM tbl_categoria;
 SELECT * FROM tbl_cidade;
 SELECT * FROM tbl_endereco;
 SELECT * FROM tbl_microrregiao;
 SELECT * FROM tbl_profissional;
+SELECT * FROM tbl_categoria;
 SELECT * FROM tbl_subcategoria;
 SELECT * FROM tbl_uf;
+
+DELETE FROM tbl_subcategoria WHERE id_subcategoria = 1;
+DELETE FROM tbl_categoria WHERE id_categoria = 1;
 
 INSERT INTO tbl_uf (id_uf, estado, uf) VALUES (11,'Rondônia','RO');
 INSERT INTO tbl_uf (id_uf, estado, uf) VALUES (12,'Acre','AC');
