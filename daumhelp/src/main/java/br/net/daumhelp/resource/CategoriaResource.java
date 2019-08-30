@@ -21,15 +21,16 @@ public class CategoriaResource {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 	
+	@GetMapping("/id/{id}")
+	public Optional<Categoria> getCategoriaById(@PathVariable Long id) {
+		return categoriaRepository.findById(id);
+	}
+	
 	@GetMapping
 	public List<Categoria> getCategorias(){
 		return categoriaRepository.findAll();
 	}
 	
-	@GetMapping("/id/{id}")
-	public Optional<Categoria> getCategoriaById(@PathVariable Long id) {
-		return categoriaRepository.findById(id);
-	}
 	
 
 }

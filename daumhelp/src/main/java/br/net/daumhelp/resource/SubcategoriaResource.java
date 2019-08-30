@@ -26,14 +26,16 @@ public class SubcategoriaResource {
 		return subcatRepository.findAll();
 	}
 
-	@GetMapping("/id/{id}")
-	public Optional<Subcategoria> getSubcatsById(@PathVariable Long id){
-		return subcatRepository.findById(id);
-	}
-	
 	@GetMapping("/categoria/{idCategoria}")
 	public List<Subcategoria> getSubcatsByCat(@PathVariable Long idCategoria){
 		return subcatRepository.findByCategoria(idCategoria);
 	}
+	
+	@GetMapping("/id/{id}")
+	public Optional<Subcategoria> getSubcatsById(@PathVariable Long id){
+		return subcatRepository.findById(id);
+	}
+		
+	
 	
 }
