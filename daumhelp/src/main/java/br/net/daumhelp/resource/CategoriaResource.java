@@ -31,4 +31,5 @@ public class CategoriaResource {
 		return categoriaRepository.findById(id);
 	}
 	
+
 }
