@@ -9,12 +9,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:background="@color/colorTest" />
+
+        </RelativeLayout>
+
         <TextView
             android:id="@+id/tv_txt_escolha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="176dp"
-            android:layout_marginTop="51dp"
+            android:layout_marginTop="60dp"
             android:layout_marginEnd="176dp"
             android:text="O que você \n gostaria de fazer?"
             android:textAlignment="center"
@@ -150,7 +164,16 @@
             app:layout_constraintTop_toBottomOf="@+id/cv_pro"
             app:srcCompat="@drawable/user" />
 
-
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="Escolha"
+            android:textStyle="bold"
+            android:textColor="@color/colorTest"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/relativeLayout2" />
 
 
     </android.support.constraint.ConstraintLayout>
