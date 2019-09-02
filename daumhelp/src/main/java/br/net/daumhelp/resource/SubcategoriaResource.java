@@ -33,6 +33,7 @@ public class SubcategoriaResource {
 	
 	@GetMapping("/id/{id}")
 	public Optional<Subcategoria> getSubcatsById(@PathVariable Long id){
+		System.out.println(subcatRepository.findById(id));
 		return subcatRepository.findById(id);
 	}
 		

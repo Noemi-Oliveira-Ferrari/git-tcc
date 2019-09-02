@@ -16,4 +16,7 @@ public interface CidadeRepository extends JpaRepository<Cidade, Long> {
 	
 	@Query("SELECT c FROM Cidade c WHERE c.microrregiao.uf.idUf = ?1")
 	public List<Cidade> findByIdUf(Long uf);
+	
+	@Query("SELECT c FROM Cidade c WHERE c.idCidade = ?1")
+	public Cidade findByOtherId(Long idCidade);
 }
