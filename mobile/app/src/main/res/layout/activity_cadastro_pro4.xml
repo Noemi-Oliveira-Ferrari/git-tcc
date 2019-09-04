@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView
+    android:id="@+id/scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Termos"
+            android:textColor="@color/colorTest"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_txt_pro"
+            android:layout_width="wrap_content"
+            android:layout_height="51dp"
+            android:layout_marginEnd="66dp"
+            android:layout_marginStart="66dp"
+            android:layout_marginTop="70dp"
+            android:text="Termos de aceite da DaUmHelp"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_txt_termos"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:textAlignment="textStart"
+            android:text="Ocasionalmente, nós podemos fazer alterações aos Acordos por razões válidas, como melhorar as funções ou recursos existentes ou acrescentar novas funções ou recursos ao Serviço, implementar avanços científicos e tecnológicos, e ajustes técnicos razoáveis do Serviço, assegurando a operacionalidade ou a segurança do Serviço, bem como por razões legais ou regulamentares. Quando realizarmos mudanças materiais aos Acordos, lhe forneceremos um aviso de acordo com as circunstâncias, por exemplo, exibindo uma notificação proeminente ou buscando sua confirmação dentro do Serviço ou enviando um e-mail para você. Em alguns casos, nós te notificaremos com antecedência, e seu uso continuado do Serviço, após terem sido feitas as alterações, constituirá sua aceitação das alterações. Portanto, por favor certifique-se de ler cuidadosamente qualquer notificação. Se você não quiser continuar a utilizar o Serviço sob a nova versão dos Acordos, você poderá encerrar sua conta entrando em contato conosco. Se você tiver recebido uma Versão Teste ou uma Assinatura Paga por meio de terceiros, você deverá cancelar a Assinatura Paga aplicável através do terceiro em questão."
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_txt_pro" />
+
+        <CheckBox
+            android:id="@+id/cb_termos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:text="Eu li e concordo com os termos"
+            app:layout_constraintBottom_toTopOf="@+id/btn_proximo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_txt_termos" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:background="@color/colorTest" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_toRightOf="@id/textView"
+                android:background="@color/colorTest" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_toRightOf="@id/textView2"
+                android:background="@color/colorTest" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_toRightOf="@id/textView3"
+                android:background="@color/colorTest" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_toRightOf="@id/textView4"
+                android:background="@color/colorTest" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:layout_toRightOf="@id/textView5"
+                android:background="@color/colorTest" />
+
+
+        </RelativeLayout>
+
+
+
+
+        <Button
+            android:id="@+id/btn_voltar"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="26dp"
+            android:layout_marginLeft="34dp"
+            android:layout_marginTop="20dp"
+            android:background="#00FFFFFF"
+            android:drawableLeft="@drawable/ic_back"
+            android:text="Voltar"
+            android:textColor="@color/colorGray"
+            android:textCursorDrawable="@drawable/ic_pass"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cb_termos" />
+
+        <Button
+            android:id="@+id/btn_proximo"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="26dp"
+            android:layout_marginEnd="34dp"
+            android:background="#00FFFFFF"
+            android:drawableRight="@drawable/ic_confirmed"
+            android:text="Concluir"
+            android:textColor="@color/colorTest"
+            android:textCursorDrawable="@drawable/ic_pass"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
+</ScrollView>
+
+
