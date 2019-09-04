@@ -69,16 +69,16 @@ public class ProfissionalResource {
 	}
 
 	@GetMapping("/cep/{cep}")
-	public Profissional getProByIdEndereco(@PathVariable String cep) {
-		return proRepository.findByCpf(cep);
+	public List<Profissional> getProByIdEndereco(@PathVariable String cep) {
+		return proRepository.findByCep(cep);
 	}
 
-	@GetMapping("/cidade/{cidade}")
+	@GetMapping("/cidade/{idCidade}")
 	public List<Profissional> getProByCidade(@PathVariable Long idCidade) {
 		return proRepository.findByCidade(idCidade);
 	}
 
-	@GetMapping("/microrregiao/{microrregiao}")
+	@GetMapping("/microrregiao/{idMicro}")
 	public List<Profissional> getProByMicro(@PathVariable Long idMicro) {
 		return proRepository.findByMicrorregiao(idMicro);
 	}
