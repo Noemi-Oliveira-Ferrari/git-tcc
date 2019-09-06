@@ -1,8 +1,23 @@
 ﻿/*----- Formataçao -----*/
 @font-face 
 {
-    font-family: "Lexend Deca";
-    src: url("../fontes/LexendDeca-Regular.ttf");
+    font-family: "lexend deca";
+    src: url("../fontes/Lexend_Deca/LexendDeca-Regular.ttf");
+}
+@font-face 
+{
+    font-family: "manjari bold";
+    src: url("../fontes/Manjari/Manjari-Bold.ttf");
+}
+@font-face 
+{
+    font-family: "manjari regular";
+    src: url("../fontes/Manjari/Manjari-Regular.ttf");
+}
+@font-face 
+{
+    font-family: "manjari thin";
+    src: url("../fontes/Manjari/Manjari-Thin.ttf");
 }
 
 .texto-centro
@@ -60,7 +75,7 @@ h3
 
 label
 {
-    font-family: 'Manjari';
+    font-family: "manjari regular";
     font-size: 20px;
 }
 
@@ -164,7 +179,7 @@ header
         box-sizing: border-box;
     }
 
-    .campos
+    .campos-dados
     {
         width: 600px;
         height: 450px;
@@ -267,7 +282,7 @@ header
         background-color: rgb(206, 206, 206);
     }
 
-    .campos-pro
+    .campos-servicos
     {
         width: 800px;
         height: 300px;
@@ -391,6 +406,7 @@ header
         box-sizing: border-box;
         text-align: center;
         background-color: beige;
+        font-size: 40px;
     }
 
     .parte-perfil
@@ -414,12 +430,7 @@ header
         justify-items: center;
     }
 
-    .form-inputs
-    {
-        flex-direction: column;
-    }
-
-    .campos
+    .campos-dados
     {
         width: 100%;
         height: fit-content;
@@ -433,15 +444,20 @@ header
     .container-bairro-cidade-uf
     {
         width: inherit;
-        height: 90px;
-        background-color: tomato;
+        height: fit-content;
+        background-color: rgb(221, 255, 71);
         justify-content: space-around;
         margin-top: 10px;
+        flex-wrap: wrap;
     }
 
     .form-input
     {
-        margin-top: -22px;
+        margin-top: -25px;
+    }
+    .form-label
+    {
+        font-size: 30px;
     }
 
     .caixa-nome, .caixa-dataNasc,
@@ -451,78 +467,84 @@ header
     .caixa-bairro, .caixa-cidade,
     .caixa-uf
     {
-        height: inherit;
-        /*background-color: rgb(57, 207, 115);*/
+        width: 98%;
+        height: 110px;
+        background-color: rgb(57, 160, 207);
         display: flex;
         justify-content: start;
+        /* ali */
         flex-wrap: wrap;
+        margin-top: 15px;
     }
 
-    .caixa-nome
-    {
-        width: 290px;
+    #txt-nome,
+    #txt-dataNasc,
+    #txt-cpfCnpj,
+    #txt-email,
+    #txt-senha,
+    #txt-confirmar-senha,
+    #txt-cep,
+    #txt-logradouro,
+    #txt-bairro,
+    #txt-cidade,
+    #txt-uf{
+        height: 70px;
+        font-family: "manjari regular";
+        font-size: 40px;
+        box-sizing: border-box;
+        padding-top: 15px;
+
     }
-    .caixa-dataNasc
-    {
-        width: 290px;
+    #txt-uf{
+        text-transform: uppercase;
     }
-    .caixa-cpfCnpj
-    {
-        width: 200px;
-    }
-    .caixa-email
-    {
-        width: 380px;
-    }
-    .caixa-senha
-    {
-        width: 290px;
-    }
+
+    .caixa-senha,
     .caixa-confirmar-senha 
     {
-        width: 290px;
+        width: 48%;
     }
-
     .caixa-cep
     {
-        width: 190px;
+        width: 30%;
     }
 
     .caixa-logradouro
     {
-        width: 390px;
+        width: 66%;
     }
 
     .caixa-bairro
     {
-        width: 220px;
+        width: 40%;
     }
 
     .caixa-cidade
     {
-        width: 270px;
+        width: 44%;
     }
-    
+
     .caixa-uf
     {
-        width: 80px;
+        width: 10%;
     }
 
     
     .card-formulario-servico
     {
-        width: 850px;
-        min-height: 400px;
-        background-color: rgb(206, 206, 206);
+        width: 80%;
+        min-height: 200px;
+        background-color: rgb(138, 141, 145);
     }
 
-    .campos-pro
+    .campos-servicos
     {
         width: 800px;
         height: 300px;
         display: flex;
         align-items: center;
         justify-content: space-around;
+        background-color: #984366;
     }
     .container-categoria-subcat-valor-hora
     {
