@@ -1,0 +1,161 @@
+/*----- Padronização -----*/
+body
+{
+    margin: 0px;
+    padding: 0px;
+    background-color: cadetblue;
+}
+
+body, html
+{
+    height: 100%;
+}
+
+* html #all
+{
+    height: 100%;
+}
+
+#all{
+    min-height: 100%;
+    position: relative;
+}
+
+footer
+{
+    display: flex;
+    justify-content: center;
+    background-color: mediumaquamarine;
+}
+
+.float
+{
+    float: left;
+}
+
+.clear
+{
+    clear: left;
+}
+
+hr
+{
+    width: 780px;
+}
+
+/*----- Estilização -----*/
+@font-face 
+{
+    font-family: "Lexend Deca";
+    src: url("../fontes/LexendDeca-Regular.ttf");
+}
+
+.font-padrao
+{
+    font-family: "Lexend Deca";
+}
+
+.text-center
+{
+    text-align: center;
+}
+
+.text-left
+{
+    text-align: left;
+}
+
+.text-right
+{
+    text-align: right;
+}
+
+.titulo-rodape
+{
+    font-size: 40px;
+}
+
+.texto-rodape
+{
+    font-family: Lexend Deca;
+    font-size: 25px;
+}
+
+
+/*----- Conteúdo -----*/
+.item-center
+{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.caixa-rodape-cadastro
+{
+    width: 1200px;
+    height: 260px;
+    background-color: coral;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    box-sizing: border-box;
+}
+
+.btn-cadastro-rodape
+{
+    width: 180px;
+    height: 40px;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 0px;
+    font-family: Lexend Deca;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+}
+
+.btn-cadastro-rodape:hover
+{
+    cursor: pointer;
+}
+
+.caixa-rodape-informacoes
+{
+    width: 1200px;
+    height: 330px;
+    background-color: cornflowerblue;
+}
+
+.caixas-informacoes
+{
+    background-color: yellowgreen;
+    margin-left: 3px;
+}
+
+.caixas-conteudo-rodape
+{
+    width: 200px;
+    height: 200px;
+    background-color: chocolate;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 20px;
+}
+
+.logo-rede-social
+{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(11, 17, 102);
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.text-rodape
+{
+    margin-left: 30px;
+}
+
+.caixa2rodape
+{
+    margin-bottom: 30px;
+}
