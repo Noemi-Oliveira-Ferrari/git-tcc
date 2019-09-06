@@ -40,6 +40,20 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
         btnProximo = findViewById(R.id.btn_proximo);
         btnVoltar = findViewById(R.id.btn_voltar);
 
+        Intent intent = getIntent();
+       if(intent.getSerializableExtra("dados_pessoais_pro") != null ){
+             String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
+
+
+        } if(intent.getSerializableExtra("endereco_pro") != null ){
+            String[] listaEndereco = (String[]) intent.getSerializableExtra("endereco_pro");
+
+        }
+
+
+
+
+        /*CHAMADA DAS CATEGORIAS*/
         Call<List<Categoria>> call = new RetroFitConfig().getCategoriaService().buscarCategorias();
         call.enqueue(new Callback<List<Categoria>>() {
             @Override
@@ -55,6 +69,7 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
             }
         });
 
+        /*CHAMADA DAS SUBCATEGORIAS*/
         Call<List<Subcategoria>> callsub = new RetroFitConfig().getSubcategoriaService().buscarSubcategorias();
         callsub.enqueue(new Callback<List<Subcategoria>>() {
             @Override
@@ -66,7 +81,7 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Subcategoria>> callsub, Throwable t) {
-                Log.i("Retrofit 2", t.getMessage());
+                Log.i("Retrofit2", t.getMessage());
             }
         });
 
@@ -88,6 +103,7 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
     }
 
 
+    /*MÉTODO DE CARREGAR AS CATEGORIAS*/
     private void carregarCategorias(final List<Categoria> listaCategoria){
         this.listaCategoria = listaCategoria;
 
@@ -109,6 +125,7 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
 
     }
 
+    /*MÉTODO DE CARREGAR AS SUBCATEGORIAS*/
     private void carregarSubcategorias(final List<Subcategoria> listaSubcategoria){
         this.listaSubcategoria = listaSubcategoria;
 
@@ -128,6 +145,7 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
             }
         });
     }
+
 
 
 }

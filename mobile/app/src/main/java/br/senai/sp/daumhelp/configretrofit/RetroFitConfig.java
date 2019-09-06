@@ -1,6 +1,7 @@
 package br.senai.sp.daumhelp.configretrofit;
 
 import br.senai.sp.daumhelp.service.CategoriaService;
+import br.senai.sp.daumhelp.service.EnderecoService;
 import br.senai.sp.daumhelp.service.SubcategoriaService;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -23,6 +24,10 @@ public class RetroFitConfig {
 
     public SubcategoriaService getSubcategoriaService(){
         return this.retroFit.create(SubcategoriaService.class);
+    }
+
+    public EnderecoService getEnderecoService(){
+        return this.retroFit.create(EnderecoService.class);
     }
 
 
