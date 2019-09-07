@@ -1,0 +1,160 @@
+body, html, figure, input, img, h2{
+    margin: 0;
+    padding: 0;
+}
+
+body, html{
+    height: 100%;
+}
+
+#all{
+    min-height: 100%;
+    position: relative;
+}
+
+* html #all{
+    height: 100%;
+}
+
+body{
+    background-image: linear-gradient(to bottom right, #57BC90, #77C9D4); 
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;                                                                                 ;
+}
+
+p, h1, div{
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+
+
+
+
+
+
+/* MENUUUU */
+header{
+    width: 100%;
+    height: 250px;
+    background-color: white;
+}
+
+.menu-1{
+    width: 100%;
+    height: 50px;
+    background-color: #c0e0dd;
+}
+
+.menu-1 .ant{
+    width: 110px;
+    height: 130px;
+    /* background-color: #015249; */
+    margin-left: 250px;
+    transform: rotate(45deg);
+    float: left;
+}
+
+.entrar-cad{
+    width: 400px;
+    height: 50px;
+    float: left;
+    /* background-color: pink; */
+    margin-left: 900px;
+}
+
+
+.sing{
+    width: 200px;
+    height: 50px;
+    /* background-color: coral; */
+    float: left;
+}
+
+.sing img{
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+.name{
+    float: left;
+    width: 150px;
+    height: 50px;
+    /* background-color: crimson; */
+    font-size: 20px;
+    box-sizing: border-box;
+    padding-top: 15px;
+    padding-left: 5px;
+}
+
+
+.menu-2{
+    width: 100%;
+    height: 100px;
+    background-color: #ffffff;
+    font-size: 70px;
+    color: #57BC90;
+}
+
+.menu-3{
+    width: 100%;
+    height: 100px;
+    /* background-color: #0aebd05d; */
+}
+.itens{
+    float: left;
+    border-top: 1px solid black;
+    width: 150px;
+    height: 80px;
+    justify-items: center;
+    text-align: center;
+    /* font-size: 70px; */
+    /* background-image: url(/img-menu/engineer.png); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-color: #A5A5AF; */
+    /* flex-wrap: wrap; */
+    /* border-left: 1px sloid black; */
+    box-sizing: border-box;
+    padding-top: 10px;
+
+}
+
+.itens img:hover{
+    transform: scale(1.5);
+    transition: .5s;
+}
+
+.itens img{
+    width: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    transition: .5s;
+
+    
+}
+
+.name-menu{
+    width: 150px;
+    height: 20px;
+    /* background-color: aqua; */
+    flex-wrap: wrap;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding-top: 10px;
+}
