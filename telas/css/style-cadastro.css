@@ -43,7 +43,7 @@ body
     margin: 0px;
     padding: 0px;
     /*background-color: #ffffff;*/
-    /*background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);*/
+    background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
     /*background-image: url("../imagens/90577.jpg");*/
     background-attachment: fixed;
     background-size: cover;
@@ -110,33 +110,10 @@ header
         min-height: 700px;
         height: auto;
         overflow: hidden;
-        background-color: red;
         margin: auto;
-        padding-top: 100px;
-        padding-bottom: 100px;
+        padding-top: 50px;
+        padding-bottom: 50px;
         box-sizing: border-box;
-    }
-
-    .perfil
-    {
-        width: 150px;
-        height: 150px;
-        border-radius: 20px;
-        background-color: #d4d4d4;
-        align-items: center;
-        justify-items: center;
-    }
-
-    .container-flex
-    {  
-        display: flex;
-        justify-content: center;
-        background-color: rgb(21, 18, 241);
-    }
-
-    .form-inputs
-    {
-        flex-direction: column;
     }
 
     .card-formulario-pessoal,
@@ -155,28 +132,72 @@ header
     .card-formulario-pessoal
     {
         width: 850px;
-        min-height: 530px;
-        background-color: rgb(206, 206, 206);
+        min-height: 550px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
     }
-
+    .card-formulario-servico
+    {
+        width: 850px;
+        height: 400px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
     .title-card
     {
         width: inherit;
         height: fit-content;
         box-sizing: border-box;
         padding-left: 50px;
-        /* background-color: beige; */
+        margin-top: 15px;
+        color: #00000071;
+        /* background-color: rgb(245, 245, 220); */
     }
-
-    .parte-perfil
+    .caixa-foto-perfil
     {
         width: 200px;
         height: 450px;
-        /* background-color: blueviolet; */
+        /* background-color: rgb(138, 39, 231); */
         display: flex;
         justify-content: center;
         padding-top: 30px;
         box-sizing: border-box;
+    }
+
+    .foto-perfil
+    {
+        width: 150px;
+        height: 150px;
+        border-radius: 20px;
+        background-color: #d4d4d4;
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        padding-top: 10px;
+    }
+    .img-perfil{
+        max-width: 130px;
+    }
+
+    .container-flex
+    {  
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-inputs
+    {
+        flex-direction: column;
+    }
+    .container-servico-pro
+    {
+        width: 350px;
+        height: 260px;
+        /* background-color: #984366; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
     }
 
     .campos-dados
@@ -185,24 +206,56 @@ header
         height: 450px;
         /* background-color: violet; */
     }
+    
+    #txt-nome,
+    #txt-dataNasc,
+    #txt-cpfCnpj,
+    #txt-email,
+    #txt-senha,
+    #txt-confirmar-senha,
+    #txt-cep,
+    #txt-logradouro,
+    #txt-bairro,
+    #txt-cidade,
+    #txt-uf,
+    #txt-categoria,
+    #txt-subcat,
+    #txt-valor-hora{
+        height: 50px;
+        font-family: "manjari regular";
+        font-size: 22px;
+        box-sizing: border-box;
+        padding-top: 10px;
+        background-color: #d3e0e0;
+
+    }
+    #txt-uf{
+        text-transform: uppercase;
+        text-align: center;
+    }
 
     .container-nome-dataNasc,
     .container-cpfCnpj-email,
     .container-senha,
     .container-cep-logradouro,
-    .container-bairro-cidade-uf
+    .container-bairro-cidade-uf,
+    .container-categoria,
+    .container-subcat,
+    .container-valor-hora
     {
         width: inherit;
-        height: 90px;
-        /* background-color: tomato; */
-        justify-content: space-around
+        height: fit-content;
+        /* background-color: rgb(219, 231, 110); */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2px;
     }
 
     .form-input
     {
         margin-top: -25px;
     }
-
     
     .form-input-pro
     {
@@ -216,8 +269,8 @@ header
     .caixa-bairro, .caixa-cidade,
     .caixa-uf
     {
-        height: inherit;
-        /*background-color: rgb(57, 207, 115);*/
+        height: 90px;
+        /* background-color: rgb(57, 207, 115); */
         display: flex;
         justify-content: start;
         flex-wrap: wrap;
@@ -260,27 +313,20 @@ header
 
     .caixa-bairro
     {
-        width: 220px;
+        width: 225px;
     }
 
     .caixa-cidade
     {
-        width: 270px;
+        width: 280px;
     }
     
     .caixa-uf
     {
-        width: 80px;
+        width: 65px;
     }
-
+   
     
-    
-    .card-formulario-servico
-    {
-        width: 850px;
-        min-height: 400px;
-        background-color: rgb(206, 206, 206);
-    }
 
     .campos-servicos
     {
@@ -289,50 +335,48 @@ header
         display: flex;
         align-items: center;
         justify-content: space-around;
+        /* background-color: #f7dede; */
     }
 
-    .container-categoria-subcat-valor-hora
-    {
-        width: inherit;
-        height: 90px;
-        /* background-color: tomato; */
-        justify-content: space-around
-    }
-    
     .caixa-categoria,
     .caixa-subcat,
     .caixa-valor-hora
     {
         width: 330px;
-        height: inherit;
+        height: 80px;
         display: flex;
+        align-items: center;
         justify-content: start;
         flex-wrap: wrap;
-        margin-top: 20px;
+        /* background-color: #57bc90; */
+    }
+    .container-qualificacoes{
+        width: inherit;
+        height: inherit;
+        /* background-color: #57bc90; */
     }
  
-    .container-servico-pro
-    {
-        width: 350px;
-        height: inherit;
-
-    }
-
     .caixa-qualificacoes
-    {
-        
+    {        
         width: inherit;
         height: inherit;
         justify-content: space-around;
         box-sizing: border-box;
-        padding-top: 18px;
+        padding-top: 5px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: start;
+        flex-wrap: wrap;
     }
 
     #txt-qualificacoes
     {
-        height: 215px;
+        height: 225px;
         resize: none;
         overflow: auto;
+        font-size: 22px;
+        font-family: "manjari regular";
+        background-color: #d3e0e0;
     }
 
     /*----- Rodapé -----*/
@@ -362,23 +406,14 @@ header
     {
         width: 100%;
         height: 100%;
-        background-color: red;
+        /* background-color: red; */
         margin: auto;
         box-sizing: border-box;
+        margin-bottom: 20%;
     }
 
     /*----- Conteudo -----*/
 
-    .container-flex
-    {  
-        display: flex;
-        justify-content: center;
-        background-color: mediumaquamarine;
-        padding-top: 20px;
-        height: fit-content;
-        /* padding-bottom: 50px */
-    }
-    
     .card-formulario-pessoal,
     .card-formulario-servico
     {
@@ -394,10 +429,35 @@ header
     }
     .card-formulario-pessoal
     {
-        width: 80%;
-        min-height: 200px;
-        background-color: rgb(138, 141, 145);
+        width: 95%;
+        min-height: 500px;
+        height: fit-content;
+        overflow: hidden;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+        padding-bottom: 20px;
     }
+
+    .card-formulario-servico
+    {
+        width: 95%;
+        min-height: 500px;
+        height: fit-content;
+        overflow: hidden;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
+
+    .container-flex
+    {  
+        display: flex;
+        justify-content: center;
+        /* background-color: rgb(95, 248, 56); */
+        padding-top: 20px;
+        height: fit-content;
+        /* padding-bottom: 50px */
+    }
+    
 
     .title-card
     {
@@ -405,76 +465,73 @@ header
         height: fit-content;
         box-sizing: border-box;
         text-align: center;
-        background-color: beige;
-        font-size: 40px;
+        font-size: 55px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+
+        color: #00000071;
     }
 
-    .parte-perfil
+    .caixa-foto-perfil
     {
         width: 100%;
-        height: 300px;
-        background-color: blueviolet;
+        height: 500px;
+        /* background-color: blueviolet; */
         display: flex;
         justify-content: center;
         box-sizing: border-box;
         margin-bottom: 20px;
     }
 
-    .perfil
+    .foto-perfil
     {
-        width: 300px;
-        height: 300px;
+        width: 500px;
+        height: 500px;
         border-radius: 20px;
-        background-color: #d6e41d;
+        background-color: #dcdcdc;
+        display: flex;
         align-items: center;
-        justify-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        padding-top: 15px;
+    }
+    .img-perfil{
+        max-width: 450px;
+        /* background-color: #984366; */
+    }
+
+    .campos-servicos
+    {
+        width: 98%;
+        min-height: 500px;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        align-items: start;
+        /* background-color: #129bf6; */
+        flex-wrap: wrap;
+    }
+    
+
+    .container-servico-pro
+    {
+        width: 100%;
+        min-height: 200px;
+        height: auto;
+        overflow: hidden;
+        /* background-color: rgb(230, 32, 32); */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
     }
 
     .campos-dados
     {
         width: 100%;
         height: fit-content;
-        background-color: violet;
-    }
-
-    .container-nome-dataNasc,
-    .container-cpfCnpj-email,
-    .container-senha,
-    .container-cep-logradouro,
-    .container-bairro-cidade-uf
-    {
-        width: inherit;
-        height: fit-content;
-        background-color: rgb(221, 255, 71);
-        justify-content: space-around;
-        margin-top: 10px;
-        flex-wrap: wrap;
-    }
-
-    .form-input
-    {
-        margin-top: -25px;
-    }
-    .form-label
-    {
-        font-size: 30px;
-    }
-
-    .caixa-nome, .caixa-dataNasc,
-    .caixa-cpfCnpj, .caixa-email,
-    .caixa-senha, .caixa-confirmar-senha,
-    .caixa-cep, .caixa-logradouro,
-    .caixa-bairro, .caixa-cidade,
-    .caixa-uf
-    {
-        width: 98%;
-        height: 110px;
-        background-color: rgb(57, 160, 207);
-        display: flex;
-        justify-content: start;
-        /* ali */
-        flex-wrap: wrap;
-        margin-top: 15px;
+        /* background-color: rgb(255, 238, 0); */
     }
 
     #txt-nome,
@@ -487,16 +544,67 @@ header
     #txt-logradouro,
     #txt-bairro,
     #txt-cidade,
-    #txt-uf{
-        height: 70px;
+    #txt-uf,
+    #txt-categoria,
+    #txt-subcat,
+    #txt-valor-hora{
+        height: 110px;
         font-family: "manjari regular";
-        font-size: 40px;
+        font-size: 50px;
         box-sizing: border-box;
-        padding-top: 15px;
+        /* padding-top: 10px; */
+        background-color: #dee0e0;
 
     }
     #txt-uf{
         text-transform: uppercase;
+        text-align: center;
+    }
+
+    .container-nome-dataNasc,
+    .container-cpfCnpj-email,
+    .container-senha,
+    .container-cep-logradouro,
+    .container-bairro-cidade-uf,
+    .container-categoria,
+    .container-subcat,
+    .container-valor-hora
+    {
+        width: 100%;
+        height: fit-content;
+        /* background-color: rgb(221, 255, 71); */
+        justify-content: space-around;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .form-input
+    {
+        margin-top: -25px;
+    }
+    .form-label
+    {
+        font-size: 45px;
+    }
+    .form-input-pro
+    {
+        margin-top: -25px;
+    }
+
+    .caixa-nome, .caixa-dataNasc,
+    .caixa-cpfCnpj, .caixa-email,
+    .caixa-senha, .caixa-confirmar-senha,
+    .caixa-cep, .caixa-logradouro,
+    .caixa-bairro, .caixa-cidade,
+    .caixa-uf
+    {
+        width: 98%;
+        height: 180px;
+        /* background-color: rgb(57, 160, 207); */
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        margin-top: 15px;
     }
 
     .caixa-senha,
@@ -514,81 +622,54 @@ header
         width: 66%;
     }
 
-    .caixa-bairro
-    {
-        width: 40%;
-    }
-
     .caixa-cidade
     {
-        width: 44%;
+        width: 81%;
     }
 
     .caixa-uf
     {
-        width: 10%;
+        width: 15%;
     }
 
-    
-    .card-formulario-servico
-    {
-        width: 80%;
-        min-height: 200px;
-        background-color: rgb(138, 141, 145);
-    }
-
-    .campos-servicos
-    {
-        width: 800px;
-        height: 300px;
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        background-color: #984366;
-    }
-    .container-categoria-subcat-valor-hora
-    {
-        width: inherit;
-        height: 90px;
-        /* background-color: tomato; */
-        justify-content: space-around
-    }
-    
     .caixa-categoria,
     .caixa-subcat,
     .caixa-valor-hora
     {
-        width: 330px;
-        height: inherit;
-        /*background-color: rgb(57, 207, 115);*/
+        width: 100%;
+        height: 180px;
+        /* background-color: rgb(57, 207, 115); */
         display: flex;
+        align-items: start;
         justify-content: start;
         flex-wrap: wrap;
-        margin-top: 20px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
     }
  
-    .container-servico-pro
-    {
-        width: 350px;
-        height: inherit;
-
+    .container-qualificacoes{
+        width: 100%;
+        height: 100%;
+        /* background-color: #b457bc; */
     }
-
+ 
     .caixa-qualificacoes
-    {
-        
+    {        
         width: inherit;
         height: inherit;
         justify-content: space-around;
         box-sizing: border-box;
         padding-top: 18px;
+        /* background-color: rgb(172, 223, 243); */
     }
 
     #txt-qualificacoes
     {
-        height: 215px;
+        height: 350px;
         resize: none;
         overflow: auto;
+        background-color: #dee0e0;
+        font-size: 50px;
     }
 
     /*----- Rodapé -----*/
@@ -598,9 +679,11 @@ header
     }
     footer
     {
-        width: 100%;
-        height: 150px;
+        display: none;
+        /* width: 100%;
+        height: 300px;
         background-color: #000000;
+        position: relative;
+        bottom: 0px; */
     }
-
 }
