@@ -10,75 +10,69 @@
 		</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+        <script src="js/jquery-3.4.1.min.js"></script>
+        <script src="js/animation.js"></script>
 	</head>
 	<body>
-    <div id="all" >
-      	
-    <!--CABEÇALHO-->
-       <header>
-           
-       </header>
-    
-     <!--CONTEUDO-->
-     
-            <section>
+        <div id="all">
+            
+            <!--CABEÇALHO-->
+            <header>
+                
+            </header>
+            
+            <!--CONTEUDO-->
+        
+            <section class="container-conteudo">
                 <div class="title-caixa-escolha center">
                     <h1>O que você gostaria de fazer?</h1>
                 </div>
 
-                <div class="caixa-escolha center flex-center">
-                        <div class="caixa-profissional">
-                            <div class="title-escolha">
-                                Profissional 
-                            </div>
-                            <div class="texto-escolha">
-                                Você poderá cadastrar seus serviços e ser contratado pelos usuários da plataforma
-                            </div>
-                            <div class="img-escolha" >
-                                <div class="center">
-                                    <img class="img" src="img/worker-ai.png">
-                                </div>
-                            </div> 
-                            <div class="botao-escolha">
-                                <div class="seta">
-                                    <img src="img/arrow-point-to-right.png">
-                                </div>
+                <div class="caixa-escolha">
+                    <div class="caixa-profissional">
+                        <div class="title-escolha">
+                            Profissional 
+                        </div>
+                        <div class="texto-escolha">
+                            Você poderá cadastrar seus serviços e ser contratado pelos usuários da plataforma
+                        </div>
+                        <div class="img-escolha" >
+                            <figure>
+                                <img class="img" src="img/worker-ai.png">
+                            </figure>
+                        </div>
+                        <div id="btn-escolha-worker" class="botao-escolha">
+                            <div class="seta">
+                                <figure>
+                                    <img class="seta-worker" src="img/arrow-point-to-right.png">
+                                </figure>
                             </div>
                         </div>
+                    </div>
 
-                        <div class="caixa-cliente">
-                            <div class="title-escolha">
-                                Cliente 
-                            </div>
-                            <div class="texto-escolha">
-                                Você poderá encontrar diversos profissionais ideais para o serviço que precisar
-                            </div>
-                            <div class="img-escolha" >
-                                <div class="center">
-                                    <img class="img" src="img/customer-ai.png">
-                                </div>
-                            </div> 
-                            <div class="botao-escolha">
-                                <div class="seta">
-                                    <img src="img/arrow-point-to-right.png">
-                                </div>
+                    <div class="caixa-cliente">
+                        <div class="title-escolha">
+                            Cliente 
+                        </div>
+                        <div class="texto-escolha">
+                            Você poderá encontrar diversos profissionais ideais para o serviço que precisar
+                        </div>
+                        <div class="img-escolha">
+                            <figure>
+                                <img class="img" src="img/customer-ai.png">
+                            </figure>
+                        </div>
+                        <div id="btn-escolha-customer" class="botao-escolha">
+                            <div class="seta">
+                                <figure>
+                                    <img class="seta-customer" src="img/arrow-point-to-right.png">
+                                </figure>
                             </div>
                         </div>
-
+                    </div>
                 </div>
-                
-
             </section>
-            <!-- div para separa o conteudo do footer -->
-            <div id="espaco">
-
-            </div>
-    
-        
-        <!--RODA PÉ-->
-        <footer>
-        </footer>
-    </div>
+        </div>
+        <footer></footer>
 	</body>
 </html>
