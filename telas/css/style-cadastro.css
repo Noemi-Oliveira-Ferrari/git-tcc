@@ -132,7 +132,7 @@ header
     .card-formulario-pessoal
     {
         width: 850px;
-        min-height: 550px;
+        min-height: 600px;
         background-color: rgb(255, 255, 255);
         box-shadow: #0000005b 3px 3px 5px;
     }
@@ -202,7 +202,7 @@ header
 
     .campos-dados
     {
-        width: 600px;
+        width: 750px;
         height: 450px;
         /* background-color: violet; */
     }
@@ -278,52 +278,52 @@ header
 
     .caixa-nome
     {
-        width: 290px;
+        width: 365px;
     }
     .caixa-dataNasc
     {
-        width: 290px;
+        width: 365px;
     }
     .caixa-cpfCnpj
     {
-        width: 200px;
+        width: 275px;
     }
     .caixa-email
     {
-        width: 380px;
+        width: 455px;
     }
     .caixa-senha
     {
-        width: 290px;
+        width: 365px;
     }
     .caixa-confirmar-senha 
     {
-        width: 290px;
+        width: 365px;
     }
 
     .caixa-cep
     {
-        width: 190px;
+        width: 265px;
     }
 
     .caixa-logradouro
     {
-        width: 390px;
+        width: 465px;
     }
 
     .caixa-bairro
     {
-        width: 225px;
+        width: 310px;
     }
 
     .caixa-cidade
     {
-        width: 280px;
+        width: 350px;
     }
     
     .caixa-uf
     {
-        width: 65px;
+        width: 60px;
     }
    
     
@@ -426,6 +426,7 @@ header
         align-items:center;
         flex-wrap: wrap;
         margin-bottom: 40px;
+        padding: 20px;
     }
     .card-formulario-pessoal
     {
