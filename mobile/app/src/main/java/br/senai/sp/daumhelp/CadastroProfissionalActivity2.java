@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.List;
 
 import br.senai.sp.daumhelp.configretrofit.RetroFitConfig;
+import br.senai.sp.daumhelp.mascara.Mascara;
 import br.senai.sp.daumhelp.model.Endereco;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +33,7 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
     private EditText etCidade;
     private Button btnCep;
     private Endereco endereco;
+    private Long idCidade;
 
 
     @Override
@@ -48,16 +50,20 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
         etCidade = findViewById(R.id.et_cidade_pro);
         btnCep = findViewById(R.id.btn_gerar_cep);
 
-        btnProximo.setVisibility(View.INVISIBLE);
+        // btnProximo.setVisibility(View.INVISIBLE);
 
         etUf.setEnabled(false);
         etLogradouro.setEnabled(false);
         etBairro.setEnabled(false);
         etCidade.setEnabled(false);
 
+
+        Mascara maskCep = new Mascara("#####-###", etCep);
+        etCep.addTextChangedListener(maskCep);
+
         btnCep.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
 
 
                 String cep = etCep.getText().toString();
@@ -84,14 +90,14 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
                 }else{
 
                 }
-           }
-       });
+            }
+        });
 
 
         /*PEGANDO OS DADOS DA INTENT PASSADA*/
         Intent intent = getIntent();
         if(intent.getSerializableExtra("dados_pessoais_pro") != null){
-           final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
+            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
 
             btnProximo.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -107,7 +113,7 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
 
 
                     /*ARRAY DO ENDEREÇO PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
-                    String[] listaEndereco = new String[]{cep, logradouro, bairro};
+                    String[] listaEndereco = new String[]{cep, logradouro, bairro, idCidade.toString()};
 
                     Intent intent = new Intent(CadastroProfissionalActivity2.this, CadastroProfissionalActivity3.class);
                     intent.putExtra("endereco_pro", listaEndereco);
@@ -136,6 +142,7 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
         etBairro.setText(endereco.getBairro());
         etLogradouro.setText(endereco.getLogradouro());
         etCidade.setText(endereco.getCidade().getCidade().toString());
+        idCidade = endereco.getCidade().getIdCidade();
     }
 
 

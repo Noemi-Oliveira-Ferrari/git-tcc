@@ -104,7 +104,7 @@
         android:drawableLeft="@drawable/ic_cpf"
         android:ems="10"
         android:hint="CNPJ/CPF"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/et_email_pro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

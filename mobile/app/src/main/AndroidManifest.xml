@@ -26,7 +26,6 @@
         <activity android:name=".CadastroProfissionalActivity3"></activity>
         <activity android:name=".CadastroProfissionalActivity4"></activity>
         <activity android:name=".ConfirmarEmailActivity"></activity>
-        <activity android:name=".SucessoActivity"></activity>
     </application>
 
 </manifest>

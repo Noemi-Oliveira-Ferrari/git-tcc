@@ -3,14 +3,13 @@ package br.senai.sp.daumhelp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
+import br.senai.sp.daumhelp.mascara.Mascara;
+
 
 public class CadastroProfissionalActivity1 extends AppCompatActivity {
 
@@ -37,6 +36,14 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
         etSenha = findViewById(R.id.et_senha_pro);
         etConfirmacao = findViewById(R.id.et_confirm_pro);
 
+        Mascara maskCpf = new Mascara("###.###.###-##", etCpf);
+        //Mascara maskCnpj = new Mascara("##.###.###/####-##", etCpf);
+        Mascara maskData = new Mascara("##/##/####", etDataNasc);
+
+        etCpf.addTextChangedListener(maskCpf);
+
+        etDataNasc.addTextChangedListener(maskData);
+
         btnProximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,16 +61,15 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
 
                 if(etConfirmacao.getText().toString().equals(etSenha.getText().toString())){
 
-                        /*SERIALIZAÇÃO DOS DADOS*/
-                        Intent intent = new Intent(CadastroProfissionalActivity1.this, ConfirmarEmailActivity.class);
-                        intent.putExtra("dados_pessoais_pro", listaDados);
-                        startActivity(intent);
+                    /*SERIALIZAÇÃO DOS DADOS*/
+                    Intent intent = new Intent(CadastroProfissionalActivity1.this, ConfirmarEmailActivity.class);
+                    intent.putExtra("dados_pessoais_pro", listaDados);
+                    startActivity(intent);
 
                 }else{
                     Toast.makeText(CadastroProfissionalActivity1.this, "As senhas não correspondem", Toast.LENGTH_SHORT).show();
 
                 }
-
 
 
             }
