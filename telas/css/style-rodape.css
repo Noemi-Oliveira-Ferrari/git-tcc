@@ -24,7 +24,9 @@ body, html
 footer
 {
     justify-content: center;
-    background-color: mediumaquamarine;
+    background-image: url(../imagens/background04.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .float
@@ -39,7 +41,7 @@ footer
 
 hr
 {
-    width: 780px;
+    width: 940px;
 }
 
 /*----- Estilização -----*/
@@ -72,12 +74,14 @@ hr
 .titulo-rodape
 {
     font-size: 40px;
+    color: #ffffff;
 }
 
 .texto-rodape
 {
     font-family: Lexend Deca;
     font-size: 25px;
+    color: #ffffff;
 }
 
 
@@ -92,7 +96,7 @@ hr
 .caixa-rodape-cadastro
 {
     width: 100%;
-    height: 260px;
+    height: 285px;
     padding-top: 25px;
     padding-bottom: 25px;
     box-sizing: border-box;
@@ -101,7 +105,7 @@ hr
 .caixa-rodape-informacoes
 {
     width: 100%;
-    height: 330px;
+    height: 305px;
     background-color: #11161c;
     color: #ffffff;
 }
@@ -111,14 +115,14 @@ hr
     width: 180px;
     height: 40px;
     font-size: 1em;
-    border-radius: 10px;
-    border: 0px;
+    border-radius: 8px;
     font-family: Lexend Deca;
-    background-color: #015249;
+    background-color: transparent;
     color: #ffffff;
+    border: solid #ffffff;
     font-weight: bold;
     letter-spacing: 1px;
-
+    outline: none;
 }
 
 .btn-cadastro-rodape:hover
@@ -130,18 +134,17 @@ hr
 
 .caixas-informacoes
 {
-    background-color: yellowgreen;
     margin-left: 3px;
 }
 
 .caixas-conteudo-rodape
 {
-    width: 200px;
+    width: 250px;
     height: 200px;
-    /*background-color: chocolate;*/
-    margin-left: 5px;
-    margin-right: 5px;
-    margin-bottom: 20px;
+    /* background-color: chocolate; */
+    margin-top: 20px;
+    box-sizing: border-box;
+    padding-left: 40px;
 }
 
 .logo-rede-social
@@ -161,18 +164,8 @@ hr
 .caixa2rodape
 {
     display: flex;
+    /* background-color: chocolate; */
     margin-bottom: 30px;
-}
-
-.tam-padrao
-{
-    /*margin: 5px;*/
-}
-
-.conteudo
-{
-    width: 100%;
-    height: 450px;
 }
 
 .icon-footer
@@ -187,4 +180,34 @@ hr
     filter: grayscale(10%);
     transition: 0.8s;
     cursor: pointer
+}
+
+.itens
+{
+    font-size: 16px;
+    text-decoration: none;
+    color: #ffffff;
+    margin-top: 5px;
+    font-weight: normal;
+}
+
+.itens:hover
+{
+    color: #77C9D4;
+    transition: 0.8s;
+    font-weight: normal;
+    cursor: pointer;
+    /* text-decoration: underline; */
+}
+
+.caixa-1
+{
+    width: 550px;
+    text-align: left;
+}
+
+.caixa-2
+{
+    width: 420px;
+    text-align: right;
 }
