@@ -9,8 +9,11 @@ import br.net.daumhelp.model.Subcategoria;
 
 public interface SubcategoriaRepository extends JpaRepository<Subcategoria, Long> {
 	
+
+	@Query("SELECT s FROM Subcategoria s WHERE s.idSubcategoria > 0 ORDER BY s.subcategoria")
+	public List<Subcategoria> findAllOrderByName();
 	
-	@Query("SELECT s FROM Subcategoria s WHERE s.categoria.idCategoria = ?1")
+	@Query("SELECT s FROM Subcategoria s WHERE s.categoria.idCategoria = ?1 ORDER BY s.subcategoria")
 	public List<Subcategoria> findByCategoria(Long id);
 	
 	
