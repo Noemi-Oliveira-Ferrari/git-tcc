@@ -43,6 +43,8 @@ public class Profissional {
 	@NotNull
 	private Double valorHora;
 
+	private String resumoQualificacoes;
+
 	@NotNull
 	@OneToOne
 	@JoinColumn(name = "idEndereco")
@@ -127,6 +129,14 @@ public class Profissional {
 		this.valorHora = valorHora;
 	}
 
+	public String getResumoQualificacoes() {
+		return resumoQualificacoes;
+	}
+
+	public void setResumoQualificacoes(String resumoQualificacoes) {
+		this.resumoQualificacoes = resumoQualificacoes;
+	}
+
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -163,9 +173,8 @@ public class Profissional {
 	public String toString() {
 		return "Profissional [idProfissional=" + idProfissional + ", nome=" + nome + ", email=" + email + ", foto="
 				+ foto + ", cnpj=" + cnpj + ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc
-				+ ", valorHora=" + valorHora + ", endereco=" + endereco + ", subcategoria=" + subcategoria
-				+ ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+				+ ", valorHora=" + valorHora + ", resumoQualificacoes=" + resumoQualificacoes + ", endereco=" + endereco
+				+ ", subcategoria=" + subcategoria + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
-
 
 }
