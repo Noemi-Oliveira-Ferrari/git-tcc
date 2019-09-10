@@ -28,7 +28,7 @@ public class CategoriaResource {
 	
 	@GetMapping
 	public List<Categoria> getCategorias(){
-		return categoriaRepository.findAll();
+		return categoriaRepository.findAllOrderByName();
 	}
 	
 	
