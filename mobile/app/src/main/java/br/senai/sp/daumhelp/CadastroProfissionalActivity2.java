@@ -34,6 +34,7 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
     private Button btnCep;
     private Endereco endereco;
     private Long idCidade;
+    boolean validado = true;
 
 
     @Override
@@ -115,10 +116,13 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
                     /*ARRAY DO ENDEREÇO PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
                     String[] listaEndereco = new String[]{cep, logradouro, bairro, idCidade.toString()};
 
-                    Intent intent = new Intent(CadastroProfissionalActivity2.this, CadastroProfissionalActivity3.class);
-                    intent.putExtra("endereco_pro", listaEndereco);
-                    intent.putExtra("dados_pessoais_pro", listaDados);
-                    startActivity(intent);
+                    if(validar() == true){
+                        Intent intent = new Intent(CadastroProfissionalActivity2.this, CadastroProfissionalActivity3.class);
+                        intent.putExtra("endereco_pro", listaEndereco);
+                        intent.putExtra("dados_pessoais_pro", listaDados);
+                        startActivity(intent);
+                    }
+
 
                 }
             });
@@ -143,6 +147,22 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
         etLogradouro.setText(endereco.getLogradouro());
         etCidade.setText(endereco.getCidade().getCidade().toString());
         idCidade = endereco.getCidade().getIdCidade();
+
+        if(endereco == null){
+            etCep.setError("Digite um CPF válido");
+            validado = false;
+        }
+
+    }
+
+    private boolean validar(){
+
+
+        if(etCep.getText().toString().isEmpty()){
+            etCep.setError("O cpf deve conter 8 digitos");
+            validado = false;
+        }
+        return validado;
     }
 
 

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Subcategoria {
 
     private Long idSubcategoria;
-    private Long idCategoria;
+    private Categoria categoria;
 
     @JsonAlias("subcategoria")
     private String subcategoria;
@@ -28,12 +28,12 @@ public class Subcategoria {
         this.subcategoria = subcategoria;
     }
 
-    public Long getIdCategoria() {
-        return idCategoria;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setIdCategoria(Long idCategoria) {
-        this.idCategoria = idCategoria;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     @Override

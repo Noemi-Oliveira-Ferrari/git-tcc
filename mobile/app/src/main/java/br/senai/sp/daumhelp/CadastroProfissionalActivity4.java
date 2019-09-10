@@ -18,6 +18,8 @@ import br.senai.sp.daumhelp.configretrofit.RetroFitConfig;
 import br.senai.sp.daumhelp.model.Categoria;
 import br.senai.sp.daumhelp.model.Cidade;
 import br.senai.sp.daumhelp.model.Endereco;
+import br.senai.sp.daumhelp.model.Profissional;
+import br.senai.sp.daumhelp.model.Subcategoria;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,51 +53,83 @@ public class CadastroProfissionalActivity4 extends AppCompatActivity {
                 if (intent.getSerializableExtra("serv_pro") != null) {
                     final String[] listaProfissao = (String[]) intent.getSerializableExtra("serv_pro");
 
+
+                    //MONTANDO OBJETO ENDERECO PARA CADASTRAR NO BANCO
+                    final Endereco endereco = new Endereco();
+                    endereco.setCep(listaEndereco[0]);
+                    endereco.setLogradouro(listaEndereco[1]);
+                    endereco.setBairro(listaEndereco[2]);
+                    Cidade cidade = new Cidade();
+                    cidade.setIdCidade(Long.parseLong(listaEndereco[3]));
+                    endereco.setCidade(cidade);
+
+
+                    btnProximo.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            int i = 1;
+                            Intent intent = new Intent(CadastroProfissionalActivity4.this, MainActivity.class);
+                            intent.putExtra("cadastro", i);
+                            startActivity(intent);
+
+
+                            Call<Endereco> call = new RetroFitConfig().getEnderecoService().cadastrarEndereco(endereco);
+                            call.enqueue(new Callback<Endereco>() {
+                                @Override
+                                public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+
+                                    Endereco endereco1 = response.body();
+                                    Subcategoria subcategoria = new Subcategoria();
+                                    subcategoria.setIdSubcategoria(Long.parseLong(listaProfissao[2]));
+                                    subcategoria.setCategoria(null);
+
+
+                                    Profissional profissional = new Profissional();
+                                    profissional.setNome(listaDados[0]);
+                                    profissional.setDataNasc(listaDados[1]);
+                                    profissional.setCpf(listaDados[2]);
+                                    profissional.setEmail(listaDados[3]);
+                                    profissional.setSenha(listaDados[4]);
+                                    profissional.setResumoQualificacoes(listaProfissao[0]);
+                                    profissional.setValorHora(Double.parseDouble(listaProfissao[1]));
+                                    profissional.setSubcategoria(subcategoria);
+                                    profissional.setEndereco(endereco1);
+                                    profissional.setFoto("foto.png");
+
+                                    Call<Profissional> callPro = new RetroFitConfig().getProfissionalService().cadastrarProfissional(profissional);
+                                    callPro.enqueue(new Callback<Profissional>() {
+
+                                        @Override
+                                        public void onResponse(Call<Profissional> call, Response<Profissional> response) {
+                                            response.body();
+                                        }
+                                        @Override
+                                        public void onFailure(Call<Profissional> call, Throwable t) {
+                                          Log.i("BOM DIA", t.getMessage());
+                                        }
+
+
+                                    });
+
+
+                                }
+
+                                @Override
+                                public void onFailure(Call<Endereco> call, Throwable t) {
+                                    Log.i("Retrofit Cadastro", t.getMessage());
+                                }
+                            });
+
+                        }
+                    });
                 }
-
-                final Endereco endereco = new Endereco();
-                endereco.setCep(listaEndereco[0]);
-                endereco.setLogradouro(listaEndereco[1]);
-                endereco.setBairro(listaEndereco[2]);
-                Cidade cidade = new Cidade();
-                cidade.setIdCidade(Long.parseLong(listaEndereco[3]));
-
-                endereco.setCidade(cidade);
-
-
-                btnProximo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                    int i = 1;
-
-                    Intent intent = new Intent(CadastroProfissionalActivity4.this, MainActivity.class);
-                    intent.putExtra("cadastro", i);
-                    startActivity(intent);
-
-
-                        Call<Endereco> call = new RetroFitConfig().getEnderecoService().cadastrarEndereco(endereco);
-                        call.enqueue(new Callback<Endereco>() {
-                            @Override
-                            public void onResponse(Call<Endereco> call, Response<Endereco> response) {
-
-                                Log.i("Teste", response.body().toString());
-
-                            }
-
-                            @Override
-                            public void onFailure(Call<Endereco> call, Throwable t) {
-                                Log.i("Retrofit Cadastro", t.getMessage());
-                            }
-                        });
-
-                    }
-                });
-
 
             }
 
         }
+
+
+
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

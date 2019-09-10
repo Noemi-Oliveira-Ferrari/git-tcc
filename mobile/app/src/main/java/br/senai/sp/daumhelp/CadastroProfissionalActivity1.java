@@ -1,6 +1,7 @@
 package br.senai.sp.daumhelp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -38,7 +39,7 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
 
         Mascara maskCpf = new Mascara("###.###.###-##", etCpf);
         //Mascara maskCnpj = new Mascara("##.###.###/####-##", etCpf);
-        Mascara maskData = new Mascara("##/##/####", etDataNasc);
+        Mascara maskData = new Mascara("####-##-##", etDataNasc);
 
         etCpf.addTextChangedListener(maskCpf);
 
@@ -62,9 +63,12 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
                 if(etConfirmacao.getText().toString().equals(etSenha.getText().toString())){
 
                     /*SERIALIZAÇÃO DOS DADOS*/
-                    Intent intent = new Intent(CadastroProfissionalActivity1.this, ConfirmarEmailActivity.class);
-                    intent.putExtra("dados_pessoais_pro", listaDados);
-                    startActivity(intent);
+
+                    if(validar() == true) {
+                        Intent intent = new Intent(CadastroProfissionalActivity1.this, ConfirmarEmailActivity.class);
+                        intent.putExtra("dados_pessoais_pro", listaDados);
+                        startActivity(intent);
+                    }
 
                 }else{
                     Toast.makeText(CadastroProfissionalActivity1.this, "As senhas não correspondem", Toast.LENGTH_SHORT).show();
@@ -87,4 +91,50 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
 
 
     }
+
+
+    private boolean validar(){
+        boolean validado = true;
+
+        if(etNome.getText().toString().isEmpty()){
+            etNome.setError("Digite seu nome por favor");
+            validado = false;
+        }
+        if(etNome.getText().length()<=2){
+            etNome.setError("O nome deve conter no min. 3 caracteres");
+            validado = false;
+        }
+        if(etEmail.getText().toString().isEmpty()){
+            validado = false;
+        }
+        if(etEmail.getText().length()<9){
+            etEmail.setError("O e-mail deve conter no min. 9 caracteres");
+            validado = false;
+        }
+        if(etCpf.getText().toString().isEmpty()){
+            validado = false;
+        }
+        if(etCpf.getText().length()<14){
+            etCpf.setError("CPF inválido");
+            validado = false;
+        }
+        if(etSenha.getText().toString().isEmpty()){
+            validado = false;
+        }
+        if(etSenha.getText().length()<=8){
+            etSenha.setError("A senha deve conter no min. 8 caracteres");
+            validado = false;
+        }
+        if(etDataNasc.getText().toString().isEmpty()){
+            validado = false;
+        }
+        if(etDataNasc.getText().length()<10){
+            etDataNasc.setError("Data de nascimento inválida");
+            validado = false;
+        }
+        return validado;
+    }
+
+
+
 }
