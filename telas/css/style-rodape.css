@@ -187,8 +187,8 @@ hr
     font-size: 16px;
     text-decoration: none;
     color: #ffffff;
-    margin-top: 5px;
     font-weight: normal;
+    margin-left: 5px;
 }
 
 .itens:hover
@@ -210,4 +210,25 @@ hr
 {
     width: 420px;
     text-align: right;
+}
+
+.tamanho-icone
+{
+    width: 170px;
+    height: 65px;
+}
+
+.tamanho-caixa-cima
+{
+    width: 200px;
+    height: auto;
+    margin-left: 10px;
+}
+
+.tamanho-caixa
+{
+    width: 200px;
+    height: auto;
+    margin-right: 10px;
+    margin-top: 20px;
 }
