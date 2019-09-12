@@ -25,6 +25,9 @@
 
     .titulo
     {
+        width: 560px;
+        height: auto;
+        /* background-color: yellowgreen; */
         font-family: 'Lexend Deca';
         font-size: 40px;
         font-weight: bold;
@@ -109,7 +112,7 @@
     .container-login
     {
         width: 100%;
-        height: 850px;
+        height: 860px;
         /* background: rgba(39, 144, 110, 0.75); */
         /* background: rgba(207, 86, 30, 0.75); */
     }
@@ -135,6 +138,7 @@
         justify-content: center;
         padding-top: 50px;
         box-sizing: border-box;
+        /* background-color: #002420; */
     }
     
     .caixa-conteudo
@@ -169,18 +173,20 @@
     .card-login
     {
         width: 600px;
-        height: 600px;
+        height: 610px;
         border-radius: 10px;
         background-color: rgb(235, 230, 230);
         background-image: url(../imagens/fundo03.jpg);
         background-size: cover;
         box-shadow: 15px 15px 30px #015249;
+        padding: 20px;
+        box-sizing: border-box;
     }
     
-    .conteudo-card
+    /* .conteudo-card
     {
         padding: 25px;
-    }
+    } */
     
     .logotipo
     {
@@ -243,19 +249,43 @@
     
     .caixa-input
     {
+        width: 560px;
+        height: 70px;
         margin-top: 30px;
+        /* background-color: #9cd477; */
     }   
     
     #espaco{
         width: 100%;
         height: 100px;
-        /* background-color: #77c9d4; */
+        /* background-color: #be77d4; */
     }
 
     .conteiner-conteudo
     {
         width: 100%;
         height: 100%;
+    }
+
+    .caixa-conteudo-card
+    {
+        width: 560px;
+        height: 360px;
+        /* background-color: #be77d4; */
+    }
+
+    .card-footer
+    {
+        width: inherit;
+        height: 50px;
+        /* background-color: tomato; */
+    }
+
+    .conteudo-dentro-card
+    {
+        width: 560px;
+        height: auto;
+        /* background-color: #57bc90; */
     }
 }
 
@@ -299,10 +329,13 @@
 
     .titulo
     {
+        width: inherit;
+        height: 90px;
         font-family: 'Lexend Deca';
         font-size: 4em;
         font-weight: bold;
         color: #000000;
+        /* background-color: yellowgreen; */
     }
   
     .texto-card
@@ -390,7 +423,7 @@
     .container-login
     {
         width: 100%;
-        height: 850px;
+        height: 1150px;
         /* background: rgba(39, 144, 110, 0.75); */
         /* background: rgba(207, 86, 30, 0.75); */
     }
@@ -398,22 +431,24 @@
     .caixa-conteudo
     {
         width: 800px;
-        height: inherit;
+        height: 1085px;
         position: relative;
         background-color: transparent;
         display: flex;
         align-items: center;
         justify-content: center;
+        /* background-color: yellowgreen; */
     }
     .container-centro
     {
-        width: auto;
+        width: 800px;
         height: inherit;
         margin: auto;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+        /* background-color: #002420 */
     }
  
     .logotipo
@@ -472,6 +507,32 @@
         padding: 25px;
         box-sizing: border-box;
     }
+
+    .card-login
+    {
+        width: auto;
+        height: inherit;
+        /* background-color: rgb(95, 95, 161); */
+    }
+
+    .caixa-input
+    {
+        width: inherit;
+        height: 130px;
+        /* background-color: #438d5b; */
+    }
     
+    .conteudo-dentro-card 
+    {
+        width: inherit;
+        height: 450px;
+        /* background-color: #57bc90; */
+    }
+
+    .card-footer {
+        width: inherit;
+        height: 100px;
+        /* background-color: tomato; */
+    }
 }
 
