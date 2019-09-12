@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pr-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+        <style>
+            html, body, div, footer, img, h1, h2, h3, h4, h5, h6,
+            figure, p{
+                padding: 0px;
+                margin: 0px;
+            }
+            body{
+                width: 100%;
+                height: 100%;
+                background-color: black;
+            }
+            .all{
+                width: 100%;
+                min-height: 100%;
+                background-color: #ee1616;
+                /* box-sizing: border-box;
+                padding-bottom: 50px; */
+            }
+            .center{
+                width: 600px;
+                height: 600px;
+                background-color: rgb(255, 255, 255);
+                margin: auto;
+            }
+            header{
+                width: 100%;
+                height: 16%;
+                background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
+                border-bottom: solid 5px #015249;
+                box-sizing: border-box;
+            }
+            .caixa-logo-duh{
+                width: 100%;
+                height: 100%;
+                /* background-color: #22199b; */
+                box-sizing: border-box;
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                float: left;
+            }
+
+            .conteudo{
+                width: 100%;
+                height: 65%;
+                /* background-color: #57bc90; */
+                display: flex;
+                align-items: center;
+                /* justify-content: center; */
+                flex-direction: column;
+                flex-wrap: wrap;
+                box-sizing: border-box;
+                padding: 20px;
+            }
+            .caixa-txt-email{
+                width: 80%;
+                height: fit-content;
+                /* background-color: coral; */
+                box-sizing: border-box;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+            .titulo-email{
+                font-family: 'Lexend Deca', sans-serif;
+            }
+            .texto-email{
+                font-family: 'Manjari', sans-serif;
+                margin-top: 5px;
+            }
+            .caixa-codigo{
+                width: 200px;
+                height: 66px;
+                background-color: #d2f2f7;
+                border: dashed 3px #000000a9;
+                border-radius: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: center ;
+                box-sizing: border-box;
+                padding-left: 20px;
+            }
+            .txt-codigo{
+                font-family: 'Lexend Deca', sans-serif;
+                font-size: 30px;
+                letter-spacing: 20px;
+                text-align: center;
+            }
+
+            footer{
+                width: 100%;
+                height: 19%;
+                background-color: #015249;
+            }
+            .caixa-logo-be{
+                width: 50%;
+                height: 100%;
+                background-color: #bcb257;
+                box-sizing: border-box;
+                padding: 20px;
+                display: flex;
+                align-items: flex-end;
+                justify-content: flex-end;
+                float: left;
+            }
+            .caixa-info{
+                width: 50%;
+                height: 100%;
+                background-color: #3e887e;
+                box-sizing: border-box;
+                /* padding: 20px;    */
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+                float: left;
+            }
+            .img-playstore{
+                max-width: 150px;
+                max-height: inherit;
+                background-color: wheat;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="all">
+            <div class="center">
+                <header>
+                    <div class="caixa-logo-duh">DaUmHelp!</div>
+                </header>
+                <section class="conteudo">
+                    <div class="caixa-txt-email">
+                        <h2 class="titulo-email">Olá Fulano!</h2>
+                        <p class="texto-email">Aqui está seu coódigo de confirmação de e-mail. Preencha este código de confirmação no aplicativo em seu celular para prosseguir com a seu cadastro:</p>
+                    </div>
+                    <div class="caixa-codigo">
+                        <div class="codigo">
+                            <h3 class="txt-codigo">4852</h3>
+                        </div>
+                    </div>
+                </section>
+                <footer>
+                    <div class="caixa-info">
+                        <figure>
+                            <img class="img-playstore" src="google_play_icon.png" alt="Disponível no Goople Play Store">
+                        </figure>
+                    </div>
+                    <div class="caixa-logo-be">Brace Everything</div>
+                </footer>
+            </div>
+        </div>
+    </body>
+</html>
