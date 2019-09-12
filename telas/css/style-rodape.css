@@ -91,7 +91,7 @@ hr
     align-items: center;
     justify-content: center;
     display: flex;
-    background-color: #548720;
+    /* background-color: #548720; */
 }
 
 .caixa-rodape-cadastro
@@ -131,6 +131,7 @@ hr
     cursor: pointer;
     background-color:rgba(119, 201, 212, 0.253);
     transition: 0.8s;
+    transform: scale(1.1);
 }
 
 .caixas-informacoes
@@ -166,7 +167,7 @@ hr
 {
     width: 1200px;
     height: auto;
-    background-color: chocolate;
+    /* background-color: chocolate; */
     margin-bottom: 30px;
     margin: auto;
 }
@@ -176,7 +177,7 @@ hr
     width: 1200px;
     height: auto;
     display: flex;
-    background-color: chocolate;
+    /* background-color: chocolate; */
     margin-bottom: 30px;
     margin: auto;
 }
@@ -235,7 +236,7 @@ hr
 {
     width: 550px;
     text-align: left;
-    background-color: #987a65;
+    /* background-color: #987a65; */
     display: flex;
     justify-content: left;
     padding-left: 22px;
@@ -274,7 +275,7 @@ hr
     width: 1200px;
     height: auto;
     margin: auto;
-    background-color: rgb(18, 44, 189);
+    /* background-color: rgb(18, 44, 189); */
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
