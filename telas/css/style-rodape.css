@@ -91,6 +91,7 @@ hr
     align-items: center;
     justify-content: center;
     display: flex;
+    background-color: #548720;
 }
 
 .caixa-rodape-cadastro
@@ -128,9 +129,9 @@ hr
 .btn-cadastro-rodape:hover
 {
     cursor: pointer;
+    background-color:rgba(119, 201, 212, 0.253);
+    transition: 0.8s;
 }
-
-
 
 .caixas-informacoes
 {
@@ -158,14 +159,26 @@ hr
 
 .text-rodape
 {
-    margin-left: 30px;
+    /* margin-left: 30px; */
 }
 
-.caixa2rodape
+.caixa-rodape
 {
-    display: flex;
-    /* background-color: chocolate; */
+    width: 1200px;
+    height: auto;
+    background-color: chocolate;
     margin-bottom: 30px;
+    margin: auto;
+}
+
+.caixa2-rodape
+{
+    width: 1200px;
+    height: auto;
+    display: flex;
+    background-color: chocolate;
+    margin-bottom: 30px;
+    margin: auto;
 }
 
 .icon-footer
@@ -200,10 +213,33 @@ hr
     /* text-decoration: underline; */
 }
 
+.itens-rodape
+{
+    font-size: 16px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: normal;
+    padding-left: 30px;
+    box-sizing: border-box;
+}
+
+.itens-rodape:hover
+{
+    color: #77C9D4;
+    transition: 0.8s;
+    font-weight: normal;
+    cursor: pointer;
+}
+
 .caixa-1
 {
     width: 550px;
     text-align: left;
+    background-color: #987a65;
+    display: flex;
+    justify-content: left;
+    padding-left: 22px;
+    box-sizing: border-box;
 }
 
 .caixa-2
@@ -231,4 +267,15 @@ hr
     height: auto;
     margin-right: 10px;
     margin-top: 20px;
+}
+
+.caixa3-rodape
+{
+    width: 1200px;
+    height: auto;
+    margin: auto;
+    background-color: rgb(18, 44, 189);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
