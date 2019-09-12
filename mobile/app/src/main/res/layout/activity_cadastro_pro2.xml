@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="20dp"
+        android:text="Endereço"
+        android:textColor="@color/colorTest"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:background="@color/colorTest" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_toRightOf="@id/textView"
+            android:background="@color/colorTest" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_toRightOf="@id/textView2"
+            android:background="@color/colorTest" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_toRightOf="@id/textView3"
+            android:background="@color/colorTest" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_txt_pro"
+        android:layout_width="wrap_content"
+        android:layout_height="51dp"
+        android:layout_marginTop="70dp"
+        android:text="Informe sua região"
+        android:textAlignment="center"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_cep_pro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
+        android:drawableLeft="@drawable/ic_cep"
+        android:ems="10"
+        android:hint="CEP"
+        android:inputType="textPersonName"
+        android:maxLength="9"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_txt_pro" />
+
+    <EditText
+        android:id="@+id/et_uf_pro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:drawableLeft="@drawable/ic_estado"
+        android:ems="10"
+        android:hint="UF"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cidade_pro"
+        app:layout_constraintVertical_bias="0.13" />
+
+    <EditText
+        android:id="@+id/et_logradouro_pro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/ic_logradouro"
+        android:ems="10"
+        android:hint="Logradouro"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cep_pro" />
+
+    <EditText
+        android:id="@+id/et_bairro_pro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/ic_bairro"
+        android:ems="10"
+        android:hint="Bairro"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_logradouro_pro" />
+
+    <EditText
+        android:id="@+id/et_cidade_pro"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="15dp"
+        android:drawableLeft="@drawable/ic_cidade"
+        android:ems="10"
+        android:hint="Cidade"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_bairro_pro" />
+
+
+    <Button
+        android:id="@+id/btn_gerar_cep"
+        android:layout_width="97dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:textSize="13dp"
+        android:background="#00FFFFFF"
+        android:drawableRight="@drawable/ic_confirmed"
+        android:text="Verificar CEP"
+        android:textColor="@color/colorTest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintStart_toEndOf="@+id/et_cep_pro"
+        app:layout_constraintTop_toBottomOf="@+id/tv_txt_pro" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_proximo"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="26dp"
+            android:layout_marginEnd="34dp"
+            android:background="#00FFFFFF"
+            android:drawableRight="@drawable/ic_nextg"
+            android:text="Próximo"
+            android:textColor="@color/colorTest"
+            android:textCursorDrawable="@drawable/ic_pass"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.864"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_voltar"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="26dp"
+            android:layout_marginLeft="34dp"
+            android:background="#00FFFFFF"
+            android:drawableLeft="@drawable/ic_back"
+            android:text="Voltar"
+            android:textColor="@color/colorGray"
+            android:textCursorDrawable="@drawable/ic_pass"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.864"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>
