@@ -29,8 +29,6 @@ public class Profissional {
 
 	@Size(min = 14, max = 20)
 	private String cnpj;
-	
-	private String resumoQualificacoes;
 
 	@Size(min = 11, max = 20)
 	private String cpf;
@@ -44,6 +42,8 @@ public class Profissional {
 
 	@NotNull
 	private Double valorHora;
+
+	private String resumoQualificacoes;
 
 	@NotNull
 	@OneToOne
@@ -129,6 +129,14 @@ public class Profissional {
 		this.valorHora = valorHora;
 	}
 
+	public String getResumoQualificacoes() {
+		return resumoQualificacoes;
+	}
+
+	public void setResumoQualificacoes(String resumoQualificacoes) {
+		this.resumoQualificacoes = resumoQualificacoes;
+	}
+
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -160,26 +168,13 @@ public class Profissional {
 	public void setAtualizadoEm(String atualizadoEm) {
 		this.atualizadoEm = atualizadoEm;
 	}
-	
-	
-
-	public String getResumoQualificacoes() {
-		return resumoQualificacoes;
-	}
-
-	public void setResumoQualificacoes(String resumoQualificacoes) {
-		this.resumoQualificacoes = resumoQualificacoes;
-	}
 
 	@Override
 	public String toString() {
 		return "Profissional [idProfissional=" + idProfissional + ", nome=" + nome + ", email=" + email + ", foto="
-				+ foto + ", cnpj=" + cnpj + ", resumoQualificacoes=" + resumoQualificacoes + ", cpf=" + cpf + ", senha="
-				+ senha + ", dataNasc=" + dataNasc + ", valorHora=" + valorHora + ", endereco=" + endereco
+				+ foto + ", cnpj=" + cnpj + ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc
+				+ ", valorHora=" + valorHora + ", resumoQualificacoes=" + resumoQualificacoes + ", endereco=" + endereco
 				+ ", subcategoria=" + subcategoria + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
-
-	
-
 
 }

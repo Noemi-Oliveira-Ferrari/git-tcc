@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -28,8 +27,8 @@ import br.net.daumhelp.model.EnderecoCep;
 import br.net.daumhelp.repository.CidadeRepository;
 import br.net.daumhelp.repository.EnderecoRepository;
 import br.net.daumhelp.utils.HandleDates;
+import br.net.daumhelp.utils.HandleEmails;
 import br.net.daumhelp.utils.HandleJsonInJava;
-
 @CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/enderecos")
@@ -39,7 +38,7 @@ public class EnderecoResource {
 	private EnderecoRepository enderecoRepository;
 	@Autowired
 	private CidadeRepository cidadeRepository;
-
+	
 	@GetMapping
 	public List<Endereco> getEnderecos(){
 		return enderecoRepository.findAll();

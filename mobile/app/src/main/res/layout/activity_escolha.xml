@@ -34,7 +34,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="97dp"
         android:layout_marginBottom="20dp"
-        android:text="O que você \n gostaria de fazer?"
+        android:text="O que você \n gostaria de ser?"
         android:textAlignment="center"
         android:textSize="26dp"
         android:textStyle="bold"

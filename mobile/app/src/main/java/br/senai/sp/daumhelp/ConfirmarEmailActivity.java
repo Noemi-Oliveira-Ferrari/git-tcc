@@ -1,6 +1,5 @@
 package br.senai.sp.daumhelp;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,10 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
-
-import br.senai.sp.daumhelp.mascara.Mascara;
 
 public class ConfirmarEmailActivity extends AppCompatActivity {
 
@@ -33,21 +28,21 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
         tvEmail = findViewById(R.id.tv_email);
 
 
-        Mascara maskConfirm = new Mascara("#  #  #  #", etCodigo);
-        etCodigo.addTextChangedListener(maskConfirm);
 
-        tvAlterar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ConfirmarEmailActivity.this, CadastroProfissionalActivity1.class);
-                startActivity(intent);
-            }
-        });
 
         Intent intent = getIntent();
         if(intent.getSerializableExtra("dados_pessoais_pro") != null){
             final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
             tvEmail.setText(listaDados[3]);
+
+            tvAlterar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(ConfirmarEmailActivity.this, CadastroProfissionalActivity1.class);
+                    intent.putExtra("dados_pessoais_pro", listaDados);
+                    startActivity(intent);
+                }
+            });
 
             btnConfirmar.setOnClickListener(new View.OnClickListener() {
                 @Override

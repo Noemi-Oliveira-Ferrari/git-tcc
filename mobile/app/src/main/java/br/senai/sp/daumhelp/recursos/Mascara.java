@@ -1,4 +1,4 @@
-package br.senai.sp.daumhelp.mascara;
+package br.senai.sp.daumhelp.recursos;
 
 
 import android.text.Editable;

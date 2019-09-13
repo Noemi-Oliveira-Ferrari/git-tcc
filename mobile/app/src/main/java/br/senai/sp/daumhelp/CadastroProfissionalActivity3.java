@@ -35,6 +35,7 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
     private EditText etQualificacoes;
 
     private Long idSub;
+    private Long idCategoria;
 
 
 
@@ -70,11 +71,15 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
 
                        // Toast.makeText(CadastroProfissionalActivity3.this, listaServ[2] , Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(CadastroProfissionalActivity3.this, CadastroProfissionalActivity4.class);
-                        intent.putExtra("dados_pessoais_pro", listaDados);
-                        intent.putExtra("endereco_pro", listaEndereco);
-                        intent.putExtra("serv_pro", listaServ);
-                        startActivity(intent);
+                        if(validar() == true){
+
+                            Intent intent = new Intent(CadastroProfissionalActivity3.this, CadastroProfissionalActivity4.class);
+                            intent.putExtra("dados_pessoais_pro", listaDados);
+                            intent.putExtra("endereco_pro", listaEndereco);
+                            intent.putExtra("serv_pro", listaServ);
+                            startActivity(intent);
+
+                        }
                     }
                 });
 
@@ -125,8 +130,13 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
+                Categoria categoriaId = listaCategoria.get(position);
+
+                idCategoria = categoriaId.getIdCategoria();
+
+
                 /*CHAMADA DAS SUBCATEGORIAS*/
-                Call<List<Subcategoria>> callsub = new RetroFitConfig().getSubcategoriaService().buscarSubcategorias((int) spinnerCategoria.getSelectedItemId()+1);
+                Call<List<Subcategoria>> callsub = new RetroFitConfig().getSubcategoriaService().buscarSubcategorias(Integer.parseInt(idCategoria.toString()));
                 callsub.enqueue(new Callback<List<Subcategoria>>() {
                     @Override
                     public void onResponse(Call<List<Subcategoria>> callsub, Response<List<Subcategoria>> response) {
@@ -172,6 +182,18 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    private boolean validar(){
+        boolean validado = true;
+
+        if(etValorHora.getText().toString().isEmpty()){
+            etValorHora.setError("Digite um valor");
+            validado = false;
+        }
+
+        return validado;
     }
 
 

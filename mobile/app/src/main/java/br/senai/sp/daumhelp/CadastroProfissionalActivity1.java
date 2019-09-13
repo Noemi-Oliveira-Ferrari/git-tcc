@@ -1,15 +1,27 @@
 package br.senai.sp.daumhelp;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import br.senai.sp.daumhelp.mascara.Mascara;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import br.senai.sp.daumhelp.configretrofit.RetroFitConfig;
+import br.senai.sp.daumhelp.recursos.Data;
+import br.senai.sp.daumhelp.recursos.GerarCodEmail;
+import br.senai.sp.daumhelp.recursos.Mascara;
+import br.senai.sp.daumhelp.model.Confirmacao;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class CadastroProfissionalActivity1 extends AppCompatActivity {
@@ -37,9 +49,20 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
         etSenha = findViewById(R.id.et_senha_pro);
         etConfirmacao = findViewById(R.id.et_confirm_pro);
 
+        Intent intent = getIntent();
+        if(intent.getSerializableExtra("dados_pessoais_pro") != null) {
+            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
+            etNome.setText(listaDados[0]);
+            etDataNasc.setText(listaDados[1]);
+            etCpf.setText(listaDados[2]);
+            etEmail.setText(listaDados[3]);
+            etSenha.setText(listaDados[4]);
+            etConfirmacao.setText(listaDados[4]);
+        }
+
         Mascara maskCpf = new Mascara("###.###.###-##", etCpf);
         //Mascara maskCnpj = new Mascara("##.###.###/####-##", etCpf);
-        Mascara maskData = new Mascara("####-##-##", etDataNasc);
+        Mascara maskData = new Mascara("##/##/####", etDataNasc);
 
         etCpf.addTextChangedListener(maskCpf);
 
@@ -57,17 +80,52 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
                 String senhaProfissional = etSenha.getText().toString();
                 String confirmacaoProfissional = etConfirmacao.getText().toString();
 
+                String codigoEmail = String.valueOf(GerarCodEmail.gerarCodigo());
+
+                Date data = Data.stringToDate(dataNascProfissional);
+
+                String dataFormatada = Data.dataToString(data);
+
+
+                Toast.makeText(CadastroProfissionalActivity1.this, dataFormatada + "", Toast.LENGTH_SHORT).show();
+
+
+
                 /*ARRAY DOS DADOS PESSOAIS PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
-                String[] listaDados = new String[]{nomeProfissional, dataNascProfissional, cpfProfissional, emailProfissional, senhaProfissional};
+               final String[] listaDados = new String[]{nomeProfissional, dataNascProfissional, cpfProfissional, emailProfissional, senhaProfissional, codigoEmail};
 
                 if(etConfirmacao.getText().toString().equals(etSenha.getText().toString())){
 
                     /*SERIALIZAÇÃO DOS DADOS*/
 
                     if(validar() == true) {
-                        Intent intent = new Intent(CadastroProfissionalActivity1.this, ConfirmarEmailActivity.class);
+
+
+                        Confirmacao confirmacao = new Confirmacao();
+                        confirmacao.setCodigoConfirm(String.valueOf(codigoEmail));
+                        confirmacao.setDestinatario(emailProfissional);
+                        confirmacao.setNome(nomeProfissional);
+
+                        Call<Confirmacao> call = new RetroFitConfig().getProfissionalService().confirmarEmail(confirmacao);
+                        call.enqueue(new Callback<Confirmacao>() {
+                            @Override
+                            public void onResponse(Call<Confirmacao> call, Response<Confirmacao> response) {
+
+                                response.body();
+
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<Confirmacao> call, Throwable t) {
+                                Log.i("Retrofit Email", t.getMessage());
+                            }
+                        });
+
+                       /*Intent intent = new Intent(CadastroProfissionalActivity1.this, ConfirmarEmailActivity.class);
                         intent.putExtra("dados_pessoais_pro", listaDados);
-                        startActivity(intent);
+                        startActivity(intent);*/
+
                     }
 
                 }else{
@@ -121,7 +179,7 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
         if(etSenha.getText().toString().isEmpty()){
             validado = false;
         }
-        if(etSenha.getText().length()<=8){
+        if(etSenha.getText().length()<8){
             etSenha.setError("A senha deve conter no min. 8 caracteres");
             validado = false;
         }
