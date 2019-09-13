@@ -1,40 +1,6 @@
 /*----- Web-Desktop -----*/
 @media screen and (min-device-width:1000px)
 {
-    /*----- Formatação -----*/
-    @font-face 
-    {
-        font-family: "Lexend Deca";
-        src: url("../fontes/LexendDeca-Regular.ttf");
-    }
-
-    /*----- Padronização -----*/
-    #all{
-        min-height: 100%;
-        position: relative;
-    }
-    
-    body
-    {
-        width: 100%;
-        margin: 0px;
-        padding: 0px;
-        background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
-        background-attachment: fixed;
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-
-    body, html
-    {
-        height: 100%;
-    
-    }
-    
-    * html #all
-    {
-        height: 100%;
-    }
 
     .float
     {
@@ -52,16 +18,6 @@
     }    
     
 
-    /*----- Footer -----*/
-    footer
-    {
-        width: 100%;
-        height: 150px;
-        background-color: #015249;
-        position: absolute;
-        bottom: 0%;
-    }
-    
     
     /*----- Conteudo -----*/
     .conteiner-conteudo
@@ -259,6 +215,19 @@
         height: 100px;
         /* background-color: #be77d4; */
     }
+
+    
+    /*----- Footer -----*/
+    footer
+    {
+        width: 100%;
+        height: 150px;
+        background-color: #015249;
+        position: absolute;
+        bottom: 0%;
+    }
+    
+
 }
 
 /*----- Web-Responsivo -----*/
