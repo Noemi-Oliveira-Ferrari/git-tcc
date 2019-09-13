@@ -130,8 +130,6 @@
         background-image: url(../imagens/fundo03.jpg);
         background-size: cover;
         box-shadow: 15px 15px 30px #015249;
-        padding: 20px;
-        box-sizing: border-box;
     }
 
     .conteudo-card
