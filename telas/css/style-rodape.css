@@ -34,6 +34,13 @@
 
  
     /*----- Conteúdo -----*/
+    .conteudo
+    {
+        width: 100%;
+        height: 500px;
+        background-color: #ffffff;
+    }
+
     footer
     {
         justify-content: center;
@@ -49,7 +56,8 @@
         padding-top: 25px;
         padding-bottom: 25px;
         box-sizing: border-box;
-        text-align: center;
+        text-align: center; 
+        /* box-shadow: 0 1px 30px 5px rgba(13, 16, 20, 0.863); */
     }
 
     .caixa-rodape
@@ -165,6 +173,11 @@
         /* text-decoration: underline; */
     }
 
+    .linha-responsiva
+    {
+        visibility: hidden;
+    }
+
     .tamanho-caixa
     {
         width: 200px;
@@ -219,7 +232,7 @@
         flex-wrap: wrap;
     }
 
-    hr
+    .linha
     {
         width: 940px;
     }
@@ -305,6 +318,13 @@
 
  
     /*----- Conteúdo -----*/
+    .conteudo
+    {
+        width: 100%;
+        height: 500px;
+        background-color: #ffffff;
+    }
+
     footer
     {
         justify-content: center;
@@ -316,16 +336,17 @@
     .caixa-rodape-cadastro
     {
         width: 100%;
-        height: 285px;
+        height: 350px;
         padding-top: 25px;
         padding-bottom: 25px;
         box-sizing: border-box;
         text-align: center;
+        /* box-shadow: 0 1px 30px 5px rgba(13, 16, 20, 0.863); */
     }
 
     .caixa-rodape
     {
-        width: 1200px;
+        width: 100%;
         height: auto;
         /* background-color: chocolate; */
         margin-bottom: 30px;
@@ -334,25 +355,26 @@
 
     .titulo-rodape
     {
-        font-size: 40px;
+        font-size: 4em;
         color: #ffffff;
         font-family: "Lexend Deca";
+        margin: 0;
     }
 
     .texto-rodape
     {
         font-family: Lexend Deca;
-        font-size: 25px;
+        font-size: 2.2em;
         color: #ffffff;
     }
 
     .btn-cadastro-rodape
     {
-        width: 180px;
-        height: 40px;
-        font-size: 1em;
-        border-radius: 8px;
-        font-family: Lexend Deca;
+        width: 300px;
+        height: 65px;
+        font-size: 1.8em;
+        border-radius: 18px;
+        font-family: "Lexend Deca";
         background-color: transparent;
         color: #ffffff;
         border: solid #ffffff;
@@ -367,21 +389,20 @@
         cursor: pointer;
         background-color:rgba(119, 201, 212, 0.253);
         transition: 0.8s;
-        transform: scale(1.1);
     }
 
     .caixa-rodape-informacoes
     {
         width: 100%;
-        height: 305px;
-        background-color: #11161c;
+        height: 405px;
+        /* background-color: #11ba1c; */
         color: #ffffff;
     }
 
     .caixa2-rodape
-    {
-        width: 1200px;
-        height: auto;
+    {   
+        width: 100%;
+        height: 350px;
         display: flex;
         /* background-color: chocolate; */
         margin-bottom: 30px;
@@ -389,6 +410,7 @@
         align-items: center;
         justify-content: center;
         display: flex;
+        background-color: #11161c;
     }
 
     .caixa-informacao-rodape
@@ -436,6 +458,11 @@
         /* text-decoration: underline; */
     }
 
+    .linha-responsiva
+    {
+        width: 400px;
+    }
+
     .tamanho-caixa
     {
         width: 200px;
@@ -460,10 +487,10 @@
         float: left;
     }
 
-    .clear
+    /* .clear
     {
         clear: left;
-    }
+    } */
 
     .icon-footer
     {
@@ -481,18 +508,18 @@
 
     .caixa3-rodape
     {
-        width: 1200px;
-        height: auto;
+        width: 100%;
+        height: 80px;
         margin: auto;
-        /* background-color: rgb(18, 44, 189); */
+        background-color: #090c0f;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
     }
 
-    hr
+    .linha
     {
-        width: 940px;
+        visibility: hidden;
     }
 
     .caixa-1
