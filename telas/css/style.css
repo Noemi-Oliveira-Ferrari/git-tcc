@@ -8,40 +8,6 @@
         src: url("../fontes/LexendDeca-Regular.ttf");
     }
 
-    .texto-centro
-    {
-        text-align: center;
-    }
-    
-    .texto-esquerda
-    {
-        text-align: left;
-    }
-    
-    .texto-direita
-    {
-        text-align: right;
-    }
-
-    .titulo
-    {
-        width: 560px;
-        height: auto;
-        /* background-color: yellowgreen; */
-        font-family: 'Lexend Deca';
-        font-size: 40px;
-        font-weight: bold;
-        color: #000000;
-    }
-    
-    .texto-card
-    {
-        font-family: 'Lexend Deca';
-        font-size: 20px;
-        margin-top: 60px;
-    }
-    
-
     /*----- Padronização -----*/
     #all{
         min-height: 100%;
@@ -74,12 +40,6 @@
     {
         float: left;
     }
-    
-    .centro
-    {
-        margin-left: auto;
-        margin-right: auto;
-    }
 
     
     /*----- Cabeçalho -----*/
@@ -89,14 +49,9 @@
         height: 80px;
         background-color: #000000;
         box-shadow: 10px 0px 30px #000000;
-    }
+    }    
     
-    nav
-    {
-        visibility: hidden;
-    }
-    
-    
+
     /*----- Footer -----*/
     footer
     {
@@ -109,10 +64,16 @@
     
     
     /*----- Conteudo -----*/
+    .conteiner-conteudo
+    {
+        width: 100%;
+        height: 100%;
+    }
+    
     .container-login
     {
         width: 100%;
-        height: 860px;
+        height: 755px;
         /* background: rgba(39, 144, 110, 0.75); */
         /* background: rgba(207, 86, 30, 0.75); */
     }
@@ -140,7 +101,15 @@
         box-sizing: border-box;
         /* background-color: #002420; */
     }
-    
+
+    .conteudo-caixa-texto
+    {
+        font-family: 'Lexend Deca';
+        font-size: 40px;
+        padding: 50px;
+        text-align: center;
+    }
+
     .caixa-conteudo
     {
         width: 800px;
@@ -150,24 +119,6 @@
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-    
-    .conteudo-caixa-texto
-    {
-        font-family: 'Lexend Deca';
-        font-size: 40px;
-        padding: 50px;
-        text-align: center;
-        /* margin-left: 130px; */
-    }
-    
-    .label
-    {
-        font-family: 'Lexend Deca';
-        width: 490px;
-        font-size: 20px;
-        text-align: left;
-        margin-left: 40px;
     }
     
     .card-login
@@ -182,20 +133,63 @@
         padding: 20px;
         box-sizing: border-box;
     }
-    
-    /* .conteudo-card
+
+    .conteudo-card
     {
+        width: 580px;
+        height: 570px;
         padding: 25px;
-    } */
-    
+        box-sizing: border-box;
+    }
+
     .logotipo
     {
         width: 80px;
         height: 80px;
         background-color: #d6d6d6;
         border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    
+
+    .texto-centro
+    {
+        text-align: center;
+    }
+
+    .titulo
+    {
+        width: 560px;
+        height: auto;
+        /* background-color: yellowgreen; */
+        font-family: 'Lexend Deca';
+        font-size: 40px;
+        font-weight: bold;
+        color: #000000;
+    }
+
+    .caixa-input
+    {
+        width: 560px;
+        height: 70px;
+        margin-top: 30px;
+        /* background-color: #9cd477; */
+    }   
+
+    .label
+    {
+        font-family: 'Lexend Deca';
+        width: 490px;
+        font-size: 20px;
+        text-align: left;
+        margin-left: 40px;
+    }
+
+    .texto-esquerda
+    {
+        text-align: left;
+    }
+
     .input
     {
         width: 490px;
@@ -207,12 +201,12 @@
         background-color: #d6d6d6;
         font-size: 18px;
     }
-    
+
     .input:hover
     {
         background-color: #cadbd1;
     }
-    
+
     .btn-entrar
     {
         width: 140px;
@@ -234,6 +228,20 @@
         cursor: pointer;
         background-color: #026359;
     }
+
+    .texto-card
+    {
+        font-family: 'Lexend Deca';
+        font-size: 20px;
+        margin-top: 60px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .texto-direita
+    {
+        text-align: right;
+    }
     
     .link-cadastro
     {
@@ -247,45 +255,11 @@
         text-decoration: underline;
     }
     
-    .caixa-input
+    #espaco
     {
-        width: 560px;
-        height: 70px;
-        margin-top: 30px;
-        /* background-color: #9cd477; */
-    }   
-    
-    #espaco{
         width: 100%;
         height: 100px;
         /* background-color: #be77d4; */
-    }
-
-    .conteiner-conteudo
-    {
-        width: 100%;
-        height: 100%;
-    }
-
-    .caixa-conteudo-card
-    {
-        width: 560px;
-        height: 360px;
-        /* background-color: #be77d4; */
-    }
-
-    .card-footer
-    {
-        width: inherit;
-        height: 50px;
-        /* background-color: tomato; */
-    }
-
-    .conteudo-dentro-card
-    {
-        width: 560px;
-        height: auto;
-        /* background-color: #57bc90; */
     }
 }
 
@@ -298,62 +272,6 @@
         font-family: "Lexend Deca";
         src: url("../fontes/LexendDeca-Regular.ttf");
     }
-
-    .texto-centro
-    {
-        text-align: center;
-        color: rgb(3, 22, 26);
-    }
-
-    .texto-esquerda
-    {
-        text-align: left;
-    }
-    
-    /*
-    .texto-direita
-    {
-        text-align: right;
-    }
-    */
-    .link-cadastro
-    {
-        text-decoration: none;
-        color: #002420;
-    }
-    
-    .link-cadastro:hover
-    {
-        text-decoration: underline;
-    }
-
-    .titulo
-    {
-        width: inherit;
-        height: 90px;
-        font-family: 'Lexend Deca';
-        font-size: 4em;
-        font-weight: bold;
-        color: #000000;
-        /* background-color: yellowgreen; */
-    }
-  
-    .texto-card
-    {
-        font-family: 'Lexend Deca';
-        font-size: 2.3em;
-        margin-top: 60px;
-    }
-
-    .label
-    {
-        font-family: 'Lexend Deca';
-        font-size: 2.3em;
-        text-align: left;
-        margin-left: 20px;
-        margin-top: 40px;
-    }
-
 
     /*----- Padronização -----*/
     #all
@@ -407,25 +325,31 @@
         bottom: 0%;
     }
     
-    #espaco{
-        width: 100%;
-        height: 100px;
-        /* background-color: #77c9d4; */
-    }
-
-    
+ 
     /*----- Conteúdo -----*/
-    .caixa-texto
-    {
-        visibility: hidden;
-    }
-
     .container-login
     {
         width: 100%;
         height: 1150px;
         /* background: rgba(39, 144, 110, 0.75); */
         /* background: rgba(207, 86, 30, 0.75); */
+    }
+    
+    .container-centro
+    {
+        width: 800px;
+        height: inherit;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        /* background-color: #002420 */
+    }
+
+    .caixa-texto
+    {
+        visibility: hidden;
     }
 
     .caixa-conteudo
@@ -439,18 +363,20 @@
         justify-content: center;
         /* background-color: yellowgreen; */
     }
-    .container-centro
+
+    .card-login
     {
-        width: 800px;
+        width: auto;
         height: inherit;
-        margin: auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-        /* background-color: #002420 */
+        /* background-color: rgb(95, 95, 161); */
     }
- 
+    
+    .conteudo-card
+    {
+        padding: 25px;
+        box-sizing: border-box;
+    }
+
     .logotipo
     {
         width: 150px;
@@ -458,6 +384,47 @@
         background-color: #d6d6d6;
         border-radius: 10px;
         margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    
+    .texto-centro
+    {
+        text-align: center;
+        color: rgb(3, 22, 26);
+    }
+    
+    .titulo
+    {
+        width: inherit;
+        height: 90px;
+        font-family: 'Lexend Deca';
+        font-size: 4em;
+        font-weight: bold;
+        color: #000000;
+        /* background-color: yellowgreen; */
+    }
+
+    .caixa-input
+    {
+        width: inherit;
+        height: 130px;
+        /* background-color: #438d5b; */
+    }
+
+    .label
+    {
+        font-family: 'Lexend Deca';
+        font-size: 2.3em;
+        text-align: left;
+        margin-left: 20px;
+        margin-top: 40px;
+    }
+    
+    .texto-esquerda
+    {
+        text-align: left;
     }
 
     .input
@@ -494,45 +461,29 @@
         border: solid 0.12em #efefef;
         color: #ffffff;
     }
-    
-    .centro
-    {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
-    }
 
-    .conteudo-card
+    .texto-card
     {
-        padding: 25px;
-        box-sizing: border-box;
-    }
-
-    .card-login
-    {
-        width: auto;
-        height: inherit;
-        /* background-color: rgb(95, 95, 161); */
-    }
-
-    .caixa-input
-    {
-        width: inherit;
-        height: 130px;
-        /* background-color: #438d5b; */
+        font-family: 'Lexend Deca';
+        font-size: 2.3em;
+        margin-top: 60px;
     }
     
-    .conteudo-dentro-card 
+    .link-cadastro
     {
-        width: inherit;
-        height: 450px;
-        /* background-color: #57bc90; */
+        text-decoration: none;
+        color: #002420;
+    }
+    
+    .link-cadastro:hover
+    {
+        text-decoration: underline;
     }
 
-    .card-footer {
-        width: inherit;
+    #espaco{
+        width: 100%;
         height: 100px;
-        /* background-color: tomato; */
+        /* background-color: #77c9d4; */
     }
 }
 
