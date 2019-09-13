@@ -1,282 +1,541 @@
-/*----- Padronização -----*/
-body
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px)
 {
-    margin: 0px;
-    padding: 0px;
-    background-color: rgb(255, 255, 255);
+    /*----- Padronização -----*/
+    body
+    {
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    body, html
+    {
+        height: 100%;
+    }
+
+    * html #all
+    {
+        height: 100%;
+    }
+
+    #all{
+        min-height: 100%;
+        position: relative;
+    }
+
+
+    /*----- Formatação -----*/
+    @font-face 
+    {
+        font-family: "Lexend Deca";
+        src: url("../fontes/LexendDeca-Regular.ttf");
+    }
+
+ 
+    /*----- Conteúdo -----*/
+    footer
+    {
+        justify-content: center;
+        background-image: url(../imagens/background04.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .caixa-rodape-cadastro
+    {
+        width: 100%;
+        height: 285px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    .caixa-rodape
+    {
+        width: 1200px;
+        height: auto;
+        /* background-color: chocolate; */
+        margin-bottom: 30px;
+        margin: auto;
+    }
+
+    .titulo-rodape
+    {
+        font-size: 40px;
+        color: #ffffff;
+        font-family: "Lexend Deca";
+    }
+
+    .texto-rodape
+    {
+        font-family: Lexend Deca;
+        font-size: 25px;
+        color: #ffffff;
+    }
+
+    .btn-cadastro-rodape
+    {
+        width: 180px;
+        height: 40px;
+        font-size: 1em;
+        border-radius: 8px;
+        font-family: Lexend Deca;
+        background-color: transparent;
+        color: #ffffff;
+        border: solid #ffffff;
+        font-weight: bold;
+        letter-spacing: 1px;
+        outline: none;
+        font-family: "Lexend Deca";
+    }
+
+    .btn-cadastro-rodape:hover
+    {
+        cursor: pointer;
+        background-color:rgba(119, 201, 212, 0.253);
+        transition: 0.8s;
+        transform: scale(1.1);
+    }
+
+    .caixa-rodape-informacoes
+    {
+        width: 100%;
+        height: 305px;
+        background-color: #11161c;
+        color: #ffffff;
+    }
+
+    .caixa2-rodape
+    {
+        width: 1200px;
+        height: auto;
+        display: flex;
+        /* background-color: chocolate; */
+        margin-bottom: 30px;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    .caixa-informacao-rodape
+    {
+        float: left;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+    
+    .caixas-conteudo-rodape
+    {
+        width: 250px;
+        height: 200px;
+        /* background-color: chocolate; */
+        margin-top: 20px;
+        box-sizing: border-box;
+        padding-left: 40px;
+        font-family: "Lexend Deca";
+        float: left;
+    }
+
+    .tamanho-caixa-cima
+    {
+        width: 200px;
+        height: auto;
+        margin-left: 10px;
+    }
+
+    .itens
+    {
+        font-size: 16px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: normal;
+        margin-left: 5px;
+    }
+
+    .itens:hover
+    {
+        color: #77C9D4;
+        transition: 0.8s;
+        font-weight: normal;
+        cursor: pointer;
+        /* text-decoration: underline; */
+    }
+
+    .tamanho-caixa
+    {
+        width: 200px;
+        height: auto;
+        margin-right: 10px;
+        margin-top: 20px;
+    }
+
+    .tamanho-icone
+    {
+        width: 170px;
+        height: 65px;
+    }
+
+    .logo-rede-social
+    {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        float: left;
+    }
+
+    .clear
+    {
+        clear: left;
+    }
+
+    .icon-footer
+    {
+        width: 30px;
+        height: 30px;
+        filter: grayscale(100%)
+    }
+
+    .icon-footer:hover
+    {
+        filter: grayscale(10%);
+        transition: 0.8s;
+        cursor: pointer
+    }
+
+    .caixa3-rodape
+    {
+        width: 1200px;
+        height: auto;
+        margin: auto;
+        /* background-color: rgb(18, 44, 189); */
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    hr
+    {
+        width: 940px;
+    }
+
+    .caixa-1
+    {
+        width: 550px;
+        text-align: left;
+        /* background-color: #987a65; */
+        display: flex;
+        justify-content: left;
+        padding-left: 22px;
+        box-sizing: border-box;
+    }
+
+    .text-rodape
+    {
+        float: left;
+        font-family: "Lexend Deca";
+    }
+
+    .caixa-2
+    {
+        width: 420px;
+        text-align: right;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    .itens-rodape
+    {
+        font-size: 16px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: normal;
+        padding-left: 30px;
+        box-sizing: border-box;
+    }
+
+    .itens-rodape:hover
+    {
+        color: #77C9D4;
+        transition: 0.8s;
+        font-weight: normal;
+        cursor: pointer;
+    }
 }
 
-body, html
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:880px)
 {
-    height: 100%;
-}
+    /*----- Padronização -----*/
+    body
+    {
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(255, 255, 255);
+    }
 
-* html #all
-{
-    height: 100%;
-}
+    body, html
+    {
+        height: 100%;
+    }
 
-#all{
-    min-height: 100%;
-    position: relative;
-}
+    * html #all
+    {
+        height: 100%;
+    }
 
-footer
-{
-    justify-content: center;
-    background-image: url(../imagens/background04.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.float
-{
-    float: left;
-}
-
-.clear
-{
-    clear: left;
-}
-
-hr
-{
-    width: 940px;
-}
-
-/*----- Estilização -----*/
-@font-face 
-{
-    font-family: "Lexend Deca";
-    src: url("../fontes/LexendDeca-Regular.ttf");
-}
-
-.font-padrao
-{
-    font-family: "Lexend Deca";
-}
-
-.text-center
-{
-    text-align: center;
-}
-
-.text-left
-{
-    text-align: left;
-}
-
-.text-right
-{
-    text-align: right;
-}
-
-.titulo-rodape
-{
-    font-size: 40px;
-    color: #ffffff;
-}
-
-.texto-rodape
-{
-    font-family: Lexend Deca;
-    font-size: 25px;
-    color: #ffffff;
-}
+    #all{
+        min-height: 100%;
+        position: relative;
+    }
 
 
-/*----- Conteúdo -----*/
-.item-center
-{
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    /* background-color: #548720; */
-}
+    /*----- Formatação -----*/
+    @font-face 
+    {
+        font-family: "Lexend Deca";
+        src: url("../fontes/LexendDeca-Regular.ttf");
+    }
 
-.caixa-rodape-cadastro
-{
-    width: 100%;
-    height: 285px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    box-sizing: border-box;
-}
+ 
+    /*----- Conteúdo -----*/
+    footer
+    {
+        justify-content: center;
+        background-image: url(../imagens/background04.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 
-.caixa-rodape-informacoes
-{
-    width: 100%;
-    height: 305px;
-    background-color: #11161c;
-    color: #ffffff;
-}
+    .caixa-rodape-cadastro
+    {
+        width: 100%;
+        height: 285px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        box-sizing: border-box;
+        text-align: center;
+    }
 
-.btn-cadastro-rodape
-{
-    width: 180px;
-    height: 40px;
-    font-size: 1em;
-    border-radius: 8px;
-    font-family: Lexend Deca;
-    background-color: transparent;
-    color: #ffffff;
-    border: solid #ffffff;
-    font-weight: bold;
-    letter-spacing: 1px;
-    outline: none;
-}
+    .caixa-rodape
+    {
+        width: 1200px;
+        height: auto;
+        /* background-color: chocolate; */
+        margin-bottom: 30px;
+        margin: auto;
+    }
 
-.btn-cadastro-rodape:hover
-{
-    cursor: pointer;
-    background-color:rgba(119, 201, 212, 0.253);
-    transition: 0.8s;
-    transform: scale(1.1);
-}
+    .titulo-rodape
+    {
+        font-size: 40px;
+        color: #ffffff;
+        font-family: "Lexend Deca";
+    }
 
-.caixas-informacoes
-{
-    margin-left: 3px;
-}
+    .texto-rodape
+    {
+        font-family: Lexend Deca;
+        font-size: 25px;
+        color: #ffffff;
+    }
 
-.caixas-conteudo-rodape
-{
-    width: 250px;
-    height: 200px;
-    /* background-color: chocolate; */
-    margin-top: 20px;
-    box-sizing: border-box;
-    padding-left: 40px;
-}
+    .btn-cadastro-rodape
+    {
+        width: 180px;
+        height: 40px;
+        font-size: 1em;
+        border-radius: 8px;
+        font-family: Lexend Deca;
+        background-color: transparent;
+        color: #ffffff;
+        border: solid #ffffff;
+        font-weight: bold;
+        letter-spacing: 1px;
+        outline: none;
+        font-family: "Lexend Deca";
+    }
 
-.logo-rede-social
-{
-    width: 30px;
-    height: 30px;
-    margin-right: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-}
+    .btn-cadastro-rodape:hover
+    {
+        cursor: pointer;
+        background-color:rgba(119, 201, 212, 0.253);
+        transition: 0.8s;
+        transform: scale(1.1);
+    }
 
-.text-rodape
-{
-    /* margin-left: 30px; */
-}
+    .caixa-rodape-informacoes
+    {
+        width: 100%;
+        height: 305px;
+        background-color: #11161c;
+        color: #ffffff;
+    }
 
-.caixa-rodape
-{
-    width: 1200px;
-    height: auto;
-    /* background-color: chocolate; */
-    margin-bottom: 30px;
-    margin: auto;
-}
+    .caixa2-rodape
+    {
+        width: 1200px;
+        height: auto;
+        display: flex;
+        /* background-color: chocolate; */
+        margin-bottom: 30px;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
 
-.caixa2-rodape
-{
-    width: 1200px;
-    height: auto;
-    display: flex;
-    /* background-color: chocolate; */
-    margin-bottom: 30px;
-    margin: auto;
-}
+    .caixa-informacao-rodape
+    {
+        float: left;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+    
+    .caixas-conteudo-rodape
+    {
+        width: 250px;
+        height: 200px;
+        /* background-color: chocolate; */
+        margin-top: 20px;
+        box-sizing: border-box;
+        padding-left: 40px;
+        font-family: "Lexend Deca";
+        float: left;
+    }
 
-.icon-footer
-{
-    width: 30px;
-    height: 30px;
-    filter: grayscale(100%)
-}
+    .tamanho-caixa-cima
+    {
+        width: 200px;
+        height: auto;
+        margin-left: 10px;
+    }
 
-.icon-footer:hover
-{
-    filter: grayscale(10%);
-    transition: 0.8s;
-    cursor: pointer
-}
+    .itens
+    {
+        font-size: 16px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: normal;
+        margin-left: 5px;
+    }
 
-.itens
-{
-    font-size: 16px;
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: normal;
-    margin-left: 5px;
-}
+    .itens:hover
+    {
+        color: #77C9D4;
+        transition: 0.8s;
+        font-weight: normal;
+        cursor: pointer;
+        /* text-decoration: underline; */
+    }
 
-.itens:hover
-{
-    color: #77C9D4;
-    transition: 0.8s;
-    font-weight: normal;
-    cursor: pointer;
-    /* text-decoration: underline; */
-}
+    .tamanho-caixa
+    {
+        width: 200px;
+        height: auto;
+        margin-right: 10px;
+        margin-top: 20px;
+    }
 
-.itens-rodape
-{
-    font-size: 16px;
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: normal;
-    padding-left: 30px;
-    box-sizing: border-box;
-}
+    .tamanho-icone
+    {
+        width: 170px;
+        height: 65px;
+    }
 
-.itens-rodape:hover
-{
-    color: #77C9D4;
-    transition: 0.8s;
-    font-weight: normal;
-    cursor: pointer;
-}
+    .logo-rede-social
+    {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        float: left;
+    }
 
-.caixa-1
-{
-    width: 550px;
-    text-align: left;
-    /* background-color: #987a65; */
-    display: flex;
-    justify-content: left;
-    padding-left: 22px;
-    box-sizing: border-box;
-}
+    .clear
+    {
+        clear: left;
+    }
 
-.caixa-2
-{
-    width: 420px;
-    text-align: right;
-}
+    .icon-footer
+    {
+        width: 30px;
+        height: 30px;
+        filter: grayscale(100%)
+    }
 
-.tamanho-icone
-{
-    width: 170px;
-    height: 65px;
-}
+    .icon-footer:hover
+    {
+        filter: grayscale(10%);
+        transition: 0.8s;
+        cursor: pointer
+    }
 
-.tamanho-caixa-cima
-{
-    width: 200px;
-    height: auto;
-    margin-left: 10px;
-}
+    .caixa3-rodape
+    {
+        width: 1200px;
+        height: auto;
+        margin: auto;
+        /* background-color: rgb(18, 44, 189); */
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
-.tamanho-caixa
-{
-    width: 200px;
-    height: auto;
-    margin-right: 10px;
-    margin-top: 20px;
-}
+    hr
+    {
+        width: 940px;
+    }
 
-.caixa3-rodape
-{
-    width: 1200px;
-    height: auto;
-    margin: auto;
-    /* background-color: rgb(18, 44, 189); */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    .caixa-1
+    {
+        width: 550px;
+        text-align: left;
+        /* background-color: #987a65; */
+        display: flex;
+        justify-content: left;
+        padding-left: 22px;
+        box-sizing: border-box;
+    }
+
+    .text-rodape
+    {
+        float: left;
+        font-family: "Lexend Deca";
+    }
+
+    .caixa-2
+    {
+        width: 420px;
+        text-align: right;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    .itens-rodape
+    {
+        font-size: 16px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: normal;
+        padding-left: 30px;
+        box-sizing: border-box;
+    }
+
+    .itens-rodape:hover
+    {
+        color: #77C9D4;
+        transition: 0.8s;
+        font-weight: normal;
+        cursor: pointer;
+    }
 }
