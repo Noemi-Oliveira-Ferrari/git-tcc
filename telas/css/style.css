@@ -161,7 +161,7 @@ div, h1, h2, h3, h4, h5, h6, html, body, figure, img, p{
         /* background-color: rgb(245, 198, 145); */
         margin: auto;
         text-align: center;
-        font-family: 'Manjari', sans-serif;
+        font-family: 'Manjari';
         margin-top: 60px;
     }
 
@@ -180,7 +180,7 @@ div, h1, h2, h3, h4, h5, h6, html, body, figure, img, p{
         /* background-color: rgb(34, 61, 65); */
         margin-bottom: 30px;
 
-        font-family: 'Manjari', sans-serif;
+        font-family: 'Manjari';
         font-size: 26px;
         text-align: left;
     }
@@ -232,7 +232,7 @@ div, h1, h2, h3, h4, h5, h6, html, body, figure, img, p{
 
     .texto-card
     {
-        font-family: 'Manjari', sans-serif;
+        font-family: 'Manjari';
         font-size: 20px;
         margin-top: 45px;
         margin-right: 15px;
