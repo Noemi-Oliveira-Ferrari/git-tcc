@@ -10,9 +10,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tbl_profissional")
-public class Profissional {
+public class ProfissionalDTO {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +37,9 @@ public class Profissional {
 
 	@NotNull
 	@Size(min = 8, max = 128)
+	@JsonIgnore
 	private String senha;
-	
+
 	@NotNull
 	@Size(min = 6, max = 20)
 	private String dataNasc;
@@ -172,10 +175,10 @@ public class Profissional {
 
 	@Override
 	public String toString() {
-		return "Profissional [idProfissional=" + idProfissional + ", nome=" + nome + ", email=" + email + ", foto="
-				+ foto + ", cnpj=" + cnpj + ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc
-				+ ", valorHora=" + valorHora + ", resumoQualificacoes=" + resumoQualificacoes + ", endereco=" + endereco
-				+ ", subcategoria=" + subcategoria + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+		return "ProfissionalDTO [idProfissional=" + idProfissional + ", nome=" + nome + ", email=" + email + ", foto="
+				+ foto + ", cnpj=" + cnpj + ", cpf=" + cpf + ", dataNasc=" + dataNasc + ", valorHora=" + valorHora
+				+ ", resumoQualificacoes=" + resumoQualificacoes + ", endereco=" + endereco + ", subcategoria="
+				+ subcategoria + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
 
 }

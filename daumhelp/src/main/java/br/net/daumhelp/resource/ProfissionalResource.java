@@ -22,6 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.net.daumhelp.model.Profissional;
+import br.net.daumhelp.model.ProfissionalDTO;
+import br.net.daumhelp.repository.ProfissionalDTORepository;
 import br.net.daumhelp.repository.ProfissionalRepository;
 import br.net.daumhelp.utils.HandleDates;
 
@@ -29,68 +31,71 @@ import br.net.daumhelp.utils.HandleDates;
 @RestController
 @RequestMapping("/profissionais")
 public class ProfissionalResource {
-	
+
+	@Autowired
+	private ProfissionalDTORepository proDTORepository;
 	@Autowired
 	private ProfissionalRepository proRepository;
 	
 	@GetMapping
-	public List<Profissional> getPros(){
-		return proRepository.findAll();
+	public List<ProfissionalDTO> getPros(){
+		return proDTORepository.findAll();
 	}
 
 	@GetMapping("/id/{id}")
-	public Optional<Profissional> getProById(@PathVariable Long id) {
-		return proRepository.findById(id);
+	public Optional<ProfissionalDTO> getProById(@PathVariable Long id) {
+		return proDTORepository.findById(id);
 	}
 
 	@GetMapping("/categoria/{idCategoria}")
-	public List<Profissional> getProByCategoria(@PathVariable Long idCategoria) {
-		return proRepository.findByCategoria(idCategoria);
+	public List<ProfissionalDTO> getProByCategoria(@PathVariable Long idCategoria) {
+		return proDTORepository.findByCategoria(idCategoria);
 	}
 
+
 	@GetMapping("/subcategoria/{idSubategoria}")
-	public List<Profissional> getProBySubcategoria(@PathVariable Long idSubategoria) {
-		return proRepository.findBySubcategoria(idSubategoria);
+	public List<ProfissionalDTO> getProBySubcategoria(@PathVariable Long idSubategoria) {
+		return proDTORepository.findBySubcategoria(idSubategoria);
 	}
 
 	@GetMapping("/cpf/{cpf}")
-	public Profissional getProByCpf(@PathVariable String cpf) {
-		return proRepository.findByCpf(cpf);
+	public ProfissionalDTO getProByCpf(@PathVariable String cpf) {
+		return proDTORepository.findByCpf(cpf);
 	}
 
 	@GetMapping("/cnpj/{cnpj}")
-	public Profissional getProByCnpj(@PathVariable String cnpj) {
-		return proRepository.findByCnpj(cnpj);
+	public ProfissionalDTO getProByCnpj(@PathVariable String cnpj) {
+		return proDTORepository.findByCnpj(cnpj);
 	}
 
 	@GetMapping("/endereco/{idEndereco}")
-	public Profissional getProByIdEndereco(@PathVariable Long idEndereco) {
-		return proRepository.findByIdEndereco(idEndereco);
+	public ProfissionalDTO getProByIdEndereco(@PathVariable Long idEndereco) {
+		return proDTORepository.findByIdEndereco(idEndereco);
 	}
 
 	@GetMapping("/cep/{cep}")
-	public List<Profissional> getProByIdEndereco(@PathVariable String cep) {
-		return proRepository.findByCep(cep);
+	public List<ProfissionalDTO> getProByIdEndereco(@PathVariable String cep) {
+		return proDTORepository.findByCep(cep);
 	}
 
 	@GetMapping("/cidade/{idCidade}")
-	public List<Profissional> getProByCidade(@PathVariable Long idCidade) {
-		return proRepository.findByCidade(idCidade);
+	public List<ProfissionalDTO> getProByCidade(@PathVariable Long idCidade) {
+		return proDTORepository.findByCidade(idCidade);
 	}
 
 	@GetMapping("/microrregiao/{idMicro}")
-	public List<Profissional> getProByMicro(@PathVariable Long idMicro) {
-		return proRepository.findByMicrorregiao(idMicro);
+	public List<ProfissionalDTO> getProByMicro(@PathVariable Long idMicro) {
+		return proDTORepository.findByMicrorregiao(idMicro);
 	}
 
 	@GetMapping("/uf/{uf}")
-	public List<Profissional> getProByUf(@PathVariable String uf) {
-		return proRepository.findByUf(uf);
+	public List<ProfissionalDTO> getProByUf(@PathVariable String uf) {
+		return proDTORepository.findByUf(uf);
 	}
 
 	@GetMapping("/idUf/{idUf}")
-	public List<Profissional> getProByIdUf(@PathVariable Long idUf) {
-		return proRepository.findByIdUf(idUf);
+	public List<ProfissionalDTO> getProByIdUf(@PathVariable Long idUf) {
+		return proDTORepository.findByIdUf(idUf);
 	}
 	
 	@PostMapping
