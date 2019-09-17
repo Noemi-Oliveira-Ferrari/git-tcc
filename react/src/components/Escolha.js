@@ -19,7 +19,7 @@ export class Escolha extends Component{
             </div>
             <div className="img-escolha" >
                 <figure>
-                    <img className="img" src={this.props.img} alt=""/>
+                    <img className="icon-escolha" src={this.props.img} alt=""/>
                 </figure>
             </div>
             <div id={this.props.idBtn} className="botao-escolha">
