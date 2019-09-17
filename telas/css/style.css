@@ -1,84 +1,50 @@
+div, h1, h2, h3, h4, h5, h6, html, body, figure, img, p{
+    padding: 0px;
+    margin: 0px;
+}
+
+@font-face 
+{
+    font-family: 'Lexend Deca';
+    src: url("../fontes/LexendDeca-Regular.ttf");
+}
+
+@font-face 
+{
+    font-family: 'Manjari';
+    src: url("../fontes/Manjari-Regular.ttf");
+}
+
 /*----- Web-Desktop -----*/
 @media screen and (min-device-width:1000px)
 {
-    /*----- Formatação -----*/
-    @font-face 
-    {
-        font-family: "Lexend Deca";
-        src: url("../fontes/LexendDeca-Regular.ttf");
-    }
 
-    .texto-centro
-    {
-        text-align: center;
-    }
-    
-    .texto-esquerda
-    {
-        text-align: left;
-    }
-    
-    .texto-direita
-    {
-        text-align: right;
-    }
-
-    .titulo
-    {
-        font-family: 'Lexend Deca';
-        font-size: 40px;
-        font-weight: bold;
-        color: #000000;
-    }
-    
-    .texto-card
-    {
-        font-family: 'Lexend Deca';
-        font-size: 20px;
-        margin-top: 60px;
-    }
-    
 
     /*----- Padronização -----*/
-    #all{
-        min-height: 100%;
-        position: relative;
-    }
     
+
+    html
+    {
+        height: 100%;
+    }
+
     body
     {
-        width: 100%;
-        margin: 0px;
-        padding: 0px;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
         background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
         background-attachment: fixed;
         background-size: cover;
         background-repeat: no-repeat;
     }
 
-    body, html
-    {
-        height: 100%;
-    
-    }
-    
-    * html #all
-    {
-        height: 100%;
+
+    #all{
+        /* min-height: 100%; */
+        flex: 1;
     }
 
-    .float
-    {
-        float: left;
-    }
-    
-    .centro
-    {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    
     /*----- Cabeçalho -----*/
     header
     {
@@ -88,30 +54,17 @@
         box-shadow: 10px 0px 30px #000000;
     }
     
-    nav
-    {
-        visibility: hidden;
-    }
-    
-    
-    /*----- Footer -----*/
-    footer
+    /*----- Conteudo -----*/
+    .container-conteudo
     {
         width: 100%;
-        height: 150px;
-        background-color: #015249;
-        position: absolute;
-        bottom: 0%;
+        height: 100%;
     }
     
-    
-    /*----- Conteudo -----*/
     .container-login
     {
         width: 100%;
-        height: 850px;
-        /* background: rgba(39, 144, 110, 0.75); */
-        /* background: rgba(207, 86, 30, 0.75); */
+        height: 755px;
     }
     
     .container-centro
@@ -135,8 +88,17 @@
         justify-content: center;
         padding-top: 50px;
         box-sizing: border-box;
+        /* background-color: #002420; */
     }
-    
+
+    .conteudo-caixa-texto
+    {
+        font-family: 'Lexend Deca';
+        font-size: 40px;
+        padding: 50px;
+        text-align: center;
+    }
+
     .caixa-conteudo
     {
         width: 800px;
@@ -148,65 +110,105 @@
         justify-content: center;
     }
     
-    .conteudo-caixa-texto
-    {
-        font-family: 'Lexend Deca';
-        font-size: 40px;
-        padding: 50px;
-        text-align: center;
-        /* margin-left: 130px; */
-    }
-    
-    .label
-    {
-        font-family: 'Lexend Deca';
-        width: 490px;
-        font-size: 20px;
-        text-align: left;
-        margin-left: 40px;
-    }
-    
     .card-login
     {
         width: 600px;
-        height: 600px;
+        height: 610px;
         border-radius: 10px;
         background-color: rgb(235, 230, 230);
         background-image: url(../imagens/fundo03.jpg);
         background-size: cover;
         box-shadow: 15px 15px 30px #015249;
     }
-    
+
     .conteudo-card
     {
-        padding: 25px;
+        width: 550px;
+        height: 570px;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        /* background-color: rgb(146, 39, 189); */
     }
-    
+
     .logotipo
     {
         width: 80px;
         height: 80px;
         background-color: #d6d6d6;
         border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    
-    .input
+
+    .titulo
     {
-        width: 490px;
-        height: 40px;
+        width: inherit;
+        height: 65px;
+        font-family: 'Lexend Deca';
+        font-size: 25px;
+        /* font-weight: bold; */
+        color: #000000;
+        text-align: center;
+        /* background-color: rgb(108, 157, 231); */
+    }
+
+    .container-campos-login
+    {
+        width: 530px;
+        height: fit-content;
+        /* background-color: rgb(245, 198, 145); */
+        margin: auto;
+        text-align: center;
+        font-family: 'Manjari';
+        margin-top: 60px;
+    }
+
+    .container-txt-login
+    {
+        width: inherit;
+        height: 200px;
+        margin-bottom: 0px;
+        /* background-color: #ff0000; */
+    }   
+
+    .caixa-campo-login
+    {
+        width: inherit;
+        height: fit-content;
+        /* background-color: rgb(34, 61, 65); */
+        margin-bottom: 30px;
+
+        font-family: 'Manjari';
+        font-size: 26px;
+        text-align: left;
+    }
+    .caixa-campo-login label
+    {
+        margin-left: 10px;
+    }
+
+    .input-login
+    {
+        width: inherit;
+        height: 45px;
         border-radius: 8px;
         border: 0px;
         outline: none;
+        box-sizing: border-box;
         padding-left: 20px;
         background-color: #d6d6d6;
+        transition: .2s ease;
         font-size: 18px;
     }
-    
-    .input:hover
+
+    .input-login:hover
     {
-        background-color: #cadbd1;
+        background-color: #d7e6de;
+        transition: .2s ease;
     }
-    
+
     .btn-entrar
     {
         width: 140px;
@@ -214,9 +216,8 @@
         border-radius: 10px;
         border: 0px;
         outline: none;
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 40px;
+        font-size: 20px;
+        margin-top: 25px;
         font-family: 'Lexend Deca';
         letter-spacing: 1.5px;
         background-color: #015249;
@@ -228,7 +229,16 @@
         cursor: pointer;
         background-color: #026359;
     }
-    
+
+    .texto-card
+    {
+        font-family: 'Manjari';
+        font-size: 20px;
+        margin-top: 45px;
+        margin-right: 15px;
+        text-align: right;
+    }
+
     .link-cadastro
     {
         text-decoration: none;
@@ -241,110 +251,37 @@
         text-decoration: underline;
     }
     
-    .caixa-input
+    .espaco
     {
-        margin-top: 30px;
-    }   
+        display: none;
+    }
     
-    #espaco{
-        width: 100%;
-        height: 100px;
-        /* background-color: #77c9d4; */
-    }
-
-    .conteiner-conteudo
+    /*----- Footer -----*/
+    footer
     {
         width: 100%;
-        height: 100%;
+        height: 150px;
+        background-color: #030303;
+        /* background-color: #015249; */
     }
+    
+
 }
 
 /*----- Web-Responsivo -----*/
 @media screen and (max-device-width:880px)
 {
-    /*----- Formatação -----*/
-    @font-face
-    {
-        font-family: "Lexend Deca";
-        src: url("../fontes/LexendDeca-Regular.ttf");
-    }
-
-    .texto-centro
-    {
-        text-align: center;
-        color: rgb(3, 22, 26);
-    }
-
-    .texto-esquerda
-    {
-        text-align: left;
-    }
-    
-    /*
-    .texto-direita
-    {
-        text-align: right;
-    }
-    */
-    .link-cadastro
-    {
-        text-decoration: none;
-        color: #002420;
-    }
-    
-    .link-cadastro:hover
-    {
-        text-decoration: underline;
-    }
-
-    .titulo
-    {
-        font-family: 'Lexend Deca';
-        font-size: 4em;
-        font-weight: bold;
-        color: #000000;
-    }
-  
-    .texto-card
-    {
-        font-family: 'Lexend Deca';
-        font-size: 2.3em;
-        margin-top: 60px;
-    }
-
-    .label
-    {
-        font-family: 'Lexend Deca';
-        font-size: 2.3em;
-        text-align: left;
-        margin-left: 20px;
-        margin-top: 40px;
-    }
-
-
-    /*----- Padronização -----*/
-    #all
-    {
-        min-height: 100%;
-        position: relative;
-    }
-    
-    body
-    {
-        width: 100%;
-        margin: 0px;
-        padding: 0px;
+    body{
         background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
-        /*background-color: #ffffff;*/
         background-attachment: fixed;
         background-size: cover;
-        background-repeat: no-repeat;   
+        background-repeat: no-repeat;
     }
-
+    
     body, html
     {
-        height: 100%;
-    
+        min-height: 100%;
+        margin: 0;
     }
     
     * html #all
@@ -352,93 +289,146 @@
         height: 100%;
     }
 
+    #all{
+        min-height: calc(100vh - 300px);
+    }
+
+    .caixa-texto{
+        display: none;
+    }
     
     /*----- Cabeçalho -----*/
     header
     {
         width: 100%;
-        height: 80px;
+        height: 200px;
         background-color: #000000;
         box-shadow: 10px 0px 30px #00000000;
-        margin-bottom: 105px;
-    }
-
-    
-    /*----- Rodapé -----*/
-    footer
+        margin-bottom: 80px;
+    } 
+ 
+    /*----- Conteudo -----*/
+    .container-conteudo
     {
         width: 100%;
-        height: 150px;
-        background-color: #015249;
-        position: absolute;
-        bottom: 0%;
+        height: 70%;
+        /* background: rgba(240, 102, 22, 0.75); */
+        margin-bottom: 80px;
     }
-    
-    #espaco{
-        width: 100%;
-        height: 100px;
-        /* background-color: #77c9d4; */
-    }
-
-    
-    /*----- Conteúdo -----*/
-    .caixa-texto
-    {
-        visibility: hidden;
-    }
-
     .container-login
     {
-        width: 100%;
-        height: 850px;
-        /* background: rgba(39, 144, 110, 0.75); */
-        /* background: rgba(207, 86, 30, 0.75); */
-    }
-
-    .caixa-conteudo
-    {
-        width: 800px;
-        height: inherit;
-        position: relative;
-        background-color: transparent;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        width: 90%;
+        min-height: 100%;
+        /* background: rgba(11, 93, 107); */
+        margin: auto;
     }
     .container-centro
     {
-        width: auto;
-        height: inherit;
+        width: 100%;
+        height: 100%;
         margin: auto;
         display: flex;
         align-items: center;
         justify-content: center;
         flex-wrap: wrap;
+        /* background-color: #002420 */
     }
- 
+
+    .caixa-conteudo
+    {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: rgb(255, 0, 0); */
+    }
+
+    .card-login
+    {
+        width: 100%;
+        height: 100%;
+        /* background-color: rgb(86, 86, 190); */
+    }
+    
+    .conteudo-card
+    {
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+        /* background-color: rgb(50, 190, 85); */
+    }
+
     .logotipo
     {
-        width: 150px;
-        height: 150px;
+        width: 250px;
+        height: 250px;
         background-color: #d6d6d6;
         border-radius: 10px;
         margin-bottom: 20px;
-    }
-
-    .input
-    {
-        width: 620px;
-        height: 80px;
-        border-radius: 30px;
-        border: 0px;
-        outline: none;
-        padding-left: 20px;
-        background-color: #efefef;
-        font-size: 2em;
-        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
     }
     
-    .input:hover
+    .titulo
+    {
+        width: inherit;
+        height: 5%;
+        font-family: 'Lexend Deca';
+        font-size: 2.95em;
+        color: #000000;
+        /* background-color: yellowgreen; */
+        text-align: center;
+    }
+
+    .container-campos-login
+    {
+        width: 100%;
+        height: 50%;
+        text-align: center;
+        color: rgb(3, 22, 26);
+        /* background-color: rgb(14, 148, 148); */
+        margin-top: 45px;
+    }
+    
+    .container-txt-login
+    {
+        width: inherit;
+        height: 450px;
+        /* background-color: #438d5b; */
+        margin-bottom: 40px;
+    }
+
+    .caixa-campo-login
+    {
+        width: inherit;
+        height: 200px;
+        font-family: 'Manjari';
+        font-size: 3.5em;
+        text-align: left;
+        margin-bottom: 40px;
+        /* background-color: #d45421; */
+    }
+
+    .input-login
+    {
+        width: 100%;
+        height: 110px;
+        border-radius: 15px;
+        border: 0px;
+        outline: none;
+        padding-left: 15px;
+        box-sizing: border-box;
+        background-color: #efefef;
+        font-size: 1em;
+        margin-bottom: 20px;
+        font-family: sans-serif;
+    }
+    
+    .input-login:hover
     {
         background-color: #cadbd1;
     }
@@ -448,29 +438,44 @@
         width: 234px;
         height: 88px;
         border-radius: 20px;
-        /* border: 0px; */
-        outline: none;
-        font-size: 2.2em;
-        font-weight: bold;
-        margin-top: 40px;
-        font-family: 'Lexend Deca';
         letter-spacing: 4.5px;
         background-color: #fdfdfd00;
-        border: solid 0.12em #efefef;
+        border: solid 0.12em #ffffff;
+        font-weight: bold;
+        font-family: 'Lexend Deca';
+        outline: none;
+        font-size: 2.2em;
         color: #ffffff;
     }
-    
-    .centro
+
+    .texto-card
     {
-        margin-left: auto;
-        margin-right: auto;
-        text-align: center;
+        height: 20%;
+        font-family: 'Manjari';
+        font-size: 3em;
+        margin-top: 60px;
+        /* background-color: violet; */
+    }
+    
+    .link-cadastro
+    {
+        text-decoration: none;
+        font-weight: bold;
+        color: #002420;
+    }
+    
+    .link-cadastro:hover
+    {
+        text-decoration: underline;
     }
 
-    .conteudo-card
+    /*----- Rodapé -----*/
+    
+    footer, .espaco
     {
-        padding: 25px;
-        box-sizing: border-box;
+        height: 300px;
+        width: 100%;
+        background-color: #015249;
     }
     
 }
