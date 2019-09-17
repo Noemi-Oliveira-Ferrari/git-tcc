@@ -3,6 +3,8 @@ package br.senai.sp.daumhelp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,9 +18,13 @@ import java.util.Date;
 
 import br.senai.sp.daumhelp.configretrofit.RetroFitConfig;
 import br.senai.sp.daumhelp.recursos.Data;
+import br.senai.sp.daumhelp.recursos.EncryptString;
 import br.senai.sp.daumhelp.recursos.GerarCodEmail;
 import br.senai.sp.daumhelp.recursos.Mascara;
 import br.senai.sp.daumhelp.model.Confirmacao;
+import br.senai.sp.daumhelp.recursos.MascaraCpfCnpj;
+import br.senai.sp.daumhelp.recursos.ValidarCpf;
+import br.senai.sp.daumhelp.recursos.ValidarCpfCnpj;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,13 +66,11 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
             etConfirmacao.setText(listaDados[4]);
         }
 
-        Mascara maskCpf = new Mascara("###.###.###-##", etCpf);
-        //Mascara maskCnpj = new Mascara("##.###.###/####-##", etCpf);
         Mascara maskData = new Mascara("##/##/####", etDataNasc);
 
-        etCpf.addTextChangedListener(maskCpf);
-
         etDataNasc.addTextChangedListener(maskData);
+        etCpf.addTextChangedListener(MascaraCpfCnpj.insert(etCpf));
+
 
         btnProximo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,27 +82,42 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
                 String cpfProfissional = etCpf.getText().toString();
                 String emailProfissional = etEmail.getText().toString();
                 String senhaProfissional = etSenha.getText().toString();
+                String senhaCriptografada = EncryptString.gerarHash(senhaProfissional);
                 String confirmacaoProfissional = etConfirmacao.getText().toString();
 
                 String codigoEmail = String.valueOf(GerarCodEmail.gerarCodigo());
 
-                Date data = Data.stringToDate(dataNascProfissional);
-
-                String dataFormatada = Data.dataToString(data);
+                String[] listaDados = {""};
 
 
-                Toast.makeText(CadastroProfissionalActivity1.this, dataFormatada + "", Toast.LENGTH_SHORT).show();
-
-
-
-                /*ARRAY DOS DADOS PESSOAIS PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
-               final String[] listaDados = new String[]{nomeProfissional, dataNascProfissional, cpfProfissional, emailProfissional, senhaProfissional, codigoEmail};
 
                 if(etConfirmacao.getText().toString().equals(etSenha.getText().toString())){
 
                     /*SERIALIZAÇÃO DOS DADOS*/
 
                     if(validar() == true) {
+
+                        Date data = Data.stringToDate(dataNascProfissional);
+                        String dataFormatada = Data.dataToString(data);
+
+                        if(etCpf.getText().length() <= 15){
+                            if(ValidarCpfCnpj.calcCpf(cpfProfissional)){
+                                /*ARRAY DOS DADOS PESSOAIS PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
+                                listaDados = new String[]{nomeProfissional, dataFormatada, cpfProfissional, emailProfissional, senhaCriptografada, codigoEmail};
+                            } else{
+                                etCpf.setError("CPF inválido");
+                            }
+                        }else{
+                            if(ValidarCpfCnpj.calcCnpj(cpfProfissional)){
+                                /*ARRAY DOS DADOS PESSOAIS PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
+                                listaDados = new String[]{nomeProfissional, dataNascProfissional, cpfProfissional, emailProfissional, senhaProfissional, codigoEmail};
+                                Toast.makeText(CadastroProfissionalActivity1.this, cpfProfissional+"", Toast.LENGTH_SHORT).show();
+                            } else{
+                                Toast.makeText(CadastroProfissionalActivity1.this, cpfProfissional+"KKK", Toast.LENGTH_SHORT).show();
+                                etCpf.setError("CNPJ inválido");
+                            }
+                        }
+
 
 
                         Confirmacao confirmacao = new Confirmacao();
@@ -122,9 +141,9 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
                             }
                         });
 
-                       /*Intent intent = new Intent(CadastroProfissionalActivity1.this, ConfirmarEmailActivity.class);
+                       Intent intent = new Intent(CadastroProfissionalActivity1.this, ConfirmarEmailActivity.class);
                         intent.putExtra("dados_pessoais_pro", listaDados);
-                        startActivity(intent);*/
+                        startActivity(intent);
 
                     }
 
@@ -173,7 +192,7 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
             validado = false;
         }
         if(etCpf.getText().length()<14){
-            etCpf.setError("CPF inválido");
+            etCpf.setError("CPF/CNPJ inválido");
             validado = false;
         }
         if(etSenha.getText().toString().isEmpty()){

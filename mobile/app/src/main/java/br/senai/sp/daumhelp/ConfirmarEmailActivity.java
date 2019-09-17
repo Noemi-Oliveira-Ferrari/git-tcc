@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import br.senai.sp.daumhelp.recursos.GerarCodEmail;
+
 public class ConfirmarEmailActivity extends AppCompatActivity {
 
     private Button btnConfirmar;
@@ -47,7 +49,7 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
             btnConfirmar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(etCodigo.getText().toString().equals("")){
+                    if(etCodigo.getText().toString().equals(listaDados[5])){
 
                         Intent intent = new Intent(ConfirmarEmailActivity.this, CadastroProfissionalActivity2.class);
                         intent.putExtra("dados_pessoais_pro", listaDados);

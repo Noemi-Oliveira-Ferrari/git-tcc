@@ -13,19 +13,19 @@
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_config_file">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".EscolhaActivity"></activity>
-        <activity android:name=".CadastroProfissionalActivity1"></activity>
-        <activity android:name=".CadastroProfissionalActivity2"></activity>
-        <activity android:name=".CadastroProfissionalActivity3"></activity>
-        <activity android:name=".CadastroProfissionalActivity4"></activity>
-        <activity android:name=".ConfirmarEmailActivity"></activity>
+        <activity android:name=".EscolhaActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".CadastroProfissionalActivity1" android:screenOrientation="portrait"></activity>
+        <activity android:name=".CadastroProfissionalActivity2" android:screenOrientation="portrait"></activity>
+        <activity android:name=".CadastroProfissionalActivity3" android:screenOrientation="portrait"></activity>
+        <activity android:name=".CadastroProfissionalActivity4" android:screenOrientation="portrait"></activity>
+        <activity android:name=".ConfirmarEmailActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

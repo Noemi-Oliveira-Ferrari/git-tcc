@@ -78,7 +78,7 @@
         android:drawableLeft="@drawable/ic_cep"
         android:ems="10"
         android:hint="CEP"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:maxLength="9"
         android:textColor="@android:color/background_dark"
         app:layout_constraintStart_toStartOf="parent"
