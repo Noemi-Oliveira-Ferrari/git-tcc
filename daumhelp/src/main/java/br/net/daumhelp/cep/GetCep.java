@@ -28,6 +28,7 @@ public class GetCep{
 				dados += registro;
 			}
 			
+			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

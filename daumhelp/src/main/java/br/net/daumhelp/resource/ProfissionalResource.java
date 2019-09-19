@@ -21,11 +21,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.net.daumhelp.model.Confirmacao;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.ProfissionalDTO;
 import br.net.daumhelp.repository.ProfissionalDTORepository;
 import br.net.daumhelp.repository.ProfissionalRepository;
 import br.net.daumhelp.utils.HandleDates;
+import br.net.daumhelp.utils.HandleEmails;
 
 @CrossOrigin(origins = "http://localhost")
 @RestController
@@ -40,6 +42,12 @@ public class ProfissionalResource {
 	@GetMapping
 	public List<ProfissionalDTO> getPros(){
 		return proDTORepository.findAll();
+	}
+	
+	
+	@PostMapping("/confirmacao")
+	public void confirmarEmail(@RequestBody Confirmacao confirm) {
+		HandleEmails.enviar(confirm);
 	}
 
 	@GetMapping("/id/{id}")

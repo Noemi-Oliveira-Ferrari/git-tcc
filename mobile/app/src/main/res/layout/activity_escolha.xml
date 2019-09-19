@@ -12,19 +12,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:id="@+id/relativeLayout2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="75dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="0dp"
-                    android:background="@color/colorTest" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:background="@color/colorTest" />
 
-            </RelativeLayout>
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_txt_escolha"
@@ -34,7 +34,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="97dp"
         android:layout_marginBottom="20dp"
-        android:text="O que você \n gostaria de fazer?"
+        android:text="O que você \n gostaria de ser?"
         android:textAlignment="center"
         android:textSize="26dp"
         android:textStyle="bold"
@@ -168,11 +168,36 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
         android:text="Escolha"
         android:textColor="@color/colorTest"
-        android:textStyle="bold"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btn_voltar"
+            android:layout_width="110dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="26dp"
+            android:layout_marginLeft="34dp"
+            android:background="#00FFFFFF"
+            android:drawableLeft="@drawable/ic_back"
+            android:text="Voltar"
+            android:textColor="@color/colorGray"
+            android:textCursorDrawable="@drawable/ic_pass"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.864"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>
-<!--</ScrollView>-->
+    <!--</ScrollView>-->

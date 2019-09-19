@@ -1,19 +1,45 @@
 package br.senai.sp.daumhelp.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Profissional implements Serializable {
 
+    @JsonAlias("idProfissional")
     private int idProfissional;
-    private String nomePro;
-    private String cpfPro;
-    private String emailPro;
-    private String senhaPro;
-    private String dataNascPro;
-    private String fotoPro;
-    private Double valorPro;
-    private int idEnderecoPro;
-    private int idSubcategoria;
+
+    @JsonAlias("nome")
+    private String nome;
+
+    @JsonAlias("cpf")
+    private String cpf;
+
+    @JsonAlias("email")
+    private String email;
+
+    @JsonAlias("senha")
+    private String senha;
+
+    @JsonAlias("dataNasc")
+    private String dataNasc;
+
+    @JsonAlias("foto")
+    private String foto;
+
+    @JsonAlias("valorHora")
+    private Double valorHora;
+
+    @JsonAlias("resumoQualificacoes")
+    private String resumoQualificacoes;
+
+    @JsonAlias("endereco")
+    private Endereco endereco;
+
+    @JsonAlias("subcategoria")
+    private Subcategoria subcategoria;
 
     public int getIdProfissional() {
         return idProfissional;
@@ -23,91 +49,87 @@ public class Profissional implements Serializable {
         this.idProfissional = idProfissional;
     }
 
-    public String getNomePro() {
-        return nomePro;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomePro(String nomePro) {
-        this.nomePro = nomePro;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getCpfPro() {
-        return cpfPro;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setCpfPro(String cpfPro) {
-        this.cpfPro = cpfPro;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
-    public String getEmailPro() {
-        return emailPro;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailPro(String emailPro) {
-        this.emailPro = emailPro;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getSenhaPro() {
-        return senhaPro;
+    public String getSenha() {
+        return senha;
     }
 
-    public void setSenhaPro(String senhaPro) {
-        this.senhaPro = senhaPro;
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
-    public String getDataNascPro() {
-        return dataNascPro;
+    public String getDataNasc() {
+        return dataNasc;
     }
 
-    public void setDataNascPro(String dataNascPro) {
-        this.dataNascPro = dataNascPro;
+    public void setDataNasc(String dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
-    public String getFotoPro() {
-        return fotoPro;
+    public String getFoto() {
+        return foto;
     }
 
-    public void setFotoPro(String fotoPro) {
-        this.fotoPro = fotoPro;
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
-    public Double getValorPro() {
-        return valorPro;
+    public Double getValorHora() {
+        return valorHora;
     }
 
-    public void setValorPro(Double valorPro) {
-        this.valorPro = valorPro;
+    public void setValorHora(Double valorHora) {
+        this.valorHora = valorHora;
     }
 
-    public int getIdEnderecoPro() {
-        return idEnderecoPro;
+    public String getResumoQualificacoes() {
+        return resumoQualificacoes;
     }
 
-    public void setIdEnderecoPro(int idEnderecoPro) {
-        this.idEnderecoPro = idEnderecoPro;
+    public void setResumoQualificacoes(String resumoQualificacoes) {
+        this.resumoQualificacoes = resumoQualificacoes;
     }
 
-    public int getIdSubcategoria() {
-        return idSubcategoria;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setIdSubcategoria(int idSubcategoria) {
-        this.idSubcategoria = idSubcategoria;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
-    @Override
-    public String toString() {
-        return "Profissional{" +
-                "idProfissional=" + idProfissional +
-                ", nomePro='" + nomePro + '\'' +
-                ", cpfPro='" + cpfPro + '\'' +
-                ", emailPro='" + emailPro + '\'' +
-                ", senhaPro='" + senhaPro + '\'' +
-                ", dataNascPro='" + dataNascPro + '\'' +
-                ", fotoPro='" + fotoPro + '\'' +
-                ", valorPro=" + valorPro +
-                ", idEnderecoPro=" + idEnderecoPro +
-                ", idSubcategoria=" + idSubcategoria +
-                '}';
+    public Subcategoria getSubcategoria() {
+        return subcategoria;
     }
+
+    public void setSubcategoria(Subcategoria subcategoria) {
+        this.subcategoria = subcategoria;
+    }
+
+
+
+
 }

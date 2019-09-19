@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -30,6 +31,13 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
 
     private Spinner spinnerCategoria;
     private Spinner spinnerSubcategoria;
+    private EditText etValorHora;
+    private EditText etQualificacoes;
+
+    private Long idSub;
+    private Long idCategoria;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +47,45 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
 
         btnProximo = findViewById(R.id.btn_proximo);
         btnVoltar = findViewById(R.id.btn_voltar);
+        etQualificacoes = findViewById(R.id.et_qualificacoes);
+        etValorHora = findViewById(R.id.et_valor_hora);
+        spinnerCategoria = findViewById(R.id.spn_categoria);
+        spinnerSubcategoria = findViewById(R.id.spn_subcategoria);
 
         Intent intent = getIntent();
-       if(intent.getSerializableExtra("dados_pessoais_pro") != null ){
-             String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
+        if(intent.getSerializableExtra("dados_pessoais_pro") != null ){
+            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
+
+            if(intent.getSerializableExtra("endereco_pro") != null ){
+                final String[] listaEndereco = (String[]) intent.getSerializableExtra("endereco_pro");
+
+                btnProximo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String qualificacoes = etQualificacoes.getText().toString();
+                        String valorHora = etValorHora.getText().toString();
 
 
-        } if(intent.getSerializableExtra("endereco_pro") != null ){
-            String[] listaEndereco = (String[]) intent.getSerializableExtra("endereco_pro");
+                        String[] listaServ = new String[]{qualificacoes, valorHora, idSub.toString()};
+
+                       // Toast.makeText(CadastroProfissionalActivity3.this, listaServ[2] , Toast.LENGTH_SHORT).show();
+
+                        if(validar() == true){
+
+                            Intent intent = new Intent(CadastroProfissionalActivity3.this, CadastroProfissionalActivity4.class);
+                            intent.putExtra("dados_pessoais_pro", listaDados);
+                            intent.putExtra("endereco_pro", listaEndereco);
+                            intent.putExtra("serv_pro", listaServ);
+                            startActivity(intent);
+
+                        }
+                    }
+                });
+
+
+            }
+
 
         }
 
@@ -59,37 +98,13 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Categoria>> call, Response<List<Categoria>> response) {
 
-                    carregarCategorias(response.body());
+                carregarCategorias(response.body());
 
             }
 
             @Override
             public void onFailure(Call<List<Categoria>> call, Throwable t) {
                 Log.i("Retrofit", t.getMessage());
-            }
-        });
-
-        /*CHAMADA DAS SUBCATEGORIAS*/
-        Call<List<Subcategoria>> callsub = new RetroFitConfig().getSubcategoriaService().buscarSubcategorias();
-        callsub.enqueue(new Callback<List<Subcategoria>>() {
-            @Override
-            public void onResponse(Call<List<Subcategoria>> callsub, Response<List<Subcategoria>> response) {
-
-                carregarSubcategorias(response.body());
-
-            }
-
-            @Override
-            public void onFailure(Call<List<Subcategoria>> callsub, Throwable t) {
-                Log.i("Retrofit2", t.getMessage());
-            }
-        });
-
-        btnProximo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CadastroProfissionalActivity3.this, CadastroProfissionalActivity4.class);
-                startActivity(intent);
             }
         });
 
@@ -107,13 +122,34 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
     private void carregarCategorias(final List<Categoria> listaCategoria){
         this.listaCategoria = listaCategoria;
 
-        ArrayAdapter<String> adapterCategoria = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaCategoria);
+
+        final ArrayAdapter<String> adapterCategoria = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaCategoria);
         adapterCategoria.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerCategoria = (Spinner) findViewById(R.id.spn_categoria);
         spinnerCategoria.setAdapter(adapterCategoria);
         spinnerCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                Categoria categoriaId = listaCategoria.get(position);
+
+                idCategoria = categoriaId.getIdCategoria();
+
+
+                /*CHAMADA DAS SUBCATEGORIAS*/
+                Call<List<Subcategoria>> callsub = new RetroFitConfig().getSubcategoriaService().buscarSubcategorias(Integer.parseInt(idCategoria.toString()));
+                callsub.enqueue(new Callback<List<Subcategoria>>() {
+                    @Override
+                    public void onResponse(Call<List<Subcategoria>> callsub, Response<List<Subcategoria>> response) {
+
+                        carregarSubcategorias(response.body());
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Subcategoria>> callsub, Throwable t) {
+                        Log.i("Retrofit2", t.getMessage());
+                    }
+                });
 
             }
 
@@ -131,14 +167,16 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
 
         ArrayAdapter<String> adapterSubcategoria = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaSubcategoria);
         adapterSubcategoria.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSubcategoria = (Spinner) findViewById(R.id.spn_subcategoria);
         spinnerSubcategoria.setAdapter(adapterSubcategoria);
         spinnerSubcategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            }
+                Subcategoria subcategoriaId = listaSubcategoria.get(position);
 
+                idSub = subcategoriaId.getIdSubcategoria();
+
+            }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -146,6 +184,17 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
         });
     }
 
+
+    private boolean validar(){
+        boolean validado = true;
+
+        if(etValorHora.getText().toString().isEmpty()){
+            etValorHora.setError("Digite um valor");
+            validado = false;
+        }
+
+        return validado;
+    }
 
 
 }
