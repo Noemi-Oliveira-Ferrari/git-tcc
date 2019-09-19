@@ -10,7 +10,7 @@ public class Confirmacao {
 	@NotNull
 	private String destinatario;
 	@NotNull
-	@Size(min = 4, max = 4)
+	@Size(min = 4, max = 4, message = "O código de confirmação deve ter exatos 4 números!")
 	private String codigoConfirm;
 
 	public String getNome() {
