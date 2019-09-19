@@ -11,7 +11,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "tbl_profissional")
 public class ProfissionalDTO {
@@ -39,7 +38,6 @@ public class ProfissionalDTO {
 	@Size(min = 8, max = 128)
 	@JsonIgnore
 	private String senha;
-
 	@NotNull
 	@Size(min = 6, max = 20)
 	private String dataNasc;
@@ -175,10 +173,10 @@ public class ProfissionalDTO {
 
 	@Override
 	public String toString() {
-		return "ProfissionalDTO [idProfissional=" + idProfissional + ", nome=" + nome + ", email=" + email + ", foto="
-				+ foto + ", cnpj=" + cnpj + ", cpf=" + cpf + ", dataNasc=" + dataNasc + ", valorHora=" + valorHora
-				+ ", resumoQualificacoes=" + resumoQualificacoes + ", endereco=" + endereco + ", subcategoria="
-				+ subcategoria + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+		return "Profissional [idProfissional=" + idProfissional + ", nome=" + nome + ", email=" + email + ", foto="
+				+ foto + ", cnpj=" + cnpj + ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc
+				+ ", valorHora=" + valorHora + ", resumoQualificacoes=" + resumoQualificacoes + ", endereco=" + endereco
+				+ ", subcategoria=" + subcategoria + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
 
 }

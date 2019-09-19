@@ -1,7 +1,6 @@
 package br.net.daumhelp.resource;
 
 import java.net.URI;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,7 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,31 +18,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.net.daumhelp.model.Confirmacao;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.ProfissionalDTO;
 import br.net.daumhelp.repository.ProfissionalDTORepository;
 import br.net.daumhelp.repository.ProfissionalRepository;
 import br.net.daumhelp.utils.HandleDates;
+import br.net.daumhelp.utils.HandleEmails;
 
 @CrossOrigin(origins = "http://localhost")
 @RestController
 @RequestMapping("/profissionais")
 public class ProfissionalResource {
-
-	@Autowired
-	private ProfissionalDTORepository proDTORepository;
+	
 	@Autowired
 	private ProfissionalRepository proRepository;
+	@Autowired
+	private ProfissionalDTORepository proDTORepository;
 	
+	@GetMapping("/confirmacao")
+	@ResponseStatus(code = HttpStatus.OK, reason = "E-mail enviado", value = HttpStatus.OK)
+	public boolean confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
+		return HandleEmails.enviar(confirm);
+	}
+
 	@GetMapping
 	public List<ProfissionalDTO> getPros(){
 		return proDTORepository.findAll();
 	}
-
+	
 	@GetMapping("/id/{id}")
 	public Optional<ProfissionalDTO> getProById(@PathVariable Long id) {
 		return proDTORepository.findById(id);
@@ -51,7 +60,6 @@ public class ProfissionalResource {
 	public List<ProfissionalDTO> getProByCategoria(@PathVariable Long idCategoria) {
 		return proDTORepository.findByCategoria(idCategoria);
 	}
-
 
 	@GetMapping("/subcategoria/{idSubategoria}")
 	public List<ProfissionalDTO> getProBySubcategoria(@PathVariable Long idSubategoria) {
@@ -69,7 +77,7 @@ public class ProfissionalResource {
 	}
 
 	@GetMapping("/endereco/{idEndereco}")
-	public ProfissionalDTO getProByIdEndereco(@PathVariable Long idEndereco) {
+	public List<ProfissionalDTO> getProByIdEndereco(@PathVariable Long idEndereco) {
 		return proDTORepository.findByIdEndereco(idEndereco);
 	}
 
