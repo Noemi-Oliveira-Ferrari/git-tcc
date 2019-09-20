@@ -3,6 +3,7 @@
     package="br.senai.sp.daumhelp">
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -13,13 +14,14 @@
         android:theme="@style/AppTheme"
         android:networkSecurityConfig="@xml/network_config_file">
 
-        <activity android:name=".MainActivity" android:screenOrientation="portrait">
+        <activity android:name=".SplashScreenActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".EscolhaActivity" android:screenOrientation="portrait"></activity>
         <activity android:name=".CadastroProfissionalActivity1" android:screenOrientation="portrait"></activity>
         <activity android:name=".CadastroProfissionalActivity2" android:screenOrientation="portrait"></activity>
