@@ -280,6 +280,16 @@
         font-weight: normal;
         cursor: pointer;
     }
+    
+    .google-responsivo
+    {
+        visibility: hidden;
+    }
+
+    .text-responsive
+    {
+        visibility: hidden;
+    }
 }
 
 /*----- Web-Responsivo -----*/
@@ -402,12 +412,12 @@
     .caixa2-rodape
     {   
         width: 100%;
-        height: 350px;
+        height: 550px;
         display: flex;
         /* background-color: chocolate; */
         margin-bottom: 30px;
         margin: auto;
-        align-items: center;
+        /* align-items: center; */
         justify-content: center;
         display: flex;
         background-color: #11161c;
@@ -415,16 +425,19 @@
 
     .caixa-informacao-rodape
     {
+        width: auto;
+        height: 500px;
         float: left;
         align-items: center;
         justify-content: center;
-        display: flex;
+        /* display: flex; */
+        /* background-color: blue; */
     }
     
-    .caixas-conteudo-rodape
+    .caixas-conteudo-rodape1
     {
         width: 250px;
-        height: 200px;
+        height: 150px;
         /* background-color: chocolate; */
         margin-top: 20px;
         box-sizing: border-box;
@@ -432,12 +445,24 @@
         font-family: "Lexend Deca";
         float: left;
     }
+    
+    .caixas-conteudo-rodape-responsiva
+    {
+        width: 100%;
+        height: 240px;
+        /* background-color: chocolate; */
+        margin-top: 20px;
+        box-sizing: border-box;
+        padding-left: 40px;
+        clear: both;
+    }
 
     .tamanho-caixa-cima
     {
-        width: 200px;
-        height: auto;
-        margin-left: 10px;
+        width: 100%;
+        height: 90px;
+        /* margin-left: 10px; */
+        /* background-color: blue; */
     }
 
     .itens
@@ -460,7 +485,8 @@
 
     .linha-responsiva
     {
-        width: 400px;
+        width: 670px;
+        clear: both;
     }
 
     .tamanho-caixa
@@ -475,27 +501,38 @@
     {
         width: 170px;
         height: 65px;
+        visibility: hidden;
+    }
+
+    .text-desktop
+    {
+        visibility: hidden;
+        height: 0px;
+        margin-top: -20px;
+    }
+
+    .tamanho-icone-res
+    {
+        width: 330px;
+        height: 124px;
+        margin-top: -15px;
+        margin-left: -23px;
     }
 
     .logo-rede-social
     {
-        width: 30px;
+        width: 95px;
         height: 30px;
-        margin-right: 15px;
         margin-bottom: 15px;
         border-radius: 5px;
         float: left;
+        /* background-color: red; */
     }
-
-    /* .clear
-    {
-        clear: left;
-    } */
 
     .icon-footer
     {
-        width: 30px;
-        height: 30px;
+        width: 60px;
+        height: 60px;
         filter: grayscale(100%)
     }
 
@@ -506,15 +543,15 @@
         cursor: pointer
     }
 
-    .caixa3-rodape
+    .caixa3-rodape 
     {
         width: 100%;
-        height: 80px;
+        height: 120px;
         margin: auto;
         background-color: #090c0f;
-        display: flex;
         justify-content: center;
         flex-wrap: wrap;
+        margin-top: -10px;
     }
 
     .linha
@@ -524,38 +561,38 @@
 
     .caixa-1
     {
-        width: 550px;
-        text-align: left;
-        /* background-color: #987a65; */
-        display: flex;
-        justify-content: left;
-        padding-left: 22px;
-        box-sizing: border-box;
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;  
     }
 
     .text-rodape
     {
-        float: left;
+        font-size: 1.6em;
         font-family: "Lexend Deca";
     }
 
     .caixa-2
     {
-        width: 420px;
-        text-align: right;
+        width: 100%;
+        text-align: center;
         align-items: center;
         justify-content: center;
         display: flex;
+        margin-top: 10px;
     }
 
     .itens-rodape
     {
-        font-size: 16px;
         text-decoration: none;
         color: #ffffff;
         font-weight: normal;
-        padding-left: 30px;
+        padding-left: 50px;
         box-sizing: border-box;
+        padding-right: 50px;
     }
 
     .itens-rodape:hover
@@ -564,5 +601,19 @@
         transition: 0.8s;
         font-weight: normal;
         cursor: pointer;
+    }
+
+    .google-responsivo
+    {
+        width: 300px;
+        height: 150px;
+        margin-top: -10px;
+        /* background-color: green; */
+    }
+
+    .text-responsive
+    {
+        font-size: 1.6em;
+        font-family: verdana;
     }
 }
