@@ -38,7 +38,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             AlertDialog.Builder alert = new AlertDialog.Builder(SplashScreenActivity.this);
-                            alert.setTitle("Conexão").setMessage("Você não está conectado ao WIFI, isso pode gerar cobranças adicionais. \n Deseja continuar").setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                            alert.setTitle("Conexão").setMessage("Você não está conectado ao WIFI, isso pode gerar cobranças adicionais. \n Deseja continuar?").setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
