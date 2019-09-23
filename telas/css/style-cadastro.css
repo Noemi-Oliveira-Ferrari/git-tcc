@@ -43,11 +43,11 @@ body
     margin: 0px;
     padding: 0px;
     /*background-color: #ffffff;*/
-    /* background-image: linear-gradient(to bottom right, #57bc90, #77c9d4); */
-        background-image: linear-gradient(to bottom right, #57bc90ce, #77c9d4ce);
-    /* background-attachment: fixed;
+    background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
+        /* background-image: linear-gradient(to bottom right, #57bc90ce, #77c9d4ce); */
+    background-attachment: fixed;
     background-size: cover;
-    background-repeat: no-repeat;  */
+    background-repeat: no-repeat; 
 }
 
 
@@ -101,7 +101,7 @@ header
     #all{
         min-height: 100%;
         position: relative;
-        background-image: url("../img/FUNDO.png");
+        /* background-image: url("../img/FUNDO.png"); */
     }
     
     /*----- Conteudo -----*/
@@ -118,7 +118,8 @@ header
     }
 
     .card-formulario-pessoal,
-    .card-formulario-servico
+    .card-formulario-servico,
+    .card-formulario-termos
     {
         height: auto;
         overflow: hidden;
@@ -131,6 +132,7 @@ header
         margin-bottom: 40px;
         padding-bottom: 30px;
     }
+
     .card-formulario-pessoal
     {
         width: 850px;
@@ -138,6 +140,7 @@ header
         background-color: rgb(255, 255, 255);
         box-shadow: #0000005b 3px 3px 5px;
     }
+
     .card-formulario-servico
     {
         width: 850px;
@@ -145,6 +148,15 @@ header
         background-color: rgb(255, 255, 255);
         box-shadow: #0000005b 3px 3px 5px;
     }
+
+    .card-formulario-termos
+    {
+        width: 850px;
+        height: 500px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
+
     .title-card
     {
         width: inherit;
@@ -202,6 +214,7 @@ header
         background-color: #cce5e9;
 
     }
+
     #txt-uf{
         text-transform: uppercase;
         text-align: center;
@@ -253,22 +266,27 @@ header
     {
         width: 365px;
     }
+
     .caixa-dataNasc
     {
         width: 365px;
     }
+    
     .caixa-cpfCnpj
     {
         width: 275px;
     }
+    
     .caixa-email
     {
         width: 455px;
     }
+    
     .caixa-senha
     {
         width: 365px;
     }
+    
     .caixa-confirmar-senha 
     {
         width: 365px;
@@ -298,8 +316,6 @@ header
     {
         width: 60px;
     }
-   
-    
 
     .campos-servicos
     {
@@ -323,6 +339,7 @@ header
         flex-wrap: wrap;
         /* background-color: #57bc90; */
     }
+
     .container-qualificacoes{
         width: inherit;
         height: inherit;
@@ -367,6 +384,119 @@ header
         bottom: 0%;
     }
 
+    .caixa-termos
+    {
+        width: 800px;
+        height: 290px;
+        /* background-color: rgb(218, 204, 12); */
+        /* padding-top: 35px; */
+        /* padding-left: 35px;
+        padding-right: 35px; */
+        /* padding-bottom: 0px;             */
+        text-align: justify;
+        /* margin-top: 25px; */
+    }
+
+    .caixa-confirmacao
+    {
+        width: 800px;
+        height: 100px;
+        /* background-color: greenyellow; */
+        padding: 20px;
+        box-sizing: border-box;
+        margin-top: 15px;
+        /* flex-direction: column; */
+        font-family: "manjari regular";
+    }
+
+    .caixa-button
+    {
+        width: inherit;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .btn-voltar
+    {
+        width: 120px;
+        height: 45px;
+        border:0px;
+        background-color: #57bc90;
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 18px;
+        outline: none;
+    }
+
+    .btn-voltar:hover
+    {
+        transition: 0.5s;
+        background-color: #5fce9e;
+        cursor: pointer;
+    }
+
+    .btn-prox
+    {
+        width: 120px;
+        height: 45px;
+        border:0px;
+        background-color: #57bc90;
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 18px;
+        justify-items:right;
+        outline: none;
+    }
+
+    .btn-prox:hover
+    {
+        transition: 0.5s;
+        background-color: #5fce9e;
+        cursor: pointer;
+    }
+
+    .checar
+    {
+        width: 15px;
+        height: 15px;
+    }
+
+    .text-termos
+    {
+        width: 780px;
+        height: 270px;
+        /* max-height: 290px; */
+        /* background-color: gray; */
+        font-size: 15px;
+        font-family: "manjari regular";
+        overflow: auto;
+        font-size: 18px;
+        /* padding-top: 80px; */
+    }
+
+    .caixa-dir
+    {
+        width: 360px;
+        height: 100px;
+        /* background-color: aqua; */
+        float: left;
+        display: flex;
+        align-items: end;
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+
+    .caixa-esq
+    {
+        width: 380px;
+        height: 100px;
+        /* background-color: yellow;   */
+        float: left;      
+        display: flex;
+        align-items: end;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
 }
 
 /*----- Web-Responsivo -----*/
@@ -374,6 +504,7 @@ header
     #all{
         height: 100%;
     }
+
     /*----- Conteudo -----*/
     .container-conteudo
     {
@@ -388,7 +519,8 @@ header
     /*----- Conteudo -----*/
 
     .card-formulario-pessoal,
-    .card-formulario-servico
+    .card-formulario-servico,
+    .card-formulario-termos
     {
         height: auto;
         overflow: hidden;
@@ -401,6 +533,7 @@ header
         margin-bottom: 40px;
         padding: 20px;
     }
+
     .card-formulario-pessoal
     {
         width: 95%;
@@ -422,6 +555,18 @@ header
         box-shadow: #0000005b 3px 3px 5px;
     }
 
+    .card-formulario-termos
+    {
+        width: 95%;
+        min-height: 1000px;
+        height: fit-content;
+        overflow: hidden;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+        box-sizing: border-box;
+        padding-bottom: 100px;
+    }
+
     .container-flex
     {  
         display: flex;
@@ -432,7 +577,6 @@ header
         /* padding-bottom: 50px */
     }
     
-
     .title-card
     {
         width: 100%;
@@ -502,6 +646,7 @@ header
         background-color: #dee0e0;
 
     }
+
     #txt-uf{
         text-transform: uppercase;
         text-align: center;
@@ -528,10 +673,12 @@ header
     {
         margin-top: -25px;
     }
+
     .form-label
     {
         font-size: 45px;
     }
+
     .form-input-pro
     {
         margin-top: -25px;
@@ -558,6 +705,7 @@ header
     {
         width: 48%;
     }
+
     .caixa-cep
     {
         width: 30%;
@@ -623,6 +771,7 @@ header
     {
         display: none;
     }
+    
     footer
     {
         display: none;
@@ -631,5 +780,98 @@ header
         background-color: #000000;
         position: relative;
         bottom: 0px; */
+    }
+
+    .caixa-termos
+    {
+        width: 800px;
+        height: 600px;
+        /* background-color: blueviolet; */
+        padding-top: 35px;
+        padding-left: 35px;
+        padding-right: 35px;
+        padding-bottom: 0px;        
+        box-sizing: border-box;
+        text-align: justify;
+        overflow: auto;
+        margin-top: 25px;
+    }
+
+    .btn-voltar
+    {
+        width: 220px;
+        height: 70px;
+        border: 0px;
+        background-color: #57bc90;
+        border-radius: 15px;
+        color: #ffffff;
+        font-size: 1.2em;
+        outline: none;
+    }
+
+    .btn-prox
+    {
+        width: 220px;
+        height: 70px;
+        border: 0px;
+        background-color: #57bc90;
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 1.2em;
+        justify-items:right;
+        outline: none;
+    }
+
+    .checar
+    {
+        width: 35px;
+        height: 35px;
+    }
+
+    .text-termos
+    {
+        font-size: 2.2em;
+        font-family: "manjari regular";
+        padding-top: 80px;
+        box-sizing: border-box;
+    }
+
+    .caixa-dir
+    {
+        width: 360px;
+        height: 100px;
+        /* background-color: aqua; */
+        float: left;
+        display: flex;
+        align-items: end;
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+
+    .caixa-esq
+    {
+        width: 380px;
+        height: 100px;
+        /* background-color: yellow;   */
+        float: left;      
+        display: flex;
+        align-items: end;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+    
+    .caixa-confirmacao
+    {
+        width: 800px;
+        height: 100px;
+        /* background-color: greenyellow; */
+        padding-top: 8px;
+        padding-left: 30px;
+        padding-right: 25px;
+        box-sizing: border-box;
+        margin-top: 15px;
+        /* flex-direction: column; */
+        font-size: 1.9em;
+        font-family: "manjari regular";
     }
 }
