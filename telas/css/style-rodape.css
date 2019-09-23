@@ -34,15 +34,11 @@
 
  
     /*----- Conteúdo -----*/
-    .conteudo
-    {
-        width: 100%;
-        height: 500px;
-        background-color: #ffffff;
-    }
 
     footer
     {
+        width: 100%;
+        height: 100%;
         justify-content: center;
         background-image: url(../imagens/background04.jpg);
         background-repeat: no-repeat;
@@ -110,7 +106,7 @@
     .caixa-rodape-informacoes
     {
         width: 100%;
-        height: 305px;
+        height: 330px;
         background-color: #11161c;
         color: #ffffff;
     }
@@ -118,7 +114,7 @@
     .caixa2-rodape
     {
         width: 1200px;
-        height: auto;
+        height: 260px;
         display: flex;
         /* background-color: chocolate; */
         margin-bottom: 30px;
@@ -130,12 +126,15 @@
 
     .caixa-informacao-rodape
     {
+        width: inherit;
+        height: inherit;
         float: left;
         align-items: center;
         justify-content: center;
         display: flex;
+        /* background-color: green; */
     }
-    
+
     .caixas-conteudo-rodape
     {
         width: 250px;
@@ -146,13 +145,6 @@
         padding-left: 40px;
         font-family: "Lexend Deca";
         float: left;
-    }
-
-    .tamanho-caixa-cima
-    {
-        width: 200px;
-        height: auto;
-        margin-left: 10px;
     }
 
     .itens
@@ -173,11 +165,6 @@
         /* text-decoration: underline; */
     }
 
-    .linha-responsiva
-    {
-        visibility: hidden;
-    }
-
     .tamanho-caixa
     {
         width: 200px;
@@ -191,20 +178,27 @@
         width: 170px;
         height: 65px;
     }
+ 
+    .tamanho-caixa-cima
+    {
+        width: 200px;
+        height: auto;
+        margin-left: 10px;
+    }
+
+    .linha-responsiva
+    {
+        visibility: hidden;
+    }
 
     .logo-rede-social
     {
-        width: 30px;
+        width: 40px;
         height: 30px;
         margin-right: 15px;
         margin-bottom: 15px;
         border-radius: 5px;
         float: left;
-    }
-
-    .clear
-    {
-        clear: left;
     }
 
     .icon-footer
@@ -235,6 +229,8 @@
     .linha
     {
         width: 940px;
+        border: 1.5px solid #a2a2a2;
+        border-radius: 8px;
     }
 
     .caixa-1
@@ -290,6 +286,13 @@
     {
         visibility: hidden;
     }
+
+    .caixa-rede-social
+    {
+        width: inherit;
+        height: 20px;
+        margin-top: -50px;
+    }
 }
 
 /*----- Web-Responsivo -----*/
@@ -328,13 +331,6 @@
 
  
     /*----- Conteúdo -----*/
-    .conteudo
-    {
-        width: 100%;
-        height: 500px;
-        background-color: #ffffff;
-    }
-
     footer
     {
         justify-content: center;
@@ -412,7 +408,7 @@
     .caixa2-rodape
     {   
         width: 100%;
-        height: 550px;
+        height: 650px;
         display: flex;
         /* background-color: chocolate; */
         margin-bottom: 30px;
@@ -423,21 +419,10 @@
         background-color: #11161c;
     }
 
-    .caixa-informacao-rodape
-    {
-        width: auto;
-        height: 500px;
-        float: left;
-        align-items: center;
-        justify-content: center;
-        /* display: flex; */
-        /* background-color: blue; */
-    }
-    
     .caixas-conteudo-rodape1
     {
         width: 250px;
-        height: 150px;
+        height: 230px;
         /* background-color: chocolate; */
         margin-top: 20px;
         box-sizing: border-box;
@@ -446,6 +431,7 @@
         float: left;
     }
     
+
     .caixas-conteudo-rodape-responsiva
     {
         width: 100%;
@@ -465,27 +451,10 @@
         /* background-color: blue; */
     }
 
-    .itens
-    {
-        font-size: 16px;
-        text-decoration: none;
-        color: #ffffff;
-        font-weight: normal;
-        margin-left: 5px;
-    }
-
-    .itens:hover
-    {
-        color: #77C9D4;
-        transition: 0.8s;
-        font-weight: normal;
-        cursor: pointer;
-        /* text-decoration: underline; */
-    }
-
     .linha-responsiva
     {
-        width: 670px;
+        width: 710px;
+        height: auto;
         clear: both;
     }
 
@@ -499,16 +468,12 @@
 
     .tamanho-icone
     {
-        width: 170px;
-        height: 65px;
         visibility: hidden;
     }
 
     .text-desktop
     {
         visibility: hidden;
-        height: 0px;
-        margin-top: -20px;
     }
 
     .tamanho-icone-res
@@ -573,22 +538,25 @@
     {
         font-size: 1.6em;
         font-family: "Lexend Deca";
+        color: #bdbdbd;
     }
 
     .caixa-2
     {
         width: 100%;
+        height: 30px;
         text-align: center;
         align-items: center;
         justify-content: center;
         display: flex;
         margin-top: 10px;
+        /* background-color: blue; */
     }
 
     .itens-rodape
     {
         text-decoration: none;
-        color: #ffffff;
+        color: #bdbdbd;
         font-weight: normal;
         padding-left: 50px;
         box-sizing: border-box;
@@ -616,4 +584,29 @@
         font-size: 1.6em;
         font-family: verdana;
     }
+    
+    .titulos-rodape
+    {
+        font-size: 1.5em;    
+    }
+    
+    .subtitulo-rodape
+    {
+        font-size: 1.4em;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: normal;
+        margin-left: 5px;
+    }
+    
+    .subtitulo-rodape:hover
+    {
+        color: #77C9D4;
+        transition: 0.8s;
+        font-weight: normal;
+    }
+    
+    
+    
+    
 }
