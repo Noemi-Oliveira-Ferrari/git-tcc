@@ -447,12 +447,6 @@ body{
         box-shadow: 10px 0px 30px #000000;
     }    
     
-
-    
-   
-    
-    
-    
     .container-centro
     {
         width: 1200px;
@@ -520,11 +514,22 @@ body{
     {
         width: 80px;
         height: 80px;
-        background-color: #d6d6d6;
+        /* background-color: #b80000; */
         border-radius: 10px;
         margin-left: auto;
         margin-right: auto;
     }
+
+    .logotipo img
+    {
+        width: 80px;
+        height: 80px;
+        /* background-color: #b80000; */
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 
     .texto-centro
     {
