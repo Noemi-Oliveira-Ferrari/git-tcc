@@ -3,17 +3,13 @@ package br.senai.sp.daumhelp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import br.senai.sp.daumhelp.configretrofit.RetroFitConfig;
@@ -23,14 +19,13 @@ import br.senai.sp.daumhelp.recursos.GerarCodEmail;
 import br.senai.sp.daumhelp.recursos.Mascara;
 import br.senai.sp.daumhelp.model.Confirmacao;
 import br.senai.sp.daumhelp.recursos.MascaraCpfCnpj;
-import br.senai.sp.daumhelp.recursos.ValidarCpf;
 import br.senai.sp.daumhelp.recursos.ValidarCpfCnpj;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class CadastroProfissionalActivity1 extends AppCompatActivity {
+public class CadastroDadosPessoaisActivity extends AppCompatActivity {
 
     private Button btnProximo;
     private Button btnVoltar;
@@ -40,99 +35,123 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
     private EditText etEmail;
     private EditText etSenha;
     private EditText etConfirmacao;
+    private TextView tvTitulo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_pro1);
+        setContentView(R.layout.activity_cadastro_dados_pessoais);
 
         btnProximo = findViewById(R.id.btn_proximo);
         btnVoltar = findViewById(R.id.btn_voltar);
-        etNome = findViewById(R.id.et_nome_pro);
-        etDataNasc = findViewById(R.id.et_nasc_pro);
-        etCpf = findViewById(R.id.et_cpf_pro);
-        etEmail = findViewById(R.id.et_email_pro);
-        etSenha = findViewById(R.id.et_senha_pro);
-        etConfirmacao = findViewById(R.id.et_confirm_pro);
+        etNome = findViewById(R.id.et_nome);
+        etDataNasc = findViewById(R.id.et_nasc);
+        etCpf = findViewById(R.id.et_cpf);
+        etEmail = findViewById(R.id.et_email);
+        etSenha = findViewById(R.id.et_senha);
+        etConfirmacao = findViewById(R.id.et_confirm);
+        tvTitulo = findViewById(R.id.tv_titulo);
 
-        Intent intent = getIntent();
-        if(intent.getSerializableExtra("dados_pessoais_pro") != null) {
-            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
+        Mascara maskData = new Mascara("##/##/####", etDataNasc);
+        etDataNasc.addTextChangedListener(maskData);
+
+        final Intent intent = getIntent();
+
+        if(intent.getSerializableExtra("tipo_usuario") != null) {
+
+            String tipoUsuario = (String) intent.getSerializableExtra("tipo_usuario");
+
+            Toast.makeText(this, tipoUsuario, Toast.LENGTH_SHORT).show();
+
+            if(tipoUsuario.equals("c")){
+                Mascara maskCpf = new Mascara("###.###.###-##", etCpf);
+                etCpf.addTextChangedListener(maskCpf);
+                tvTitulo.setText("Cadastre-se para contratar \n serviços");
+                etCpf.setHint("CPF");
+
+            }else if(tipoUsuario.equals("p")){
+                tvTitulo.setText("Cadastre-se para oferecer \n seus serviços");
+                etCpf.setHint("CPF/CNPJ");
+                etCpf.addTextChangedListener(MascaraCpfCnpj.insert(etCpf));
+            }
+        }
+
+        if(intent.getSerializableExtra("dados_pessoais") != null) {
+            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais");
             etNome.setText(listaDados[0]);
             etDataNasc.setText(listaDados[1]);
             etCpf.setText(listaDados[2]);
             etEmail.setText(listaDados[3]);
             etSenha.setText(listaDados[4]);
             etConfirmacao.setText(listaDados[4]);
+            Toast.makeText(this, listaDados[6], Toast.LENGTH_SHORT).show();
+
+            if(listaDados[6].equals("c")){
+                Mascara maskCpf = new Mascara("###.###.###-##", etCpf);
+                etCpf.addTextChangedListener(maskCpf);
+                tvTitulo.setText("Cadastre-se para contratar \n serviços");
+                etCpf.setHint("CPF");
+
+            }else if(listaDados[6].equals('p')){
+                tvTitulo.setText("Cadastre-se para oferecer \n seus serviços");
+                etCpf.setHint("CPF/CNPJ");
+                etCpf.addTextChangedListener(MascaraCpfCnpj.insert(etCpf));
+            }
+
         }
-
-        Mascara maskData = new Mascara("##/##/####", etDataNasc);
-
-        etDataNasc.addTextChangedListener(maskData);
-        etCpf.addTextChangedListener(MascaraCpfCnpj.insert(etCpf));
-
 
         btnProximo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 /*PEGAR DADOS QUE O USUÁRIO DIGITOU*/
-                String nomeProfissional = etNome.getText().toString();
-                String dataNascProfissional = etDataNasc.getText().toString();
-                String cpfProfissional = etCpf.getText().toString();
-                String emailProfissional = etEmail.getText().toString();
-                String senhaProfissional = etSenha.getText().toString();
-                String senhaCriptografada = EncryptString.gerarHash(senhaProfissional);
-                String confirmacaoProfissional = etConfirmacao.getText().toString();
+                String nome = etNome.getText().toString();
+                String dataNasc = etDataNasc.getText().toString();
+                String cpf = etCpf.getText().toString();
+                String email = etEmail.getText().toString();
+                String senha = etSenha.getText().toString();
+                String confirmacaoSenha = etConfirmacao.getText().toString();
 
                 String codigoEmail = String.valueOf(GerarCodEmail.gerarCodigo());
 
                 String[] listaDados = {""};
 
-
-
                 if(etConfirmacao.getText().toString().equals(etSenha.getText().toString())){
 
                     /*SERIALIZAÇÃO DOS DADOS*/
-
                     if(validar() == true) {
 
-                        Date data = Data.stringToDate(dataNascProfissional);
-                        String dataFormatada = Data.dataToString(data);
-
                         if(etCpf.getText().length() <= 15){
-                            if(ValidarCpfCnpj.calcCpf(cpfProfissional)){
+                            if(ValidarCpfCnpj.calcCpf(cpf)){
                                 /*ARRAY DOS DADOS PESSOAIS PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
-                                listaDados = new String[]{nomeProfissional, dataFormatada, cpfProfissional, emailProfissional, senhaCriptografada, codigoEmail};
+                                String tipoUsuario = (String) intent.getSerializableExtra("tipo_usuario");
+                                listaDados = new String[]{nome, dataNasc, cpf, email, senha, codigoEmail, tipoUsuario};
                             } else{
                                 etCpf.setError("CPF inválido");
                             }
                         }else{
-                            if(ValidarCpfCnpj.calcCnpj(cpfProfissional)){
+                            if(ValidarCpfCnpj.calcCnpj(cpf)){
                                 /*ARRAY DOS DADOS PESSOAIS PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
-                                listaDados = new String[]{nomeProfissional, dataNascProfissional, cpfProfissional, emailProfissional, senhaProfissional, codigoEmail};
-                                Toast.makeText(CadastroProfissionalActivity1.this, cpfProfissional+"", Toast.LENGTH_SHORT).show();
+                                String tipoUsuario = (String) intent.getSerializableExtra("tipo_usuario");
+                                listaDados = new String[]{nome, dataNasc, cpf, email, senha, codigoEmail, tipoUsuario};
                             } else{
-                                Toast.makeText(CadastroProfissionalActivity1.this, cpfProfissional+"KKK", Toast.LENGTH_SHORT).show();
                                 etCpf.setError("CNPJ inválido");
                             }
                         }
 
 
-
+                        /* ENVIANDO O CÓDIGO DE CONFIRMAÇÃO DO EMAIL PARA O USUÁRIO*/
                         Confirmacao confirmacao = new Confirmacao();
                         confirmacao.setCodigoConfirm(String.valueOf(codigoEmail));
-                        confirmacao.setDestinatario(emailProfissional);
-                        confirmacao.setNome(nomeProfissional);
+                        confirmacao.setDestinatario(email);
+                        confirmacao.setNome(nome);
 
+                        /*LEMBRAR DE FAZER CONFIRMAR EMAIL PARA OS DOIS TIPOS DE USUARIO*/
                         Call<Confirmacao> call = new RetroFitConfig().getProfissionalService().confirmarEmail(confirmacao);
                         call.enqueue(new Callback<Confirmacao>() {
                             @Override
                             public void onResponse(Call<Confirmacao> call, Response<Confirmacao> response) {
-
                                 response.body();
-
-
                             }
 
                             @Override
@@ -141,18 +160,16 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
                             }
                         });
 
-                       Intent intent = new Intent(CadastroProfissionalActivity1.this, ConfirmarEmailActivity.class);
-                        intent.putExtra("dados_pessoais_pro", listaDados);
+                        Intent intent = new Intent(CadastroDadosPessoaisActivity.this, ConfirmarEmailActivity.class);
+                        intent.putExtra("dados_pessoais", listaDados);
                         startActivity(intent);
 
                     }
-
                 }else{
-                    Toast.makeText(CadastroProfissionalActivity1.this, "As senhas não correspondem", Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(CadastroDadosPessoaisActivity.this, "As senhas não correspondem", Toast.LENGTH_SHORT).show();
 
                 }
-
-
             }
         });
 
@@ -160,15 +177,11 @@ public class CadastroProfissionalActivity1 extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(CadastroProfissionalActivity1.this, EscolhaActivity.class);
+                Intent intent = new Intent(CadastroDadosPessoaisActivity.this, EscolhaActivity.class);
                 startActivity(intent);
             }
         });
-
-
-
     }
-
 
     private boolean validar(){
         boolean validado = true;

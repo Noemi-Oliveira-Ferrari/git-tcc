@@ -9,6 +9,7 @@ import android.view.View;
 public class EscolhaActivity extends AppCompatActivity {
 
     private CardView cvProfissional;
+    private CardView cvCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,14 +17,26 @@ public class EscolhaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_escolha);
 
         cvProfissional = findViewById(R.id.cv_pro);
+        cvCliente = findViewById(R.id.cv_cliente);
 
         cvProfissional.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(EscolhaActivity.this, CadastroProfissionalActivity1.class);
+                Intent intent = new Intent(EscolhaActivity.this, CadastroDadosPessoaisActivity.class);
+                intent.putExtra("tipo_usuario", "p");
                 startActivity(intent);
             }
         });
+
+        cvCliente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(EscolhaActivity.this, CadastroDadosPessoaisActivity.class);
+                intent.putExtra("tipo_usuario", "c");
+                startActivity(intent);
+            }
+        });
+
 
     }
 

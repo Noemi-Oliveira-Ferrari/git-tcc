@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import br.senai.sp.daumhelp.configretrofit.RetroFitConfig;
 import br.senai.sp.daumhelp.recursos.Mascara;
@@ -15,7 +16,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CadastroProfissionalActivity2 extends AppCompatActivity{
+public class CadastroEnderecoActivity extends AppCompatActivity{
 
     private Button btnProximo;
     private Button btnVoltar;
@@ -32,15 +33,15 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_pro2);
+        setContentView(R.layout.activity_cadastro_endereco);
 
         btnProximo = findViewById(R.id.btn_proximo);
         btnVoltar = findViewById(R.id.btn_voltar);
-        etCep = findViewById(R.id.et_cep_pro);
-        etUf = findViewById(R.id.et_uf_pro);
-        etLogradouro = findViewById(R.id.et_logradouro_pro);
-        etBairro = findViewById(R.id.et_bairro_pro);
-        etCidade = findViewById(R.id.et_cidade_pro);
+        etCep = findViewById(R.id.et_cep);
+        etUf = findViewById(R.id.et_uf);
+        etLogradouro = findViewById(R.id.et_logradouro);
+        etBairro = findViewById(R.id.et_bairro);
+        etCidade = findViewById(R.id.et_cidade);
         btnCep = findViewById(R.id.btn_gerar_cep);
 
         // btnProximo.setVisibility(View.INVISIBLE);
@@ -50,14 +51,12 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
         etBairro.setEnabled(false);
         etCidade.setEnabled(false);
 
-
         Mascara maskCep = new Mascara("#####-###", etCep);
         etCep.addTextChangedListener(maskCep);
 
         btnCep.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 String cep = etCep.getText().toString();
                 /*VALIDAÇÃO DO TAMANHO DO CEP*/
@@ -89,15 +88,16 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
 
         /*PEGANDO OS DADOS DA INTENT PASSADA*/
         Intent intent = getIntent();
-        if(intent.getSerializableExtra("dados_pessoais_pro") != null){
-            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
+        if(intent.getSerializableExtra("dados_pessoais") != null){
+            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais");
+
+            Toast.makeText(this, listaDados[6], Toast.LENGTH_SHORT).show();
 
             btnProximo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
-
-                    if(validar() == true){
+                    if(validar() == true) {
 
                         /*PEGANDO OS DADOS DO ENDEREÇO DO USUÁRIO*/
                         String cep = etCep.getText().toString();
@@ -109,26 +109,37 @@ public class CadastroProfissionalActivity2 extends AppCompatActivity{
                         /*ARRAY DO ENDEREÇO PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
                         String[] listaEndereco = new String[]{cep, logradouro, bairro, idCidade.toString()};
 
+                        if(listaDados[6].equals("p")){
+                            Intent intent = new Intent(CadastroEnderecoActivity.this, CadastroServicoActivity.class);
+                            intent.putExtra("endereco", listaEndereco);
+                            intent.putExtra("dados_pessoais", listaDados);
+                            startActivity(intent);
+                        }else if(listaDados[6].equals("c")
+                        ){
+                            Intent intent = new Intent(CadastroEnderecoActivity.this, CadastroTermosActivity.class);
+                            intent.putExtra("endereco", listaEndereco);
+                            intent.putExtra("dados_pessoais", listaDados);
+                            startActivity(intent);
+                        }
 
-                        Intent intent = new Intent(CadastroProfissionalActivity2.this, CadastroProfissionalActivity3.class);
-                        intent.putExtra("endereco_pro", listaEndereco);
-                        intent.putExtra("dados_pessoais_pro", listaDados);
-                        startActivity(intent);
+
                     }
+                }
+            });
 
+            btnVoltar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(CadastroEnderecoActivity.this, CadastroDadosPessoaisActivity.class);
+                    intent.putExtra("dados_pessoais", listaDados);
+                    intent.putExtra("tipo_usuario", listaDados[6]);
+                    startActivity(intent);
 
                 }
             });
         }
 
 
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CadastroProfissionalActivity2.this, CadastroProfissionalActivity1.class);
-                startActivity(intent);
-            }
-        });
 
     }
 

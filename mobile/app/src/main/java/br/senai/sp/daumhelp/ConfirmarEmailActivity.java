@@ -9,7 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import br.senai.sp.daumhelp.recursos.GerarCodEmail;
+import java.util.Date;
+
+import br.senai.sp.daumhelp.recursos.Data;
 
 public class ConfirmarEmailActivity extends AppCompatActivity {
 
@@ -29,30 +31,32 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
         etCodigo = findViewById(R.id.et_codigo);
         tvEmail = findViewById(R.id.tv_email);
 
-
-
-
         Intent intent = getIntent();
-        if(intent.getSerializableExtra("dados_pessoais_pro") != null){
-            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
+        if(intent.getSerializableExtra("dados_pessoais") != null){
+            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais");
             tvEmail.setText(listaDados[3]);
+
+            Toast.makeText(this, listaDados[6] + listaDados[1], Toast.LENGTH_SHORT).show();
 
             tvAlterar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(ConfirmarEmailActivity.this, CadastroProfissionalActivity1.class);
-                    intent.putExtra("dados_pessoais_pro", listaDados);
+                    Intent intent = new Intent(ConfirmarEmailActivity.this, CadastroDadosPessoaisActivity.class);
+                    intent.putExtra("dados_pessoais", listaDados);
+                    intent.putExtra("tipo_usuario", listaDados[6]);
                     startActivity(intent);
                 }
             });
+
+
 
             btnConfirmar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     if(etCodigo.getText().toString().equals(listaDados[5])){
 
-                        Intent intent = new Intent(ConfirmarEmailActivity.this, CadastroProfissionalActivity2.class);
-                        intent.putExtra("dados_pessoais_pro", listaDados);
+                        Intent intent = new Intent(ConfirmarEmailActivity.this, CadastroEnderecoActivity.class);
+                        intent.putExtra("dados_pessoais", listaDados);
                         startActivity(intent);
                     }else{
                         Toast.makeText(ConfirmarEmailActivity.this, "Código incorreto", Toast.LENGTH_SHORT).show();

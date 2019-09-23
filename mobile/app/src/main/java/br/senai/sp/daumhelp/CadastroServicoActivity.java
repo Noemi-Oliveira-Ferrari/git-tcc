@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CadastroProfissionalActivity3 extends AppCompatActivity {
+public class CadastroServicoActivity extends AppCompatActivity {
 
     private Button btnProximo;
     private Button btnVoltar;
@@ -42,7 +41,7 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_pro3);
+        setContentView(R.layout.activity_cadastro_servico);
 
 
         btnProximo = findViewById(R.id.btn_proximo);
@@ -53,11 +52,11 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
         spinnerSubcategoria = findViewById(R.id.spn_subcategoria);
 
         Intent intent = getIntent();
-        if(intent.getSerializableExtra("dados_pessoais_pro") != null ){
-            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais_pro");
+        if(intent.getSerializableExtra("dados_pessoais") != null ){
+            final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais");
 
-            if(intent.getSerializableExtra("endereco_pro") != null ){
-                final String[] listaEndereco = (String[]) intent.getSerializableExtra("endereco_pro");
+            if(intent.getSerializableExtra("endereco") != null ){
+                final String[] listaEndereco = (String[]) intent.getSerializableExtra("endereco");
 
                 btnProximo.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -69,13 +68,13 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
 
                         String[] listaServ = new String[]{qualificacoes, valorHora, idSub.toString()};
 
-                       // Toast.makeText(CadastroProfissionalActivity3.this, listaServ[2] , Toast.LENGTH_SHORT).show();
+                       // Toast.makeText(CadastroServicoActivity.this, listaServ[2] , Toast.LENGTH_SHORT).show();
 
                         if(validar() == true){
 
-                            Intent intent = new Intent(CadastroProfissionalActivity3.this, CadastroProfissionalActivity4.class);
-                            intent.putExtra("dados_pessoais_pro", listaDados);
-                            intent.putExtra("endereco_pro", listaEndereco);
+                            Intent intent = new Intent(CadastroServicoActivity.this, CadastroTermosActivity.class);
+                            intent.putExtra("dados_pessoais", listaDados);
+                            intent.putExtra("endereco", listaEndereco);
                             intent.putExtra("serv_pro", listaServ);
                             startActivity(intent);
 
@@ -111,7 +110,7 @@ public class CadastroProfissionalActivity3 extends AppCompatActivity {
         btnVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CadastroProfissionalActivity3.this, CadastroProfissionalActivity2.class);
+                Intent intent = new Intent(CadastroServicoActivity.this, CadastroEnderecoActivity.class);
                 startActivity(intent);
             }
         });

@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
+    android:id="@+id/constraint"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="230dp"
-        android:layout_marginTop="20dp"
-        android:text="Endereço"
-        android:textColor="@color/colorTest"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout2"
@@ -37,31 +28,29 @@
             android:layout_toRightOf="@id/textView"
             android:background="@color/colorTest" />
 
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_toRightOf="@id/textView2"
-            android:background="@color/colorTest" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="75dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_toRightOf="@id/textView3"
-            android:background="@color/colorTest" />
-
 
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/tv_txt_pro"
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="270dp"
+        android:text="Dados \n Pessoais"
+        android:textAlignment="center"
+        android:textColor="@color/colorTest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_titulo"
         android:layout_width="wrap_content"
         android:layout_height="51dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginStart="66dp"
         android:layout_marginTop="70dp"
-        android:text="Informe sua região"
         android:textAlignment="center"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -70,107 +59,106 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_cep_pro"
+        android:id="@+id/et_nome"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="36dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
-        android:drawableLeft="@drawable/ic_cep"
+        android:layout_marginTop="30dp"
+        android:drawableLeft="@drawable/ic_user"
         android:ems="10"
-        android:hint="CEP"
+        android:hint="Nome"
+        android:inputType="textPersonName"
+        android:maxLength="100"
+        app:layout_constraintBottom_toTopOf="@+id/et_nasc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_titulo"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/et_nasc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_date"
+        android:ems="10"
+        android:hint="Data de nascimento"
+        android:inputType="date"
+        app:layout_constraintBottom_toTopOf="@+id/et_cpf"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_nome" />
+
+    <EditText
+        android:id="@+id/et_cpf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_cpf"
+        android:ems="10"
+        android:hint="CNPJ/CPF"
         android:inputType="number"
-        android:maxLength="9"
-        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toTopOf="@+id/et_email"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_txt_pro" />
+        app:layout_constraintTop_toBottomOf="@+id/et_nasc" />
 
     <EditText
-        android:id="@+id/et_uf_pro"
+        android:id="@+id/et_email"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="36dp"
-        android:drawableLeft="@drawable/ic_estado"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_email"
         android:ems="10"
-        android:hint="UF"
+        android:hint="E-mail"
+        android:maxLength="100"
         android:inputType="textPersonName"
-        android:textColor="@android:color/background_dark"
+        app:layout_constraintBottom_toTopOf="@+id/et_senha"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cidade_pro" />
+        app:layout_constraintTop_toBottomOf="@+id/et_cpf" />
 
     <EditText
-        android:id="@+id/et_logradouro_pro"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
+        android:id="@+id/et_senha"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="15dp"
-        android:drawableLeft="@drawable/ic_logradouro"
+        android:layout_marginTop="10dp"
+        android:drawableLeft="@drawable/ic_pass"
         android:ems="10"
-        android:hint="Logradouro"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Senha"
+        android:inputType="textPassword"
+        android:maxLength="50"
+        app:layout_constraintEnd_toStartOf="@+id/et_confirm"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cep_pro" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <EditText
-        android:id="@+id/et_bairro_pro"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="15dp"
-        android:drawableLeft="@drawable/ic_bairro"
+        android:id="@+id/et_confirm"
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="45dp"
+        android:layout_marginTop="10dp"
         android:ems="10"
-        android:hint="Bairro"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/background_dark"
+        android:hint="Confirmar"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_logradouro_pro" />
-
-    <EditText
-        android:id="@+id/et_cidade_pro"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="15dp"
-        android:drawableLeft="@drawable/ic_cidade"
-        android:ems="10"
-        android:hint="Cidade"
-        android:inputType="textPersonName"
-        android:textColor="@android:color/background_dark"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_bairro_pro" />
-
-
-    <Button
-        android:id="@+id/btn_gerar_cep"
-        android:layout_width="97dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:textSize="13dp"
-        android:background="#00FFFFFF"
-        android:drawableRight="@drawable/ic_confirmed"
-        android:text="Verificar CEP"
-        android:textColor="@color/colorTest"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.3"
-        app:layout_constraintStart_toEndOf="@+id/et_cep_pro"
-        app:layout_constraintTop_toBottomOf="@+id/tv_txt_pro" />
+        app:layout_constraintStart_toEndOf="@+id/et_senha"
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
