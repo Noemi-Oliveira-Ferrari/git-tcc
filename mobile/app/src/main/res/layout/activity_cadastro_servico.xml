@@ -16,7 +16,7 @@
         android:layout_marginTop="8dp"
         android:drawableLeft="@drawable/ic_valor"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
@@ -29,7 +29,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Valor/Hora:"
-        android:inputType="numberDecimal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
