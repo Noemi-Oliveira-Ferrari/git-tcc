@@ -58,7 +58,6 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
 
             String tipoUsuario = (String) intent.getSerializableExtra("tipo_usuario");
 
-            Toast.makeText(this, tipoUsuario, Toast.LENGTH_SHORT).show();
 
             if(tipoUsuario.equals("c")){
                 Mascara maskCpf = new Mascara("###.###.###-##", etCpf);
@@ -81,7 +80,6 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
             etEmail.setText(listaDados[3]);
             etSenha.setText(listaDados[4]);
             etConfirmacao.setText(listaDados[4]);
-            Toast.makeText(this, listaDados[6], Toast.LENGTH_SHORT).show();
 
             if(listaDados[6].equals("c")){
                 Mascara maskCpf = new Mascara("###.###.###-##", etCpf);

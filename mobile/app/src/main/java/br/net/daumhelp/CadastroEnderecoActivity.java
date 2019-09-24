@@ -91,8 +91,6 @@ public class CadastroEnderecoActivity extends AppCompatActivity{
         if(intent.getSerializableExtra("dados_pessoais") != null){
             final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais");
 
-            Toast.makeText(this, listaDados[6], Toast.LENGTH_SHORT).show();
-
             btnProximo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
