@@ -13,7 +13,7 @@ h3, h4, h5, h6, div, figure, section{
 }
 
 @font-face{
-    font-family: 'Manjari-Regular';
+    font-family: 'Manjari';
     src: url("../fontes/Manjari-Regular.ttf");
 
 }
@@ -179,11 +179,7 @@ body{
     
     }
     
-<<<<<<< HEAD
-    .img{
-=======
     .icon-escolha{
->>>>>>> card-12
         max-height: 200px;
         /* background-color:#A5A5AF; */
         margin-left: 25%;
@@ -433,8 +429,7 @@ body{
 /* ***************** TELA DE LOGIN **************** */
 
 /*----- Web-Desktop -----*/
-@media screen and (min-device-width:1000px)
-{
+@media screen and (min-device-width:1000px){
 
     .float
     {
@@ -450,12 +445,6 @@ body{
         background-color: #000000;
         box-shadow: 10px 0px 30px #000000;
     }    
-    
-
-    
-   
-    
-    
     
     .container-centro
     {
@@ -524,11 +513,22 @@ body{
     {
         width: 80px;
         height: 80px;
-        background-color: #d6d6d6;
+        /* background-color: #b80000; */
         border-radius: 10px;
         margin-left: auto;
         margin-right: auto;
     }
+
+    .logotipo img
+    {
+        width: 80px;
+        height: 80px;
+        /* background-color: #b80000; */
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
 
     .texto-centro
     {
@@ -657,8 +657,7 @@ body{
 }
 
 /*----- Web-Responsivo -----*/
-@media screen and (max-device-width:880px)
-{
+@media screen and (max-device-width:880px){
 
     
     /*----- Cabeçalho -----*/
@@ -843,3 +842,407 @@ body{
         /* background-color: #77c9d4; */
     }
 }
+
+/* ***************** TELA DE CONFIRMAÇAO **************** */
+
+/* DESKTOOPPPPP */
+@media screen and (min-device-width:1000px){
+
+    
+    /* CONTEUDO */
+    
+    section{
+        width: 800px;
+        min-height: 800px;
+        /* background-color: rgb(48, 202, 202); */
+        margin: auto;
+    }
+    
+    .caixa-confirmacao{
+        width: 700px;
+        height: 700px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 10px 10px 15px #015249;                                                                                      ;
+        border-radius: 10px;
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-around
+    }
+    
+    .title-confirmacao{
+        width: 550px;
+        height: 150px;
+        text-align: center;
+        /* background-color: #77C9D4; */
+        font-size: 40px;
+        color: #84848D;
+        border-radius: 10px;
+        box-sizing: border-box;
+        /* padding-top: 30px; */
+        font-family: 'Lexend Deca';
+    }
+    
+    .text-confirmacao{
+        color: #A5A5AF;
+        width: inherit;
+        min-height: 100px;
+        height: auto;
+        overflow: hidden;
+        /* background-color: cadetblue; */
+        font-size: 20px;
+        box-sizing: border-box;
+        padding: 30px;
+        /* padding-top: 80px; */
+        text-align: center;
+        font-family: 'Manjari';
+
+    }
+    
+    .img-email{
+        width:200px;
+        height: 200px;
+        /* background-color: #015249; */
+        background-size: cover;
+    }
+
+    .img-email img{
+        width:200px;
+        height: 200px;
+        /* background-color: #015249; */
+        background-size: cover;
+    }
+    
+    .caixa-input-confirm{
+        width: 330px;
+        height: 50px;
+        /* background-color: #34beae; */
+    }
+    
+    .input-cod-confirm{
+        width: 200px;
+        height: 40px;
+        outline: none;
+        border: none;
+        border-bottom: 1px black solid;
+        font-size: 35px;
+        letter-spacing: 30px;
+        /* text-align: center; */
+        background-color: rgba(222, 222, 231, 0);
+        float: left;
+        margin-right: 20px;
+    }
+    
+    .img-check img{
+        width: 50px;
+        height: 45px;
+        float: left;
+        
+    }
+    #btn-confirm{
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        cursor: pointer;
+    
+    }
+    
+    .links{
+        width: 300px;
+        height: 50px;
+        /* background-color: #015249; */
+        /* margin-top: 30px; */
+        text-decoration: none;
+        flex-direction: column;
+    }
+
+    .links a{
+        text-decoration: none;
+        font-family: 'Manjari';
+        font-size: 20px;
+    }
+    
+    a:hover{
+        text-decoration: underline;
+    }
+
+    /* MODAAALLL */
+.modal{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(87, 188, 144, 0.445);
+}
+
+.caixa-modal{
+    width: 700px;
+    height: 700px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.img-confirm{
+    width:100%;
+    height: 200px;
+    /* background-color: #77C9D4; */
+}
+
+.img-confirm img{
+    width: 200px;
+    height: 100%;
+}
+
+.title-confirm{
+    width:100%;
+    height: 200px;
+    /* background-color: brown; */
+    text-align: center;
+    font-size: 55px;
+    box-sizing: border-box;
+    padding: 30px;
+    color: #84848D;
+}
+
+.text-confirm{
+    width:100%;
+    height: 150px;
+    /* background-color: #77C9D4; */
+    color: #A5A5AF;
+    font-size: 25px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.btn{
+    width:100%;
+    height: 150px;
+    /* background-color: #015249; */
+}
+
+.btn-inicio{
+    width: 60%;
+    height: 80px;
+    font-size: 25px;
+    border-radius: 15px;
+    background-color: #57BC90;
+    color: white;
+}
+    
+    
+    
+    /* FOOTER */
+    
+    footer{
+        width: 100%;
+        height: 150px;
+        background-color: white;
+        position: absolute;
+        bottom: 0%;
+    }
+    
+    #espaco{
+        width: 100%;
+        height: 100px;
+        /* background-color: #015249; */
+    }
+
+
+}
+
+/* RESPONSIVOOOO */
+@media screen and (max-device-width:880px){
+    
+    /* CONTEUDO */
+    
+    section{
+        width: 100%;
+        /* min-height: 80%; */
+        min-height: 100%;
+        height: auto;
+        overflow: hidden;
+        /* background-color: rgb(2, 8, 8); */
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        margin-bottom: 10vw;
+    }
+    
+    .caixa-confirmacao{
+        width: 80%;
+        height: 1200px;
+        background-color: white;
+        /* float: left; */
+        /* margin-right: 10%; */
+        box-shadow: 10px 10px 15px #015249;                                                                                      ;
+        border-radius: 10px;
+        margin-top: 25vw;
+        margin-bottom: 10vw;
+    }
+    
+    .title-confirmacao{
+        width: 550px;
+        height: 20%;
+        text-align: center;
+        /* background-color: #77C9D4; */
+        font-size: 55px;
+        color: #84848D;
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding-top: 30px;
+    }
+    
+    .text-confirmacao{
+        color: #A5A5AF;
+        width: 100%;
+        height: 20%;
+        /* background-color: cadetblue; */
+        font-size: 30px;
+        box-sizing: border-box;
+        padding: 30px;
+        padding-top: 20px;
+        text-align: center;
+    }
+    
+    .img img{
+        width:250px;
+        height: 35%;
+        /* background-color: #015249; */
+        background-size: cover;
+    }
+    
+    .caixa-input-confirm{
+        width: 50%;
+        height: 100px;
+        /* background-color: #e227b9; */
+        flex-wrap: wrap;
+    }
+    
+    .input-cod-confirm{
+        width:100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-bottom: 1px black solid;
+        font-size: 50px;
+        letter-spacing: 30px;
+        /* text-align: center; */
+        /* background-color: rgb(222, 222, 231); */
+        /* float: left; */
+        margin-right: 20px;
+        align-items: center;
+        text-align: center;
+    
+    
+    }
+    
+    .img-check img{
+        width: 90px;
+        height: 85px;
+        /* float: left; */
+        /* background-color: #57BC90; */
+        margin-top: 20px;
+        
+    }
+    #btn-confirm{
+        background-color: rgba(85, 76, 76, 0);
+        border: none;
+        cursor: pointer;
+    
+    }
+    
+    .links{
+        width: 300px;
+        height: 100px;
+        /* background-color: #015249; */
+        margin-top: 150px;
+        text-decoration: none;
+        font-size: 30px;
+        text-align: center;
+    }
+    
+    a:hover{
+        text-decoration: underline;
+    }
+
+    /* MODAAALLL */
+.modal{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(87, 188, 144, 0.445);
+}
+
+.caixa-modal{
+    width: 900px;
+    height: 1000px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.img-confirm{
+    width:100%;
+    height: 300px;
+    /* background-color: #77C9D4; */
+}
+
+.img-confirm img{
+    width: 300px;
+    height: 100%;
+}
+
+.title-confirm{
+    width:100%;
+    height: 250px;
+    /* background-color: brown; */
+    text-align: center;
+    font-size: 60px;
+    box-sizing: border-box;
+    padding: 30px;
+    color: #84848D;
+}
+
+.text-confirm{
+    width:100%;
+    height: 250px;
+    /* background-color: #77C9D4; */
+    color: #A5A5AF;
+    font-size: 35px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.btn{
+    width:100%;
+    height: 200px;
+    /* background-color: #015249; */
+}
+
+.btn-inicio{
+    width: 60%;
+    height: 100px;
+    font-size: 40px;
+    border-radius: 15px;
+    background-color: #57BC90;
+    color: white;
+}
+    
+    
+    
+    /* FOOTER */
+    
+    footer{
+        width: 100%;
+        height: 200px;
+        background-color: white;
+        position: absolute;
+        bottom: 0%;
+    }
+    
+    #espaco{
+        width: 100%;
+        height: 100px;
+        /* background-color: #015249; */
+    }
+
+
+}
+
