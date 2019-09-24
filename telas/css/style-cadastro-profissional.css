@@ -481,7 +481,7 @@ header
         padding: 20px;
         box-sizing: border-box;
     }
-    
+
     .caixa-dir
     {
         width: 360px;
@@ -902,3 +902,4 @@ header
         text-align: justify;
         /* margin-top: 25px; */
     }
+}
