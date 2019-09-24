@@ -40,7 +40,7 @@ public class ProfissionalResource {
 	@Autowired
 	private ProfissionalDTORepository proDTORepository;
 	
-	@GetMapping("/confirmacao")
+	@PostMapping("/confirmacao")
 	@ResponseStatus(code = HttpStatus.OK, reason = "E-mail enviado", value = HttpStatus.OK)
 	public boolean confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
 		return HandleEmails.enviar(confirm);
