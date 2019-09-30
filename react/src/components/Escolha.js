@@ -1,5 +1,5 @@
 
-import '../css/App.css';
+import '../css/escolha.css';
 import '../utils/cardChooseAnimation';
 import arrowRight from '../img/arrow-point-to-right.png';
 

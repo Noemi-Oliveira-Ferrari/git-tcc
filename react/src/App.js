@@ -2,7 +2,12 @@ import React from 'react';
 import { Component } from 'react';
 
 // css e js
-import './css/App.css';
+import './css/confirmacao.css';
+import './css/login.css';
+import './css/escolha.css';
+import './css/cadastro-pro.css';
+import './css/bootstrap.css';
+
 import './utils/cardChooseAnimation';
 
 // componentes
@@ -11,6 +16,9 @@ import InputLogin from './components/InputLogin';
 import DaUmHelp from './components/DaUmHelp';
 import Login from './components/Login';
 import Confirmacao from './components/Confirmacao';
+import DadosPessoaisPro from './components/DadosPessoaisPro';
+import DadosProfissional from './components/DadosProfissional';
+import CadastroPro from './components/CadastroPro';
 
 
 class App extends Component{
@@ -31,11 +39,19 @@ class App extends Component{
         </Login> */}
 
 {/* TELA DE CONFIRMAÇAO */}
-        <Confirmacao
+        {/* <Confirmacao
           titulo="Verifique seu endereço de e-mail."
           texto="Lorem ipsum dolor sit amet consectetur adipiscing elit ullamcorper velit nullam, lacinia aliquam himenaeos volutpat faucibus magnis torquent imperdiet rutrum, lectus per laoreet erat arcu morbi etiam">
 
-        </Confirmacao>
+        </Confirmacao> */}
+
+{/* TELA DE CADASTRO DO PROFISSIONAL */}
+
+             <CadastroPro>
+               
+             </CadastroPro>
+
+
 
 
             {/* <!-- div para separa o conteudo do footer --> */}

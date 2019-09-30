@@ -1,6 +1,6 @@
 import React from 'react';
 import {Component} from 'react';
-import '../css/App.css';
+import '../css/escolha.css';
 import '../utils/cardChooseAnimation';
 import customer from '../img/customer-ai.png';
 import worker from '../img/worker-ai.png';

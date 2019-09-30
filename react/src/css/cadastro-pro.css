@@ -1,0 +1,628 @@
+﻿
+
+/*----- Padronização -----*/
+body
+{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    /*background-color: #ffffff;*/
+    background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
+    /*background-image: url("../imagens/90577.jpg");*/
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@font-face{
+    font-family: 'Lexend Deca';
+    src: url("../fontes/LexendDeca-Regular.ttf");
+
+}
+
+@font-face{
+    font-family: 'Manjari';
+    src: url("../fontes/Manjari-Regular.ttf");
+
+}
+
+
+.centro
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body, html
+{
+    height: 100%;
+}
+
+* html #all
+{
+    height: 100%;
+}
+
+h3
+{
+    font-family: "Lexend Deca";
+    font-size: 25px;
+}
+
+label
+{
+    font-family: "Manjari";
+    font-size: 20px;
+}
+
+.flex-center
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*----- Cabeçalho -----*/
+header
+{
+    width: 100%;
+    height: 80px;
+    background-color: #000000;
+    box-shadow: 10px 0px 30px #000000;
+}
+/*----- Formataçao -----*/
+
+
+.texto-centro
+{
+    text-align: center;
+}
+
+.texto-esquerda
+{
+    text-align: left;
+}
+
+.texto-direita
+{
+    text-align: right;
+}
+
+
+
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px){
+    #all{
+        min-height: 100%;
+        position: relative;
+    }
+    
+    /*----- Conteudo -----*/
+    .container-conteudo
+    {
+        width: 1200px;
+        min-height: 700px;
+        height: auto;
+        overflow: hidden;
+        margin: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        box-sizing: border-box;
+    }
+
+    .card-formulario-pessoal,
+    .card-formulario-servico
+    {
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+    .card-formulario-pessoal
+    {
+        width: 850px;
+        min-height: 600px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
+    .card-formulario-servico
+    {
+        width: 850px;
+        height: 400px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
+    .title-card
+    {
+        width: inherit;
+        height: fit-content;
+        box-sizing: border-box;
+        padding-left: 50px;
+        margin-top: 15px;
+        color: #00000071;
+        /* background-color: rgb(245, 245, 220); */
+    }
+ 
+   
+    .form-inputs
+    {
+        flex-direction: column;
+    }
+    .container-servico-pro
+    {
+        width: 350px;
+        height: 260px;
+        /* background-color: #984366; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .campos-dados
+    {
+        width: 750px;
+        height: 450px;
+        /* background-color: violet; */
+    }
+    
+    #txt-nome,
+    #txt-dataNasc,
+    #txt-cpfCnpj,
+    #txt-email,
+    #txt-senha,
+    #txt-confirmar-senha,
+    #txt-cep,
+    #txt-logradouro,
+    #txt-bairro,
+    #txt-cidade,
+    #txt-uf,
+    #txt-categoria,
+    #txt-subcat,
+    #txt-valor-hora{
+        height: 50px;
+        font-family: "manjari regular";
+        font-size: 22px;
+        box-sizing: border-box;
+        padding-top: 10px;
+        background-color: #d3e0e0;
+
+    }
+    #txt-uf{
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .container-nome-dataNasc,
+    .container-cpfCnpj-email,
+    .container-senha,
+    .container-cep-logradouro,
+    .container-bairro-cidade-uf,
+    .container-categoria,
+    .container-subcat,
+    .container-valor-hora
+    {
+        width: inherit;
+        height: fit-content;
+        /* background-color: rgb(219, 231, 110); */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2px;
+    }
+
+    .form-input
+    {
+        margin-top: -25px;
+    }
+    
+    .form-input-pro
+    {
+        margin-top: -8px;
+    }
+
+    .caixa-nome, .caixa-dataNasc,
+    .caixa-cpfCnpj, .caixa-email,
+    .caixa-senha, .caixa-confirmar-senha,
+    .caixa-cep, .caixa-logradouro,
+    .caixa-bairro, .caixa-cidade,
+    .caixa-uf
+    {
+        height: 90px;
+        /* background-color: rgb(57, 207, 115); */
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+    }
+
+    .caixa-nome
+    {
+        width: 365px;
+    }
+    .caixa-dataNasc
+    {
+        width: 365px;
+    }
+    .caixa-cpfCnpj
+    {
+        width: 275px;
+    }
+    .caixa-email
+    {
+        width: 455px;
+    }
+    .caixa-senha
+    {
+        width: 365px;
+    }
+    .caixa-confirmar-senha 
+    {
+        width: 365px;
+    }
+
+    .caixa-cep
+    {
+        width: 265px;
+    }
+
+    .caixa-logradouro
+    {
+        width: 465px;
+    }
+
+    .caixa-bairro
+    {
+        width: 310px;
+    }
+
+    .caixa-cidade
+    {
+        width: 350px;
+    }
+    
+    .caixa-uf
+    {
+        width: 60px;
+    }
+   
+    
+
+    .campos-servicos
+    {
+        width: 800px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        /* background-color: #f7dede; */
+    }
+
+    .caixa-categoria,
+    .caixa-subcat,
+    .caixa-valor-hora
+    {
+        width: 330px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        flex-wrap: wrap;
+        /* background-color: #57bc90; */
+    }
+    .container-qualificacoes{
+        width: inherit;
+        height: inherit;
+        /* background-color: #57bc90; */
+    }
+ 
+    .caixa-qualificacoes
+    {        
+        width: inherit;
+        height: inherit;
+        justify-content: space-around;
+        box-sizing: border-box;
+        padding-top: 5px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: start;
+        flex-wrap: wrap;
+    }
+
+    #txt-qualificacoes
+    {
+        height: 225px;
+        resize: none;
+        overflow: auto;
+        font-size: 22px;
+        font-family: "manjari regular";
+        background-color: #d3e0e0;
+    }
+
+    /*----- Rodapé -----*/
+    .espaco
+    {
+        width: 100%;
+        height: 150px;
+    }
+    footer
+    {
+        width: 100%;
+        height: 150px;
+        background-color: #000000;
+        position: absolute;
+        bottom: 0%;
+    }
+
+}
+
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:880px){
+    #all{
+        height: 100%;
+    }
+    /*----- Conteudo -----*/
+    .container-conteudo
+    {
+        width: 100%;
+        height: 100%;
+        background-color: rgb(89, 0, 255);
+        margin: auto;
+        box-sizing: border-box;
+        margin-bottom: 20%;
+    }
+
+    /*----- Conteudo -----*/
+
+    .card-formulario-pessoal,
+    .card-formulario-servico
+    {
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        padding: 20px;
+    }
+    .card-formulario-pessoal
+    {
+        width: 95%;
+        min-height: 500px;
+        height: fit-content;
+        overflow: hidden;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+        padding-bottom: 20px;
+    }
+
+    .card-formulario-servico
+    {
+        width: 95%;
+        min-height: 500px;
+        height: fit-content;
+        overflow: hidden;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
+
+    .container-flex
+    {  
+        display: flex;
+        justify-content: center;
+        /* background-color: rgb(95, 248, 56); */
+        padding-top: 20px;
+        height: fit-content;
+        /* padding-bottom: 50px */
+    }
+    
+
+    .title-card
+    {
+        width: 100%;
+        height: fit-content;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 55px;
+        margin-top: 25px;
+        margin-bottom: 25px;
+
+        color: #00000071;
+    }
+
+  
+
+    .campos-servicos
+    {
+        width: 98%;
+        min-height: 500px;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        align-items: start;
+        /* background-color: #129bf6; */
+        flex-wrap: wrap;
+    }
+    
+
+    .container-servico-pro
+    {
+        width: 100%;
+        min-height: 200px;
+        height: auto;
+        overflow: hidden;
+        /* background-color: rgb(230, 32, 32); */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+
+    .campos-dados
+    {
+        width: 100%;
+        height: fit-content;
+        /* background-color: rgb(255, 238, 0); */
+    }
+
+    #txt-nome,
+    #txt-dataNasc,
+    #txt-cpfCnpj,
+    #txt-email,
+    #txt-senha,
+    #txt-confirmar-senha,
+    #txt-cep,
+    #txt-logradouro,
+    #txt-bairro,
+    #txt-cidade,
+    #txt-uf,
+    #txt-categoria,
+    #txt-subcat,
+    #txt-valor-hora{
+        height: 110px;
+        font-family: "manjari regular";
+        font-size: 50px;
+        box-sizing: border-box;
+        /* padding-top: 10px; */
+        background-color: #dee0e0;
+
+    }
+    #txt-uf{
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .container-nome-dataNasc,
+    .container-cpfCnpj-email,
+    .container-senha,
+    .container-cep-logradouro,
+    .container-bairro-cidade-uf,
+    .container-categoria,
+    .container-subcat,
+    .container-valor-hora
+    {
+        width: 100%;
+        height: fit-content;
+        /* background-color: rgb(221, 255, 71); */
+        justify-content: space-around;
+        margin-top: 10px;
+        flex-wrap: wrap;
+    }
+
+    .form-input
+    {
+        margin-top: -25px;
+    }
+    .form-label
+    {
+        font-size: 45px;
+    }
+    .form-input-pro
+    {
+        margin-top: -25px;
+    }
+
+    .caixa-nome, .caixa-dataNasc,
+    .caixa-cpfCnpj, .caixa-email,
+    .caixa-senha, .caixa-confirmar-senha,
+    .caixa-cep, .caixa-logradouro,
+    .caixa-bairro, .caixa-cidade,
+    .caixa-uf
+    {
+        width: 98%;
+        height: 180px;
+        /* background-color: rgb(57, 160, 207); */
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+        margin-top: 15px;
+    }
+
+    .caixa-senha,
+    .caixa-confirmar-senha 
+    {
+        width: 48%;
+    }
+    .caixa-cep
+    {
+        width: 30%;
+    }
+
+    .caixa-logradouro
+    {
+        width: 66%;
+    }
+
+    .caixa-cidade
+    {
+        width: 81%;
+    }
+
+    .caixa-uf
+    {
+        width: 15%;
+    }
+
+    .caixa-categoria,
+    .caixa-subcat,
+    .caixa-valor-hora
+    {
+        width: 100%;
+        height: 180px;
+        /* background-color: rgb(57, 207, 115); */
+        display: flex;
+        align-items: start;
+        justify-content: start;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+    }
+ 
+    .container-qualificacoes{
+        width: 100%;
+        height: 100%;
+        /* background-color: #b457bc; */
+    }
+ 
+    .caixa-qualificacoes
+    {        
+        width: inherit;
+        height: inherit;
+        justify-content: space-around;
+        box-sizing: border-box;
+        padding-top: 18px;
+        /* background-color: rgb(172, 223, 243); */
+    }
+
+    #txt-qualificacoes
+    {
+        height: 350px;
+        resize: none;
+        overflow: auto;
+        background-color: #dee0e0;
+        font-size: 50px;
+    }
+
+    /*----- Rodapé -----*/
+    .espaco
+    {
+        display: none;
+    }
+    footer
+    {
+        display: none;
+        /* width: 100%;
+        height: 300px;
+        background-color: #000000;
+        position: relative;
+        bottom: 0px; */
+    }
+}

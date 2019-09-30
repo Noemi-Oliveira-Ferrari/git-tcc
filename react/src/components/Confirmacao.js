@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/App.css';
+import '../css/confirmacao.css';
 
 import EmailImg from '../img/emailcheck.png';
 import check from '../img/check.png';
@@ -8,7 +8,7 @@ import check from '../img/check.png';
 export class Confirmacao extends Component{
    render(){
     return(
-        <section className="flex-center">
+        <section className="flex-center center">
         <div className="caixa-confirmacao ">
             <div className="title-confirmacao center flex-center">
                 {this.props.titulo}
