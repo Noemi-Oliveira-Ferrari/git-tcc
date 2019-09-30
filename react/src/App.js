@@ -9,6 +9,9 @@ import './utils/cardChooseAnimation';
 import CardsEscolha from './components/CardsEscolha';
 import InputLogin from './components/InputLogin';
 import DaUmHelp from './components/DaUmHelp';
+import Login from './components/Login';
+import Confirmacao from './components/Confirmacao';
+
 
 class App extends Component{
 	render(){
@@ -22,49 +25,19 @@ class App extends Component{
 
 		</CardsEscolha> */}
 
-{/* TELA DO LOGIN */}
-                <div className="container-centro">
-                    <div className="caixa-texto">
-                        <div className="conteudo-caixa-texto">
-                            <h2>Comece a utilizar nossos serviços</h2>
-                        </div>
-                    </div>
-                    <div className="caixa-conteudo">
-                        <div className="card-login">
-                            <div className="conteudo-card">
-                                <div className="logotipo"></div>
+{/* TELA DO LOGIN */}       
+        {/* <Login>
 
-								<DaUmHelp
-									classNome="texto-centro titulo">
-								</DaUmHelp>
+        </Login> */}
 
-                                <form>
-                                    <div className="texto-centro">
+{/* TELA DE CONFIRMAÇAO */}
+        <Confirmacao
+          titulo="Verifique seu endereço de e-mail."
+          texto="Lorem ipsum dolor sit amet consectetur adipiscing elit ullamcorper velit nullam, lacinia aliquam himenaeos volutpat faucibus magnis torquent imperdiet rutrum, lectus per laoreet erat arcu morbi etiam">
 
-										<InputLogin
-											label="E-mail"
-											type="email">
-										</InputLogin>
+        </Confirmacao>
 
-										<InputLogin
-											label="Senha"
-											type="password">
-										</InputLogin>
 
-                                        <button className="btn-entrar">Entrar</button> 
-                                    </div>
-                                </form>
-                                <div className="texto-card texto-direita">
-                                    <p>Ainda não possui uma conta?
-                                        <a className="link-cadastro" href="#">
-                                            <b>Cadastre-se</b>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             {/* <!-- div para separa o conteudo do footer --> */}
             <div id="espaco">
 

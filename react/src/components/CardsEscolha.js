@@ -32,50 +32,6 @@ class CardsEscolha extends Component {
 					seta="seta-customer"
 					idBtn="btn-escolha-customer"/>
 
-	
-					{/* <div class="caixa-profissional">
-						<div class="title-escolha">
-							Profissional
-						</div>
-						<div class="texto-escolha"> 
-							Você poderá cadastrar seus serviços e ser contratado pelos usuários da plataforma
-						</div>
-						<div class="img-escolha" >
-							<figure>
-								<img class="img" src={worker} alt=""/>
-							</figure>
-						</div>
-						<div id="btn-escolha-worker" class="botao-escolha">
-							<div class="seta">
-								<figure>
-									<img class="seta-worker" src={arrowRight} alt=""/>
-								</figure>
-							</div>
-						</div>
-					</div> */}
-				
-	
-	
-					{/* <div class="caixa-cliente">
-						<div class="title-escolha">
-							Cliente 
-						</div>
-						<div class="texto-escolha">
-							Você poderá encontrar diversos profissionais ideais para o serviço que precisar
-						</div>
-						<div class="img-escolha">
-							<figure>
-								<img class="img" src={customer} alt="" />
-							</figure>
-						</div>
-						<div id="btn-escolha-customer" class="botao-escolha">
-							<div class="seta">
-								<figure>
-									<img class="seta-customer" src={arrowRight} alt="" />
-								</figure>
-							</div>
-						</div>
-					</div>*/}
 				</div> 
 			</div>
 		);
