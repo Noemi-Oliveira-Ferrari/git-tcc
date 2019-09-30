@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/cadastro-pro.css';
 import DadosPessoaisPro from './DadosPessoaisPro';
 import DadosProfissional from './DadosProfissional';
+import TermosDeUso from './TermosDeUso';
 
 
 export class CadastroPro extends Component{
@@ -20,7 +21,9 @@ export class CadastroPro extends Component{
 
             </DadosProfissional>
 
+            <TermosDeUso>
                 
+            </TermosDeUso>
             </form>
         </div>
     );

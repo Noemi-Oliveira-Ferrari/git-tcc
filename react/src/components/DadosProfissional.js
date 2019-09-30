@@ -35,7 +35,7 @@ export class DadosProfissional extends Component{
                         <div className="flex-center container-valor-hora">
                             <InputCadastroPro
                             classInputPro="caixa-valor-hora"
-                            label="Valor/Hora::"
+                            label="Valor/Hora:"
                             maxlength=""
                             id="txt-valor-hora"
                             type="text">

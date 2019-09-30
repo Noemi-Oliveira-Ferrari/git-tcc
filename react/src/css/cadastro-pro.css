@@ -63,13 +63,7 @@ label
 }
 
 /*----- Cabeçalho -----*/
-header
-{
-    width: 100%;
-    height: 80px;
-    background-color: #000000;
-    box-shadow: 10px 0px 30px #000000;
-}
+
 /*----- Formataçao -----*/
 
 
@@ -186,11 +180,11 @@ header
     #txt-subcat,
     #txt-valor-hora{
         height: 50px;
-        font-family: "manjari regular";
+        font-family: "Manjari";
         font-size: 22px;
         box-sizing: border-box;
         padding-top: 10px;
-        background-color: #d3e0e0;
+        background-color: #cce5e9;
 
     }
     #txt-uf{
@@ -339,9 +333,186 @@ header
         resize: none;
         overflow: auto;
         font-size: 22px;
-        font-family: "manjari regular";
+        font-family: "Manjari";
         background-color: #d3e0e0;
     }
+
+/* CONTEUDO DA CAIXA DE TERMOS DE USO */
+  
+    .card-formulario-termos
+    {
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+    }
+
+    .card-formulario-termos
+    {
+        width: 850px;
+        height: 500px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
+
+    .caixa-termos
+    {
+        width: 800px;
+        height: 290px;
+        /* background-color: rgb(218, 204, 12); */
+        /* padding-top: 35px; */
+        /* padding-left: 35px;
+        padding-right: 35px; */
+        /* padding-bottom: 0px;             */
+        text-align: justify;
+        /* margin-top: 25px; */
+    }
+
+
+    .caixa-confirmacao
+    {
+        width: 800px;
+        height: 50px;
+        /* background-color: greenyellow; */
+        padding-top: 15px;
+        padding-left: 35px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        /* align-items: center; */
+        box-sizing: border-box;
+        margin-top: 15px;
+        /* flex-direction: column; */
+        box-shadow: none;
+        font-family: "Manjari";
+    }
+
+    .caixa-button
+    {
+        width: inherit;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .btn-voltar
+    {
+        width: 120px;
+        height: 45px;
+        border:0px;
+        background-color: #57bc90;
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 18px;
+        outline: none;
+    }
+
+    .btn-voltar:hover
+    {
+        transition: 0.5s;
+        background-color: #5fce9e;
+        cursor: pointer;
+    }
+
+    .btn-prox
+    {
+        width: 120px;
+        height: 45px;
+        border:0px;
+        background-color: #57bc90;
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 18px;
+        justify-items:right;
+        outline: none;
+    }
+
+    .btn-prox:hover
+    {
+        transition: 0.5s;
+        background-color: #5fce9e;
+        cursor: pointer;
+    }
+
+    .confirmar-termos
+    {
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        margin-top: 2px;
+    }
+
+    .text-termos
+    {
+        width: 780px;
+        height: 270px;
+        /* max-height: 290px; */
+        /* background-color: gray; */
+        font-family: "Manjari";
+        overflow: auto;
+        font-size: 18px;
+        /* padding-top: 80px; */
+    }
+    /* width */
+    .text-termos::-webkit-scrollbar {
+        width: 10px;
+        cursor: pointer;
+    }
+
+    /* Track */
+    .text-termos::-webkit-scrollbar-track {
+        background: #cbf3e1;
+        cursor: pointer;
+    }
+
+    /* Handle */
+    .text-termos::-webkit-scrollbar-thumb {
+        background: #a2dee6;
+        cursor: pointer;
+    }
+
+    /* Handle on hover */
+    .text-termos::-webkit-scrollbar-thumb:hover {
+        background: #77c9d4;
+        cursor: pointer;    
+    }
+
+    .termo
+    {
+        margin-top: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .caixa-dir
+    {
+        width: 360px;
+        height: 100px;
+        /* background-color: aqua; */
+        float: left;
+        display: flex;
+        align-items: end;
+        justify-content: flex-start;
+        margin-top: 10px;
+    }
+
+    .caixa-esq
+    {
+        width: 380px;
+        height: 100px;
+        /* background-color: yellow;   */
+        float: left;      
+        display: flex;
+        align-items: end;
+        justify-content: flex-end;
+        margin-top: 10px;
+    }
+
 
     /*----- Rodapé -----*/
     .espaco
@@ -488,7 +659,7 @@ header
     #txt-subcat,
     #txt-valor-hora{
         height: 110px;
-        font-family: "manjari regular";
+        font-family: "Manjari";
         font-size: 50px;
         box-sizing: border-box;
         /* padding-top: 10px; */
@@ -584,6 +755,7 @@ header
         flex-wrap: wrap;
         margin-bottom: 20px;
         box-sizing: border-box;
+
     }
  
     .container-qualificacoes{
