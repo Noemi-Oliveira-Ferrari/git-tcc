@@ -27,11 +27,11 @@ export class TermosDeUso extends Component{
                         </Link>
                     </div>
                     <div className="caixa-esq">
-                        {/* <Link className="link" to="/profissional/cadastro/confirmacao"> */}
+                        <Link className="link" to="/profissional/cadastro/confirmacao">
                             <button className="btn-prox flex-center" type="submit">
                                 Continuar
                             </button>
-                        {/* </Link> */}
+                        </Link>
                     </div>
                 </div>
             </div>

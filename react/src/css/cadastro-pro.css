@@ -172,6 +172,10 @@ label
         height: 450px;
         /* background-color: violet; */
     }
+
+    option{
+        font-size: 18px;
+    }
     
     #txt-nome,
     #txt-dataNasc,
@@ -184,8 +188,8 @@ label
     #txt-bairro,
     #txt-cidade,
     #txt-uf,
-    #txt-categoria,
-    #txt-subcat,
+    #slt-categoria,
+    #slt-subcat,
     #txt-valor-hora{
         height: 50px;
         font-family: "Manjari";
@@ -193,8 +197,9 @@ label
         box-sizing: border-box;
         padding-top: 10px;
         background-color: #cce5e9;
-
+        text-transform: capitalize;
     }
+
     #txt-uf{
         text-transform: uppercase;
         text-align: center;
@@ -663,8 +668,8 @@ label
     #txt-bairro,
     #txt-cidade,
     #txt-uf,
-    #txt-categoria,
-    #txt-subcat,
+    #slt-categoria,
+    #slt-subcat,
     #txt-valor-hora{
         height: 110px;
         font-family: "Manjari";
@@ -672,6 +677,7 @@ label
         box-sizing: border-box;
         /* padding-top: 10px; */
         background-color: #dee0e0;
+        text-transform: capitalize;
 
     }
     #txt-uf{

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../css/cadastro-pro.css';
+import $ from 'jquery';
+import axios from 'axios';
 
 
 export class InputCadastroPro extends Component{
@@ -21,6 +23,33 @@ export class InputCadastroPro extends Component{
 }
 
 export class SelectCategoriaPro extends Component{
+
+    constructor(){
+        super();        
+        this.popularCategorias = this.popularCategorias.bind(this);
+    }
+    componentDidMount(){
+        axios.get(`http://localhost:8080/categorias`)
+        .then((response)=>{
+            let jsonCategorias = response.data;
+            this.popularCategorias(jsonCategorias);
+            // console.log(jsonCategorias);
+        })
+        .catch((error)=>{
+            console.error(error);
+        })
+        .onload = console.log("Carregando categorias...");
+    }
+
+    popularCategorias(jsonCategorias){
+        console.log(jsonCategorias.length);
+        for(let i = 0; i < jsonCategorias.length; i++){
+            // $("#slt-categoria").append(`<option value="${jsonCategorias[i].idCategoria}">${jsonCategorias[i].categoria}</option>`);
+            let o = new Option(`${jsonCategorias[i].categoria}`, `${jsonCategorias[i].idCategoria}`);
+            $(o).html(`${jsonCategorias[i].categoria}`);
+            $("#slt-categoria").append(o);
+        }
+    }
     render(){
         return(
             <div className={this.props.classSelectPro}>

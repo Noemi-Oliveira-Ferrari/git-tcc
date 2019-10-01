@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../css/cadastro-pro.css';
 import {InputCadastroPro, SelectCategoriaPro, SelectSubcategoriaPro} from './InputCadastroPro';
+import $ from 'jquery';
+import axios from 'axios';
 
 
 export class DadosPessoaisPro extends Component{
@@ -23,7 +25,33 @@ export class DadosPessoaisPro extends Component{
         this.setBairro = this.setBairro.bind(this);
         this.setCidade = this.setCidade.bind(this);
         this.setUf = this.setUf.bind(this);
+        this.popularCampos = this.popularCampos.bind(this);
     }
+
+
+
+    getEndereco(cep){
+
+        axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
+        .then((response)=>{
+            console.log(response.data);
+            let jsonEndereco = response.data;
+            this.popularCampos(jsonEndereco);
+        })
+        .catch((error)=>{
+            console.error(error);
+        })
+        .onload = console.log("loading");
+    }
+
+    popularCampos(jsonEndereco){
+        $("#txt-logradouro").val(jsonEndereco.logradouro);
+        $("#txt-bairro").val(jsonEndereco.bairro);
+        $("#txt-cidade").val(jsonEndereco.cidade.cidade);
+        $("#txt-uf").val(jsonEndereco.cidade.microrregiao.uf.uf);
+    }
+
+
     setNome(event){
         this.setState({nome: event.target.value});
         console.log(this.state.nome);
@@ -50,7 +78,10 @@ export class DadosPessoaisPro extends Component{
     }
     setCep(event){
         this.setState({cep: event.target.value});
-        console.log(this.state.cep);
+        let cepSize = $("#txt-cep").val().length;
+        if (cepSize >= 8) {
+            this.getEndereco($("#txt-cep").val());
+        }
     }
     setLogradouro(event){
         this.setState({logradouro: event.target.value});
@@ -68,6 +99,7 @@ export class DadosPessoaisPro extends Component{
         this.setState({uf: event.target.value});
         console.log(this.state.uf);
     }
+
     
     render(){
         return(
@@ -85,7 +117,6 @@ export class DadosPessoaisPro extends Component{
                                 maxLength="100"
                                 type="text"
                                 classInputPro="caixa-nome"
-                                onChange={this.setNome}
                             />
 
                             <InputCadastroPro
@@ -151,6 +182,7 @@ export class DadosPessoaisPro extends Component{
                                 id="txt-cep"
                                 type="text"
                                 name="txt_cep"
+                                onChange={this.setCep}
                             />
 
                             <InputCadastroPro
@@ -213,7 +245,7 @@ export class DadosProfissional extends Component{
                             <div className="flex-center container-categoria">
                                 <SelectCategoriaPro
                                     label="Categoria:"
-                                    id="txt-categoria"
+                                    id="slt-categoria"
                                     name="slt_categoria"
                                     classSelectPro="caixa-categoria"
                                 />
@@ -222,7 +254,7 @@ export class DadosProfissional extends Component{
                             <div className="flex-center container-subcat">
                                 <SelectSubcategoriaPro
                                     label="Subcategoria:"
-                                    id="txt-subcat"
+                                    id="slt-subcat"
                                     name="slt_subcategoria"
                                     classSelectPro="caixa-subcat"
                                 />
