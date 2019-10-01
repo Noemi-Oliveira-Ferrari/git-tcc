@@ -11,14 +11,14 @@ import './css/bootstrap.css';
 import './utils/cardChooseAnimation';
 
 // componentes
-import CardsEscolha from './components/CardsEscolha';
-import InputLogin from './components/InputLogin';
-import DaUmHelp from './components/DaUmHelp';
-import Login from './components/Login';
-import Confirmacao from './components/Confirmacao';
-import DadosPessoaisPro from './components/DadosPessoaisPro';
-import DadosProfissional from './components/DadosProfissional';
-import CadastroPro from './components/CadastroPro';
+// import CardsEscolha from './components/CardsEscolha';
+// import InputLogin from './components/InputLogin';
+// import DaUmHelp from './components/DaUmHelp';
+// import Login from './components/Login';
+// import Confirmacao from './components/Confirmacao';
+// import DadosPessoaisPro from './components/DadosPessoaisPro';
+// import DadosProfissional from './components/DadosProfissional';
+// import CadastroPro from './components/CadastroPro';
 
 
 class App extends Component{
@@ -47,12 +47,12 @@ class App extends Component{
 
 {/* TELA DE CADASTRO DO PROFISSIONAL */}
 
-             <CadastroPro>
+             {/* <CadastroPro>
                
-             </CadastroPro>
+             </CadastroPro> */}
 
 
-
+            {this.props.children}
 
             {/* <!-- div para separa o conteudo do footer --> */}
             <div id="espaco">

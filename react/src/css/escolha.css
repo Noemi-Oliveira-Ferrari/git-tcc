@@ -107,6 +107,7 @@ body{
         align-items: center ;
         justify-content: center;
         flex-wrap: wrap;
+        cursor: pointer;
     }
     
     .caixa-profissional{
@@ -124,6 +125,7 @@ body{
         align-items: center ;
         justify-content: center;
         flex-wrap: wrap;
+        cursor: pointer;
     }
     
     /*conteudo das caixas de escolhas */
@@ -329,7 +331,6 @@ body{
     width: 60px;
     height: 60px;
     /* background-color: blueviolet; */
-
 }  
 
 /* FOOTER */

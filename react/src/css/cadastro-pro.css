@@ -82,7 +82,15 @@ label
     text-align: right;
 }
 
-
+.link{
+    text-decoration: none;
+    color: currentColor;
+}
+.link:hover{
+    text-decoration: none;
+    color: currentColor;
+    color: #ededed;
+}
 
 /*----- Web-Desktop -----*/
 @media screen and (min-device-width:1000px){

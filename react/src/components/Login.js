@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import '../css/login.css';
 import DaUmHelp from './DaUmHelp';
 import InputLogin from './InputLogin';
-import LinkCadastro from './LinkCadastro';
+import {Link} from 'react-router';
 import Logo from './Logo';
-import Botao from './Botao';
 
 
 export class Login extends Component{
@@ -50,11 +49,10 @@ export class Login extends Component{
                                  </div>
                            </form>
                            <div class="texto-card">
-                                 <p>
-                                    Ainda não possui uma conta?
-                                    <a class="link-cadastro" href="#">
+                                 <p>Ainda não possui uma conta?<br></br>
+                                    <Link class="link-cadastro" to="/escolha">
                                        Cadastre-se
-                                    </a>
+                                    </Link>
                                  </p>
                            </div>
                         </div>
