@@ -26,30 +26,57 @@ export class SelectCategoriaPro extends Component{
 
     constructor(){
         super();        
-        this.popularCategorias = this.popularCategorias.bind(this);
+        // this.popularCategorias = this.popularCategorias.bind(this);
+        this.state = {
+           categorias: [],
+           subcategorias: [],
+        }
+        this.getSubcategorias = this.getSubcategorias.bind(this);
     }
     componentDidMount(){
+        this.getCategorias(this.getSubcategorias());
+    }
+
+    getCategorias(){
         axios.get(`http://localhost:8080/categorias`)
         .then((response)=>{
             let jsonCategorias = response.data;
-            this.popularCategorias(jsonCategorias);
-            // console.log(jsonCategorias);
+            this.setState({categorias: jsonCategorias});
+            this.getSubcategorias(jsonCategorias[0].idCategoria);
         })
         .catch((error)=>{
             console.error(error);
         })
-        .onload = console.log("Carregando categorias...");
+        .onload = $("#slt-categoria").append("<option id='loadCat' value=''>Carregando Tipos de Serviços.</option>");
+    }
+    getSubcategorias(idCategoria){
+        
+        console.log("=-=-=> "+idCategoria);
+        if(idCategoria == null || idCategoria == ""){
+            idCategoria = 1;
+        }
+        axios.get(`http://localhost:8080/subcategorias/categoria/${idCategoria}`)
+        .then((response)=>{
+            let jsonSubategorias = response.data;
+            this.setState({subategorias: jsonSubategorias});
+
+            $("#loadCat").remove();
+            $("#slt-categoria").append("<option value=''>Selecione um Tipo Serviço</option>");
+            
+            $("#loadSubat").remove();
+            $("#slt-subcat").empty();
+            $("#slt-subcat").append("<option value=''>Selecione um Serviço</option>");
+            for(let i = 0; i < jsonSubategorias.length; i++){
+                console.log(jsonSubategorias[i]);
+                $("#slt-subcat").append(`<option value="${jsonSubategorias[i].idSubcategoria}">${jsonSubategorias[i].subcategoria}</option>`);
+            }
+        })
+        .catch((error)=>{
+            console.error(error);
+        })
+        .onload = $("#slt-subcat").append("<option id='loadSubat' value=''>Carregando Serviços.</option>");
     }
 
-    popularCategorias(jsonCategorias){
-        console.log(jsonCategorias.length);
-        for(let i = 0; i < jsonCategorias.length; i++){
-            // $("#slt-categoria").append(`<option value="${jsonCategorias[i].idCategoria}">${jsonCategorias[i].categoria}</option>`);
-            let o = new Option(`${jsonCategorias[i].categoria}`, `${jsonCategorias[i].idCategoria}`);
-            $(o).html(`${jsonCategorias[i].categoria}`);
-            $("#slt-categoria").append(o);
-        }
-    }
     render(){
         return(
             <div className={this.props.classSelectPro}>
@@ -57,8 +84,13 @@ export class SelectCategoriaPro extends Component{
                 <select
                     id={this.props.id}
                     name={this.props.name} 
-                    className="form-control form-input">
-                        
+                    className="form-control form-input"
+                    onChange={()=>(this.getSubcategorias($("#slt-categoria").find(":selected").val()))}>
+                        {this.state.categorias.map(categoria=>(
+                            <option key={categoria.idCategoria} value={categoria.idCategoria}>
+                                {categoria.categoria}
+                            </option>
+                        ))}                
                 </select>
             </div> 
         );
@@ -74,7 +106,12 @@ export class SelectSubcategoriaPro extends Component{
                     id={this.props.id}
                     name={this.props.name} 
                     className="form-control form-input">
-                        
+                        <option value="">Seleciona um Serviço</option>
+                        {/* {this.state.subcategorias.map(subcategoria=>(
+                            <option key={subcategoria.idSubcategoria} value={subcategoria.idSubategoria}>
+                                {subcategoria.subcategoria}
+                            </option>
+                        ))} */}
                 </select>
             </div> 
         );

@@ -14,17 +14,7 @@ export class DadosPessoaisPro extends Component{
             email: "", senha: "", cep: "", logradouro: "",
             bairro: "", cidade: "", uf: "",
         }
-        this.setNome = this.setNome.bind(this);
-        this.setDataNasc = this.setDataNasc.bind(this);
-        this.setCpf = this.setCpf.bind(this);
-        this.setCnpj = this.setCnpj.bind(this);
-        this.setEmail = this.setEmail.bind(this);
-        this.setSenha = this.setSenha.bind(this);
         this.setCep = this.setCep.bind(this);
-        this.setLogradouro = this.setLogradouro.bind(this);
-        this.setBairro = this.setBairro.bind(this);
-        this.setCidade = this.setCidade.bind(this);
-        this.setUf = this.setUf.bind(this);
         this.popularCampos = this.popularCampos.bind(this);
     }
 
@@ -52,30 +42,6 @@ export class DadosPessoaisPro extends Component{
     }
 
 
-    setNome(event){
-        this.setState({nome: event.target.value});
-        console.log(this.state.nome);
-    }
-    setDataNasc(event){
-        this.setState({dataNasc: event.target.value});
-        console.log(this.state.dataNasc);
-    }
-    setCpf(event){
-        this.setState({cpf: event.target.value});
-        console.log(this.state.cpf);
-    }
-    setCnpj(event){
-        this.setState({cnpj: event.target.value});
-        console.log(this.state.cnpj);
-    }
-    setEmail(event){
-        this.setState({email: event.target.value});
-        console.log(this.state.email);
-    }
-    setSenha(event){
-        this.setState({senha: event.target.value});
-        console.log(this.state.senha);
-    }
     setCep(event){
         this.setState({cep: event.target.value});
         let cepSize = $("#txt-cep").val().length;
@@ -83,24 +49,7 @@ export class DadosPessoaisPro extends Component{
             this.getEndereco($("#txt-cep").val());
         }
     }
-    setLogradouro(event){
-        this.setState({logradouro: event.target.value});
-        console.log(this.state.logradouro);
-    }
-    setBairro(event){
-        this.setState({bairro: event.target.value});
-        console.log(this.state.bairro);
-    }
-    setCidade(event){
-        this.setState({cidade: event.target.value});
-        console.log(this.state.cidade);
-    }
-    setUf(event){
-        this.setState({uf: event.target.value});
-        console.log(this.state.uf);
-    }
 
-    
     render(){
         return(
             <div className="flex-center">
@@ -121,7 +70,7 @@ export class DadosPessoaisPro extends Component{
 
                             <InputCadastroPro
                                 classInputPro="caixa-dataNasc"
-                                label="Data Nasc:."
+                                label="Data de Nascimento:"
                                 maxLength="10"
                                 id="txt-dataNasc"
                                 type="text"
@@ -244,7 +193,7 @@ export class DadosProfissional extends Component{
 
                             <div className="flex-center container-categoria">
                                 <SelectCategoriaPro
-                                    label="Categoria:"
+                                    label="Tipos de Serviços:"
                                     id="slt-categoria"
                                     name="slt_categoria"
                                     classSelectPro="caixa-categoria"
@@ -253,7 +202,7 @@ export class DadosProfissional extends Component{
                             
                             <div className="flex-center container-subcat">
                                 <SelectSubcategoriaPro
-                                    label="Subcategoria:"
+                                    label="Serviços:"
                                     id="slt-subcat"
                                     name="slt_subcategoria"
                                     classSelectPro="caixa-subcat"

@@ -27,7 +27,7 @@ import br.net.daumhelp.repository.ClienteRepository;
 import br.net.daumhelp.utils.HandleDates;
 
 
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/clientes")
 public class ClienteResource {

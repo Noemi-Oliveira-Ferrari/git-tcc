@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.net.daumhelp.model.Subcategoria;
 import br.net.daumhelp.repository.SubcategoriaRepository;
 
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/subcategorias")
 public class SubcategoriaResource {

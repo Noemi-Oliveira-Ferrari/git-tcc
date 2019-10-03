@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.net.daumhelp.model.Cidade;
 import br.net.daumhelp.repository.CidadeRepository;
 
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/cidades")
 public class CidadeResource {
