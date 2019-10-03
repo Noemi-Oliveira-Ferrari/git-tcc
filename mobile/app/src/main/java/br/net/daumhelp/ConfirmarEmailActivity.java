@@ -3,6 +3,7 @@ package br.net.daumhelp;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
     private TextView tvAlterar;
     private EditText etCodigo;
     private TextView tvEmail;
+    private TextView tvTimer;
     int cont = 0;
 
     @Override
@@ -38,6 +40,10 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
         etCodigo = findViewById(R.id.et_codigo);
         tvEmail = findViewById(R.id.tv_email);
         tvReenviar = findViewById(R.id.tv_reenviar);
+        tvTimer = findViewById(R.id.tv_timer);
+
+
+
 
         Intent intent = getIntent();
         if(intent.getSerializableExtra("dados_pessoais") != null){
@@ -82,14 +88,24 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
                         cont++;
                         if(cont == 3){
                             Toast.makeText(ConfirmarEmailActivity.this, "Tente novamente daqui 10 segundos", Toast.LENGTH_SHORT).show();
+
                             tvReenviar.setVisibility(View.INVISIBLE);
-                            new Handler().postDelayed(new Runnable() {
+                            CountDownTimer countDownTimer = new CountDownTimer(60000, 1000) {
                                 @Override
-                                public void run() {
-                                    tvReenviar.setVisibility(View.VISIBLE);
-                                    cont = 0;
+                                public void onTick(long millisUntiFineshed) {
+                                    tvTimer.setText(String.valueOf(millisUntiFineshed/1000));
                                 }
-                            }, 10000);
+
+                                @Override
+                                public void onFinish() {
+                                    tvReenviar.setVisibility(View.VISIBLE);
+                                    tvTimer.setVisibility(View.INVISIBLE);
+                                }
+                            };
+
+                            tvTimer.setVisibility(View.VISIBLE);
+                            countDownTimer.start();
+
 
                         }else{
                             Toast.makeText(ConfirmarEmailActivity.this, "Código reenviado, verifique o seu e-mail" , Toast.LENGTH_SHORT).show();

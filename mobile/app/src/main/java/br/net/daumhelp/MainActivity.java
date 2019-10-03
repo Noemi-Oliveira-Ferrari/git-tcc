@@ -1,6 +1,10 @@
 package br.net.daumhelp;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -31,6 +35,31 @@ public class MainActivity extends AppCompatActivity {
 
         cvSucesso.setVisibility(View.INVISIBLE);
         cvOpacity.setVisibility(View.INVISIBLE);
+
+        /*VERIFICAÇÃO DA CONEXÃO*/
+        final ConnectivityManager conmag = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if ( conmag != null ) {
+            conmag.getActiveNetworkInfo();
+
+            if (conmag.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnected()) {
+
+                AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                alert.setTitle("Conexão").setMessage("Você não está conectado ao WIFI, isso pode gerar cobranças adicionais. \n Deseja continuar?").setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).show();
+            }
+        }
+
+
 
         Intent intent = getIntent();
         if(intent.getSerializableExtra("cadastro") != null){
