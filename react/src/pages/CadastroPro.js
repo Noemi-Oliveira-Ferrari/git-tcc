@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import '../css/cadastro-pro.css';
-import { DadosProfissional, DadosPessoaisPro } from './DadosProfissional';
-import TermosDeUso from './TermosDeUso';
+import { DadosProfissional, DadosPessoaisPro } from '../components/DadosProfissional';
+import TermosDeUso from '../components/TermosDeUso';
 
 
 export class CadastroPro extends Component{
 
     constructor(){
         super();
+        this.state = {
+            nome: "", dataNasc: "", cpf: "", cnpj: "",
+            email: "", senha: "", cep: "", logradouro: "",
+            bairro: "", cidade: "", uf: "", subcategoria: ""
+        }
         this.realizarCadastro = this.realizarCadastro.bind(this);
     }
 
     realizarCadastro(event){
         event.preventDefault();
         console.log("Enviando dados ao banco...");
+        console.log(this.state.subcategoria);
 
         // let profissional = {
         //     nome: this.state.nome,
@@ -24,6 +30,9 @@ export class CadastroPro extends Component{
         //     senha: this.state.senha,
         //     endereco: {
         //         idEndereco: ""
+        //     },
+        //     subcategoria: {
+        //         idSubcategoria: "5601"
         //     }
         // }
         // let endereco = {
@@ -51,7 +60,7 @@ export class CadastroPro extends Component{
                     <DadosProfissional>
                     </DadosProfissional>
 
-                    <TermosDeUso>                
+                    <TermosDeUso link="/profissional/cadastro/confirmacao">                
                     </TermosDeUso>
                 </form>
             </div>

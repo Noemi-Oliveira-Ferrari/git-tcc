@@ -16,13 +16,13 @@ body
 
 @font-face{
     font-family: 'Lexend Deca';
-    src: url("../fontes/LexendDeca-Regular.ttf");
+    src: url("../fonts/LexendDeca-Regular.ttf");
 
 }
 
 @font-face{
     font-family: 'Manjari';
-    src: url("../fontes/Manjari-Regular.ttf");
+    src: url("../fonts/Manjari-Regular.ttf");
 
 }
 
@@ -201,9 +201,16 @@ option{
         box-sizing: border-box;
         padding-top: 10px;
         background-color: #cce5e9;
-        text-transform: capitalize;
+        /* text-transform: capitalize; */
     }
 
+    #txt-nome,
+    #txt-logradouro,
+    #txt-bairro,
+    #txt-cidade{
+        text-transform: capitalize;
+    }
+    
     #txt-uf{
         text-transform: uppercase;
         text-align: center;

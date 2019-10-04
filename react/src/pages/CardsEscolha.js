@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import customer from '../img/customer-ai.png';
 import worker from '../img/worker-ai.png';
 import $ from 'jquery';
-import Escolha from './Escolha';
+import Escolha from '../components/Escolha';
 import '../css/escolha.css';
 
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../css/login.css';
-import DaUmHelp from './DaUmHelp';
-import InputLogin from './InputLogin';
+import DaUmHelp from '../components/DaUmHelp';
+import InputLogin from '../components/InputLogin';
 import {Link} from 'react-router';
-import Logo from './Logo';
+import Logo from '../components/Logo';
 
 
 export class Login extends Component{

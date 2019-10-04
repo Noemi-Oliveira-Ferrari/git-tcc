@@ -12,7 +12,7 @@ export class DadosPessoaisPro extends Component{
         this.state = {
             nome: "", dataNasc: "", cpf: "", cnpj: "",
             email: "", senha: "", cep: "", logradouro: "",
-            bairro: "", cidade: "", uf: "",
+            bairro: "", cidade: "", uf: "", subcategoria: ""
         }
         this.setCep = this.setCep.bind(this);
         this.popularCampos = this.popularCampos.bind(this);
@@ -48,6 +48,10 @@ export class DadosPessoaisPro extends Component{
         if (cepSize >= 8) {
             this.getEndereco($("#txt-cep").val());
         }
+    }
+
+    setSubcategoria(event){
+        this.setState({subcategoria: event.target.value});
     }
 
     render(){
@@ -183,6 +187,7 @@ export class DadosPessoaisPro extends Component{
 }
 
 export class DadosProfissional extends Component{
+    
     render(){
         return(
             <div className="flex-center">
@@ -197,6 +202,7 @@ export class DadosProfissional extends Component{
                                     id="slt-categoria"
                                     name="slt_categoria"
                                     classSelectPro="caixa-categoria"
+                                    onChange={()=>(this.getSubcategorias($("#slt-categoria").find(":selected").val()))}
                                 />
                             </div>
                             

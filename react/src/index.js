@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { Route, Router, browserHistory, IndexRoute } from 'react-router';
-import Login from './components/Login';
-import CardsEscolha from './components/CardsEscolha';
-import CadastroPro from './components/CadastroPro';
-import Confirmacao from './components/Confirmacao';
+import Login from './pages/Login';
+import CardsEscolha from './pages/CardsEscolha';
+import CadastroPro from './pages/CadastroPro';
+import Confirmacao from './pages/Confirmacao';
 
 ReactDOM.render(
     <Router history={browserHistory}>

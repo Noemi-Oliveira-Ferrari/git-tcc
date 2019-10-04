@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import '../css/cadastro-pro.css';
+import Botao from './Botao';
 
 
 export class TermosDeUso extends Component{
@@ -21,17 +22,13 @@ export class TermosDeUso extends Component{
                     </div>
                     <div className="caixa-dir">
                         <Link className="link" to="/escolha">
-                            <div className="btn-voltar flex-center">
-                                Voltar
-                            </div>                        
+                            <Botao classBotao="btn-voltar flex-center" name="btn_voltar" id="btn-voltar" valueBotao="Voltar"/>
                         </Link>
                     </div>
                     <div className="caixa-esq">
-                        <Link className="link" to="/profissional/cadastro/confirmacao">
-                            <button className="btn-prox flex-center" type="submit">
-                                Continuar
-                            </button>
-                        </Link>
+                        {/* <Link className="link" to={this.props.link}> */}
+                            <Botao classBotao="btn-prox flex-center" name="btn_prox" id="btn-prox" valueBotao="Continuar" type="submit"/>
+                        {/* </Link> */}
                     </div>
                 </div>
             </div>

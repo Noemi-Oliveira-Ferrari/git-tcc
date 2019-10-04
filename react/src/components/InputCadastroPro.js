@@ -33,6 +33,7 @@ export class SelectCategoriaPro extends Component{
         }
         this.getSubcategorias = this.getSubcategorias.bind(this);
     }
+
     componentDidMount(){
         this.getCategorias(this.getSubcategorias());
     }
@@ -55,6 +56,7 @@ export class SelectCategoriaPro extends Component{
         if(idCategoria == null || idCategoria == ""){
             idCategoria = 1;
         }
+
         axios.get(`http://localhost:8080/subcategorias/categoria/${idCategoria}`)
         .then((response)=>{
             let jsonSubategorias = response.data;
@@ -85,7 +87,7 @@ export class SelectCategoriaPro extends Component{
                     id={this.props.id}
                     name={this.props.name} 
                     className="form-control form-input"
-                    onChange={()=>(this.getSubcategorias($("#slt-categoria").find(":selected").val()))}>
+                    onChange={this.props.onChange}>
                         {this.state.categorias.map(categoria=>(
                             <option key={categoria.idCategoria} value={categoria.idCategoria}>
                                 {categoria.categoria}
