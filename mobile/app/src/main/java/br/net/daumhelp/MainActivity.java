@@ -8,9 +8,18 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.model.Login;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private CardView cvSucesso;
     private Button btnSucesso;
     private TextView tvSucesso;
+    private EditText etSenha;
+    private EditText etEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         cvSucesso = findViewById(R.id.cv_success);
         btnSucesso = findViewById(R.id.btn_success);
         tvSucesso = findViewById(R.id.tv_txt_sucesso);
+        etEmail = findViewById(R.id.et_login_email);
+        etSenha = findViewById(R.id.et_login_senha);
 
         cvSucesso.setVisibility(View.INVISIBLE);
         cvOpacity.setVisibility(View.INVISIBLE);
@@ -87,6 +100,38 @@ public class MainActivity extends AppCompatActivity {
                 btnEntrar.setEnabled(true);
             }
         });
+
+
+        btnEntrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String senha = etSenha.getText().toString();
+                String email = etEmail.getText().toString();
+                Login login = new Login();
+                login.setEmail(email);
+                login.setSenha(senha);
+
+
+                Call<Login> call = new RetroFitConfig().getLoginService().buscarUsuario(email, senha);
+                call.enqueue(new Callback<Login>() {
+                    @Override
+                    public void onResponse(Call<Login> call, Response<Login> response) {
+                        response.body();
+                        Toast.makeText(MainActivity.this, "DALE", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Login> call, Throwable t) {
+                        Log.i("Retrofit LOGIN", t.getMessage());
+                        Toast.makeText(MainActivity.this, "NÃO EXISTE", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                Intent intent = new Intent(MainActivity.this, EscolhaActivity.class);
+            }
+        });
+
 
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -121,7 +121,8 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
             btnConfirmar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(etCodigo.getText().toString().equals(listaDados[5])){
+                    if(etCodigo.getText().toString().equals("1234")){
+
 
                         Intent intent = new Intent(ConfirmarEmailActivity.this, CadastroEnderecoActivity.class);
                         intent.putExtra("dados_pessoais", listaDados);

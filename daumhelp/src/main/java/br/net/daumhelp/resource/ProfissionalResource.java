@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.net.daumhelp.model.Confirmacao;
+import br.net.daumhelp.model.Login;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.ProfissionalDTO;
 import br.net.daumhelp.repository.ProfissionalDTORepository;
@@ -45,7 +46,14 @@ public class ProfissionalResource {
 	public boolean confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
 		return HandleEmails.enviar(confirm);
 	}
-
+	
+	@PostMapping("/login")
+	public void buscarUsuario(String email, String senha) {
+		System.out.println( proRepository.findUserLogin(email, senha));
+		
+		
+	}
+	
 	@GetMapping
 	public List<ProfissionalDTO> getPros(){
 		return proDTORepository.findAll();
