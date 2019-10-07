@@ -1,7 +1,9 @@
 package br.net.daumhelp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -88,6 +90,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     profissional.setValorHora(Double.parseDouble(listaProfissao[1]));
                                     profissional.setSubcategoria(subcategoria);
                                     profissional.setEndereco(endereco1);
+                                    profissional.setIdTipoUsuario(1);
                                     profissional.setFoto("foto.png");
 
                                     Call<Profissional> callPro = new RetroFitConfig().getProfissionalService().cadastrarProfissional(profissional);
@@ -150,6 +153,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     cliente.setEmail(listaDados[3]);
                                     cliente.setSenha(EncryptString.gerarHash(listaDados[4]));
                                     cliente.setEndereco(endereco1);
+                                    cliente.setIdTipoUsuario(2);
                                     cliente.setFoto("foto.png");
 
                                     Call<Cliente> callCli = new RetroFitConfig().getClienteService().cadastrarCliente(cliente);
@@ -182,16 +186,26 @@ public class CadastroTermosActivity extends AppCompatActivity {
                 }
 
             }
+            btnVoltar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(CadastroTermosActivity.this);
+                    alert.setTitle("TERMOS DE USO").setMessage("Ao não concordar com os termos não é possível concluir o cadastro. \nDeseja fechar a aplicação?").setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finishAffinity();
+                        }
+                    }).setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).show();
+                }
+            });
 
         }
 
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CadastroTermosActivity.this, CadastroServicoActivity.class);
-                startActivity(intent);
-            }
-        });
 
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override

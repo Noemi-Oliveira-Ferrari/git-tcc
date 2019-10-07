@@ -48,10 +48,8 @@ public class ProfissionalResource {
 	}
 	
 	@PostMapping("/login")
-	public void buscarUsuario(String email, String senha) {
-		System.out.println( proRepository.findUserLogin(email, senha));
-		
-		
+	public Profissional buscarUsuario(String email, String senha) {
+		return proRepository.findUserLogin(email, senha);
 	}
 	
 	@GetMapping

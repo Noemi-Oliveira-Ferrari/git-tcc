@@ -43,6 +43,9 @@ public class Cliente {
 	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;
 
+	@NotNull
+	private Long idTipoUsuario;
+	
 	private String criadoEm;
 	private String atualizadoEm;
 
@@ -102,6 +105,15 @@ public class Cliente {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
+	
+	public Long getIdTipoUsuario() {
+		return idTipoUsuario;
+	}
+
+	public void setIdTipoUsuario(Long idTipoUsuario) {
+		this.idTipoUsuario = idTipoUsuario;
+	}
+
 
 	public String getCriadoEm() {
 		return criadoEm;
@@ -130,9 +142,7 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", foto=" + foto + ", cpf="
-				+ cpf + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco + ", criadoEm="
-				+ criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+				+ cpf + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco + ", idTipoUsuario="
+				+ idTipoUsuario + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
-
-	
 }

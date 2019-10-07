@@ -13,7 +13,13 @@ public interface LoginService {
 
     @FormUrlEncoded
     @POST("/profissionais/login")
-    Call<Login> buscarUsuario(@Field("email") String email ,
+    Call<Login> buscarPro(@Field("email") String email ,
+                              @Field("senha") String senha);
+
+
+    @FormUrlEncoded
+    @POST("/clientes/login")
+    Call<Login> buscarCli(@Field("email") String email ,
                               @Field("senha") String senha);
     
 }

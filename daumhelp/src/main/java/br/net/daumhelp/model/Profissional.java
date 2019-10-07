@@ -55,6 +55,9 @@ public class Profissional {
 	@JoinColumn(name = "idSubcategoria")
 	private Subcategoria subcategoria;
 
+	@NotNull
+	private Long idTipoUsuario;
+	
 	private String criadoEm;
 	private String atualizadoEm;
 
@@ -153,6 +156,15 @@ public class Profissional {
 	public void setSubcategoria(Subcategoria subcategoria) {
 		this.subcategoria = subcategoria;
 	}
+	
+
+	public Long getIdTipoUsuario() {
+		return idTipoUsuario;
+	}
+
+	public void setIdTipoUsuario(Long idTipoUsuario) {
+		this.idTipoUsuario = idTipoUsuario;
+	}
 
 	public String getCriadoEm() {
 		return criadoEm;
@@ -175,7 +187,10 @@ public class Profissional {
 		return "Profissional [idProfissional=" + idProfissional + ", nome=" + nome + ", email=" + email + ", foto="
 				+ foto + ", cnpj=" + cnpj + ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc
 				+ ", valorHora=" + valorHora + ", resumoQualificacoes=" + resumoQualificacoes + ", endereco=" + endereco
-				+ ", subcategoria=" + subcategoria + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+				+ ", subcategoria=" + subcategoria + ", idTipoUsuario=" + idTipoUsuario + ", criadoEm=" + criadoEm
+				+ ", atualizadoEm=" + atualizadoEm + "]";
 	}
+
+	
 
 }

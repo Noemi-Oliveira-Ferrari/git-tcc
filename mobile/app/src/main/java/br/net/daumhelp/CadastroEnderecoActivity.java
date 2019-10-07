@@ -61,24 +61,25 @@ public class CadastroEnderecoActivity extends AppCompatActivity{
                 String cep = etCep.getText().toString();
                 /*VALIDAÇÃO DO TAMANHO DO CEP*/
                 if(etCep.length() == 8 || etCep.length() == 9){
+                    if(validar() == true) {
+                        Call<Endereco> call = new RetroFitConfig().getEnderecoService().buscarEndereco(cep);
+                        call.enqueue(new Callback<Endereco>() {
+                            @Override
+                            public void onResponse(Call<Endereco> call, Response<Endereco> response) {
 
-                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().buscarEndereco(cep);
-                    call.enqueue(new Callback<Endereco>() {
-                        @Override
-                        public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+                                btnProximo.setVisibility(View.VISIBLE);
 
-                            btnProximo.setVisibility(View.VISIBLE);
+                                carregarEndereco(response.body());
 
-                            carregarEndereco(response.body());
+                            }
 
-                        }
+                            @Override
+                            public void onFailure(Call<Endereco> call, Throwable t) {
+                                Log.i("Retrofit Endereço", t.getMessage());
+                            }
 
-                        @Override
-                        public void onFailure(Call<Endereco> call, Throwable t) {
-                            Log.i("Retrofit Endereço", t.getMessage());
-                        }
-                    });
-
+                        });
+                    }
                 }else{
 
                 }
@@ -135,6 +136,12 @@ public class CadastroEnderecoActivity extends AppCompatActivity{
 
                 }
             });
+
+            if(intent.getSerializableExtra("endereco") != null ){
+                final String[] listaEndereco = (String[]) intent.getSerializableExtra("endereco");
+                etCep.setText(listaEndereco[0]);
+            }
+
         }
 
 
