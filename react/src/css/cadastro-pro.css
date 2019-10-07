@@ -66,6 +66,10 @@ option{
     justify-content: center;
 }
 
+.erro{
+    border: solid #ff0101fb 2px!important;    
+}
+
 /*----- Cabeçalho -----*/
 
 /*----- Formataçao -----*/

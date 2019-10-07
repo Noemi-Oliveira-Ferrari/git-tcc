@@ -9,17 +9,17 @@ import Logo from '../components/Logo';
 export class Login extends Component{
    render(){
     return(
-      <div class="container-conteudo-login">
-         <div class="container-login">
-            <div class="container-centro">
-               <div class="caixa-texto">
-                     <div class="conteudo-caixa-texto">
+      <div className="container-conteudo-login">
+         <div className="container-login">
+            <div className="container-centro">
+               <div className="caixa-texto">
+                     <div className="conteudo-caixa-texto">
                         <h2>Comece a utilizar nossos serviços</h2>
                      </div>
                </div>
-               <div class="caixa-conteudo">
-                     <div class="card-login">
-                        <div class="conteudo-card">
+               <div className="caixa-conteudo">
+                     <div className="card-login">
+                        <div className="conteudo-card">
                            
                         <Logo
                            classLogo="logotipo">
@@ -32,8 +32,8 @@ export class Login extends Component{
 
                            
                            <form method="POST" action="login.html" name="frm_login">
-                                 <div class="container-campos-login">
-                                    <div class="container-txt-login">
+                                 <div className="container-campos-login">
+                                    <div className="container-txt-login">
 
                                     <InputLogin
                                        label="E-mail"
@@ -45,12 +45,12 @@ export class Login extends Component{
                                        type="password">
                                     </InputLogin>
                                     </div>
-                                    <button class="btn-entrar">ENTRAR</button> 
+                                    <button className="btn-entrar">ENTRAR</button> 
                                  </div>
                            </form>
-                           <div class="texto-card">
+                           <div className="texto-card">
                                  <p>Ainda não possui uma conta?<br></br>
-                                    <Link class="link-cadastro" to="/escolha">
+                                    <Link className="link-cadastro" to="/escolha">
                                        Cadastre-se
                                     </Link>
                                  </p>
@@ -84,8 +84,8 @@ export class Login extends Component{
          //                </DaUmHelp>
 
          //                   <form method="POST" action="login.html" name="frm_login">
-         //                      <div class="container-campos-login">
-         //                         <div class="container-txt-login">
+         //                      <div className="container-campos-login">
+         //                         <div className="container-txt-login">
          //                            <InputLogin
          //                               label="E-mail"
          //                               type="email">

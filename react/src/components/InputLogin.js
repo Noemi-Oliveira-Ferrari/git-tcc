@@ -15,7 +15,7 @@ export class InputLogin extends Component{
 
         <div className="caixa-campo-login">
             <label>{this.props.label}:</label>
-            <input class="input-login" type={this.props.type} name="" value=""/>
+            <input className="input-login" type={this.props.type} name=""/>
         </div>
         
     );

@@ -18,6 +18,20 @@ export class DadosPessoaisPro extends Component{
         this.popularCampos = this.popularCampos.bind(this);
     }
 
+    tirarErro(){
+        
+        let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email], select, textarea");
+        campos.forEach(campo =>{
+            if($(campo).hasClass("erro") ){
+                $(campo).on("input", function(){
+                    if(campo.value.length > 0){
+                        $(campo).removeClass("erro");
+                    }
+                })
+            }
+        })
+
+    }
 
 
     getEndereco(cep){
@@ -38,11 +52,12 @@ export class DadosPessoaisPro extends Component{
         $("#txt-logradouro").val(jsonEndereco.logradouro);
         $("#txt-bairro").val(jsonEndereco.bairro);
         $("#txt-cidade").val(jsonEndereco.cidade.cidade);
+        $("#txt-cidade").attr("data-idCidade", jsonEndereco.cidade.idCidade);
         $("#txt-uf").val(jsonEndereco.cidade.microrregiao.uf.uf);
     }
 
-
     setCep(event){
+        this.tirarErro();
         this.setState({cep: event.target.value});
         let cepSize = $("#txt-cep").val().length;
         if (cepSize >= 8) {
@@ -52,6 +67,12 @@ export class DadosPessoaisPro extends Component{
 
     setSubcategoria(event){
         this.setState({subcategoria: event.target.value});
+    }
+
+    setSenha(event){
+        this.setState({senha: event.target.value});
+        console.log(this.state.senha);
+        $('#txt-confirmar-senha').get(0).setCustomValidity('As senha não correspondem!');
     }
 
     render(){
@@ -70,6 +91,7 @@ export class DadosPessoaisPro extends Component{
                                 maxLength="100"
                                 type="text"
                                 classInputPro="caixa-nome"
+                                onChange={this.tirarErro}
                             />
 
                             <InputCadastroPro
@@ -79,6 +101,7 @@ export class DadosPessoaisPro extends Component{
                                 id="txt-dataNasc"
                                 type="text"
                                 name="txt_data_nasc"
+                                onChange={this.tirarErro}
                             />
                         
                         </div>
@@ -91,6 +114,7 @@ export class DadosPessoaisPro extends Component{
                                 id="txt-cpfCnpj"
                                 type="text"
                                 name="txt_cpfCnpj"
+                                onChange={this.tirarErro}
                             />
 
                             <InputCadastroPro
@@ -100,6 +124,7 @@ export class DadosPessoaisPro extends Component{
                                 id="txt-email"
                                 type="email"
                                 name="txt_email"
+                                onChange={this.tirarErro}
                             />
 
                             
@@ -113,6 +138,7 @@ export class DadosPessoaisPro extends Component{
                                 id="txt-senha"
                                 type="password"
                                 name="txt_senha"
+                                onChange={this.setSenha}
                             />
 
                             <InputCadastroPro
@@ -122,6 +148,7 @@ export class DadosPessoaisPro extends Component{
                                 id="txt-confirmar-senha"
                                 type="password"
                                 name="txt_confirmar_senha"
+                                onChange={this.tirarErro}
                             />
 
                         </div>
@@ -145,6 +172,7 @@ export class DadosPessoaisPro extends Component{
                                 id="txt-logradouro"
                                 type="text"
                                 name="txt_logradouro"
+                                onChange={this.tirarErro}
                             />
                             
                         </div>
@@ -157,6 +185,7 @@ export class DadosPessoaisPro extends Component{
                                 id="txt-bairro"
                                 type="text"
                                 name="txt_bairro"
+                                onChange={this.tirarErro}
                             />
 
                             <InputCadastroPro
@@ -166,6 +195,8 @@ export class DadosPessoaisPro extends Component{
                                 id="txt-cidade"
                                 type="text"
                                 name="txt_cidade"
+                                data=""
+                                onChange={this.tirarErro}
                             />
 
                             <InputCadastroPro
@@ -175,6 +206,7 @@ export class DadosPessoaisPro extends Component{
                                 id="txt-uf"
                                 type="text"
                                 name="txt_uf"
+                                onChange={this.tirarErro}
                             />
                             
                         </div>
@@ -187,6 +219,67 @@ export class DadosPessoaisPro extends Component{
 }
 
 export class DadosProfissional extends Component{
+    
+    constructor(){
+        super();        
+        // this.popularCategorias = this.popularCategorias.bind(this);
+        this.state = {
+           categorias: [],
+           subcategorias: [],
+        }
+        this.getCategorias = this.getCategorias.bind(this);
+        this.getSubcategorias = this.getSubcategorias.bind(this);
+    }
+
+    componentDidMount(){
+        this.getCategorias(this.getSubcategorias());
+    }
+
+    getCategorias(){
+        axios.get(`http://localhost:8080/categorias`)
+        .then((response)=>{
+            let jsonCategorias = response.data;
+            this.setState({categorias: jsonCategorias});
+            this.getSubcategorias(jsonCategorias[0].idCategoria);
+            for(let i = 0; i < jsonCategorias.length; i++){
+                // console.log(jsonCategorias[i]);
+                $("#slt-categoria").append(`<option value="${jsonCategorias[i].idCategoria}">${jsonCategorias[i].categoria}</option>`);
+            }
+        })
+        .catch((error)=>{
+            console.error(error);
+        })
+        .onload = $("#slt-categoria").append("<option id='load-cat' value=''>Carregando...</option>");
+    }
+    getSubcategorias(idCategoria){
+        // tirarErro();
+        console.log("=-=-=> "+idCategoria);
+        if(idCategoria == null || idCategoria == ""){
+            idCategoria = 1;
+        }
+
+        axios.get(`http://localhost:8080/subcategorias/categoria/${idCategoria}`)
+        .then((response)=>{
+            let jsonSubcategorias = response.data;
+            this.setState({subategorias: jsonSubcategorias});
+
+            $("#load-cat").remove();
+            $("#slt-categoria").append("<option value=''>Selecione um Tipo Serviço</option>");
+            
+            $("#load-subat").remove();
+            $("#slt-subcat").empty();
+            $("#slt-subcat").append("<option value=''>Selecione um Serviço</option>");
+            for(let i = 0; i < jsonSubcategorias.length; i++){
+                console.log(jsonSubcategorias[i]);
+                $("#slt-subcat").append(`<option value="${jsonSubcategorias[i].idSubcategoria}">${jsonSubcategorias[i].subcategoria}</option>`);
+            }
+        })
+        .catch((error)=>{
+            console.error(error);
+        })
+        .onload = $("#slt-subcat").append("<option id='load-subat' value=''>Carregando...</option>");
+    }
+
     
     render(){
         return(
@@ -230,7 +323,7 @@ export class DadosProfissional extends Component{
                             <div className="container-qualificacoes">
                                 <div className="float caixa-qualificacoes">
                                     <label className="form-label">Resumo de Qualificações:</label>
-                                    <textarea id="txt-qualificacoes" className="txt-qualificacoes form-control form-input-pro"></textarea>
+                                    <textarea id="txt-qualificacoes" required className="txt-qualificacoes form-control form-input-pro"></textarea>
                                 </div>
                             </div>
                         </div>
