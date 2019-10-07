@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
         cvSucesso.setVisibility(View.INVISIBLE);
         cvOpacity.setVisibility(View.INVISIBLE);
 
+        etEmail.setText("pedropedro");
+        etSenha.setText("123456789");
+
         /*VERIFICAÇÃO DA CONEXÃO*/
         final ConnectivityManager conmag = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -118,7 +121,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Login> call, Response<Login> response) {
                         response.body();
-                        Toast.makeText(MainActivity.this, "PROFISSIONAL LOGADO", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
+                        startActivity(intent);
                     }
 
                     @Override
@@ -140,8 +144,6 @@ public class MainActivity extends AppCompatActivity {
                         });
                     }
                 });
-
-                Intent intent = new Intent(MainActivity.this, EscolhaActivity.class);
             }
         });
 
