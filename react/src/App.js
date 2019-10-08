@@ -15,19 +15,19 @@ class App extends Component{
 	render(){
 
 	
-  return (
+return (
 	<div id="all">
 
-            {this.props.children}
+	{this.props.children}
 
-            {/* <!-- div para separa o conteudo do footer --> */}
-            <div id="espaco">
+	{/* <!-- div para separa o conteudo do footer --> */}
+	<div id="espaco">
 
-            </div>
-            <footer hidden>
+	</div>
+	<footer hidden>
 
-            </footer>
-        </div>
+	</footer>
+</div>
 
 
 

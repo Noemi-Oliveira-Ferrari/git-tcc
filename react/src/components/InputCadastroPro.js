@@ -7,14 +7,16 @@ export class InputCadastroPro extends Component{
         return(
             <div className={this.props.classInputPro}>
                 <label className="form-label">{this.props.label}</label>
-                <input required
+                <input required 
                     id={this.props.id} type={this.props.type} 
                     name={this.props.name} 
                     maxLength={this.props.maxLength}
                     type={this.props.type}
                     className="form-control form-input"
                     onChange={this.props.onChange}
-                    data-idCidade={this.props.data}/>
+                    data-idCidade={this.props.data}
+                    value={this.props.valorInput}
+                    readOnly={this.props.readOnly}/>
             </div>
 
         );
@@ -32,11 +34,7 @@ export class SelectCategoriaPro extends Component{
                     name={this.props.name} 
                     className="form-control form-input"
                     onChange={this.props.onChange}>
-                        {/* {this.state.categorias.map(categoria=>(
-                            <option key={categoria.idCategoria} value={categoria.idCategoria}>
-                                {categoria.categoria}
-                            </option>
-                        ))}*/}
+                        {this.props.options}
                 </select>
             </div> 
         );
@@ -53,11 +51,7 @@ export class SelectSubcategoriaPro extends Component{
                     name={this.props.name} 
                     className="form-control form-input">
                         <option value="">Seleciona um Serviço</option>
-                        {/* {this.state.subcategorias.map(subcategoria=>(
-                            <option key={subcategoria.idSubcategoria} value={subcategoria.idSubategoria}>
-                                {subcategoria.subcategoria}
-                            </option>
-                        ))} */}
+                        {this.props.options}
                 </select>
             </div> 
         );
