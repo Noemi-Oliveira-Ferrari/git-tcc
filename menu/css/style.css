@@ -38,11 +38,12 @@ body, html{
 }
 
 body{
-    /* background-image: linear-gradient(to bottom right, #57BC90, #77C9D4);  */
+    background-image: linear-gradient(to bottom right, #57BC90, #77C9D4); 
     
     background-attachment: fixed;
     background-size: cover;
-    background-repeat: no-repeat;                                                                                 ;
+    background-repeat: no-repeat;           
+    /* background-color: cadetblue;                                                                      ; */
 }
 
 a{
@@ -74,20 +75,36 @@ p, h1, div{
 
 header{
     width: 100%;
-    height: 250px;
+    height: 300px;
     background-color: rgb(255, 255, 255);
 }
 
 .caixa-header{
     width: 100%;
     height: 50px;
-    background-color: #c0e0dd;
+    background-color: #ffffff;
+    border-bottom: solid 3px #51ce92;
+    /* background-image: linear-gradient(to bottom right, #57BC90, #77C9D4);  */
+
 }
 
 .menu-1{
-    width: 1500px;
+    width: 1600px;
     height: 50px;
-    background-color: #c0e0dd;
+    /* background-color: #ffde71; */
+    /* background-image: linear-gradient(to bottom right, #57BC90, #77C9D4);  */
+
+}
+
+.img-logo{
+    width: 100px;
+    height: 100px;
+    /* background-color: brown; */
+    float: left;
+    background-image: url(../img-menu/logo.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
 }
 
 
@@ -96,12 +113,12 @@ header{
     height: 50px;
     float: left;
     /* background-color: pink; */
-    margin-left: 1200px;
+    margin-left: 1050px;
 }
 
 
 .sing{
-    width: 250px;
+    width: 400px;
     height: 50px;
     /* background-color: coral; */
     float: left;
@@ -117,10 +134,10 @@ header{
     float: left;
     width: 160px;
     height: 40px;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(255, 13, 13, 0);
     font-size: 16px;
     box-sizing: border-box;
-    border: solid 2px rgb(255, 255, 255);
+    border: solid 2px #51ce92;
     margin-left: 10px;
     text-align: center;
     box-sizing: border-box;
@@ -138,11 +155,20 @@ header{
 
 .menu-2{
     width: 100%;
-    height: 100px;
+    height: 150px;
     /* background-color: #321f72; */
     font-size: 70px;
     color: #57BC90;
+    box-sizing: border-box;
+    padding-top: 20px;
 }
+
+.menu-2 img{
+    max-height: 150px;
+    /* background-color: black; */
+
+}
+
 
 .menu-3{
     width: 100%;
@@ -151,7 +177,7 @@ header{
 }
 .itens{
     float: left;
-    border-top: 1px solid black;
+    border-top: 2px solid #51ce92;
     width: 150px;
     height: 80px;
     justify-items: center;
@@ -185,5 +211,6 @@ header{
     flex-wrap: wrap;
     font-size: 14px;
     box-sizing: border-box;
+    /* color: #77c9d4; */
     padding-top: 10px;
 }
