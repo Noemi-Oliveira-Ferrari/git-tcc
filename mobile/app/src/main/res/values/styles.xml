@@ -7,10 +7,15 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorPrimary">@color/colorWhite</item>
     </style>
+
     <style name="MyEditTextTheme">
         <item name="colorControlNormal">#ffffff</item>
         <item name="colorControlActivated">#ffffff</item>
         <item name="colorControlHighlight">#ffffff</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

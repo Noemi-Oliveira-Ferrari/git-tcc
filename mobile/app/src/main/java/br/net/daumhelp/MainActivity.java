@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.menu.MenuActivity;
 import br.net.daumhelp.model.Login;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
         cvSucesso.setVisibility(View.INVISIBLE);
         cvOpacity.setVisibility(View.INVISIBLE);
+
+        etEmail.setText("pedropedro");
+        etSenha.setText("123456789");
 
         /*VERIFICAÇÃO DA CONEXÃO*/
         final ConnectivityManager conmag = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -118,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Login> call, Response<Login> response) {
                         response.body();
+                        Intent loginPro = new Intent(MainActivity.this, MenuActivity.class);
+                        startActivity(loginPro);
                         Toast.makeText(MainActivity.this, "PROFISSIONAL LOGADO", Toast.LENGTH_SHORT).show();
                     }
 

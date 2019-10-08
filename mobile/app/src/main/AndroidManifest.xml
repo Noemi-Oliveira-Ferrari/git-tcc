@@ -2,32 +2,47 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.net.daumhelp">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_config_file"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:networkSecurityConfig="@xml/network_config_file">
-
-        <activity android:name="br.net.daumhelp.SplashScreenActivity" android:screenOrientation="portrait">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="br.net.daumhelp.MainActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name="br.net.daumhelp.EscolhaActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name="br.net.daumhelp.CadastroDadosPessoaisActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name="br.net.daumhelp.CadastroEnderecoActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name="br.net.daumhelp.CadastroServicoActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name="br.net.daumhelp.CadastroTermosActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name="br.net.daumhelp.ConfirmarEmailActivity" android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EscolhaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroDadosPessoaisActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroEnderecoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroServicoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroTermosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".menu.MenuActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
