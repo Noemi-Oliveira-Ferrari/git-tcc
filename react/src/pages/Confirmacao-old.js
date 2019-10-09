@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import {Link} from 'react-router';
 import EmailImg from '../img/emailcheck.png';
 import check from '../img/check.png';
-import ButtonToolbar from '../../node_modules/react-bootstrap/ButtonToolbar';
 
 import '../css/confirmacao.css';
-import ModalSucesso from '../components/ModalSucesso';
 
-function Confirmacao() {
+export default class Confirmacao extends Component{
 
-    const [modalShow, setModalShow] = React.useState(false);
+    componentDidMount(){
+        console.log("foi");
+    }
 
+   render(){
     return(
         <section className="flex-center center">
             <div className="caixa-confirmacao-email">
@@ -25,7 +26,6 @@ function Confirmacao() {
                         <img src={EmailImg}/>
                     </figure>
                 </div>
-                
         
                 <form name="form_cod_email" action="index.html" method="POST">
                     <div className="caixa-input-confirm flex-center center">
@@ -33,19 +33,11 @@ function Confirmacao() {
                             <input required className="input-cod-confirm"  type="text" pattern="[0-9]*4" maxLength="4" name="cod_email"/>
                         </div>
                         <div className="img-check">
-                            <ButtonToolbar>
-                                <button onClick={() => setModalShow(true)} data-toggle="modal" data-target="#exampleModalCenter" type="submit" name="button" id="btn-confirm">
-                                    <figure>
-                                        <img src={check} /> 
-                                    </figure>
-                                </button>
-                                <ModalSucesso
-                                    show={modalShow}
-                                    onHide={() => setModalShow(false)}>
-
-                                </ModalSucesso>
-                            </ButtonToolbar>
-                            
+                        <button type="submit" name="button" id="btn-confirm">
+                            <figure>
+                                <img src={check} /> 
+                            </figure>
+                        </button>
                         </div>
                     </div>
                 </form>
@@ -57,5 +49,4 @@ function Confirmacao() {
         </section>
     );
    }
-
-   export default Confirmacao;
+}

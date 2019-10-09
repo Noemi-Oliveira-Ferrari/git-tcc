@@ -12,7 +12,7 @@ class DadosPessoaisPro extends Component{
         super();
         this.state = {
             nome: "", dataNasc: "", cpf: "", cnpj: "",
-            email: "", senha: "",
+            email: "", senha: "", confirmSenha: "",
             
             cep: "", logradouro: "", idCidade: "",
             bairro: "", cidade: "", uf: "", subcategoria: "",
@@ -20,6 +20,9 @@ class DadosPessoaisPro extends Component{
         }
         this.setCep = this.setCep.bind(this);
         this.setSenha = this.setSenha.bind(this);
+        this.setConfirmSenha = this.setConfirmSenha.bind(this);
+        this.validarSenha = this.validarSenha.bind(this);
+        this.teste = this.teste.bind(this);
     }
 /* 
     tirarErro(){
@@ -37,7 +40,9 @@ class DadosPessoaisPro extends Component{
 
     } */
 
-
+    teste(){
+        console.log("ola-----------------------");
+    }
     setCep(event){
         // this.tirarErro();
         this.setState({cep: event.target.value});
@@ -65,8 +70,38 @@ class DadosPessoaisPro extends Component{
     setSenha(event){
         this.setState({senha: event.target.value});
         console.log(this.state.senha);
-        console.log(`${$("#txt-senha").val()} e ${$("#txt-confirmar-senha").val()}`)
-        // $('#txt-confirmar-senha').get(0).setCustomValidity('As senha não correspondem!');
+    }
+
+    setConfirmSenha(event){
+        this.setState({confirmSenha: event.target.value});
+        console.log($('#txt-confirmar-senha').val());
+        console.log($('#txt-confirmar-senha').val().length+"  "+$('#txt-senha').val().length);
+        if($('#txt-confirmar-senha').val().length == $('#txt-senha').val().length){
+            this.validarSenha();
+        }
+    }
+    
+    validarSenha(){
+        if($('#txt-senha').val() == $('#txt-confirmar-senha').val()){
+            $('#txt-confirmar-senha').html('match');
+            $('#txt-confirmar-senha').removeClass("erro");
+            $('#txt-senha').removeClass("erro");
+            // error = false;
+        }else if($('#txt-senha').val() == "" || $('#txt-confirmar-senha').val() == ""){
+            console.log(`${$('#txt-senha').val()} vazio ${$('#txt-confirmar-senha').val()}`);
+            $('#txt-confirmar-senha').html('mismatch');
+            alert('nao era pra cair aqui');
+            $('#txt-confirmar-senha').addClass("erro");
+            $('#txt-senha').addClass("erro");
+            // error = true
+        }else{
+            console.log(`${$('#txt-senha').val()} != ${$('#txt-confirmar-senha').val()}`);
+            $('#txt-confirmar-senha').html('mismatch');
+            // alert('As senha não correspondem!');
+            $('#txt-confirmar-senha').addClass("erro");
+            $('#txt-senha').addClass("erro");
+            // error = true;
+        }
     }
 
     render(){
@@ -140,7 +175,7 @@ class DadosPessoaisPro extends Component{
                                 id="txt-confirmar-senha"
                                 type="password"
                                 name="txt_confirmar_senha"
-                                
+                                onChange={this.setConfirmSenha}                                
                             />
 
                         </div>
@@ -316,7 +351,7 @@ class DadosProfissional extends Component{
                             <div className="container-qualificacoes">
                                 <div className="float caixa-qualificacoes">
                                     <label className="form-label">Resumo de Qualificações:</label>
-                                    <textarea id="txt-qualificacoes" required className="txt-qualificacoes form-control form-input-pro"></textarea>
+                                    <textarea id="txt-qualificacoes" className="txt-qualificacoes form-control form-input-pro"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -337,25 +372,46 @@ export default class FormularioProfissional extends Component{
     }
 
     validarCampos(){
-
-        console.log($("#txt-senha").val());
-        console.log($("#txt-confirmar-senha").val());
-
-        if($("#txt-senha").val() != $("#txt-confirmar-senha").val()){
-            console.log(`${$("#txt-senha").val()} e ${$("#txt-confirmar-senha").val()}`);
-            $('#txt-confirmar-senha').html('mismatch');
-            $('#txt-confirmar-senha').get(0).setCustomValidity('As senha não correspondem!');
-        }
-
+        
         let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email], select, textarea");
         console.log(campos);
+        let error = false;
+        // console.log($("#txt-confirmar-senha").val());
+        
         campos.forEach(campo =>{
             if(campo.value === ""){
                 $(campo).addClass("erro");
+                error = true;
             }else{
                 $(campo).removeClass("erro");
+                error = false;
             }
         });
+
+        console.log(`${$("#txt-senha").val()} > ${$("#txt-confirmar-senha").val()}`);
+
+        if($("#txt-senha").val() == $("#txt-confirmar-senha").val()){
+            $('#txt-confirmar-senha').html('match');
+            $('#txt-confirmar-senha').removeClass("erro");
+            $('#txt-senha').removeClass("erro");
+            error = false;
+        }else if($("#txt-senha").val() == "" || $("#txt-confirmar-senha").val() == ""){
+            console.log(`${$("#txt-senha").val()} vazio ${$("#txt-confirmar-senha").val()}`);
+            $('#txt-confirmar-senha').html('mismatch');
+            alert('As senha não correspondem!');
+            $('#txt-confirmar-senha').addClass("erro");
+            $('#txt-senha').addClass("erro");
+            error = true
+        }else{
+            console.log(`${$("#txt-senha").val()} != ${$("#txt-confirmar-senha").val()}`);
+            $('#txt-confirmar-senha').html('mismatch');
+            alert('As senha não correspondem!');
+            $('#txt-confirmar-senha').addClass("erro");
+            $('#txt-senha').addClass("erro");
+            error = true;
+        }
+        
+        return error;
     }
 
     realizarCadastro(event){
@@ -376,7 +432,7 @@ export default class FormularioProfissional extends Component{
                 cpf = null;
             }        
     
-            if(this.validarCampos() || $("#chk-termos").is(":checked")){
+            if(this.validarCampos() && $("#chk-termos").is(":checked")){
     
                 let endereco = {
                     cep: $("#txt-cep").val(),
@@ -402,13 +458,13 @@ export default class FormularioProfissional extends Component{
                     valorHora: $("#txt-valor-hora").val(),
                     resumoQualificacoes: $("#txt-qualificacoes").val()
                 };
-
+                console.log($("#chk-termos").is(":checked"));
+                // sessionStorage.setItem("endereco", JSON.stringify(endereco));
+                // sessionStorage.setItem("profissional", JSON.stringify(profissional));
+                // browserHistory.push("/profissional/cadastro/confirmacao");
             }
-            console.log($("#chk-termos").is(":checked"));
+            // console.log($("#chk-termos").is(":checked"));
     
-            // sessionStorage.setItem("endereco", JSON.stringify(endereco));
-            // sessionStorage.setItem("profissional", JSON.stringify(profissional));
-            // browserHistory.push("/profissional/cadastro/confirmacao");
         // }else{
         //     console.log("ERRO");
         //     console.log(`${$("#txt-senha").val()} e ${$("#txt-confirmar-senha").val()}`);

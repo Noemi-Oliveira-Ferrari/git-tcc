@@ -18,7 +18,7 @@ export class TermosDeUso extends Component{
                         </div>
                     </div>
                     <div className="caixa-confirmacao ">
-                        <input required type="checkbox" id="chk-termos" className="confirmar-termos" name="chk_termos"/>Declaro estar ciente com os <a href="#" className="">Termos de Uso e Politica de privacidade </a>
+                        <input required type="checkbox" id="chk-termos" className="confirmar-termos" name="chk_termos"/><label htmlFor="chk-termos">Declaro estar ciente com os <a href="#" className="">Termos de Uso e Politica de privacidade </a></label>
                     </div>
                     <div className="caixa-dir">
                         <Link className="link" to="/escolha">
@@ -32,8 +32,6 @@ export class TermosDeUso extends Component{
                     </div>
                 </div>
             </div>
-
-            
         );
     }
 

@@ -7,7 +7,7 @@ export class InputCadastroPro extends Component{
         return(
             <div className={this.props.classInputPro}>
                 <label className="form-label">{this.props.label}</label>
-                <input required 
+                <input  
                     id={this.props.id} type={this.props.type} 
                     name={this.props.name} 
                     maxLength={this.props.maxLength}
@@ -29,11 +29,12 @@ export class SelectCategoriaPro extends Component{
         return(
             <div className={this.props.classSelectPro}>
                 <label className="form-label">{this.props.label}</label>
-                <select required
+                <select 
                     id={this.props.id}
                     name={this.props.name} 
                     className="form-control form-input"
                     onChange={this.props.onChange}>
+                        <option value="">Seleciona Tipo um Serviço</option>
                         {this.props.options}
                 </select>
             </div> 
@@ -46,7 +47,7 @@ export class SelectSubcategoriaPro extends Component{
         return(
             <div className={this.props.classSelectPro}>
                 <label className="form-label">{this.props.label}</label>
-                <select required 
+                <select  
                     id={this.props.id}
                     name={this.props.name} 
                     className="form-control form-input">
