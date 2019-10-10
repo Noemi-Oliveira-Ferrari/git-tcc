@@ -52,18 +52,22 @@ public class EnderecoResource {
 	@GetMapping("/cep/{cep}")
 	public Endereco getEnderecosViacep
 	(@PathVariable String cep){
+		Endereco endereco = new Endereco(); 
 		String jsonEndereco = GetCep.trazerCep(cep);
-		EnderecoCep enderecoCep = HandleJsonInJava.convertEnderecoJsonToJavaObject(jsonEndereco);
-		
-		Endereco endereco = new Endereco();
-		endereco.setLogradouro(enderecoCep.getLogradouro());
-		endereco.setCep(enderecoCep.getCep());
-		endereco.setBairro(enderecoCep.getBairro());
-		
-		Long idCidade = Long.parseLong(enderecoCep.getIbge());
-		Cidade cidade = cidadeRepository.findById(idCidade).get();
-		
-		endereco.setCidade(cidade);
+		if(!jsonEndereco.contains("erro")) {
+			System.out.println("_____________________\n"+jsonEndereco);
+			EnderecoCep enderecoCep = HandleJsonInJava.convertEnderecoJsonToJavaObject(jsonEndereco);
+			
+			endereco = new Endereco();
+			endereco.setLogradouro(enderecoCep.getLogradouro());
+			endereco.setCep(enderecoCep.getCep());
+			endereco.setBairro(enderecoCep.getBairro());
+			
+			Long idCidade = Long.parseLong(enderecoCep.getIbge());
+			Cidade cidade = cidadeRepository.findById(idCidade).get();
+			
+			endereco.setCidade(cidade);
+		}
 		return endereco;
 	}
 	

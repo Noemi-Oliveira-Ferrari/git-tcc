@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import '../css/login.css';
 import DaUmHelp from '../components/DaUmHelp';
-import InputLogin from '../components/InputLogin';
+import {MeuInput, InputLogin} from '../components/InputLogin';
 import {Link} from 'react-router';
 import Logo from '../components/Logo';
+import BotaoEntrar, { Botao } from '../components/Botao';
+import {InputCadastroPro} from '../components/InputCadastroPro';
 
 
 export class Login extends Component{
@@ -31,21 +33,32 @@ export class Login extends Component{
                            </DaUmHelp>
 
                            
-                           <form method="POST" action="login.html" name="frm_login">
+                           <form method="POST" onSubmit="#" name="frm_login">
                                  <div className="container-campos-login">
                                     <div className="container-txt-login">
 
-                                    <InputLogin
+                                    {/* <InputLogin
                                        label="E-mail"
                                        type="email">
-                                    </InputLogin>
+                                    </InputLogin> */}
+                                    <InputCadastroPro 
+                                       classDivInputPro="caixa-campo-login"
+                                       label="E-mail"
+                                       classInput="input-login"
+                                       type="email"
+                                       name="txt_email"/>
 
                                     <InputLogin
                                        label="Senha"
                                        type="password">
                                     </InputLogin>
                                     </div>
-                                    <button className="btn-entrar">ENTRAR</button> 
+                                    <Botao
+                                       idBotao="btn-entrar"
+                                       classBotao="btn-entrar"
+                                       typeBotao="submit"
+                                       valueBotao="Entrar"/>
+                                    {/* // <button  className="btn-entrar">ENTRAR</button>  */}
                                  </div>
                            </form>
                            <div className="texto-card">

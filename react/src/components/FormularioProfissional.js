@@ -1,5 +1,5 @@
 import React,  {Component} from "react";
-import {InputCadastroPro, SelectCategoriaPro, SelectSubcategoriaPro} from './InputCadastroPro';
+import {InputCadastroPro, Selects} from './InputCadastroPro';
 import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
@@ -47,7 +47,7 @@ class DadosPessoaisPro extends Component{
         // this.tirarErro();
         this.setState({cep: event.target.value});
         let cepSize = $("#txt-cep").val().length;
-        if (cepSize >= 8) {
+        if (cepSize > 8) {
             this.getEndereco($("#txt-cep").val());
         }
     }
@@ -55,11 +55,22 @@ class DadosPessoaisPro extends Component{
         axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
         .then((response)=>{
             let jsonEndereco = response.data;
-            this.setState({logradouro: jsonEndereco.logradouro});
-            this.setState({bairro: jsonEndereco.bairro});
-            this.setState({cidade: jsonEndereco.cidade.cidade});
-            this.setState({uf: jsonEndereco.cidade.microrregiao.uf.uf});
-            this.setState({idCidade: jsonEndereco.cidade.idCidade});
+            console.clear();
+            console.log(";;;;");
+            console.log(jsonEndereco.cep);
+            if(jsonEndereco.cep != null){
+                this.setState({logradouro: jsonEndereco.logradouro});
+                this.setState({bairro: jsonEndereco.bairro});
+                this.setState({cidade: jsonEndereco.cidade.cidade});
+                this.setState({uf: jsonEndereco.cidade.microrregiao.uf.uf});
+                this.setState({idCidade: jsonEndereco.cidade.idCidade});
+            }else{
+                this.setState({logradouro: "CEP INVÁLIDO"});
+                this.setState({bairro: ""});
+                this.setState({cidade: ""});
+                this.setState({uf: ""});
+                this.setState({idCidade: ""});
+            }
         })
         .catch((error)=>{
             console.error(error);
@@ -69,38 +80,33 @@ class DadosPessoaisPro extends Component{
 
     setSenha(event){
         this.setState({senha: event.target.value});
-        console.log(this.state.senha);
+        let senha = event.target.value;
+        if(senha.length >= 8){
+            $('#txt-confirmar-senha').attr("disabled", false);
+        }else{
+            $('#txt-confirmar-senha').attr("disabled", true);
+        }
     }
 
     setConfirmSenha(event){
         this.setState({confirmSenha: event.target.value});
-        console.log($('#txt-confirmar-senha').val());
-        console.log($('#txt-confirmar-senha').val().length+"  "+$('#txt-senha').val().length);
-        if($('#txt-confirmar-senha').val().length == $('#txt-senha').val().length){
-            this.validarSenha();
-        }
+        let confirmSenha = event.target.value;
+        console.log(confirmSenha.length+" c s "+this.state.senha.length);
+        this.validarSenha(this.state.senha, confirmSenha);
     }
     
-    validarSenha(){
-        if($('#txt-senha').val() == $('#txt-confirmar-senha').val()){
+    validarSenha(senha, confirmSenha){
+        if(senha == confirmSenha){
             $('#txt-confirmar-senha').html('match');
             $('#txt-confirmar-senha').removeClass("erro");
             $('#txt-senha').removeClass("erro");
-            // error = false;
-        }else if($('#txt-senha').val() == "" || $('#txt-confirmar-senha').val() == ""){
-            console.log(`${$('#txt-senha').val()} vazio ${$('#txt-confirmar-senha').val()}`);
-            $('#txt-confirmar-senha').html('mismatch');
-            alert('nao era pra cair aqui');
+        }else if(senha == "" || confirmSenha == ""){
             $('#txt-confirmar-senha').addClass("erro");
             $('#txt-senha').addClass("erro");
-            // error = true
         }else{
-            console.log(`${$('#txt-senha').val()} != ${$('#txt-confirmar-senha').val()}`);
             $('#txt-confirmar-senha').html('mismatch');
-            // alert('As senha não correspondem!');
             $('#txt-confirmar-senha').addClass("erro");
             $('#txt-senha').addClass("erro");
-            // error = true;
         }
     }
 
@@ -119,39 +125,41 @@ class DadosPessoaisPro extends Component{
                                 name="txt_nome"
                                 maxLength="100"
                                 type="text"
-                                classInputPro="caixa-nome"
+                                classDivInputPro="caixa-nome"
+                                classInput="form-control form-input"
                             />
 
                             <InputCadastroPro
-                                classInputPro="caixa-dataNasc"
+                                classDivInputPro="caixa-dataNasc"
                                 label="Data de Nascimento:"
-                                maxLength="10"
                                 id="txt-dataNasc"
                                 type="text"
                                 name="txt_data_nasc"
-                                
+                                mascara="99/99/9999"
+                                classInput="form-control form-input"
                             />
                         
                         </div>
                         <div className="flex-center container-cpfCnpj-email">
 
                             <InputCadastroPro
-                                classInputPro="caixa-cpfCnpj"
+                                classDivInputPro="caixa-cpfCnpj"
                                 label="CPF/CNPJ:"
-                                maxLength="20"
                                 id="txt-cpfCnpj"
                                 type="text"
                                 name="txt_cpfCnpj"
+                                classInput="form-control form-input"
                             />
 
                             <InputCadastroPro
-                                classInputPro="caixa-email"
+                                classDivInputPro="caixa-email"
                                 label="E-mail:"
                                 maxLength="150"
                                 id="txt-email"
                                 type="email"
                                 name="txt_email"
                                 
+                                classInput="form-control form-input"
                             />
 
                             
@@ -159,23 +167,25 @@ class DadosPessoaisPro extends Component{
                         <div className="flex-center container-senha">
 
                             <InputCadastroPro
-                                classInputPro="caixa-senha"
+                                classDivInputPro="caixa-senha"
                                 label="Senha:"
                                 maxLength="130"
                                 id="txt-senha"
                                 type="password"
                                 name="txt_senha"
                                 onChange={this.setSenha}
+                                classInput="form-control form-input"
                             />
 
                             <InputCadastroPro
-                                classInputPro="caixa-confirmar-senha"
+                                classDivInputPro="caixa-confirmar-senha"
                                 label="Confirmar Senha:"
                                 maxLength="130"
                                 id="txt-confirmar-senha"
                                 type="password"
                                 name="txt_confirmar_senha"
                                 onChange={this.setConfirmSenha}                                
+                                classInput="form-control form-input"
                             />
 
                         </div>
@@ -183,64 +193,70 @@ class DadosPessoaisPro extends Component{
                         <div className="flex-center container-cep-logradouro">
 
                             <InputCadastroPro
-                                classInputPro="caixa-cep"
+                                classDivInputPro="caixa-cep"
                                 label="CEP:"
-                                maxLength="10"
                                 id="txt-cep"
                                 type="text"
                                 name="txt_cep"
                                 onChange={this.setCep}
+                                classInput="form-control form-input"
+                                mascara="99999-999"
+                                valueInput={this.state.cep || ""}
                             />
 
                             <InputCadastroPro
-                                classInputPro="caixa-logradouro"
+                                classDivInputPro="caixa-logradouro"
                                 label="Logradouro:"
                                 maxLength="120"
                                 id="txt-logradouro"
                                 type="text"
                                 name="txt_logradouro"
-                                valorInput={this.state.logradouro}
+                                valueInput={this.state.logradouro}
                                 readOnly
+                                classInput="form-control form-input"
                             />
                             
                         </div>
                         <div className="flex-center container-bairro-cidade-uf">
 
                             <InputCadastroPro
-                                classInputPro="caixa-bairro"
+                                classDivInputPro="caixa-bairro"
                                 label="Bairro:"
                                 maxLength="120"
                                 id="txt-bairro"
                                 type="text"
                                 name="txt_bairro"
-                                valorInput={this.state.bairro}
-                                readOnly
+                                valueInput={this.state.bairro}
+                                disabled
                                 
+                                classInput="form-control form-input"
                             />
 
                             <InputCadastroPro
-                                classInputPro="caixa-cidade"
+                                classDivInputPro="caixa-cidade"
                                 label="Cidade:"
                                 maxLength="120"
                                 id="txt-cidade"
                                 type="text"
                                 name="txt_cidade"
                                 data={this.state.idCidade}
-                                valorInput={this.state.cidade}
+                                valueInput={this.state.cidade}
                                 readOnly
                                 
+                                classInput="form-control form-input"
                             />
 
                             <InputCadastroPro
-                                classInputPro="caixa-uf"
+                                classDivInputPro="caixa-uf"
                                 label="UF:"
                                 maxLength="2"
                                 id="txt-uf"
                                 type="text"
                                 name="txt_uf"
-                                valorInput={this.state.uf}
+                                valueInput={this.state.uf}
                                 readOnly
                                 
+                                classInput="form-control form-input"
                             />
                             
                         </div>
@@ -308,31 +324,33 @@ class DadosProfissional extends Component{
                     <div className="flex-center campos-servicos">
                         <div className="container-servico-pro">
                             <div className="flex-center container-categoria">
-                                <SelectCategoriaPro
-                                    label="Tipos de Serviços:"
-                                    id="slt-categoria"
-                                    name="slt_categoria"
-                                    classSelectPro="caixa-categoria"
-                                    onChange={()=>(this.getSubcategorias($("#slt-categoria").find(":selected").val()))}
-                                    options={this.state.categorias.map(categoria=>(
+                                <Selects
+                                    labelSelect="Tipos de Serviços:"
+                                    idSelect="slt-categoria"
+                                    nameSelect="slt_categoria"
+                                    classDivSelect="caixa-categoria"
+                                    onChangeSelect={()=>(this.getSubcategorias($("#slt-categoria").find(":selected").val()))}
+                                    optionsSelect={this.state.categorias.map(categoria=>(
                                                 <option key={categoria.idCategoria} value={categoria.idCategoria}>
                                                     {categoria.categoria}
                                                 </option>
                                             ))}
+                                    firstOption="Selecione um Tipo de serviço"
                                 />
                             </div>
                             
                             <div className="flex-center container-subcat">
-                                <SelectSubcategoriaPro
-                                    label="Serviços:"
-                                    id="slt-subcat"
-                                    name="slt_subcategoria"
-                                    classSelectPro="caixa-subcat"
-                                    options={this.state.subcategorias.map(subcategoria=>(
+                                <Selects
+                                    labelSelect="Serviços:"
+                                    idSelect="slt-subcat"
+                                    nameSelect="slt_subcategoria"
+                                    classDivSelect="caixa-subcat"
+                                    optionsSelect={this.state.subcategorias.map(subcategoria=>(
                                                 <option key={subcategoria.idSubcategoria} value={subcategoria.idSubategoria}>
                                                     {subcategoria.subcategoria}
                                                 </option>
                                             ))}
+                                    firstOption="Selecione um serviço"
                                 />
                             </div>
                             
@@ -340,10 +358,10 @@ class DadosProfissional extends Component{
                                 <InputCadastroPro
                                     label="Valor/Hora:"
                                     id="txt-valor-hora"
+                                    classInput="form-control form-input"
                                     name="txt_valor_hora"
-                                    maxLength="10"
                                     type="text"
-                                    classInputPro="caixa-valor-hora"
+                                    classDivInputPro="caixa-valor-hora"
                                 />
                             </div>
                         </div>
@@ -375,52 +393,43 @@ export default class FormularioProfissional extends Component{
         
         let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email], select, textarea");
         console.log(campos);
-        let error = false;
+        let notError = false;
         // console.log($("#txt-confirmar-senha").val());
         
         campos.forEach(campo =>{
             if(campo.value === ""){
                 $(campo).addClass("erro");
-                error = true;
+                notError = false;
             }else{
                 $(campo).removeClass("erro");
-                error = false;
+                notError = true;
             }
         });
 
-        console.log(`${$("#txt-senha").val()} > ${$("#txt-confirmar-senha").val()}`);
-
-        if($("#txt-senha").val() == $("#txt-confirmar-senha").val()){
+        if($('#txt-senha').val() == $('#txt-confirmar-senha').val() &&
+        ($('#txt-senha').val() != "" || $('#txt-confirmar-senha').val() != "")){
             $('#txt-confirmar-senha').html('match');
             $('#txt-confirmar-senha').removeClass("erro");
             $('#txt-senha').removeClass("erro");
-            error = false;
-        }else if($("#txt-senha").val() == "" || $("#txt-confirmar-senha").val() == ""){
-            console.log(`${$("#txt-senha").val()} vazio ${$("#txt-confirmar-senha").val()}`);
-            $('#txt-confirmar-senha').html('mismatch');
-            alert('As senha não correspondem!');
+            notError = true;
+        }else if($('#txt-senha').val() == "" || $('#txt-confirmar-senha').val() == ""){
             $('#txt-confirmar-senha').addClass("erro");
             $('#txt-senha').addClass("erro");
-            error = true
+            notError = false;
         }else{
-            console.log(`${$("#txt-senha").val()} != ${$("#txt-confirmar-senha").val()}`);
             $('#txt-confirmar-senha').html('mismatch');
-            alert('As senha não correspondem!');
             $('#txt-confirmar-senha').addClass("erro");
             $('#txt-senha').addClass("erro");
-            error = true;
+            notError = false;
         }
-        
-        return error;
+
+        return notError;
     }
 
     realizarCadastro(event){
         event.preventDefault();
         console.clear();
         console.log("Enviando dados ao banco...");
-        // $('#txt-confirmar-senha').get(0).setCustomValidity('As senha não correspondem!');
-        
-        // if($("#txt-senha").val() == $("#txt-confirmar-senha").val()){
             let cpfCnpj = $("#txt-cpfCnpj").val().replace(/[.-]/g, "");
             let cpf;
             let cnpj;
@@ -431,9 +440,11 @@ export default class FormularioProfissional extends Component{
                 cnpj = cpfCnpj;
                 cpf = null;
             }        
-    
+            
+            console.log("validarCampos"+this.validarCampos());
             if(this.validarCampos() && $("#chk-termos").is(":checked")){
-    
+                console.log("validarCampos TRUE"+this.validarCampos());
+                
                 let endereco = {
                     cep: $("#txt-cep").val(),
                     logradouro: $("#txt-logradouro").val(),
@@ -458,10 +469,9 @@ export default class FormularioProfissional extends Component{
                     valorHora: $("#txt-valor-hora").val(),
                     resumoQualificacoes: $("#txt-qualificacoes").val()
                 };
-                console.log($("#chk-termos").is(":checked"));
-                // sessionStorage.setItem("endereco", JSON.stringify(endereco));
-                // sessionStorage.setItem("profissional", JSON.stringify(profissional));
-                // browserHistory.push("/profissional/cadastro/confirmacao");
+                sessionStorage.setItem("endereco", JSON.stringify(endereco));
+                sessionStorage.setItem("profissional", JSON.stringify(profissional));
+                browserHistory.push("/profissional/cadastro/confirmacao");
             }
             // console.log($("#chk-termos").is(":checked"));
     

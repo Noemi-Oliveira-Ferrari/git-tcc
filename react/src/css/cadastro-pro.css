@@ -258,7 +258,7 @@ option{
         height: 90px;
         /* background-color: rgb(57, 207, 115); */
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         flex-wrap: wrap;
     }
 
@@ -332,7 +332,7 @@ option{
         height: 80px;
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: flex-start;
         flex-wrap: wrap;
         /* background-color: #57bc90; */
     }
@@ -351,7 +351,7 @@ option{
         padding-top: 5px;
         display: flex;
         align-items: flex-start;
-        justify-content: start;
+        justify-content: flex-start;
         flex-wrap: wrap;
     }
 
@@ -421,6 +421,9 @@ option{
         font-family: "Manjari";
     }
 
+    .caixa-confirmacao label{
+        margin-top: -3px;
+    }
     .caixa-button
     {
         width: inherit;
@@ -520,25 +523,25 @@ option{
     .caixa-dir
     {
         width: 360px;
-        height: 100px;
+        height: fit-content;
         /* background-color: aqua; */
         float: left;
         display: flex;
-        align-items: end;
+        /* align-items: flex-end; */
         justify-content: flex-start;
-        margin-top: 10px;
+        /* margin-top: 10px; */
     }
 
     .caixa-esq
     {
         width: 380px;
-        height: 100px;
+        height: fit-content;
         /* background-color: yellow;   */
         float: left;      
         display: flex;
-        align-items: end;
+        /* align-items: flex-end; */
         justify-content: flex-end;
-        margin-top: 10px;
+        /* margin-top: 10px; */
     }
 
 
@@ -645,7 +648,7 @@ option{
         height: auto;
         overflow: hidden;
         display: flex;
-        align-items: start;
+        align-items: flex-start;
         /* background-color: #129bf6; */
         flex-wrap: wrap;
     }
@@ -741,7 +744,7 @@ option{
         height: 180px;
         /* background-color: rgb(57, 160, 207); */
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         flex-wrap: wrap;
         margin-top: 15px;
     }
@@ -779,8 +782,8 @@ option{
         height: 180px;
         /* background-color: rgb(57, 207, 115); */
         display: flex;
-        align-items: start;
-        justify-content: start;
+        align-items: flex-start;
+        justify-content: flex-start;
         flex-wrap: wrap;
         margin-bottom: 20px;
         box-sizing: border-box;
