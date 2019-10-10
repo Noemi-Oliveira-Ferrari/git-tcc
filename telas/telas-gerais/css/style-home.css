@@ -1,0 +1,98 @@
+/*----- Padronização -----*/
+body, html, figure, input, img, h1, h2,
+h3, h4, h5, h6, div, figure, section
+{
+    margin: 0;
+    padding: 0;
+}
+
+body, html
+{
+    height: 100%;
+}
+
+#all
+{
+    flex: 1;
+}
+
+body
+{
+    background-color: #ffffff;
+}
+
+/*----- Estilização -----*/
+@font-face
+{
+    font-family: 'Lexend Deca';
+    src: url("../fontes/LexendDeca-Regular.ttf");
+}
+
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px){
+    .tamanho-conteudo
+    {
+        width: 100%;
+        height: auto;
+    }
+
+    .titulo-empresa
+    {
+        text-align: center;
+        font-size: 2em;
+        font-family: 'Lexend Deca';
+    }
+
+    .subtitulo-empresa
+    {
+        text-align: center;
+        font-size: 2em;
+        font-family: 'Lexend Deca';
+    }
+
+    .imagem-empresa
+    {
+        width: 100px;
+        height: 100px;
+        background-color: aquamarine;
+        margin: auto;
+        margin-left: 5px;
+        text-align: center;
+    }
+
+    .caixa-sobre
+    {
+        width: 1200px;
+        height: 600px;
+        background-color: violet;
+        margin: auto;
+    }
+
+    .text-empresa
+    {
+        font-size: 18px;
+    }
+
+    .caixa-conteudo-empresa
+    {
+        width: 300px;
+        height: 300px;
+        background-color: tomato;
+        margin: 3px;
+        text-align: center;
+        float: left;
+        display: flex;
+        justify-content: center;
+    }
+
+    .caixa-titulo
+    {
+        width: 100%;
+        height: 200px;
+        background-color: rgb(122, 243, 203);
+        text-align: center;
+    }
+}
+
+/*----- Web-Responsivo -----*/
+@media screen and (min-device-width:880px){}
