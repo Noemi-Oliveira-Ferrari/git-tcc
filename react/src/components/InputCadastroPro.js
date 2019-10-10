@@ -45,10 +45,11 @@ export class InputMascara extends Component {
             onChange={this.props.onChangeInput}
             data-idCidade={this.props.dataInput}
             value={this.props.valueInput}
-            readOnly={this.props.readOnly}
+            // readOnly={this.props.readOnly}
             maskChar=""/>;
     }
 }
+
 export class InputCadastroPro extends Component{
     render(){
         return(

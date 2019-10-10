@@ -1,12 +1,11 @@
 import React from 'react';
-import { Component } from 'react';
+import { Component, Fragment } from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 // css e js
-import './css/confirmacao.css';
-import './css/login.css';
-import './css/escolha.css';
-import './css/cadastro-pro.css';
-import './css/bootstrap.css';
+import "./css/padroes.css";
+import "./css/bootstrap.css";
 
 import './utils/cardChooseAnimation';
 
@@ -16,21 +15,17 @@ class App extends Component{
 
 	
 return (
-	<div id="all">
+	<Fragment>
+		<Header/>
+		<div className="aux-header"/>
+		<div id="all">
 
-	{this.props.children}
+			{this.props.children}
 
-	{/* <!-- div para separa o conteudo do footer --> */}
-	<div id="espaco">
-
-	</div>
-	<footer hidden>
-
-	</footer>
-</div>
-
-
-
+			<div className="aux-footer"/>
+		</div>
+		<Footer/>
+	</Fragment>
   );
 }
 

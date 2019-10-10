@@ -24,22 +24,6 @@ class DadosPessoaisPro extends Component{
         this.validarSenha = this.validarSenha.bind(this);
         this.teste = this.teste.bind(this);
     }
-/* 
-    tirarErro(){
-        
-        let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email], select, textarea");
-        campos.forEach(campo =>{
-            if($(campo).hasClass("erro") ){
-                $(campo).on("input", function(){
-                    if(campo.value.length > 0){
-                        $(campo).removeClass("erro");
-                    }
-                })
-            }
-        })
-
-    } */
-
     teste(){
         console.log("ola-----------------------");
     }

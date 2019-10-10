@@ -1,61 +1,3 @@
-/* CSS */
-
-body, html, figure, input, img, h1, h2,
-h3, h4, h5, h6, div, figure, section{
-    margin: 0;
-    padding: 0;
-}
-
-@font-face{
-    font-family: 'Lexend Deca';
-    src: url("../fonts/LexendDeca-Regular.ttf");
-
-}
-
-@font-face{
-    font-family: 'Manjari';
-    src: url("../fonts/Manjari-Regular.ttf");
-
-}
-
-body, html{
-    height: 100%;
-}
-
-#all{
-    flex: 1;
-}
-
-
-body{
-    background-image: linear-gradient(to bottom right, #57BC90, #77C9D4); 
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-}
-
-.center{
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: center;
-}
-
-.flex-center{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-   /* MENUUUU */
-   header{
-    width: 100%;
-    height: 80px;
-    background-color: #ffffff;
-}
-
-
 /* DESKTOOPPPPP  */
 @media screen and (min-device-width:1000px){
  
@@ -175,85 +117,69 @@ body{
         text-decoration: underline;
     }
 
-    /* MODAAALLL */
-.modal{
-    height: 100%;
-    width: 100%;
-    background-color: rgba(87, 188, 144, 0.445);
-}
-
-.caixa-modal{
-    width: 700px;
-    height: 700px;
-    background-color: white;
-    border-radius: 15px;
-}
-
-.img-confirm{
-    width:100%;
-    height: 200px;
-    /* background-color: #77C9D4; */
-}
-
-.img-confirm img{
-    width: 200px;
-    height: 100%;
-}
-
-.title-confirm{
-    width:100%;
-    height: 200px;
-    /* background-color: brown; */
-    text-align: center;
-    font-size: 55px;
-    box-sizing: border-box;
-    padding: 30px;
-    color: #84848D;
-}
-
-.text-confirm{
-    width:100%;
-    height: 150px;
-    /* background-color: #77C9D4; */
-    color: #A5A5AF;
-    font-size: 25px;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 20px;
-}
-
-.btn{
-    width:100%;
-    height: 150px;
-    /* background-color: #015249; */
-}
-
-.btn-inicio{
-    width: 60%;
-    height: 80px;
-    font-size: 25px;
-    border-radius: 15px;
-    background-color: #57BC90;
-    color: white;
-}
-    
-    
-    
-    /* FOOTER */
-    
-    footer{
+        /* MODAAALLL */
+    .modal{
+        height: 100%;
         width: 100%;
-        height: 150px;
-        background-color: white;
-        position: absolute;
-        bottom: 0%;
+        background-color: rgba(87, 188, 144, 0.445);
     }
-    
-    #espaco{
-        width: 100%;
-        height: 100px;
+
+    .caixa-modal{
+        width: 700px;
+        height: 700px;
+        background-color: white;
+        border-radius: 15px;
+    }
+
+    .img-confirm{
+        width:100%;
+        height: 200px;
+        /* background-color: #77C9D4; */
+    }
+
+    .img-confirm img{
+        width: 200px;
+        height: 100%;
+    }
+
+    .title-confirm{
+        width:100%;
+        height: 200px;
+        /* background-color: brown; */
+        text-align: center;
+        font-size: 55px;
+        box-sizing: border-box;
+        padding: 30px;
+        color: #84848D;
+    }
+
+    .text-confirm{
+        width:100%;
+        height: 150px;
+        /* background-color: #77C9D4; */
+        color: #A5A5AF;
+        font-size: 25px;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    .btn{
+        width:100%;
+        height: 150px;
         /* background-color: #015249; */
     }
+
+    .btn-inicio{
+        width: 60%;
+        height: 80px;
+        font-size: 25px;
+        border-radius: 15px;
+        background-color: #57BC90;
+        color: white;
+    }
+        
+        
 
 
 }
@@ -373,85 +299,63 @@ body{
         text-decoration: underline;
     }
 
-    /* MODAAALLL */
-.modal{
-    height: 100%;
-    width: 100%;
-    background-color: rgba(87, 188, 144, 0.445);
-}
-
-.caixa-modal{
-    width: 900px;
-    height: 1000px;
-    background-color: white;
-    border-radius: 15px;
-}
-
-.img-confirm{
-    width:100%;
-    height: 300px;
-    /* background-color: #77C9D4; */
-}
-
-.img-confirm img{
-    width: 300px;
-    height: 100%;
-}
-
-.title-confirm{
-    width:100%;
-    height: 250px;
-    /* background-color: brown; */
-    text-align: center;
-    font-size: 60px;
-    box-sizing: border-box;
-    padding: 30px;
-    color: #84848D;
-}
-
-.text-confirm{
-    width:100%;
-    height: 250px;
-    /* background-color: #77C9D4; */
-    color: #A5A5AF;
-    font-size: 35px;
-    text-align: center;
-    box-sizing: border-box;
-    padding: 20px;
-}
-
-.btn{
-    width:100%;
-    height: 200px;
-    /* background-color: #015249; */
-}
-
-.btn-inicio{
-    width: 60%;
-    height: 100px;
-    font-size: 40px;
-    border-radius: 15px;
-    background-color: #57BC90;
-    color: white;
-}
-    
-    
-    
-    /* FOOTER */
-    
-    footer{
+    /* MODAAALL*/
+    /* .modal{
+        height: 100%;
         width: 100%;
-        height: 200px;
+        background-color: rgba(87, 188, 144, 0.445);
+    }
+
+    .caixa-modal{
+        width: 900px;
+        height: 1000px;
         background-color: white;
-        position: absolute;
-        bottom: 0%;
+        border-radius: 15px;
     }
-    
-    #espaco{
-        width: 100%;
+
+    .img-confirm{
+        width:100%;
+        height: 300px;
+        background-color: #77C9D4; 
+    }
+
+    .img-confirm img{
+        width: 300px;
+        height: 100%;
+    }
+
+    .title-confirm{
+        width:100%;
+        height: 250px;
+        text-align: center;
+        font-size: 60px;
+        box-sizing: border-box;
+        padding: 30px;
+        color: #84848D;
+    }
+
+    .text-confirm{
+        width:100%;
+        height: 250px;
+        color: #A5A5AF;
+        font-size: 35px;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    .btn{
+        width:100%;
+        height: 200px;
+    }
+
+    .btn-inicio{
+        width: 60%;
         height: 100px;
-        /* background-color: #015249; */
-    }
-
-
+        font-size: 40px;
+        border-radius: 15px;
+        background-color: #57BC90;
+        color: white;
+    }  */
+        
 }

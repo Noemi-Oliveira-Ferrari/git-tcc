@@ -7,7 +7,7 @@ export class Logo extends Component{
    render(){
     return(
          
-            <div className={this.props.classLogo}>
+            <div className="logotipo">
                 <figure>
                     <img src={LogoImg} />
                 </figure>

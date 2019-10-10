@@ -1,5 +1,5 @@
 
-import '../css/escolha.css';
+// import '../css/escolha.css';
 import arrowRight from '../img/arrow-point-to-right.png';
 import {Link} from 'react-router';
 import React, { Component } from 'react';

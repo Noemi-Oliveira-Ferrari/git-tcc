@@ -7,7 +7,7 @@ export class DaUmHelp extends Component{
     return(
         
     <div className={this.props.classNome}>
-        DaUmHelp!
+        <h2>DaUmHelp!</h2>
     </div>
         
     );

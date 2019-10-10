@@ -6,7 +6,7 @@ import {Link} from 'react-router';
 import Logo from '../components/Logo';
 import BotaoEntrar, { Botao } from '../components/Botao';
 import {InputCadastroPro} from '../components/InputCadastroPro';
-
+import IconLogin from '../img/log-in.png';
 
 export class Login extends Component{
    render(){
@@ -15,23 +15,23 @@ export class Login extends Component{
          <div className="container-login">
             <div className="container-centro">
                <div className="caixa-texto">
-                     <div className="conteudo-caixa-texto">
-                        <h2>Comece a utilizar nossos serviços</h2>
-                     </div>
+                  <div className="conteudo-caixa-texto">
+                     <h2>Comece a utilizar nossos serviços</h2>
+                  </div>
                </div>
                <div className="caixa-conteudo">
                      <div className="card-login">
                         <div className="conteudo-card">
-                           
-                        <Logo
-                           classLogo="logotipo">
-                        </Logo>
 
+                           <div className="titulo-card-login center flex-center">
+                              <h2>Bem-Vindo à DaUmHelp!</h2>
+                           </div>
 
-                           <DaUmHelp
-                              classNome="titulo">
-                           </DaUmHelp>
-
+                           <div className="icon-login center">
+                              <figure>
+                                 <img alt="Login" title="Login" src={IconLogin}/>
+                              </figure>
+                           </div>
                            
                            <form method="POST" onSubmit="#" name="frm_login">
                                  <div className="container-campos-login">
@@ -74,55 +74,6 @@ export class Login extends Component{
             </div>
          </div>
    </div>
-
-
-
-
-         // <div className="container-centro">
-         //    <div className="caixa-texto">
-         //       <div className="conteudo-caixa-texto">
-         //          <h2>Comece a utilizar nossos serviços</h2>
-         //       </div>
-         //    </div>
-         //    <div className="caixa-conteudo">
-         //          <div className="card-login">
-         //             <div className="conteudo-card">
-
-         //                <Logo
-         //                   classLogo="logotipo">
-         //                </Logo>
-                              
-         //                <DaUmHelp
-         //                   classNome="titulo">
-         //                </DaUmHelp>
-
-         //                   <form method="POST" action="login.html" name="frm_login">
-         //                      <div className="container-campos-login">
-         //                         <div className="container-txt-login">
-         //                            <InputLogin
-         //                               label="E-mail"
-         //                               type="email">
-         //                            </InputLogin>
-
-         //                            <InputLogin
-         //                               label="Senha"
-         //                               type="password">
-         //                            </InputLogin>
-         //                         </div>
-         //                         <Botao
-         //                            classBotao="btn-entrar"
-         //                            valueBotao="Entrar">
-         //                         </Botao> 
-         //                      </div>
-         //                   </form>
-         //                   <LinkCadastro>
-         //                   </LinkCadastro>
-         //             </div>
-         //          </div>
-         //       </div>
-         // </div>
-        
-
     );
    }
 

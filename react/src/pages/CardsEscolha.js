@@ -61,29 +61,29 @@ class CardsEscolha extends Component {
 
     render(){
 		return(
-			<div className="container-conteudo">
+			<div className="container-conteudo-escolha">
 				<div className="title-caixa-escolha center">
 					<h1>O que você gostaria de fazer?</h1>
 				</div>
 				<div className="caixa-escolha">
 
 					<Escolha 
-					classCaixa="caixa-profissional"
-					toCadastro="/profissional/cadastro"
-					titulo="Profissional" 
-					texto="Você poderá cadastrar seus serviços e ser contratado pelos usuários da plataforma"
-					img={worker}
-					seta="seta-worker"
-					idBtn="btn-escolha-worker"/>
+						classCaixa="caixa-profissional"
+						toCadastro="/profissional/cadastro"
+						titulo="Profissional" 
+						texto="Você poderá cadastrar seus serviços e ser contratado pelos usuários da plataforma"
+						img={worker}
+						seta="seta-worker"
+						idBtn="btn-escolha-worker"/>
 
 					<Escolha 
-					classCaixa="caixa-cliente"
-					toCadastro="/cliente/cadastro"
-					titulo="Cliente" 
-					texto="Você poderá encontrar diversos profissionais ideais para o serviço que precisara"
-					img={customer}
-					seta="seta-customer"
-					idBtn="btn-escolha-customer"/>
+						classCaixa="caixa-cliente"
+						toCadastro="/cliente/cadastro"
+						titulo="Cliente" 
+						texto="Você poderá encontrar diversos profissionais ideais para o serviço que precisara"
+						img={customer}
+						seta="seta-customer"
+						idBtn="btn-escolha-customer"/>
 
 				</div> 
 			</div>

@@ -19,8 +19,7 @@ function ModalSucesso (props) {
                             {/* <img src={singCheck}/> */}
                         </figure>
 
-                    </div>
-                   
+                    </div>                   
                 </Modal.Header>
                 <Modal.Body>
                     <div className="title-confirm">
