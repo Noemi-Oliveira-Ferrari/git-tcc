@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="br.net.daumhelp.menu.home.PedidosFragmentActivity"
+        android:label="@string/title_home"
+        tools:layout="@layout/activity_fragment_pedidos" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="br.net.daumhelp.menu.pagamento.PagamentoFragmentActivity"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/activity_fragment_pagamento" />
+
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="br.net.daumhelp.menu.perfil.PerfilFragmentActivity"
+        android:label="@string/title_notification"
+        tools:layout="@layout/activity_fragment_perfil" />
+</navigation>

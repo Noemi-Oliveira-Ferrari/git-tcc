@@ -2,12 +2,13 @@ package br.net.daumhelp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.recursos.Mascara;
@@ -16,7 +17,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CadastroEnderecoActivity extends AppCompatActivity{
+public class CadastroEnderecoActivity extends AppCompatActivity {
 
     private Button btnProximo;
     private Button btnVoltar;
