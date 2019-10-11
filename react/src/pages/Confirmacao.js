@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Link} from 'react-router';
 import EmailImg from '../img/emailcheck.png';
 import check from '../img/check.png';
 import ButtonToolbar from '../../node_modules/react-bootstrap/ButtonToolbar';
+import $ from 'jquery';
+import axios from 'axios';
 
 import '../css/confirmacao.css';
 import ModalSucesso from '../components/ModalSucesso';
@@ -10,6 +12,33 @@ import ModalSucesso from '../components/ModalSucesso';
 function Confirmacao() {
 
     const [modalShow, setModalShow] = React.useState(false);
+
+    function random (min, max){
+        return Math.trunc(Math.random() * (max + 1 - min) + min);
+    }
+    useEffect(()=>{
+        let code = random(1000, 9999);
+
+        let profissional = JSON.parse(sessionStorage.getItem("profissional"));
+        // let confirmacao = 
+
+        // console.log(confirmacao);
+        axios({
+            method: 'POST',
+            url: "http://localhost:8080/profissionais/confirmacao",
+            data: {
+                confirmacao: {
+                    nome: profissional.nome,
+                    destinatario: profissional.email,
+                    codigoConfirm: code
+                }
+            }
+        });
+        // axios.get("http://localhost:8080/profissionais/confirmacao")
+        // .then((response)=>{
+
+        // })
+    });
 
     return(
         <section className="flex-center center">

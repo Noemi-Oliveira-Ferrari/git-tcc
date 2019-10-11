@@ -39,10 +39,12 @@ public class ProfissionalResource {
 	private ProfissionalRepository proRepository;
 	@Autowired
 	private ProfissionalDTORepository proDTORepository;
-	
+
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/confirmacao")
 	@ResponseStatus(code = HttpStatus.OK, reason = "E-mail enviado", value = HttpStatus.OK)
 	public boolean confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
+		System.out.println(confirm);
 		return HandleEmails.enviar(confirm);
 	}
 

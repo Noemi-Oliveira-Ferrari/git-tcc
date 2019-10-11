@@ -120,32 +120,32 @@ class DadosPessoaisPro extends Component{
                 <div className="card-formulario-pessoal">
                     <div className="caixa-title-card">
                         <div className="title-card-pro">Dados Pessoais</div>
-                        <div className="title-card-pjPf">
-                            <Inputs
-                                id="rdo-pf"
-                                type="radio"
-                                name="rdos_pfpj"
-                                label="Pessoa Física:"
-                                classDivInputPro="caixa-rdo-pf"
-                                forInput="rdo-pf"
-                                onChange={this.setTipoPfPj}
-                                // onChange={(e) => this.setState({ radioChecked: e.target.value })}
-                                radioChecked={this.state.radioChecked === 'rdo-pf'}
-                                valueInput="rdo-pf"
-                            />
-                            <Inputs
-                                id="rdo-pj"
-                                type="radio"
-                                name="rdos_pfpj"
-                                label="Pessoa Jurídica:"
-                                classDivInputPro="caixa-rdo-pj"
-                                forInput="rdo-pj"
-                                onChange={this.setTipoPfPj}
-                                // onChange={(e) => this.setState({ radioChecked: e.target.value })}
-                                radioChecked={this.state.radioChecked === 'rdo-pj'}
-                                valueInput="rdo-pj"
-                            />
-                        </div>
+                    </div>
+                    <div className="title-card-pjPf">
+                        <Inputs
+                            id="rdo-pf"
+                            type="radio"
+                            name="rdos_pfpj"
+                            label="Pessoa Física:"
+                            classDivInputPro="caixa-rdo-pf"
+                            forInput="rdo-pf"
+                            onChange={this.setTipoPfPj}
+                            // onChange={(e) => this.setState({ radioChecked: e.target.value })}
+                            radioChecked={this.state.radioChecked === 'rdo-pf'}
+                            valueInput="rdo-pf"
+                        />
+                        <Inputs
+                            id="rdo-pj"
+                            type="radio"
+                            name="rdos_pfpj"
+                            label="Pessoa Jurídica:"
+                            classDivInputPro="caixa-rdo-pj"
+                            forInput="rdo-pj"
+                            onChange={this.setTipoPfPj}
+                            // onChange={(e) => this.setState({ radioChecked: e.target.value })}
+                            radioChecked={this.state.radioChecked === 'rdo-pj'}
+                            valueInput="rdo-pj"
+                        />
                     </div>
                     
                     <div className="float campos-dados">
@@ -465,59 +465,49 @@ export default class FormularioProfissional extends Component{
         event.preventDefault();
         console.clear();
         console.log("Enviando dados ao banco...");
-            let cpfCnpj = $("#txt-cpfCnpj").val().replace(/[.-]/g, "");
-            let cpf;
-            let cnpj;
-            if(cpfCnpj.length <= 14){
-                cpf = cpfCnpj;
-                cnpj = null;
-            }else{
-                cnpj = cpfCnpj;
-                cpf = null;
-            }        
+        let cpfCnpj = $("#txt-cpfCnpj").val().replace(/[.-]/g, "");
+        let cpf;
+        let cnpj;
+        if(cpfCnpj.length <= 14){
+            cpf = cpfCnpj;
+            cnpj = null;
+        }else{
+            cnpj = cpfCnpj;
+            cpf = null;
+        }        
+        
+        console.log("validarCampos"+this.validarCampos());
+        if(this.validarCampos() && $("#chk-termos").is(":checked")){
+            console.log("validarCampos TRUE"+this.validarCampos());
             
-            console.log("validarCampos"+this.validarCampos());
-            if(this.validarCampos() && $("#chk-termos").is(":checked")){
-                console.log("validarCampos TRUE"+this.validarCampos());
-                
-                let endereco = {
-                    cep: $("#txt-cep").val(),
-                    logradouro: $("#txt-logradouro").val(),
-                    bairro: $("#txt-bairro").val(),
-                    cidade: {
-                        idCidade: $("#txt-cidade").attr("data-idCidade")
-                    }
-                };
-                let profissional = {
-                    nome: $("#txt-nome").val(),
-                    dataNasc: $("#txt-dataNasc").val(),
-                    cpf: cpf,
-                    cnpj: cnpj,
-                    email: $("#txt-cep").val(),
-                    senha: $("#txt-cep").val(),
-                    endereco: {
-                        idEndereco: null
-                    },
-                    subcategoria: {
-                        idSubcategoria: $("#slt-subcat").val(),
-                    },
-                    valorHora: $("#txt-valor-hora").val(),
-                    resumoQualificacoes: $("#txt-qualificacoes").val()
-                };
-                sessionStorage.setItem("endereco", JSON.stringify(endereco));
-                sessionStorage.setItem("profissional", JSON.stringify(profissional));
-                browserHistory.push("/profissional/cadastro/confirmacao");
-            }
-            // console.log($("#chk-termos").is(":checked"));
-    
-        // }else{
-        //     console.log("ERRO");
-        //     console.log(`${$("#txt-senha").val()} e ${$("#txt-confirmar-senha").val()}`);
-        //     $('#txt-confirmar-senha').html('mismatch');
-        //     $('#txt-confirmar-senha').get(0).setCustomValidity('As senha não correspondem!');
-            
-        // }
-
+            let endereco = {
+                cep: $("#txt-cep").val(),
+                logradouro: $("#txt-logradouro").val(),
+                bairro: $("#txt-bairro").val(),
+                cidade: {
+                    idCidade: $("#txt-cidade").attr("data-idCidade")
+                }
+            };
+            let profissional = {
+                nome: $("#txt-nome").val(),
+                dataNasc: $("#txt-dataNasc").val(),
+                cpf: cpf,
+                cnpj: cnpj,
+                email: $("#txt-email").val(),
+                senha: $("#txt-cep").val(),
+                endereco: {
+                    idEndereco: null
+                },
+                subcategoria: {
+                    idSubcategoria: $("#slt-subcat").val(),
+                },
+                valorHora: $("#txt-valor-hora").val(),
+                resumoQualificacoes: $("#txt-qualificacoes").val()
+            };
+            sessionStorage.setItem("endereco", JSON.stringify(endereco));
+            sessionStorage.setItem("profissional", JSON.stringify(profissional));
+            browserHistory.push("/profissional/cadastro/confirmacao");
+        }
     }
 
     render(){

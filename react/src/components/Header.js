@@ -30,7 +30,7 @@ export default class Header extends Component{
                 <div className="caixa-menu center flex-center">
                     <nav className="area-itens-menu flex-center">
                         <div className="item-menu-header flex-center"> 
-                            Inicio
+                            Início
                         </div>
                         <div className="item-menu-header flex-center"> 
                             Sobre nós
