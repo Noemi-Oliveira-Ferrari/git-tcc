@@ -43,7 +43,7 @@ export class InputLogin extends Component{
    render(){
     return(
 
-        // <InputCadastroPro 
+        // <Inputs 
         //     classDivInputPro="caixa-campo-login"
         //     label="E-mail"
         //     classInput="input-login"

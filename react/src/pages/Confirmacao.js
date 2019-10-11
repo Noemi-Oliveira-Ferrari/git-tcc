@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Link} from 'react-router';
 import EmailImg from '../img/emailcheck.png';
 import check from '../img/check.png';
@@ -22,7 +22,7 @@ function Confirmacao() {
                 </div>
                 <div className="img-email flex-center center">
                     <figure>
-                        <img src={EmailImg}/>
+                        <img src={EmailImg}  alt="Ícone E-mail"/>
                     </figure>
                 </div>
                 
@@ -36,7 +36,7 @@ function Confirmacao() {
                             <ButtonToolbar>
                                 <button onClick={() => setModalShow(true)} data-toggle="modal" data-target="#exampleModalCenter" type="submit" name="button" id="btn-confirm">
                                     <figure>
-                                        <img src={check} /> 
+                                        <img src={check} alt="Confirmar" title="Confirmar" /> 
                                     </figure>
                                 </button>
                                 <ModalSucesso

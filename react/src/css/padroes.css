@@ -29,11 +29,16 @@ h3, h4, h5, h6, div, figure, section{
     margin-right: auto;
 }
 
-html, body{
+html{
     height: 100%;
-    margin: 0;
+    /* margin: 0; */
 }
 
+#root{
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
 
 body{
     background-image: linear-gradient(to bottom right, #57BC90, #77C9D4); 
@@ -48,13 +53,19 @@ body{
 
 
 #all{
-    min-height: 100%;
-    margin-bottom: -615px;
+    flex: 1;
 }
 
+footer
+{
+    height: 615px;
+
+}
+/* 
 .aux-footer{
     height: 615px;
-}
+    background-color: cyan;;
+} */
  
 
 .link{
@@ -92,4 +103,28 @@ option{
 .aux-header{
     width: 100%;
     height: 95px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    cursor: pointer;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #cbf3e1;
+    cursor: pointer;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #a2dee6;
+    cursor: pointer;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #77c9d4;
+    cursor: pointer;    
 }

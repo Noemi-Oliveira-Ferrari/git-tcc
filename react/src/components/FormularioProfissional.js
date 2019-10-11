@@ -1,5 +1,5 @@
 import React,  {Component} from "react";
-import {InputCadastroPro, Selects} from './InputCadastroPro';
+import {Inputs, Selects} from './FormElements';
 import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
@@ -11,21 +11,32 @@ class DadosPessoaisPro extends Component{
     constructor(){
         super();
         this.state = {
-            nome: "", dataNasc: "", cpf: "", cnpj: "",
+            nome: "", dataNasc: "", cpf: "", cnpj: "", cpfCnpj: "",
             email: "", senha: "", confirmSenha: "",
             
             cep: "", logradouro: "", idCidade: "",
             bairro: "", cidade: "", uf: "", subcategoria: "",
-            enderecoPronto: false
+            enderecoPronto: false,
+            tipoPro: "rdo-pf", radioChecked: "rdo-pf"
         }
         this.setCep = this.setCep.bind(this);
         this.setSenha = this.setSenha.bind(this);
         this.setConfirmSenha = this.setConfirmSenha.bind(this);
         this.validarSenha = this.validarSenha.bind(this);
-        this.teste = this.teste.bind(this);
+        this.setCpfCnpj = this.setCpfCnpj.bind(this);
+        this.setTipoPfPj = this.setTipoPfPj.bind(this);
     }
-    teste(){
-        console.log("ola-----------------------");
+    componentDidUpdate(){
+        // alert(document.querySelector('input[name=rdos_pfpj]:checked').value);
+    }
+    setCpfCnpj(event){
+        this.setState({cpfCnpj: event.target.value});
+        let cpfCnpj = event.target.value;
+        if(cpfCnpj.length <= 14){
+            console.log(`cpf -> ${cpfCnpj} ${cpfCnpj.length}`)
+        }else{
+            console.log(`cnpj -> ${cpfCnpj} ${cpfCnpj.length}`)
+        }
     }
     setCep(event){
         // this.tirarErro();
@@ -40,7 +51,6 @@ class DadosPessoaisPro extends Component{
         .then((response)=>{
             let jsonEndereco = response.data;
             console.clear();
-            console.log(";;;;");
             console.log(jsonEndereco.cep);
             if(jsonEndereco.cep != null){
                 this.setState({logradouro: jsonEndereco.logradouro});
@@ -80,11 +90,11 @@ class DadosPessoaisPro extends Component{
     }
     
     validarSenha(senha, confirmSenha){
-        if(senha == confirmSenha){
+        if(senha === confirmSenha){
             $('#txt-confirmar-senha').html('match');
             $('#txt-confirmar-senha').removeClass("erro");
             $('#txt-senha').removeClass("erro");
-        }else if(senha == "" || confirmSenha == ""){
+        }else if(senha === "" || confirmSenha === ""){
             $('#txt-confirmar-senha').addClass("erro");
             $('#txt-senha').addClass("erro");
         }else{
@@ -94,16 +104,54 @@ class DadosPessoaisPro extends Component{
         }
     }
 
+    setTipoPfPj(event){
+        this.setState({radioChecked: event.target.value});
+
+        this.setState({tipoPro: event.target.value})
+        setTimeout(()=>{
+            console.log(`tipoPro ${this.state.tipoPro}`);
+        }, 1000)
+        
+    }
+
     render(){
         return(
             <div className="flex-center">
                 <div className="card-formulario-pessoal">
-                    <h3 className="title-card">Dados Pessoais</h3>
+                    <div className="caixa-title-card">
+                        <div className="title-card-pro">Dados Pessoais</div>
+                        <div className="title-card-pjPf">
+                            <Inputs
+                                id="rdo-pf"
+                                type="radio"
+                                name="rdos_pfpj"
+                                label="Pessoa Física:"
+                                classDivInputPro="caixa-rdo-pf"
+                                forInput="rdo-pf"
+                                onChange={this.setTipoPfPj}
+                                // onChange={(e) => this.setState({ radioChecked: e.target.value })}
+                                radioChecked={this.state.radioChecked === 'rdo-pf'}
+                                valueInput="rdo-pf"
+                            />
+                            <Inputs
+                                id="rdo-pj"
+                                type="radio"
+                                name="rdos_pfpj"
+                                label="Pessoa Jurídica:"
+                                classDivInputPro="caixa-rdo-pj"
+                                forInput="rdo-pj"
+                                onChange={this.setTipoPfPj}
+                                // onChange={(e) => this.setState({ radioChecked: e.target.value })}
+                                radioChecked={this.state.radioChecked === 'rdo-pj'}
+                                valueInput="rdo-pj"
+                            />
+                        </div>
+                    </div>
                     
                     <div className="float campos-dados">
                         <div className="flex-center container-nome-dataNasc">
 
-                            <InputCadastroPro
+                            <Inputs
                                 label="Nome:"
                                 id="txt-nome"
                                 name="txt_nome"
@@ -113,7 +161,7 @@ class DadosPessoaisPro extends Component{
                                 classInput="form-control form-input"
                             />
 
-                            <InputCadastroPro
+                            <Inputs
                                 classDivInputPro="caixa-dataNasc"
                                 label="Data de Nascimento:"
                                 id="txt-dataNasc"
@@ -126,16 +174,18 @@ class DadosPessoaisPro extends Component{
                         </div>
                         <div className="flex-center container-cpfCnpj-email">
 
-                            <InputCadastroPro
+                            <Inputs
                                 classDivInputPro="caixa-cpfCnpj"
-                                label="CPF/CNPJ:"
+                                label={this.state.tipoPro === "rdo-pf" ? "CPF" : "CNPJ"}
                                 id="txt-cpfCnpj"
                                 type="text"
                                 name="txt_cpfCnpj"
                                 classInput="form-control form-input"
+                                onChange={this.setCpfCnpj}
+                                mascara={this.state.tipoPro === "rdo-pf" ? "999.999.999-99" : "99.999.999./9999-99"}
                             />
 
-                            <InputCadastroPro
+                            <Inputs
                                 classDivInputPro="caixa-email"
                                 label="E-mail:"
                                 maxLength="150"
@@ -150,7 +200,7 @@ class DadosPessoaisPro extends Component{
                         </div>
                         <div className="flex-center container-senha">
 
-                            <InputCadastroPro
+                            <Inputs
                                 classDivInputPro="caixa-senha"
                                 label="Senha:"
                                 maxLength="130"
@@ -161,14 +211,14 @@ class DadosPessoaisPro extends Component{
                                 classInput="form-control form-input"
                             />
 
-                            <InputCadastroPro
+                            <Inputs
                                 classDivInputPro="caixa-confirmar-senha"
                                 label="Confirmar Senha:"
                                 maxLength="130"
                                 id="txt-confirmar-senha"
                                 type="password"
                                 name="txt_confirmar_senha"
-                                onChange={this.setConfirmSenha}                                
+                                onChange={this.setConfirmSenha}                           
                                 classInput="form-control form-input"
                             />
 
@@ -176,7 +226,7 @@ class DadosPessoaisPro extends Component{
 
                         <div className="flex-center container-cep-logradouro">
 
-                            <InputCadastroPro
+                            <Inputs
                                 classDivInputPro="caixa-cep"
                                 label="CEP:"
                                 id="txt-cep"
@@ -186,16 +236,17 @@ class DadosPessoaisPro extends Component{
                                 classInput="form-control form-input"
                                 mascara="99999-999"
                                 valueInput={this.state.cep || ""}
+                                disabled
                             />
 
-                            <InputCadastroPro
+                            <Inputs
                                 classDivInputPro="caixa-logradouro"
                                 label="Logradouro:"
                                 maxLength="120"
                                 id="txt-logradouro"
                                 type="text"
                                 name="txt_logradouro"
-                                valueInput={this.state.logradouro}
+                                valueInput={this.state.logradouro || ""}
                                 readOnly
                                 classInput="form-control form-input"
                             />
@@ -203,20 +254,20 @@ class DadosPessoaisPro extends Component{
                         </div>
                         <div className="flex-center container-bairro-cidade-uf">
 
-                            <InputCadastroPro
+                            <Inputs
                                 classDivInputPro="caixa-bairro"
                                 label="Bairro:"
                                 maxLength="120"
                                 id="txt-bairro"
                                 type="text"
                                 name="txt_bairro"
-                                valueInput={this.state.bairro}
+                                valueInput={this.state.bairro || ""}
                                 disabled
                                 
                                 classInput="form-control form-input"
                             />
 
-                            <InputCadastroPro
+                            <Inputs
                                 classDivInputPro="caixa-cidade"
                                 label="Cidade:"
                                 maxLength="120"
@@ -224,20 +275,20 @@ class DadosPessoaisPro extends Component{
                                 type="text"
                                 name="txt_cidade"
                                 data={this.state.idCidade}
-                                valueInput={this.state.cidade}
+                                valueInput={this.state.cidade || ""}
                                 readOnly
                                 
                                 classInput="form-control form-input"
                             />
 
-                            <InputCadastroPro
+                            <Inputs
                                 classDivInputPro="caixa-uf"
                                 label="UF:"
                                 maxLength="2"
                                 id="txt-uf"
                                 type="text"
                                 name="txt_uf"
-                                valueInput={this.state.uf}
+                                valueInput={this.state.uf || ""}
                                 readOnly
                                 
                                 classInput="form-control form-input"
@@ -284,7 +335,7 @@ class DadosProfissional extends Component{
 
     getSubcategorias(idCategoria){
 
-        if(idCategoria == null || idCategoria == ""){
+        if(idCategoria === null || idCategoria === ""){
             idCategoria = 1;
         }
 
@@ -339,7 +390,7 @@ class DadosProfissional extends Component{
                             </div>
                             
                             <div className="flex-center container-valor-hora">
-                                <InputCadastroPro
+                                <Inputs
                                     label="Valor/Hora:"
                                     id="txt-valor-hora"
                                     classInput="form-control form-input"
@@ -390,13 +441,13 @@ export default class FormularioProfissional extends Component{
             }
         });
 
-        if($('#txt-senha').val() == $('#txt-confirmar-senha').val() &&
-        ($('#txt-senha').val() != "" || $('#txt-confirmar-senha').val() != "")){
+        if($('#txt-senha').val() === $('#txt-confirmar-senha').val() &&
+        ($('#txt-senha').val() !== "" || $('#txt-confirmar-senha').val() !== "")){
             $('#txt-confirmar-senha').html('match');
             $('#txt-confirmar-senha').removeClass("erro");
             $('#txt-senha').removeClass("erro");
             notError = true;
-        }else if($('#txt-senha').val() == "" || $('#txt-confirmar-senha').val() == ""){
+        }else if($('#txt-senha').val() === "" || $('#txt-confirmar-senha').val() === ""){
             $('#txt-confirmar-senha').addClass("erro");
             $('#txt-senha').addClass("erro");
             notError = false;
@@ -417,7 +468,7 @@ export default class FormularioProfissional extends Component{
             let cpfCnpj = $("#txt-cpfCnpj").val().replace(/[.-]/g, "");
             let cpf;
             let cnpj;
-            if(cpfCnpj.length <= 11){
+            if(cpfCnpj.length <= 14){
                 cpf = cpfCnpj;
                 cnpj = null;
             }else{

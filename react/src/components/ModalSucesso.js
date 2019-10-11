@@ -1,14 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../css/modalSucesso.css';
 import Modal from 'react-bootstrap/Modal';
 import Botao from './Botao';
 // import singCheck from '../img/iconfinder_sign-check_299110.png';
 import { Link } from 'react-router';
+
 function ModalSucesso (props) {
 
-    return(
-
-        
+    return(        
         <Modal {...props}
         size="lg"
         className=" modal center flex-center">

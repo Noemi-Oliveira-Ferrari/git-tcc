@@ -46,15 +46,16 @@ export class InputMascara extends Component {
             data-idCidade={this.props.dataInput}
             value={this.props.valueInput}
             // readOnly={this.props.readOnly}
-            maskChar=""/>;
+            maskChar=""
+            checked={this.props.radioChecked}/>;
     }
 }
 
-export class InputCadastroPro extends Component{
+export class Inputs extends Component{
     render(){
         return(
             <div className={this.props.classDivInputPro}>
-                <label className="form-label">{this.props.label}</label>
+                <label htmlFor={this.props.forInput} className="form-label">{this.props.label}</label>
                 <InputMascara
                     idInput={this.props.id}
                     typeInput={this.props.type} 
@@ -65,7 +66,9 @@ export class InputCadastroPro extends Component{
                     dataInput={this.props.data}
                     valueInput={this.props.valueInput}
                     // readOnly={this.props.readOnly}
-                    mascaraInput={this.props.mascara}/>
+                    mascaraInput={this.props.mascara}
+                    radioChecked={this.props.radioChecked}
+                    />
             </div>
 
         );

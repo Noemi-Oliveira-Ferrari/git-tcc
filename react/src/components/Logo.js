@@ -9,7 +9,7 @@ export class Logo extends Component{
          
             <div className="logotipo">
                 <figure>
-                    <img src={LogoImg} />
+                    <img src={LogoImg} alt="DaUmHelp!" title="DaUmHelp!"/>
                 </figure>
             </div>
     );

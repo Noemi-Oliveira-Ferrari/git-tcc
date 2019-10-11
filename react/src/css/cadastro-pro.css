@@ -50,6 +50,67 @@
         background-color: rgb(255, 255, 255);
         box-shadow: #0000005b 3px 3px 5px;
     }
+
+
+    .caixa-title-card{
+        width: inherit;
+        height: 65px;
+        box-sizing: border-box;
+        padding-left: 50px;
+        padding-right: 50px;
+        color: #00000071;
+        /* background-color: rgb(153, 153, 29); */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .title-card-pro,
+    .title-card-pjPf{
+        width: 300px;
+        height: inherit;
+        box-sizing: border-box;
+    }
+    .title-card-pro{
+        /* background-color: rgb(32, 194, 167); */
+        display: flex;
+        align-items: center;
+
+        font-size: 32px;
+        color: #00000071;
+    }
+    .title-card-pjPf{
+        /* font-size: 11px !important; */
+        /* background-color: rgb(233, 134, 20); */
+    }
+    .caixa-rdo-pf{
+        width: inherit;
+        height: 50%;
+        /* background-color: rgb(72, 87, 218); */
+        box-sizing: border-box;
+        padding-top: 3px;
+        padding-left: 115px;
+    }
+    .caixa-rdo-pj{
+        width: inherit;
+        height: 50%;
+        /* background-color: rgb(180, 29, 168); */
+        box-sizing: border-box;
+        padding-top: 3px;
+        padding-left: 115px;
+    }
+    #rdo-pf{margin-left: 25px;} #rdo-pj{margin-left: 10px;}
+
+
+    #rdo-pf, #rdo-pj{
+        top: 0;
+        left: 0;
+        height: 21px;
+        width: 21px;
+        /* background-color: #77c9d4; */
+        border-radius: 50%;
+        vertical-align: sub;
+    }
+
     .title-card
     {
         width: inherit;
@@ -392,29 +453,26 @@
         font-size: 18px;
         /* padding-top: 80px; */
     }
-    /* width */
-    .text-termos::-webkit-scrollbar {
+
+    /* .text-termos::-webkit-scrollbar {
         width: 10px;
         cursor: pointer;
     }
 
-    /* Track */
     .text-termos::-webkit-scrollbar-track {
         background: #cbf3e1;
         cursor: pointer;
     }
 
-    /* Handle */
     .text-termos::-webkit-scrollbar-thumb {
         background: #a2dee6;
         cursor: pointer;
     }
 
-    /* Handle on hover */
     .text-termos::-webkit-scrollbar-thumb:hover {
         background: #77c9d4;
         cursor: pointer;    
-    }
+    } */
 
     .termo
     {

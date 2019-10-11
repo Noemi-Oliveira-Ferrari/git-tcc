@@ -9,33 +9,33 @@ export default class Header extends Component{
     render(){
         return(        
             <header>
-                <div class="caixa-header">
-                    <div class="head-menu center">
+                <div className="caixa-header">
+                    <div className="head-menu center">
                         <Link to="/" className="link">
-                            <div class="logo-menu">
+                            <div className="logo-menu">
                                 <figure>
                                     <img src={Logo} alt="DaUmHelp!" title="DaUmHelp!"/>
                                 </figure>
                             </div>
                         </Link>
-                        <div class="entrar-cadastro">
-                            <div class="area-sing">
-                                <figure><img src={Avatar}/></figure>
-                                <Link to="#" className="link"><div class="box-entrar flex-center">Entre</div></Link>
-                                <Link to="#" className="link"><div class="box-cadastrar flex-center">Cadastra-se</div></Link>
+                        <div className="entrar-cadastro">
+                            <div className="area-sing">
+                                <figure><img src={Avatar} alt="Login" title="Login"/></figure>
+                                <Link to="#" className="link"><div className="box-entrar flex-center">Entre</div></Link>
+                                <Link to="#" className="link"><div className="box-cadastrar flex-center">Cadastra-se</div></Link>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="caixa-menu center flex-center">
-                    <nav class="area-itens-menu flex-center">
-                        <div class="item-menu-header flex-center"> 
+                <div className="caixa-menu center flex-center">
+                    <nav className="area-itens-menu flex-center">
+                        <div className="item-menu-header flex-center"> 
                             Inicio
                         </div>
-                        <div class="item-menu-header flex-center"> 
+                        <div className="item-menu-header flex-center"> 
                             Sobre nós
                         </div> 
-                        <div class="item-menu-header flex-center"> 
+                        <div className="item-menu-header flex-center"> 
                             Contato
                         </div>
                     </nav>

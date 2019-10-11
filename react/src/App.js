@@ -24,7 +24,7 @@ return (
 
 			<div className="aux-footer"/>
 		</div>
-		<Footer/>
+		{/* <Footer/> */}
 	</Fragment>
   );
 }

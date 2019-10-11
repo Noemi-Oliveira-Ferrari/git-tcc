@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import '../css/login.css';
-import DaUmHelp from '../components/DaUmHelp';
-import {MeuInput, InputLogin} from '../components/InputLogin';
+import {InputLogin} from '../components/InputLogin';
 import {Link} from 'react-router';
-import Logo from '../components/Logo';
-import BotaoEntrar, { Botao } from '../components/Botao';
-import {InputCadastroPro} from '../components/InputCadastroPro';
+import { Botao } from '../components/Botao';
+import {Inputs} from '../components/FormElements';
 import IconLogin from '../img/log-in.png';
 
 export class Login extends Component{
@@ -41,7 +39,7 @@ export class Login extends Component{
                                        label="E-mail"
                                        type="email">
                                     </InputLogin> */}
-                                    <InputCadastroPro 
+                                    <Inputs 
                                        classDivInputPro="caixa-campo-login"
                                        label="E-mail"
                                        classInput="input-login"

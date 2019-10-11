@@ -3,13 +3,9 @@
 {
     footer
     {
-        height: 615px;
-        /* background-color: rgb(255, 0, 0) !important; */
-        /* justify-content: center; */
         background-image: url(../img/background.jpg);
         background-repeat: no-repeat;
-        background-size: cover; 
-        margin-bottom: -150px;
+        background-size: cover;
     }
     .caixa-rodape-cadastro
     {
@@ -181,7 +177,7 @@
         cursor: pointer
     }
 
-    .caixa3-rodape
+    .caixa-info-rodape
     {
         width: 1200px;
         height: auto;
@@ -199,7 +195,7 @@
         border-radius: 8px;
     }
 
-    .caixa-1
+    .caixa-copyright-rodape
     {
         width: 550px;
         text-align: left;
@@ -216,7 +212,7 @@
         font-family: "Lexend Deca";
     }
 
-    .caixa-2
+    .caixa-info-itens-rodape
     {
         width: 420px;
         text-align: right;
@@ -469,7 +465,7 @@
         cursor: pointer
     }
 
-    .caixa3-rodape 
+    .caixa-info-rodape 
     {
         width: 100%;
         height: 120px;
@@ -485,7 +481,7 @@
         visibility: hidden;
     }
 
-    .caixa-1
+    .caixa-copyright-rodape
     {
         width: 100%;
         height: 40px;
@@ -502,7 +498,7 @@
         color: #bdbdbd;
     }
 
-    .caixa-2
+    .caixa-info-itens-rodape
     {
         width: 100%;
         height: 30px;
