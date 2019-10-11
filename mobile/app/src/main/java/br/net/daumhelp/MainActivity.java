@@ -18,6 +18,7 @@ import androidx.cardview.widget.CardView;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Login;
+import br.net.daumhelp.model.Profissional;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -112,24 +113,30 @@ public class MainActivity extends AppCompatActivity {
 
                 final String senha = etSenha.getText().toString();
                 final String email = etEmail.getText().toString();
-                Login login = new Login();
+                /*Login login = new Login();
                 login.setEmail(email);
-                login.setSenha(senha);
+                login.setSenha(senha);*/
+
+                Profissional profissional = new Profissional();
+                profissional.setEmail(email);
+                profissional.setSenha(senha);
 
 
-                Call<Login> call = new RetroFitConfig().getLoginService().buscarPro(email, senha);
-                call.enqueue(new Callback<Login>() {
+                Call<Profissional> call = new RetroFitConfig().getLoginService().buscarPro(profissional);
+                call.enqueue(new Callback<Profissional>() {
                     @Override
-                    public void onResponse(Call<Login> call, Response<Login> response) {
+                    public void onResponse(Call<Profissional> call, Response<Profissional> response) {
                         response.body();
-                        Toast.makeText(MainActivity.this, "PROFISSIONAL LOGADO", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "PROFISSIONAL LOGADO" + response.body().getValorHora(), Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                        startActivity(intent);
+                       Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                       intent.putExtra("profissional", response.body());
+                       startActivity(intent);
+                       finish();
                     }
 
                     @Override
-                    public void onFailure(Call<Login> call, Throwable t) {
+                    public void onFailure(Call<Profissional> call, Throwable t) {
 
                         Call<Login> call2 = new RetroFitConfig().getLoginService().buscarCli(email, senha);
                         call2.enqueue(new Callback<Login>() {

@@ -162,7 +162,7 @@
         android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cv_pro"
-        app:srcCompat="@drawable/user" />
+        app:srcCompat="@drawable/cli" />
 
     <TextView
         android:id="@+id/textView4"

@@ -70,19 +70,29 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
 
                                 btnProximo.setVisibility(View.VISIBLE);
 
-                                carregarEndereco(response.body());
+                                if(response.body().getCidade() == null){
+
+                                    etCep.setError("CEP inválido");
+                                }else{
+
+                                    carregarEndereco(response.body());
+                                }
+
 
                             }
 
                             @Override
                             public void onFailure(Call<Endereco> call, Throwable t) {
                                 Log.i("Retrofit Endereço", t.getMessage());
+                                etCep.setError("CEP inválido");
                             }
 
                         });
+                    }else{
+                        etCep.setError("CEP inválido");
                     }
                 }else{
-
+                    etCep.setError("CEP inválido");
                 }
             }
         });
@@ -167,7 +177,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
             etCep.setError("Insira o seu CEP");
             validado = false;
         }
-        if(etCep.getText().toString().length()<9){
+        if(etCep.getText().toString().length() < 9){
             etCep.setError("CEP inválido");
             validado = false;
         }

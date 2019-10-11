@@ -30,6 +30,7 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
     private TextView tvTimer;
     int cont = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
         tvTimer = findViewById(R.id.tv_timer);
 
 
-
+        etCodigo.setText("1234");
 
         Intent intent = getIntent();
         if(intent.getSerializableExtra("dados_pessoais") != null){

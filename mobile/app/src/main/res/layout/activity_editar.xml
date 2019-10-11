@@ -24,9 +24,10 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
 
         <ImageView
+            android:id="@+id/iv_toolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_back"
+            android:src="@drawable/ic_backw"
             />
 
         <TextView
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Meu Perfil"
-            android:layout_marginStart="122dp"
+            android:layout_marginStart="130dp"
             android:textStyle="bold"
             android:textSize="20dp"
             android:textColor="#FFFFFF" />
@@ -232,7 +233,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="36dp"
             android:layout_marginTop="15dp"
-            android:text="Meus dados"
+            android:text="Meu endereço"
             android:textColor="#000000"
             android:textSize="18dp" />
 
