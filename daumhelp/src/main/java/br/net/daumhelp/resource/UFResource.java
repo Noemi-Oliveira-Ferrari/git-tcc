@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import br.net.daumhelp.model.UF;
 import br.net.daumhelp.repository.UFRepository;
 
-
-@CrossOrigin(origins = "http://localhost")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://ec2-35-170-248-132.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/ufs")
 public class UFResource {

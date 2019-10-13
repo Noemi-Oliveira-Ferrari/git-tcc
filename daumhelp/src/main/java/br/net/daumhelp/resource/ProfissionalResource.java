@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.net.daumhelp.model.Confirmacao;
-import br.net.daumhelp.model.Login;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.ProfissionalDTO;
 import br.net.daumhelp.repository.ProfissionalDTORepository;
@@ -31,7 +30,8 @@ import br.net.daumhelp.repository.ProfissionalRepository;
 import br.net.daumhelp.utils.HandleDates;
 import br.net.daumhelp.utils.HandleEmails;
 
-@CrossOrigin(origins = "http://localhost")
+@CrossOrigin(origins = "http://ec2-35-170-248-132.compute-1.amazonaws.com")
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/profissionais")
 public class ProfissionalResource {
@@ -46,12 +46,7 @@ public class ProfissionalResource {
 	public boolean confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
 		return HandleEmails.enviar(confirm);
 	}
-	
-	@PostMapping("/login")
-	public Profissional buscarUsuario(String email, String senha) {
-		return proRepository.findUserLogin(email, senha);
-	}
-	
+
 	@GetMapping
 	public List<ProfissionalDTO> getPros(){
 		return proDTORepository.findAll();
@@ -118,8 +113,8 @@ public class ProfissionalResource {
 			HttpServletResponse response){
 
 		
-		profissional.setCriadoEm(HandleDates.dataHoraAtual());
-		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
+//		profissional.setCriadoEm(HandleDates.dataHoraAtual());
+//		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
 		
 		 Profissional proSalvo = proRepository.save(profissional);
 		 
@@ -132,17 +127,17 @@ public class ProfissionalResource {
 		 return ResponseEntity.created(uri).body(profissional);
 	}
 	
-	@PutMapping("/id/{idPro}")
+	@PutMapping("/atualizar/id/{idPro}")
 	public ResponseEntity<Profissional> atualizarPro(
 			@RequestBody Profissional profissional,
 			@PathVariable Long idPro){
 		
 		Profissional proSalvo = proRepository.findById(idPro).get();
 		
-		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
-		profissional.setCriadoEm(proSalvo.getCriadoEm());
+//		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
+//		profissional.setCriadoEm(proSalvo.getCriadoEm());
 		
-		BeanUtils.copyProperties(profissional, proSalvo, "idProfissional");
+		BeanUtils.copyProperties(profissional, proSalvo, "idProfissional", "criadoEm", "atualizadoEm");
 
 		proRepository.save(profissional);
 		return ResponseEntity.ok(proSalvo);

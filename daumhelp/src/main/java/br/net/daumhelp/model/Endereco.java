@@ -27,9 +27,9 @@ public class Endereco {
 	@JoinColumn(name = "idCidade")
 	private Cidade cidade;
 
-	@NotNull
+	private Integer numero;
+
 	private String criadoEm;
-	@NotNull
 	private String atualizadoEm;
 
 	public Long getIdEndereco() {
@@ -72,6 +72,14 @@ public class Endereco {
 		this.cidade = cidade;
 	}
 
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
 	public String getCriadoEm() {
 		return criadoEm;
 	}
@@ -91,7 +99,8 @@ public class Endereco {
 	@Override
 	public String toString() {
 		return "Endereco [idEndereco=" + idEndereco + ", logradouro=" + logradouro + ", cep=" + cep + ", bairro="
-				+ bairro + ", cidade=" + cidade + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+				+ bairro + ", cidade=" + cidade + ", numero=" + numero + ", criadoEm=" + criadoEm + ", atualizadoEm="
+				+ atualizadoEm + "]";
 	}
 
 }
