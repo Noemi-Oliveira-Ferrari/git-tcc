@@ -23,17 +23,17 @@ function Confirmacao() {
         // let confirmacao = 
 
         // console.log(confirmacao);
-        axios({
-            method: 'POST',
-            url: "http://localhost:8080/profissionais/confirmacao",
-            data: {
-                confirmacao: {
-                    nome: profissional.nome,
-                    destinatario: profissional.email,
-                    codigoConfirm: code
-                }
-            }
-        });
+        // axios({
+        //     method: 'POST',
+        //     url: "http://localhost:8080/profissionais/confirmacao",
+        //     data: {
+        //         confirmacao: {
+        //             nome: profissional.nome,
+        //             destinatario: profissional.email,
+        //             codigoConfirm: code
+        //         }
+        //     }
+        // });
         // axios.get("http://localhost:8080/profissionais/confirmacao")
         // .then((response)=>{
 

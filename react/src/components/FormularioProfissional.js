@@ -4,6 +4,8 @@ import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
+import { validarSenha, ancora} from '../js/validar';
+import sha512 from 'js-sha512';
 
 
 class DadosPessoaisPro extends Component{
@@ -22,13 +24,14 @@ class DadosPessoaisPro extends Component{
         this.setCep = this.setCep.bind(this);
         this.setSenha = this.setSenha.bind(this);
         this.setConfirmSenha = this.setConfirmSenha.bind(this);
-        this.validarSenha = this.validarSenha.bind(this);
+        // this.validarSenha = this.validarSenha.bind(this);
         this.setCpfCnpj = this.setCpfCnpj.bind(this);
         this.setTipoPfPj = this.setTipoPfPj.bind(this);
     }
-    componentDidUpdate(){
-        // alert(document.querySelector('input[name=rdos_pfpj]:checked').value);
-    }
+    componentDidMount(){
+        console.clear();
+    }    
+
     setCpfCnpj(event){
         this.setState({cpfCnpj: event.target.value});
         let cpfCnpj = event.target.value;
@@ -39,35 +42,46 @@ class DadosPessoaisPro extends Component{
         }
     }
     setCep(event){
-        // this.tirarErro();
         this.setState({cep: event.target.value});
-        let cepSize = $("#txt-cep").val().length;
+        let cepSize = event.target.value.length;
+        console.log(sha512("123"));
         if (cepSize > 8) {
-            this.getEndereco($("#txt-cep").val());
+            this.getEndereco(event.target.value);
         }
     }
     getEndereco = (cep) =>{
+        // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
         axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
         .then((response)=>{
             let jsonEndereco = response.data;
             console.clear();
-            console.log(jsonEndereco.cep);
+            console.log(response);
             if(jsonEndereco.cep != null){
                 this.setState({logradouro: jsonEndereco.logradouro});
                 this.setState({bairro: jsonEndereco.bairro});
                 this.setState({cidade: jsonEndereco.cidade.cidade});
                 this.setState({uf: jsonEndereco.cidade.microrregiao.uf.uf});
                 this.setState({idCidade: jsonEndereco.cidade.idCidade});
-            }else{
-                this.setState({logradouro: "CEP INVÁLIDO"});
-                this.setState({bairro: ""});
-                this.setState({cidade: ""});
-                this.setState({uf: ""});
-                this.setState({idCidade: ""});
+
+                $('#txt-cep').removeClass("erro");
+                $('#txt-logradouro').removeClass("erro");
+                $('#txt-cidade').removeClass("erro");
+                $('#txt-bairro').removeClass("erro");
+                $('#txt-uf').removeClass("erro");
             }
         })
         .catch((error)=>{
-            console.error(error);
+            this.setState({logradouro: "CEP INVÁLIDO"});
+            this.setState({bairro: ""});
+            this.setState({cidade: ""});
+            this.setState({uf: ""});
+            this.setState({idCidade: ""});
+
+            $('#txt-cep').addClass("erro");
+            $('#txt-logradouro').addClass("erro");
+            $('#txt-cidade').addClass("erro");
+            $('#txt-bairro').addClass("erro");
+            $('#txt-uf').addClass("erro");
         })
         .onload = console.log("loading");
     }
@@ -75,43 +89,21 @@ class DadosPessoaisPro extends Component{
     setSenha(event){
         this.setState({senha: event.target.value});
         let senha = event.target.value;
-        if(senha.length >= 8){
-            $('#txt-confirmar-senha').attr("disabled", false);
-        }else{
-            $('#txt-confirmar-senha').attr("disabled", true);
-        }
     }
 
     setConfirmSenha(event){
         this.setState({confirmSenha: event.target.value});
         let confirmSenha = event.target.value;
-        console.log(confirmSenha.length+" c s "+this.state.senha.length);
-        this.validarSenha(this.state.senha, confirmSenha);
+        validarSenha($('#txt-senha').get(0), event.target);
     }
     
-    validarSenha(senha, confirmSenha){
-        if(senha === confirmSenha){
-            $('#txt-confirmar-senha').html('match');
-            $('#txt-confirmar-senha').removeClass("erro");
-            $('#txt-senha').removeClass("erro");
-        }else if(senha === "" || confirmSenha === ""){
-            $('#txt-confirmar-senha').addClass("erro");
-            $('#txt-senha').addClass("erro");
-        }else{
-            $('#txt-confirmar-senha').html('mismatch');
-            $('#txt-confirmar-senha').addClass("erro");
-            $('#txt-senha').addClass("erro");
-        }
-    }
-
     setTipoPfPj(event){
         this.setState({radioChecked: event.target.value});
 
         this.setState({tipoPro: event.target.value})
         setTimeout(()=>{
             console.log(`tipoPro ${this.state.tipoPro}`);
-        }, 1000)
-        
+        }, 1000);    
     }
 
     render(){
@@ -321,6 +313,7 @@ class DadosProfissional extends Component{
     }
 
     getCategorias(){
+        // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
         axios.get(`http://localhost:8080/categorias`)
         .then((response)=>{
             let jsonCategorias = response.data;
@@ -339,6 +332,7 @@ class DadosProfissional extends Component{
             idCategoria = 1;
         }
 
+        // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
         axios.get(`http://localhost:8080/subcategorias/categoria/${idCategoria}`)
         .then((response)=>{
             let jsonSubcategorias = response.data;
@@ -434,6 +428,7 @@ export default class FormularioProfissional extends Component{
         campos.forEach(campo =>{
             if(campo.value === ""){
                 $(campo).addClass("erro");
+                console.log($(campo).attr("id").replace(/(txt)\-/g, ""));
                 notError = false;
             }else{
                 $(campo).removeClass("erro");
@@ -493,7 +488,7 @@ export default class FormularioProfissional extends Component{
                 dataNasc: $("#txt-dataNasc").val(),
                 cpf: cpf,
                 cnpj: cnpj,
-                email: $("#txt-email").val(),
+                email: $("#txt-cep").val(),
                 senha: $("#txt-cep").val(),
                 endereco: {
                     idEndereco: null
@@ -507,6 +502,9 @@ export default class FormularioProfissional extends Component{
             sessionStorage.setItem("endereco", JSON.stringify(endereco));
             sessionStorage.setItem("profissional", JSON.stringify(profissional));
             browserHistory.push("/profissional/cadastro/confirmacao");
+        }else{
+            console.log($("#chk-termos").is(":checked"));
+            ancora();
         }
     }
 
