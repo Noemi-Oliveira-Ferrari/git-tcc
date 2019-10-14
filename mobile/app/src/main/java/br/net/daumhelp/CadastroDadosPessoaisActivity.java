@@ -58,7 +58,6 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
 
             String tipoUsuario = (String) intent.getSerializableExtra("tipo_usuario");
 
-            Toast.makeText(this, tipoUsuario, Toast.LENGTH_SHORT).show();
 
             if(tipoUsuario.equals("c")){
                 Mascara maskCpf = new Mascara("###.###.###-##", etCpf);
@@ -81,7 +80,6 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
             etEmail.setText(listaDados[3]);
             etSenha.setText(listaDados[4]);
             etConfirmacao.setText(listaDados[4]);
-            Toast.makeText(this, listaDados[6], Toast.LENGTH_SHORT).show();
 
             if(listaDados[6].equals("c")){
                 Mascara maskCpf = new Mascara("###.###.###-##", etCpf);
@@ -123,43 +121,66 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
                                 /*ARRAY DOS DADOS PESSOAIS PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
                                 String tipoUsuario = (String) intent.getSerializableExtra("tipo_usuario");
                                 listaDados = new String[]{nome, dataNasc, cpf, email, senha, codigoEmail, tipoUsuario};
+
+                                /* ENVIANDO O CÓDIGO DE CONFIRMAÇÃO DO EMAIL PARA O USUÁRIO*/
+                                Confirmacao confirmacao = new Confirmacao();
+                                confirmacao.setCodigoConfirm(String.valueOf(codigoEmail));
+                                confirmacao.setDestinatario(email);
+                                confirmacao.setNome(nome);
+
+                                /*LEMBRAR DE FAZER CONFIRMAR EMAIL PARA OS DOIS TIPOS DE USUARIO*/
+                                Call<Confirmacao> call = new RetroFitConfig().getProfissionalService().confirmarEmail(confirmacao);
+                                call.enqueue(new Callback<Confirmacao>() {
+                                    @Override
+                                    public void onResponse(Call<Confirmacao> call, Response<Confirmacao> response) {
+                                        response.body();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Confirmacao> call, Throwable t) {
+                                        Log.i("Retrofit Email", t.getMessage());
+                                    }
+                                });
+
+                                Intent intent = new Intent(CadastroDadosPessoaisActivity.this, ConfirmarEmailActivity.class);
+                                intent.putExtra("dados_pessoais", listaDados);
+                                startActivity(intent);
                             } else{
                                 etCpf.setError("CPF inválido");
                             }
-                        }else{
-                            if(ValidarCpfCnpj.calcCnpj(cpf)){
+                        }else {
+                            if (ValidarCpfCnpj.calcCnpj(cpf)) {
                                 /*ARRAY DOS DADOS PESSOAIS PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
                                 String tipoUsuario = (String) intent.getSerializableExtra("tipo_usuario");
                                 listaDados = new String[]{nome, dataNasc, cpf, email, senha, codigoEmail, tipoUsuario};
-                            } else{
+
+                                /* ENVIANDO O CÓDIGO DE CONFIRMAÇÃO DO EMAIL PARA O USUÁRIO*/
+                                Confirmacao confirmacao = new Confirmacao();
+                                confirmacao.setCodigoConfirm(String.valueOf(codigoEmail));
+                                confirmacao.setDestinatario(email);
+                                confirmacao.setNome(nome);
+
+                                /*LEMBRAR DE FAZER CONFIRMAR EMAIL PARA OS DOIS TIPOS DE USUARIO*/
+                                Call<Confirmacao> call = new RetroFitConfig().getProfissionalService().confirmarEmail(confirmacao);
+                                call.enqueue(new Callback<Confirmacao>() {
+                                    @Override
+                                    public void onResponse(Call<Confirmacao> call, Response<Confirmacao> response) {
+                                        response.body();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Confirmacao> call, Throwable t) {
+                                        Log.i("Retrofit Email", t.getMessage());
+                                    }
+                                });
+
+                                Intent intent = new Intent(CadastroDadosPessoaisActivity.this, ConfirmarEmailActivity.class);
+                                intent.putExtra("dados_pessoais", listaDados);
+                                startActivity(intent);
+                            } else {
                                 etCpf.setError("CNPJ inválido");
                             }
                         }
-
-
-                        /* ENVIANDO O CÓDIGO DE CONFIRMAÇÃO DO EMAIL PARA O USUÁRIO*/
-                        Confirmacao confirmacao = new Confirmacao();
-                        confirmacao.setCodigoConfirm(String.valueOf(codigoEmail));
-                        confirmacao.setDestinatario(email);
-                        confirmacao.setNome(nome);
-
-                        /*LEMBRAR DE FAZER CONFIRMAR EMAIL PARA OS DOIS TIPOS DE USUARIO*/
-                        Call<Confirmacao> call = new RetroFitConfig().getProfissionalService().confirmarEmail(confirmacao);
-                        call.enqueue(new Callback<Confirmacao>() {
-                            @Override
-                            public void onResponse(Call<Confirmacao> call, Response<Confirmacao> response) {
-                                response.body();
-                            }
-
-                            @Override
-                            public void onFailure(Call<Confirmacao> call, Throwable t) {
-                                Log.i("Retrofit Email", t.getMessage());
-                            }
-                        });
-
-                        Intent intent = new Intent(CadastroDadosPessoaisActivity.this, ConfirmarEmailActivity.class);
-                        intent.putExtra("dados_pessoais", listaDados);
-                        startActivity(intent);
 
                     }
                 }else{

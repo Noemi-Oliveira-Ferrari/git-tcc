@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -18,10 +19,10 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCliente;
 	@NotNull
-	@Size(min = 3, max = 100)
+	@Size(min = 3, max = 200)
 	private String nome;
 	@NotNull
-	@Size(min = 10, max = 100)
+	@Size(min = 10, max = 255)
 	private String email;
 	@NotNull
 	@Size(min = 4, max = 150)
@@ -33,7 +34,7 @@ public class Cliente {
 	@NotNull
 	@Size(min = 8, max = 128)
 	private String senha;
-	
+
 	@NotNull
 	@Size(min = 6, max = 20)
 	private String dataNasc;
@@ -43,8 +44,21 @@ public class Cliente {
 	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;
 
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "tbl_tipo_usuario")
+	private TipoUsuario tipoUsuario;
+
 	private String criadoEm;
 	private String atualizadoEm;
+
+	public Long getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
 
 	public String getNome() {
 		return nome;
@@ -94,13 +108,20 @@ public class Cliente {
 		this.dataNasc = dataNasc;
 	}
 
-
 	public Endereco getEndereco() {
 		return endereco;
 	}
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 	public String getCriadoEm() {
@@ -119,20 +140,11 @@ public class Cliente {
 		this.atualizadoEm = atualizadoEm;
 	}
 
-	public Long getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
-	}
-
 	@Override
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", foto=" + foto + ", cpf="
-				+ cpf + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco + ", criadoEm="
-				+ criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+				+ cpf + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco + ", tipoUsuario="
+				+ tipoUsuario + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
 
-	
 }

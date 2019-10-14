@@ -114,8 +114,8 @@ public class ProfissionalResource {
 			HttpServletResponse response){
 
 		
-		profissional.setCriadoEm(HandleDates.dataHoraAtual());
-		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
+//		profissional.setCriadoEm(HandleDates.dataHoraAtual());
+//		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
 		
 		 Profissional proSalvo = proRepository.save(profissional);
 		 
@@ -128,17 +128,17 @@ public class ProfissionalResource {
 		 return ResponseEntity.created(uri).body(profissional);
 	}
 	
-	@PutMapping("/id/{idPro}")
+	@PutMapping("/atualizar/id/{idPro}")
 	public ResponseEntity<Profissional> atualizarPro(
 			@RequestBody Profissional profissional,
 			@PathVariable Long idPro){
 		
 		Profissional proSalvo = proRepository.findById(idPro).get();
 		
-		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
-		profissional.setCriadoEm(proSalvo.getCriadoEm());
+//		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
+//		profissional.setCriadoEm(proSalvo.getCriadoEm());
 		
-		BeanUtils.copyProperties(profissional, proSalvo, "idProfissional");
+		BeanUtils.copyProperties(profissional, proSalvo, "idProfissional", "criadoEm", "atualizadoEm");
 
 		proRepository.save(profissional);
 		return ResponseEntity.ok(proSalvo);

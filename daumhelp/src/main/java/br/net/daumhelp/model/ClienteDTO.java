@@ -5,12 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tbl_cliente")
 public class ClienteDTO {
@@ -28,7 +30,6 @@ public class ClienteDTO {
 	@Size(min = 4, max = 150)
 	private String foto;
 
-
 	@Size(min = 11, max = 20)
 	private String cpf;
 
@@ -45,8 +46,21 @@ public class ClienteDTO {
 	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;
 
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "tbl_tipo_usuario")
+	private TipoUsuario tipoUsuario;
+
 	private String criadoEm;
 	private String atualizadoEm;
+
+	public Long getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Long idCliente) {
+		this.idCliente = idCliente;
+	}
 
 	public String getNome() {
 		return nome;
@@ -104,6 +118,14 @@ public class ClienteDTO {
 		this.endereco = endereco;
 	}
 
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
 	public String getCriadoEm() {
 		return criadoEm;
 	}
@@ -122,11 +144,9 @@ public class ClienteDTO {
 
 	@Override
 	public String toString() {
-		return "ClienteIDTO [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", foto=" + foto
+		return "ClienteDTO [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", foto=" + foto
 				+ ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco
-				+ ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+				+ ", tipoUsuario=" + tipoUsuario + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
-
-	
 
 }

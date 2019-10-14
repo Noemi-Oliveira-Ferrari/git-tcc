@@ -43,8 +43,8 @@ public class ClienteResource {
 			@RequestBody Cliente cliente,
 			HttpServletResponse response){
 
-		cliente.setCriadoEm(HandleDates.dataHoraAtual());
-		cliente.setAtualizadoEm(HandleDates.dataHoraAtual());
+//		cliente.setCriadoEm(HandleDates.dataHoraAtual());
+//		cliente.setAtualizadoEm(HandleDates.dataHoraAtual());
 		
 		 Cliente clienteSalvo = clienteRepository.save(cliente);
 		 
@@ -67,17 +67,17 @@ public class ClienteResource {
 		return clienteDTORepository.findById(id);
 	}
 	
-	@PutMapping("/id/{idCliente}")
+	@PutMapping("/atualizar/id/{idCliente}")
 	public ResponseEntity<Cliente> atualizarCliente(
 			@RequestBody Cliente cliente,
 			@PathVariable Long idCliente){
 		
 		Cliente clienteSalvo = clienteRepository.findById(idCliente).get();
 		
-		cliente.setAtualizadoEm(HandleDates.dataHoraAtual());
-		cliente.setCriadoEm(clienteSalvo.getCriadoEm());
+//		cliente.setAtualizadoEm(HandleDates.dataHoraAtual());
+//		cliente.setCriadoEm(clienteSalvo.getCriadoEm());
 		
-		BeanUtils.copyProperties(cliente, clienteSalvo, "idCliente");
+		BeanUtils.copyProperties(cliente, clienteSalvo, "idCliente", "criadoEm", "atualizadoEm");
 
 		clienteRepository.save(cliente);
 		return ResponseEntity.ok(clienteSalvo);

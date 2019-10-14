@@ -5,10 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "tbl_profissional")
@@ -18,10 +21,10 @@ public class Profissional {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProfissional;
 	@NotNull
-	@Size(min = 3, max = 100)
+	@Size(min = 3, max = 200)
 	private String nome;
 	@NotNull
-	@Size(min = 10, max = 100)
+	@Size(min = 10, max = 255)
 	private String email;
 	@NotNull
 	@Size(min = 4, max = 150)
@@ -34,9 +37,9 @@ public class Profissional {
 	private String cpf;
 
 	@NotNull
-	@Size(min = 8, max = 128)
+	@Size(min = 8, max = 200)
 	private String senha;
-	
+
 	@NotNull
 	@Size(min = 6, max = 20)
 	private String dataNasc;
@@ -54,6 +57,11 @@ public class Profissional {
 	@OneToOne
 	@JoinColumn(name = "idSubcategoria")
 	private Subcategoria subcategoria;
+
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "tbl_tipo_usuario")
+	private TipoUsuario tipoUsuario;
 
 	private String criadoEm;
 	private String atualizadoEm;
@@ -154,6 +162,14 @@ public class Profissional {
 		this.subcategoria = subcategoria;
 	}
 
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
 	public String getCriadoEm() {
 		return criadoEm;
 	}
@@ -175,7 +191,8 @@ public class Profissional {
 		return "Profissional [idProfissional=" + idProfissional + ", nome=" + nome + ", email=" + email + ", foto="
 				+ foto + ", cnpj=" + cnpj + ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc
 				+ ", valorHora=" + valorHora + ", resumoQualificacoes=" + resumoQualificacoes + ", endereco=" + endereco
-				+ ", subcategoria=" + subcategoria + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+				+ ", subcategoria=" + subcategoria + ", tipoUsuario=" + tipoUsuario + ", criadoEm=" + criadoEm
+				+ ", atualizadoEm=" + atualizadoEm + "]";
 	}
 
 }

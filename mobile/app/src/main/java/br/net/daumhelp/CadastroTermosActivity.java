@@ -1,7 +1,9 @@
 package br.net.daumhelp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import java.util.Date;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Cidade;
+import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Endereco;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.Subcategoria;
@@ -87,6 +90,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     profissional.setValorHora(Double.parseDouble(listaProfissao[1]));
                                     profissional.setSubcategoria(subcategoria);
                                     profissional.setEndereco(endereco1);
+                                    profissional.setIdTipoUsuario(1);
                                     profissional.setFoto("foto.png");
 
                                     Call<Profissional> callPro = new RetroFitConfig().getProfissionalService().cadastrarProfissional(profissional);
@@ -114,19 +118,94 @@ public class CadastroTermosActivity extends AppCompatActivity {
 
                         }
                     });
+                }else{
+
+                    //MONTANDO OBJETO ENDERECO PARA CADASTRAR NO BANCO
+                    final Endereco endereco = new Endereco();
+                    endereco.setCep(listaEndereco[0]);
+                    endereco.setLogradouro(listaEndereco[1]);
+                    endereco.setBairro(listaEndereco[2]);
+                    Cidade cidade = new Cidade();
+                    cidade.setIdCidade(Long.parseLong(listaEndereco[3]));
+                    endereco.setCidade(cidade);
+
+                    btnProximo.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            int i = 2;
+                            Intent intent = new Intent(CadastroTermosActivity.this, MainActivity.class);
+                            intent.putExtra("cadastro", i);
+                            startActivity(intent);
+
+                            Call<Endereco> call = new RetroFitConfig().getEnderecoService().cadastrarEndereco(endereco);
+                            call.enqueue(new Callback<Endereco>() {
+                                @Override
+                                public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+
+                                    Endereco endereco1 = response.body();
+
+                                    Cliente cliente = new Cliente();
+                                    cliente.setNome(listaDados[0]);
+                                    Date data = Data.stringToDate(listaDados[1]);
+                                    String dataFormatada = Data.dataToString(data);
+                                    cliente.setDataNasc(dataFormatada);
+                                    cliente.setCpf(listaDados[2]);
+                                    cliente.setEmail(listaDados[3]);
+                                    cliente.setSenha(EncryptString.gerarHash(listaDados[4]));
+                                    cliente.setEndereco(endereco1);
+                                    cliente.setIdTipoUsuario(2);
+                                    cliente.setFoto("foto.png");
+
+                                    Call<Cliente> callCli = new RetroFitConfig().getClienteService().cadastrarCliente(cliente);
+                                    callCli.enqueue(new Callback<Cliente>() {
+
+                                        @Override
+                                        public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+                                            response.body();
+                                        }
+                                        @Override
+                                        public void onFailure(Call<Cliente> call, Throwable t) {
+                                            Log.i("BOM DIA", t.getMessage());
+                                        }
+
+
+                                    });
+
+                                }
+
+                                @Override
+                                public void onFailure(Call<Endereco> call, Throwable t) {
+                                    Log.i("Retrofit Cadastro", t.getMessage());
+                                }
+                            });
+
+                        }
+                    });
+
+
                 }
 
             }
+            btnVoltar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder alert = new AlertDialog.Builder(CadastroTermosActivity.this);
+                    alert.setTitle("TERMOS DE USO").setMessage("Ao não concordar com os termos não é possível concluir o cadastro. \nDeseja fechar a aplicação?").setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finishAffinity();
+                        }
+                    }).setNegativeButton("NÃO", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    }).show();
+                }
+            });
 
         }
 
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CadastroTermosActivity.this, CadastroServicoActivity.class);
-                startActivity(intent);
-            }
-        });
 
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override

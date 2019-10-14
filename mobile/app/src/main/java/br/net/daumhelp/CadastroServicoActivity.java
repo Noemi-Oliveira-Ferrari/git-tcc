@@ -82,9 +82,17 @@ public class CadastroServicoActivity extends AppCompatActivity {
                     }
                 });
 
+                btnVoltar.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(CadastroServicoActivity.this, CadastroEnderecoActivity.class);
+                        intent.putExtra("dados_pessoais", listaDados);
+                        intent.putExtra("endereco", listaEndereco);
+                        startActivity(intent);
+                    }
+                });
 
             }
-
 
         }
 
@@ -107,13 +115,7 @@ public class CadastroServicoActivity extends AppCompatActivity {
             }
         });
 
-        btnVoltar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CadastroServicoActivity.this, CadastroEnderecoActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
 

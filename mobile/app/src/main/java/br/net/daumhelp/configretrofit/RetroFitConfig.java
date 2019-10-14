@@ -1,7 +1,9 @@
 package br.net.daumhelp.configretrofit;
 
 import br.net.daumhelp.service.CategoriaService;
+import br.net.daumhelp.service.ClienteService;
 import br.net.daumhelp.service.EnderecoService;
+import br.net.daumhelp.service.LoginService;
 import br.net.daumhelp.service.ProfissionalService;
 import br.net.daumhelp.service.SubcategoriaService;
 import retrofit2.Retrofit;
@@ -33,6 +35,14 @@ public class RetroFitConfig {
 
     public ProfissionalService getProfissionalService(){
         return this.retroFit.create(ProfissionalService.class);
+    }
+
+    public ClienteService getClienteService(){
+        return this.retroFit.create(ClienteService.class);
+    }
+
+    public LoginService getLoginService(){
+        return this.retroFit.create(LoginService.class);
     }
 
 

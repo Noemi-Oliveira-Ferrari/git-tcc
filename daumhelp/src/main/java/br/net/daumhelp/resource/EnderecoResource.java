@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -50,12 +51,10 @@ public class EnderecoResource {
 	}
 	
 	@GetMapping("/cep/{cep}")
-	public Endereco getEnderecosViacep
-	(@PathVariable String cep){
+	public ResponseEntity<Endereco> getEnderecosViacep (@PathVariable String cep){
 		Endereco endereco = new Endereco(); 
 		String jsonEndereco = GetCep.trazerCep(cep);
 		if(!jsonEndereco.contains("erro")) {
-			System.out.println("_____________________\n"+jsonEndereco);
 			EnderecoCep enderecoCep = HandleJsonInJava.convertEnderecoJsonToJavaObject(jsonEndereco);
 			
 			endereco = new Endereco();
@@ -67,8 +66,10 @@ public class EnderecoResource {
 			Cidade cidade = cidadeRepository.findById(idCidade).get();
 			
 			endereco.setCidade(cidade);
+			return ResponseEntity.ok(endereco);
+		}else {
+			return new ResponseEntity<Endereco>(HttpStatus.NOT_FOUND);
 		}
-		return endereco;
 	}
 	
 	@PostMapping
@@ -76,10 +77,10 @@ public class EnderecoResource {
 			(@RequestBody Endereco endereco, 
 			HttpServletResponse response){
 		
-		
-		endereco.setCriadoEm(HandleDates.dataHoraAtual());
-		endereco.setAtualizadoEm(HandleDates.dataHoraAtual());
-		
+//		
+//		endereco.setCriadoEm(HandleDates.dataHoraAtual());
+//		endereco.setAtualizadoEm(HandleDates.dataHoraAtual());
+	
 		Endereco enderecoSalvo = enderecoRepository.save(endereco);
 		
 		URI uri = ServletUriComponentsBuilder	
@@ -91,18 +92,20 @@ public class EnderecoResource {
 		return ResponseEntity.created(uri).body(endereco);
 	}
 	
-	@PutMapping("/id/{idEndereco}")
+	
+	@PutMapping("/atualizar/id/{idEndereco}")
 	public ResponseEntity<Endereco> atualizarEndereco(
 			@RequestBody Endereco endereco,
 			@PathVariable Long idEndereco){
 		Endereco enderecoSalvo = enderecoRepository.findById(idEndereco).get();
 		
-		endereco.setAtualizadoEm(HandleDates.dataHoraAtual());
-		endereco.setCriadoEm(enderecoSalvo.getCriadoEm());
+//		endereco.setAtualizadoEm(HandleDates.dataHoraAtual());
+//		endereco.setCriadoEm(enderecoSalvo.getCriadoEm());
+//		
+		BeanUtils.copyProperties(endereco, enderecoSalvo, "idEndereco", "criadoEm", "atualizadoEm");
 		
-		BeanUtils.copyProperties(endereco, enderecoSalvo, "idEndereco");
+		enderecoRepository.save(enderecoSalvo);
 		
-		enderecoRepository.save(endereco);
 		return ResponseEntity.ok(enderecoSalvo);
 	}
 	

@@ -30,6 +30,17 @@ public class Cliente {
     @JsonAlias("endereco")
     private Endereco endereco;
 
+    @JsonAlias("idTipoUsuario")
+    private int idTipoUsuario;
+
+    public int getIdTipoUsuario() {
+        return idTipoUsuario;
+    }
+
+    public void setIdTipoUsuario(int idTipoUsuario) {
+        this.idTipoUsuario = idTipoUsuario;
+    }
+
     public int getIdCliente() {
         return idCliente;
     }
