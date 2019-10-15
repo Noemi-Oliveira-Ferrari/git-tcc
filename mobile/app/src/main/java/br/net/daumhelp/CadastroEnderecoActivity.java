@@ -45,12 +45,14 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
         etCidade = findViewById(R.id.et_cidade);
         btnCep = findViewById(R.id.btn_gerar_cep);
 
-        // btnProximo.setVisibility(View.INVISIBLE);
+        btnProximo.setVisibility(View.INVISIBLE);
 
         etUf.setEnabled(false);
         etLogradouro.setEnabled(false);
         etBairro.setEnabled(false);
         etCidade.setEnabled(false);
+
+
 
         Mascara maskCep = new Mascara("#####-###", etCep);
         etCep.addTextChangedListener(maskCep);
@@ -68,22 +70,19 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<Endereco> call, Response<Endereco> response) {
 
-                                btnProximo.setVisibility(View.VISIBLE);
 
-                                if(response.body().getCidade() == null){
-
-                                    etCep.setError("CEP inválido");
+                                if(response.code() == 404){
+                                    etCep.setError("CPF inválido");
                                 }else{
-
                                     carregarEndereco(response.body());
+                                    btnProximo.setVisibility(View.VISIBLE);
                                 }
-
-
                             }
 
                             @Override
                             public void onFailure(Call<Endereco> call, Throwable t) {
-                                Log.i("Retrofit Endereço", t.getMessage());
+
+                                Log.i("Retrofit Endereço" + call, t.getMessage());
                                 etCep.setError("CEP inválido");
                             }
 

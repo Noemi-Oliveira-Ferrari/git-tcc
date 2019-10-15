@@ -19,6 +19,7 @@ import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Endereco;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.Subcategoria;
+import br.net.daumhelp.model.TipoUsuario;
 import br.net.daumhelp.recursos.Data;
 import br.net.daumhelp.recursos.EncryptString;
 import retrofit2.Call;
@@ -48,6 +49,9 @@ public class CadastroTermosActivity extends AppCompatActivity {
 
             if (intent.getSerializableExtra("endereco") != null) {
                 final String[] listaEndereco = (String[]) intent.getSerializableExtra("endereco");
+
+
+                final TipoUsuario tipoUsuario = new TipoUsuario();
 
                 if (intent.getSerializableExtra("serv_pro") != null) {
                     final String[] listaProfissao = (String[]) intent.getSerializableExtra("serv_pro");
@@ -91,7 +95,9 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     profissional.setValorHora(Double.parseDouble(listaProfissao[1]));
                                     profissional.setSubcategoria(subcategoria);
                                     profissional.setEndereco(endereco1);
-                                    profissional.setIdTipoUsuario(1);
+                                    tipoUsuario.setIdTipoUsuario(1);
+                                    tipoUsuario.setTipoUsuario("p");
+                                    profissional.setTipoUsuario(tipoUsuario);
                                     profissional.setFoto("foto.png");
 
                                     Call<Profissional> callPro = new RetroFitConfig().getProfissionalService().cadastrarProfissional(profissional);
@@ -154,7 +160,9 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     cliente.setEmail(listaDados[3]);
                                     cliente.setSenha(EncryptString.gerarHash(listaDados[4]));
                                     cliente.setEndereco(endereco1);
-                                    cliente.setIdTipoUsuario(2);
+                                    tipoUsuario.setIdTipoUsuario(2);
+                                    tipoUsuario.setTipoUsuario("c");
+                                    cliente.setTipoUsuario(tipoUsuario);
                                     cliente.setFoto("foto.png");
 
                                     Call<Cliente> callCli = new RetroFitConfig().getClienteService().cadastrarCliente(cliente);

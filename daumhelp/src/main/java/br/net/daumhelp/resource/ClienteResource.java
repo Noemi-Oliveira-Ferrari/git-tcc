@@ -56,6 +56,13 @@ public class ClienteResource {
 		 
 		 return ResponseEntity.created(uri).body(cliente);
 	}
+	
+
+	@PostMapping("/login")
+	public Cliente buscarUsuario(@RequestBody Cliente cliente) {
+		return clienteRepository.findUserLogin(cliente.getEmail(), cliente.getSenha());
+	}
+	
 
 	@GetMapping
 	public List<ClienteDTO> getClientes(){

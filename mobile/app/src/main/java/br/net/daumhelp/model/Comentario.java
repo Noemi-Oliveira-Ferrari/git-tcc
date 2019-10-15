@@ -1,6 +1,8 @@
 package br.net.daumhelp.model;
 
-public class Comentario {
+import java.io.Serializable;
+
+public class Comentario implements Serializable {
 
     private String nome;
     private String data;

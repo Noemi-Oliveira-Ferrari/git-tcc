@@ -1,6 +1,8 @@
 package br.net.daumhelp.model;
 
-public class Confirmacao {
+import java.io.Serializable;
+
+public class Confirmacao implements Serializable {
 
     private String nome;
     private String destinatario;

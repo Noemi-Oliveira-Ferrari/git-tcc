@@ -17,8 +17,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Login;
 import br.net.daumhelp.model.Profissional;
+import br.net.daumhelp.recursos.EncryptString;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -51,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
         cvSucesso.setVisibility(View.INVISIBLE);
         cvOpacity.setVisibility(View.INVISIBLE);
 
-        etEmail.setText("pedropedro");
-        etSenha.setText("123456789");
+        etEmail.setText("noemi@noemi");
+        etSenha.setText("123123123");
 
         /*VERIFICAÇÃO DA CONEXÃO*/
         final ConnectivityManager conmag = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -111,13 +113,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                final String senha = etSenha.getText().toString();
+                final String senha = EncryptString.gerarHash(etSenha.getText().toString());
                 final String email = etEmail.getText().toString();
                 /*Login login = new Login();
                 login.setEmail(email);
                 login.setSenha(senha);*/
 
-                Profissional profissional = new Profissional();
+                final Profissional profissional = new Profissional();
                 profissional.setEmail(email);
                 profissional.setSenha(senha);
 
@@ -129,25 +131,28 @@ public class MainActivity extends AppCompatActivity {
                         response.body();
                         //Toast.makeText(MainActivity.this, "PROFISSIONAL LOGADO" + response.body().getValorHora(), Toast.LENGTH_SHORT).show();
 
-                       Intent intent = new Intent(MainActivity.this, MenuActivity.class);
-                       intent.putExtra("profissional", response.body());
-                       startActivity(intent);
-                       finish();
+                        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                        intent.putExtra("profissional", response.body());
+                        startActivity(intent);
                     }
 
                     @Override
                     public void onFailure(Call<Profissional> call, Throwable t) {
 
-                        Call<Login> call2 = new RetroFitConfig().getLoginService().buscarCli(email, senha);
-                        call2.enqueue(new Callback<Login>() {
+                        Cliente cliente = new Cliente();
+                        cliente.setEmail(email);
+                        cliente.setSenha(senha);
+
+                        Call<Cliente> call2 = new RetroFitConfig().getLoginService().buscarCli(cliente);
+                        call2.enqueue(new Callback<Cliente>() {
                             @Override
-                            public void onResponse(Call<Login> call2, Response<Login> response) {
+                            public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
                                 response.body();
                                 Toast.makeText(MainActivity.this, "CLIENTE LOGADO", Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
-                            public void onFailure(Call<Login> call, Throwable t) {
+                            public void onFailure(Call<Cliente> call, Throwable t) {
                                 Log.i("Retrofit LOGIN", t.getMessage());
                                 Toast.makeText(MainActivity.this, "Esse usuario não existe", Toast.LENGTH_SHORT).show();
                             }

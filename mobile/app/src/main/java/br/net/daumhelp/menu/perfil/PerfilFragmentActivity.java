@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,18 +21,24 @@ import androidx.lifecycle.ViewModelProviders;
 import br.net.daumhelp.EditarActivity;
 import br.net.daumhelp.adapter.ListaAdapterComentario;
 import br.net.daumhelp.model.Comentario;
+import br.net.daumhelp.model.Profissional;
+
 
 public class PerfilFragmentActivity extends Fragment {
 
     private PerfilViewModel perfilViewModel;
     private ListView lista;
     private ImageButton btnConfig;
+    private Profissional profissional;
+    private TextView tvNome;
+    private TextView tvLocal;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         perfilViewModel = ViewModelProviders.of(this).get(PerfilViewModel.class);
         View root = inflater.inflate(R.layout.activity_fragment_perfil, container, false);
+
 
         return root;
     }
@@ -59,20 +66,38 @@ public class PerfilFragmentActivity extends Fragment {
         listView.setAdapter(listaComentario);
 
         btnConfig = getView().findViewById(R.id.ic_config);
+        tvLocal = getView().findViewById(R.id.tv_local);
+        tvNome = getView().findViewById(R.id.tv_nome);
 
-        btnConfig.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), EditarActivity.class);
-                startActivity(intent);
-            }
-        });
+
+        Intent intent = getActivity().getIntent();
+        if (intent.getSerializableExtra("profissional") != null) {
+
+            final Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
+
+            tvNome.setText(profissional.getNome().toUpperCase());
+            tvLocal.setText( profissional.getEndereco().getCidade().getCidade()+ ", " + profissional.getEndereco().getCidade().getMicrorregiao().getUf());
+
+            btnConfig.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getContext(), EditarActivity.class);
+                    intent.putExtra("profissional", profissional);
+                    startActivity(intent);
+                }
+            });
+
+        }
+
+
+
+
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Toast.makeText(getActivity(),"Aqui é o perfil!",Toast.LENGTH_SHORT).show();
+
 
     }
 }

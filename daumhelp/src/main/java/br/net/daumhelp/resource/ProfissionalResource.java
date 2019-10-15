@@ -47,6 +47,12 @@ public class ProfissionalResource {
 		return HandleEmails.enviar(confirm);
 	}
 
+
+	@PostMapping("/login")
+	public Profissional buscarUsuario(@RequestBody Profissional profissional) {
+		return proRepository.findUserLogin(profissional.getEmail(), profissional.getSenha());
+	}
+	
 	@GetMapping
 	public List<ProfissionalDTO> getPros(){
 		return proDTORepository.findAll();
