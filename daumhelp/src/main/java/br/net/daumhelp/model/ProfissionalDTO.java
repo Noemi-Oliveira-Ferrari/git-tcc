@@ -60,7 +60,7 @@ public class ProfissionalDTO {
 
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "tbl_tipo_usuario")
+	@JoinColumn(name = "idTipoUsuario")
 	private TipoUsuario tipoUsuario;
 
 	private String criadoEm;

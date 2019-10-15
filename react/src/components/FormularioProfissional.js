@@ -4,9 +4,7 @@ import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import { validarSenha, ancora} from '../js/validar';
-import sha512 from 'js-sha512';
-
+import { validarSenha, ancora, generateHash, withError, withoutError, validarCnpj} from '../js/validar';
 
 class DadosPessoaisPro extends Component{
 
@@ -44,7 +42,6 @@ class DadosPessoaisPro extends Component{
     setCep(event){
         this.setState({cep: event.target.value});
         let cepSize = event.target.value.length;
-        console.log(sha512("123"));
         if (cepSize > 8) {
             this.getEndereco(event.target.value);
         }
@@ -421,45 +418,26 @@ export default class FormularioProfissional extends Component{
     validarCampos(){
         
         let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email], select, textarea");
-        console.log(campos);
         let notError = false;
-        // console.log($("#txt-confirmar-senha").val());
         
         campos.forEach(campo =>{
             if(campo.value === ""){
-                $(campo).addClass("erro");
-                console.log($(campo).attr("id").replace(/(txt)\-/g, ""));
-                notError = false;
+                withError($(campo).get(0));
             }else{
-                $(campo).removeClass("erro");
+                withoutError($(campo).get(0));
                 notError = true;
             }
         });
-
-        if($('#txt-senha').val() === $('#txt-confirmar-senha').val() &&
-        ($('#txt-senha').val() !== "" || $('#txt-confirmar-senha').val() !== "")){
-            $('#txt-confirmar-senha').html('match');
-            $('#txt-confirmar-senha').removeClass("erro");
-            $('#txt-senha').removeClass("erro");
-            notError = true;
-        }else if($('#txt-senha').val() === "" || $('#txt-confirmar-senha').val() === ""){
-            $('#txt-confirmar-senha').addClass("erro");
-            $('#txt-senha').addClass("erro");
-            notError = false;
-        }else{
-            $('#txt-confirmar-senha').html('mismatch');
-            $('#txt-confirmar-senha').addClass("erro");
-            $('#txt-senha').addClass("erro");
-            notError = false;
-        }
-
+        console.log($('#txt-cpfCnpj').val().length);
+        notError = validarCnpj();
+        notError = validarSenha($('#txt-senha').get(0), $('#txt-confirmar-senha').get(0));
         return notError;
     }
 
     realizarCadastro(event){
         event.preventDefault();
         console.clear();
-        console.log("Enviando dados ao banco...");
+        // console.log("Enviando dados ao banco...");
         let cpfCnpj = $("#txt-cpfCnpj").val().replace(/[.-]/g, "");
         let cpf;
         let cnpj;
@@ -473,7 +451,7 @@ export default class FormularioProfissional extends Component{
         
         console.log("validarCampos"+this.validarCampos());
         if(this.validarCampos() && $("#chk-termos").is(":checked")){
-            console.log("validarCampos TRUE"+this.validarCampos());
+            // console.log("validarCampos TRUE"+this.validarCampos());
             
             let endereco = {
                 cep: $("#txt-cep").val(),
@@ -488,8 +466,8 @@ export default class FormularioProfissional extends Component{
                 dataNasc: $("#txt-dataNasc").val(),
                 cpf: cpf,
                 cnpj: cnpj,
-                email: $("#txt-cep").val(),
-                senha: $("#txt-cep").val(),
+                email: $("#txt-email").val(),
+                senha: generateHash($("#txt-senha").val()),
                 endereco: {
                     idEndereco: null
                 },
@@ -503,7 +481,6 @@ export default class FormularioProfissional extends Component{
             sessionStorage.setItem("profissional", JSON.stringify(profissional));
             browserHistory.push("/profissional/cadastro/confirmacao");
         }else{
-            console.log($("#chk-termos").is(":checked"));
             ancora();
         }
     }
