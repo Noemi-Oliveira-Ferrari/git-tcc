@@ -1,10 +1,12 @@
 import $ from 'jquery';
 import sha512 from 'sha512';
 import { validate } from 'cnpj';
+import { isValid } from 'cpf';
+import EmailValidator from 'email-validator';
+import passwordValidator from 'password-validator';
 
 
-
-export const validarSenha = (senha, confirmSenha) =>{
+export const validarConfirmacaoSenha = (senha, confirmSenha) =>{
     if((senha.value === confirmSenha.value) && (senha.value !== "" && confirmSenha.value !== "")){
         withoutError(confirmSenha);
         withoutError(senha);
@@ -20,7 +22,7 @@ export const validarSenha = (senha, confirmSenha) =>{
     }
 }
 
-export const ancora = () =>{
+export const moveToError = () =>{
     window.scrollTo(0, 200);
 }
 
@@ -30,14 +32,102 @@ export const generateHash = (input) =>{
 }
 
 
-export const validarCnpj =() =>{
-    if(!validate($("#txt-cpfCnpj").val())){
+export const validarCnpj = (cnpj) =>{
+    if(!validate(cnpj)){
         return withError($('#txt-cpfCnpj'));
     }else{
         return withoutError($('#txt-cpfCnpj'));
     }
 }
 
+export const validarCpf = (cpf) =>{
+    if(!isValid(cpf)){
+        return withError($('#txt-cpfCnpj'));
+    }else{
+        return withoutError($('#txt-cpfCnpj'));
+    }
+}
+
+export const validarEmail = (email) =>{
+    if(!EmailValidator.validate(email)){
+        return withError($('#txt-email'));
+    }else{
+        return withoutError($('#txt-email'));
+    }
+}
+
+export const validarSenha = (input) =>{
+    let regras = new passwordValidator();
+    
+    regras
+    .is().min(8)
+    .is().max(100)
+    .has().letters()
+    .has().lowercase()
+    .has().digits()
+    .has().not().spaces();
+
+    if(!regras.validate(input)){
+        withError($('#txt-senha'));
+        return false;
+    }else{
+        withoutError($('#txt-senha'));
+        return true;
+    }
+}
+export const validarString = (input) =>{
+    let regras = new passwordValidator();
+    
+    regras
+    .is().min(3)
+    .is().max(150)
+    .has().letters()
+    .has().not().digits()
+    .has().not().symbols()
+    .is().not().oneOf([""], null);
+
+    if(!regras.validate(input.value)){
+        withError($('#txt-nome'));
+        return false;
+    }else{
+        withoutError($('#txt-nome'));
+        return true;
+    }
+}
+
+export const validarVazios = (campos) =>{
+    let semErro = [];
+
+
+    for(let i = 0; i< campos.length; i++){
+        if(campos[i].value === ""){
+            console.log("ERRO "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+            semErro.push(withError(campos[i]));
+        }else{
+            console.log("SHOW "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+            semErro.push(withoutError(campos[i]));
+        }
+    }
+    // campos.forEach(campo =>{
+    //     if(campo.value === ""){
+    //         // console.log($(campo).attr("id").replace(/(txt)\-/g, ""));
+    //         withError(campo);
+    //         semErro = false;
+    //         break;
+    //     }else{
+    //         // console.log($(campo).attr("id").replace(/(txt)\-/g, ""));
+    //         withoutError(campo);
+    //         semErro = true;
+    //         break;
+    //     }
+    // });
+    console.log(semErro);
+    if(semErro.includes(false)){
+        return false;
+    }else{
+        return true;
+    }
+}
 
 export const withError = (input) =>{
     $(input).addClass("erro");

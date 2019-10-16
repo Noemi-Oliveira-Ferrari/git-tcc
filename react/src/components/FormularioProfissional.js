@@ -1,10 +1,11 @@
 import React,  {Component} from "react";
-import {Inputs, Selects} from './FormElements';
+import {Inputs, Selects, InputNumber} from './FormElements';
 import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
-import {browserHistory} from 'react-router';
-import { validarSenha, ancora, generateHash, withError, withoutError, validarCnpj} from '../js/validar';
+import { validarConfirmacaoSenha, moveToError, generateHash, withError,
+         withoutError, validarCnpj, validarCpf, validarEmail,
+         validarSenha, validarString, validarVazios} from '../js/validar';
 
 class DadosPessoaisPro extends Component{
 
@@ -19,13 +20,14 @@ class DadosPessoaisPro extends Component{
             enderecoPronto: false,
             tipoPro: "rdo-pf", radioChecked: "rdo-pf"
         }
+        this.setNome = this.setNome.bind(this);
         this.setCep = this.setCep.bind(this);
         this.setSenha = this.setSenha.bind(this);
         this.setConfirmSenha = this.setConfirmSenha.bind(this);
-        // this.validarSenha = this.validarSenha.bind(this);
         this.setCpfCnpj = this.setCpfCnpj.bind(this);
         this.setTipoPfPj = this.setTipoPfPj.bind(this);
     }
+    
     componentDidMount(){
         console.clear();
     }    
@@ -39,6 +41,12 @@ class DadosPessoaisPro extends Component{
             console.log(`cnpj -> ${cpfCnpj} ${cpfCnpj.length}`)
         }
     }
+
+    setNome(event){
+        this.setState({nome: event.target.value});
+        validarString(event.target);
+    }
+
     setCep(event){
         this.setState({cep: event.target.value});
         let cepSize = event.target.value.length;
@@ -82,16 +90,17 @@ class DadosPessoaisPro extends Component{
         })
         .onload = console.log("loading");
     }
-
+    
     setSenha(event){
         this.setState({senha: event.target.value});
         let senha = event.target.value;
+        validarSenha(senha);
     }
 
     setConfirmSenha(event){
         this.setState({confirmSenha: event.target.value});
         let confirmSenha = event.target.value;
-        validarSenha($('#txt-senha').get(0), event.target);
+        validarConfirmacaoSenha($('#txt-senha').get(0), event.target);
     }
     
     setTipoPfPj(event){
@@ -148,22 +157,23 @@ class DadosPessoaisPro extends Component{
                                 type="text"
                                 classDivInputPro="caixa-nome"
                                 classInput="form-control form-input"
+                                onChange={this.setNome}
                             />
 
-                            <Inputs
+                            <InputNumber
                                 classDivInputPro="caixa-dataNasc"
                                 label="Data de Nascimento:"
                                 id="txt-dataNasc"
                                 type="text"
                                 name="txt_data_nasc"
-                                mascara="99/99/9999"
+                                mascara="##/##/####"
                                 classInput="form-control form-input"
                             />
                         
                         </div>
                         <div className="flex-center container-cpfCnpj-email">
 
-                            <Inputs
+                            <InputNumber
                                 classDivInputPro="caixa-cpfCnpj"
                                 label={this.state.tipoPro === "rdo-pf" ? "CPF" : "CNPJ"}
                                 id="txt-cpfCnpj"
@@ -171,7 +181,7 @@ class DadosPessoaisPro extends Component{
                                 name="txt_cpfCnpj"
                                 classInput="form-control form-input"
                                 onChange={this.setCpfCnpj}
-                                mascara={this.state.tipoPro === "rdo-pf" ? "999.999.999-99" : "99.999.999./9999-99"}
+                                mascara={this.state.tipoPro === "rdo-pf" ? "###.###.###-##" : "##.###.###/####-##"}
                             />
 
                             <Inputs
@@ -225,7 +235,6 @@ class DadosPessoaisPro extends Component{
                                 classInput="form-control form-input"
                                 mascara="99999-999"
                                 valueInput={this.state.cep || ""}
-                                disabled
                             />
 
                             <Inputs
@@ -381,13 +390,18 @@ class DadosProfissional extends Component{
                             </div>
                             
                             <div className="flex-center container-valor-hora">
-                                <Inputs
+                                <InputNumber
                                     label="Valor/Hora:"
                                     id="txt-valor-hora"
                                     classInput="form-control form-input"
                                     name="txt_valor_hora"
                                     type="text"
                                     classDivInputPro="caixa-valor-hora"
+                                    separadorMilhar="."
+                                    separadorDecimal=","
+                                    permitirNegativo="false"
+                                    prefixo="R$"
+                                    qtdDecimal="2"
                                 />
                             </div>
                         </div>
@@ -417,21 +431,50 @@ export default class FormularioProfissional extends Component{
 
     validarCampos(){
         
-        let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email], select, textarea");
-        let notError = false;
+        let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email], select");
+        let semErro = true;
         
-        campos.forEach(campo =>{
-            if(campo.value === ""){
-                withError($(campo).get(0));
-            }else{
-                withoutError($(campo).get(0));
-                notError = true;
+
+        // campos.forEach(campo =>{
+        //     if(campo.value === ""){
+        //         // console.log($(campo).attr("id").replace(/(txt)\-/g, ""));
+        //         withError($(campo).get(0));
+        //         semErro = false;
+        //     }else{
+        //         // console.log($(campo).attr("id").replace(/(txt)\-/g, ""));
+        //         withoutError($(campo).get(0));
+        //         semErro = true;
+        //     }
+        //     // console.log(semErro);
+        //     // if(!semErro){
+        //         return semErro;
+        //     // }
+        // });
+
+
+        if(!validarVazios(campos)){
+            return false;
+        }
+
+        if($('#txt-cpfCnpj').val().length < 15){
+            if(!validarCpf($('#txt-cpfCnpj').val())){
+                return false;
             }
-        });
-        console.log($('#txt-cpfCnpj').val().length);
-        notError = validarCnpj();
-        notError = validarSenha($('#txt-senha').get(0), $('#txt-confirmar-senha').get(0));
-        return notError;
+        }else{
+            if(!validarCnpj($('#txt-cpfCnpj').val())){
+                return false;
+            }
+        }
+
+        if(!validarSenha($('#txt-senha').val())){
+            return false;
+        }
+
+        if(!validarEmail($('#txt-email').val()) || !validarConfirmacaoSenha($('#txt-senha').get(0), $('#txt-confirmar-senha').get(0))){
+            return false;
+        }
+        
+        return semErro;
     }
 
     realizarCadastro(event){
@@ -479,9 +522,9 @@ export default class FormularioProfissional extends Component{
             };
             sessionStorage.setItem("endereco", JSON.stringify(endereco));
             sessionStorage.setItem("profissional", JSON.stringify(profissional));
-            browserHistory.push("/profissional/cadastro/confirmacao");
+            // browserHistory.push("/profissional/cadastro/confirmacao");
         }else{
-            ancora();
+            moveToError();
         }
     }
 
