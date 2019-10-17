@@ -19,10 +19,10 @@
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_valor_hora" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/tv_valor_hora"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
@@ -211,21 +211,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/et_qualificacoes"
-                android:layout_width="290dp"
-                android:layout_height="60dp"
-                android:layout_marginBottom="6dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="8dp"
-
-                android:ems="10"
-                android:inputType="textMultiLine"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_titulo_cliente" />
 
             <TextView
                 android:id="@+id/tv_titulo_cliente"
@@ -240,6 +225,22 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_qualificacoes"
+                android:layout_width="290dp"
+                android:layout_height="60dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_titulo_cliente" />
+
         </android.support.constraint.ConstraintLayout>
 
 

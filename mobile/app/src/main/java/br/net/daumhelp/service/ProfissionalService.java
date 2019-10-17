@@ -5,6 +5,8 @@ import br.net.daumhelp.model.Profissional;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface ProfissionalService {
 
@@ -13,4 +15,9 @@ public interface ProfissionalService {
 
     @POST("profissionais/confirmacao")
     Call<Confirmacao> confirmarEmail(@Body Confirmacao confirmacao);
+
+
+    @PUT("profissionais/atualizar/id/{idPro}")
+    Call<Profissional> atualizarPro(@Path("idPro")int idPro, @Body Profissional profissional);
+
 }

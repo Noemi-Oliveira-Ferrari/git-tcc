@@ -8,18 +8,29 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.List;
+
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.menu.perfil.PerfilFragmentActivity;
+import br.net.daumhelp.model.Categoria;
 import br.net.daumhelp.model.Endereco;
 import br.net.daumhelp.model.Profissional;
+import br.net.daumhelp.model.Subcategoria;
+import br.net.daumhelp.model.TipoUsuario;
+import br.net.daumhelp.recursos.EncryptString;
 import br.net.daumhelp.recursos.Mascara;
 import br.net.daumhelp.recursos.MascaraCpfCnpj;
 import retrofit2.Call;
@@ -39,14 +50,27 @@ public class EditarActivity extends AppCompatActivity {
     private EditText etLogradouro;
     private EditText etUf;
     private EditText etBairro;
+    private EditText etCategoria;
+    private EditText etSubcategoria;
     private TextView tvEditarDados;
     private TextView tvEditarLocal;
+    private TextView tvEditarServico;
     private TextView tvNome;
     private Button btnCep;
     private Profissional profissional;
     private Endereco endereco;
     private Long idCidade;
     private ImageView ivToolbar;
+    private EditText etResumo;
+    private EditText etValorHora;
+    private TextView tvTituloCategoria;
+    private TextView tvTituloSubcategoria;
+    private Spinner spnCategoria;
+    private Spinner spnSubcategoria;
+    private List<Categoria> listaCategoria;
+    private List<Subcategoria> listaSubcategoria;
+    private Long idSub;
+    private Long idCategoria;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +79,11 @@ public class EditarActivity extends AppCompatActivity {
 
         etNome = findViewById(R.id.et_nome_pro);
         etData = findViewById(R.id.et_nasc_pro);
+        etResumo = findViewById(R.id.et_qualificacoes);
+        etValorHora = findViewById(R.id.et_valor_hora);
+        tvTituloCategoria = findViewById(R.id.tv_titulo_pro);
+        spnCategoria = findViewById(R.id.spn_categoria);
+        spnSubcategoria = findViewById(R.id.spn_subcategoria);
         etCpf = findViewById(R.id.et_cpf_pro);
         etSenha = findViewById(R.id.et_senha_pro);
         etSenhaConfirmacao = findViewById(R.id.et_confirm_pro);
@@ -69,20 +98,15 @@ public class EditarActivity extends AppCompatActivity {
         btnCep = findViewById(R.id.btn_gerar_cep);
         tvNome = findViewById(R.id.tv_nome);
         ivToolbar = findViewById(R.id.iv_toolbar);
+        tvEditarServico = findViewById(R.id.tv_editar_servico);
+        tvTituloSubcategoria = findViewById(R.id.tv_titulo_sub);
 
-        etNome.setEnabled(false);
-        etData.setEnabled(false);
-        etCpf.setEnabled(false);
-        etSenha.setEnabled(false);
-        etSenhaConfirmacao.setEnabled(false);
-        etEmail.setEnabled(false);
-        etCep.setEnabled(false);
-        etCidade.setEnabled(false);
-        etLogradouro.setEnabled(false);
-        etUf.setEnabled(false);
-        etBairro.setEnabled(false);
+        etCategoria = findViewById(R.id.et_categoria);
+        etSubcategoria = findViewById(R.id.et_subcategoria);
 
-        btnCep.setEnabled(false);
+
+
+        desativarCampos();
 
         Mascara maskCep = new Mascara("#####-###", etCep);
         etCep.addTextChangedListener(maskCep);
@@ -101,55 +125,14 @@ public class EditarActivity extends AppCompatActivity {
         });
 
 
+        /*PEGANDO PROFISSIONAL PARA CARREGAR O PERFIL*/
         Intent intent = getIntent();
         if (intent.getSerializableExtra("profissional") != null) {
-
             profissional = (Profissional) intent.getSerializableExtra("profissional");
-
-            etNome.setText(profissional.getNome());
-            tvNome.setText(profissional.getNome());
-            etData.setText(profissional.getDataNasc());
-            etCpf.setText(profissional.getCpf());
-            etEmail.setText(profissional.getEmail());
-            etCep.setText(profissional.getEndereco().getCep());
-            etCidade.setText(profissional.getEndereco().getCidade().getCidade());
-            etLogradouro.setText(profissional.getEndereco().getLogradouro());
-            etUf.setText(profissional.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
-            etBairro.setText(profissional.getEndereco().getBairro());
-
+            carregarDados(profissional);
         }
 
-        tvEditarDados.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                etNome.setEnabled(true);
-                etData.setEnabled(true);
-                etCpf.setEnabled(true);
-                etSenha.setEnabled(true);
-                etSenhaConfirmacao.setEnabled(true);
-                etEmail.setEnabled(true);
-                etNome.requestFocus(View.FOCUS_LEFT);
 
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(etNome, InputMethodManager.SHOW_IMPLICIT);
-
-                if(tvEditarDados.getText().equals("Editar")){
-
-                    tvEditarDados.setText("Salvar");
-
-                }else if(tvEditarDados.getText().equals("Salvar")){
-
-                    tvEditarDados.setText("Editar");
-                    etNome.setEnabled(false);
-                    etData.setEnabled(false);
-                    etCpf.setEnabled(false);
-                    etSenha.setEnabled(false);
-                    etSenhaConfirmacao.setEnabled(false);
-                    etEmail.setEnabled(false);
-
-                }
-            }
-        });
 
         tvEditarLocal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,7 +141,6 @@ public class EditarActivity extends AppCompatActivity {
                 btnCep.setEnabled(true);
                 btnCep.setTextColor(Color.parseColor("#57BC90"));
                 etCep.requestFocus(View.FOCUS_LEFT);
-
 
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(etCep, InputMethodManager.SHOW_IMPLICIT);
@@ -174,47 +156,127 @@ public class EditarActivity extends AppCompatActivity {
                             String cep = etCep.getText().toString();
                             /*VALIDAÇÃO DO TAMANHO DO CEP*/
                             if(etCep.length() == 8 || etCep.length() == 9){
-                                if(validar() == true) {
-                                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().buscarEndereco(cep);
-                                    call.enqueue(new Callback<Endereco>() {
-                                        @Override
-                                        public void onResponse(Call<Endereco> call, Response<Endereco> response) {
-                                            if(response.body().getCidade() == null){
+                                Call<Endereco> call = new RetroFitConfig().getEnderecoService().buscarEndereco(cep);
+                                call.enqueue(new Callback<Endereco>() {
+                                    @Override
+                                    public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+                                        if(response.body().getCidade() == null){
 
-                                                etCep.setError("CEP inválido");
-                                            }else{
-
-                                                carregarEndereco(response.body());
-                                            }
-
-
-                                        }
-
-                                        @Override
-                                        public void onFailure(Call<Endereco> call, Throwable t) {
-                                            Log.i("Retrofit Endereço", t.getMessage());
                                             etCep.setError("CEP inválido");
-                                        }
 
-                                    });
-                                }else{
-                                    etCep.setError("CEP inválido");
-                                }
+                                        }else{
+                                            carregarEndereco(response.body());
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Endereco> call, Throwable t) {
+                                        Log.i("Retrofit Endereço", t.getMessage());
+                                        etCep.setError("CEP inválido");
+                                    }
+
+                                });
                             }else{
                                 etCep.setError("CEP inválido");
                             }
                         }
                     });
 
-
-
                 }else if(tvEditarLocal.getText().equals("Salvar")){
-
                     btnCep.setTextColor(Color.parseColor("#b1b1b1"));
                     tvEditarLocal.setText("Editar");
                     etCep.setEnabled(false);
 
                 }
+            }
+        });
+
+        tvEditarDados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ativarCampos();
+
+                /*ABRIR TECLADO QUANDO CLICAR EM EDITAR DADOS*/
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.showSoftInput(etNome, InputMethodManager.SHOW_IMPLICIT);
+
+                if(tvEditarDados.getText().equals("Editar")){
+
+                    tvEditarDados.setText("Salvar");
+                    Toast.makeText(EditarActivity.this, "DIGITAR", Toast.LENGTH_SHORT).show();
+
+                }else if(tvEditarDados.getText().equals("Salvar")){
+
+                    tvEditarDados.setText("Editar");
+                    desativarCampos();
+
+                    /*MONTANDO O OBJETO PROFISSIONAL QUE SERÁ ATUALIZADO*/
+                    profissional.setNome(etNome.getText().toString());
+                    profissional.setDataNasc(etData.getText().toString());
+                    profissional.setCpf(etCpf.getText().toString());
+                    profissional.setEmail(etEmail.getText().toString());
+                    TipoUsuario tipoUsuario = new TipoUsuario();
+                    tipoUsuario.setIdTipoUsuario(1);
+                    tipoUsuario.setTipoUsuario("p");
+                    profissional.setTipoUsuario(tipoUsuario);
+
+                    if(etSenha.getText().equals("") || etSenha.getText().toString().isEmpty() || etSenha.getText().equals(null)){
+
+                        profissional.setSenha(profissional.getSenha());
+
+                    }else{
+
+                        profissional.setSenha(EncryptString.gerarHash(etSenha.getText().toString()));
+
+                    }
+
+
+                    /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
+                    Call<Profissional> call = new RetroFitConfig().getProfissionalService().atualizarPro(profissional.getIdProfissional(), profissional);
+                    call.enqueue(new Callback<Profissional>() {
+                        @Override
+                        public void onResponse(Call<Profissional> call, Response<Profissional> response) {
+
+                            response.body();
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Profissional> call, Throwable t) {
+                            Log.i("Retrofit", t.getMessage());
+                        }
+                    });
+                }
+            }
+        });
+
+
+        tvEditarServico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                ativarCampos();
+
+
+            }
+        });
+
+
+        /*CHAMADA DAS SUBCATEGORIAS*/
+        Call<List<Subcategoria>> callsub = new RetroFitConfig().getSubcategoriaService().buscarSubcategorias(Integer.parseInt(profissional.getSubcategoria().getCategoria().getIdCategoria().toString()));
+        callsub.enqueue(new Callback<List<Subcategoria>>() {
+            @Override
+            public void onResponse(Call<List<Subcategoria>> callsub, Response<List<Subcategoria>> response) {
+
+                response.body();
+                Log.d("CAT", response.body().toString());
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Subcategoria>> callsub, Throwable t) {
+                Log.i("Retrofit2", t.getMessage());
             }
         });
 
@@ -232,15 +294,103 @@ public class EditarActivity extends AppCompatActivity {
 
     }
 
+    /*MÉTODO DE CARREGAR DADOS NO PERFIL*/
+    private void carregarDados(Profissional profissional){
+        etNome.setText(profissional.getNome());
+        tvNome.setText(profissional.getNome());
+        etData.setText(profissional.getDataNasc());
+        etCpf.setText(profissional.getCpf());
+        etEmail.setText(profissional.getEmail());
+        etCep.setText(profissional.getEndereco().getCep());
+        etCidade.setText(profissional.getEndereco().getCidade().getCidade());
+        etLogradouro.setText(profissional.getEndereco().getLogradouro());
+        etUf.setText(profissional.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
+        etBairro.setText(profissional.getEndereco().getBairro());
+        etResumo.setText(profissional.getResumoQualificacoes());
+        etValorHora.setText(String.valueOf(profissional.getValorHora()));
+        etCategoria.setText(profissional.getSubcategoria().getCategoria().getCategoria());
+        etSubcategoria.setText(profissional.getSubcategoria().getSubcategoria());
+
+
+
+    }
+
+    /*DESATIVA OS CAMPOS AO CLICAR EM SALVAR*/
+    private void desativarCampos(){
+        etNome.setEnabled(false);
+        etData.setEnabled(false);
+        etCpf.setEnabled(false);
+        etSenha.setEnabled(false);
+        etSenhaConfirmacao.setEnabled(false);
+        etEmail.setEnabled(false);
+        etCep.setEnabled(false);
+        etValorHora.setEnabled(false);
+        etResumo.setEnabled(false);
+        tvTituloCategoria.setVisibility(View.INVISIBLE);
+        tvTituloSubcategoria.setVisibility(View.INVISIBLE);
+        spnSubcategoria.setVisibility(View.INVISIBLE);
+        spnCategoria.setVisibility(View.INVISIBLE);
+
+    }
+
+
+    /*ATIVA OS CAMPOS AO CLICAR EM EDITAR*/
+    private void ativarCampos(){
+        etNome.setEnabled(true);
+        etData.setEnabled(true);
+        etCpf.setEnabled(true);
+        etSenha.setEnabled(true);
+        etCep.setEnabled(true);
+        etSenhaConfirmacao.setEnabled(true);
+        etEmail.setEnabled(true);
+        etValorHora.setEnabled(true);
+        etResumo.setEnabled(true);
+        etNome.requestFocus(View.FOCUS_LEFT);
+
+        tvTituloCategoria.setVisibility(View.VISIBLE);
+        tvTituloSubcategoria.setVisibility(View.VISIBLE);
+        spnSubcategoria.setVisibility(View.VISIBLE);
+        spnCategoria.setVisibility(View.VISIBLE);
+
+    }
+
+
     private boolean validar(){
         boolean validado = true;
-
-        if(etCep.getText().toString().isEmpty()){
-            etCep.setError("Insira o seu CEP");
+        if(etNome.getText().toString().isEmpty()){
+            etNome.setError("Digite seu nome por favor");
             validado = false;
         }
-        if(etCep.getText().toString().length() < 9){
-            etCep.setError("CEP inválido");
+        if(etNome.getText().length()<=2){
+            etNome.setError("O nome deve conter no min. 3 caracteres");
+            validado = false;
+        }
+        if(etEmail.getText().toString().isEmpty()){
+            validado = false;
+        }
+        if(etEmail.getText().length()<9){
+            etEmail.setError("O e-mail deve conter no min. 9 caracteres");
+            validado = false;
+        }
+        if(etCpf.getText().toString().isEmpty()){
+            validado = false;
+        }
+        if(etCpf.getText().length()<14){
+            etCpf.setError("CPF/CNPJ inválido");
+            validado = false;
+        }
+        if(etSenha.getText().toString().isEmpty()){
+            validado = false;
+        }
+        if(etSenha.getText().length()<8){
+            etSenha.setError("A senha deve conter no min. 8 caracteres");
+            validado = false;
+        }
+        if(etData.getText().toString().isEmpty()){
+            validado = false;
+        }
+        if(etData.getText().length()<10){
+            etData.setError("Data de nascimento inválida");
             validado = false;
         }
 
