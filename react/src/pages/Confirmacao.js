@@ -18,29 +18,80 @@ function Confirmacao() {
     const [renderizar, setRenderizar] = useState(true);
     const [profissional, setProfissional] = useState(JSON.parse(sessionStorage.getItem("profissional")));
     const [endereco, setEndereco] = useState(JSON.parse(sessionStorage.getItem("endereco")));
+    // const [idEndereco, setIdEndereco] = useState(0);
 
     function random (min, max){
         return Math.trunc(Math.random() * (max + 1 - min) + min);
     }
 
-    function cadastrar(){
+    function cadastrarEndereco(){
         axios({
             method: 'POST',
             url: "http://localhost:8080/enderecos",
-            data: {endereco}
+            type: "application/json",
+            data: {
+                bairro: endereco.bairro,
+                cep: endereco.cep,
+                cidade: {
+                    idCidade: endereco.cidade.idCidade
+                },
+                logradouro: endereco.logradouro,
+                numero: null
+            }
         })
         .then((response)=>{
-            console.log(response.data);
+            let retorno = response.data;
+            console.log("_____________");
+            cadastrarProfissional(retorno.idEndereco);
         })
         .catch((error)=>{
             console.error(error);
         });
+
+        function cadastrarProfissional(idEndereco){
+            console.log(idEndereco);
+            console.log(profissional);
+            axios({
+                method: 'POST',
+                url: "http://localhost:8080/profissionais",
+                type: "application/json",
+                data: 
+                {
+                    cnpj: profissional.cnpj,
+                    cpf: profissional.cpf,
+                    dataNasc: profissional.dataNasc,
+                    email: profissional.email,
+                    endereco:{
+                        idEndereco: idEndereco
+                    },
+                    nome: profissional.nome,
+                    resumoQualificacoes: profissional.resumoQualificacoes,
+                    senha: profissional.senha,
+                    subcategoria:{
+                        idSubcategoria: profissional.subcategoria.idSubcategoria
+                    },
+                    tipoUsuario:{
+                        idTipoUsuario: profissional.tipoUsuario.idTipoUsuario
+                    },
+                    valorHora: profissional.valorHora
+                }
+            })
+            .then((response)=>{
+                console.log("*************");
+                console.log(response.data);
+            })
+            .catch((error)=>{
+                console.error(error);
+            });
+        }
     }
 
     function confirmarEmail(){
         // setModalShow(true);
         console.log(txtCodeConfirm+" "+codeConfirm);
         if(txtCodeConfirm == codeConfirm){
+            cadastrarEndereco();
+            // console.log(endereco);
             console.log("foi poxa");
         }else{
             console.log("nao vai dar nao");
@@ -54,6 +105,8 @@ function Confirmacao() {
 
     useEffect(()=>{
         if(renderizar){
+            $("#input-cod-confirm").attr("disabled", true);
+            $("#btn-confirm").attr("disabled", true);
 
             console.log(codeConfirm);
             
@@ -62,25 +115,26 @@ function Confirmacao() {
 
             console.log(profissional.email);
             console.log(endereco);
-            setTimeout(()=>{
-                console.log(profissional.email);
-            }, 2000);
             
-            // axios({
-                //     method: 'POST',
-                //     url: "http://localhost:8080/profissionais/confirmacao",
-        //     data: {
-        //         nome: profissional.nome,
-        //         destinatario: profissional.email,
-        //         codigoConfirm: codeConfirm
-        //     }
-        // })
-        // .then((response)=>{
-        //     console.log(response);
-        // })
-        // .catch((error)=>{
-            //     console.error(error);
-            // });
+            axios({
+                method: 'POST',
+                url: "http://localhost:8080/profissionais/confirmacao",
+            data: {
+                nome: profissional.nome,
+                destinatario: profissional.email,
+                codigoConfirm: codeConfirm
+            }
+            })
+            .then((response)=>{
+                console.log(response);
+                console.log("enviado");
+                $("#btn-confirm").attr("disabled", false);
+                $("#input-cod-confirm").attr("disabled", false);
+                
+            })
+            .catch((error)=>{
+                    console.error(error);
+            });
             setRenderizar(false);
         }
     });
@@ -99,12 +153,11 @@ function Confirmacao() {
                         <img src={EmailImg}  alt="Ícone E-mail"/>
                     </figure>
                 </div>
-                
-        
+                        
                 {/* <form name="form_cod_email" action="index.html" method="POST"> */}
                     <div className="caixa-input-confirm flex-center center">
                         <div className="input-cod-confirm">
-                            <input required onChange={definirTxtCodeConfirm} className="input-cod-confirm"  type="text" pattern="[0-9]*" maxLength="4" name="cod_email"/>
+                            <input required onChange={definirTxtCodeConfirm} id="input-cod-confirm" className="input-cod-confirm"  type="text" pattern="[0-9]*" maxLength="4" name="cod_email"/>
                         </div>
                         <div className="img-check">
                             <ButtonToolbar>

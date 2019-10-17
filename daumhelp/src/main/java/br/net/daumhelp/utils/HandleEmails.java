@@ -17,7 +17,7 @@ public class HandleEmails {
 			email.setAuthenticator(new DefaultAuthenticator("brace.everything@gmail.com", "duh2019s2"));
 			email.setSSLOnConnect(true);
 			email.setFrom("brace.everything@gmail.com", "DaUmHelp!");
-			email.addTo(confirm.getDestinatario(), "Kelvin");
+			email.addTo(confirm.getDestinatario(), confirm.getNome());
 			email.setSubject("Código de Confirmação DaUmHelp!");
 
 		

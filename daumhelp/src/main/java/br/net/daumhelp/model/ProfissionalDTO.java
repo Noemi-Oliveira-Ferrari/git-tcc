@@ -26,8 +26,8 @@ public class ProfissionalDTO {
 	@NotNull
 	@Size(min = 10, max = 255)
 	private String email;
-	@NotNull
-	@Size(min = 4, max = 150)
+
+	@Size(max = 150)
 	private String foto;
 
 	@Size(min = 14, max = 20)

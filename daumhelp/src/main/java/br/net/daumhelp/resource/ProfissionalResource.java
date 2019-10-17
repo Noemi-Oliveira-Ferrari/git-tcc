@@ -27,7 +27,6 @@ import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.ProfissionalDTO;
 import br.net.daumhelp.repository.ProfissionalDTORepository;
 import br.net.daumhelp.repository.ProfissionalRepository;
-import br.net.daumhelp.utils.HandleDates;
 import br.net.daumhelp.utils.HandleEmails;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -42,10 +41,13 @@ public class ProfissionalResource {
 
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/confirmacao")
-	@ResponseStatus(code = HttpStatus.OK, reason = "E-mail enviado", value = HttpStatus.OK)
-	public boolean confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
+	public ResponseEntity<Confirmacao> confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
 		System.out.println("__________\n"+confirm);
-		return HandleEmails.enviar(confirm);
+		if(HandleEmails.enviar(confirm)) {
+			return new ResponseEntity<Confirmacao>(HttpStatus.OK);
+		}else{
+			return new ResponseEntity<Confirmacao>(HttpStatus.REQUEST_TIMEOUT);
+		}
 	}
 
 	@GetMapping

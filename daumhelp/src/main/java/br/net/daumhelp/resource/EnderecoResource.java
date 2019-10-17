@@ -80,7 +80,7 @@ public class EnderecoResource {
 //		
 //		endereco.setCriadoEm(HandleDates.dataHoraAtual());
 //		endereco.setAtualizadoEm(HandleDates.dataHoraAtual());
-	
+		
 		Endereco enderecoSalvo = enderecoRepository.save(endereco);
 		
 		URI uri = ServletUriComponentsBuilder	
