@@ -13,29 +13,24 @@ public class TipoUsuario {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id_tipo_usuario;
+	private Long idTipoUsuario;
 	@NotNull
-	private Character tipo_usuario;
+	private Character tipoUsuario;
 
-	public Long getId_tipo_usuario() {
-		return id_tipo_usuario;
+	public Long getIdTipoUsuario() {
+		return idTipoUsuario;
 	}
 
-	public void setId_tipo_usuario(Long id_tipo_usuario) {
-		this.id_tipo_usuario = id_tipo_usuario;
+	public void setIdTipoUsuario(Long idTipoUsuario) {
+		this.idTipoUsuario = idTipoUsuario;
 	}
 
-	public Character getTipo_usuario() {
-		return tipo_usuario;
+	public Character getTipoUsuario() {
+		return tipoUsuario;
 	}
 
-	public void setTipo_usuario(Character tipo_usuario) {
-		this.tipo_usuario = tipo_usuario;
-	}
-
-	@Override
-	public String toString() {
-		return "TipoUsuario [id_tipo_usuario=" + id_tipo_usuario + ", tipo_usuario=" + tipo_usuario + "]";
+	public void setTipoUsuario(Character tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 }

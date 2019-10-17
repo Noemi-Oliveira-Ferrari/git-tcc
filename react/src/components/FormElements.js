@@ -27,6 +27,7 @@ export class InputNumber extends Component {
                     prefix={this.props.prefixo}
                     decimalScale={this.props.qtdDecimal}
                     mask="_"
+                    suffix={this.props.sufixo}
                 />
             </div>
         );

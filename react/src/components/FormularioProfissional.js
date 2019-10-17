@@ -5,7 +5,8 @@ import $ from 'jquery';
 import axios from 'axios';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpf, validarEmail,
-         validarSenha, validarString, validarVazios} from '../js/validar';
+         validarSenha, validarString, validarVazios, retirarSimbolos,
+         formataData, limpaValor} from '../js/validar';
 
 class DadosPessoaisPro extends Component{
 
@@ -22,29 +23,43 @@ class DadosPessoaisPro extends Component{
         }
         this.setNome = this.setNome.bind(this);
         this.setCep = this.setCep.bind(this);
+        this.setEmail = this.setEmail.bind(this);
         this.setSenha = this.setSenha.bind(this);
         this.setConfirmSenha = this.setConfirmSenha.bind(this);
         this.setCpfCnpj = this.setCpfCnpj.bind(this);
         this.setTipoPfPj = this.setTipoPfPj.bind(this);
+        this.setData = this.setData.bind(this);
     }
     
     componentDidMount(){
-        console.clear();
+        // console.clear();
     }    
 
     setCpfCnpj(event){
         this.setState({cpfCnpj: event.target.value});
         let cpfCnpj = event.target.value;
-        if(cpfCnpj.length <= 14){
-            console.log(`cpf -> ${cpfCnpj} ${cpfCnpj.length}`)
+        if(this.state.radioChecked === "rdo-pf"){
+            validarCpf(cpfCnpj);
         }else{
-            console.log(`cnpj -> ${cpfCnpj} ${cpfCnpj.length}`)
+            validarCnpj(cpfCnpj);
         }
     }
 
     setNome(event){
         this.setState({nome: event.target.value});
         validarString(event.target);
+    }
+
+    setData(event){
+        this.setState({dataNasc: event.target.value});
+        if(retirarSimbolos(event.target.value).length === 8){
+            console.log(formataData(event.target.value));
+        }
+    }
+
+    setEmail(event){
+        this.setState({email: event.target.value});
+        validarEmail(event.target);
     }
 
     setCep(event){
@@ -59,7 +74,7 @@ class DadosPessoaisPro extends Component{
         axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
         .then((response)=>{
             let jsonEndereco = response.data;
-            console.clear();
+            // console.clear();
             console.log(response);
             if(jsonEndereco.cep != null){
                 this.setState({logradouro: jsonEndereco.logradouro});
@@ -168,6 +183,7 @@ class DadosPessoaisPro extends Component{
                                 name="txt_data_nasc"
                                 mascara="##/##/####"
                                 classInput="form-control form-input"
+                                onChange={this.setData}
                             />
                         
                         </div>
@@ -191,7 +207,7 @@ class DadosPessoaisPro extends Component{
                                 id="txt-email"
                                 type="email"
                                 name="txt_email"
-                                
+                                onChange={this.setEmail}
                                 classInput="form-control form-input"
                             />
 
@@ -308,7 +324,8 @@ class DadosProfissional extends Component{
         // this.popularCategorias = this.popularCategorias.bind(this);
         this.state = {
            categorias: [],
-           subcategorias: []        
+           subcategorias: [],
+           valorHora: "",
         }
         this.getCategorias = this.getCategorias.bind(this);
         this.getSubcategorias = this.getSubcategorias.bind(this);
@@ -317,6 +334,8 @@ class DadosProfissional extends Component{
     componentDidMount(){
         this.getCategorias(this.getSubcategorias());
     }
+
+
 
     getCategorias(){
         // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
@@ -343,6 +362,7 @@ class DadosProfissional extends Component{
         .then((response)=>{
             let jsonSubcategorias = response.data;
             this.setState({subcategorias: jsonSubcategorias});
+            console.log(jsonSubcategorias);
         })
         .catch((error)=>{
             console.error(error);
@@ -381,7 +401,7 @@ class DadosProfissional extends Component{
                                     nameSelect="slt_subcategoria"
                                     classDivSelect="caixa-subcat"
                                     optionsSelect={this.state.subcategorias.map(subcategoria=>(
-                                                <option key={subcategoria.idSubcategoria} value={subcategoria.idSubategoria}>
+                                                <option key={subcategoria.idSubcategoria} value={subcategoria.idSubcategoria}>
                                                     {subcategoria.subcategoria}
                                                 </option>
                                             ))}
@@ -429,6 +449,9 @@ export default class FormularioProfissional extends Component{
         this.validarCampos = this.validarCampos.bind(this);  
     }
 
+    componentDidUpdate(){
+    }
+
     validarCampos(){
         
         let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email], select");
@@ -453,25 +476,41 @@ export default class FormularioProfissional extends Component{
 
 
         if(!validarVazios(campos)){
-            return false;
+            semErro = false;
+            console.log("validarVazios "+semErro);
         }
 
-        if($('#txt-cpfCnpj').val().length < 15){
+        if(!validarString($('#txt-nome').get(0))){
+            semErro = false;
+            console.log("validarString nome "+semErro);
+        }
+
+        // console.log($('.caixa-cpfCnpj').text());
+        if($('.caixa-cpfCnpj').text() == "CPF"){
             if(!validarCpf($('#txt-cpfCnpj').val())){
-                return false;
+                semErro = false;
+                console.log("validarCpf "+semErro);
             }
         }else{
             if(!validarCnpj($('#txt-cpfCnpj').val())){
-                return false;
-            }
+                semErro = false;
+                console.log("validarCnpj "+semErro);
+            } 
+        }
+
+        if(!validarEmail($('#txt-email').get(0))){
+            semErro = false;
+            console.log("validarEmail "+semErro);
         }
 
         if(!validarSenha($('#txt-senha').val())){
-            return false;
+            semErro = false;
+            console.log("validarSenha "+semErro);
         }
 
-        if(!validarEmail($('#txt-email').val()) || !validarConfirmacaoSenha($('#txt-senha').get(0), $('#txt-confirmar-senha').get(0))){
-            return false;
+        if(!validarConfirmacaoSenha($('#txt-senha').get(0), $('#txt-confirmar-senha').get(0))){
+            semErro = false;
+            console.log("validarConfirmacaoSenha "+semErro);
         }
         
         return semErro;
@@ -479,45 +518,49 @@ export default class FormularioProfissional extends Component{
 
     realizarCadastro(event){
         event.preventDefault();
-        console.clear();
+        // console.clear();
         // console.log("Enviando dados ao banco...");
         let cpfCnpj = $("#txt-cpfCnpj").val().replace(/[.-]/g, "");
         let cpf;
         let cnpj;
         if(cpfCnpj.length <= 14){
-            cpf = cpfCnpj;
+            cpf = retirarSimbolos(cpfCnpj);
             cnpj = null;
         }else{
-            cnpj = cpfCnpj;
+            cnpj = retirarSimbolos(cpfCnpj);
             cpf = null;
         }        
         
-        console.log("validarCampos"+this.validarCampos());
+        // console.log("validarCampos "+this.validarCampos());
         if(this.validarCampos() && $("#chk-termos").is(":checked")){
             // console.log("validarCampos TRUE"+this.validarCampos());
             
             let endereco = {
-                cep: $("#txt-cep").val(),
+                cep: retirarSimbolos($("#txt-cep").val()),
                 logradouro: $("#txt-logradouro").val(),
                 bairro: $("#txt-bairro").val(),
+                numero: null,
                 cidade: {
                     idCidade: $("#txt-cidade").attr("data-idCidade")
                 }
             };
             let profissional = {
                 nome: $("#txt-nome").val(),
-                dataNasc: $("#txt-dataNasc").val(),
+                dataNasc: formataData($("#txt-dataNasc").val()),
                 cpf: cpf,
                 cnpj: cnpj,
                 email: $("#txt-email").val(),
                 senha: generateHash($("#txt-senha").val()),
+                tipoUsuario: {
+                    idTipoUsuario: 1
+                },
                 endereco: {
                     idEndereco: null
                 },
                 subcategoria: {
                     idSubcategoria: $("#slt-subcat").val(),
                 },
-                valorHora: $("#txt-valor-hora").val(),
+                valorHora: limpaValor($("#txt-valor-hora").val()),
                 resumoQualificacoes: $("#txt-qualificacoes").val()
             };
             sessionStorage.setItem("endereco", JSON.stringify(endereco));

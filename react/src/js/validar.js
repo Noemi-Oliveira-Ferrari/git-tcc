@@ -33,6 +33,8 @@ export const generateHash = (input) =>{
 
 
 export const validarCnpj = (cnpj) =>{
+    console.log("============");
+    console.log(validate(cnpj));
     if(!validate(cnpj)){
         return withError($('#txt-cpfCnpj'));
     }else{
@@ -49,10 +51,14 @@ export const validarCpf = (cpf) =>{
 }
 
 export const validarEmail = (email) =>{
-    if(!EmailValidator.validate(email)){
-        return withError($('#txt-email'));
-    }else{
+    console.log(EmailValidator.validate(email.value));
+
+    if(EmailValidator.validate(email.value)){
+        console.log(".");
         return withoutError($('#txt-email'));
+    }else{
+        console.log("`");
+        return withError($('#txt-email'));
     }
 }
 
@@ -77,7 +83,7 @@ export const validarSenha = (input) =>{
 }
 export const validarString = (input) =>{
     let regras = new passwordValidator();
-    
+    // console.log(input);
     regras
     .is().min(3)
     .is().max(150)
@@ -86,12 +92,12 @@ export const validarString = (input) =>{
     .has().not().symbols()
     .is().not().oneOf([""], null);
 
-    if(!regras.validate(input.value)){
-        withError($('#txt-nome'));
-        return false;
-    }else{
+    if(regras.validate(input.value)){
         withoutError($('#txt-nome'));
         return true;
+    }else{
+        withError($('#txt-nome'));
+        return false;
     }
 }
 
@@ -139,4 +145,29 @@ export const withoutError = (input) =>{
     $(input).removeClass("erro");
     $(input).removeClass("erro");
     return true;
+}
+
+export const retirarSimbolos = (texto) =>{
+    let textoLimpo = texto.replace(/[\'\"\!\@\#\$\%\¨\&\*\(\)\_\+\-\=\/\*\+\.\,]/g, "");
+    return textoLimpo;
+}
+
+export const limpaValor = (valor) =>{
+    valor = valor.replace(/(R\$)/g, "");
+    let num;
+    let decimal = valor.substring(valor.length-3, valor.length);
+    // array = array.replace(/./g, "");
+    if(valor.includes(",")){
+        valor = valor.substring(0, valor.length-3);
+    }
+    valor = valor.replace(/\./g, "");
+    decimal = decimal.replace(/\,/g, ".");
+    num = parseFloat(valor+decimal);
+    return num;
+}
+
+export const formataData = (data) =>{
+    let arrayData = data.split("/");
+    let novaData = arrayData[2]+"-"+arrayData[1]+"-"+arrayData[0];
+    return novaData;
 }

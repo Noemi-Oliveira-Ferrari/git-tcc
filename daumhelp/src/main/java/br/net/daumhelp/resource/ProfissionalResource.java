@@ -44,7 +44,7 @@ public class ProfissionalResource {
 	@PostMapping("/confirmacao")
 	@ResponseStatus(code = HttpStatus.OK, reason = "E-mail enviado", value = HttpStatus.OK)
 	public boolean confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
-		System.out.println(confirm);
+		System.out.println("__________\n"+confirm);
 		return HandleEmails.enviar(confirm);
 	}
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router';
 import EmailImg from '../img/emailcheck.png';
 import check from '../img/check.png';
@@ -11,33 +11,78 @@ import ModalSucesso from '../components/ModalSucesso';
 
 function Confirmacao() {
 
-    const [modalShow, setModalShow] = React.useState(false);
+
+    const [modalShow, setModalShow] = useState(false);
+    const [codeConfirm, setCodeConfirm] = useState(random(1000, 9999));
+    const [txtCodeConfirm, setTxtCodeConfirm] = useState("");
+    const [renderizar, setRenderizar] = useState(true);
+    const [profissional, setProfissional] = useState(JSON.parse(sessionStorage.getItem("profissional")));
+    const [endereco, setEndereco] = useState(JSON.parse(sessionStorage.getItem("endereco")));
 
     function random (min, max){
         return Math.trunc(Math.random() * (max + 1 - min) + min);
     }
+
+    function cadastrar(){
+        axios({
+            method: 'POST',
+            url: "http://localhost:8080/enderecos",
+            data: {endereco}
+        })
+        .then((response)=>{
+            console.log(response.data);
+        })
+        .catch((error)=>{
+            console.error(error);
+        });
+    }
+
+    function confirmarEmail(){
+        // setModalShow(true);
+        console.log(txtCodeConfirm+" "+codeConfirm);
+        if(txtCodeConfirm == codeConfirm){
+            console.log("foi poxa");
+        }else{
+            console.log("nao vai dar nao");
+        }
+    }
+
+    function definirTxtCodeConfirm(event){
+        setTxtCodeConfirm(event.target.value);
+        console.log(event.target.value);
+    }
+
     useEffect(()=>{
-        let code = random(1000, 9999);
+        if(renderizar){
 
-        let profissional = JSON.parse(sessionStorage.getItem("profissional"));
-        // let confirmacao = 
+            console.log(codeConfirm);
+            
+            // setProfissional(JSON.parse(sessionStorage.getItem("profissional")));
+            // setEndereco(JSON.parse(sessionStorage.getItem("endereco"))); 
 
-        // console.log(confirmacao);
-        // axios({
-        //     method: 'POST',
-        //     url: "http://localhost:8080/profissionais/confirmacao",
+            console.log(profissional.email);
+            console.log(endereco);
+            setTimeout(()=>{
+                console.log(profissional.email);
+            }, 2000);
+            
+            // axios({
+                //     method: 'POST',
+                //     url: "http://localhost:8080/profissionais/confirmacao",
         //     data: {
-        //         confirmacao: {
-        //             nome: profissional.nome,
-        //             destinatario: profissional.email,
-        //             codigoConfirm: code
-        //         }
+        //         nome: profissional.nome,
+        //         destinatario: profissional.email,
+        //         codigoConfirm: codeConfirm
         //     }
-        // });
-        // axios.get("http://localhost:8080/profissionais/confirmacao")
-        // .then((response)=>{
-
         // })
+        // .then((response)=>{
+        //     console.log(response);
+        // })
+        // .catch((error)=>{
+            //     console.error(error);
+            // });
+            setRenderizar(false);
+        }
     });
 
     return(
@@ -56,14 +101,14 @@ function Confirmacao() {
                 </div>
                 
         
-                <form name="form_cod_email" action="index.html" method="POST">
+                {/* <form name="form_cod_email" action="index.html" method="POST"> */}
                     <div className="caixa-input-confirm flex-center center">
                         <div className="input-cod-confirm">
-                            <input required className="input-cod-confirm"  type="text" pattern="[0-9]*4" maxLength="4" name="cod_email"/>
+                            <input required onChange={definirTxtCodeConfirm} className="input-cod-confirm"  type="text" pattern="[0-9]*" maxLength="4" name="cod_email"/>
                         </div>
                         <div className="img-check">
                             <ButtonToolbar>
-                                <button onClick={() => setModalShow(true)} data-toggle="modal" data-target="#exampleModalCenter" type="submit" name="button" id="btn-confirm">
+                                <button onClick={() => confirmarEmail()} data-toggle="modal" data-target="#exampleModalCenter" type="submit" name="button" id="btn-confirm">
                                     <figure>
                                         <img src={check} alt="Confirmar" title="Confirmar" /> 
                                     </figure>
@@ -77,7 +122,7 @@ function Confirmacao() {
                             
                         </div>
                     </div>
-                </form>
+                {/* </form> */}
                 <div className="links flex-center center">
                 <Link to="/profissional/cadastro/confirmacao"> Reenviar E-mail? </Link>
                 <Link to="/profissional/cadastro"> Alterar E-mail?</Link>
