@@ -42,11 +42,18 @@ export const validarCnpj = (cnpj) =>{
     }
 }
 
-export const validarCpf = (cpf) =>{
+export const validarCpfPro = (cpf) =>{
     if(!isValid(cpf)){
         return withError($('#txt-cpfCnpj'));
     }else{
         return withoutError($('#txt-cpfCnpj'));
+    }
+}
+export const validarCpfCliente = (cpf) =>{
+    if(!isValid(cpf)){
+        return withError($('#txt-cpf'));
+    }else{
+        return withoutError($('#txt-cpf'));
     }
 }
 

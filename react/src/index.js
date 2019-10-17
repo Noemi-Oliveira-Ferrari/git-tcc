@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import CardsEscolha from './pages/CardsEscolha';
 import CadastroPro from './pages/CadastroPro';
 import Confirmacao from './pages/Confirmacao';
+import CadastroCliente from './pages/CadastroCliente';
 
 ReactDOM.render(
     <Router history={browserHistory}>
@@ -14,7 +15,8 @@ ReactDOM.render(
             <IndexRoute component={Login}/>
             <Route path="/escolha" component={CardsEscolha}/>
             <Route path="/profissional/cadastro" component={CadastroPro}/>
-            <Route path="/profissional/cadastro/confirmacao" component={Confirmacao}/>
+            <Route path="/cliente/cadastro" component={CadastroCliente}/>
+            <Route path="/cadastro/confirmacao" component={Confirmacao}/>
         </Route>
     </Router>,    
     document.getElementById('root')

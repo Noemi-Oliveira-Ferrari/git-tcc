@@ -40,7 +40,7 @@ export class Login extends Component{
                                        type="email">
                                     </InputLogin> */}
                                     <Inputs 
-                                       classDivInputPro="caixa-campo-login"
+                                       classDivInput="caixa-campo-login"
                                        label="E-mail"
                                        classInput="input-login"
                                        type="email"

@@ -17,6 +17,7 @@ function Confirmacao() {
     const [txtCodeConfirm, setTxtCodeConfirm] = useState("");
     const [renderizar, setRenderizar] = useState(true);
     const [profissional, setProfissional] = useState(JSON.parse(sessionStorage.getItem("profissional")));
+    const [cliente, setCliente] = useState(JSON.parse(sessionStorage.getItem("cliente")));
     const [endereco, setEndereco] = useState(JSON.parse(sessionStorage.getItem("endereco")));
     // const [idEndereco, setIdEndereco] = useState(0);
 
@@ -42,7 +43,11 @@ function Confirmacao() {
         .then((response)=>{
             let retorno = response.data;
             console.log("_____________");
-            cadastrarProfissional(retorno.idEndereco);
+            if(profissional === null){
+                cadastrarCliente(retorno.idEndereco);
+            }else if(cliente === null){
+                cadastrarProfissional(retorno.idEndereco);
+            }
         })
         .catch((error)=>{
             console.error(error);
@@ -79,12 +84,48 @@ function Confirmacao() {
             .then((response)=>{
                 console.log("*************");
                 console.log(response.data);
+                sessionStorage.clear();
+                setModalShow(true);
+            })
+            .catch((error)=>{
+                console.error(error);
+            });
+        }
+
+        function cadastrarCliente(idEndereco){
+            console.log(idEndereco);
+            console.log(cliente);
+            axios({
+                method: 'POST',
+                url: "http://localhost:8080/clientes",
+                type: "application/json",
+                data: 
+                {
+                    cpf: cliente.cpf,
+                    dataNasc: cliente.dataNasc,
+                    email: cliente.email,
+                    endereco:{
+                        idEndereco: idEndereco
+                    },
+                    nome: cliente.nome,
+                    senha: cliente.senha,
+                    tipoUsuario:{
+                        idTipoUsuario: cliente.tipoUsuario.idTipoUsuario
+                    }
+                }
+            })
+            .then((response)=>{
+                console.log("++++++++++");
+                console.log(response.data);
+                sessionStorage.clear();
+                setModalShow(true);
             })
             .catch((error)=>{
                 console.error(error);
             });
         }
     }
+
 
     function confirmarEmail(){
         // setModalShow(true);
@@ -108,20 +149,35 @@ function Confirmacao() {
             $("#input-cod-confirm").attr("disabled", true);
             $("#btn-confirm").attr("disabled", true);
 
+            let tipoCadastro;
+            let usuario;
+
             console.log(codeConfirm);
             
             // setProfissional(JSON.parse(sessionStorage.getItem("profissional")));
             // setEndereco(JSON.parse(sessionStorage.getItem("endereco"))); 
 
-            console.log(profissional.email);
+            console.log(profissional);
+            console.log(cliente);
             console.log(endereco);
             
+            if(profissional === null){
+                tipoCadastro = "clientes";
+                usuario = cliente
+            }else if(cliente === null){
+                tipoCadastro = "profissionais";
+                usuario = profissional;
+            }
+            console.log(tipoCadastro);
+            
+
+
             axios({
                 method: 'POST',
-                url: "http://localhost:8080/profissionais/confirmacao",
+                url: `http://localhost:8080/${tipoCadastro}/confirmacao`,
             data: {
-                nome: profissional.nome,
-                destinatario: profissional.email,
+                nome: usuario.nome,
+                destinatario: usuario.email,
                 codigoConfirm: codeConfirm
             }
             })

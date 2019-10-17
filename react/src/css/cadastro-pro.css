@@ -158,11 +158,13 @@
     #txt-nome,
     #txt-dataNasc,
     #txt-cpfCnpj,
+    #txt-cpf,
     #txt-email,
     #txt-senha,
     #txt-confirmar-senha,
     #txt-cep,
     #txt-logradouro,
+    #txt-numero,
     #txt-bairro,
     #txt-cidade,
     #txt-uf,
@@ -192,6 +194,7 @@
 
     .container-nome-dataNasc,
     .container-cpfCnpj-email,
+    .container-cpf-email,
     .container-senha,
     .container-cep-logradouro,
     .container-bairro-cidade-uf,
@@ -219,11 +222,11 @@
     }
 
     .caixa-nome, .caixa-dataNasc,
-    .caixa-cpfCnpj, .caixa-email,
+    .caixa-cpfCnpj, .caixa-cpf, .caixa-email,
     .caixa-senha, .caixa-confirmar-senha,
     .caixa-cep, .caixa-logradouro,
-    .caixa-bairro, .caixa-cidade,
-    .caixa-uf
+    .caixa-numero, .caixa-bairro, 
+    .caixa-cidade, .caixa-uf
     {
         height: 90px;
         /* background-color: rgb(57, 207, 115); */
@@ -244,6 +247,12 @@
     {
         width: 275px;
     }
+
+    .caixa-cpf
+    {
+        width: 275px;
+    }
+
     .caixa-email
     {
         width: 455px;
@@ -259,12 +268,17 @@
 
     .caixa-cep
     {
-        width: 265px;
+        width: 195px;
     }
 
     .caixa-logradouro
     {
-        width: 465px;
+        width: 395px;
+    }
+
+    .caixa-numero
+    {
+        width: 130px;
     }
 
     .caixa-bairro
@@ -625,11 +639,13 @@
     #txt-nome,
     #txt-dataNasc,
     #txt-cpfCnpj,
+    #txt-cpf,
     #txt-email,
     #txt-senha,
     #txt-confirmar-senha,
     #txt-cep,
     #txt-logradouro,
+    #txt-numero,
     #txt-bairro,
     #txt-cidade,
     #txt-uf,
@@ -652,6 +668,7 @@
 
     .container-nome-dataNasc,
     .container-cpfCnpj-email,
+    .container-cpf-email,
     .container-senha,
     .container-cep-logradouro,
     .container-bairro-cidade-uf,
@@ -681,10 +698,11 @@
     }
 
     .caixa-nome, .caixa-dataNasc,
-    .caixa-cpfCnpj, .caixa-email,
+    .caixa-cpfCnpj, .caixa-cpf, .caixa-email,
     .caixa-senha, .caixa-confirmar-senha,
     .caixa-cep, .caixa-logradouro,
     .caixa-bairro, .caixa-cidade,
+    .caixa-cep, .caixa-numero,
     .caixa-uf
     {
         width: 98%;
@@ -716,7 +734,7 @@
         width: 81%;
     }
 
-    .caixa-uf
+    .caixa-uf, .caixa-numero
     {
         width: 15%;
     }

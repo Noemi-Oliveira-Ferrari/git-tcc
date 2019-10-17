@@ -7,9 +7,9 @@ import CurrencyFormat from 'react-currency-format';
 export class InputNumber extends Component {
     render() {
         return(
-            <div className={this.props.classDivInputPro}>
+            <div className={this.props.classDivInput}>
                 <label htmlFor={this.props.forInput} className="form-label">{this.props.label}</label>
-                <CurrencyFormat
+                <CurrencyFormat 
                     id={this.props.id}
                     type={this.props.type}
                     name={this.props.name}
@@ -33,53 +33,7 @@ export class InputNumber extends Component {
         );
     }
 }
-// export class InputMascara extends Component {
-//     state = {
-//         value: ''
-//     }
 
-//     onChange = (event) => {
-//         this.setState({
-//             value: event.target.value
-//         });
-//     }
-/*
-    // beforeMaskedValueChange = (newState, oldState, userInput) => {
-    //     var { value } = newState;
-    //     var selection = newState.selection;
-    //     var cursorPosition = selection ? selection.start : null;
-
-    //     // keep minus if entered by user
-    //     if (value.endsWith('-') && userInput !== '-' && !this.state.value.endsWith('-')) {
-    //         if (cursorPosition === value.length) {
-    //             cursorPosition--;
-    //             selection = { start: cursorPosition, end: cursorPosition };
-    //         }
-    //         value = value.slice(0, -1);
-    //     }
-
-    //     return {
-    //         value,
-    //         selection
-    //     };
-    // }
-*/
-//     render() {
-//         return <InputMask
-//             mask={this.props.mascaraInput}
-//             id={this.props.idInput}
-//             type={this.props.typeInput} 
-//             name={this.props.nameInput} 
-//             // maxLength={this.props.maxLengthInput}
-//             className={this.props.classInput}
-//             onChange={this.props.onChangeInput}
-//             data-idCidade={this.props.dataInput}
-//             value={this.props.valueInput}
-//             // readOnly={this.props.readOnly}
-//             maskChar=""
-//             checked={this.props.radioChecked}/>;
-//     }
-// }
 export class Inputs extends Component {
     state = {
         value: ''
@@ -92,7 +46,7 @@ export class Inputs extends Component {
     }
     render() {
         return (
-            <div className={this.props.classDivInputPro}>
+            <div className={this.props.classDivInput}>
                 <label htmlFor={this.props.forInput} className="form-label">{this.props.label}</label>
                 <InputMask
                     mask={this.props.mascara}
@@ -112,31 +66,6 @@ export class Inputs extends Component {
         );
     }
 }
-// export class ttt extends Component{
-//     render(){
-//         return(
-//             <div className={this.props.classDivInputPro}>
-//                 <label htmlFor={this.props.forInput} className="form-label">{this.props.label}</label>
-//                 <InputMascara
-//                     idInput={this.props.id}
-//                     typeInput={this.props.type} 
-//                     nameInput={this.props.name}
-//                     // maxLengthInput={this.props.maxLength}
-//                     classInput={this.props.classInput}
-//                     onChangeInput={this.props.onChange}
-//                     dataInput={this.props.data}
-//                     valueInput={this.props.valueInput}
-//                     // readOnly={this.props.readOnly}
-//                     mascaraInput={this.props.mascara}
-//                     radioChecked={this.props.radioChecked}
-//                     />
-//             </div>
-
-//         );
-//     }
-// }
-
-
 export class Selects extends Component{
 
     render(){
