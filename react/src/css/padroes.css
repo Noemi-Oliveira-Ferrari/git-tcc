@@ -133,3 +133,123 @@ option{
 .negrito{
     font-weight: bold;
 }
+
+/* .caixa-load{
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+} */
+
+.fundo-load{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.322) !important;
+    position: absolute;
+    display: center;
+    align-items: center;
+    justify-content: center;
+    z-index: 991;
+}
+
+.caixa-load {
+    float: left;
+    width: 170px;
+    height: 170px;
+    padding: 20px 20px 20px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #ececec;
+    position: absolute;
+    top: 40vh;
+    left: 3vw;
+    box-shadow: 3px 3px 5px #00000060;
+}
+
+.txt-load{
+    width: inherit;
+    height: fit-content;
+    box-sizing: border-box;
+    padding-left: 7px;
+    margin-bottom: 15px;
+    margin-top: -15px;
+    /* background-color: #90e442; */
+}
+
+.letter-holder {
+    width: 150px;
+    height: 20px;
+    /* background-color: #69d9ec; */
+}
+
+.letter {
+    float: left;
+    font-size: 14px;
+    color: #777;
+}
+.letter {
+    animation-name: loadingF;
+    animation-duration: 1.6s;
+    animation-iteration-count: infinite;
+    animation-direction: linear;
+}
+.l-1 {animation-delay: .48s;}
+.l-2 {animation-delay: .6s;}
+.l-3 {animation-delay: .72s;}
+.l-4 {animation-delay: .84s;}
+.l-5 {animation-delay: .96s;}
+.l-6 {animation-delay: 1.08s;}
+.l-7 {animation-delay: 1.2s;}
+.l-8 {animation-delay: 1.32s;}
+.l-9 {animation-delay: 1.44s;}
+.l-10 {animation-delay: 1.56s;}
+.l-11 {animation-delay: 1.68s;}
+.l-12 {animation-delay: 1.80s;}
+.l-13 {animation-delay: 1.92s;}
+
+@keyframes loadingF {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+
+
+
+.caixa-load:last-child {margin-right: 0;}
+
+.anel-load {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    border: 4px solid #77c9d4;
+    border-radius: 100%;
+    margin-top: 10px;
+}
+.circulo-load {
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    left: 3px;
+    top: 3px;
+}
+
+.bola-load {
+    position: absolute;
+    top: -11px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background: #55a7b2;
+}
+
+.load-5 .circulo-load {animation: loadingE 1.3s linear infinite;}
+
+@keyframes loadingE {
+    0 {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+

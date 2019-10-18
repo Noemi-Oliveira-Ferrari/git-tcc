@@ -31,7 +31,7 @@ export class Login extends Component{
                               </figure>
                            </div>
                            
-                           <form method="POST" onSubmit="#" name="frm_login">
+                           <form method="POST"name="frm_login">
                                  <div className="container-campos-login">
                                     <div className="container-txt-login">
 

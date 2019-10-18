@@ -5,20 +5,24 @@ import check from '../img/check.png';
 import ButtonToolbar from '../../node_modules/react-bootstrap/ButtonToolbar';
 import $ from 'jquery';
 import axios from 'axios';
+import Loading from '../components/Loading'
 
 import '../css/confirmacao.css';
 import ModalSucesso from '../components/ModalSucesso';
+import ModalLoad from '../components/ModalLoad';
 
 function Confirmacao() {
 
 
     const [modalShow, setModalShow] = useState(false);
+    const [initLoad, setInitLoad] = useState(false);
     const [codeConfirm, setCodeConfirm] = useState(random(1000, 9999));
     const [txtCodeConfirm, setTxtCodeConfirm] = useState("");
     const [renderizar, setRenderizar] = useState(true);
     const [profissional, setProfissional] = useState(JSON.parse(sessionStorage.getItem("profissional")));
     const [cliente, setCliente] = useState(JSON.parse(sessionStorage.getItem("cliente")));
     const [endereco, setEndereco] = useState(JSON.parse(sessionStorage.getItem("endereco")));
+    // const [usuario, setUsuario] = useState(JSON.parse(sessionStorage.getItem("endereco")));
     // const [idEndereco, setIdEndereco] = useState(0);
 
     function random (min, max){
@@ -42,7 +46,6 @@ function Confirmacao() {
         })
         .then((response)=>{
             let retorno = response.data;
-            console.log("_____________");
             if(profissional === null){
                 cadastrarCliente(retorno.idEndereco);
             }else if(cliente === null){
@@ -50,12 +53,12 @@ function Confirmacao() {
             }
         })
         .catch((error)=>{
+            setInitLoad(false);
             console.error(error);
-        });
+        })
+        .onload = setInitLoad(true);
 
         function cadastrarProfissional(idEndereco){
-            console.log(idEndereco);
-            console.log(profissional);
             axios({
                 method: 'POST',
                 url: "http://localhost:8080/profissionais",
@@ -82,19 +85,18 @@ function Confirmacao() {
                 }
             })
             .then((response)=>{
-                console.log("*************");
-                console.log(response.data);
                 sessionStorage.clear();
+                setInitLoad(false);
                 setModalShow(true);
             })
             .catch((error)=>{
+                setInitLoad(false);
                 console.error(error);
-            });
+            })
+            .onload = setInitLoad(true);
         }
 
         function cadastrarCliente(idEndereco){
-            console.log(idEndereco);
-            console.log(cliente);
             axios({
                 method: 'POST',
                 url: "http://localhost:8080/clientes",
@@ -115,27 +117,25 @@ function Confirmacao() {
                 }
             })
             .then((response)=>{
-                console.log("++++++++++");
-                console.log(response.data);
                 sessionStorage.clear();
+                setInitLoad(false);
                 setModalShow(true);
             })
             .catch((error)=>{
+                setInitLoad(false);
                 console.error(error);
-            });
+            })
+            .onload = setInitLoad(true);
         }
     }
 
 
     function confirmarEmail(){
-        // setModalShow(true);
         console.log(txtCodeConfirm+" "+codeConfirm);
         if(txtCodeConfirm == codeConfirm){
             cadastrarEndereco();
-            // console.log(endereco);
-            console.log("foi poxa");
         }else{
-            console.log("nao vai dar nao");
+            console.log("codigo inválido");
         }
     }
 
@@ -144,53 +144,57 @@ function Confirmacao() {
         console.log(event.target.value);
     }
 
+    function getUsuario(){
+        
+        let tipoCadastro;
+        let usuario;
+
+        console.log(codeConfirm);
+        
+        console.log(profissional);
+        console.log(cliente);
+        console.log(endereco);
+        
+        if(profissional === null){
+            tipoCadastro = "clientes";
+            usuario = cliente
+        }else if(cliente === null){
+            tipoCadastro = "profissionais";
+            usuario = profissional;
+        }
+        console.log(tipoCadastro);
+        
+        // $(#)
+
+        axios({
+            method: 'POST',
+            url: `http://localhost:8080/${tipoCadastro}/confirmacao`,
+        data: {
+            nome: usuario.nome,
+            destinatario: usuario.email,
+            codigoConfirm: codeConfirm
+        }
+        })
+        .then((response)=>{
+            console.log(response);
+            console.log("enviado");
+            $("#btn-confirm").attr("disabled", false);
+            $("#input-cod-confirm").attr("disabled", false);
+            setInitLoad(false);
+        })
+        .catch((error)=>{
+                setInitLoad(false);
+            console.error(error);
+        })
+        .onload = setInitLoad(true);
+    }
+
     useEffect(()=>{
         if(renderizar){
             $("#input-cod-confirm").attr("disabled", true);
             $("#btn-confirm").attr("disabled", true);
-
-            let tipoCadastro;
-            let usuario;
-
-            console.log(codeConfirm);
-            
-            // setProfissional(JSON.parse(sessionStorage.getItem("profissional")));
-            // setEndereco(JSON.parse(sessionStorage.getItem("endereco"))); 
-
-            console.log(profissional);
-            console.log(cliente);
-            console.log(endereco);
-            
-            if(profissional === null){
-                tipoCadastro = "clientes";
-                usuario = cliente
-            }else if(cliente === null){
-                tipoCadastro = "profissionais";
-                usuario = profissional;
-            }
-            console.log(tipoCadastro);
-            
-
-
-            axios({
-                method: 'POST',
-                url: `http://localhost:8080/${tipoCadastro}/confirmacao`,
-            data: {
-                nome: usuario.nome,
-                destinatario: usuario.email,
-                codigoConfirm: codeConfirm
-            }
-            })
-            .then((response)=>{
-                console.log(response);
-                console.log("enviado");
-                $("#btn-confirm").attr("disabled", false);
-                $("#input-cod-confirm").attr("disabled", false);
-                
-            })
-            .catch((error)=>{
-                    console.error(error);
-            });
+            console.clear();
+            getUsuario();
             setRenderizar(false);
         }
     });
@@ -199,15 +203,16 @@ function Confirmacao() {
         <section className="flex-center center">
             <div className="caixa-confirmacao-email">
                 <div className="title-confirmacao center flex-center">
-                    Verifique seu endereço de E-mail:
+                    Confirmação de E-mail
                 </div>
                 <div className="text-confirmacao flex-center">
-                    Lorem ipsum dolor sit amet consectetur adipiscing elit ullamcorper velit nullam, lacinia aliquam himenaeos volutpat faucibus magnis torquent imperdiet rutrum, lectus per laoreet erat arcu morbi etiam
+                    <p>Um código de verificação foi enviado ao e-mail <span className="negrito">{cliente === null ? profissional.email : cliente.email}</span>. Verifique sua caixa de entrada e escreva o código no campo à baixo para finalizar o cadastro.</p>
                 </div>
                 <div className="img-email flex-center center">
                     <figure>
                         <img src={EmailImg}  alt="Ícone E-mail"/>
                     </figure>
+                    {/* <Loading/> */}
                 </div>
                         
                 {/* <form name="form_cod_email" action="index.html" method="POST"> */}
@@ -224,17 +229,20 @@ function Confirmacao() {
                                 </button>
                                 <ModalSucesso
                                     show={modalShow}
-                                    onHide={() => setModalShow(false)}>
+                                    onHide={() => setModalShow(false)}/>
+                                <ModalLoad
+                                    show={initLoad}
+                                    // onHide={() => setInitLoad(false)}
+                                    />
 
-                                </ModalSucesso>
                             </ButtonToolbar>
                             
                         </div>
                     </div>
                 {/* </form> */}
-                <div className="links flex-center center">
-                <Link to="/profissional/cadastro/confirmacao"> Reenviar E-mail? </Link>
-                <Link to="/profissional/cadastro"> Alterar E-mail?</Link>
+                <div className="links-email center">
+                    <button onClick={() => getUsuario()} className="link-reenviar-email "> Reenviar E-mail? </button>
+                    <button className="link-alterar-email "> Alterar E-mail</button>
                 </div>
             </div>
         </section>

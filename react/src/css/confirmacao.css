@@ -37,38 +37,37 @@
     
     .text-confirmacao{
         color: #A5A5AF;
-        width: inherit;
-        min-height: 100px;
-        height: auto;
-        overflow: hidden;
+        width: 500px;
+        height: 150px;
         /* background-color: cadetblue; */
         font-size: 20px;
         box-sizing: border-box;
-        padding: 30px;
-        /* padding-top: 80px; */
         text-align: center;
         font-family: 'Manjari';
-
+        margin-top: -20px;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     .img-email{
-        width:200px;
-        height: 200px;
+        width: 200px;
+        min-height: 50px;
+        height: auto;
+        overflow: hidden;
         /* background-color: #015249; */
         background-size: cover;
     }
 
     .img-email img{
-        width:200px;
-        height: 200px;
-        /* background-color: #015249; */
-        background-size: cover;
+        max-width: 200px;
+        /* background-color: #95dad2; */
     }
     
     .caixa-input-confirm{
         width: 330px;
         height: 50px;
         /* background-color: #34beae; */
+        margin-top: -20px;
     }
     
     .input-cod-confirm{
@@ -76,11 +75,10 @@
         height: 40px;
         outline: none;
         border: none;
-        border-bottom: 1px black solid;
+        border-bottom: 2px #6a6a6a solid;
         font-size: 35px;
         letter-spacing: 30px;
-        /* text-align: center; */
-        background-color: rgba(222, 222, 231, 0);
+        background: none;
         float: left;
         margin-right: 20px;
     }
@@ -98,31 +96,49 @@
     
     }
     
-    .links{
-        width: 300px;
+    .links-email{
+        width: 400px;
         height: 50px;
         /* background-color: #015249; */
-        /* margin-top: 30px; */
-        text-decoration: none;
-        flex-direction: column;
-    }
-
-    .links a{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
         text-decoration: none;
         font-family: 'Manjari';
-        font-size: 20px;
     }
-    
-    a:hover{
-        text-decoration: underline;
-    }
+    .link-reenviar-email,
+    .link-alterar-email{
+        width: 47%;
+        height: 42px;
+        box-sizing: border-box;
+        padding-top: 7px;
+        cursor: pointer;
+        font-size: 18px;
+        color: #449692;
+        background: none;
+        border: none;
 
+        -moz-transition: .4s ;
+        -webkit-transition: .4s ;
+        transition: .4s ;
+    }
+    .link-reenviar-email:hover,
+    .link-alterar-email:hover{
+        -moz-transition: .4s ;
+        -webkit-transition: .4s ;
+        transition: .4s ;
+        background-color: #ededed;
+        /* box-sizing: inherit; */
+        border-bottom: solid 2px #77c9d4;
+        /* font-weight: bold; */
+
+    }
         /* MODAAALLL */
-    .modal{
+    /* .modal{
         height: 100%;
         width: 100%;
         background-color: rgba(87, 188, 144, 0.445);
-    }
+    } */
 
     .caixa-modal{
         width: 700px;
