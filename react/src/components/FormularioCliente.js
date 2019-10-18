@@ -29,19 +29,29 @@ class DadosPessoaisCliente extends Component{
         this.setConfirmSenha = this.setConfirmSenha.bind(this);
         this.setCep = this.setCep.bind(this);
     }
-    
 
-setNome(event){
-    this.setState({nome: event.target.value});
-    validarString(event.target);
-}
+    componentDidMount(){
+        let cliente = sessionStorage.getItem("cliente");
+        this.setState({nome: cliente.});
+        this.setState({dataNasc: cliente.});
+        this.setState({cpf: cliente.});
+        this.setState({email: cliente.});
+        this.setState({senha: cliente.});
+        this.setState({nome: cliente.});
 
-setData(event){
-    this.setState({dataNasc: event.target.value});
-    if(retirarSimbolos(event.target.value).length === 8){
-        console.log(formataData(event.target.value));
     }
-}
+
+    setNome(event){
+        this.setState({nome: event.target.value});
+        validarString(event.target);
+    }
+
+    setData(event){
+        this.setState({dataNasc: event.target.value});
+        if(retirarSimbolos(event.target.value).length === 8){
+            console.log(formataData(event.target.value));
+        }
+    }
 
     setCpf(event){
         this.setState({cpf: event.target.value});
