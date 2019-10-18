@@ -22,10 +22,8 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder( R.id.navigation_dashboard)
-                .build();
+
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder( R.id.navigation_dashboard).build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
 
@@ -33,10 +31,20 @@ public class MenuActivity extends AppCompatActivity {
         if (intent.getSerializableExtra("profissional") != null) {
             Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
             Toast.makeText(this, "OI " + profissional.getNome(), Toast.LENGTH_SHORT).show();
-
         }
+
 
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent intent = getIntent();
+        if (intent.getSerializableExtra("profissional") != null) {
+            Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
+            Toast.makeText(this, "OI " + profissional, Toast.LENGTH_SHORT).show();
+        }
+    }
 }

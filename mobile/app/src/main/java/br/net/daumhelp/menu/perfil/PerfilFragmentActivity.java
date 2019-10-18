@@ -62,7 +62,7 @@ public class PerfilFragmentActivity extends Fragment {
 
         ListaAdapterComentario listaComentario = new ListaAdapterComentario(getContext(), lista);
 
-        ListView listView = (ListView)getView().findViewById(R.id.lv_comentarios);
+        ListView listView = (ListView) getView().findViewById(R.id.lv_comentarios);
         listView.setAdapter(listaComentario);
 
         btnConfig = getView().findViewById(R.id.ic_config);
@@ -76,7 +76,7 @@ public class PerfilFragmentActivity extends Fragment {
             final Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
 
             tvNome.setText(profissional.getNome().toUpperCase());
-            tvLocal.setText( profissional.getEndereco().getCidade().getCidade()+ ", " + profissional.getEndereco().getCidade().getMicrorregiao().getUf());
+            tvLocal.setText(profissional.getEndereco().getCidade().getCidade() + ", " + profissional.getEndereco().getCidade().getMicrorregiao().getUf());
 
             btnConfig.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -90,9 +90,8 @@ public class PerfilFragmentActivity extends Fragment {
         }
 
 
-
-
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,4 +99,5 @@ public class PerfilFragmentActivity extends Fragment {
 
 
     }
+
 }
