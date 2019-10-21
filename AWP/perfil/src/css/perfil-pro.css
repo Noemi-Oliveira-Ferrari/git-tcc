@@ -35,7 +35,7 @@
 		margin: auto;
 		margin-top: -150px;
 		border-radius: 100%;
-		border: 4px solid rgba(255, 255, 255, 1);
+		border: 4px solid rgb(250, 243, 243);
 		/* background: url("http://meredithcnn.images.worldnow.com/images/10389401_G.jpg"); */
 		/* background-color: #969FAA; */
 		background-image: url(../img/imagem01.png);
@@ -46,28 +46,37 @@
 
 	.caixa-perfil
 	{
-		width: 1200px;
-		height: 380px;
+		width: 100%;
+		height: 600px;
 		margin: auto;
-		/* background-color: aquamarine; */
+		background-color: rgb(255, 255, 255);
 		font-family: 'Lexend Deca';
 		text-align: center;
 		color: rgb(31, 30, 30);
 		font-size: 18px;
+		margin-bottom: 50px;
+		border-radius: 10px;
+		background-image: url(../img/fundo03.jpg);
 	}
 
 	.nome-cliente
 	{
+		width: inherit;
+		height: 100px;
+		/* background-color: violet; */
 		font-family: 'Lexend Deca';
-		margin-bottom: 51px;
+		/* margin-bottom: 51px; */
 		margin-top: 15px;
+        color: #84848D;     
+
+
 	}
 
 	.caixa-informacoes-basicas
 	{
-		width: 1200px;
+		width: inherit;
 		height: 200px;
-		/* background-color: chocolate; */
+		background-color: chocolate;
 		margin: auto;
 	}
 
@@ -78,6 +87,8 @@
 		clear: both;
 		/* background-color:lightblue; */
 		margin: auto;
+        color: #84848D;     
+
 	}
 
 	.caixa-info1
@@ -97,12 +108,12 @@
 	{
 		color: #57bc90;
 		transition: 0.8s;
-		text-decoration: underline;
+		/* text-decoration: underline; */
 	}
 
 	.conteudo-pro
 	{
-		width: 1415px;
+		width: 1300px;
 		height: 700px;
 		/* background-color: #c6c6c6; */
 		margin: auto;
@@ -121,20 +132,30 @@
 	.text-dados
 	{
 		width: 200px;
-		height: 15px;
+		height: 50px;
 		font-family: 'Lexend Deca';
+		/* background-color: pink; */
+		margin-right: 500px;
+        color: #84848D;     
+
 	}
 
 	.text-dados-editar
 	{
+		width: 200px;
+		width: 50px;
 		text-align: right;
+		/* background-color: plum; */
 		font-family: 'Lexend Deca';
+		font-size: 18px;
+        color: #84848D;     
+
 	}
 
 	.text-dados-editar:hover
 	{
 		/* width: inherit; */
-		height: auto;
+		/* height: auto; */
 		text-decoration: underline;
 		cursor: pointer;
 		color: #57BC90;
@@ -163,11 +184,10 @@
 		padding-top: 50px;
 		padding-bottom: 50px;
 		box-sizing: border-box;
+		/* background-color: plum; */
 	}
 
-	.card-formulario-pessoal,
-	.card-formulario-servico,
-	.card-formulario-termos
+	.card-formulario-pessoal
 	{
 		height: auto;
 		overflow: hidden;
@@ -179,38 +199,6 @@
 		flex-wrap: wrap;
 		margin-bottom: 40px;
 		padding-bottom: 30px;
-	}
-
-	.card-formulario-pessoal
-	{
-		width: 900px;
-		min-height: 600px;
-		background-color: rgb(235, 235, 235);
-	}
-
-	.card-formulario-servico
-	{
-		width: 850px;
-		height: 400px;
-		background-color: rgb(255, 255, 255);
-	}
-
-	.card-formulario-termos
-	{
-		width: 850px;
-		height: 500px;
-		background-color: rgb(255, 255, 255);
-	}
-
-	.title-card
-	{
-		width: inherit;
-		height: fit-content;
-		box-sizing: border-box;
-		padding-left: 50px;
-		margin-top: 15px;
-		color: #00000071;
-		/* background-color: rgb(245, 245, 220); */
 	}
 
 	.container-flex
@@ -238,20 +226,7 @@
 		float: left;
 	}
 
-	#txt-nome,
-	#txt-dataNasc,
-	#txt-cpfCnpj,
-	#txt-email,
-	#txt-senha,
-	#txt-confirmar-senha,
-	#txt-cep,
-	#txt-logradouro,
-	#txt-bairro,
-	#txt-cidade,
-	#txt-uf,
-	#txt-categoria,
-	#txt-subcat,
-	#txt-valor-hora
+	#txt-nome,#txt-dataNasc,#txt-cpfCnpj,#txt-email,#txt-senha,#txt-confirmar-senha,#txt-cep,#txt-logradouro,#txt-bairro,#txt-cidade,#txt-uf,#txt-categoria,#txt-subcat,#txt-valor-hora
 	{
 		height: 50px;
 		font-family: "manjari regular";
@@ -305,63 +280,51 @@
 		flex-wrap: wrap;
 	}
 
-	.caixa-nome
-	{
+	.caixa-nome{
 		width: 365px;
 	}
 
-	.caixa-dataNasc
-	{
+	.caixa-dataNasc{
 		width: 365px;
 	}
 
-	.caixa-cpfCnpj
-	{
+	.caixa-cpfCnpj{
 		width: 275px;
 	}
 
-	.caixa-email
-	{
+	.caixa-email{
 		width: 455px;
 	}
 
-	.caixa-senha
-	{
+	.caixa-senha{
 		width: 365px;
 	}
 
-	.caixa-confirmar-senha 
-	{
+	.caixa-confirmar-senha {
 		width: 365px;
 	}
 
-	.caixa-cep
-	{
-		width: 265px;
+	.caixa-cep{
+		max-width: 265px;
 	}
 
-	.caixa-logradouro
-	{
-		width: 465px;
+	.caixa-logradouro{
+		max-width: 465px;
 	}
 
-	.caixa-bairro
-	{
+	.caixa-bairro{
 		width: 310px;
 	}
 
-	.caixa-cidade
-	{
+	.caixa-cidade{
 		width: 350px;
 	}
 
-	.caixa-uf
-	{
+	.caixa-uf{
 		width: 60px;
 	}
 
-	.campos-servicos
-	{
+	.campos-servicos{
 		width: 800px;
 		height: 300px;
 		display: flex;
@@ -416,21 +379,24 @@
 	.caixa-comentarios
 	{
 		width: 480px;
-		height: 520px;
-		background-color: rgb(235, 235, 235);
+		height: 500px;
+		background-color: rgb(255, 255, 255);
 		float: left;
 		border-radius: 8px;
-		margin-top: 55px;
 		padding-top: 20px;
 		box-sizing: border-box;
 		margin-left: 30px;
+        color: #84848D;     
+
 	}
 
 	.title-avaliacao
 	{
 		text-align: center;
 		font-family: 'Lexend Deca';
-		color: #00000071;
+		/* color: #0000005d; */
+        color: #84848D;     
+
 		font-size: 28px;
 		margin-bottom: 35px;
 	}

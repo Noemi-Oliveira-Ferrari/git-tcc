@@ -266,19 +266,19 @@
         width: 365px;
     }
 
-    .caixa-cep
+    /* .caixa-cep
     {
-        width: 195px;
+        max-width: 195px;
     }
 
     .caixa-logradouro
     {
-        width: 395px;
-    }
+        max-width: 395px;
+    } */
 
     .caixa-numero
     {
-        width: 130px;
+        max-width: 130px;
     }
 
     .caixa-bairro
