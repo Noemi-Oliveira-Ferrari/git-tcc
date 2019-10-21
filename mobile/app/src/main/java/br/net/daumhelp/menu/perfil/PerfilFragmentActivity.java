@@ -3,6 +3,7 @@ package br.net.daumhelp.menu.perfil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import br.net.daumhelp.R;
 import androidx.annotation.Nullable;
@@ -20,8 +22,13 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import br.net.daumhelp.EditarActivity;
 import br.net.daumhelp.adapter.ListaAdapterComentario;
+import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.model.Categoria;
 import br.net.daumhelp.model.Comentario;
 import br.net.daumhelp.model.Profissional;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class PerfilFragmentActivity extends Fragment {
@@ -73,7 +80,9 @@ public class PerfilFragmentActivity extends Fragment {
         Intent intent = getActivity().getIntent();
         if (intent.getSerializableExtra("profissional") != null) {
 
-            final Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
+            profissional = (Profissional) intent.getSerializableExtra("profissional");
+
+            Toast.makeText(getContext(), "" + profissional.getNome(), Toast.LENGTH_SHORT).show();
 
             tvNome.setText(profissional.getNome().toUpperCase());
             tvLocal.setText(profissional.getEndereco().getCidade().getCidade() + ", " + profissional.getEndereco().getCidade().getMicrorregiao().getUf());
@@ -89,7 +98,6 @@ public class PerfilFragmentActivity extends Fragment {
 
         }
 
-
     }
 
 
@@ -100,4 +108,38 @@ public class PerfilFragmentActivity extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        Call<Profissional> call = new RetroFitConfig().getProfissionalService().buscarProfissional(profissional.getIdProfissional());
+        call.enqueue(new Callback<Profissional>() {
+            @Override
+            public void onResponse(Call<Profissional> call, Response<Profissional> response) {
+
+               final Profissional profissionalAtualizado = response.body();
+               tvNome.setText(profissionalAtualizado.getNome().toUpperCase());
+               tvLocal.setText(profissionalAtualizado.getEndereco().getCidade().getCidade() + ", " + profissionalAtualizado.getEndereco().getCidade().getMicrorregiao().getUf());
+
+                btnConfig.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), EditarActivity.class);
+                        intent.putExtra("profissional", profissionalAtualizado);
+                        startActivity(intent);
+                    }
+                });
+
+            }
+
+            @Override
+            public void onFailure(Call<Profissional> call, Throwable t) {
+                Log.i("Retrofit", t.getMessage());
+            }
+        });
+
+
+
+
+    }
 }

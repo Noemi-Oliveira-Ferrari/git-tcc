@@ -6,6 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -63,7 +65,7 @@
             android:layout_marginTop="10dp"
             android:text="Pedro de Almeida Santos"
             android:textAlignment="center"
-            android:textSize="14dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -74,7 +76,7 @@
             android:layout_width="360dp"
             android:layout_height="400dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="80dp"
             android:layout_marginEnd="8dp"
             app:cardCornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -561,6 +563,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cv_edit_servico" />
 
+        <Button
+            android:id="@+id/btn_atualizar_dados"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_editar"
+            android:text="Salvar alterações de perfil"
+            android:textColor="@color/colorTest"
+            android:inputType="textCapSentences"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_nome" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>

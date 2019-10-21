@@ -1,12 +1,10 @@
 package br.net.daumhelp;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -19,16 +17,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
-import br.net.daumhelp.menu.perfil.PerfilFragmentActivity;
 import br.net.daumhelp.model.Categoria;
 import br.net.daumhelp.model.Cidade;
+import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Endereco;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.Subcategoria;
@@ -76,6 +72,9 @@ public class EditarActivity extends AppCompatActivity {
     private Long idCategoria;
     private String categoriaAtt;
     private String subCategoriaAtt;
+    private Button btnAtualizar;
+    private int contBack = 0;
+    private Profissional profissionalAtualizado;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -107,6 +106,7 @@ public class EditarActivity extends AppCompatActivity {
         tvTituloSubcategoria = findViewById(R.id.tv_titulo_sub);
         etCategoria = findViewById(R.id.et_categoria);
         etSubcategoria = findViewById(R.id.et_subcategoria);
+        btnAtualizar = findViewById(R.id.btn_atualizar_dados);
 
 
         desativarCamposDadosPessoais();
@@ -126,17 +126,50 @@ public class EditarActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getSerializableExtra("profissional") != null) {
             profissional = (Profissional) intent.getSerializableExtra("profissional");
+
+            Toast.makeText(this, "" + profissional.getNome(), Toast.LENGTH_SHORT).show();
+
+            idSub = profissional.getSubcategoria().getIdSubcategoria();
+            idCidade = profissional.getEndereco().getCidade().getIdCidade();
             carregarDados(profissional);
+
             ivToolbar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(EditarActivity.this, MenuActivity.class);
-                    intent.putExtra("profissional", profissional);
-                    startActivity(intent);
+                    if (contBack == 1){
+                        Toast.makeText(EditarActivity.this, "Você editou seu perfil, para retornar salve as alterações", Toast.LENGTH_SHORT).show();
+                    }else{
+                        /*Intent intent = new Intent(EditarActivity.this, MenuActivity.class);
+                        intent.putExtra("profissionalAtualizado", profissionalAtualizado);
+                        startActivity(intent);*/
+                        finish();
+
+                    }
                 }
             });
         }
 
+            ivToolbar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (contBack == 1){
+                        Toast.makeText(EditarActivity.this, "Você editou seu perfil, para retornar salve as alterações", Toast.LENGTH_SHORT).show();
+                    }else{
+
+                        finish();
+
+                    }
+                }
+            });
+
+        if (intent.getSerializableExtra("profissionalAtualizado") != null) {
+            profissional = (Profissional) intent.getSerializableExtra("profissionalAtualizado");
+
+            idSub = profissional.getSubcategoria().getIdSubcategoria();
+            idCidade = profissional.getEndereco().getCidade().getIdCidade();
+            carregarDados(profissional);
+
+        }
 
         tvEditarLocal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,6 +203,7 @@ public class EditarActivity extends AppCompatActivity {
                                             etCep.setError("CPF inválido");
                                         }else{
                                             carregarEndereco(response.body());
+                                            contBack = 1;
                                         }
                                     }
 
@@ -208,7 +242,6 @@ public class EditarActivity extends AppCompatActivity {
 
                 if(tvEditarDados.getText().equals("Editar")){
                     tvEditarDados.setText("Salvar");
-                    Toast.makeText(EditarActivity.this, "DIGITAR", Toast.LENGTH_SHORT).show();
 
                 }else if(tvEditarDados.getText().equals("Salvar")){
 
@@ -219,63 +252,7 @@ public class EditarActivity extends AppCompatActivity {
                         if (validar() == true) {
 
                             tvEditarDados.setText("Editar");
-
-                            /*MONTANDO O OBJETO PROFISSIONAL QUE SERÁ ATUALIZADO*/
-                            profissional.setNome(etNome.getText().toString());
-                            profissional.setDataNasc(etData.getText().toString());
-                            profissional.setCpf(etCpf.getText().toString());
-                            profissional.setEmail(etEmail.getText().toString());
-                            TipoUsuario tipoUsuario = new TipoUsuario();
-                            tipoUsuario.setIdTipoUsuario(1);
-                            tipoUsuario.setTipoUsuario("p");
-                            profissional.setTipoUsuario(tipoUsuario);
-                            Subcategoria subcategoria = new Subcategoria();
-                            subcategoria.setIdSubcategoria(idSub);
-                            profissional.setSubcategoria(subcategoria);
-                            profissional.setResumoQualificacoes(etResumo.getText().toString());
-                            profissional.setValorHora(Double.parseDouble(etValorHora.getText().toString()));
-
-                            if (etSenha.getText().equals("") || etSenha.getText().toString().isEmpty() || etSenha.getText().equals(null)) {
-                                profissional.setSenha(profissional.getSenha());
-                            } else {
-                                profissional.setSenha(EncryptString.gerarHash(etSenha.getText().toString()));
-                            }
-
-                            Endereco endereco = new Endereco();
-                            endereco.setIdEndereco(profissional.getEndereco().getIdEndereco());
-                            endereco.setCep(etCep.getText().toString());
-                            endereco.setBairro(etBairro.getText().toString());
-                            endereco.setLogradouro(etLogradouro.getText().toString());
-                            Cidade cidade = new Cidade();
-                            cidade.setIdCidade(idCidade);
-                            endereco.setCidade(cidade);
-
-                            /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
-                            Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(profissional.getEndereco().getIdEndereco(), endereco);
-                            call.enqueue(new Callback<Endereco>() {
-                                @Override
-                                public void onResponse(Call<Endereco> call, Response<Endereco> response) {
-
-                                    response.body();
-
-                                    /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
-                                    Call<Profissional> call2 = new RetroFitConfig().getProfissionalService().atualizarPro(profissional.getIdProfissional(), profissional);
-                                    call2.enqueue(new Callback<Profissional>() {
-                                        @Override
-                                        public void onResponse(Call<Profissional> call2, Response<Profissional> response) {
-                                            response.body();
-                                        }
-                                        @Override
-                                        public void onFailure(Call<Profissional> call2, Throwable t) {
-                                            Log.i("PROFISSIONAL", t.getMessage());
-                                        }
-                                    });
-                                }
-                                @Override
-                                public void onFailure(Call<Endereco> call, Throwable t) {
-                                    Log.i("ENDERECO", t.getMessage());
-                                }
-                            });
+                            contBack = 1;
                             desativarCamposDadosPessoais();
 
 
@@ -294,7 +271,6 @@ public class EditarActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 ativarCamposDadosServico();
-
 
                 Call<List<Categoria>> call = new RetroFitConfig().getCategoriaService().buscarCategorias();
                 call.enqueue(new Callback<List<Categoria>>() {
@@ -321,6 +297,7 @@ public class EditarActivity extends AppCompatActivity {
                 else if(tvEditarServico.getText().equals("Salvar")){
                     /*CHAMADA DAS CATEGORIAS*/
                     tvEditarServico.setText("Editar");
+                    contBack = 1;
                     desativarCamposDadosServico();
                 }
 
@@ -348,6 +325,74 @@ public class EditarActivity extends AppCompatActivity {
                 Log.i("Retrofit2", t.getMessage());
             }
         });
+
+        btnAtualizar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                /*MONTANDO O OBJETO PROFISSIONAL QUE SERÁ ATUALIZADO*/
+                profissional.setNome(etNome.getText().toString());
+                profissional.setDataNasc(etData.getText().toString());
+                profissional.setCpf(etCpf.getText().toString());
+                profissional.setEmail(etEmail.getText().toString());
+                TipoUsuario tipoUsuario = new TipoUsuario();
+                tipoUsuario.setIdTipoUsuario(1);
+                tipoUsuario.setTipoUsuario("p");
+                profissional.setTipoUsuario(tipoUsuario);
+                Subcategoria subcategoria = new Subcategoria();
+                subcategoria.setIdSubcategoria(idSub);
+                profissional.setSubcategoria(subcategoria);
+                profissional.setResumoQualificacoes(etResumo.getText().toString());
+                profissional.setValorHora(Double.parseDouble(etValorHora.getText().toString()));
+
+                if (etSenha.getText().equals("") || etSenha.getText().toString().isEmpty() || etSenha.getText().equals(null)) {
+                    profissional.setSenha(profissional.getSenha());
+                } else {
+                    profissional.setSenha(EncryptString.gerarHash(etSenha.getText().toString()));
+                }
+
+                Endereco endereco = new Endereco();
+                endereco.setIdEndereco(profissional.getEndereco().getIdEndereco());
+                endereco.setCep(etCep.getText().toString());
+                endereco.setBairro(etBairro.getText().toString());
+                endereco.setLogradouro(etLogradouro.getText().toString());
+                Cidade cidade = new Cidade();
+                cidade.setIdCidade(idCidade);
+                endereco.setCidade(cidade);
+
+                /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
+                Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(profissional.getEndereco().getIdEndereco(), endereco);
+                call.enqueue(new Callback<Endereco>() {
+                    @Override
+                    public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+
+                        response.body();
+
+                        /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
+                        Call<Profissional> call2 = new RetroFitConfig().getProfissionalService().atualizarPro(profissional.getIdProfissional(), profissional);
+                        call2.enqueue(new Callback<Profissional>() {
+                            @Override
+                            public void onResponse(Call<Profissional> call2, Response<Profissional> response) {
+                                profissionalAtualizado = response.body();
+                                contBack = 0;
+                                tvNome.setText(etNome.getText());
+                                Toast.makeText(EditarActivity.this, "Dados atualizados ;D", Toast.LENGTH_SHORT).show();
+                            }
+                            @Override
+                            public void onFailure(Call<Profissional> call2, Throwable t) {
+                                Log.i("PROFISSIONAL", t.getMessage());
+                            }
+                        });
+                    }
+                    @Override
+                    public void onFailure(Call<Endereco> call, Throwable t) {
+                        Log.i("ENDERECO", t.getMessage());
+                    }
+                });
+
+            }
+        });
+
 
 
     }

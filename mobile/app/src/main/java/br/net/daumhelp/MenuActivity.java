@@ -3,6 +3,7 @@ package br.net.daumhelp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -13,7 +14,12 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Profissional;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MenuActivity extends AppCompatActivity {
 
@@ -30,8 +36,9 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getSerializableExtra("profissional") != null) {
             Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
-            Toast.makeText(this, "OI " + profissional.getNome(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "OI " + profissional.getNome(), Toast.LENGTH_SHORT).show();
         }
+
 
 
 
@@ -43,8 +50,12 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent.getSerializableExtra("profissional") != null) {
+
             Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
-            Toast.makeText(this, "OI " + profissional, Toast.LENGTH_SHORT).show();
+
+            Toast.makeText(this, "" + profissional.getIdProfissional(), Toast.LENGTH_SHORT).show();
+
+
         }
     }
 }
