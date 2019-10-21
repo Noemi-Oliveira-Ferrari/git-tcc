@@ -26,10 +26,7 @@ public class ClienteDTO {
 	@NotNull
 	@Size(min = 10, max = 100)
 	private String email;
-	@NotNull
-	@Size(min = 4, max = 150)
-	private String foto;
-
+	
 	@Size(min = 11, max = 20)
 	private String cpf;
 
@@ -48,7 +45,7 @@ public class ClienteDTO {
 
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "tbl_tipo_usuario")
+	@JoinColumn(name = "idTipoUsuario")
 	private TipoUsuario tipoUsuario;
 
 	private String criadoEm;
@@ -76,14 +73,6 @@ public class ClienteDTO {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
 	}
 
 	public String getCpf() {
@@ -144,8 +133,8 @@ public class ClienteDTO {
 
 	@Override
 	public String toString() {
-		return "ClienteDTO [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", foto=" + foto
-				+ ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco
+		return "ClienteDTO [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf 
+				+ ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco
 				+ ", tipoUsuario=" + tipoUsuario + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
 
