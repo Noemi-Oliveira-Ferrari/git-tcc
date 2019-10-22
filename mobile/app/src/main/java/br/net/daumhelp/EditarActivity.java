@@ -155,9 +155,7 @@ public class EditarActivity extends AppCompatActivity {
                     if (contBack == 1){
                         Toast.makeText(EditarActivity.this, "Você editou seu perfil, para retornar salve as alterações", Toast.LENGTH_SHORT).show();
                     }else{
-
                         finish();
-
                     }
                 }
             });
@@ -186,6 +184,7 @@ public class EditarActivity extends AppCompatActivity {
 
                 if(tvEditarLocal.getText().equals("Editar")){
 
+                    contBack = 1;
                     tvEditarLocal.setText("Salvar");
 
                     btnCep.setOnClickListener(new View.OnClickListener() {
@@ -241,6 +240,7 @@ public class EditarActivity extends AppCompatActivity {
                 imm.showSoftInput(etNome, InputMethodManager.SHOW_IMPLICIT);
 
                 if(tvEditarDados.getText().equals("Editar")){
+                    contBack = 1;
                     tvEditarDados.setText("Salvar");
 
                 }else if(tvEditarDados.getText().equals("Salvar")){
@@ -291,6 +291,7 @@ public class EditarActivity extends AppCompatActivity {
                 if(tvEditarServico.getText().equals("Editar")){
 
                     tvEditarServico.setText("Salvar");
+                    contBack = 1;
 
 
                 }
@@ -337,7 +338,7 @@ public class EditarActivity extends AppCompatActivity {
                 profissional.setEmail(etEmail.getText().toString());
                 TipoUsuario tipoUsuario = new TipoUsuario();
                 tipoUsuario.setIdTipoUsuario(1);
-                tipoUsuario.setTipoUsuario("p");
+                tipoUsuario.setTipoDeUsuario('p');
                 profissional.setTipoUsuario(tipoUsuario);
                 Subcategoria subcategoria = new Subcategoria();
                 subcategoria.setIdSubcategoria(idSub);
@@ -345,9 +346,9 @@ public class EditarActivity extends AppCompatActivity {
                 profissional.setResumoQualificacoes(etResumo.getText().toString());
                 profissional.setValorHora(Double.parseDouble(etValorHora.getText().toString()));
 
-                if (etSenha.getText().equals("") || etSenha.getText().toString().isEmpty() || etSenha.getText().equals(null)) {
+                if (etSenha.getText().equals(128)) {
                     profissional.setSenha(profissional.getSenha());
-                } else {
+                }else{
                     profissional.setSenha(EncryptString.gerarHash(etSenha.getText().toString()));
                 }
 
@@ -360,39 +361,42 @@ public class EditarActivity extends AppCompatActivity {
                 cidade.setIdCidade(idCidade);
                 endereco.setCidade(cidade);
 
-                /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
-                Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(profissional.getEndereco().getIdEndereco(), endereco);
-                call.enqueue(new Callback<Endereco>() {
-                    @Override
-                    public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+                if (validar() == true){
 
-                        response.body();
+                    /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
+                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(profissional.getEndereco().getIdEndereco(), endereco);
+                    call.enqueue(new Callback<Endereco>() {
+                        @Override
+                        public void onResponse(Call<Endereco> call, Response<Endereco> response) {
 
-                        /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
-                        Call<Profissional> call2 = new RetroFitConfig().getProfissionalService().atualizarPro(profissional.getIdProfissional(), profissional);
-                        call2.enqueue(new Callback<Profissional>() {
-                            @Override
-                            public void onResponse(Call<Profissional> call2, Response<Profissional> response) {
-                                profissionalAtualizado = response.body();
-                                contBack = 0;
-                                tvNome.setText(etNome.getText());
-                                Toast.makeText(EditarActivity.this, "Dados atualizados ;D", Toast.LENGTH_SHORT).show();
-                            }
-                            @Override
-                            public void onFailure(Call<Profissional> call2, Throwable t) {
-                                Log.i("PROFISSIONAL", t.getMessage());
-                            }
-                        });
-                    }
-                    @Override
-                    public void onFailure(Call<Endereco> call, Throwable t) {
-                        Log.i("ENDERECO", t.getMessage());
-                    }
-                });
+                            response.body();
+
+                            /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
+                            Call<Profissional> call2 = new RetroFitConfig().getProfissionalService().atualizarPro(profissional.getIdProfissional(), profissional);
+                            call2.enqueue(new Callback<Profissional>() {
+                                @Override
+                                public void onResponse(Call<Profissional> call2, Response<Profissional> response) {
+                                    profissionalAtualizado = response.body();
+                                    contBack = 0;
+                                    tvNome.setText(etNome.getText());
+                                    Toast.makeText(EditarActivity.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
+                                }
+                                @Override
+                                public void onFailure(Call<Profissional> call2, Throwable t) {
+                                    Log.i("PROFISSIONAL", t.getMessage());
+                                }
+                            });
+                        }
+                        @Override
+                        public void onFailure(Call<Endereco> call, Throwable t) {
+                            Log.i("ENDERECO", t.getMessage());
+                        }
+                    });
+
+                }
 
             }
         });
-
 
 
     }
@@ -487,6 +491,8 @@ public class EditarActivity extends AppCompatActivity {
         etEmail.setText(profissional.getEmail());
         etCep.setText(profissional.getEndereco().getCep());
         etCidade.setText(profissional.getEndereco().getCidade().getCidade());
+        etSenha.setText(profissional.getSenha());
+        etSenhaConfirmacao.setText(profissional.getSenha());
         etLogradouro.setText(profissional.getEndereco().getLogradouro());
         etUf.setText(profissional.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
         etBairro.setText(profissional.getEndereco().getBairro());

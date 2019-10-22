@@ -53,8 +53,6 @@ public class MenuActivity extends AppCompatActivity {
 
             Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
 
-            Toast.makeText(this, "" + profissional.getIdProfissional(), Toast.LENGTH_SHORT).show();
-
 
         }
     }

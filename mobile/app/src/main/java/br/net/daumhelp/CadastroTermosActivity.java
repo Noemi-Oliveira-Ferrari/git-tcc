@@ -96,7 +96,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     profissional.setSubcategoria(subcategoria);
                                     profissional.setEndereco(endereco1);
                                     tipoUsuario.setIdTipoUsuario(1);
-                                    tipoUsuario.setTipoUsuario("p");
+                                    tipoUsuario.setTipoDeUsuario('p');
                                     profissional.setTipoUsuario(tipoUsuario);
                                     profissional.setFoto("foto.png");
 
@@ -161,7 +161,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     cliente.setSenha(EncryptString.gerarHash(listaDados[4]));
                                     cliente.setEndereco(endereco1);
                                     tipoUsuario.setIdTipoUsuario(2);
-                                    tipoUsuario.setTipoUsuario("c");
+                                    tipoUsuario.setTipoDeUsuario('c');
                                     cliente.setTipoUsuario(tipoUsuario);
                                     cliente.setFoto("foto.png");
 

@@ -12,7 +12,7 @@ public class TipoUsuario implements Serializable {
     private int idTipoUsuario;
 
     @JsonAlias("tipoUsuario")
-    private String tipoUsuario;
+    private Character tipoDeUsuario;
 
     public int getIdTipoUsuario() {
         return idTipoUsuario;
@@ -22,17 +22,20 @@ public class TipoUsuario implements Serializable {
         this.idTipoUsuario = idTipoUsuario;
     }
 
-    public String getTipoUsuario() {
-        return tipoUsuario;
+    public Character getTipoDeUsuario() {
+        return tipoDeUsuario;
     }
 
-    public void setTipoUsuario(String tipoUsuario) {
-        this.tipoUsuario = tipoUsuario;
+    public void setTipoDeUsuario(Character tipoDeUsuario) {
+        this.tipoDeUsuario = tipoDeUsuario;
     }
 
     @Override
     public String toString() {
-        return idTipoUsuario + tipoUsuario;
+        return "TipoUsuario{" +
+                "idTipoUsuario=" + idTipoUsuario +
+                ", tipoDeUsuario=" + tipoDeUsuario +
+                '}';
     }
 }
 
