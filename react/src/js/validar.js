@@ -92,11 +92,13 @@ export const validarString = (input) =>{
     let regras = new passwordValidator();
     // console.log(input);
     regras
-    .is().min(3)
+    .is().min(8)
     .is().max(150)
     .has().letters()
-    .has().not().digits()
-    .has().not().symbols()
+    .has().lowercase()
+    .has().uppercase()
+    .has().digits()
+    .has().symbols()
     .is().not().oneOf([""], null);
 
     if(regras.validate(input.value)){
@@ -114,10 +116,10 @@ export const validarVazios = (campos) =>{
 
     for(let i = 0; i< campos.length; i++){
         if(campos[i].value === ""){
-            console.log("ERRO "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+            console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
             semErro.push(withError(campos[i]));
         }else{
-            console.log("SHOW "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+            console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
             semErro.push(withoutError(campos[i]));
         }
     }
@@ -173,8 +175,21 @@ export const limpaValor = (valor) =>{
     return num;
 }
 
-export const formataData = (data) =>{
-    let arrayData = data.split("/");
-    let novaData = arrayData[2]+"-"+arrayData[1]+"-"+arrayData[0];
+export const formataData = (data, delimitarAtual, novoDelimitador) =>{
+    let arrayData = data.split(delimitarAtual);
+    let novaData = arrayData[2]+novoDelimitador+arrayData[1]+novoDelimitador+arrayData[0];
     return novaData;
+}
+
+export const validarIdade = (dataNasc) =>{
+    let data = new Date(formataData(dataNasc.value, "/", "-"));
+    let hoje = new Date();
+    let maioridadeMs = 568036800000;
+    console.log(data);
+
+    if(hoje - data > maioridadeMs){
+        return true;
+    }else{
+        return false;
+    }
 }

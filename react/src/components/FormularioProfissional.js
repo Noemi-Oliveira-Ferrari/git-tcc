@@ -56,7 +56,7 @@ class DadosPessoaisPro extends Component{
     setData(event){
         this.setState({dataNasc: event.target.value});
         if(retirarSimbolos(event.target.value).length === 8){
-            console.log(formataData(event.target.value));
+            console.log(formataData(event.target.value), "/", "-");
         }
     }
 
@@ -549,7 +549,7 @@ export default class FormularioProfissional extends Component{
             };
             let profissional = {
                 nome: $("#txt-nome").val(),
-                dataNasc: formataData($("#txt-dataNasc").val()),
+                dataNasc: formataData($("#txt-dataNasc").val(), "/", "-"),
                 cpf: cpf,
                 cnpj: cnpj,
                 email: $("#txt-email").val(),

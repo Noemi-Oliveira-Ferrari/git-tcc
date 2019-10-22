@@ -7,7 +7,7 @@ import {browserHistory} from 'react-router';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfCliente, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
-         formataData, limpaValor} from '../js/validar';
+         formataData, limpaValor, validarIdade} from '../js/validar';
 
 class DadosPessoaisCliente extends Component{
 
@@ -18,7 +18,8 @@ class DadosPessoaisCliente extends Component{
             email: "", senha: "", confirmSenha: "",
             
             cep: "", logradouro: "", numero:"", idCidade: "",
-            bairro: "", cidade: "", uf: ""
+            bairro: "", cidade: "", uf: "",
+            cliente: [], endereco: []
         }
            
         this.setNome = this.setNome.bind(this);
@@ -31,13 +32,26 @@ class DadosPessoaisCliente extends Component{
     }
 
     componentDidMount(){
-        let cliente = sessionStorage.getItem("cliente");
-        this.setState({nome: cliente.});
-        this.setState({dataNasc: cliente.});
-        this.setState({cpf: cliente.});
-        this.setState({email: cliente.});
-        this.setState({senha: cliente.});
-        this.setState({nome: cliente.});
+        let cliente = JSON.parse(sessionStorage.getItem("cliente"));
+        let endereco = JSON.parse(sessionStorage.getItem("endereco"));
+
+        if(cliente !== null){
+            this.setState({cliente: cliente});
+
+            this.setState({nome: cliente.nome});
+            this.setState({dataNasc: formataData(cliente.dataNasc, "-", "/")});
+            this.setState({cpf: cliente.cpf});
+            this.setState({email: cliente.email});
+        }        
+        if(endereco !== null){
+            this.setState({endereco: endereco});
+            this.setState({cep: endereco.cep});
+            this.getEndereco(endereco.cep);
+            this.setState({numero: endereco.numero});
+        }
+
+        // setTimeout(()=>{
+        // }, 1000);
 
     }
 
@@ -48,8 +62,12 @@ class DadosPessoaisCliente extends Component{
 
     setData(event){
         this.setState({dataNasc: event.target.value});
-        if(retirarSimbolos(event.target.value).length === 8){
-            console.log(formataData(event.target.value));
+        let value = event.target.value;
+        // console.log(value.
+        if(!value.includes("_") && validarIdade(event.target)){
+            withoutError($("#txt-dataNasc"))
+        }else{
+            withError($("#txt-dataNasc"))    
         }
     }
 
@@ -113,12 +131,12 @@ class DadosPessoaisCliente extends Component{
             this.setState({cidade: ""});
             this.setState({uf: ""});
             this.setState({idCidade: ""});
-
-            $('#txt-cep').addClass("erro");
-            $('#txt-logradouro').addClass("erro");
-            $('#txt-cidade').addClass("erro");
-            $('#txt-bairro').addClass("erro");
-            $('#txt-uf').addClass("erro");
+            
+            withError($('#txt-cep'));
+            withError($('#txt-logradouro'));
+            withError($('#txt-cidade'));
+            withError($('#txt-bairro'));
+            withError($('#txt-uf'));
         })
         .onload = console.log("loading");
     }
@@ -145,6 +163,7 @@ class DadosPessoaisCliente extends Component{
                                 classDivInput="caixa-nome"
                                 classInput="form-control form-input"
                                 onChange={this.setNome}
+                                valueInput={this.state.nome || ""}
                             />
 
                             <InputNumber
@@ -156,6 +175,7 @@ class DadosPessoaisCliente extends Component{
                                 mascara="##/##/####"
                                 classInput="form-control form-input"
                                 onChange={this.setData}
+                                valueInput={this.state.dataNasc || ""}
                             />
                         
                         </div>
@@ -170,6 +190,7 @@ class DadosPessoaisCliente extends Component{
                                 classInput="form-control form-input"
                                 onChange={this.setCpf}
                                 mascara="###.###.###-##"
+                                valueInput={this.state.cpf || ""}
                             />
 
                             <Inputs
@@ -181,6 +202,7 @@ class DadosPessoaisCliente extends Component{
                                 name="txt_email"
                                 onChange={this.setEmail}
                                 classInput="form-control form-input"
+                                valueInput={this.state.email || ""}
                             />
 
                             
@@ -306,8 +328,11 @@ export default class FormularioCliente extends Component{
     
     constructor(){
         super();
+        this.state = {
+            erros: []
+        }
         this.realizarCadastro = this.realizarCadastro.bind(this);   
-        this.validarCampos = this.validarCampos.bind(this);  
+        this.validarCampos = this.validarCampos.bind(this);
     }
 
 
@@ -316,38 +341,49 @@ export default class FormularioCliente extends Component{
         
         let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email]");
         let semErro = true;
-        
+        let erros = [];
 
         if(!validarVazios(campos)){
             semErro = false;
+            erros.push("O Nome digitado é inválido!\n");
             console.log("validarVazios "+semErro);
         }
 
         if(!validarString($('#txt-nome').get(0))){
             semErro = false;
+            erros.push("O Nome digitado é inválido!\n");
             console.log("validarString nome "+semErro);
+        }
+        if(!validarIdade($('#txt-dataNasc').get(0))){
+            semErro = false;
+            erros.push("Para ser cadastrar é necessário ter no mínimo 18 anos!\n");
+            console.log("validarIdade "+semErro);
         }
 
         if(!validarCpfCliente($('#txt-cpf').val())){
             semErro = false;
+            erros.push("CPF Inválido\n");
             console.log("validarCpfCliente "+semErro);
         }
 
         if(!validarEmail($('#txt-email').get(0))){
             semErro = false;
+            erros.push("E-mail digitado não é válido\n");
             console.log("validarEmail "+semErro);
         }
 
         if(!validarSenha($('#txt-senha').val())){
             semErro = false;
+            erros.push("A senha deve ter ao menos\n-Letras maiúsculas e minúsculas\n-Um número\n-Um símbolo(@#$...)\n-Ter no mínimo 8 caractéres\n-Não pode conter espaços\n");
             console.log("validarSenha "+semErro);
         }
 
         if(!validarConfirmacaoSenha($('#txt-senha').get(0), $('#txt-confirmar-senha').get(0))){
             semErro = false;
+            erros.push("As senhas não correspondem!\n");
             console.log("validarConfirmacaoSenha "+semErro);
         }
-        
+        this.setState({erros: erros});
         return semErro;
     }
 
@@ -373,7 +409,7 @@ export default class FormularioCliente extends Component{
             };
             let cliente = {
                 nome: $("#txt-nome").val(),
-                dataNasc: formataData($("#txt-dataNasc").val()),
+                dataNasc: formataData($("#txt-dataNasc").val(), "/", "-"),
                 cpf: cpf,
                 email: $("#txt-email").val(),
                 senha: generateHash($("#txt-senha").val()),
@@ -386,8 +422,9 @@ export default class FormularioCliente extends Component{
             };
             sessionStorage.setItem("endereco", JSON.stringify(endereco));
             sessionStorage.setItem("cliente", JSON.stringify(cliente));
-            browserHistory.push("/cadastro/confirmacao");
+            // browserHistory.push("/cadastro/confirmacao");
         }else{
+            alert(this.state.erros);
             moveToError();
         }
     }
