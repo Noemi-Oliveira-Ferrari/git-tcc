@@ -491,8 +491,8 @@ public class EditarActivity extends AppCompatActivity {
         etEmail.setText(profissional.getEmail());
         etCep.setText(profissional.getEndereco().getCep());
         etCidade.setText(profissional.getEndereco().getCidade().getCidade());
-        etSenha.setText(profissional.getSenha());
-        etSenhaConfirmacao.setText(profissional.getSenha());
+        //etSenha.setText(profissional.getSenha());
+        //etSenhaConfirmacao.setText(profissional.getSenha());
         etLogradouro.setText(profissional.getEndereco().getLogradouro());
         etUf.setText(profissional.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
         etBairro.setText(profissional.getEndereco().getBairro());

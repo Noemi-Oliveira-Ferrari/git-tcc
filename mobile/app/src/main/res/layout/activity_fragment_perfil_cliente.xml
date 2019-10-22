@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/cv_perfil"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/colorTest2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:civ_border_color="#E8DFDFDF"
+        app:civ_border_width="1dp"
+        android:src="@drawable/ic_busca"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cv_perfil" />
+
+    <TextView
+        android:id="@+id/tv_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="PEDRO DE ALMEIDA SANTOS"
+        android:textSize="22dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+
+    <View
+        android:id="@+id/cv_inf"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/borda_view"
+        app:layout_constraintCircleRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nome" />
+
+    <TextView
+        android:id="@+id/tv_serv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="EDITAR"
+        app:layout_constraintStart_toStartOf="@+id/cv_inf"
+        app:layout_constraintTop_toTopOf="@+id/cv_inf" />
+
+    <TextView
+        android:id="@+id/tv_avaliacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:text="SALVAR"
+        app:layout_constraintEnd_toStartOf="@+id/tv_config"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toEndOf="@+id/tv_serv"
+        app:layout_constraintTop_toTopOf="@+id/cv_inf" />
+
+    <TextView
+        android:id="@+id/tv_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:text="AJUDA"
+        app:layout_constraintEnd_toEndOf="@+id/cv_inf"
+        app:layout_constraintTop_toTopOf="@+id/cv_inf" />
+
+    <ImageButton
+        android:id="@+id/tv_qtd_serv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="18dp"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:src="@drawable/ic_editar"
+        android:background="#00FFFFFF"
+        app:layout_constraintStart_toStartOf="@+id/cv_inf"
+        app:layout_constraintTop_toBottomOf="@+id/tv_serv" />
+
+    <ImageButton
+        android:id="@+id/tv_porc_av"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="18dp"
+        android:background="#00FFFFFF"
+        android:textSize="26dp"
+        android:src="@drawable/ic_salvar"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tv_qtd_serv"
+        app:layout_constraintTop_toBottomOf="@+id/tv_avaliacoes" />
+
+    <ImageButton
+        android:id="@+id/ic_config"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="28dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/cv_inf"
+        app:layout_constraintTop_toBottomOf="@+id/tv_config"
+        app:srcCompat="@drawable/ic_ajuda" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_edit_pessoais"
+                    android:layout_width="360dp"
+                    android:layout_height="400dp"
+                    app:cardCornerRadius="20dp"
+                    android:layout_marginTop="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.514"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_titulo_pessoais"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Meus dados"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_editar_dados"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="38dp"
+                        android:text="Editar"
+                        android:textAlignment="center" />
+
+                    <View
+                        android:id="@+id/v_pessoais"
+                        android:layout_width="286dp"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@color/colorTest2"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <EditText
+                            android:id="@+id/et_nome_pro"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="60dp"
+                            android:layout_marginEnd="36dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:maxLength="100"
+                            android:text="Pedro de Almeida Santos"
+                            android:textColor="#E88D8D8D"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/et_nasc_pro"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="36dp"
+                            android:layout_marginBottom="10dp"
+                            android:ems="10"
+                            android:inputType="date"
+                            android:text="03/10/2000"
+                            android:textColor="#E88D8D8D"
+                            app:layout_constraintBottom_toTopOf="@+id/et_cpf_pro"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/et_nome_pro" />
+
+                        <EditText
+                            android:id="@+id/et_cpf_pro"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="36dp"
+                            android:layout_marginBottom="10dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:text="503.356.118.93"
+                            android:textColor="#E88D8D8D"
+                            app:layout_constraintBottom_toTopOf="@+id/et_email_pro"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/et_nasc_pro" />
+
+                        <EditText
+                            android:id="@+id/et_email_pro"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="36dp"
+                            android:layout_marginBottom="10dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:maxLength="100"
+                            android:text="pedroalmeidasantos.00@gmail.com"
+                            android:textColor="#E88D8D8D"
+                            app:layout_constraintBottom_toTopOf="@+id/et_senha_pro"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/et_cpf_pro" />
+
+                        <EditText
+                            android:id="@+id/et_senha_pro"
+                            android:layout_width="140dp"
+                            android:layout_height="60dp"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="10dp"
+                            android:ems="10"
+                            android:hint="*******"
+                            android:inputType="textPassword"
+                            android:maxLength="50"
+                            app:layout_constraintEnd_toStartOf="@+id/et_confirm_pro"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/et_email_pro" />
+
+                        <EditText
+                            android:id="@+id/et_confirm_pro"
+                            android:layout_width="140dp"
+                            android:layout_height="60dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="35dp"
+                            android:ems="10"
+                            android:hint="******"
+                            android:inputType="textPassword"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/et_senha_pro"
+                            app:layout_constraintTop_toBottomOf="@+id/et_email_pro" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cv_edit_local"
+                    android:layout_width="360dp"
+                    android:layout_height="375dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cv_edit_pessoais">
+
+                    <TextView
+                        android:id="@+id/tv_titulpo_local"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginTop="15dp"
+                        android:text="Meu endereço"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
+
+
+                    <TextView
+                        android:id="@+id/tv_editar_local"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="38dp"
+                        android:text="Editar"
+                        android:textAlignment="center" />
+
+                    <View
+                        android:id="@+id/v_local"
+                        android:layout_width="286dp"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="36dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@color/colorTest2"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <Button
+                            android:id="@+id/btn_gerar_cep"
+                            android:layout_width="97dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginTop="60dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="#00FFFFFF"
+                            android:text="Verificar \n CEP"
+                            android:textColor="@color/colorGray"
+                            android:textSize="13dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <EditText
+                            android:id="@+id/et_uf_pro"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="36dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:text="SP"
+                            android:textColor="#E88D8D8D"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.119"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/et_cidade_pro" />
+
+                        <EditText
+                            android:id="@+id/et_logradouro_pro"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="36dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:text="Rua Júpiter"
+                            android:textColor="#E88D8D8D"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/et_cep_pro" />
+
+                        <EditText
+                            android:id="@+id/et_bairro_pro"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="36dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:text="Vila Eunice"
+                            android:textColor="#E88D8D8D"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/et_logradouro_pro" />
+
+                        <EditText
+                            android:id="@+id/et_cidade_pro"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginEnd="36dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:text="Jandira"
+                            android:textColor="#E88D8D8D"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/et_bairro_pro" />
+
+
+                        <EditText
+                            android:id="@+id/et_cep_pro"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="36dp"
+                            android:layout_marginTop="60dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:maxLength="9"
+                            android:text="06602-170"
+                            android:textColor="#E88D8D8D"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

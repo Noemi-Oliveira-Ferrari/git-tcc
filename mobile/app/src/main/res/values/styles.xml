@@ -17,5 +17,8 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="AppCliente" parent="AppTheme">
+        <item name="colorPrimary">@color/colorTest2</item>
+    </style>
 
 </resources>

@@ -48,6 +48,17 @@ public class Cliente {
 
 	private String criadoEm;
 	private String atualizadoEm;
+	
+	@Size(min = 4, max = 150)
+	private String foto;
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
 	public Long getIdCliente() {
 		return idCliente;
@@ -131,9 +142,10 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", cpf="
-				+ cpf + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco + ", tipoUsuario="
-				+ tipoUsuario + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf + ", senha="
+				+ senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco + ", tipoUsuario=" + tipoUsuario
+				+ ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + ", foto=" + foto + "]";
 	}
 
+	
 }

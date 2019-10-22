@@ -148,7 +148,9 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
                                 response.body();
-                                Toast.makeText(MainActivity.this, "CLIENTE LOGADO", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MainActivity.this, MenuClienteActivity.class);
+                                intent.putExtra("cliente", response.body());
+                                startActivity(intent);
                             }
 
                             @Override
