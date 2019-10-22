@@ -55,6 +55,8 @@
 		font-family: 'Lexend Deca';
 		margin-bottom: 51px;
 		margin-top: 15px;
+        color: #84848D;     
+
 	}
 
 	.caixa-informacoes-basicas-servicos
@@ -63,7 +65,9 @@
 		height: 145px;
 		/* background-color: chocolate; */
 		margin: auto;
-		color: #47525E;
+		/* color: #47525E; */
+        color: #84848D;     
+
 		font-family: 'Lexend Deca';
 		font-size: 1.5em;
 		letter-spacing: 2px;
@@ -113,13 +117,14 @@
 	{
 		width: 635px;
 		height: 690px;
-		background-color: rgb(235, 235, 235);
+		background-color:rgb(255, 255, 255);
 		float: left;
 		border-radius: 10px;
 		margin-right: 20px;
 		padding-top: 50px;
 		box-sizing: border-box;
-		overflow: auto;
+		overflow-y:auto;
+		overflow-x: hidden;
 	}
 
 	.text-dados
@@ -129,7 +134,8 @@
 		font-family: 'Lexend Deca';
 		padding-left: 56px;
 		box-sizing: border-box;
-		color: #47525E;
+        color: #84848D;     
+		
 		/* background-color: antiquewhite;*/
 	}
 
@@ -138,18 +144,19 @@
 		width: 520px;
 		min-height: 270px;
 		height: auto;
-        background-color: rgba(194, 194, 194, 0.43);
+		background-color:rgba(132, 132, 141, 0.205);
 		margin: auto;
 		border-radius: 10px;
 		margin-bottom: 40px;
 		overflow-y: auto;
+		overflow-x: hidden;
 	}
 
 	.caixa-servico-pendente
 	{
 		width: 520px;
 		height: 275px;
-		background-color: rgba(194, 194, 194, 0.43);
+		background-color:rgba(132, 132, 141, 0.205);
 		border-radius: 8px;
 		padding-top: 12px;
 		box-sizing: border-box;
@@ -178,7 +185,7 @@
 	{
 		text-align: justify;
 		font-family: 'Lexend Deca';
-		color: #47525E;
+		color: #84848D;
 		box-sizing: border-box;
 		font-size: 1.1em;
 		display: flex;
@@ -233,7 +240,7 @@
 	{
 		width: 635px;
 		height: 690px;
-        background-color: rgb(235, 235, 235);
+        background-color: rgb(255, 255, 255);
         /* background-color: red; */
 		float: left;
 		border-radius: 8px;
@@ -312,7 +319,7 @@
 		padding-right: 30px;
 		padding-top: 8px;
 		text-align: justify;
-		color: rgb(77, 77, 77);
+		color:#84848D;
 	}
 
 	.caixa-btn
