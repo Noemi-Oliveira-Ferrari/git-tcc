@@ -26,7 +26,7 @@ public class ProfissionalDTO {
 	@NotNull
 	@Size(min = 10, max = 255)
 	private String email;
-	@NotNull
+
 	@Size(min = 4, max = 150)
 	private String foto;
 
@@ -60,7 +60,7 @@ public class ProfissionalDTO {
 
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "tbl_tipo_usuario")
+	@JoinColumn(name = "idTipoUsuario")
 	private TipoUsuario tipoUsuario;
 
 	private String criadoEm;

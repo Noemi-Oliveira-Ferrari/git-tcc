@@ -86,7 +86,8 @@ public class ClienteResource {
 		
 		BeanUtils.copyProperties(cliente, clienteSalvo, "idCliente", "criadoEm", "atualizadoEm");
 
-		clienteRepository.save(cliente);
+		clienteRepository.save(clienteSalvo);
+		
 		return ResponseEntity.ok(clienteSalvo);
 	}
 

@@ -145,7 +145,8 @@ public class ProfissionalResource {
 		
 		BeanUtils.copyProperties(profissional, proSalvo, "idProfissional", "criadoEm", "atualizadoEm");
 
-		proRepository.save(profissional);
+		proRepository.save(proSalvo);
+		
 		return ResponseEntity.ok(proSalvo);
 	}
 	
