@@ -5,14 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Confirmacao;
@@ -30,6 +30,7 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
     private TextView tvTimer;
     int cont = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
         tvTimer = findViewById(R.id.tv_timer);
 
 
-
+        etCodigo.setText("1234");
 
         Intent intent = getIntent();
         if(intent.getSerializableExtra("dados_pessoais") != null){

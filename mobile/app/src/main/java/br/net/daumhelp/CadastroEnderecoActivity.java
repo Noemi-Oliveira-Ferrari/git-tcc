@@ -2,12 +2,13 @@ package br.net.daumhelp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.recursos.Mascara;
@@ -16,7 +17,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CadastroEnderecoActivity extends AppCompatActivity{
+public class CadastroEnderecoActivity extends AppCompatActivity {
 
     private Button btnProximo;
     private Button btnVoltar;
@@ -44,12 +45,14 @@ public class CadastroEnderecoActivity extends AppCompatActivity{
         etCidade = findViewById(R.id.et_cidade);
         btnCep = findViewById(R.id.btn_gerar_cep);
 
-        // btnProximo.setVisibility(View.INVISIBLE);
+        btnProximo.setVisibility(View.INVISIBLE);
 
         etUf.setEnabled(false);
         etLogradouro.setEnabled(false);
         etBairro.setEnabled(false);
         etCidade.setEnabled(false);
+
+
 
         Mascara maskCep = new Mascara("#####-###", etCep);
         etCep.addTextChangedListener(maskCep);
@@ -67,21 +70,28 @@ public class CadastroEnderecoActivity extends AppCompatActivity{
                             @Override
                             public void onResponse(Call<Endereco> call, Response<Endereco> response) {
 
-                                btnProximo.setVisibility(View.VISIBLE);
 
-                                carregarEndereco(response.body());
-
+                                if(response.code() == 404){
+                                    etCep.setError("CPF inválido");
+                                }else{
+                                    carregarEndereco(response.body());
+                                    btnProximo.setVisibility(View.VISIBLE);
+                                }
                             }
 
                             @Override
                             public void onFailure(Call<Endereco> call, Throwable t) {
-                                Log.i("Retrofit Endereço", t.getMessage());
+
+                                Log.i("Retrofit Endereço" + call, t.getMessage());
+                                etCep.setError("CEP inválido");
                             }
 
                         });
+                    }else{
+                        etCep.setError("CEP inválido");
                     }
                 }else{
-
+                    etCep.setError("CEP inválido");
                 }
             }
         });
@@ -166,7 +176,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity{
             etCep.setError("Insira o seu CEP");
             validado = false;
         }
-        if(etCep.getText().toString().length()<9){
+        if(etCep.getText().toString().length() < 9){
             etCep.setError("CEP inválido");
             validado = false;
         }

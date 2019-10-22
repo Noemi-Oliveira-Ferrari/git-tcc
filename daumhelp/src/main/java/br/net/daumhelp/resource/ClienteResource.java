@@ -73,6 +73,13 @@ public class ClienteResource {
 		 
 		 return ResponseEntity.created(uri).body(cliente);
 	}
+	
+
+	@PostMapping("/login")
+	public Cliente buscarUsuario(@RequestBody Cliente cliente) {
+		return clienteRepository.findUserLogin(cliente.getEmail(), cliente.getSenha());
+	}
+	
 
 	@GetMapping
 	public List<ClienteDTO> getClientes(){
@@ -96,7 +103,8 @@ public class ClienteResource {
 		
 		BeanUtils.copyProperties(cliente, clienteSalvo, "idCliente", "criadoEm", "atualizadoEm");
 
-		clienteRepository.save(cliente);
+		clienteRepository.save(clienteSalvo);
+		
 		return ResponseEntity.ok(clienteSalvo);
 	}
 

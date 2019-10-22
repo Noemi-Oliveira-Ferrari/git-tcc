@@ -41,15 +41,15 @@ public class Profissional implements Serializable {
     @JsonAlias("subcategoria")
     private Subcategoria subcategoria;
 
-    @JsonAlias("idTipoUsuario")
-    private int idTipoUsuario;
+    @JsonAlias("tipoUsuario")
+    private TipoUsuario tipoUsuario;
 
-    public int getIdTipoUsuario() {
-        return idTipoUsuario;
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
     }
 
-    public void setIdTipoUsuario(int idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
+    public void setTipoUsuario(TipoUsuario TipoUsuario) {
+        this.tipoUsuario = TipoUsuario;
     }
 
     public int getIdProfissional() {

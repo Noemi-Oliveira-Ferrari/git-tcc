@@ -1,6 +1,8 @@
 package br.net.daumhelp.service;
 
+import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Login;
+import br.net.daumhelp.model.Profissional;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -11,15 +13,12 @@ import retrofit2.http.Path;
 
 public interface LoginService {
 
-    @FormUrlEncoded
     @POST("/profissionais/login")
-    Call<Login> buscarPro(@Field("email") String email ,
-                              @Field("senha") String senha);
+    Call<Profissional> buscarPro(@Body Profissional profissional);
 
 
-    @FormUrlEncoded
+
     @POST("/clientes/login")
-    Call<Login> buscarCli(@Field("email") String email ,
-                              @Field("senha") String senha);
+    Call<Cliente> buscarCli(@Body Cliente cliente);
     
 }

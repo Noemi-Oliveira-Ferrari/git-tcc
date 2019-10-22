@@ -15,7 +15,7 @@ public class TipoUsuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idTipoUsuario;
 	@NotNull
-	private Character tipoUsuario;
+	private Character tipoDeUsuario;
 
 	public Long getIdTipoUsuario() {
 		return idTipoUsuario;
@@ -25,12 +25,17 @@ public class TipoUsuario {
 		this.idTipoUsuario = idTipoUsuario;
 	}
 
-	public Character getTipoUsuario() {
-		return tipoUsuario;
+	public Character getTipoDeUsuario() {
+		return tipoDeUsuario;
 	}
 
-	public void setTipoUsuario(Character tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
+	public void setTipoDeUsuario(Character tipoDeUsuario) {
+		this.tipoDeUsuario = tipoDeUsuario;
+	}
+
+	@Override
+	public String toString() {
+		return "TipoUsuario [idTipoUsuario=" + idTipoUsuario + ", tipoUsuario=" + tipoDeUsuario + "]";
 	}
 
 }

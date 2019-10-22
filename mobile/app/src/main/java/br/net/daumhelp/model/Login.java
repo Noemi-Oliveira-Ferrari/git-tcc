@@ -3,8 +3,10 @@ package br.net.daumhelp.model;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Login {
+public class Login implements Serializable {
 
     @JsonAlias("email")
     private String email;

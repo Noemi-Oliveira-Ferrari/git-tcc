@@ -54,7 +54,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/pro" />
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/cv_pro"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -102,9 +102,9 @@
             android:layout_marginTop="130dp"
             app:srcCompat="@drawable/ic_next" />
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/cv_cliente"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -150,7 +150,7 @@
             android:layout_marginTop="130dp"
             app:srcCompat="@drawable/ic_next" />
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
 
     <ImageView
@@ -162,7 +162,7 @@
         android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cv_pro"
-        app:srcCompat="@drawable/user" />
+        app:srcCompat="@drawable/cli" />
 
     <TextView
         android:id="@+id/textView4"

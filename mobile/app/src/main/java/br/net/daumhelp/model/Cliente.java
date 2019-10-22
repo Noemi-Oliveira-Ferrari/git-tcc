@@ -3,8 +3,10 @@ package br.net.daumhelp.model;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Cliente {
+public class Cliente implements Serializable {
 
     @JsonAlias("idCliente")
     private int idCliente;
@@ -31,14 +33,14 @@ public class Cliente {
     private Endereco endereco;
 
     @JsonAlias("idTipoUsuario")
-    private int idTipoUsuario;
+    private TipoUsuario tipoUsuario;
 
-    public int getIdTipoUsuario() {
-        return idTipoUsuario;
+    public TipoUsuario getTipoUsuario() {
+        return tipoUsuario;
     }
 
-    public void setIdTipoUsuario(int idTipoUsuario) {
-        this.idTipoUsuario = idTipoUsuario;
+    public void setTipoUsuario(TipoUsuario idTipoUsuario) {
+        this.tipoUsuario = idTipoUsuario;
     }
 
     public int getIdCliente() {

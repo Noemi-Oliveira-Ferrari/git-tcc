@@ -1,7 +1,9 @@
 package br.net.daumhelp.model;
 
 
-public class Categoria {
+import java.io.Serializable;
+
+public class Categoria implements Serializable {
 
     public Long idCategoria;
 

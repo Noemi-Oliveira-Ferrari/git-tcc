@@ -50,6 +50,12 @@ public class ProfissionalResource {
 		}
 	}
 
+
+	@PostMapping("/login")
+	public Profissional buscarUsuario(@RequestBody Profissional profissional) {
+		return proRepository.findUserLogin(profissional.getEmail(), profissional.getSenha());
+	}
+	
 	@GetMapping
 	public List<ProfissionalDTO> getPros(){
 		return proDTORepository.findAll();
@@ -142,7 +148,8 @@ public class ProfissionalResource {
 		
 		BeanUtils.copyProperties(profissional, proSalvo, "idProfissional", "criadoEm", "atualizadoEm");
 
-		proRepository.save(profissional);
+		proRepository.save(proSalvo);
+		
 		return ResponseEntity.ok(proSalvo);
 	}
 	

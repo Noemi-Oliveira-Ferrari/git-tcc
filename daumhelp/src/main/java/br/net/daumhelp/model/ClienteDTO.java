@@ -26,7 +26,7 @@ public class ClienteDTO {
 	@NotNull
 	@Size(min = 10, max = 100)
 	private String email;
-
+	
 	@Size(min = 11, max = 20)
 	private String cpf;
 
@@ -75,7 +75,10 @@ public class ClienteDTO {
 		this.email = email;
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/card-37/apiupdtpro
 	public String getCpf() {
 		return cpf;
 	}
@@ -134,8 +137,8 @@ public class ClienteDTO {
 
 	@Override
 	public String toString() {
-		return "ClienteDTO [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email
-				+ ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco
+		return "ClienteDTO [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf 
+				+ ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco
 				+ ", tipoUsuario=" + tipoUsuario + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
 

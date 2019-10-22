@@ -25,7 +25,6 @@ public class Cliente {
 	@Size(min = 10, max = 255)
 	private String email;
 
-
 	@Size(min = 11, max = 20)
 	private String cpf;
 
@@ -74,7 +73,10 @@ public class Cliente {
 		this.email = email;
 	}
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/card-37/apiupdtpro
 	public String getCpf() {
 		return cpf;
 	}
