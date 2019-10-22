@@ -47,7 +47,7 @@
 	.caixa-perfil
 	{
 		width: 100%;
-		height: 600px;
+		height: 550px;
 		margin: auto;
 		background-color: rgb(255, 255, 255);
 		font-family: 'Lexend Deca';
@@ -57,12 +57,14 @@
 		margin-bottom: 50px;
 		border-radius: 10px;
 		background-image: url(../img/fundo03.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
 	}
 
 	.nome-cliente
 	{
 		width: inherit;
-		height: 100px;
+		height: 50px;
 		/* background-color: violet; */
 		font-family: 'Lexend Deca';
 		/* margin-bottom: 51px; */
@@ -376,16 +378,16 @@
 		background-color: #cce5e9;
 	}
 
-	.caixa-comentarios
+	.caixa-comentarios-perfil
 	{
-		width: 480px;
+		width: 450px;
 		height: 500px;
 		background-color: rgb(255, 255, 255);
 		float: left;
-		border-radius: 8px;
+		border-radius:10px;
 		padding-top: 20px;
 		box-sizing: border-box;
-		margin-left: 30px;
+		margin-left: 60px;
         color: #84848D;     
 
 	}
@@ -394,32 +396,33 @@
 	{
 		text-align: center;
 		font-family: 'Lexend Deca';
-		/* color: #0000005d; */
         color: #84848D;     
-
 		font-size: 28px;
 		margin-bottom: 35px;
 	}
 
 	.caixa-comentario-usuario
 	{
-		width: 430px;
-		height: 170px;
-		background-color: rgba(194, 194, 194, 0.43);
+		width: 400px;
+		height: 200px;
+		/* background-color: rgba(194, 194, 194, 0.43); */
+		/* background-color: rgb(0, 225, 255); */
+		background-color: #cce5e9;
 		margin: auto;
 		border-radius: 10px;
 		margin-bottom: 20px;
 	}
 
-	.usuario
+	.usuario-perfil
 	{
-		width: 130px;
+		width: 150px;
 		height: inherit;
-		background-color: transparent;
+		background-color: #cce5e9;
 		float: left;
 		border-radius: 10px 0px 0px 10px;
 		padding-top: 15px;
 		box-sizing: border-box;
+		border-right: white 1px solid;
 	}
 
 	.circulo-usuario
@@ -427,46 +430,48 @@
 		width: 50px;
 		height: 50px;
 		border-radius: 50%;
-		background-color: #ffffff;
+		background-color: #ffeeee;
 		margin: auto;
-		margin-top: 5px;
+		margin-top: 30px;
+
 	}
 
 	.nome-usuario
 	{
+		width: inherit;
+		height: 50px;
 		text-align: center;
-		margin-bottom: 30px;
 		box-sizing: border-box;
 		font-size: 20px;
 		font-family: 'Lexend Deca';
-		padding-top: 10px;
-		box-sizing: border-box;
+		/* background-color: purple; */
 	}
 
 	.dados-usuario
 	{
-		width: 300px;
+		width: 250px;
 		height: inherit;
-		background-color: transparent;
+		/* background-color: pink; */
 		float: left;
+		background-color: #cce5e9;
+		border-radius: 10px;
 	}
 
 	.titulo-comentario
 	{
-		box-sizing: border-box;
-		padding-left: 15px;
+		width: inherit;
+		height: 50px;
+		/* background-color: blue; */
 		text-align: left;
-		margin-top: 15px;
 		color: #57BC90;
+		margin: 0;
 	}
 
-	.caixa-star
+	.caixa-star-perfil
 	{
-		width: 190px;
-		height: 25px;
+		width: inherit;
+		height: 50px;
 		/* background-color:#969FAA; */
-		margin-left: 15px;
-		margin-bottom: 5px;
 	}
 
 	/*----- Avaliação/Estrelas -----*/
@@ -485,15 +490,17 @@
 		/* color: #FC0; */
 	}
 
-	.texto-comentario
+	.texto-comentario-perfil
 	{
+		width: inherit;
+		height: 100px;
+		/* background-color: darkcyan; */
 		font-family: 'Lexend Deca';
 		font-size: 15px;
 		box-sizing: border-box;
-		padding-left: 15px;
-		padding-right: 30px;
-		text-align: justify;
-		color: rgb(77, 77, 77);
+		text-align: center;
+		color: #84848D;  
+		padding: 20px; 		
 	}
 	
 }
