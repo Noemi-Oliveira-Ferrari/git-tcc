@@ -24,4 +24,5 @@ public class TipoUsuarioResource {
 		return tipoRepository.findAll();
 	}
 	
+	
 }

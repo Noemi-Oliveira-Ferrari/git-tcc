@@ -9,7 +9,7 @@ import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          validarSenha, validarString, validarVazios, retirarSimbolos,
          formataData, limpaValor, validarIdade} from '../js/validar';
 
-class DadosPessoaisCliente extends Component{
+export class DadosPessoaisCliente extends Component{
 
     constructor(){
         super();
@@ -29,6 +29,9 @@ class DadosPessoaisCliente extends Component{
         this.setSenha = this.setSenha.bind(this);
         this.setConfirmSenha = this.setConfirmSenha.bind(this);
         this.setCep = this.setCep.bind(this);
+
+        this.getCpf = this.getCpf.bind(this);
+        this.getEmail = this.getEmail.bind(this);
     }
 
     componentDidMount(){
@@ -36,8 +39,6 @@ class DadosPessoaisCliente extends Component{
         let endereco = JSON.parse(sessionStorage.getItem("endereco"));
 
         if(cliente !== null){
-            this.setState({cliente: cliente});
-
             this.setState({nome: cliente.nome});
             this.setState({dataNasc: formataData(cliente.dataNasc, "-", "/")});
             this.setState({cpf: cliente.cpf});
@@ -48,12 +49,9 @@ class DadosPessoaisCliente extends Component{
             this.setState({cep: endereco.cep});
             this.getEndereco(endereco.cep);
             this.setState({numero: endereco.numero});
+            this.setState({idCidade: endereco.cidade.idCidade});
         }
-
-        // setTimeout(()=>{
-        // }, 1000);
-
-    }
+    } 
 
     setNome(event){
         this.setState({nome: event.target.value});
@@ -75,12 +73,50 @@ class DadosPessoaisCliente extends Component{
         this.setState({cpf: event.target.value});
         let cpf = event.target.value;
         validarCpfCliente(cpf);
-        console.log(cpf);
+        
+        if(!cpf.includes("_") && cpf.length === 14){
+            this.getCpf(retirarSimbolos(cpf));
+        }
     }
     
+    getCpf(cpf){
+        axios.get(`http://localhost:8080/clientes/verificar/cpf/${cpf}`)
+        .then((response)=>{
+            let jsonCliente = response.data;
+            console.log(jsonCliente);
+            if(jsonCliente !== null){
+                withError($("#txt-cpf"));
+                alert("CPF ja cadastrado");
+                this.setState({cpf: ""});
+            }
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+        .onload = console.log("loading cpf");
+    }
+
     setEmail(event){
         this.setState({email: event.target.value});
+        this.getEmail(event.target.value);
         validarEmail(event.target);
+    }
+
+    getEmail(email){
+        axios.get(`http://localhost:8080/clientes/verificar/email/${email}`)
+        .then((response)=>{
+            let jsonPro = response.data;
+            console.log(jsonPro);
+            if(jsonPro !== null){
+                withError($("#txt-email"));
+                alert("E-mail ja cadastrado");
+                this.setState({email: ""});
+            }
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+        .onload = console.log("loading email");
     }
 
 
@@ -105,7 +141,6 @@ class DadosPessoaisCliente extends Component{
     }
 
     getEndereco = (cep) =>{
-        // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
         axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
         .then((response)=>{
             let jsonEndereco = response.data;
@@ -118,11 +153,11 @@ class DadosPessoaisCliente extends Component{
                 this.setState({uf: jsonEndereco.cidade.microrregiao.uf.uf});
                 this.setState({idCidade: jsonEndereco.cidade.idCidade});
 
-                $('#txt-cep').removeClass("erro");
-                $('#txt-logradouro').removeClass("erro");
-                $('#txt-cidade').removeClass("erro");
-                $('#txt-bairro').removeClass("erro");
-                $('#txt-uf').removeClass("erro");
+                withoutError($('#txt-cep'));
+                withoutError($('#txt-logradouro'));
+                withoutError($('#txt-cidade'));
+                withoutError($('#txt-bairro'));
+                withoutError($('#txt-uf'));
             }
         })
         .catch((error)=>{
@@ -293,7 +328,7 @@ class DadosPessoaisCliente extends Component{
                                 id="txt-cidade"
                                 type="text"
                                 name="txt_cidade"
-                                data={this.state.idCidade}
+                                data={this.state.idCidade || ""}
                                 valueInput={this.state.cidade || ""}
                                 readOnly
                                 
@@ -345,7 +380,7 @@ export default class FormularioCliente extends Component{
 
         if(!validarVazios(campos)){
             semErro = false;
-            erros.push("O Nome digitado é inválido!\n");
+            erros.push("Há campos não preenchidos!\n");
             console.log("validarVazios "+semErro);
         }
 
@@ -384,6 +419,7 @@ export default class FormularioCliente extends Component{
             console.log("validarConfirmacaoSenha "+semErro);
         }
         this.setState({erros: erros});
+        erros = [];
         return semErro;
     }
 
@@ -422,9 +458,11 @@ export default class FormularioCliente extends Component{
             };
             sessionStorage.setItem("endereco", JSON.stringify(endereco));
             sessionStorage.setItem("cliente", JSON.stringify(cliente));
-            // browserHistory.push("/cadastro/confirmacao");
+            browserHistory.push("/cadastro/confirmacao");
         }else{
-            alert(this.state.erros);
+            setTimeout(() => {
+                alert(this.state.erros);
+            }, 500);
             moveToError();
         }
     }

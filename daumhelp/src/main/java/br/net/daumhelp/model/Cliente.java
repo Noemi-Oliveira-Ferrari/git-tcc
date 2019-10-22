@@ -19,21 +19,21 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idCliente;
 	@NotNull
-	@Size(min = 3, max = 200)
+	@Size(min = 3, max = 200, message = "O nome não pode ter menos que 3 caractéres")
 	private String nome;
 	@NotNull
-	@Size(min = 10, max = 255)
+	@Size(min = 5, max = 255, message = "O e-mail digitado é pssui menos que 5 caractéres")
 	private String email;
 
-	@Size(min = 11, max = 20)
+	@Size(min = 11, max = 20, message = "CPF menor que 11 digitos")
 	private String cpf;
 
 	@NotNull
-	@Size(min = 8, max = 128)
+	@Size(min = 8, max = 128, message = "A senha deve conter pelo ao menos 8 caractéres")
 	private String senha;
 
 	@NotNull
-	@Size(min = 6, max = 20)
+	@Size(min = 6, max = 20, message = "Data digitado tem menos que 6 digitos")
 	private String dataNasc;
 
 	@NotNull
@@ -72,11 +72,7 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/card-37/apiupdtpro
+	
 	public String getCpf() {
 		return cpf;
 	}

@@ -13,6 +13,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ManyToAny;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tbl_profissional")
 public class Profissional {
@@ -21,27 +23,27 @@ public class Profissional {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProfissional;
 	@NotNull
-	@Size(min = 3, max = 200)
+	@Size(min = 3, max = 200, message = "O nome não pode ter menos que 3 caractéres")
 	private String nome;
 	@NotNull
-	@Size(min = 10, max = 255)
+	@Size(min = 5, max = 255, message = "O e-mail digitado é pssui menos que 5 caractéres")
 	private String email;
 
 	@Size(min = 4, max = 150)
 	private String foto;
 
-	@Size(min = 14, max = 20)
+	@Size(min = 11, max = 20, message = "CNPJ menor que 14 digitos")
 	private String cnpj;
- 
-	@Size(min = 11, max = 20)
+
+	@Size(min = 11, max = 20, message = "CPF menor que 11 digitos")
 	private String cpf;
 
 	@NotNull
-	@Size(min = 8, max = 200)
+	@Size(min = 8, max = 128, message = "A senha deve conter pelo ao menos 8 caractéres")
+	@JsonIgnore
 	private String senha;
-
 	@NotNull
-	@Size(min = 6, max = 20)
+	@Size(min = 6, max = 20, message = "Data digitado tem menos que 6 digitos")
 	private String dataNasc;
 
 	@NotNull

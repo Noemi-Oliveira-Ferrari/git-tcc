@@ -74,11 +74,20 @@ export const validarSenha = (input) =>{
     
     regras
     .is().min(8)
-    .is().max(100)
+    .is().max(150)
     .has().letters()
     .has().lowercase()
+    .has().uppercase()
     .has().digits()
-    .has().not().spaces();
+    .has().symbols()
+    .is().not().oneOf([""], null);
+    // regras
+    // .is().min(8)
+    // .is().max(100)
+    // .has().letters()
+    // .has().lowercase()
+    // .has().digits()
+    // .has().not().spaces();
 
     if(!regras.validate(input)){
         withError($('#txt-senha'));
@@ -92,13 +101,11 @@ export const validarString = (input) =>{
     let regras = new passwordValidator();
     // console.log(input);
     regras
-    .is().min(8)
+    .is().min(3)
     .is().max(150)
     .has().letters()
-    .has().lowercase()
-    .has().uppercase()
-    .has().digits()
-    .has().symbols()
+    .has().not().digits()
+    .has().not().symbols()
     .is().not().oneOf([""], null);
 
     if(regras.validate(input.value)){

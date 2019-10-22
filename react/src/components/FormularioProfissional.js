@@ -7,7 +7,7 @@ import {browserHistory} from 'react-router';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfPro, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
-         formataData, limpaValor} from '../js/validar';
+         formataData, limpaValor, validarIdade} from '../js/validar';
 
 class DadosPessoaisPro extends Component{
 
@@ -19,8 +19,8 @@ class DadosPessoaisPro extends Component{
             
             cep: "", logradouro: "", idCidade: "",
             bairro: "", cidade: "", uf: "", subcategoria: "",
-            enderecoPronto: false,
-            tipoPro: "rdo-pf", radioChecked: "rdo-pf"
+            tipoPro: "rdo-pf", radioChecked: "rdo-pf",
+            endereco: [], profissional: []
         }
            
         this.setNome = this.setNome.bind(this);
@@ -31,10 +31,39 @@ class DadosPessoaisPro extends Component{
         this.setCpfCnpj = this.setCpfCnpj.bind(this);
         this.setTipoPfPj = this.setTipoPfPj.bind(this);
         this.setData = this.setData.bind(this);
+        
+        this.getCpf = this.getCpf.bind(this);
+        this.getCnpj = this.getCnpj.bind(this);
+        this.getEmail = this.getEmail.bind(this);
     }
     
     componentDidMount(){
-        // console.clear();
+        let profissional = JSON.parse(sessionStorage.getItem("profissional"));
+        let endereco = JSON.parse(sessionStorage.getItem("endereco"));
+
+        if(profissional !== null){
+            this.setState({profissional: profissional});
+
+            this.setState({nome: profissional.nome});
+            this.setState({dataNasc: formataData(profissional.dataNasc, "-", "/")});
+
+            if(profissional.cpf === ""){
+                $("#rdo-pf").prop("checked", true);
+                this.setState({cpfCnpj: profissional.cpf});
+            }else{
+                $("#rdo-pj").prop("checked", true);
+                this.setState({cpfCnpj: profissional.cpf || profissional.cnpj});
+            }
+
+            this.setState({email: profissional.email});
+        }        
+        if(endereco !== null){
+            this.setState({endereco: endereco});
+            this.setState({cep: endereco.cep});
+            this.getEndereco(endereco.cep);
+            this.setState({numero: endereco.numero});
+            this.setState({idCidade: endereco.cidade.idCidade});
+        }
     }    
 
 
@@ -43,10 +72,51 @@ class DadosPessoaisPro extends Component{
         let cpfCnpj = event.target.value;
         if(this.state.radioChecked === "rdo-pf"){
             validarCpfPro(cpfCnpj);
+            if(!cpfCnpj.includes("_") && cpfCnpj.length === 14){
+                this.getCpf(retirarSimbolos(cpfCnpj));
+            }
         }else{
             validarCnpj(cpfCnpj);
+            if(!cpfCnpj.includes("_") && cpfCnpj.length === 18){
+                this.getCnpj(retirarSimbolos(cpfCnpj));
+            }
         }
     }
+    
+    getCpf(cpf){
+        axios.get(`http://localhost:8080/profissionais/verificar/cpf/${cpf}`)
+        .then((response)=>{
+            let jsonPro = response.data;
+            console.log(jsonPro);
+            if(jsonPro !== null){
+                withError($("#txt-cpfCnpj"));
+                alert("CPF ja cadastrado");
+                this.setState({cpfCnpj: ""});
+            }
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+        .onload = console.log("loading cpf");
+    }
+    getCnpj(cnpj){
+        axios.get(`http://localhost:8080/profissionais/cnpj/${cnpj}`)
+        .then((response)=>{
+            let jsonPro = response.data;
+            console.log(jsonPro);
+            if(jsonPro !== ""){
+                withError($("#txt-cpfCnpj"));
+                alert("CNPJ ja cadastrado");
+                this.setState({cpfCnpj: ""});
+            }
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+        .onload = console.log("loading cnpj");
+    }
+
+
 
     setNome(event){
         this.setState({nome: event.target.value});
@@ -55,14 +125,36 @@ class DadosPessoaisPro extends Component{
 
     setData(event){
         this.setState({dataNasc: event.target.value});
-        if(retirarSimbolos(event.target.value).length === 8){
-            console.log(formataData(event.target.value), "/", "-");
+        let data = event.target.value;
+
+        if(!data.includes("_") && validarIdade(event.target)){
+            withoutError($("#txt-dataNasc"));
+        }else{
+            withError($("#txt-dataNasc"));
         }
     }
 
     setEmail(event){
         this.setState({email: event.target.value});
+        this.getEmail(event.target.value);
         validarEmail(event.target);
+    }
+
+    getEmail(email){
+        axios.get(`http://localhost:8080/profissionais/verificar/email/${email}`)
+        .then((response)=>{
+            let jsonPro = response.data;
+            console.log(jsonPro);
+            if(jsonPro !== null){
+                withError($("#txt-email"));
+                alert("E-mail ja cadastrado");
+                this.setState({email: ""});
+            }
+        })
+        .catch((error)=>{
+            console.log(error);
+        })
+        .onload = console.log("loading email");
     }
 
     setCep(event){
@@ -86,11 +178,11 @@ class DadosPessoaisPro extends Component{
                 this.setState({uf: jsonEndereco.cidade.microrregiao.uf.uf});
                 this.setState({idCidade: jsonEndereco.cidade.idCidade});
 
-                $('#txt-cep').removeClass("erro");
-                $('#txt-logradouro').removeClass("erro");
-                $('#txt-cidade').removeClass("erro");
-                $('#txt-bairro').removeClass("erro");
-                $('#txt-uf').removeClass("erro");
+                withoutError($('#txt-cep'));
+                withoutError($('#txt-logradouro'));
+                withoutError($('#txt-cidade'));
+                withoutError($('#txt-bairro'));
+                withoutError($('#txt-uf'));
             }
         })
         .catch((error)=>{
@@ -100,11 +192,11 @@ class DadosPessoaisPro extends Component{
             this.setState({uf: ""});
             this.setState({idCidade: ""});
 
-            $('#txt-cep').addClass("erro");
-            $('#txt-logradouro').addClass("erro");
-            $('#txt-cidade').addClass("erro");
-            $('#txt-bairro').addClass("erro");
-            $('#txt-uf').addClass("erro");
+            withError($('#txt-cep'));
+            withError($('#txt-logradouro'));
+            withError($('#txt-cidade'));
+            withError($('#txt-bairro'));
+            withError($('#txt-uf'));
         })
         .onload = console.log("loading");
     }
@@ -176,6 +268,7 @@ class DadosPessoaisPro extends Component{
                                 classDivInput="caixa-nome"
                                 classInput="form-control form-input"
                                 onChange={this.setNome}
+                                valueInput={this.state.nome || ""}
                             />
 
                             <InputNumber
@@ -187,6 +280,7 @@ class DadosPessoaisPro extends Component{
                                 mascara="##/##/####"
                                 classInput="form-control form-input"
                                 onChange={this.setData}
+                                valueInput={this.state.dataNasc || ""}
                             />
                         
                         </div>
@@ -201,6 +295,7 @@ class DadosPessoaisPro extends Component{
                                 classInput="form-control form-input"
                                 onChange={this.setCpfCnpj}
                                 mascara={this.state.tipoPro === "rdo-pf" ? "###.###.###-##" : "##.###.###/####-##"}
+                                valueInput={this.state.cpfCnpj || ""}
                             />
 
                             <Inputs
@@ -212,6 +307,7 @@ class DadosPessoaisPro extends Component{
                                 name="txt_email"
                                 onChange={this.setEmail}
                                 classInput="form-control form-input"
+                                valueInput={this.state.email || ""}
                             />
 
                             
@@ -448,6 +544,9 @@ export default class FormularioProfissional extends Component{
     
     constructor(){
         super();
+        this.state = {
+            erros: []
+        }
         this.realizarCadastro = this.realizarCadastro.bind(this);   
         this.validarCampos = this.validarCampos.bind(this);  
     }
@@ -459,63 +558,60 @@ export default class FormularioProfissional extends Component{
         
         let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email], select");
         let semErro = true;
-        
-
-        // campos.forEach(campo =>{
-        //     if(campo.value === ""){
-        //         // console.log($(campo).attr("id").replace(/(txt)\-/g, ""));
-        //         withError($(campo).get(0));
-        //         semErro = false;
-        //     }else{
-        //         // console.log($(campo).attr("id").replace(/(txt)\-/g, ""));
-        //         withoutError($(campo).get(0));
-        //         semErro = true;
-        //     }
-        //     // console.log(semErro);
-        //     // if(!semErro){
-        //         return semErro;
-        //     // }
-        // });
-
+        let erros = [];
 
         if(!validarVazios(campos)){
             semErro = false;
+            erros.push("Há campos não preenchidos!\n");
             console.log("validarVazios "+semErro);
         }
 
         if(!validarString($('#txt-nome').get(0))){
             semErro = false;
+            erros.push("O Nome digitado é inválido!\n");
             console.log("validarString nome "+semErro);
         }
 
-        // console.log($('.caixa-cpfCnpj').text());
+        if(!validarIdade($('#txt-dataNasc').get(0))){
+            semErro = false;
+            erros.push("Para ser cadastrar é necessário ter no mínimo 18 anos!\n");
+            console.log("validarIdade "+semErro);
+        }
+
         if($('.caixa-cpfCnpj').text() === "CPF"){
             if(!validarCpfPro($('#txt-cpfCnpj').val())){
                 semErro = false;
+            erros.push("CPF Inválido\n");
                 console.log("validarCpfPro "+semErro);
             }
         }else{
             if(!validarCnpj($('#txt-cpfCnpj').val())){
                 semErro = false;
+                erros.push("CNPJ Inválido\n");
                 console.log("validarCnpj "+semErro);
             } 
         }
 
         if(!validarEmail($('#txt-email').get(0))){
             semErro = false;
+            erros.push("E-mail digitado não é válido\n");
             console.log("validarEmail "+semErro);
         }
 
         if(!validarSenha($('#txt-senha').val())){
             semErro = false;
+            erros.push("A senha deve ter ao menos\n-Letras maiúsculas e minúsculas\n-Um número\n-Um símbolo(@#$...)\n-Ter no mínimo 8 caractéres\n-Não pode conter espaços\n");
             console.log("validarSenha "+semErro);
         }
 
         if(!validarConfirmacaoSenha($('#txt-senha').get(0), $('#txt-confirmar-senha').get(0))){
             semErro = false;
+            erros.push("As senhas não correspondem!\n");
             console.log("validarConfirmacaoSenha "+semErro);
         }
         
+        this.setState({erros: erros});
+        erros = [];
         return semErro;
     }
 
@@ -570,6 +666,9 @@ export default class FormularioProfissional extends Component{
             sessionStorage.setItem("profissional", JSON.stringify(profissional));
             browserHistory.push("/profissional/cadastro/confirmacao");
         }else{
+            setTimeout(() => {
+                alert(this.state.erros);
+            }, 500);
             moveToError();
         }
     }

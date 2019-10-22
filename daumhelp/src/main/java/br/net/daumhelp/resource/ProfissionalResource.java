@@ -25,6 +25,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.net.daumhelp.model.Confirmacao;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.ProfissionalDTO;
+import br.net.daumhelp.repository.ClienteDTORepository;
 import br.net.daumhelp.repository.ProfissionalDTORepository;
 import br.net.daumhelp.repository.ProfissionalRepository;
 import br.net.daumhelp.utils.HandleEmails;
@@ -38,6 +39,9 @@ public class ProfissionalResource {
 	private ProfissionalRepository proRepository;
 	@Autowired
 	private ProfissionalDTORepository proDTORepository;
+	@Autowired
+	private ClienteDTORepository clienteDTORepository;
+	
 
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/confirmacao")
@@ -47,6 +51,36 @@ public class ProfissionalResource {
 			return new ResponseEntity<Confirmacao>(HttpStatus.OK);
 		}else{
 			return new ResponseEntity<Confirmacao>(HttpStatus.REQUEST_TIMEOUT);
+		}
+	}
+
+	@GetMapping("/verificar/cpf/{cpf}")
+	public Optional<?> buscarCpfExistente(@Validated @PathVariable String cpf) {
+		if(clienteDTORepository.verificarCpf(cpf) == Optional.empty()) {
+			if(proDTORepository.verificarCpf(cpf) != Optional.empty()) {
+				Optional<?> optionalProDTO = proDTORepository.verificarCpf(cpf);
+				return optionalProDTO;
+			}else {
+				return Optional.empty();
+			}
+		}else {
+			Optional<?> optionalClienteDTO = clienteDTORepository.verificarCpf(cpf);
+			return optionalClienteDTO;	
+		}
+	}
+	
+	@GetMapping("/verificar/email/{email}")
+	public Optional<?> buscarEmailExistente(@Validated @PathVariable String email) {
+		if(clienteDTORepository.verificarEmail(email) == Optional.empty()) {
+			if(proDTORepository.verificarEmail(email) != Optional.empty()) {
+				Optional<?> optionalProDTO = proDTORepository.verificarEmail(email);
+				return optionalProDTO;
+			}else {
+				return Optional.empty();
+			}
+		}else {
+			Optional<?> optionalClienteDTO = clienteDTORepository.verificarEmail(email);
+			return optionalClienteDTO;	
 		}
 	}
 
