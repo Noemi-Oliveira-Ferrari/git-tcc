@@ -58,13 +58,10 @@ export const validarCpfCliente = (cpf) =>{
 }
 
 export const validarEmail = (email) =>{
-    console.log(EmailValidator.validate(email.value));
 
     if(EmailValidator.validate(email.value)){
-        console.log(".");
         return withoutError($('#txt-email'));
     }else{
-        console.log("`");
         return withError($('#txt-email'));
     }
 }

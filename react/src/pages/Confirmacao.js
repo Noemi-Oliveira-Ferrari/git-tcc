@@ -10,7 +10,7 @@ import {browserHistory} from 'react-router';
 
 import '../css/confirmacao.css';
 import ModalSucesso from '../components/ModalSucesso';
-import ModalLoad from '../components/ModalLoad';
+import {ModalLoadFun} from '../components/ModaisLoad';
 
 function Confirmacao() {
 
@@ -229,7 +229,7 @@ function Confirmacao() {
                                 <ModalSucesso
                                     show={modalShow}
                                     onHide={() => setModalShow(false)}/>
-                                <ModalLoad
+                                <ModalLoadFun
                                     show={initLoad}
                                     // onHide={() => setInitLoad(false)}
                                     />
@@ -240,7 +240,7 @@ function Confirmacao() {
                     </div>
                 {/* </form> */}
                 <div className="links-email center">
-                    <button onClick={() => getUsuario()} className="link-reenviar-email "> Reenviar E-mail? </button>
+                    <button onClick={() => getUsuario()} className="link-reenviar-email "> Reenviar E-mail </button>
                     <button onClick={()=>{browserHistory.push(profissional === null ? "/cliente/cadastro" : "/profissional/cadastro")}} className="link-alterar-email "> Alterar E-mail</button>
                 </div>
             </div>

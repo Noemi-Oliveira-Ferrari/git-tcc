@@ -61,6 +61,8 @@ export class Inputs extends Component {
                     // readOnly={this.props.readOnly}
                     maskChar=""
                     checked={this.props.radioChecked}
+                    onBlur={this.props.onBlur}
+                    ref={this.props.ref}
                 />
             </div>
         );
