@@ -164,8 +164,6 @@ function Confirmacao() {
             usuario = profissional;
         }
         console.log(tipoCadastro);
-        
-        // $(#)
 
         axios({
             method: 'POST',
@@ -184,7 +182,7 @@ function Confirmacao() {
             setInitLoad(false);
         })
         .catch((error)=>{
-                setInitLoad(false);
+            setInitLoad(false);
             console.error(error);
         })
         .onload = setInitLoad(true);
@@ -243,7 +241,7 @@ function Confirmacao() {
                 {/* </form> */}
                 <div className="links-email center">
                     <button onClick={() => getUsuario()} className="link-reenviar-email "> Reenviar E-mail? </button>
-                    <button className="link-alterar-email "> Alterar E-mail</button>
+                    <button onClick={()=>{browserHistory.push(profissional === null ? "/cliente/cadastro" : "/profissional/cadastro")}} className="link-alterar-email "> Alterar E-mail</button>
                 </div>
             </div>
         </section>

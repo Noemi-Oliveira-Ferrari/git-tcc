@@ -423,26 +423,46 @@ class DadosProfissional extends Component{
         // this.popularCategorias = this.popularCategorias.bind(this);
         this.state = {
            categorias: [],
+           idCategoria: "",
            subcategorias: [],
+           idSubcategoria: "",
            valorHora: "",
+           qualificacoes: ""
         }
         this.getCategorias = this.getCategorias.bind(this);
         this.getSubcategorias = this.getSubcategorias.bind(this);
+        // this.setSubcategoria = this.setSubcategoria.bind(this);
     }
 
     componentDidMount(){
-        this.getCategorias(this.getSubcategorias());
-    }
-
-
-
+        this.getCategorias();
+        let profissional = JSON.parse(sessionStorage.getItem("profissional"));
+        let categoria = JSON.parse(sessionStorage.getItem("categoria"));
+        let subcategoria = JSON.parse(sessionStorage.getItem("subcategoria"));
+        console.clear();
+        console.log(categoria);
+        console.log(subcategoria);
+            if(categoria !== null &&  subcategoria !== null){
+                console.log("/////////////////////");
+                console.log(this.getSubcategorias)
+                this.setState({idCategoria: categoria});
+                this.setState({idSubcategoria: subcategoria});
+                this.setState({valorHora: profissional.valorHora});
+                this.setState({qualificacoes: profissional.resumoQualificacoes});
+                this.getSubcategorias(categoria);
+            }
+        }
+        
+        
+        
     getCategorias(){
+        
         // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
         axios.get(`http://localhost:8080/categorias`)
         .then((response)=>{
             let jsonCategorias = response.data;
             this.setState({categorias: jsonCategorias});
-            this.getSubcategorias(jsonCategorias[0].idCategoria);
+            // this.getSubcategorias(jsonCategorias[0].idCategoria);
         })
         .catch((error)=>{
             console.error(error);
@@ -451,6 +471,7 @@ class DadosProfissional extends Component{
     }
 
     getSubcategorias(idCategoria){
+
 
         if(idCategoria === null || idCategoria === ""){
             idCategoria = 1;
@@ -461,13 +482,15 @@ class DadosProfissional extends Component{
         .then((response)=>{
             let jsonSubcategorias = response.data;
             this.setState({subcategorias: jsonSubcategorias});
-            console.log(jsonSubcategorias);
         })
         .catch((error)=>{
             console.error(error);
         })
         .onload = console.log("CARREGANDO SUBS...")
     }
+    
+    // setSubcategoria(idSubcategoria){
+    // }
 
     
     render(){
@@ -485,12 +508,14 @@ class DadosProfissional extends Component{
                                     classDivSelect="caixa-categoria"
                                     onChangeSelect={()=>(this.getSubcategorias($("#slt-categoria").find(":selected").val()))}
                                     optionsSelect={this.state.categorias.map(categoria=>(
-                                                <option key={categoria.idCategoria} value={categoria.idCategoria}>
-                                                    {categoria.categoria}
-                                                </option>
-                                            ))}
-                                    firstOption="Selecione um Tipo de serviço"
-                                />
+                                        <option key={categoria.idCategoria} value={categoria.idCategoria}
+                                            selected={this.state.idCategoria === categoria.idCategoria ? "selected" : ""}
+                                        >
+                                            {categoria.categoria}
+                                        </option>
+                                        ))}
+                                        firstOption="Selecione um Tipo de serviço"
+                                    />
                             </div>
                             
                             <div className="flex-center container-subcat">
@@ -499,13 +524,16 @@ class DadosProfissional extends Component{
                                     idSelect="slt-subcat"
                                     nameSelect="slt_subcategoria"
                                     classDivSelect="caixa-subcat"
+                                    // onChangeSelect={()=>(this.setSubcategoria($("#slt-subcat").find(":selected").val()))}
                                     optionsSelect={this.state.subcategorias.map(subcategoria=>(
-                                                <option key={subcategoria.idSubcategoria} value={subcategoria.idSubcategoria}>
-                                                    {subcategoria.subcategoria}
-                                                </option>
-                                            ))}
-                                    firstOption="Selecione um serviço"
-                                />
+                                            <option key={subcategoria.idSubcategoria} value={subcategoria.idSubcategoria}
+                                                selected={this.state.idSubcategoria === subcategoria.idSubcategoria ? "selected" : ""} 
+                                            >
+                                                {subcategoria.subcategoria}
+                                            </option>
+                                        ))}
+                                        firstOption="Selecione um serviço"
+                                    />
                             </div>
                             
                             <div className="flex-center container-valor-hora">
@@ -521,6 +549,7 @@ class DadosProfissional extends Component{
                                     permitirNegativo="false"
                                     prefixo="R$"
                                     qtdDecimal="2"
+                                    valueInput={this.state.valorHora || ""}
                                 />
                             </div>
                         </div>
@@ -528,7 +557,12 @@ class DadosProfissional extends Component{
                             <div className="container-qualificacoes">
                                 <div className="float caixa-qualificacoes">
                                     <label className="form-label">Resumo de Qualificações:</label>
-                                    <textarea id="txt-qualificacoes" className="txt-qualificacoes form-control form-input-pro"></textarea>
+                                    <textarea 
+                                        id="txt-qualificacoes" 
+                                        className="txt-qualificacoes form-control form-input-pro"
+                                        defaultValue={this.state.qualificacoes || ""}>
+
+                                    </textarea>
                                 </div>
                             </div>
                         </div>
@@ -664,7 +698,9 @@ export default class FormularioProfissional extends Component{
             };
             sessionStorage.setItem("endereco", JSON.stringify(endereco));
             sessionStorage.setItem("profissional", JSON.stringify(profissional));
-            browserHistory.push("/profissional/cadastro/confirmacao");
+            sessionStorage.setItem("categoria", $("#slt-categoria").find(":selected").val());    
+            sessionStorage.setItem("subcategoria", $("#slt-subcat").find(":selected").val());
+            browserHistory.push("/cadastro/confirmacao");
         }else{
             setTimeout(() => {
                 alert(this.state.erros);

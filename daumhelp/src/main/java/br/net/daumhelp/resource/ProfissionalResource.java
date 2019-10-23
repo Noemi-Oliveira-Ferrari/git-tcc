@@ -155,9 +155,9 @@ public class ProfissionalResource {
 			@RequestBody Profissional profissional,
 			HttpServletResponse response){
 
-		
-//		profissional.setCriadoEm(HandleDates.dataHoraAtual());
-//		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
+		System.out.println("_____________");
+		System.out.println(profissional.getSenha());
+		System.out.println("_____________");
 		
 		 Profissional proSalvo = proRepository.save(profissional);
 		 

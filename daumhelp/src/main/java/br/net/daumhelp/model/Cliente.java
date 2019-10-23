@@ -29,7 +29,7 @@ public class Cliente {
 	private String cpf;
 
 	@NotNull
-	@Size(min = 8, max = 128, message = "A senha deve conter pelo ao menos 8 caractéres")
+	@Size(min = 8, max = 130, message = "A senha deve conter pelo ao menos 8 caractéres")
 	private String senha;
 
 	@NotNull
