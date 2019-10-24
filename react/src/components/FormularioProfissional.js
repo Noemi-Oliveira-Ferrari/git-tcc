@@ -1,9 +1,10 @@
-import React,  {Component} from "react";
+import React,  {Component, Fragment} from "react";
 import {Inputs, Selects, InputNumber} from './FormElements';
 import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
+import {ModalLoadConst, ModalLoadErros} from './ModaisLoad';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfPro, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
@@ -16,12 +17,14 @@ class DadosPessoaisPro extends Component{
         this.state = {
             nome: "", dataNasc: "", cpf: "", cnpj: "", cpfCnpj: "",
             email: "", senha: "", confirmSenha: "",
+            loading: false,
             
             cep: "", logradouro: "", idCidade: "",
             bairro: "", cidade: "", uf: "", subcategoria: "",
             tipoPro: "rdo-pf", radioChecked: "rdo-pf",
             endereco: [], profissional: []
         }
+        this.modalLoad = this.modalLoad.bind(this);
            
         this.setNome = this.setNome.bind(this);
         this.setCep = this.setCep.bind(this);
@@ -35,6 +38,15 @@ class DadosPessoaisPro extends Component{
         this.getCpf = this.getCpf.bind(this);
         this.getCnpj = this.getCnpj.bind(this);
         this.getEmail = this.getEmail.bind(this);
+    }
+
+    modalLoad = () =>{
+        if(!this.state.loading){
+            $("body").css("overflow-y", "hidden");
+        }else{
+            $("body").css("overflow-y", "auto");
+        }
+        this.setState({loading: !this.state.loading});
     }
     
     componentDidMount(){
@@ -93,12 +105,15 @@ class DadosPessoaisPro extends Component{
                 alert("CPF ja cadastrado");
                 this.setState({cpfCnpj: ""});
             }
+            this.modalLoad();
         })
         .catch((error)=>{
             console.log(error);
+            this.modalLoad();
         })
-        .onload = console.log("loading cpf");
+        .onload = this.modalLoad();
     }
+    
     getCnpj(cnpj){
         axios.get(`http://localhost:8080/profissionais/cnpj/${cnpj}`)
         .then((response)=>{
@@ -109,11 +124,13 @@ class DadosPessoaisPro extends Component{
                 alert("CNPJ ja cadastrado");
                 this.setState({cpfCnpj: ""});
             }
+            this.modalLoad();
         })
         .catch((error)=>{
             console.log(error);
+            this.modalLoad();
         })
-        .onload = console.log("loading cnpj");
+        .onload = this.modalLoad();
     }
 
 
@@ -136,25 +153,37 @@ class DadosPessoaisPro extends Component{
 
     setEmail(event){
         this.setState({email: event.target.value});
-        this.getEmail(event.target.value);
+        // this.getEmail(event.target.value);
         validarEmail(event.target);
     }
 
-    getEmail(email){
-        axios.get(`http://localhost:8080/profissionais/verificar/email/${email}`)
-        .then((response)=>{
-            let jsonPro = response.data;
-            console.log(jsonPro);
-            if(jsonPro !== null){
-                withError($("#txt-email"));
-                alert("E-mail ja cadastrado");
-                this.setState({email: ""});
-            }
-        })
-        .catch((error)=>{
-            console.log(error);
-        })
-        .onload = console.log("loading email");
+    getEmail(event){
+        this.setState({email: event.target.value});
+        let email = event.target.value;
+        console.log(email);
+        if(email.length > 0){
+
+            axios.get(`http://localhost:8080/clientes/verificar/email/${email}`)
+            .then((response)=>{
+                let jsonPro = response.data;
+                console.log(jsonPro);
+                if(jsonPro !== null){
+                    withError($("#txt-email"));
+                    alert("E-mail ja cadastrado");
+                    this.setState({email: ""});
+                    setTimeout(() => {
+                        $("#txt-email").focus();
+                    }, 200);
+                    
+                }
+                this.modalLoad();
+            })
+            .catch((error)=>{
+                console.log(error);
+                this.modalLoad();
+            })
+            .onload = this.modalLoad();
+        }   
     }
 
     setCep(event){
@@ -183,6 +212,7 @@ class DadosPessoaisPro extends Component{
                 withoutError($('#txt-cidade'));
                 withoutError($('#txt-bairro'));
                 withoutError($('#txt-uf'));
+                this.modalLoad();
             }
         })
         .catch((error)=>{
@@ -197,8 +227,9 @@ class DadosPessoaisPro extends Component{
             withError($('#txt-cidade'));
             withError($('#txt-bairro'));
             withError($('#txt-uf'));
+            this.modalLoad();
         })
-        .onload = console.log("loading");
+        .onload = this.modalLoad();
     }
     
     setSenha(event){
@@ -224,194 +255,197 @@ class DadosPessoaisPro extends Component{
 
     render(){
         return(
-            <div className="flex-center">
-                <div className="card-formulario-pessoal">
-                    <div className="caixa-title-card">
-                        <div className="title-card-pro">Dados Pessoais</div>
-                    </div>
-                    <div className="title-card-pjPf">
-                        <Inputs
-                            id="rdo-pf"
-                            type="radio"
-                            name="rdos_pfpj"
-                            label="Pessoa Física:"
-                            classDivInput="caixa-rdo-pf"
-                            forInput="rdo-pf"
-                            onChange={this.setTipoPfPj}
-                            // onChange={(e) => this.setState({ radioChecked: e.target.value })}
-                            radioChecked={this.state.radioChecked === 'rdo-pf'}
-                            valueInput="rdo-pf"
-                        />
-                        <Inputs
-                            id="rdo-pj"
-                            type="radio"
-                            name="rdos_pfpj"
-                            label="Pessoa Jurídica:"
-                            classDivInput="caixa-rdo-pj"
-                            forInput="rdo-pj"
-                            onChange={this.setTipoPfPj}
-                            // onChange={(e) => this.setState({ radioChecked: e.target.value })}
-                            radioChecked={this.state.radioChecked === 'rdo-pj'}
-                            valueInput="rdo-pj"
-                        />
-                    </div>
-                    
-                    <div className="float campos-dados">
-                        <div className="flex-center container-nome-dataNasc">
-
+            <Fragment>
+                <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
+                <div className="flex-center">
+                    <div className="card-formulario-pessoal">
+                        <div className="caixa-title-card">
+                            <div className="title-card-pro">Dados Pessoais</div>
+                        </div>
+                        <div className="title-card-pjPf">
                             <Inputs
-                                label="Nome:"
-                                id="txt-nome"
-                                name="txt_nome"
-                                maxLength="100"
-                                type="text"
-                                classDivInput="caixa-nome"
-                                classInput="form-control form-input"
-                                onChange={this.setNome}
-                                valueInput={this.state.nome || ""}
+                                id="rdo-pf"
+                                type="radio"
+                                name="rdos_pfpj"
+                                label="Pessoa Física:"
+                                classDivInput="caixa-rdo-pf"
+                                forInput="rdo-pf"
+                                onChange={this.setTipoPfPj}
+                                // onChange={(e) => this.setState({ radioChecked: e.target.value })}
+                                radioChecked={this.state.radioChecked === 'rdo-pf'}
+                                valueInput="rdo-pf"
                             />
-
-                            <InputNumber
-                                classDivInput="caixa-dataNasc"
-                                label="Data de Nascimento:"
-                                id="txt-dataNasc"
-                                type="text"
-                                name="txt_data_nasc"
-                                mascara="##/##/####"
-                                classInput="form-control form-input"
-                                onChange={this.setData}
-                                valueInput={this.state.dataNasc || ""}
+                            <Inputs
+                                id="rdo-pj"
+                                type="radio"
+                                name="rdos_pfpj"
+                                label="Pessoa Jurídica:"
+                                classDivInput="caixa-rdo-pj"
+                                forInput="rdo-pj"
+                                onChange={this.setTipoPfPj}
+                                // onChange={(e) => this.setState({ radioChecked: e.target.value })}
+                                radioChecked={this.state.radioChecked === 'rdo-pj'}
+                                valueInput="rdo-pj"
                             />
+                        </div>
                         
-                        </div>
-                        <div className="flex-center container-cpfCnpj-email">
+                        <div className="float campos-dados">
+                            <div className="flex-center container-nome-dataNasc">
 
-                            <InputNumber
-                                classDivInput="caixa-cpfCnpj"
-                                label={this.state.tipoPro === "rdo-pf" ? "CPF" : "CNPJ"}
-                                id="txt-cpfCnpj"
-                                type="text"
-                                name="txt_cpfCnpj"
-                                classInput="form-control form-input"
-                                onChange={this.setCpfCnpj}
-                                mascara={this.state.tipoPro === "rdo-pf" ? "###.###.###-##" : "##.###.###/####-##"}
-                                valueInput={this.state.cpfCnpj || ""}
-                            />
+                                <Inputs
+                                    label="Nome:"
+                                    id="txt-nome"
+                                    name="txt_nome"
+                                    maxLength="100"
+                                    type="text"
+                                    classDivInput="caixa-nome"
+                                    classInput="form-control form-input"
+                                    onChange={this.setNome}
+                                    valueInput={this.state.nome || ""}
+                                />
 
-                            <Inputs
-                                classDivInput="caixa-email"
-                                label="E-mail:"
-                                maxLength="150"
-                                id="txt-email"
-                                type="email"
-                                name="txt_email"
-                                onChange={this.setEmail}
-                                classInput="form-control form-input"
-                                valueInput={this.state.email || ""}
-                            />
-
+                                <InputNumber
+                                    classDivInput="caixa-dataNasc"
+                                    label="Data de Nascimento:"
+                                    id="txt-dataNasc"
+                                    type="text"
+                                    name="txt_data_nasc"
+                                    mascara="##/##/####"
+                                    classInput="form-control form-input"
+                                    onChange={this.setData}
+                                    valueInput={this.state.dataNasc || ""}
+                                />
                             
-                        </div>
-                        <div className="flex-center container-senha">
+                            </div>
+                            <div className="flex-center container-cpfCnpj-email">
 
-                            <Inputs
-                                classDivInput="caixa-senha"
-                                label="Senha:"
-                                maxLength="130"
-                                id="txt-senha"
-                                type="password"
-                                name="txt_senha"
-                                onChange={this.setSenha}
-                                classInput="form-control form-input"
-                            />
+                                <InputNumber
+                                    classDivInput="caixa-cpfCnpj"
+                                    label={this.state.tipoPro === "rdo-pf" ? "CPF" : "CNPJ"}
+                                    id="txt-cpfCnpj"
+                                    type="text"
+                                    name="txt_cpfCnpj"
+                                    classInput="form-control form-input"
+                                    onChange={this.setCpfCnpj}
+                                    mascara={this.state.tipoPro === "rdo-pf" ? "###.###.###-##" : "##.###.###/####-##"}
+                                    valueInput={this.state.cpfCnpj || ""}
+                                />
 
-                            <Inputs
-                                classDivInput="caixa-confirmar-senha"
-                                label="Confirmar Senha:"
-                                maxLength="130"
-                                id="txt-confirmar-senha"
-                                type="password"
-                                name="txt_confirmar_senha"
-                                onChange={this.setConfirmSenha}                           
-                                classInput="form-control form-input"
-                            />
+                                <Inputs
+                                    classDivInput="caixa-email"
+                                    label="E-mail:"
+                                    maxLength="150"
+                                    id="txt-email"
+                                    type="email"
+                                    name="txt_email"
+                                    onChange={this.setEmail}
+                                    onBlur={this.getEmail}
+                                    classInput="form-control form-input"
+                                    valueInput={this.state.email || ""}
+                                />
 
-                        </div>
-
-                        <div className="flex-center container-cep-logradouro">
-
-                            <Inputs
-                                classDivInput="caixa-cep"
-                                label="CEP:"
-                                id="txt-cep"
-                                type="text"
-                                name="txt_cep"
-                                onChange={this.setCep}
-                                classInput="form-control form-input"
-                                mascara="99999-999"
-                                valueInput={this.state.cep || ""}
-                            />
-
-                            <Inputs
-                                classDivInput="caixa-logradouro"
-                                label="Logradouro:"
-                                maxLength="120"
-                                id="txt-logradouro"
-                                type="text"
-                                name="txt_logradouro"
-                                valueInput={this.state.logradouro || ""}
-                                readOnly
-                                classInput="form-control form-input"
-                            />
-                            
-                        </div>
-                        <div className="flex-center container-bairro-cidade-uf">
-
-                            <Inputs
-                                classDivInput="caixa-bairro"
-                                label="Bairro:"
-                                maxLength="120"
-                                id="txt-bairro"
-                                type="text"
-                                name="txt_bairro"
-                                valueInput={this.state.bairro || ""}
-                                disabled
                                 
-                                classInput="form-control form-input"
-                            />
+                            </div>
+                            <div className="flex-center container-senha">
 
-                            <Inputs
-                                classDivInput="caixa-cidade"
-                                label="Cidade:"
-                                maxLength="120"
-                                id="txt-cidade"
-                                type="text"
-                                name="txt_cidade"
-                                data={this.state.idCidade}
-                                valueInput={this.state.cidade || ""}
-                                readOnly
-                                
-                                classInput="form-control form-input"
-                            />
+                                <Inputs
+                                    classDivInput="caixa-senha"
+                                    label="Senha:"
+                                    maxLength="130"
+                                    id="txt-senha"
+                                    type="password"
+                                    name="txt_senha"
+                                    onChange={this.setSenha}
+                                    classInput="form-control form-input"
+                                />
 
-                            <Inputs
-                                classDivInput="caixa-uf"
-                                label="UF:"
-                                maxLength="2"
-                                id="txt-uf"
-                                type="text"
-                                name="txt_uf"
-                                valueInput={this.state.uf || ""}
-                                readOnly
+                                <Inputs
+                                    classDivInput="caixa-confirmar-senha"
+                                    label="Confirmar Senha:"
+                                    maxLength="130"
+                                    id="txt-confirmar-senha"
+                                    type="password"
+                                    name="txt_confirmar_senha"
+                                    onChange={this.setConfirmSenha}                           
+                                    classInput="form-control form-input"
+                                />
+
+                            </div>
+
+                            <div className="flex-center container-cep-logradouro">
+
+                                <Inputs
+                                    classDivInput="caixa-cep"
+                                    label="CEP:"
+                                    id="txt-cep"
+                                    type="text"
+                                    name="txt_cep"
+                                    onChange={this.setCep}
+                                    classInput="form-control form-input"
+                                    mascara="99999-999"
+                                    valueInput={this.state.cep || ""}
+                                />
+
+                                <Inputs
+                                    classDivInput="caixa-logradouro"
+                                    label="Logradouro:"
+                                    maxLength="120"
+                                    id="txt-logradouro"
+                                    type="text"
+                                    name="txt_logradouro"
+                                    valueInput={this.state.logradouro || ""}
+                                    readOnly
+                                    classInput="form-control form-input"
+                                />
                                 
-                                classInput="form-control form-input"
-                            />
-                            
+                            </div>
+                            <div className="flex-center container-bairro-cidade-uf">
+
+                                <Inputs
+                                    classDivInput="caixa-bairro"
+                                    label="Bairro:"
+                                    maxLength="120"
+                                    id="txt-bairro"
+                                    type="text"
+                                    name="txt_bairro"
+                                    valueInput={this.state.bairro || ""}
+                                    disabled
+                                    
+                                    classInput="form-control form-input"
+                                />
+
+                                <Inputs
+                                    classDivInput="caixa-cidade"
+                                    label="Cidade:"
+                                    maxLength="120"
+                                    id="txt-cidade"
+                                    type="text"
+                                    name="txt_cidade"
+                                    data={this.state.idCidade}
+                                    valueInput={this.state.cidade || ""}
+                                    readOnly
+                                    
+                                    classInput="form-control form-input"
+                                />
+
+                                <Inputs
+                                    classDivInput="caixa-uf"
+                                    label="UF:"
+                                    maxLength="2"
+                                    id="txt-uf"
+                                    type="text"
+                                    name="txt_uf"
+                                    valueInput={this.state.uf || ""}
+                                    readOnly
+                                    
+                                    classInput="form-control form-input"
+                                />
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
+            </Fragment>
         );
     }
 }
@@ -422,16 +456,28 @@ class DadosProfissional extends Component{
         super();        
         // this.popularCategorias = this.popularCategorias.bind(this);
         this.state = {
-           categorias: [],
-           idCategoria: "",
-           subcategorias: [],
-           idSubcategoria: "",
-           valorHora: "",
-           qualificacoes: ""
+            categorias: [],
+            idCategoria: "",
+            subcategorias: [],
+            idSubcategoria: "",
+            valorHora: "",
+            qualificacoes: "",
+            loading: false,
         }
+        this.modalLoad = this.modalLoad.bind(this);
+
         this.getCategorias = this.getCategorias.bind(this);
         this.getSubcategorias = this.getSubcategorias.bind(this);
         // this.setSubcategoria = this.setSubcategoria.bind(this);
+    }
+
+    modalLoad = () =>{
+        if(!this.state.loading){
+            $("body").css("overflow-y", "hidden");
+        }else{
+            $("body").css("overflow-y", "auto");
+        }
+        this.setState({loading: !this.state.loading});
     }
 
     componentDidMount(){
@@ -442,16 +488,16 @@ class DadosProfissional extends Component{
         console.clear();
         console.log(categoria);
         console.log(subcategoria);
-            if(categoria !== null &&  subcategoria !== null){
-                console.log("/////////////////////");
-                console.log(this.getSubcategorias)
-                this.setState({idCategoria: categoria});
-                this.setState({idSubcategoria: subcategoria});
-                this.setState({valorHora: profissional.valorHora});
-                this.setState({qualificacoes: profissional.resumoQualificacoes});
-                this.getSubcategorias(categoria);
-            }
+        if(categoria !== null && subcategoria !== null){
+            console.log("/////////////////////");
+            console.log(this.getSubcategorias)
+            this.setState({idCategoria: categoria});
+            this.setState({idSubcategoria: subcategoria});
+            this.setState({valorHora: profissional.valorHora});
+            this.setState({qualificacoes: profissional.resumoQualificacoes});
+            this.getSubcategorias(categoria);
         }
+    }
         
         
         
@@ -462,12 +508,13 @@ class DadosProfissional extends Component{
         .then((response)=>{
             let jsonCategorias = response.data;
             this.setState({categorias: jsonCategorias});
-            // this.getSubcategorias(jsonCategorias[0].idCategoria);
+            this.modalLoad();
         })
         .catch((error)=>{
             console.error(error);
+            this.modalLoad();
         })
-        .onload =  console.log("CARREGANDO CATS...")
+        .onload =  this.modalLoad();
     }
 
     getSubcategorias(idCategoria){
@@ -482,93 +529,94 @@ class DadosProfissional extends Component{
         .then((response)=>{
             let jsonSubcategorias = response.data;
             this.setState({subcategorias: jsonSubcategorias});
+            this.modalLoad();
         })
         .catch((error)=>{
             console.error(error);
+            this.modalLoad();
         })
-        .onload = console.log("CARREGANDO SUBS...")
+        .onload = this.modalLoad();
     }
-    
-    // setSubcategoria(idSubcategoria){
-    // }
-
     
     render(){
         return(
-            <div className="flex-center">
-                <div className="card-formulario-servico">
-                    <h3 className="title-card">Dados Profissionais</h3>
-                    <div className="flex-center campos-servicos">
-                        <div className="container-servico-pro">
-                            <div className="flex-center container-categoria">
-                                <Selects
-                                    labelSelect="Tipos de Serviços:"
-                                    idSelect="slt-categoria"
-                                    nameSelect="slt_categoria"
-                                    classDivSelect="caixa-categoria"
-                                    onChangeSelect={()=>(this.getSubcategorias($("#slt-categoria").find(":selected").val()))}
-                                    optionsSelect={this.state.categorias.map(categoria=>(
-                                        <option key={categoria.idCategoria} value={categoria.idCategoria}
-                                            selected={this.state.idCategoria === categoria.idCategoria ? "selected" : ""}
-                                        >
-                                            {categoria.categoria}
-                                        </option>
-                                        ))}
-                                        firstOption="Selecione um Tipo de serviço"
-                                    />
-                            </div>
-                            
-                            <div className="flex-center container-subcat">
-                                <Selects
-                                    labelSelect="Serviços:"
-                                    idSelect="slt-subcat"
-                                    nameSelect="slt_subcategoria"
-                                    classDivSelect="caixa-subcat"
-                                    // onChangeSelect={()=>(this.setSubcategoria($("#slt-subcat").find(":selected").val()))}
-                                    optionsSelect={this.state.subcategorias.map(subcategoria=>(
-                                            <option key={subcategoria.idSubcategoria} value={subcategoria.idSubcategoria}
-                                                selected={this.state.idSubcategoria === subcategoria.idSubcategoria ? "selected" : ""} 
+            <Fragment>
+                <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
+                <div className="flex-center">
+                    <div className="card-formulario-servico">
+                        <h3 className="title-card">Dados Profissionais</h3>
+                        <div className="flex-center campos-servicos">
+                            <div className="container-servico-pro">
+                                <div className="flex-center container-categoria">
+                                    <Selects
+                                        labelSelect="Tipos de Serviços:"
+                                        idSelect="slt-categoria"
+                                        nameSelect="slt_categoria"
+                                        classDivSelect="caixa-categoria"
+                                        onChangeSelect={()=>(this.getSubcategorias($("#slt-categoria").find(":selected").val()))}
+                                        optionsSelect={this.state.categorias.map(categoria=>(
+                                            <option key={categoria.idCategoria} value={categoria.idCategoria}
+                                                selected={this.state.idCategoria === categoria.idCategoria ? "selected" : ""}
                                             >
-                                                {subcategoria.subcategoria}
+                                                {categoria.categoria}
                                             </option>
-                                        ))}
-                                        firstOption="Selecione um serviço"
+                                            ))}
+                                            firstOption="Selecione um Tipo de serviço"
+                                        />
+                                </div>
+                                
+                                <div className="flex-center container-subcat">
+                                    <Selects
+                                        labelSelect="Serviços:"
+                                        idSelect="slt-subcat"
+                                        nameSelect="slt_subcategoria"
+                                        classDivSelect="caixa-subcat"
+                                        // onChangeSelect={()=>(this.setSubcategoria($("#slt-subcat").find(":selected").val()))}
+                                        optionsSelect={this.state.subcategorias.map(subcategoria=>(
+                                                <option key={subcategoria.idSubcategoria} value={subcategoria.idSubcategoria}
+                                                    selected={this.state.idSubcategoria === subcategoria.idSubcategoria ? "selected" : ""} 
+                                                >
+                                                    {subcategoria.subcategoria}
+                                                </option>
+                                            ))}
+                                            firstOption="Selecione um serviço"
+                                        />
+                                </div>
+                                
+                                <div className="flex-center container-valor-hora">
+                                    <InputNumber
+                                        label="Valor/Hora:"
+                                        id="txt-valor-hora"
+                                        classInput="form-control form-input"
+                                        name="txt_valor_hora"
+                                        type="text"
+                                        classDivInput="caixa-valor-hora"
+                                        separadorMilhar="."
+                                        separadorDecimal=","
+                                        permitirNegativo="false"
+                                        prefixo="R$"
+                                        qtdDecimal="2"
+                                        valueInput={this.state.valorHora || ""}
                                     />
+                                </div>
                             </div>
-                            
-                            <div className="flex-center container-valor-hora">
-                                <InputNumber
-                                    label="Valor/Hora:"
-                                    id="txt-valor-hora"
-                                    classInput="form-control form-input"
-                                    name="txt_valor_hora"
-                                    type="text"
-                                    classDivInput="caixa-valor-hora"
-                                    separadorMilhar="."
-                                    separadorDecimal=","
-                                    permitirNegativo="false"
-                                    prefixo="R$"
-                                    qtdDecimal="2"
-                                    valueInput={this.state.valorHora || ""}
-                                />
-                            </div>
-                        </div>
-                        <div className="container-servico-pro">
-                            <div className="container-qualificacoes">
-                                <div className="float caixa-qualificacoes">
-                                    <label className="form-label">Resumo de Qualificações:</label>
-                                    <textarea 
-                                        id="txt-qualificacoes" 
-                                        className="txt-qualificacoes form-control form-input-pro"
-                                        defaultValue={this.state.qualificacoes || ""}>
+                            <div className="container-servico-pro">
+                                <div className="container-qualificacoes">
+                                    <div className="float caixa-qualificacoes">
+                                        <label className="form-label">Resumo de Qualificações:</label>
+                                        <textarea 
+                                            id="txt-qualificacoes" 
+                                            className="txt-qualificacoes form-control form-input-pro"
+                                            defaultValue={this.state.qualificacoes || ""}>
 
-                                    </textarea>
+                                        </textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </Fragment>
         );
     }
 }
@@ -579,10 +627,22 @@ export default class FormularioProfissional extends Component{
     constructor(){
         super();
         this.state = {
-            erros: []
+            erros: [],
+            showModalErro: false
         }
+        this.modalErros = this.modalErros.bind(this);
+
         this.realizarCadastro = this.realizarCadastro.bind(this);   
         this.validarCampos = this.validarCampos.bind(this);  
+    }
+
+    modalErros = () =>{
+        if(!this.state.showModalErro){
+            $("body").css("overflow-y", "hidden");
+        }else{
+            $("body").css("overflow-y", "auto");
+        }
+        this.setState({showModalErro: !this.state.showModalErro});
     }
 
     componentDidUpdate(){
@@ -634,7 +694,7 @@ export default class FormularioProfissional extends Component{
 
         if(!validarSenha($('#txt-senha').val())){
             semErro = false;
-            erros.push("A senha deve ter ao menos\n-Letras maiúsculas e minúsculas\n-Um número\n-Um símbolo(@#$...)\n-Ter no mínimo 8 caractéres\n-Não pode conter espaços\n");
+            erros.push("A senha deve ter letras maiúsculas e minúsculas, números, símbolos(@#$...), ter no mínimo 8 caractéres e não pode conter espaços");
             console.log("validarSenha "+semErro);
         }
 
@@ -703,7 +763,7 @@ export default class FormularioProfissional extends Component{
             browserHistory.push("/cadastro/confirmacao");
         }else{
             setTimeout(() => {
-                alert(this.state.erros);
+                this.modalErros();
             }, 500);
             moveToError();
         }
@@ -711,11 +771,14 @@ export default class FormularioProfissional extends Component{
 
     render(){
         return(
-            <form className="form-pro" name="form_profissional" method="GET" onSubmit={this.realizarCadastro}>
-                <DadosPessoaisPro/>
-                <DadosProfissional/>
-                <TermosDeUso link="/cadastro/confirmacao"/>
-            </form>
+            <Fragment>
+                <ModalLoadErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
+                <form className="form-pro" name="form_profissional" method="GET" onSubmit={this.realizarCadastro}>
+                    <DadosPessoaisPro/>
+                    <DadosProfissional/>
+                    <TermosDeUso link="/cadastro/confirmacao"/>
+                </form>
+            </Fragment>
         )
     }
     

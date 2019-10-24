@@ -193,7 +193,7 @@ function Confirmacao() {
             $("#input-cod-confirm").attr("disabled", true);
             $("#btn-confirm").attr("disabled", true);
             console.clear();
-            // getUsuario();
+            getUsuario();
             setRenderizar(false);
         }
     });

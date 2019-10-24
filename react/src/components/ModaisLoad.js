@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
+import close from '../img/close.png';
 import "../css/padroes.css";
 import $ from 'jquery';
 
@@ -11,7 +12,7 @@ export function ModalLoadFun (props) {
     return(        
         <Modal {...props}
         size="sm"
-        className="fundo-load">
+        className="fundo-modal">
             <div className="caixa-load">
                 {/* <Modal.Header>          
                 </Modal.Header> */}
@@ -51,12 +52,44 @@ export function ModalLoadFun (props) {
     );
 }
 
+export const ModalLoadErros = ({erros, onClose, abrir}) => 
+
+    abrir 
+    ? 
+    ReactDOM.createPortal(
+        <div className="fundo-modal">
+            <div className="caixa-modal-erros">
+                <div className="titulo-modal-erros flex-center">
+                    <h3>Há erros no seu cadastro</h3>
+                </div>
+                <div className="close-modal flex-center" onClick={onClose}>
+                    <figure>
+                        <img src={close}/>
+                    </figure>
+                </div>
+                <div className="txt-modal-erros">
+                    <ul>
+                    {erros.map(erro=>(
+                            <li>{erro}</li>
+                        ))
+                    }
+                    </ul>
+                </div>
+            </div>
+        </div>,
+        document.body
+    )
+    :
+    null;
+
+
+
 export const ModalLoadConst = ({onClose, abrir}) => 
 
     abrir 
     ? 
     ReactDOM.createPortal(
-        <div className="fundo-load-const">
+        <div className="fundo-modal">
             <div className="caixa-load">
                 <div className="load-5">
                     {/* <p>Carregando...</p> */}
@@ -88,6 +121,4 @@ export const ModalLoadConst = ({onClose, abrir}) =>
         document.body
     )
     :
-    null
-
-
+    null;

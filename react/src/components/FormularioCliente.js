@@ -4,7 +4,7 @@ import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
-import {ModalLoadConst} from './ModaisLoad';
+import {ModalLoadConst, ModalLoadErros} from './ModaisLoad';
 import {browserHistory} from 'react-router';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfCliente, validarEmail,
@@ -398,12 +398,22 @@ export default class FormularioCliente extends Component{
     constructor(){
         super();
         this.state = {
-            erros: []
+            erros: [],
+            showModalErro: false
         }
+        this.modalErros = this.modalErros.bind(this);
         this.realizarCadastro = this.realizarCadastro.bind(this);   
         this.validarCampos = this.validarCampos.bind(this);
     }
 
+    modalErros = () =>{
+        if(!this.state.showModalErro){
+            $("body").css("overflow-y", "hidden");
+        }else{
+            $("body").css("overflow-y", "auto");
+        }
+        this.setState({showModalErro: !this.state.showModalErro});
+    }
 
 
     validarCampos(){
@@ -443,7 +453,7 @@ export default class FormularioCliente extends Component{
 
         if(!validarSenha($('#txt-senha').val())){
             semErro = false;
-            erros.push("A senha deve ter ao menos\n-Letras maiúsculas e minúsculas\n-Um número\n-Um símbolo(@#$...)\n-Ter no mínimo 8 caractéres\n-Não pode conter espaços\n");
+            erros.push("A senha deve ter letras maiúsculas e minúsculas, números, símbolos(@#$...), ter no mínimo 8 caractéres e não pode conter espaços");
             console.log("validarSenha "+semErro);
         }
 
@@ -495,7 +505,7 @@ export default class FormularioCliente extends Component{
             browserHistory.push("/cadastro/confirmacao");
         }else{
             setTimeout(() => {
-                alert(this.state.erros);
+                this.modalErros();
             }, 500);
             moveToError();
         }
@@ -503,10 +513,13 @@ export default class FormularioCliente extends Component{
 
     render(){
         return(
-            <form className="form-cliente" name="form_cliente" method="GET" onSubmit={this.realizarCadastro}>
-                <DadosPessoaisCliente/>
-                <TermosDeUso link="/cadastro/confirmacao"/>
-            </form>
+            <Fragment>
+                <ModalLoadErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
+                <form className="form-cliente" name="form_cliente" method="GET" onSubmit={this.realizarCadastro}>
+                    <DadosPessoaisCliente/>
+                    <TermosDeUso link="/cadastro/confirmacao"/>
+                </form>
+            </Fragment>
         )
     }
     

@@ -21,7 +21,7 @@ export default class Header extends Component{
                         <div className="entrar-cadastro">
                             <div className="area-sing">
                                 <figure><img src={Avatar} alt="Login" title="Login"/></figure>
-                                <Link to="#" className="link"><div className="box-entrar flex-center">Entre</div></Link>
+                                <Link to="/" className="link"><div className="box-entrar flex-center">Entre</div></Link>
                                 <Link to="/escolha" className="link"><div className="box-cadastrar flex-center">Cadastra-se</div></Link>
                             </div>
                         </div>
