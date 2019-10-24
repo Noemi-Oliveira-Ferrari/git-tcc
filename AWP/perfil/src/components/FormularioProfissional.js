@@ -320,7 +320,7 @@ export class DadosPessoaisPro extends Component{
     }
 }
 
-class DadosProfissional extends Component{
+export class DadosProfissional extends Component{
     
     constructor(){
         super();        
