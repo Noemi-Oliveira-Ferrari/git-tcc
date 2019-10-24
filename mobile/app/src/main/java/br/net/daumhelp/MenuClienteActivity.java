@@ -12,6 +12,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Profissional;
 
 public class MenuClienteActivity extends AppCompatActivity {
@@ -28,9 +29,9 @@ public class MenuClienteActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         Intent intent = getIntent();
-        if (intent.getSerializableExtra("profissional") != null) {
-            Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
-            //Toast.makeText(this, "OI " + profissional.getNome(), Toast.LENGTH_SHORT).show();
+        if (intent.getSerializableExtra("cliente") != null) {
+            Cliente cliente = (Cliente) intent.getSerializableExtra("cliente");
+
         }
 
 

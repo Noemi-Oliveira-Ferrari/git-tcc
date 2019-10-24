@@ -19,8 +19,6 @@ import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Cidade;
 import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Endereco;
-import br.net.daumhelp.model.Profissional;
-import br.net.daumhelp.model.Subcategoria;
 import br.net.daumhelp.model.TipoUsuario;
 import br.net.daumhelp.recursos.EncryptString;
 import br.net.daumhelp.recursos.Mascara;
@@ -55,7 +53,7 @@ public class PerfilClienteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil_cliente);
+        setContentView(R.layout.activity_fragment_perfil_cliente);
         getWindow().setStatusBarColor(Color.parseColor("#77C9D4"));
 
         etNome = findViewById(R.id.et_nome_pro);

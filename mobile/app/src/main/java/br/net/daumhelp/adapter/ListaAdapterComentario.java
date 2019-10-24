@@ -33,6 +33,7 @@ public class ListaAdapterComentario extends ArrayAdapter<Comentario> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         Comentario comentarioPosicao = this.lista.get(position);
         convertView = LayoutInflater.from(this.context).inflate(R.layout.layout_lista_comentario, null);
 

@@ -72,7 +72,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
 
 
                                 if(response.code() == 404){
-                                    etCep.setError("CPF inválido");
+                                    etCep.setError("CEP inválido");
                                 }else{
                                     carregarEndereco(response.body());
                                     btnProximo.setVisibility(View.VISIBLE);

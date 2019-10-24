@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         cvSucesso.setVisibility(View.INVISIBLE);
         cvOpacity.setVisibility(View.INVISIBLE);
 
-        etEmail.setText("noemi@noemi.com");
+        etEmail.setText("noemi@noemi.comc");
         etSenha.setText("123123123");
 
         /*VERIFICAÇÃO DA CONEXÃO*/

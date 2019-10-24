@@ -25,7 +25,7 @@
         android:layout_marginEnd="8dp"
         app:civ_border_color="#E8DFDFDF"
         app:civ_border_width="1dp"
-        android:src="@drawable/ic_busca"
+        android:src="@drawable/pedro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cv_perfil" />
@@ -93,7 +93,7 @@
         app:layout_constraintTop_toTopOf="@+id/cv_inf" />
 
     <ImageButton
-        android:id="@+id/tv_qtd_serv"
+        android:id="@+id/ib_editar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -106,7 +106,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_serv" />
 
     <ImageButton
-        android:id="@+id/tv_porc_av"
+        android:id="@+id/ib_salvar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -115,11 +115,11 @@
         android:textSize="26dp"
         android:src="@drawable/ic_salvar"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/tv_qtd_serv"
+        app:layout_constraintStart_toEndOf="@+id/ib_editar"
         app:layout_constraintTop_toBottomOf="@+id/tv_avaliacoes" />
 
     <ImageButton
-        android:id="@+id/ic_config"
+        android:id="@+id/ib_ajuda"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginTop="10dp"
