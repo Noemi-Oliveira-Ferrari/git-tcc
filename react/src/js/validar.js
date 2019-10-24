@@ -187,11 +187,12 @@ export const formataData = (data, delimitarAtual, novoDelimitador) =>{
 
 export const validarIdade = (dataNasc) =>{
     let data = new Date(formataData(dataNasc.value, "/", "-"));
+    let dataLimite = new Date("1920-01-01");
     let hoje = new Date();
     let maioridadeMs = 568036800000;
-    console.log(data);
+    console.log(data > dataLimite);
 
-    if(hoje - data > maioridadeMs){
+    if(hoje - data > maioridadeMs && data > dataLimite){
         return true;
     }else{
         return false;

@@ -44,11 +44,11 @@ class DadosPessoaisPro extends Component{
     }
 
     modalErros = () =>{
-        if(this.state.showModalErro){
-            $("body").css("overflow-y", "hidden");
-        }else{
-            $("body").css("overflow-y", "auto");
-        }
+        // if(this.state.showModalErro){
+        //     $("body").css("overflow-y", "hidden");
+        // }else{
+        //     $("body").css("overflow-y", "auto");
+        // }
         this.setState({showModalErro: !this.state.showModalErro});
     }
     
