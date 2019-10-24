@@ -4,7 +4,7 @@ import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import {ModalLoadConst, ModalLoadErros} from './ModaisLoad';
+import {ModalLoadConst, ModalErros} from './ModaisLoad';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfPro, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
@@ -18,6 +18,8 @@ class DadosPessoaisPro extends Component{
             nome: "", dataNasc: "", cpf: "", cnpj: "", cpfCnpj: "",
             email: "", senha: "", confirmSenha: "",
             loading: false,
+            showModalErro: false,
+            erros: [],
             
             cep: "", logradouro: "", idCidade: "",
             bairro: "", cidade: "", uf: "", subcategoria: "",
@@ -25,6 +27,7 @@ class DadosPessoaisPro extends Component{
             endereco: [], profissional: []
         }
         this.modalLoad = this.modalLoad.bind(this);
+        this.modalErros = this.modalErros.bind(this);
            
         this.setNome = this.setNome.bind(this);
         this.setCep = this.setCep.bind(this);
@@ -40,6 +43,15 @@ class DadosPessoaisPro extends Component{
         this.getEmail = this.getEmail.bind(this);
     }
 
+    modalErros = () =>{
+        if(this.state.showModalErro){
+            $("body").css("overflow-y", "hidden");
+        }else{
+            $("body").css("overflow-y", "auto");
+        }
+        this.setState({showModalErro: !this.state.showModalErro});
+    }
+    
     modalLoad = () =>{
         if(!this.state.loading){
             $("body").css("overflow-y", "hidden");
@@ -96,13 +108,16 @@ class DadosPessoaisPro extends Component{
     }
     
     getCpf(cpf){
+        let erros = [];
         axios.get(`http://localhost:8080/profissionais/verificar/cpf/${cpf}`)
         .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);
             if(jsonPro !== null){
                 withError($("#txt-cpfCnpj"));
-                alert("CPF ja cadastrado");
+                erros.push(`CPF ${cpf} ja cadastrado`);
+                this.setState({erros: erros});
+                this.modalErros();
                 this.setState({cpfCnpj: ""});
             }
             this.modalLoad();
@@ -115,13 +130,16 @@ class DadosPessoaisPro extends Component{
     }
     
     getCnpj(cnpj){
+        let erros = [];
         axios.get(`http://localhost:8080/profissionais/cnpj/${cnpj}`)
         .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);
             if(jsonPro !== ""){
                 withError($("#txt-cpfCnpj"));
-                alert("CNPJ ja cadastrado");
+                erros.push(`CNPJ ${cnpj} ja cadastrada`);
+                this.setState({erros: erros});
+                this.modalErros();
                 this.setState({cpfCnpj: ""});
             }
             this.modalLoad();
@@ -161,7 +179,8 @@ class DadosPessoaisPro extends Component{
         this.setState({email: event.target.value});
         let email = event.target.value;
         console.log(email);
-        if(email.length > 0){
+        if(email.length > 5){
+            let erros = [];
 
             axios.get(`http://localhost:8080/clientes/verificar/email/${email}`)
             .then((response)=>{
@@ -169,7 +188,9 @@ class DadosPessoaisPro extends Component{
                 console.log(jsonPro);
                 if(jsonPro !== null){
                     withError($("#txt-email"));
-                    alert("E-mail ja cadastrado");
+                    erros.push(`E-mail ${email} ja cadastrado`);
+                    this.setState({erros: erros});
+                    this.modalErros();
                     this.setState({email: ""});
                     setTimeout(() => {
                         $("#txt-email").focus();
@@ -194,12 +215,11 @@ class DadosPessoaisPro extends Component{
         }
     }
     getEndereco = (cep) =>{
+        let erros = [];
         // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
         axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
         .then((response)=>{
             let jsonEndereco = response.data;
-            // console.clear();
-            console.log(response);
             if(jsonEndereco.cep != null){
                 this.setState({logradouro: jsonEndereco.logradouro});
                 this.setState({bairro: jsonEndereco.bairro});
@@ -216,7 +236,11 @@ class DadosPessoaisPro extends Component{
             }
         })
         .catch((error)=>{
-            this.setState({logradouro: "CEP INVÁLIDO"});
+            erros.push(`CEP ${cep} Não existe!`);
+            this.setState({erros: erros});
+            this.modalErros();
+
+            this.setState({logradouro: ""});
             this.setState({bairro: ""});
             this.setState({cidade: ""});
             this.setState({uf: ""});
@@ -257,6 +281,7 @@ class DadosPessoaisPro extends Component{
         return(
             <Fragment>
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
+                <ModalErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
                 <div className="flex-center">
                     <div className="card-formulario-pessoal">
                         <div className="caixa-title-card">
@@ -481,7 +506,6 @@ class DadosProfissional extends Component{
     }
 
     componentDidMount(){
-        this.getCategorias();
         let profissional = JSON.parse(sessionStorage.getItem("profissional"));
         let categoria = JSON.parse(sessionStorage.getItem("categoria"));
         let subcategoria = JSON.parse(sessionStorage.getItem("subcategoria"));
@@ -489,13 +513,18 @@ class DadosProfissional extends Component{
         console.log(categoria);
         console.log(subcategoria);
         if(categoria !== null && subcategoria !== null){
-            console.log("/////////////////////");
-            console.log(this.getSubcategorias)
+            // console.log("/////////////////////");
+            // console.log(this.getSubcategorias)
+            this.getCategorias();
             this.setState({idCategoria: categoria});
             this.setState({idSubcategoria: subcategoria});
             this.setState({valorHora: profissional.valorHora});
             this.setState({qualificacoes: profissional.resumoQualificacoes});
             this.getSubcategorias(categoria);
+        }else{
+            this.getCategorias();
+            this.getSubcategorias(1);
+
         }
     }
         
@@ -508,7 +537,9 @@ class DadosProfissional extends Component{
         .then((response)=>{
             let jsonCategorias = response.data;
             this.setState({categorias: jsonCategorias});
-            this.modalLoad();
+            if(!this.state.loading){
+                this.modalLoad();
+            }
         })
         .catch((error)=>{
             console.error(error);
@@ -518,7 +549,6 @@ class DadosProfissional extends Component{
     }
 
     getSubcategorias(idCategoria){
-
 
         if(idCategoria === null || idCategoria === ""){
             idCategoria = 1;
@@ -549,7 +579,7 @@ class DadosProfissional extends Component{
                             <div className="container-servico-pro">
                                 <div className="flex-center container-categoria">
                                     <Selects
-                                        labelSelect="Tipos de Serviços:"
+                                        labelSelect="Selecione o Tipo de Serviço:"
                                         idSelect="slt-categoria"
                                         nameSelect="slt_categoria"
                                         classDivSelect="caixa-categoria"
@@ -561,13 +591,13 @@ class DadosProfissional extends Component{
                                                 {categoria.categoria}
                                             </option>
                                             ))}
-                                            firstOption="Selecione um Tipo de serviço"
+                                            firstOption="Tipos de serviços"
                                         />
                                 </div>
                                 
                                 <div className="flex-center container-subcat">
                                     <Selects
-                                        labelSelect="Serviços:"
+                                        labelSelect="Selecione um serviço"
                                         idSelect="slt-subcat"
                                         nameSelect="slt_subcategoria"
                                         classDivSelect="caixa-subcat"
@@ -579,7 +609,7 @@ class DadosProfissional extends Component{
                                                     {subcategoria.subcategoria}
                                                 </option>
                                             ))}
-                                            firstOption="Selecione um serviço"
+                                            firstOption="Serviços"
                                         />
                                 </div>
                                 
@@ -772,7 +802,7 @@ export default class FormularioProfissional extends Component{
     render(){
         return(
             <Fragment>
-                <ModalLoadErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
+                <ModalErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
                 <form className="form-pro" name="form_profissional" method="GET" onSubmit={this.realizarCadastro}>
                     <DadosPessoaisPro/>
                     <DadosProfissional/>

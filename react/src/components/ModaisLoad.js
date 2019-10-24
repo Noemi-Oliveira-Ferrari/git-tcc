@@ -13,14 +13,14 @@ export function ModalLoadFun (props) {
         <Modal {...props}
         size="sm"
         className="fundo-modal">
-            <div className="caixa-load">
-                {/* <Modal.Header>          
+            <div className="caixa-function-load caixa-load">
+                {/* <Modal.Header>
                 </Modal.Header> */}
                 <Modal.Body>
-                    <div className="load-5">
+                    <div className="load-function load-5">
                         {/* <p>Carregando...</p> */}
                         <div className="txt-load flex-center">
-                            <div className="letter-holder">
+                            <div className="letter-holder flex-center">
                                 <div className="l-1 letter">C</div>
                                 <div className="l-2 letter">a</div>
                                 <div className="l-3 letter">r</div>
@@ -52,13 +52,13 @@ export function ModalLoadFun (props) {
     );
 }
 
-export const ModalLoadErros = ({erros, onClose, abrir}) => 
+export const ModalErros = ({erros, onClose, abrir}) => 
 
     abrir 
     ? 
     ReactDOM.createPortal(
         <div className="fundo-modal">
-            <div className="caixa-modal-erros">
+            <div className="caixa-modal-erros caixa-load">
                 <div className="titulo-modal-erros flex-center">
                     <h3>Há erros no seu cadastro</h3>
                 </div>
@@ -69,8 +69,8 @@ export const ModalLoadErros = ({erros, onClose, abrir}) =>
                 </div>
                 <div className="txt-modal-erros">
                     <ul>
-                    {erros.map(erro=>(
-                            <li>{erro}</li>
+                    {erros.map((erro, i=1)=>(
+                            <li key={++i}>{erro}</li>
                         ))
                     }
                     </ul>
@@ -90,11 +90,11 @@ export const ModalLoadConst = ({onClose, abrir}) =>
     ? 
     ReactDOM.createPortal(
         <div className="fundo-modal">
-            <div className="caixa-load">
-                <div className="load-5">
+            <div className="caixa-const-load caixa-load">
+                <div className="load-const load-5">
                     {/* <p>Carregando...</p> */}
                     <div className="txt-load flex-center">
-                        <div className="letter-holder" onClick={onClose}>
+                        <div className="letter-holder flex-center">
                             <div className="l-1 letter">C</div>
                             <div className="l-2 letter">a</div>
                             <div className="l-3 letter">r</div>

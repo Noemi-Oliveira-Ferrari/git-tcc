@@ -5,7 +5,6 @@ import check from '../img/check.png';
 import ButtonToolbar from '../../node_modules/react-bootstrap/ButtonToolbar';
 import $ from 'jquery';
 import axios from 'axios';
-import Loading from '../components/Loading'
 import {browserHistory} from 'react-router';
 
 import '../css/confirmacao.css';
@@ -13,7 +12,6 @@ import ModalSucesso from '../components/ModalSucesso';
 import {ModalLoadFun} from '../components/ModaisLoad';
 
 function Confirmacao() {
-
 
     const [modalShow, setModalShow] = useState(false);
     const [initLoad, setInitLoad] = useState(false);
@@ -193,7 +191,8 @@ function Confirmacao() {
             $("#input-cod-confirm").attr("disabled", true);
             $("#btn-confirm").attr("disabled", true);
             console.clear();
-            getUsuario();
+            // getUsuario();
+            setInitLoad(true);
             setRenderizar(false);
         }
     });

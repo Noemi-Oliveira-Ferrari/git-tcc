@@ -4,7 +4,7 @@ import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
-import {ModalLoadConst, ModalLoadErros} from './ModaisLoad';
+import {ModalLoadConst, ModalErros} from './ModaisLoad';
 import {browserHistory} from 'react-router';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfCliente, validarEmail,
@@ -22,13 +22,16 @@ export class DadosPessoaisCliente extends Component{
         this.state = {
             nome: "", dataNasc: "", cpf: "",
             email: "", senha: "", confirmSenha: "",
-            loading: false, showErros: false,
+            loading: false,
+            showModalErro: false,
+            erros: [],
             
             cep: "", logradouro: "", numero:"", idCidade: "",
             bairro: "", cidade: "", uf: "",
             cliente: [], endereco: []
         }
         this.modalLoad = this.modalLoad.bind(this);
+        this.modalErros = this.modalErros.bind(this);
 
         this.setNome = this.setNome.bind(this);
         this.setData = this.setData.bind(this);
@@ -40,6 +43,15 @@ export class DadosPessoaisCliente extends Component{
 
         this.getCpf = this.getCpf.bind(this);
         this.getEmail = this.getEmail.bind(this);
+    }
+
+    modalErros = () =>{
+        if(this.state.showModalErro){
+            $("body").css("overflow-y", "hidden");
+        }else{
+            $("body").css("overflow-y", "auto");
+        }
+        this.setState({showModalErro: !this.state.showModalErro});
     }
 
     modalLoad = () =>{
@@ -100,13 +112,16 @@ export class DadosPessoaisCliente extends Component{
     }
     
     getCpf(cpf){
+        let erros = [];
         axios.get(`http://localhost:8080/clientes/verificar/cpf/${cpf}`)
         .then((response)=>{
             let jsonCliente = response.data;
             console.log(jsonCliente);
             if(jsonCliente !== null){
                 withError($("#txt-cpf"));
-                alert("CPF ja cadastrado");
+                erros.push(`CPF ${cpf} ja cadastrado`);
+                this.setState({erros: erros});
+                this.modalErros();
                 this.setState({cpf: ""});
             }
             this.modalLoad();
@@ -124,10 +139,11 @@ export class DadosPessoaisCliente extends Component{
     }
 
     getEmail(event){
+        let erros = [];
         this.setState({email: event.target.value});
         let email = event.target.value;
         console.log(email);
-        if(email.length > 0){
+        if(email.length > 5){
 
             axios.get(`http://localhost:8080/clientes/verificar/email/${email}`)
             .then((response)=>{
@@ -135,12 +151,13 @@ export class DadosPessoaisCliente extends Component{
             console.log(jsonPro);
             if(jsonPro !== null){
                 withError($("#txt-email"));
-                alert("E-mail ja cadastrado");
+                erros.push(`E-mail ${email} ja cadastrado`);
+                this.setState({erros: erros});
+                this.modalErros();
                 this.setState({email: ""});
                 setTimeout(() => {
                     $("#txt-email").focus();
-                }, 200);
-                
+                }, 500);                
             }
             this.modalLoad();
             })
@@ -213,6 +230,7 @@ export class DadosPessoaisCliente extends Component{
         return(
             <Fragment>
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
+                <ModalErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
                 <div className="flex-center">
                     <div className="card-formulario-pessoal">
                         <div className="caixa-title-card">
@@ -514,7 +532,7 @@ export default class FormularioCliente extends Component{
     render(){
         return(
             <Fragment>
-                <ModalLoadErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
+                <ModalErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
                 <form className="form-cliente" name="form_cliente" method="GET" onSubmit={this.realizarCadastro}>
                     <DadosPessoaisCliente/>
                     <TermosDeUso link="/cadastro/confirmacao"/>

@@ -268,17 +268,21 @@
 
     .caixa-cep
     {
-        width: 195px;
+        max-width: 35%;
+        /* width: 195px; */
     }
 
     .caixa-logradouro
     {
-        width: 395px;
+        max-width: 62%;
+        margin-left: 10px;
+        margin-right: 10px;
+        /* width: 395px; */
     }
 
     .caixa-numero
     {
-        width: 130px;
+        width: 23%;
     }
 
     .caixa-bairro

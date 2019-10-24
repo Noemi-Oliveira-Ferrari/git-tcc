@@ -9,12 +9,12 @@
         /* background-color: rgb(48, 202, 202); */
         margin: auto;
     }
-    
+
     .caixa-confirmacao-email{
         width: 700px;
         height: 700px;
         background-color: rgb(255, 255, 255);
-        box-shadow: 10px 10px 15px #015249;                                                                                      ;
+        box-shadow: 10px 10px 15px #015249;
         border-radius: 10px;
         display:flex;
         flex-wrap: wrap;

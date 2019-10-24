@@ -134,15 +134,7 @@ option{
     font-weight: bold;
 }
 
-/* .caixa-load{
-    width: 150px;
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-} */
-
+/* MODAIS */
 .fundo-modal{
     background: rgba(0, 0, 0, 0.322);
     display: flex;
@@ -156,38 +148,71 @@ option{
     z-index: 992;
 }
 
-.caixa-load {
+/* MODAL LOAD CONST */
+.caixa-const-load {
     width: 170px;
     height: 170px;
-    padding: 20px 20px 20px;
+    /* padding-top: 15px; */
     border-radius: 10px;
     text-align: center;
+    /* background-color: #ffffff; */
+    background-color: #ececec;
+    position: absolute;
+    /* top: 45vh;
+    left: 45vw; */
+    margin-left: 45vw;
+    margin-top: 10vh;
+    box-shadow: 4px 4px 7px #00000038;
+}
+
+.load-const{
+    width: 170px;
+    height: 170px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding-top: 5px;
+}
+/* MODAL LOAD CONST */
+
+/* MODAL LOAD FUNCTION */
+.caixa-function-load {
+    width: 170px;
+    height: 170px;
+    border-radius: 10px;
+    /* text-align: center; */
+    /* background-color: #aad464; */
     background-color: #ececec;
     position: absolute;
     top: 45vh;
-    left: 45vw;
+    left: 4vw;
     box-shadow: 3px 3px 5px #00000060;
 }
+.load-function{
+    width: 140px;
+    height: 135px;
+    /* background-color: #6fcedfa1; */
+}
+/* MODAL LOAD FUNCTION */
 
 .txt-load{
     width: inherit;
     height: fit-content;
     box-sizing: border-box;
-    padding-left: 7px;
-    margin-bottom: 15px;
-    margin-top: -15px;
-    /* background-color: #90e442; */
+    /* padding-left: 7px; */
+    /* margin-bottom: 15px; */
+    /* margin-top: 15px; */
+    /* background-color: #e44242; */
 }
 
 .letter-holder {
     width: 150px;
-    height: 20px;
+    height: 40px;
     /* background-color: #69d9ec; */
 }
 
 .letter {
     float: left;
-    font-size: 14px;
+    font-size: 16px;
     color: #777;
 }
 .letter {
@@ -214,8 +239,6 @@ option{
     0% {opacity: 0;}
     100% {opacity: 1;}
 }
-
-
 
 .caixa-load:last-child {margin-right: 0;}
 
@@ -246,14 +269,28 @@ option{
     background: #55a7b2;
 }
 
-.load-5 .circulo-load {animation: loadingE 1.3s linear infinite;}
+.load-5 .circulo-load {animation: loadingE 1.5s linear infinite;}
 
 @keyframes loadingE {
-    0 {transform: rotate(0deg);}
+    0% {transform: rotate(0deg);}
     100% {transform: rotate(360deg);}
 }
 
+.close-modal{
+    width: 50px;
+    height: 50px;
+    background-color: #eaeaea;
+    cursor: pointer;
+    float: left;
+    border-radius: 0 10px 0 0;
+}
 
+.close-modal figure img{
+    max-width: 20px;
+    margin-top: 15px;
+}
+
+/* MODAL ERROS */
 .caixa-modal-erros {
     width: 600px;
     height: 320px;
@@ -270,24 +307,12 @@ option{
     width: 550px;
     height: 50px;
     background-color: #eaeaea;
-    color: #55a7b2;
+    color: #ca422a;
+    /* color: #55a7b2; */
     border-radius: 10px 0 0 0;
     box-sizing: border-box;
     padding-top: 7px;
     float: left;
-}
-.close-modal{
-    width: 50px;
-    height: 50px;
-    background-color: #eaeaea;
-    cursor: pointer;
-    float: left;
-    border-radius: 0 10px 0 0;
-}
-
-.close-modal figure img{
-    max-width: 30px;
-    margin-top: 15px;
 }
 .txt-modal-erros{
     width: inherit;
@@ -301,3 +326,5 @@ option{
     border-radius: 0 0 10px 10px;
     clear: both;
 }
+/* MODAL ERROS */
+/* MODAIS */
