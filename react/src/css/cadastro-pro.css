@@ -204,7 +204,7 @@
     {
         width: inherit;
         height: fit-content;
-        /* background-color: rgb(219, 231, 110); */
+        /* background-color: rgb(15, 221, 66); */
         display: flex;
         justify-content: space-around;
         align-items: center;
@@ -229,7 +229,7 @@
     .caixa-cidade, .caixa-uf
     {
         height: 90px;
-        /* background-color: rgb(57, 207, 115); */
+        /* background-color: rgb(117, 179, 238); */
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
@@ -268,21 +268,25 @@
 
     .caixa-cep
     {
-        max-width: 35%;
+        max-width: 27%;
+        margin-left: 5px;
+        margin-right: 5px;
         /* width: 195px; */
     }
 
     .caixa-logradouro
     {
-        max-width: 62%;
-        margin-left: 10px;
-        margin-right: 10px;
+        width: 70%;
+        margin-left: 5px;
+        margin-right: 5px;
         /* width: 395px; */
     }
 
     .caixa-numero
     {
         width: 23%;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     .caixa-bairro

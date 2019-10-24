@@ -326,5 +326,54 @@ option{
     border-radius: 0 0 10px 10px;
     clear: both;
 }
+/* MODAL ERROS FUNCTION */
+
 /* MODAL ERROS */
+.caixa-modal-erros-function {
+    width: 600px;
+    height: 320px;
+    /* padding: 20px 20px 20px; */
+    border-radius: 10px;
+    text-align: center;
+    background-color: #ffffff;
+    position: absolute;
+    margin-top: 30vh;
+    margin-left: -16vh;
+    box-shadow: 3px 3px 5px #00000060;
+}
+.header-modal-erros-function{
+    height: 50px;
+    background-color: #eaeaea;
+    padding: 0px !important; 
+    border-radius: 10px 10px 0 0 !important;
+}
+.titulo-modal-erros-function{
+    width: 550px;
+    height: 50px;
+    background-color: #eaeaea;
+    color: #ca422a;
+    border-radius: 10px 10px 0 0 !important;
+    box-sizing: border-box;
+    padding-top: 7px;
+    float: left;
+}
+.body-modal-erros-function{
+    /* background-color: #eaeaea; */
+    padding: 0px !important; 
+    border-radius: 0 0 10px 10px !important;
+}
+.txt-modal-erros-function{
+    width: inherit;
+    height: 270px;
+    overflow: auto;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+
+    font-size: 22px;
+    text-align: left;
+    font-family: 'Manjari';
+    clear: both;
+}
+/* MODAL ERROS FUNCTION */
 /* MODAIS */

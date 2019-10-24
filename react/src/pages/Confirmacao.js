@@ -9,12 +9,14 @@ import {browserHistory} from 'react-router';
 
 import '../css/confirmacao.css';
 import ModalSucesso from '../components/ModalSucesso';
-import {ModalLoadFun} from '../components/ModaisLoad';
+import {ModalLoadFun, ModalErrosFun} from '../components/ModaisLoad';
 
 function Confirmacao() {
 
-    const [modalShow, setModalShow] = useState(false);
+    const [modalSucessoShow, setModalSucessoShow] = useState(false);
     const [initLoad, setInitLoad] = useState(false);
+    const [showErros, setModalErros] = useState(false);
+    const [erroCode, setErroCode] = useState([]);
     const [codeConfirm, setCodeConfirm] = useState(random(1000, 9999));
     const [txtCodeConfirm, setTxtCodeConfirm] = useState("");
     const [renderizar, setRenderizar] = useState(true);
@@ -86,7 +88,7 @@ function Confirmacao() {
             .then((response)=>{
                 sessionStorage.clear();
                 setInitLoad(false);
-                setModalShow(true);
+                setModalSucessoShow(true);
             })
             .catch((error)=>{
                 setInitLoad(false);
@@ -118,7 +120,7 @@ function Confirmacao() {
             .then((response)=>{
                 sessionStorage.clear();
                 setInitLoad(false);
-                setModalShow(true);
+                setModalSucessoShow(true);
             })
             .catch((error)=>{
                 setInitLoad(false);
@@ -130,11 +132,14 @@ function Confirmacao() {
 
 
     function confirmarEmail(){
+        let erros = [];
         console.log(txtCodeConfirm+" "+codeConfirm);
         if(txtCodeConfirm == codeConfirm){
             cadastrarEndereco();
         }else{
-            console.log("codigo inválido");
+            erros.push("Codigo Inválido");
+            setErroCode(erros);
+            setModalErros(true);
         }
     }
 
@@ -183,7 +188,7 @@ function Confirmacao() {
             setInitLoad(false);
             console.error(error);
         })
-        .onload = setInitLoad(true);
+        .onload =  setInitLoad(true);
     }
 
     useEffect(()=>{
@@ -191,8 +196,8 @@ function Confirmacao() {
             $("#input-cod-confirm").attr("disabled", true);
             $("#btn-confirm").attr("disabled", true);
             console.clear();
-            // getUsuario();
-            setInitLoad(true);
+            getUsuario();
+            // setInitLoad(true);
             setRenderizar(false);
         }
     });
@@ -226,8 +231,14 @@ function Confirmacao() {
                                     </figure>
                                 </button>
                                 <ModalSucesso
-                                    show={modalShow}
-                                    onHide={() => setModalShow(false)}/>
+                                    show={modalSucessoShow}
+                                    onHide={() => setModalSucessoShow(false)}/>
+                                    
+                                <ModalErrosFun
+                                    erros={erroCode}
+                                    show={showErros}
+                                    onHide={() => setModalErros(false)}/>
+
                                 <ModalLoadFun
                                     show={initLoad}
                                     // onHide={() => setInitLoad(false)}

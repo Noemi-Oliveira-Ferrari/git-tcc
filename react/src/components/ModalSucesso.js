@@ -10,7 +10,7 @@ function ModalSucesso (props) {
     return(        
         <Modal {...props}
         size="lg"
-        className=" modal center flex-center">
+        className="modal center flex-center">
             <div className="caixa-modal flex-center">
                 <Modal.Header>
                     <div className="img-confirm flex-center">

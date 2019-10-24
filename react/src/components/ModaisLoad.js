@@ -52,6 +52,42 @@ export function ModalLoadFun (props) {
     );
 }
 
+
+export function ModalErrosFun (props) {
+
+    return(        
+        <Modal {...props}
+        size="sm"
+        className="fundo-modal">
+            <div className="caixa-modal-erros-function">
+                <Modal.Header className="header-modal-erros-function">
+                    <div className="titulo-modal-erros-function flex-center">
+                        <h3>Erro</h3>
+                    </div>
+                    <div className="close-modal flex-center" onClick={props.onHide}>
+                        <figure>
+                            <img src={close}/>
+                        </figure>
+                    </div>
+                </Modal.Header>
+                <Modal.Body className="body-modal-erros-function">
+                    <div className="txt-modal-erros-function">
+                        <ul>
+                        {props.erros.map((erro, i=1)=>(
+                                <li key={++i}>{erro}</li>
+                            ))
+                        }
+                        </ul>
+                    </div>
+                </Modal.Body>
+                {/* <Modal.Footer>
+                </Modal.Footer> */}
+            </div>
+        </Modal>
+        
+    );
+}
+
 export const ModalErros = ({erros, onClose, abrir}) => 
 
     abrir 

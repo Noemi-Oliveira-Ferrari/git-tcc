@@ -40,6 +40,7 @@ export class DadosPessoaisCliente extends Component{
         this.setSenha = this.setSenha.bind(this);
         this.setConfirmSenha = this.setConfirmSenha.bind(this);
         this.setCep = this.setCep.bind(this);
+        this.setNumero = this.setNumero.bind(this);
 
         this.getCpf = this.getCpf.bind(this);
         this.getEmail = this.getEmail.bind(this);
@@ -121,15 +122,19 @@ export class DadosPessoaisCliente extends Component{
                 withError($("#txt-cpf"));
                 erros.push(`CPF ${cpf} ja cadastrado`);
                 this.setState({erros: erros});
-                this.modalErros();
+                setTimeout(()=>{this.modalErros();}, 500);
                 this.setState({cpf: ""});
             }
-            this.modalLoad();
+            setTimeout(()=>{this.modalLoad();}, 500);
         })
         .catch((error)=>{
             console.log(error);
         })
         .onload = this.modalLoad();
+    }
+
+    setNumero(event){
+        this.setState({numero: event.target.value});
     }
 
     setEmail(event){
@@ -149,17 +154,17 @@ export class DadosPessoaisCliente extends Component{
             .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);
-            if(jsonPro !== null){
-                withError($("#txt-email"));
-                erros.push(`E-mail ${email} ja cadastrado`);
-                this.setState({erros: erros});
-                this.modalErros();
-                this.setState({email: ""});
-                setTimeout(() => {
-                    $("#txt-email").focus();
-                }, 500);                
-            }
-            this.modalLoad();
+                if(jsonPro !== null){
+                    withError($("#txt-email"));
+                    erros.push(`E-mail ${email} ja cadastrado`);
+                    this.setState({erros: erros});
+                    setTimeout(()=>{this.modalErros();}, 500);
+                    this.setState({email: ""});
+                    setTimeout(() => {
+                        $("#txt-email").focus();
+                    }, 500);                
+                }
+                setTimeout(()=>{this.modalLoad();}, 500);
             })
             .catch((error)=>{
                 console.log(error);
@@ -206,7 +211,7 @@ export class DadosPessoaisCliente extends Component{
                 withoutError($('#txt-cidade'));
                 withoutError($('#txt-bairro'));
                 withoutError($('#txt-uf'));
-                this.modalLoad();
+                setTimeout(()=>{this.modalLoad();}, 500);
             }
         })
         .catch((error)=>{
@@ -349,12 +354,17 @@ export class DadosPessoaisCliente extends Component{
                                 <InputNumber
                                     classDivInput="caixa-numero"
                                     label="Número:"
-                                    maxLength="10"
                                     id="txt-numero"
                                     type="text"
                                     name="txt_numero"
-                                    valueInput={this.state.numero || ""}
                                     classInput="form-control form-input"
+                                    maxLengthInput="10"
+                                    separadorMilhar="."
+                                    separadorDecimal=","
+                                    qtdDecimal="1"
+                                    permitirNegativo="false"
+                                    onChange={this.setNumero}
+                                    valueInput={this.state.numero || ""}
                                 />
                                 
                             </div>

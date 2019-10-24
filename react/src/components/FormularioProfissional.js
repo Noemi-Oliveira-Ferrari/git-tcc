@@ -117,10 +117,10 @@ class DadosPessoaisPro extends Component{
                 withError($("#txt-cpfCnpj"));
                 erros.push(`CPF ${cpf} ja cadastrado`);
                 this.setState({erros: erros});
-                this.modalErros();
+                setTimeout(()=>{this.modalErros();}, 500);
                 this.setState({cpfCnpj: ""});
             }
-            this.modalLoad();
+            setTimeout(()=>{this.modalLoad();}, 500);
         })
         .catch((error)=>{
             console.log(error);
@@ -139,10 +139,10 @@ class DadosPessoaisPro extends Component{
                 withError($("#txt-cpfCnpj"));
                 erros.push(`CNPJ ${cnpj} ja cadastrada`);
                 this.setState({erros: erros});
-                this.modalErros();
+                setTimeout(()=>{this.modalErros();}, 500);
                 this.setState({cpfCnpj: ""});
             }
-            this.modalLoad();
+            setTimeout(()=>{this.modalLoad()}, 500);
         })
         .catch((error)=>{
             console.log(error);
@@ -190,14 +190,14 @@ class DadosPessoaisPro extends Component{
                     withError($("#txt-email"));
                     erros.push(`E-mail ${email} ja cadastrado`);
                     this.setState({erros: erros});
-                    this.modalErros();
+                    setTimeout(()=>{this.modalErros();}, 500);
                     this.setState({email: ""});
                     setTimeout(() => {
                         $("#txt-email").focus();
                     }, 200);
                     
                 }
-                this.modalLoad();
+                setTimeout(()=>{this.modalLoad()}, 500);
             })
             .catch((error)=>{
                 console.log(error);
@@ -232,7 +232,7 @@ class DadosPessoaisPro extends Component{
                 withoutError($('#txt-cidade'));
                 withoutError($('#txt-bairro'));
                 withoutError($('#txt-uf'));
-                this.modalLoad();
+                setTimeout(()=>{this.modalLoad();}, 500);
             }
         })
         .catch((error)=>{
@@ -493,6 +493,7 @@ class DadosProfissional extends Component{
 
         this.getCategorias = this.getCategorias.bind(this);
         this.getSubcategorias = this.getSubcategorias.bind(this);
+        this.setValorHora = this.setValorHora.bind(this);
         // this.setSubcategoria = this.setSubcategoria.bind(this);
     }
 
@@ -503,6 +504,10 @@ class DadosProfissional extends Component{
             $("body").css("overflow-y", "auto");
         }
         this.setState({loading: !this.state.loading});
+    }
+    
+    setValorHora(event){
+        this.setState({valorHora: event.target.value});
     }
 
     componentDidMount(){
@@ -518,7 +523,7 @@ class DadosProfissional extends Component{
             this.getCategorias();
             this.setState({idCategoria: categoria});
             this.setState({idSubcategoria: subcategoria});
-            this.setState({valorHora: profissional.valorHora});
+            // this.setState({valorHora: profissional.valorHora});
             this.setState({qualificacoes: profissional.resumoQualificacoes});
             this.getSubcategorias(categoria);
         }else{
@@ -531,14 +536,15 @@ class DadosProfissional extends Component{
         
         
     getCategorias(){
-        
+        let load = false;
         // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
         axios.get(`http://localhost:8080/categorias`)
         .then((response)=>{
             let jsonCategorias = response.data;
             this.setState({categorias: jsonCategorias});
-            if(!this.state.loading){
+            if(load){
                 this.modalLoad();
+                load = true;
             }
         })
         .catch((error)=>{
@@ -559,7 +565,7 @@ class DadosProfissional extends Component{
         .then((response)=>{
             let jsonSubcategorias = response.data;
             this.setState({subcategorias: jsonSubcategorias});
-            this.modalLoad();
+            setTimeout(()=>{this.modalLoad()}, 700);
         })
         .catch((error)=>{
             console.error(error);
@@ -619,13 +625,14 @@ class DadosProfissional extends Component{
                                         id="txt-valor-hora"
                                         classInput="form-control form-input"
                                         name="txt_valor_hora"
-                                        type="text"
+                                        type="InputNumber"
                                         classDivInput="caixa-valor-hora"
                                         separadorMilhar="."
                                         separadorDecimal=","
                                         permitirNegativo="false"
                                         prefixo="R$"
                                         qtdDecimal="2"
+                                        onChange={this.setValorHora}
                                         valueInput={this.state.valorHora || ""}
                                     />
                                 </div>

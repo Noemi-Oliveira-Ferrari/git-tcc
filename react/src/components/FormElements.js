@@ -13,7 +13,7 @@ export class InputNumber extends Component {
                     id={this.props.id}
                     type={this.props.type}
                     name={this.props.name}
-                    maxLengthInput={this.props.maxLength}
+                    maxLength={this.props.maxLengthInput}
                     className={this.props.classInput}
                     onChange={this.props.onChange}
                     data={this.props.data}
