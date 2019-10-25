@@ -40,10 +40,10 @@ public class HandleEmails {
 					"        <td width=\"33%\"></td>"+
 					"        <td width=\"34%\">"+
 					"            <table>"+
-					"                <tr class=\"caixa-codigo\" style=\"padding:0px;margin:auto;  border-radius: 7px; border: dotted 3px #341212; margin: auto; background-image: linear-gradient(to bottom right, #77c9d4, #57bc90);box-sizing: border-box;\">"+
+					"                <tr class=\"caixa-codigo\" style=\"padding:0px;margin:auto;  border-radius: 7px; border: dotted 3px #341212; margin: auto; background-color: #77c9d4;box-sizing: border-box;\">"+
 					"                    <td>"+
 					"                        <td class=\"codigo\" style=\"padding:0px;margin:0px; padding-top: 0px;padding-left: 12px;\">"+
-					"                            <h3 class=\"txt-codigo\" style=\"padding:0px;margin:0px;  font-family: 'Lexend Deca', sans-serif;font-size: 30px;letter-spacing: 20px;text-align: center;color: #ffffff\">"+confirm.getCodigoConfirm()+"</h3>"+
+					"                            <h3 class=\"txt-codigo\" style=\"padding:0px;margin:0px;  font-family: 'Lexend Deca', sans-serif;font-size: 30px;letter-spacing: 20px;text-align: center;color: #eaeaea\">"+confirm.getCodigoConfirm()+"</h3>"+
 					"                        </td>"+
 					"                    </td>"+
 					"                </tr>"+

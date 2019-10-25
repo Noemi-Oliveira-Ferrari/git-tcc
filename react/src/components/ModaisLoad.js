@@ -53,7 +53,7 @@ export function ModalLoadFun (props) {
 }
 
 
-export function ModalErrosFun (props) {
+export function ModalAlertasFun (props) {
 
     return(        
         <Modal {...props}
@@ -62,7 +62,7 @@ export function ModalErrosFun (props) {
             <div className="caixa-modal-erros-function">
                 <Modal.Header className="header-modal-erros-function">
                     <div className="titulo-modal-erros-function flex-center">
-                        <h3>Erro</h3>
+                        <h3 className={props.tipoAlerta}>{props.titulo}</h3>
                     </div>
                     <div className="close-modal flex-center" onClick={props.onHide}>
                         <figure>
@@ -88,7 +88,7 @@ export function ModalErrosFun (props) {
     );
 }
 
-export const ModalErros = ({erros, onClose, abrir}) => 
+export const ModalAlertas = ({tipoAlerta, titulo, erros, onClose, abrir}) => 
 
     abrir 
     ? 
@@ -96,7 +96,7 @@ export const ModalErros = ({erros, onClose, abrir}) =>
         <div className="fundo-modal">
             <div className="caixa-modal-erros caixa-load">
                 <div className="titulo-modal-erros flex-center">
-                    <h3>Há erros no seu cadastro</h3>
+                    <h3 className={tipoAlerta}>{titulo}</h3>
                 </div>
                 <div className="close-modal flex-center" onClick={onClose}>
                     <figure>

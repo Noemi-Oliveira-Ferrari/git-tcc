@@ -4,7 +4,7 @@ import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import {ModalLoadConst, ModalErros} from './ModaisLoad';
+import {ModalLoadConst, ModalAlertas} from './ModaisLoad';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfPro, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
@@ -27,7 +27,7 @@ class DadosPessoaisPro extends Component{
             endereco: [], profissional: []
         }
         this.modalLoad = this.modalLoad.bind(this);
-        this.modalErros = this.modalErros.bind(this);
+        this.ModalAlertas = this.ModalAlertas.bind(this);
            
         this.setNome = this.setNome.bind(this);
         this.setCep = this.setCep.bind(this);
@@ -43,7 +43,7 @@ class DadosPessoaisPro extends Component{
         this.getEmail = this.getEmail.bind(this);
     }
 
-    modalErros = () =>{
+    ModalAlertas = () =>{
         // if(this.state.showModalErro){
         //     $("body").css("overflow-y", "hidden");
         // }else{
@@ -67,15 +67,20 @@ class DadosPessoaisPro extends Component{
 
         if(profissional !== null){
             this.setState({profissional: profissional});
-
+            
             this.setState({nome: profissional.nome});
             this.setState({dataNasc: formataData(profissional.dataNasc, "-", "/")});
-
-            if(profissional.cpf === ""){
-                $("#rdo-pf").prop("checked", true);
-                this.setState({cpfCnpj: profissional.cpf});
+            console.log("__________");
+            console.log(profissional.cpf);
+            if(profissional.cpf === "" || profissional.cpf === null){
+                // $("#rdo-pj").prop("checked", true);
+                this.setState({radioChecked: "rdo-pj"});
+                this.setState({tipoPro: "rdo-pj"});
+                this.setState({cpfCnpj: profissional.cnpj});
             }else{
-                $("#rdo-pj").prop("checked", true);
+                // $("#rdo-pf").prop("checked", true);
+                this.setState({radioChecked: "rdo-pf"});
+                this.setState({tipoPro: "rdo-pf"});
                 this.setState({cpfCnpj: profissional.cpf || profissional.cnpj});
             }
 
@@ -117,7 +122,7 @@ class DadosPessoaisPro extends Component{
                 withError($("#txt-cpfCnpj"));
                 erros.push(`CPF ${cpf} ja cadastrado`);
                 this.setState({erros: erros});
-                setTimeout(()=>{this.modalErros();}, 500);
+                setTimeout(()=>{this.ModalAlertas();}, 500);
                 this.setState({cpfCnpj: ""});
             }
             setTimeout(()=>{this.modalLoad();}, 500);
@@ -139,7 +144,7 @@ class DadosPessoaisPro extends Component{
                 withError($("#txt-cpfCnpj"));
                 erros.push(`CNPJ ${cnpj} ja cadastrada`);
                 this.setState({erros: erros});
-                setTimeout(()=>{this.modalErros();}, 500);
+                setTimeout(()=>{this.ModalAlertas();}, 500);
                 this.setState({cpfCnpj: ""});
             }
             setTimeout(()=>{this.modalLoad()}, 500);
@@ -190,7 +195,7 @@ class DadosPessoaisPro extends Component{
                     withError($("#txt-email"));
                     erros.push(`E-mail ${email} ja cadastrado`);
                     this.setState({erros: erros});
-                    setTimeout(()=>{this.modalErros();}, 500);
+                    setTimeout(()=>{this.ModalAlertas();}, 500);
                     this.setState({email: ""});
                     setTimeout(() => {
                         $("#txt-email").focus();
@@ -238,7 +243,7 @@ class DadosPessoaisPro extends Component{
         .catch((error)=>{
             erros.push(`CEP ${cep} Não existe!`);
             this.setState({erros: erros});
-            this.modalErros();
+            this.ModalAlertas();
 
             this.setState({logradouro: ""});
             this.setState({bairro: ""});
@@ -281,7 +286,7 @@ class DadosPessoaisPro extends Component{
         return(
             <Fragment>
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
-                <ModalErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
+                <ModalAlertas tipoAlerta="erroAlerta" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <div className="flex-center">
                     <div className="card-formulario-pessoal">
                         <div className="caixa-title-card">
@@ -514,7 +519,7 @@ class DadosProfissional extends Component{
         let profissional = JSON.parse(sessionStorage.getItem("profissional"));
         let categoria = JSON.parse(sessionStorage.getItem("categoria"));
         let subcategoria = JSON.parse(sessionStorage.getItem("subcategoria"));
-        console.clear();
+        // console.clear();
         console.log(categoria);
         console.log(subcategoria);
         if(categoria !== null && subcategoria !== null){
@@ -523,7 +528,7 @@ class DadosProfissional extends Component{
             this.getCategorias();
             this.setState({idCategoria: categoria});
             this.setState({idSubcategoria: subcategoria});
-            // this.setState({valorHora: profissional.valorHora});
+            this.setState({valorHora: profissional.valorHora});
             this.setState({qualificacoes: profissional.resumoQualificacoes});
             this.getSubcategorias(categoria);
         }else{
@@ -667,13 +672,13 @@ export default class FormularioProfissional extends Component{
             erros: [],
             showModalErro: false
         }
-        this.modalErros = this.modalErros.bind(this);
+        this.ModalAlertas = this.ModalAlertas.bind(this);
 
         this.realizarCadastro = this.realizarCadastro.bind(this);   
         this.validarCampos = this.validarCampos.bind(this);  
     }
 
-    modalErros = () =>{
+    ModalAlertas = () =>{
         if(!this.state.showModalErro){
             $("body").css("overflow-y", "hidden");
         }else{
@@ -800,7 +805,7 @@ export default class FormularioProfissional extends Component{
             browserHistory.push("/cadastro/confirmacao");
         }else{
             setTimeout(() => {
-                this.modalErros();
+                this.ModalAlertas();
             }, 500);
             moveToError();
         }
@@ -809,7 +814,7 @@ export default class FormularioProfissional extends Component{
     render(){
         return(
             <Fragment>
-                <ModalErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
+                <ModalAlertas tipoAlerta="erroAlerta" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <form className="form-pro" name="form_profissional" method="GET" onSubmit={this.realizarCadastro}>
                     <DadosPessoaisPro/>
                     <DadosProfissional/>

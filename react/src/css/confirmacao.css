@@ -50,7 +50,7 @@
     }
     
     .img-email{
-        width: 200px;
+        width: 250px;
         min-height: 50px;
         height: auto;
         overflow: hidden;
@@ -59,7 +59,7 @@
     }
 
     .img-email img{
-        max-width: 200px;
+        max-width: 250px;
         /* background-color: #95dad2; */
     }
     
@@ -75,8 +75,10 @@
         height: 40px;
         outline: none;
         border: none;
-        border-bottom: 2px #6a6a6a solid;
+        border-bottom: 2px #d0d0d0 solid;
+        color: #616161;
         font-size: 35px;
+        text-align: center;
         letter-spacing: 30px;
         background: none;
         float: left;
@@ -85,10 +87,10 @@
     
     .img-check img{
         width: 50px;
-        height: 45px;
+        height: 50px;
         float: left;
-        
     }
+
     #btn-confirm{
         background-color: rgba(0, 0, 0, 0);
         border: none;

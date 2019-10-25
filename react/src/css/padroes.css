@@ -1,6 +1,6 @@
 
 body, html, figure, input, img, h1, h2,
-h3, h4, h5, h6, div, figure, section{
+h3, h4, h5, h6, div, figure, section, form{
     margin: 0;
     padding: 0;
 }
@@ -376,4 +376,20 @@ option{
     clear: both;
 }
 /* MODAL ERROS FUNCTION */
+
+.erroAlt{
+    color: #cf1c1c;
+    text-shadow: 1px 1px 3px #00000027;
+}
+
+.alertaAlt{
+    color: #d2df21;
+    text-shadow: 1px 1px 3px #00000027;
+}
+
+.msgAlt{
+    color: #3d9913;
+    text-shadow: 1px 1px 3px #00000027;
+}
+
 /* MODAIS */

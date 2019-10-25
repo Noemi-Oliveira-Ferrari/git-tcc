@@ -9,22 +9,22 @@ import {browserHistory} from 'react-router';
 
 import '../css/confirmacao.css';
 import ModalSucesso from '../components/ModalSucesso';
-import {ModalLoadFun, ModalErrosFun} from '../components/ModaisLoad';
+import {ModalLoadFun, ModalAlertasFun} from '../components/ModaisLoad';
 
 function Confirmacao() {
 
     const [modalSucessoShow, setModalSucessoShow] = useState(false);
     const [initLoad, setInitLoad] = useState(false);
-    const [showErros, setModalErros] = useState(false);
-    const [erroCode, setErroCode] = useState([]);
+    const [showAlertas, setModalAlertas] = useState(false);
+    const [codeAlerta, setCodeAlerta] = useState([]);
     const [codeConfirm, setCodeConfirm] = useState(random(1000, 9999));
     const [txtCodeConfirm, setTxtCodeConfirm] = useState("");
     const [renderizar, setRenderizar] = useState(true);
     const [profissional, setProfissional] = useState(JSON.parse(sessionStorage.getItem("profissional")));
     const [cliente, setCliente] = useState(JSON.parse(sessionStorage.getItem("cliente")));
     const [endereco, setEndereco] = useState(JSON.parse(sessionStorage.getItem("endereco")));
-    // const [usuario, setUsuario] = useState(JSON.parse(sessionStorage.getItem("endereco")));
-    // const [idEndereco, setIdEndereco] = useState(0);
+    const [tipoAlerta, setTipoAlerta] = useState("erroAlt");
+    const [tituloAlerta, setTituloAlerta] = useState("erroAlt");
 
     function random (min, max){
         return Math.trunc(Math.random() * (max + 1 - min) + min);
@@ -132,14 +132,16 @@ function Confirmacao() {
 
 
     function confirmarEmail(){
-        let erros = [];
+        let alertas = [];
         console.log(txtCodeConfirm+" "+codeConfirm);
         if(txtCodeConfirm == codeConfirm){
             cadastrarEndereco();
         }else{
-            erros.push("Codigo Inválido");
-            setErroCode(erros);
-            setModalErros(true);
+            alertas.push("Codigo Inválido");
+            setCodeAlerta(alertas);
+            setTipoAlerta("erroAlt");
+            setTituloAlerta("ERRO");
+            setModalAlertas(true);
         }
     }
 
@@ -152,13 +154,8 @@ function Confirmacao() {
         
         let tipoCadastro;
         let usuario;
+        let alertas = [];
 
-        console.log(codeConfirm);
-        
-        console.log(profissional);
-        console.log(cliente);
-        console.log(endereco);
-        
         if(profissional === null){
             tipoCadastro = "clientes";
             usuario = cliente
@@ -166,7 +163,6 @@ function Confirmacao() {
             tipoCadastro = "profissionais";
             usuario = profissional;
         }
-        console.log(tipoCadastro);
 
         axios({
             method: 'POST',
@@ -182,7 +178,12 @@ function Confirmacao() {
             console.log("enviado");
             $("#btn-confirm").attr("disabled", false);
             $("#input-cod-confirm").attr("disabled", false);
+            alertas.push(`Código de confirmação enviado para ${usuario.email}`);
+            setCodeAlerta(alertas);
+            setTipoAlerta("msgAlt");
+            setTituloAlerta("PRONTO!");
             setInitLoad(false);
+            setModalAlertas(true);
         })
         .catch((error)=>{
             setInitLoad(false);
@@ -196,8 +197,7 @@ function Confirmacao() {
             $("#input-cod-confirm").attr("disabled", true);
             $("#btn-confirm").attr("disabled", true);
             console.clear();
-            getUsuario();
-            // setInitLoad(true);
+            // getUsuario();
             setRenderizar(false);
         }
     });
@@ -215,10 +215,7 @@ function Confirmacao() {
                     <figure>
                         <img src={EmailImg}  alt="Ícone E-mail"/>
                     </figure>
-                    {/* <Loading/> */}
                 </div>
-                        
-                {/* <form name="form_cod_email" action="index.html" method="POST"> */}
                     <div className="caixa-input-confirm flex-center center">
                         <div className="input-cod-confirm">
                             <input required onChange={definirTxtCodeConfirm} id="input-cod-confirm" className="input-cod-confirm"  type="text" pattern="[0-9]*" maxLength="4" name="cod_email"/>
@@ -234,21 +231,21 @@ function Confirmacao() {
                                     show={modalSucessoShow}
                                     onHide={() => setModalSucessoShow(false)}/>
                                     
-                                <ModalErrosFun
-                                    erros={erroCode}
-                                    show={showErros}
-                                    onHide={() => setModalErros(false)}/>
+                                <ModalAlertasFun
+                                    erros={codeAlerta}
+                                    show={showAlertas}
+                                    titulo={tituloAlerta}
+                                    tipoAlerta={tipoAlerta}
+                                    onHide={() => setModalAlertas(false)}/>
 
                                 <ModalLoadFun
                                     show={initLoad}
-                                    // onHide={() => setInitLoad(false)}
                                     />
 
                             </ButtonToolbar>
                             
                         </div>
                     </div>
-                {/* </form> */}
                 <div className="links-email center">
                     <button onClick={() => getUsuario()} className="link-reenviar-email "> Reenviar E-mail </button>
                     <button onClick={()=>{browserHistory.push(profissional === null ? "/cliente/cadastro" : "/profissional/cadastro")}} className="link-alterar-email "> Alterar E-mail</button>

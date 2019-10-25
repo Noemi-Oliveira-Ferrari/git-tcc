@@ -4,7 +4,7 @@ import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import ReactDOM from 'react-dom';
-import {ModalLoadConst, ModalErros} from './ModaisLoad';
+import {ModalLoadConst, ModalAlertas} from './ModaisLoad';
 import {browserHistory} from 'react-router';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfCliente, validarEmail,
@@ -31,7 +31,7 @@ export class DadosPessoaisCliente extends Component{
             cliente: [], endereco: []
         }
         this.modalLoad = this.modalLoad.bind(this);
-        this.modalErros = this.modalErros.bind(this);
+        this.ModalAlertas = this.ModalAlertas.bind(this);
 
         this.setNome = this.setNome.bind(this);
         this.setData = this.setData.bind(this);
@@ -46,7 +46,7 @@ export class DadosPessoaisCliente extends Component{
         this.getEmail = this.getEmail.bind(this);
     }
 
-    modalErros = () =>{
+    ModalAlertas = () =>{
         if(this.state.showModalErro){
             $("body").css("overflow-y", "hidden");
         }else{
@@ -122,7 +122,7 @@ export class DadosPessoaisCliente extends Component{
                 withError($("#txt-cpf"));
                 erros.push(`CPF ${cpf} ja cadastrado`);
                 this.setState({erros: erros});
-                setTimeout(()=>{this.modalErros();}, 500);
+                setTimeout(()=>{this.ModalAlertas();}, 500);
                 this.setState({cpf: ""});
             }
             setTimeout(()=>{this.modalLoad();}, 500);
@@ -158,7 +158,7 @@ export class DadosPessoaisCliente extends Component{
                     withError($("#txt-email"));
                     erros.push(`E-mail ${email} ja cadastrado`);
                     this.setState({erros: erros});
-                    setTimeout(()=>{this.modalErros();}, 500);
+                    setTimeout(()=>{this.ModalAlertas();}, 500);
                     this.setState({email: ""});
                     setTimeout(() => {
                         $("#txt-email").focus();
@@ -235,7 +235,7 @@ export class DadosPessoaisCliente extends Component{
         return(
             <Fragment>
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
-                <ModalErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
+                <ModalAlertas tipoAlerta="erroAlerta" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <div className="flex-center">
                     <div className="card-formulario-pessoal">
                         <div className="caixa-title-card">
@@ -429,12 +429,12 @@ export default class FormularioCliente extends Component{
             erros: [],
             showModalErro: false
         }
-        this.modalErros = this.modalErros.bind(this);
+        this.ModalAlertas = this.ModalAlertas.bind(this);
         this.realizarCadastro = this.realizarCadastro.bind(this);   
         this.validarCampos = this.validarCampos.bind(this);
     }
 
-    modalErros = () =>{
+    ModalAlertas = () =>{
         if(!this.state.showModalErro){
             $("body").css("overflow-y", "hidden");
         }else{
@@ -533,7 +533,7 @@ export default class FormularioCliente extends Component{
             browserHistory.push("/cadastro/confirmacao");
         }else{
             setTimeout(() => {
-                this.modalErros();
+                this.ModalAlertas();
             }, 500);
             moveToError();
         }
@@ -542,7 +542,7 @@ export default class FormularioCliente extends Component{
     render(){
         return(
             <Fragment>
-                <ModalErros erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalErros}/>
+                <ModalAlertas tipoAlerta="erroAlerta" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <form className="form-cliente" name="form_cliente" method="GET" onSubmit={this.realizarCadastro}>
                     <DadosPessoaisCliente/>
                     <TermosDeUso link="/cadastro/confirmacao"/>
