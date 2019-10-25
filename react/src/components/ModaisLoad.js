@@ -11,7 +11,8 @@ export function ModalLoadFun (props) {
     return(        
         <Modal {...props}
         size="sm"
-        className="fundo-modal">
+        // className="fundo-modal"
+        >
             <div className="caixa-function-load caixa-load">
                 {/* <Modal.Header>
                 </Modal.Header> */}
@@ -57,8 +58,11 @@ export function ModalAlertasFun (props) {
     return(        
         <Modal {...props}
         size="sm"
-        className="fundo-modal">
-            <div className="caixa-modal-erros-function">
+        // className="fundo-modal"
+        >
+            <div 
+            className="caixa-modal-erros-function"
+            >
                 <Modal.Header className="header-modal-erros-function">
                     <div className="titulo-modal-erros-function flex-center">
                         <h3 className={props.tipoAlerta}>{props.titulo}</h3>
@@ -79,8 +83,11 @@ export function ModalAlertasFun (props) {
                         </ul>
                     </div>
                 </Modal.Body>
-                {/* <Modal.Footer>
-                </Modal.Footer> */}
+                <Modal.Footer id="footer-modal-erros-function">
+                    <button onClick={props.onHide} id="btn-ok-modal">
+                        OK!
+                    </button>
+                </Modal.Footer>
             </div>
         </Modal>
         

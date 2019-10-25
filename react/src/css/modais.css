@@ -53,6 +53,7 @@
         top: 45vh;
         left: 4vw;
         box-shadow: 3px 3px 5px #00000060;
+        z-index: 1041 !important;
     }
     .load-function{
         width: 140px;
@@ -207,6 +208,7 @@
         margin-top: 30vh;
         margin-left: -16vh;
         box-shadow: 3px 3px 5px #00000060;
+        z-index: 1041 !important;
     }
     .header-modal-erros-function{
         height: 50px;
@@ -225,9 +227,8 @@
         float: left;
     }
     .body-modal-erros-function{
-        /* background-color: #eaeaea; */
+        background-color: #ffffff;
         padding: 0px !important; 
-        border-radius: 0 0 10px 10px !important;
     }
     .txt-modal-erros-function{
         width: inherit;
@@ -235,15 +236,33 @@
         overflow: auto;
         box-sizing: border-box;
         padding: 20px;
-        border-radius: 0 0 10px 10px;
+        /* border-radius: 0 0 10px 10px; */
     
         font-size: 22px;
         text-align: left;
         font-family: 'Manjari';
         clear: both;
     }
+    #footer-modal-erros-function{
+        width: inherit;
+        height: 60px !important;
+        background-color: #eaeaea;
+        border-radius: 0 0 10px 10px !important;
+    }
     /* MODAL ERROS FUNCTION */
     
+    #btn-ok-modal{
+        width: 70px;
+        height: 40px;
+        background-color: #2884cf;
+        color: #ffffff;
+        /* font-weight: border; */
+        border-radius: 7px;
+        border: none;
+        box-shadow: 2px 2px 3px #00000049;
+        outline: none;
+        font-family: 'Lexend Deca';
+    }
     .erroAlt{
         color: #cf1c1c;
         text-shadow: 1px 1px 3px #00000027;

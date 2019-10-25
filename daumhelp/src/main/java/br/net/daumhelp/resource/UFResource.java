@@ -14,7 +14,8 @@ import br.net.daumhelp.model.UF;
 import br.net.daumhelp.repository.UFRepository;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/ufs")
 public class UFResource {

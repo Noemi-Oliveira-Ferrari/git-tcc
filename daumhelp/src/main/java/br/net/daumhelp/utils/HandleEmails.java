@@ -11,10 +11,10 @@ public class HandleEmails {
 	
 	public static boolean enviar(Confirmacao confirm) {	
 		HtmlEmail email = new HtmlEmail();
-//		email.setSmtpPort(465);
+		email.setSmtpPort(465);
 		email.setHostName("smtp.googlemail.com");
 		try {
-			email.setAuthenticator(new DefaultAuthenticator("brace.everything@gmail.com", "duh2019s2"));
+			email.setAuthenticator(new DefaultAuthenticator("brace.everything@gmail.com", "duh2019s2@"));
 			email.setSSLOnConnect(true);
 			email.setFrom("brace.everything@gmail.com", "DaUmHelp!");
 			email.addTo(confirm.getDestinatario(), confirm.getNome());

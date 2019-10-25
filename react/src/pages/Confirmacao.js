@@ -17,7 +17,7 @@ function Confirmacao() {
     const [showAlertas, setModalAlertas] = useState(false);
     const [codeAlerta, setCodeAlerta] = useState([]);
     const [codeConfirm] = useState(random(1000, 9999));
-    const [txtCodeConfirm, setTxtCodeConfirm] = useState("");
+    let [txtCodeConfirm, setTxtCodeConfirm] = useState("");
     const [renderizar, setRenderizar] = useState(true);
     const [profissional] = useState(JSON.parse(sessionStorage.getItem("profissional")));
     const [cliente] = useState(JSON.parse(sessionStorage.getItem("cliente")));
@@ -32,7 +32,7 @@ function Confirmacao() {
     function cadastrarEndereco(){
         axios({
             method: 'POST',
-            url: "http://localhost:8080/enderecos",
+            url: "http://3.220.68.195:8080/enderecos",
             type: "application/json",
             data: {
                 bairro: endereco.bairro,
@@ -61,7 +61,7 @@ function Confirmacao() {
         function cadastrarProfissional(idEndereco){
             axios({
                 method: 'POST',
-                url: "http://localhost:8080/profissionais",
+                url: "http://3.220.68.195:8080/profissionais",
                 type: "application/json",
                 data: 
                 {
@@ -99,7 +99,7 @@ function Confirmacao() {
         function cadastrarCliente(idEndereco){
             axios({
                 method: 'POST',
-                url: "http://localhost:8080/clientes",
+                url: "http://3.220.68.195:8080/clientes",
                 type: "application/json",
                 data: 
                 {
@@ -132,8 +132,9 @@ function Confirmacao() {
 
     function confirmarEmail(){
         let alertas = [];
-        console.log(txtCodeConfirm+" "+codeConfirm);
-        if(txtCodeConfirm === codeConfirm){
+        let codigo = parseInt(txtCodeConfirm);
+
+        if(codigo === codeConfirm){
             cadastrarEndereco();
         }else{
             alertas.push("Codigo Inválido");
@@ -165,7 +166,7 @@ function Confirmacao() {
 
         axios({
             method: 'POST',
-            url: `http://localhost:8080/${tipoCadastro}/confirmacao`,
+            url: `http://3.220.68.195:8080/${tipoCadastro}/confirmacao`,
             data: {
                 nome: usuario.nome,
                 destinatario: usuario.email,
@@ -202,6 +203,7 @@ function Confirmacao() {
             $("#input-cod-confirm").attr("disabled", true);
             $("#btn-confirm").attr("disabled", true);
             console.clear();
+            console.log(codeConfirm);
             getUsuario();
             setRenderizar(false);
         }

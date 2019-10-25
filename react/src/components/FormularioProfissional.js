@@ -114,7 +114,7 @@ class DadosPessoaisPro extends Component{
     
     getCpf(cpf){
         let erros = [];
-        axios.get(`http://localhost:8080/profissionais/verificar/cpf/${cpf}`)
+        axios.get(`http://3.220.68.195:8080/profissionais/verificar/cpf/${cpf}`)
         .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);
@@ -136,7 +136,7 @@ class DadosPessoaisPro extends Component{
     
     getCnpj(cnpj){
         let erros = [];
-        axios.get(`http://localhost:8080/profissionais/cnpj/${cnpj}`)
+        axios.get(`http://3.220.68.195:8080/profissionais/cnpj/${cnpj}`)
         .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);
@@ -187,7 +187,7 @@ class DadosPessoaisPro extends Component{
         if(email.length > 5){
             let erros = [];
 
-            axios.get(`http://localhost:8080/clientes/verificar/email/${email}`)
+            axios.get(`http://3.220.68.195:8080/clientes/verificar/email/${email}`)
             .then((response)=>{
                 let jsonPro = response.data;
                 console.log(jsonPro);
@@ -221,16 +221,18 @@ class DadosPessoaisPro extends Component{
     }
     getEndereco = (cep) =>{
         let erros = [];
-        // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
-        axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
+        // axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
         .then((response)=>{
             let jsonEndereco = response.data;
-            if(jsonEndereco.cep != null){
+            console.log(jsonEndereco.cep);
+            if(jsonEndereco !== null || jsonEndereco !== null){
                 this.setState({logradouro: jsonEndereco.logradouro});
                 this.setState({bairro: jsonEndereco.bairro});
-                this.setState({cidade: jsonEndereco.cidade.cidade});
-                this.setState({uf: jsonEndereco.cidade.microrregiao.uf.uf});
-                this.setState({idCidade: jsonEndereco.cidade.idCidade});
+                this.setState({cidade: jsonEndereco.localidade});
+                this.setState({uf: jsonEndereco.uf});
+                // this.setState({uf: jsonEndereco.cidade.microrregiao.uf.uf});
+                this.setState({idCidade: jsonEndereco.ibge});
 
                 withoutError($('#txt-cep'));
                 withoutError($('#txt-logradouro'));
@@ -241,6 +243,7 @@ class DadosPessoaisPro extends Component{
             }
         })
         .catch((error)=>{
+            console.error(error);
             erros.push(`CEP ${cep} Não existe!`);
             this.setState({erros: erros});
             this.ModalAlertas();
@@ -541,8 +544,8 @@ class DadosProfissional extends Component{
         
     getCategorias(){
         let load = false;
-        // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
-        axios.get(`http://localhost:8080/categorias`)
+        // axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
+        axios.get(`http://3.220.68.195:8080/categorias`)
         .then((response)=>{
             let jsonCategorias = response.data;
             this.setState({categorias: jsonCategorias});
@@ -564,8 +567,8 @@ class DadosProfissional extends Component{
             idCategoria = 1;
         }
 
-        // axios.get(`http://3.220.68.195:8080/enderecos/cep/${cep}`)
-        axios.get(`http://localhost:8080/subcategorias/categoria/${idCategoria}`)
+        // axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
+        axios.get(`http://3.220.68.195:8080/subcategorias/categoria/${idCategoria}`)
         .then((response)=>{
             let jsonSubcategorias = response.data;
             this.setState({subcategorias: jsonSubcategorias});
@@ -763,7 +766,8 @@ export default class FormularioProfissional extends Component{
         }else{
             cnpj = retirarSimbolos(cpfCnpj);
             cpf = null;
-        }        
+        }
+
         
         // console.log("validarCampos "+this.validarCampos());
         if(this.validarCampos() && $("#chk-termos").is(":checked")){

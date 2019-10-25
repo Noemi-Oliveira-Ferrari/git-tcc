@@ -113,7 +113,7 @@ export class DadosPessoaisCliente extends Component{
     
     getCpf(cpf){
         let erros = [];
-        axios.get(`http://localhost:8080/clientes/verificar/cpf/${cpf}`)
+        axios.get(`http://3.220.68.195:8080/clientes/verificar/cpf/${cpf}`)
         .then((response)=>{
             let jsonCliente = response.data;
             console.log(jsonCliente);
@@ -149,7 +149,7 @@ export class DadosPessoaisCliente extends Component{
         console.log(email);
         if(email.length > 5){
 
-            axios.get(`http://localhost:8080/clientes/verificar/email/${email}`)
+            axios.get(`http://3.220.68.195:8080/clientes/verificar/email/${email}`)
             .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);
@@ -193,7 +193,7 @@ export class DadosPessoaisCliente extends Component{
     }
 
     getEndereco = (cep) =>{
-        axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
+        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
         .then((response)=>{
             let jsonEndereco = response.data;
             // console.clear();
@@ -201,9 +201,9 @@ export class DadosPessoaisCliente extends Component{
             if(jsonEndereco.cep != null){
                 this.setState({logradouro: jsonEndereco.logradouro});
                 this.setState({bairro: jsonEndereco.bairro});
-                this.setState({cidade: jsonEndereco.cidade.cidade});
-                this.setState({uf: jsonEndereco.cidade.microrregiao.uf.uf});
-                this.setState({idCidade: jsonEndereco.cidade.idCidade});
+                this.setState({cidade: jsonEndereco.localidade});
+                this.setState({uf: jsonEndereco.uf});
+                this.setState({idCidade: jsonEndereco.ibge});
 
                 withoutError($('#txt-cep'));
                 withoutError($('#txt-logradouro'));
@@ -238,7 +238,7 @@ export class DadosPessoaisCliente extends Component{
                 <div className="flex-center">
                     <div className="card-formulario-pessoal">
                         <div className="caixa-title-card">
-                            <div className="title-card-pro">Dados Pessoais</div>
+                            <h3 className="title-card-pro">Dados Pessoais</h3>
                         </div>
                         
                         <div className="float campos-dados">

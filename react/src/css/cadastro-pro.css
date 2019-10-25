@@ -816,7 +816,12 @@
         width: 74%;
     }
 
-    .caixa-uf, .caixa-numero
+    .caixa-numero
+    {
+        width: 100%;
+    }
+
+    .caixa-uf
     {
         width: 22%;
     }

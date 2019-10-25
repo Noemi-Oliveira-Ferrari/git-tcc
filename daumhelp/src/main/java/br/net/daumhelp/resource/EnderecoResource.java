@@ -30,7 +30,9 @@ import br.net.daumhelp.repository.EnderecoRepository;
 import br.net.daumhelp.utils.HandleDates;
 import br.net.daumhelp.utils.HandleEmails;
 import br.net.daumhelp.utils.HandleJsonInJava;
-@CrossOrigin(origins = "http://localhost:3000")
+
+//@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/enderecos")
 public class EnderecoResource {
