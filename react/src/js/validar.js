@@ -6,6 +6,18 @@ import EmailValidator from 'email-validator';
 import passwordValidator from 'password-validator';
 
 
+export const withError = (input) =>{
+    $(input).addClass("erro");
+    $(input).addClass("erro");
+    return false;
+}
+
+export const withoutError = (input) =>{
+    $(input).removeClass("erro");
+    $(input).removeClass("erro");
+    return true;
+}
+
 export const validarConfirmacaoSenha = (senha, confirmSenha) =>{
     if((senha.value === confirmSenha.value) && (senha.value !== "" && confirmSenha.value !== "")){
         withoutError(confirmSenha);
@@ -120,27 +132,16 @@ export const validarVazios = (campos) =>{
 
     for(let i = 0; i< campos.length; i++){
         if(campos[i].value === ""){
-            console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+            // console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+            console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)-/g, ""));
             semErro.push(withError(campos[i]));
         }else{
-            console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+            // console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+            console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)-/g, ""));
             semErro.push(withoutError(campos[i]));
         }
     }
-    // campos.forEach(campo =>{
-    //     if(campo.value === ""){
-    //         // console.log($(campo).attr("id").replace(/(txt)\-/g, ""));
-    //         withError(campo);
-    //         semErro = false;
-    //         break;
-    //     }else{
-    //         // console.log($(campo).attr("id").replace(/(txt)\-/g, ""));
-    //         withoutError(campo);
-    //         semErro = true;
-    //         break;
-    //     }
-    // });
-    console.log(semErro);
+    
     if(semErro.includes(false)){
         return false;
     }else{
@@ -148,20 +149,9 @@ export const validarVazios = (campos) =>{
     }
 }
 
-export const withError = (input) =>{
-    $(input).addClass("erro");
-    $(input).addClass("erro");
-    return false;
-}
-
-export const withoutError = (input) =>{
-    $(input).removeClass("erro");
-    $(input).removeClass("erro");
-    return true;
-}
 
 export const retirarSimbolos = (texto) =>{
-    let textoLimpo = texto.replace(/[\'\"\!\@\#\$\%\¨\&\*\(\)\_\+\-\=\/\*\+\.\,]/g, "");
+    let textoLimpo = texto.replace(/['"!@#$%¨&*()_+-=/.,]/g, "");
     return textoLimpo;
 }
 
@@ -174,7 +164,7 @@ export const limpaValor = (valor) =>{
         valor = valor.substring(0, valor.length-3);
     }
     valor = valor.replace(/\./g, "");
-    decimal = decimal.replace(/\,/g, ".");
+    decimal = decimal.replace(/,/g, ".");
     num = parseFloat(valor+decimal);
     return num;
 }

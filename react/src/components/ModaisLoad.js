@@ -3,8 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-bootstrap/Modal';
 import close from '../img/close.png';
-import "../css/padroes.css";
-import $ from 'jquery';
+import "../css/modais.css";
 
 
 export function ModalLoadFun (props) {
@@ -66,7 +65,7 @@ export function ModalAlertasFun (props) {
                     </div>
                     <div className="close-modal flex-center" onClick={props.onHide}>
                         <figure>
-                            <img src={close}/>
+                            <img src={close} alt="Fechar" title="Fechar"/>
                         </figure>
                     </div>
                 </Modal.Header>
@@ -100,7 +99,7 @@ export const ModalAlertas = ({tipoAlerta, titulo, erros, onClose, abrir}) =>
                 </div>
                 <div className="close-modal flex-center" onClick={onClose}>
                     <figure>
-                        <img src={close}/>
+                        <img src={close} alt="Fechar" title="Fechar"/>
                     </figure>
                 </div>
                 <div className="txt-modal-erros">

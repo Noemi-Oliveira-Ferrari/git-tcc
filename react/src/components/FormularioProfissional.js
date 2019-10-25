@@ -269,7 +269,6 @@ class DadosPessoaisPro extends Component{
 
     setConfirmSenha(event){
         this.setState({confirmSenha: event.target.value});
-        let confirmSenha = event.target.value;
         validarConfirmacaoSenha($('#txt-senha').get(0), event.target);
     }
     
@@ -286,11 +285,11 @@ class DadosPessoaisPro extends Component{
         return(
             <Fragment>
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
-                <ModalAlertas tipoAlerta="erroAlerta" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
+                <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <div className="flex-center">
                     <div className="card-formulario-pessoal">
                         <div className="caixa-title-card">
-                            <div className="title-card-pro">Dados Pessoais</div>
+                            <h3 className="title-card-pro">Dados Pessoais</h3>
                         </div>
                         <div className="title-card-pjPf">
                             <Inputs
@@ -585,7 +584,7 @@ class DadosProfissional extends Component{
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
                 <div className="flex-center">
                     <div className="card-formulario-servico">
-                        <h3 className="title-card">Dados Profissionais</h3>
+                        <h3 className="title-card">Dados de Serviço</h3>
                         <div className="flex-center campos-servicos">
                             <div className="container-servico-pro">
                                 <div className="flex-center container-categoria">
@@ -814,7 +813,7 @@ export default class FormularioProfissional extends Component{
     render(){
         return(
             <Fragment>
-                <ModalAlertas tipoAlerta="erroAlerta" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
+                <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <form className="form-pro" name="form_profissional" method="GET" onSubmit={this.realizarCadastro}>
                     <DadosPessoaisPro/>
                     <DadosProfissional/>

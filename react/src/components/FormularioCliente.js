@@ -1,15 +1,14 @@
 import React,  {Component, Fragment} from "react";
-import {Inputs, Selects, InputNumber} from './FormElements';
+import {Inputs, InputNumber} from './FormElements';
 import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
-import ReactDOM from 'react-dom';
 import {ModalLoadConst, ModalAlertas} from './ModaisLoad';
 import {browserHistory} from 'react-router';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
-         withoutError, validarCnpj, validarCpfCliente, validarEmail,
+         withoutError, validarCpfCliente, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
-         formataData, limpaValor, validarIdade} from '../js/validar';
+         formataData, validarIdade} from '../js/validar';
 
 
 
@@ -235,7 +234,7 @@ export class DadosPessoaisCliente extends Component{
         return(
             <Fragment>
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
-                <ModalAlertas tipoAlerta="erroAlerta" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
+                <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <div className="flex-center">
                     <div className="card-formulario-pessoal">
                         <div className="caixa-title-card">
@@ -542,7 +541,7 @@ export default class FormularioCliente extends Component{
     render(){
         return(
             <Fragment>
-                <ModalAlertas tipoAlerta="erroAlerta" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
+                <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <form className="form-cliente" name="form_cliente" method="GET" onSubmit={this.realizarCadastro}>
                     <DadosPessoaisCliente/>
                     <TermosDeUso link="/cadastro/confirmacao"/>

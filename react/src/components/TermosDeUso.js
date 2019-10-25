@@ -17,18 +17,16 @@ export class TermosDeUso extends Component{
                             </p>
                         </div>
                     </div>
-                    <div className="caixa-confirmacao ">
+                    <div className="caixa-confirmacao-termos">
                         <input required type="checkbox" id="chk-termos" className="confirmar-termos" name="chk_termos"/><label htmlFor="chk-termos">Declaro estar ciente com os <span className="negrito">Termos de Uso e Politica de privacidade</span></label>
                     </div>
-                    <div className="caixa-dir">
+                    <div className="caixa-voltar-termos">
                         <Link className="link" to="/escolha">
-                            <Botao classBotao="btn-voltar flex-center" name="btn_voltar" id="btn-voltar" valueBotao="Voltar"/>
+                            <Botao classBotao="btn-voltar flex-center" typeBotao="button" name="btn_voltar" id="btn-voltar" valueBotao="VOLTAR"/>
                         </Link>
                     </div>
-                    <div className="caixa-esq">
-                        {/* <Link className="link" to={this.props.link}> */}
-                            <Botao classBotao="btn-prox flex-center" name="btn_prox" id="btn-prox" valueBotao="Continuar" type="submit"/>
-                        {/* </Link> */}
+                    <div className="caixa-continuar-termos">
+                        <Botao classBotao="btn-prox flex-center" name="btn_prox" id="btn-prox" valueBotao="CONTINUAR" typeBotao="submit"/>
                     </div>
                 </div>
             </div>

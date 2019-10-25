@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router';
 import EmailImg from '../img/emailcheck.png';
 import check from '../img/check.png';
 import ButtonToolbar from '../../node_modules/react-bootstrap/ButtonToolbar';
@@ -17,12 +16,12 @@ function Confirmacao() {
     const [initLoad, setInitLoad] = useState(false);
     const [showAlertas, setModalAlertas] = useState(false);
     const [codeAlerta, setCodeAlerta] = useState([]);
-    const [codeConfirm, setCodeConfirm] = useState(random(1000, 9999));
+    const [codeConfirm] = useState(random(1000, 9999));
     const [txtCodeConfirm, setTxtCodeConfirm] = useState("");
     const [renderizar, setRenderizar] = useState(true);
-    const [profissional, setProfissional] = useState(JSON.parse(sessionStorage.getItem("profissional")));
-    const [cliente, setCliente] = useState(JSON.parse(sessionStorage.getItem("cliente")));
-    const [endereco, setEndereco] = useState(JSON.parse(sessionStorage.getItem("endereco")));
+    const [profissional] = useState(JSON.parse(sessionStorage.getItem("profissional")));
+    const [cliente] = useState(JSON.parse(sessionStorage.getItem("cliente")));
+    const [endereco] = useState(JSON.parse(sessionStorage.getItem("endereco")));
     const [tipoAlerta, setTipoAlerta] = useState("erroAlt");
     const [tituloAlerta, setTituloAlerta] = useState("erroAlt");
 
@@ -134,7 +133,7 @@ function Confirmacao() {
     function confirmarEmail(){
         let alertas = [];
         console.log(txtCodeConfirm+" "+codeConfirm);
-        if(txtCodeConfirm == codeConfirm){
+        if(txtCodeConfirm === codeConfirm){
             cadastrarEndereco();
         }else{
             alertas.push("Codigo Inválido");
@@ -167,11 +166,11 @@ function Confirmacao() {
         axios({
             method: 'POST',
             url: `http://localhost:8080/${tipoCadastro}/confirmacao`,
-        data: {
-            nome: usuario.nome,
-            destinatario: usuario.email,
-            codigoConfirm: codeConfirm
-        }
+            data: {
+                nome: usuario.nome,
+                destinatario: usuario.email,
+                codigoConfirm: codeConfirm
+            }
         })
         .then((response)=>{
             console.log(response);
@@ -187,7 +186,13 @@ function Confirmacao() {
         })
         .catch((error)=>{
             setInitLoad(false);
-            console.error(error);
+            alertas.push(`Não foi possível envial o código para ${usuario.email}`);
+            setCodeAlerta(alertas);
+            setTipoAlerta("erroAlt");
+            setTituloAlerta("ERRO!");
+            setModalAlertas(true);
+            
+            console.error(error.response);
         })
         .onload =  setInitLoad(true);
     }
@@ -197,7 +202,7 @@ function Confirmacao() {
             $("#input-cod-confirm").attr("disabled", true);
             $("#btn-confirm").attr("disabled", true);
             console.clear();
-            // getUsuario();
+            getUsuario();
             setRenderizar(false);
         }
     });

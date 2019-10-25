@@ -2,15 +2,6 @@
 @media screen and (min-device-width:1000px){
     
     /*----- Conteudo -----*/
-    .caixa-title-cadastro{
-        width: inherit;
-        min-height: 50px;
-        font-size: 45px;
-        text-align: center;
-        color: white;
-        font-family: 'Lexend Deca', sans-serif;
-        margin-bottom: 30px;
-    }
     .container-conteudo-cadastro-pro
     {
         width: 1200px;
@@ -21,6 +12,15 @@
         padding-top: 50px;
         padding-bottom: 50px;
         box-sizing: border-box;
+    }
+    .caixa-title-cadastro{
+        width: inherit;
+        min-height: 50px;
+        font-size: 45px;
+        text-align: center;
+        color: white;
+        font-family: 'Lexend Deca'erroAlt;
+        margin-bottom: 30px;
     }
 
     .card-formulario-pessoal,
@@ -395,7 +395,7 @@
     }
 
 
-    .caixa-confirmacao
+    .caixa-confirmacao-termos
     {
         width: 800px;
         height: 50px;
@@ -413,7 +413,7 @@
         font-family: "Manjari";
     }
 
-    .caixa-confirmacao label{
+    .caixa-confirmacao-termos label{
         margin-top: -3px;
     }
     .caixa-button
@@ -509,7 +509,7 @@
         box-sizing: border-box;
     }
 
-    .caixa-dir
+    .caixa-voltar-termos
     {
         width: 360px;
         height: fit-content;
@@ -521,7 +521,7 @@
         /* margin-top: 10px; */
     }
 
-    .caixa-esq
+    .caixa-continuar-termos
     {
         width: 380px;
         height: fit-content;
@@ -537,17 +537,27 @@
 /*----- Web-Responsivo -----*/
 @media screen and (max-device-width:880px){
     /*----- Conteudo -----*/
-    .container-conteudo
+    .container-conteudo-cadastro-pro
     {
         width: 100%;
         height: 100%;
-        background-color: rgb(89, 0, 255);
+        /* background-color: rgb(89, 0, 255); */
         margin: auto;
         box-sizing: border-box;
+        padding-top: 20px;
         margin-bottom: 20%;
     }
 
-    /*----- Conteudo -----*/
+    .caixa-title-cadastro{
+        width: inherit;
+        min-height: 50px;
+        font-size: 45px;
+        text-align: center;
+        color: #ffffff;
+        font-family: 'Lexend Deca';
+        margin-bottom: 30px;
+        /* background-color: brown; */
+    }
 
     .card-formulario-pessoal,
     .card-formulario-servico
@@ -560,8 +570,8 @@
         justify-content: center;
         align-items:center;
         flex-wrap: wrap;
+        padding: 10px;
         margin-bottom: 40px;
-        padding: 20px;
     }
     .card-formulario-pessoal
     {
@@ -571,7 +581,7 @@
         overflow: hidden;
         background-color: rgb(255, 255, 255);
         box-shadow: #0000005b 3px 3px 5px;
-        padding-bottom: 20px;
+        padding-bottom: 10px;
     }
 
     .card-formulario-servico
@@ -593,22 +603,93 @@
         height: fit-content;
         /* padding-bottom: 50px */
     }
-    
+
+    .caixa-title-card
+    {
+        width: 100%;
+        height: fit-content;
+        box-sizing: border-box;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        /* background-color: rgb(32, 194, 167); */
+
+        color: #00000071;
+    }
+
+  
+    .title-card-pro{
+        font-size: 35px;
+        color: #00000071;
+        text-align: center;
+    }
 
     .title-card
     {
         width: 100%;
         height: fit-content;
         box-sizing: border-box;
-        text-align: center;
-        font-size: 55px;
-        margin-top: 25px;
-        margin-bottom: 25px;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        /* background-color: rgb(32, 194, 167); */
 
+        font-size: 35px;
         color: #00000071;
+        text-align: center;
     }
 
-  
+    .title-card-pjPf{
+        width: 100%;
+        height: 80px;
+        align-self: flex-start;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        /* padding-left: 45px; */
+        /* background-color: rgb(233, 134, 20); */
+    }
+    .caixa-rdo-pf{
+        width: 100%;
+        height: 50%;
+        /* background-color: rgb(72, 87, 218); */
+        box-sizing: border-box;
+        padding-top: 3px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .caixa-rdo-pj{
+        width: 100%;
+        height: 50%;
+        /* background-color: rgb(180, 29, 168); */
+        box-sizing: border-box;
+        padding-top: 3px;
+        display: flex;
+        justify-content: center;
+    }
+    #rdo-pf{margin-left: 32px;} #rdo-pj{margin-left: 15px;}
+
+
+    #rdo-pf, #rdo-pj{
+        top: 0;
+        left: 0;
+        height: 21px;
+        width: 21px;
+        /* background-color: #77c9d4; */
+        border-radius: 50%;
+        vertical-align: sub;
+        margin-top: 3px;
+    }
+
+    .campos-dados
+    {
+        width: 100%;
+        height: fit-content;
+        /* background-color: rgb(255, 238, 0); */
+        margin-top: 20px;
+    }
 
     .campos-servicos
     {
@@ -637,13 +718,6 @@
         margin-bottom: 10px;
     }
 
-    .campos-dados
-    {
-        width: 100%;
-        height: fit-content;
-        /* background-color: rgb(255, 238, 0); */
-    }
-
     #txt-nome,
     #txt-dataNasc,
     #txt-cpfCnpj,
@@ -660,13 +734,12 @@
     #slt-categoria,
     #slt-subcat,
     #txt-valor-hora{
-        height: 110px;
+        height: 50px;
         font-family: "Manjari";
-        font-size: 50px;
+        font-size: 23px;
         box-sizing: border-box;
-        /* padding-top: 10px; */
+        padding-top: 10px;
         background-color: #dee0e0;
-        text-transform: capitalize;
 
     }
     #txt-uf{
@@ -686,9 +759,9 @@
     {
         width: 100%;
         height: fit-content;
-        /* background-color: rgb(221, 255, 71); */
+        /* background-color: rgb(42, 197, 37); */
         justify-content: space-around;
-        margin-top: 10px;
+        margin-top: 7px;
         flex-wrap: wrap;
     }
 
@@ -698,7 +771,8 @@
     }
     .form-label
     {
-        font-size: 45px;
+        font-size: 22px;
+        /* fon */
     }
     .form-input-pro
     {
@@ -714,37 +788,37 @@
     .caixa-uf
     {
         width: 98%;
-        height: 180px;
+        height: 110px;
         /* background-color: rgb(57, 160, 207); */
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-        margin-top: 15px;
+        margin-top: 7px;
     }
 
     .caixa-senha,
     .caixa-confirmar-senha 
     {
-        width: 48%;
+        width: 100%;
     }
     .caixa-cep
     {
-        width: 30%;
+        width: 100%;
     }
 
     .caixa-logradouro
     {
-        width: 66%;
+        width: 100%;
     }
 
     .caixa-cidade
     {
-        width: 81%;
+        width: 74%;
     }
 
     .caixa-uf, .caixa-numero
     {
-        width: 15%;
+        width: 22%;
     }
 
     .caixa-categoria,
@@ -752,13 +826,13 @@
     .caixa-valor-hora
     {
         width: 100%;
-        height: 180px;
-        /* background-color: rgb(57, 207, 115); */
+        height: 110px;
+        /* background-color: rgb(136, 106, 241); */
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
         flex-wrap: wrap;
-        margin-bottom: 20px;
+        margin-bottom: 7px;
         box-sizing: border-box;
 
     }
@@ -778,13 +852,167 @@
         padding-top: 18px;
         /* background-color: rgb(172, 223, 243); */
     }
+    .caixa-qualificacoes label{
+        margin-bottom: 27px;
+    }
 
     #txt-qualificacoes
     {
-        height: 350px;
+        height: 250px;
         resize: none;
         overflow: auto;
         background-color: #dee0e0;
-        font-size: 50px;
+        font-size: 23px;
     }
+
+
+    /* CONTEUDO DA CAIXA DE TERMOS DE USO */
+    
+    .card-formulario-termos
+    {
+        width: 95%;
+        height: fit-content;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        padding-top: 15px;
+        padding: 10px;
+    }
+
+    .caixa-termos
+    {
+        width: 100%;
+        height: 290px;
+        /* background-color: rgb(206, 199, 103); */
+        text-align: justify;
+    }
+
+    .text-termos
+    {
+        width: 100%;
+        height: 100%;
+        /* background-color: gray; */
+        font-family: "Manjari";
+        overflow: auto;
+        font-size: 18px;
+    }
+
+    .termo
+    {
+        margin-top: 0;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .caixa-confirmacao-termos
+    {
+        width: 100%;
+        height: 100px;
+        /* background-color: greenyellow; */
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        box-sizing: border-box;
+        margin-top: 15px;
+        box-shadow: none;
+        font-family: "Manjari";
+        margin-bottom: 10px;
+    }
+
+    .caixa-confirmacao-termos label{
+        margin-top: -3px;
+    }
+
+    .confirmar-termos
+    {
+        width: 50px;
+        height: 50px;
+        margin-right: 5px;
+        margin-top: 13px;
+    }
+
+    /* .text-termos::-webkit-scrollbar {
+        width: 10px;
+        cursor: pointer;
+    }
+
+    .text-termos::-webkit-scrollbar-track {
+        background: #cbf3e1;
+        cursor: pointer;
+    }
+
+    .text-termos::-webkit-scrollbar-thumb {
+        background: #a2dee6;
+        cursor: pointer;
+    }
+
+    .text-termos::-webkit-scrollbar-thumb:hover {
+        background: #77c9d4;
+        cursor: pointer;    
+    } */
+    .caixa-voltar-termos,
+    .caixa-continuar-termos{
+        width: 50%;
+        height: fit-content;
+        float: left;
+        display: flex;
+        font-family: 'Manjari';
+        font-weight: bold;
+    }
+
+    .caixa-voltar-termos
+    {
+        /* background-color: aqua; */
+        /* align-items: flex-end; */
+        justify-content: flex-start;
+        /* margin-top: 10px; */
+    }
+
+    .caixa-continuar-termos
+    {
+        /* background-color: rgb(235, 91, 72);   */
+        /* align-items: flex-end; */
+        justify-content: flex-end;
+        /* margin-top: 10px; */
+    }
+
+
+
+    .btn-voltar
+    {
+        width: 120px;
+        height: 45px;
+        border:0px;
+        background: none;
+        /* border: solid 3px #ffa52e; */
+        border-radius: 5px;
+        color: #57bc90;
+        font-size: 18px;
+        outline: none;
+        padding-top: 7px;
+    }
+
+    .btn-prox
+    {
+        width: 120px;
+        height: 45px;
+        border:0px;
+        background: none;
+        /* border: solid 3px #25dd1e; */
+        border-radius: 5px;
+        color: #57bc90;
+        padding-top: 7px;
+        font-size: 18px;
+        justify-items:right;
+        outline: none;
+    }
+
 }

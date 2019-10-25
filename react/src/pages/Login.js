@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../css/login.css';
-import {InputLogin} from '../components/InputLogin';
 import {Link} from 'react-router';
 import { Botao } from '../components/Botao';
 import {Inputs} from '../components/FormElements';

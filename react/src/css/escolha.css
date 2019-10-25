@@ -4,12 +4,13 @@
 @media screen and (min-device-width:1000px){
 
     .container-conteudo-escolha{
-        width: 1300px;
-        height: 850px;
+        width: 1200px;
+        height: 550px;
         margin: auto;
         box-sizing: border-box;
-        padding-top: 50px;
+        padding-top: 20px;
         margin-bottom: 50px;
+        /* background-color: rgb(135, 205, 222);  */
     }
 
     .title-caixa-escolha{
@@ -20,13 +21,13 @@
         font-size: 35px;
         text-align: center;
         color: white;
-        font-family: 'Lexend Deca', sans-serif;
-        margin-bottom: 50px;
+        font-family: 'Lexend Deca';
+        margin-bottom: 10px;
     }
     
     .caixa-escolha{
         width: inherit;
-        height: 600px;
+        height: 450px;
         /* background-color: rgb(235, 80, 8); */
         margin-bottom: 100px;
         display: flex;
@@ -36,9 +37,25 @@
     }
     
     /* caixa de escolhas */
+    .caixa-profissional{
+        width: 450px;
+        min-height: 390px;
+        background-color: rgb(255, 255, 255);
+        /* float: left; */
+        border-radius: 10px;
+        box-shadow: 10px 10px 15px #0000005d; 
+        cursor: default;  
+        transition: .4s;   
+        display: flex;
+        align-items: center ;
+        justify-content: center;
+        flex-wrap: wrap;
+        cursor: pointer;
+    }
+    
     .caixa-cliente{
         width: 450px;
-        min-height: 400px;
+        min-height: 390px;
         height: auto;
         overflow: hidden;
         background-color: rgb(255, 255, 255);
@@ -55,66 +72,47 @@
         cursor: pointer;
     }
     
-    .caixa-profissional{
-        width: 450px;
-        min-height: 400px;
-        height: auto;   
-        overflow: hidden;
-        background-color: rgb(255, 255, 255);
-        float: left;
-        border-radius: 10px;
-        box-shadow: 10px 10px 15px #0152497e; 
-        cursor: default;  
-        transition: .4s;   
-        display: flex;
-        align-items: center ;
-        justify-content: center;
-        flex-wrap: wrap;
-        cursor: pointer;
-    }
-    
     /*conteudo das caixas de escolhas */
     .title-escolha{
         width: inherit;
-        height: 50px;
+        height: 45px;
         /* background-color: rgb(220, 220, 220); */
         font-size: 40px;
         text-align: center;
         box-sizing: border-box;
-        /* padding-top: 20px; */
+        /* padding-bottom: 10px; */
         margin-top: 20px;
         color: #84848D;     
-        font-family: 'Lexend Deca', sans-serif;
+        font-family: 'Lexend Deca';
 
     }
     
     .texto-escolha{
-        width: 350px;
-        height: 180px;
+        max-width: 95%;
+        height: 140px;
         /* background-color: rgb(240, 230, 140); */
         box-sizing: border-box;
-        font-size: 26px;
+        font-size: 24px;
         display: flex;
         align-items: center ;
         justify-content: center;
         text-align: center;
         color: #A5A5AF;
-        font-family: 'Manjari-Regular', sans-serif;
+        font-family: 'Manjari';
     }
     
     .img-escolha{
-        width: inherit;
-        height: 200px;
+        width: fit-content;
+        height: 185px;
         /* background-color:#A5A5AF; */
         box-sizing: border-box;
-        margin-bottom: 50px;
-    
+        margin-bottom: 5px;    
     }
     
     .icon-escolha{
-        max-height: 200px;
+        max-height: 170px;
         /* background-color:#A5A5AF; */
-        margin-left: 25%;
+        /* margin-left: 25%; */
     }
     
     .botao-escolha{
@@ -122,9 +120,7 @@
         height: 0;
         background-color: #caf9ff;
         box-sizing: border-box;
-        /* padding-left: 85%; */
-        /* padding-right: 10px;  */
-        /* margin-bottom: 0px; */
+        border-radius: 0 0 10px 10px;
         transition: .5s;
         display: flex;
         align-items: center;
@@ -160,12 +156,16 @@
 
     }
     .title-caixa-escolha{
-        width: 100%;
-        height: 105px;
+        width: 95%;
+        max-height: 200px;
+        height: auto;
+        overflow: hidden;
         margin-bottom: 10px;
         margin-top: 20px;
         /* background-color: rgb(222, 184, 135); */
-        font-size: 35px;
+        
+        font-family: 'Lexend Deca';
+        font-size: 31px;
         text-align: center;
         color: white;
     }
@@ -205,17 +205,19 @@
         width: 100%;
         height: 70px;
         /* background-color: rgb(220, 220, 220); */
+        box-sizing: border-box;
+        padding-top: 20px;
+
+        font-family: 'Lexend Deca';
         font-size: 32px;
         font-weight: bold;
         text-align: center;
-        box-sizing: border-box;
-        padding-top: 20px;
         color: #84848D;        
     }
 
     .texto-escolha{
         width: 100%;
-        height: 160px;
+        height: 140px;
         /* background-color: rgb(240, 230, 140); */
         box-sizing: border-box;
         font-size: 23px;

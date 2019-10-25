@@ -8,7 +8,7 @@ import React, { Component } from 'react';
 class Escolha extends Component{
     render(){
         return(    
-            <Link to={this.props.toCadastro}>
+            <Link className="link" to={this.props.toCadastro}>
                 <div className={this.props.classCaixa}>
                     <div className="title-escolha">
                         {this.props.titulo}
