@@ -101,18 +101,19 @@
 		box-sizing: border-box;
 		padding-top: 30px;
 	}
-
-	.caixa-informacoes-pendentes
+	
+	.text-dados
 	{
-		width: 635px;
-		height: inherit;
-		/* background-color: rgb(127, 24, 24); */
-		float: left;
-		border-radius: 10px;
-		margin-right: 5px;
-		margin-bottom: 20px;
+		width: inherit;
+		height: 53px;
+		font-family: 'Lexend Deca';
+		padding-left: 56px;
+		box-sizing: border-box;
+		color: #84848D;     
 	}
 
+	/* CAIXA DE SERVIÇOS PENDENTES DO PROFISSIONAL */
+	
 	.caixa-conteudo-informacoes-pendentes
 	{
 		width: 635px;
@@ -127,115 +128,94 @@
 		overflow-x: hidden;
 	}
 
-	.text-dados
-	{
-		width: inherit;
-		height: 53px;
-		font-family: 'Lexend Deca';
-		padding-left: 56px;
-		box-sizing: border-box;
-        color: #84848D;     
-		
-		/* background-color: antiquewhite;*/
-	}
-
-	.caixa-comentario-usuario-servico
-	{
-		width: 520px;
-		min-height: 270px;
-		height: auto;
-		background-color:rgba(132, 132, 141, 0.205);
-		margin: auto;
-		border-radius: 10px;
-		margin-bottom: 40px;
-		overflow-y: auto;
-		overflow-x: hidden;
-	}
-
+	
 	.caixa-servico-pendente
 	{
 		width: 520px;
-		height: 275px;
-		background-color:rgba(132, 132, 141, 0.205);
-		border-radius: 8px;
-		padding-top: 12px;
+		height: 300px;
+		/* background-color:rgb(32, 32, 219); */
+        background-color: #57bc902f;
+		border-radius: 10px;
+		padding-top: 40px;
 		box-sizing: border-box;
 		margin: auto;
 		margin-bottom: 40px;
+		box-shadow: 5px 5px 15px#0000005b;		
 	}
-
+	
 	.title-pendente
 	{
+		width: inherit;
+		height: 40px;
 		text-align: center;
 		font-family: 'Lexend Deca';
 		color: #57BC90;
 		font-size: 1.8em;
+		/* background-color: lightcyan; */
+		margin: 0;
+		
 	}
-
+	.cliente-pendente{
+		width: inherit;
+		height: 25px;
+		/* background-color: ivory; */
+		font-size: 17px;
+		text-align: right;
+		box-sizing: border-box;
+		padding-right: 20px;
+		color: #84848D;
+	}
+	
 	.linha-servico-pendente
 	{
 		width: 290px;
 		height: 1px;
 		color: #57BC90;
 		background-color: #57BC90;
-		margin-top: 0px;
 	}
-
+	
 	.text-pendente
 	{
-		text-align: justify;
+		height: 100px;
+		/* background-color: lawngreen; */
+		text-align: center;
+		padding: 10px;
 		font-family: 'Lexend Deca';
 		color: #84848D;
 		box-sizing: border-box;
 		font-size: 1.1em;
 		display: flex;
 		justify-content: center;
-		padding-right: 30px;
-		padding-left: 30px;
+		margin: 0;
 	}
-
+	
+	
 	.caixa-link-pendente
 	{
-		width: inherit;
+		width: 100px;
 		height: 50px;
 		/* background-color: khaki; */
 		display: flex;
-		justify-content: flex-end;
 		box-sizing: border-box;
-		padding-right: 28px;
+		margin-left: 400px;
+		margin-top: -10px;
 	}
-
-	.link-pendente
+	
+	.caixa-link-pendente img
 	{
-		width: 200px;
-		height: 45px;
-		background-color:#57BC90;
+		width:40px;
+		height: 40px;
+		/* background-color:rgb(255, 255, 255); */
+        background-color: #57bc900e;
 		border: 0px;
 		text-align: center;
-		color: #ffffff;
-		font-family: 'Lexend Deca';
-		font-size: 1.1em;
-		border-radius: 5px;
-		margin-top: 28px;
+		color: #57bc90;
+		/* margin-top: 28px; */
 	}
+	
 
-	.link-pendente:hover
-	{
-		box-shadow: 5px 5px 10px#013f38;
-		transition: 0.8s;
-	}
-
-	.caixa-informacoes-concluidos
-	{
-		width: 630px;
-		height: inherit;
-		/* background-color: rgb(127, 24, 24); */
-		float: left;
-		border-radius: 10px;
-		margin-right: 5px;
-		margin-left: 30px;
-	}
-
+	/* CAIXA DE CONCLUUIDOS COM  AVLIAÇAO */
+	
 	.caixa-comentarios-servicos
 	{
 		width: 635px;
@@ -243,28 +223,46 @@
         background-color: rgb(255, 255, 255);
         /* background-color: red; */
 		float: left;
-		border-radius: 8px;
+		border-radius: 10px;
 		padding-top: 50px;
 		box-sizing: border-box;
 		overflow-y: auto;
-	}
+		overflow-x: hidden;
 
+	}
+	
+	.caixa-servico-concluido
+	{
+		width: 520px;
+		height: 300px;
+		/* background-color:rgb(32, 32, 219); */
+		background-color: #57bc902f;
+		border-radius: 10px;
+		padding-top: 25px;
+		box-sizing: border-box;
+		margin: auto;
+		margin-bottom: 40px;
+		box-shadow: 5px 5px 15px#0000005b;		
+	}
 	.dados-usuario-servico
 	{
 		width: inherit;
 		height: inherit;
 		background-color: transparent;
-        float: left;
+		float: left;
         /* background-color: red; */
 	}
 
-	.titulo-comentario-servico
+	.title-concluido
 	{
-		box-sizing: border-box;
-		padding-left: 15px;
+		width: inherit;
+		height: 40px;
 		text-align: center;
-		margin-top: 15px;
+		font-family: 'Lexend Deca';
 		color: #57BC90;
+		font-size: 1.8em;
+		/* background-color: lightcyan; */
+		margin: 0;
 	}
 
 	.linha-concluidos
@@ -274,7 +272,7 @@
 		color: #57BC90;
 		background-color: #57BC90;
 		border-radius: 5px;
-		margin-top: 0px;
+		margin-top: -5px;
 	
 	}
 
@@ -283,8 +281,6 @@
 		width: 190px;
 		height: 25px;
 		/* background-color:#969FAA; */
-		margin-left: 15px;
-		margin-bottom: 5px;
 		margin: auto;
 	}
 
@@ -310,47 +306,20 @@
 		/* color: #FC0; */
 	}
 
-	.texto-comentario
+	.text-concluido
 	{
-		font-family: 'Lexend Deca';
-		font-size: 1.1em;
-		box-sizing: border-box;
-		padding-left: 30px;
-		padding-right: 30px;
-		padding-top: 8px;
-		text-align: justify;
-		color:#84848D;
-	}
-
-	.caixa-btn
-	{
-		width: inherit;
-		/* background-color: khaki; */
-		display: flex;
-		justify-content: flex-end;
-		box-sizing: border-box;
-		padding-right: 28px;
-	}
-
-	.btn-ver-mais
-	{
-		width: 200px;
-		height: 45px;
-		background-color:#57BC90;
-		border: 0px;
+		height: 100px;
+		/* background-color: lawngreen; */
 		text-align: center;
-		color: #ffffff;
+		padding: 10px;
 		font-family: 'Lexend Deca';
+		color: #84848D;
+		box-sizing: border-box;
 		font-size: 1.1em;
-		border-radius: 5px;
+		display: flex;
+		justify-content: center;
+		margin: 0;
 	}
-
-	.btn-ver-mais:hover
-	{
-		box-shadow: 5px 5px 10px#013f38;
-		transition: 0.8s;
-	}
-
 	
 }
 

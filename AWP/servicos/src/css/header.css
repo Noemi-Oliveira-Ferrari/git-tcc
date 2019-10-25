@@ -67,7 +67,7 @@ header{
     float: left;
     width: 160px;
     height: 40px;
-    background-color: rgba(255, 13, 13, 0.02);
+    background-color: rgba(255, 255, 255, 0.02);
     font-size: 16px;
     border: solid 2px #57bc90;
     padding-top: 5px;
@@ -77,8 +77,6 @@ header{
     color: #58aeb9;
 
 }
-
-
 
 .box-entrar:hover,
 .box-cadastrar:hover{

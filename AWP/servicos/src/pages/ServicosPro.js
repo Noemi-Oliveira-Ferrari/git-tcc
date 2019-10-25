@@ -20,21 +20,21 @@ export class ServicosPro extends Component{
            ></CapaPerfilPro>
             <div class="caixa-conteudo-servico-pro">
                 <div class="conteudo-pro-servico">
-                    <div class="caixa-informacoes-pendentes">
-                        <div class="caixa-conteudo-informacoes-pendentes">
-                            <div class="text-dados">
-                                <h3>Pendentes</h3>
-                            </div>
-                           <ServPendentes/>
+                    <div class="caixa-conteudo-informacoes-pendentes">
+                        <div class="text-dados">
+                            <h3>Pendentes</h3>
                         </div>
+                        <ServPendentes/>
+                        <ServPendentes/>
+                        <ServPendentes/>
                     </div>
-                    <div class="caixa-informacoes-concluidos">
-                        <div class="caixa-comentarios-servicos">
-                            <div class="text-dados">
-                                <h3>Concluídos</h3>
-                            </div>
-                           <ServConcluidos/>
+                    <div class="caixa-comentarios-servicos">
+                        <div class="text-dados">
+                            <h3>Concluídos</h3>
                         </div>
+                        <ServConcluidos/>
+                        <ServConcluidos/>
+                        <ServConcluidos/>
                     </div>
                 </div>
             </div>

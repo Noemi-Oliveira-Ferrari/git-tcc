@@ -9,7 +9,7 @@ import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          validarSenha, validarString, validarVazios, retirarSimbolos,
          formataData, limpaValor} from '../js/validar';
 
-class DadosPessoaisPro extends Component{
+export class DadosPessoaisPro extends Component{
 
     constructor(){
         super();
@@ -320,7 +320,7 @@ class DadosPessoaisPro extends Component{
     }
 }
 
-class DadosProfissional extends Component{
+export class DadosProfissional extends Component{
     
     constructor(){
         super();        
