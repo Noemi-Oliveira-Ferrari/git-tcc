@@ -8,5 +8,6 @@
     <color name="colorTest">#57bc90</color>
     <color name="colorTest2">#77C9D4</color>
     <color name="colorGray">#b1b1b1</color>
+    <color name="colorGrayClaro">#DFDFDF</color>
     <color name="colorOpacity">#77000000</color>
 </resources>

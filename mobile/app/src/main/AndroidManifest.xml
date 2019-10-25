@@ -58,6 +58,9 @@
         <activity
             android:name=".MenuClienteActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".PerfilProfissionalBuscaActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

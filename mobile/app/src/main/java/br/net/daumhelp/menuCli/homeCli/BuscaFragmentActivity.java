@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ import androidx.lifecycle.ViewModelProviders;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.net.daumhelp.PerfilProfissionalBuscaActivity;
 import br.net.daumhelp.R;
 import br.net.daumhelp.adapter.ListaAdapterBusca;
 import br.net.daumhelp.configretrofit.RetroFitConfig;
@@ -35,6 +37,7 @@ public class BuscaFragmentActivity extends Fragment {
     private TextView tvNome;
     private BuscaViewModel buscaViewModel;
     private Cliente cliente;
+
     ArrayList<Profissional> lista = new ArrayList<Profissional>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -45,6 +48,8 @@ public class BuscaFragmentActivity extends Fragment {
 
         getActivity().getWindow().setStatusBarColor(Color.parseColor("#77C9D4"));
 
+
+
         return root;
 
 
@@ -52,6 +57,8 @@ public class BuscaFragmentActivity extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+
 
         Intent intent = getActivity().getIntent();
         if(intent.getSerializableExtra("cliente") != null) {
@@ -86,6 +93,10 @@ public class BuscaFragmentActivity extends Fragment {
             }
 
         });
+
+
+
+
 
 
 
