@@ -151,7 +151,8 @@ export const validarVazios = (campos) =>{
 
 
 export const retirarSimbolos = (texto) =>{
-    let textoLimpo = texto.replace(/[\'\"\!\@\#\$\%\¨\&\*\(\)\_\+\-\=\/\.\,]/g, "");
+    let textoLimpo = texto.replace(/^[\D]/g, "");
+    // let textoLimpo = texto.replace(/[\'\"\!\@\#\$\%\¨\&\*\(\)\_\+\-\=\/\.\,]/g, "");
     return textoLimpo;
 }
 

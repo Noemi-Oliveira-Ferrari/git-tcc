@@ -28,6 +28,8 @@ public class Cliente {
 	@Size(min = 11, max = 20, message = "CPF menor que 11 digitos")
 	private String cpf;
 
+	private String foto;
+
 	@NotNull
 	@Size(min = 8, max = 130, message = "A senha deve conter pelo ao menos 8 caractéres")
 	private String senha;
@@ -72,13 +74,21 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getCpf() {
 		return cpf;
 	}
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public String getSenha() {
@@ -131,8 +141,8 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", cpf="
-				+ cpf + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco + ", tipoUsuario="
+		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf + ", foto="
+				+ foto + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco + ", tipoUsuario="
 				+ tipoUsuario + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
 

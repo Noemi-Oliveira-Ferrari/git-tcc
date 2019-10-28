@@ -1,10 +1,11 @@
 import React,  {Component, Fragment} from "react";
+import { DOMINIO } from '../global';
 import {Inputs, Selects, InputNumber} from './FormElements';
 import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import {ModalLoadConst, ModalAlertas} from './ModaisLoad';
+import {ModalLoadConst, modalAlertas} from './ModaisLoad';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfPro, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
@@ -27,7 +28,7 @@ class DadosPessoaisPro extends Component{
             endereco: [], profissional: []
         }
         this.modalLoad = this.modalLoad.bind(this);
-        this.ModalAlertas = this.ModalAlertas.bind(this);
+        this.modalAlertas = this.modalAlertas.bind(this);
            
         this.setNome = this.setNome.bind(this);
         this.setCep = this.setCep.bind(this);
@@ -43,7 +44,7 @@ class DadosPessoaisPro extends Component{
         this.getEmail = this.getEmail.bind(this);
     }
 
-    ModalAlertas = () =>{
+    modalAlertas = () =>{
         // if(this.state.showModalErro){
         //     $("body").css("overflow-y", "hidden");
         // }else{
@@ -114,7 +115,7 @@ class DadosPessoaisPro extends Component{
     
     getCpf(cpf){
         let erros = [];
-        axios.get(`http://3.220.68.195:8080/profissionais/verificar/cpf/${cpf}`)
+        axios.get(`${DOMINIO}profissionais/verificar/cpf/${cpf}`)
         .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);
@@ -122,13 +123,19 @@ class DadosPessoaisPro extends Component{
                 withError($("#txt-cpfCnpj"));
                 erros.push(`CPF ${cpf} ja cadastrado`);
                 this.setState({erros: erros});
-                setTimeout(()=>{this.ModalAlertas();}, 500);
+                setTimeout(()=>{this.modalAlertas();}, 500);
                 this.setState({cpfCnpj: ""});
             }
             setTimeout(()=>{this.modalLoad();}, 500);
         })
         .catch((error)=>{
+            erros.push(`CEP ... Não existe!`);
+            this.setState({erros: erros});
+            this.modalAlertas();
             console.log(error);
+            // erros.push(`Não foi possível conectar-se ao servidor!`);
+            // this.setState({erros: erros});
+            // setTimeout(()=>{this.modalAlertas();}, 500);
             this.modalLoad();
         })
         .onload = this.modalLoad();
@@ -136,7 +143,7 @@ class DadosPessoaisPro extends Component{
     
     getCnpj(cnpj){
         let erros = [];
-        axios.get(`http://3.220.68.195:8080/profissionais/cnpj/${cnpj}`)
+        axios.get(`${DOMINIO}profissionais/cnpj/${cnpj}`)
         .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);
@@ -144,7 +151,7 @@ class DadosPessoaisPro extends Component{
                 withError($("#txt-cpfCnpj"));
                 erros.push(`CNPJ ${cnpj} ja cadastrada`);
                 this.setState({erros: erros});
-                setTimeout(()=>{this.ModalAlertas();}, 500);
+                setTimeout(()=>{this.modalAlertas();}, 500);
                 this.setState({cpfCnpj: ""});
             }
             setTimeout(()=>{this.modalLoad()}, 500);
@@ -187,7 +194,7 @@ class DadosPessoaisPro extends Component{
         if(email.length > 5){
             let erros = [];
 
-            axios.get(`http://3.220.68.195:8080/clientes/verificar/email/${email}`)
+            axios.get(`${DOMINIO}clientes/verificar/email/${email}`)
             .then((response)=>{
                 let jsonPro = response.data;
                 console.log(jsonPro);
@@ -195,7 +202,7 @@ class DadosPessoaisPro extends Component{
                     withError($("#txt-email"));
                     erros.push(`E-mail ${email} ja cadastrado`);
                     this.setState({erros: erros});
-                    setTimeout(()=>{this.ModalAlertas();}, 500);
+                    setTimeout(()=>{this.modalAlertas();}, 500);
                     this.setState({email: ""});
                     setTimeout(() => {
                         $("#txt-email").focus();
@@ -221,17 +228,21 @@ class DadosPessoaisPro extends Component{
     }
     getEndereco = (cep) =>{
         let erros = [];
-        // axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
-        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+        // axios.get(`${DOMINIO}enderecos/cep/${cep}`)
+        axios({
+            method: "GET",
+            url: `https://viacep.com.br/ws/${cep}/json/`,
+            type: "application/json",
+            // timeout: 30000,  
+        })
         .then((response)=>{
             let jsonEndereco = response.data;
-            console.log(jsonEndereco.cep);
+            console.log(jsonEndereco);
             if(jsonEndereco !== null || jsonEndereco !== null){
                 this.setState({logradouro: jsonEndereco.logradouro});
                 this.setState({bairro: jsonEndereco.bairro});
                 this.setState({cidade: jsonEndereco.localidade});
                 this.setState({uf: jsonEndereco.uf});
-                // this.setState({uf: jsonEndereco.cidade.microrregiao.uf.uf});
                 this.setState({idCidade: jsonEndereco.ibge});
 
                 withoutError($('#txt-cep'));
@@ -244,9 +255,9 @@ class DadosPessoaisPro extends Component{
         })
         .catch((error)=>{
             console.error(error);
-            erros.push(`CEP ${cep} Não existe!`);
-            this.setState({erros: erros});
-            this.ModalAlertas();
+            // erros.push(`CEP ${cep} Não existe!`);
+            // this.setState({erros: erros});
+            // this.modalAlertas();
 
             this.setState({logradouro: ""});
             this.setState({bairro: ""});
@@ -288,7 +299,7 @@ class DadosPessoaisPro extends Component{
         return(
             <Fragment>
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
-                <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
+                <modalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalAlertas}/>
                 <div className="flex-center">
                     <div className="card-formulario-pessoal">
                         <div className="caixa-title-card">
@@ -544,8 +555,13 @@ class DadosProfissional extends Component{
         
     getCategorias(){
         let load = false;
-        // axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
-        axios.get(`http://3.220.68.195:8080/categorias`)
+        // axios.get(`${DOMINIO}categorias`)
+        axios({
+            method: "GET",
+            url: `${DOMINIO}categorias`,
+            type: "application/json",
+            timeout: 30000,  
+        })
         .then((response)=>{
             let jsonCategorias = response.data;
             this.setState({categorias: jsonCategorias});
@@ -555,7 +571,8 @@ class DadosProfissional extends Component{
             }
         })
         .catch((error)=>{
-            console.error(error);
+            console.error("======"+error);
+            this.setState({loading: !this.state.loading});
             this.modalLoad();
         })
         .onload =  this.modalLoad();
@@ -567,8 +584,8 @@ class DadosProfissional extends Component{
             idCategoria = 1;
         }
 
-        // axios.get(`http://localhost:8080/enderecos/cep/${cep}`)
-        axios.get(`http://3.220.68.195:8080/subcategorias/categoria/${idCategoria}`)
+        // axios.get(`${DOMINIO}enderecos/cep/${cep}`)
+        axios.get(`${DOMINIO}subcategorias/categoria/${idCategoria}`)
         .then((response)=>{
             let jsonSubcategorias = response.data;
             this.setState({subcategorias: jsonSubcategorias});
@@ -674,13 +691,13 @@ export default class FormularioProfissional extends Component{
             erros: [],
             showModalErro: false
         }
-        this.ModalAlertas = this.ModalAlertas.bind(this);
+        this.modalAlertas = this.modalAlertas.bind(this);
 
         this.realizarCadastro = this.realizarCadastro.bind(this);   
         this.validarCampos = this.validarCampos.bind(this);  
     }
 
-    ModalAlertas = () =>{
+    modalAlertas = () =>{
         if(!this.state.showModalErro){
             $("body").css("overflow-y", "hidden");
         }else{
@@ -808,7 +825,7 @@ export default class FormularioProfissional extends Component{
             browserHistory.push("/cadastro/confirmacao");
         }else{
             setTimeout(() => {
-                this.ModalAlertas();
+                this.modalAlertas();
             }, 500);
             moveToError();
         }
@@ -817,7 +834,7 @@ export default class FormularioProfissional extends Component{
     render(){
         return(
             <Fragment>
-                <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
+                <modalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalAlertas}/>
                 <form className="form-pro" name="form_profissional" method="GET" onSubmit={this.realizarCadastro}>
                     <DadosPessoaisPro/>
                     <DadosProfissional/>

@@ -3,6 +3,7 @@ import {Inputs, InputNumber} from './FormElements';
 import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
+import { DOMINIO } from '../global';
 import {ModalLoadConst, ModalAlertas} from './ModaisLoad';
 import {browserHistory} from 'react-router';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
@@ -113,7 +114,7 @@ export class DadosPessoaisCliente extends Component{
     
     getCpf(cpf){
         let erros = [];
-        axios.get(`http://3.220.68.195:8080/clientes/verificar/cpf/${cpf}`)
+        axios.get(`${DOMINIO}clientes/verificar/cpf/${cpf}`)
         .then((response)=>{
             let jsonCliente = response.data;
             console.log(jsonCliente);
@@ -149,7 +150,7 @@ export class DadosPessoaisCliente extends Component{
         console.log(email);
         if(email.length > 5){
 
-            axios.get(`http://3.220.68.195:8080/clientes/verificar/email/${email}`)
+            axios.get(`${DOMINIO}clientes/verificar/email/${email}`)
             .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);

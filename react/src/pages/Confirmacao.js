@@ -5,6 +5,7 @@ import ButtonToolbar from '../../node_modules/react-bootstrap/ButtonToolbar';
 import $ from 'jquery';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
+import { DOMINIO } from '../global';
 
 import '../css/confirmacao.css';
 import ModalSucesso from '../components/ModalSucesso';
@@ -32,8 +33,9 @@ function Confirmacao() {
     function cadastrarEndereco(){
         axios({
             method: 'POST',
-            url: "http://3.220.68.195:8080/enderecos",
+            url: "${DOMINIO}enderecos",
             type: "application/json",
+            timeout: 30000,
             data: {
                 bairro: endereco.bairro,
                 cep: endereco.cep,
@@ -61,8 +63,9 @@ function Confirmacao() {
         function cadastrarProfissional(idEndereco){
             axios({
                 method: 'POST',
-                url: "http://3.220.68.195:8080/profissionais",
+                url: "${DOMINIO}profissionais",
                 type: "application/json",
+                timeout: 30000,
                 data: 
                 {
                     cnpj: profissional.cnpj,
@@ -99,8 +102,9 @@ function Confirmacao() {
         function cadastrarCliente(idEndereco){
             axios({
                 method: 'POST',
-                url: "http://3.220.68.195:8080/clientes",
+                url: "${DOMINIO}clientes",
                 type: "application/json",
+                timeout: 30000,
                 data: 
                 {
                     cpf: cliente.cpf,
@@ -166,7 +170,8 @@ function Confirmacao() {
 
         axios({
             method: 'POST',
-            url: `http://3.220.68.195:8080/${tipoCadastro}/confirmacao`,
+            url: `${DOMINIO}${tipoCadastro}/confirmacao`,
+            timeout: 30000,
             data: {
                 nome: usuario.nome,
                 destinatario: usuario.email,
