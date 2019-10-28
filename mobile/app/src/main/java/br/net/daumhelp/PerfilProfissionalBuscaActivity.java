@@ -1,9 +1,11 @@
 package br.net.daumhelp;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +22,7 @@ import java.util.Locale;
 import br.net.daumhelp.model.Profissional;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+
 public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
 
     private Profissional profissionalSelecionado;
@@ -32,6 +35,13 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
     private ImageButton ibSolicitar;
     private ImageButton ibAvaliar;
     private ImageButton ibFavoritar;
+
+    private Dialog alertDialog;
+    private Button btnSolicitarAlert;
+    private Button btnSair;
+    private TextView tvNomeAlert;
+    private TextView tvCategoriaAlert;
+    private TextView tvQualificacoesAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +60,9 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
         ibFavoritar = findViewById(R.id.ic_salvar);
         btnVisualizar = findViewById(R.id.btn_resumo);
 
+
+        alertDialog = new Dialog(this);
+
         Intent intent = getIntent();
         if (intent.getSerializableExtra("profissionalBusca") != null) {
 
@@ -60,14 +73,39 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    alertDialog.setContentView(R.layout.adapter_alert);
 
+                    btnSolicitarAlert = alertDialog.findViewById(R.id.btn_solicitar_alert);
+                    btnSair = alertDialog.findViewById(R.id.ib_sair);
+                    tvNomeAlert = alertDialog.findViewById(R.id.tv_nome_pro_alert);
+                    tvCategoriaAlert = alertDialog.findViewById(R.id.tv_nome_cat_alert);
+                    tvQualificacoesAlert = alertDialog.findViewById(R.id.tv_qualificacoes_alert);
+
+                    tvQualificacoesAlert.setMovementMethod(new ScrollingMovementMethod());
+
+                    tvNomeAlert.setText(profissionalSelecionado.getNome());
+                    tvQualificacoesAlert.setText(profissionalSelecionado.getResumoQualificacoes());
+                    tvCategoriaAlert.setText(profissionalSelecionado.getSubcategoria().getSubcategoria());
+
+                    alertDialog.show();
+
+                    btnSolicitarAlert.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Toast.makeText(PerfilProfissionalBuscaActivity.this, "Agradeço sua preferência =)", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    btnSair.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            alertDialog.dismiss();
+                        }
+                    });
                 }
             });
 
         }
-
-
-
     }
 
 

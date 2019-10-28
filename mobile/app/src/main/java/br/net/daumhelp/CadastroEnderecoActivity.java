@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.model.EnderecoViaCep;
 import br.net.daumhelp.recursos.Mascara;
 import br.net.daumhelp.model.Endereco;
 import retrofit2.Call;
@@ -29,6 +30,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
     private Button btnCep;
     private Endereco endereco;
     private Long idCidade;
+    private EnderecoViaCep enderecoViaCep;
 
 
     @Override
@@ -65,10 +67,10 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                 /*VALIDAÇÃO DO TAMANHO DO CEP*/
                 if(etCep.length() == 8 || etCep.length() == 9){
                     if(validar() == true) {
-                        Call<Endereco> call = new RetroFitConfig().getEnderecoService().buscarEndereco(cep);
-                        call.enqueue(new Callback<Endereco>() {
+                        Call<EnderecoViaCep> call = new RetroFitConfig().getEnderecoService().buscarEnderecoViaCep(cep);
+                        call.enqueue(new Callback<EnderecoViaCep>() {
                             @Override
-                            public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+                            public void onResponse(Call<EnderecoViaCep> call, Response<EnderecoViaCep> response) {
 
 
                                 if(response.code() == 404){
@@ -80,7 +82,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onFailure(Call<Endereco> call, Throwable t) {
+                            public void onFailure(Call<EnderecoViaCep> call, Throwable t) {
 
                                 Log.i("Retrofit Endereço" + call, t.getMessage());
                                 etCep.setError("CEP inválido");
@@ -159,13 +161,13 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
     }
 
     /*MÉTODO DE CARREGAR ENDEREÇO*/
-    private void carregarEndereco(Endereco endereco){
-        this.endereco = endereco;
-        etUf.setText(endereco.getCidade().getMicrorregiao().getUf().toString());
-        etBairro.setText(endereco.getBairro());
-        etLogradouro.setText(endereco.getLogradouro());
-        etCidade.setText(endereco.getCidade().getCidade().toString());
-        idCidade = endereco.getCidade().getIdCidade();
+    private void carregarEndereco(EnderecoViaCep enderecoViaCep){
+        this.enderecoViaCep = enderecoViaCep;
+        etUf.setText(enderecoViaCep.getUf());
+        etBairro.setText(enderecoViaCep.getBairro());
+        etLogradouro.setText(enderecoViaCep.getLogradouro());
+        etCidade.setText(enderecoViaCep.getLocalidade());
+        idCidade = enderecoViaCep.getIbge();
 
     }
 

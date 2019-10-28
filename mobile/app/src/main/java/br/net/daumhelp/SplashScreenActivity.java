@@ -3,6 +3,7 @@ package br.net.daumhelp;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +24,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        getWindow().setStatusBarColor(Color.parseColor("#FFFFFF"));
         final ConnectivityManager conmag = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 
 

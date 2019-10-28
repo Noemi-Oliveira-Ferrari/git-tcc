@@ -18,12 +18,14 @@
 
         <TextView
             android:id="@+id/tv_nome_profissional"
-            android:layout_width="wrap_content"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:text="Pedro de Almeida Santos"
             android:textSize="20dp"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:textStyle="bold" />
 
         <TextView
@@ -38,10 +40,12 @@
 
         <TextView
             android:id="@+id/tv_servico_pro"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="95dp"
             android:layout_marginTop="50dp"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:text="Jardineiro"
             android:textSize="18dp" />
 
@@ -80,6 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
             android:layout_marginTop="125dp"
+            android:ellipsize="end"
+            android:singleLine="true"
             android:text="Jandira - SP"
             android:textSize="18dp" />
 

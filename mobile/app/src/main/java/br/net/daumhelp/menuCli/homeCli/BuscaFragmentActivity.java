@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +31,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
-public class BuscaFragmentActivity extends Fragment {
+public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
 
     private TextView tvNome;
     private BuscaViewModel buscaViewModel;
     private Cliente cliente;
+    private ListaAdapterBusca listaProfissional;
+    private SwipeRefreshLayout mSwipeToRefresh;
 
     ArrayList<Profissional> lista = new ArrayList<Profissional>();
 
@@ -59,6 +61,9 @@ public class BuscaFragmentActivity extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
 
+        mSwipeToRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_container);
+
+        mSwipeToRefresh.setOnRefreshListener(this);
 
         Intent intent = getActivity().getIntent();
         if(intent.getSerializableExtra("cliente") != null) {
@@ -108,5 +113,34 @@ public class BuscaFragmentActivity extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+    }
+
+    @Override
+    public void onRefresh() {
+
+        
+        int idMicroCliente = cliente.getEndereco().getCidade().getMicrorregiao().getIdMicro();
+        Call<List<Profissional>> call = new RetroFitConfig().getProfissionalService().buscarProfissionalMicro(idMicroCliente);
+        call.enqueue(new Callback<List<Profissional>>() {
+            @Override
+            public void onResponse(Call<List<Profissional>> call, Response<List<Profissional>> response) {
+
+                lista = (ArrayList<Profissional>) response.body();
+                listaProfissional = new ListaAdapterBusca(getContext(), lista);
+                ListView listView = (ListView) getView().findViewById(R.id.lv_busca_pro);
+
+                listView.setAdapter(listaProfissional);
+
+                Toast.makeText(getContext(), "ON RESPONSE", Toast.LENGTH_SHORT).show();
+                mSwipeToRefresh.setRefreshing(false);
+            }
+
+            @Override
+            public void onFailure(Call<List<Profissional>> call, Throwable t) {
+                Log.i("PROFISSIONAIS BUSCA", t.getMessage());
+                Toast.makeText(getContext(), "ON FAILURE", Toast.LENGTH_SHORT).show();
+            }
+
+        });
     }
 }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/ib_galeria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -15,7 +15,7 @@
         android:background="#00FFFFFF"
         android:src="@drawable/galeria"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_foto" />
 
     <TextView
         android:id="@+id/tv_bem_vindo"
@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_bem_vindo" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_image"
+        android:id="@+id/iv_foto"
         android:layout_width="156dp"
         android:layout_height="156dp"
         android:layout_marginTop="60dp"
@@ -61,14 +61,14 @@
         android:layout_height="48dp"
         android:layout_marginBottom="4dp"
         android:background="@drawable/button_foto"
-        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_foto"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/ic_ok"
         app:layout_constraintHorizontal_bias="0.659"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/ib_camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
@@ -76,7 +76,7 @@
         android:background="#00FFFFFF"
         android:src="@drawable/camera"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_foto" />
 
     <TextView
         android:id="@+id/tv_selfie"
@@ -87,7 +87,7 @@
         android:text="TIRAR UMA \n FOTO"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton" />
+        app:layout_constraintTop_toBottomOf="@+id/ib_camera" />
 
     <TextView
         android:id="@+id/tv_galeria"
@@ -98,7 +98,7 @@
         android:text="ESCOLHER DA \n GALERIA"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/ib_galeria" />
 
     <RelativeLayout
         android:layout_width="match_parent"

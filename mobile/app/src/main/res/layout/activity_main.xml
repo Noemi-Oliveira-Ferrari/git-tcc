@@ -128,13 +128,13 @@
         android:layout_height="100dp"
         android:layout_marginStart="100dp"
         android:layout_marginTop="80dp"
+        android:background="@drawable/duh_icon_sem_fundo"
         android:layout_marginEnd="100dp"
         android:layout_marginBottom="89dp"
         app:layout_constraintBottom_toTopOf="@+id/et_login_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/colorWhite" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_login_email"

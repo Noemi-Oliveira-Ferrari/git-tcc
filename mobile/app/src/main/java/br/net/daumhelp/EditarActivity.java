@@ -26,6 +26,7 @@ import br.net.daumhelp.model.Categoria;
 import br.net.daumhelp.model.Cidade;
 import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Endereco;
+import br.net.daumhelp.model.EnderecoViaCep;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.Subcategoria;
 import br.net.daumhelp.model.TipoUsuario;
@@ -75,6 +76,7 @@ public class EditarActivity extends AppCompatActivity {
     private Button btnAtualizar;
     private int contBack = 0;
     private Profissional profissionalAtualizado;
+    private EnderecoViaCep enderecoViaCep;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -127,7 +129,6 @@ public class EditarActivity extends AppCompatActivity {
         if (intent.getSerializableExtra("profissional") != null) {
             profissional = (Profissional) intent.getSerializableExtra("profissional");
 
-            Toast.makeText(this, "" + profissional.getNome(), Toast.LENGTH_SHORT).show();
 
             idSub = profissional.getSubcategoria().getIdSubcategoria();
             idCidade = profissional.getEndereco().getCidade().getIdCidade();
@@ -174,7 +175,7 @@ public class EditarActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 btnCep.setTextColor(Color.parseColor("#57BC90"));
-                etCep.requestFocus(View.FOCUS_LEFT);
+
                 etCep.setEnabled(true);
                 btnCep.setEnabled(true);
 
@@ -183,9 +184,10 @@ public class EditarActivity extends AppCompatActivity {
                 imm.showSoftInput(etCep, InputMethodManager.SHOW_IMPLICIT);
 
                 if(tvEditarLocal.getText().equals("Editar")){
+                    etCep.requestFocus(View.FOCUS_LEFT);
 
+                    tvEditarLocal.setVisibility(View.INVISIBLE);
                     contBack = 1;
-                    tvEditarLocal.setText("Salvar");
 
                     btnCep.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -194,10 +196,10 @@ public class EditarActivity extends AppCompatActivity {
                             String cep = etCep.getText().toString();
                             /*VALIDAÇÃO DO TAMANHO DO CEP*/
                             if(etCep.length() == 8 || etCep.length() == 9){
-                                Call<Endereco> call = new RetroFitConfig().getEnderecoService().buscarEndereco(cep);
-                                call.enqueue(new Callback<Endereco>() {
+                                Call<EnderecoViaCep> call = new RetroFitConfig().getEnderecoService().buscarEnderecoViaCep(cep);
+                                call.enqueue(new Callback<EnderecoViaCep>() {
                                     @Override
-                                    public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+                                    public void onResponse(Call<EnderecoViaCep> call, Response<EnderecoViaCep> response) {
                                         if(response.code() == 404){
                                             etCep.setError("CPF inválido");
                                         }else{
@@ -207,7 +209,7 @@ public class EditarActivity extends AppCompatActivity {
                                     }
 
                                     @Override
-                                    public void onFailure(Call<Endereco> call, Throwable t) {
+                                    public void onFailure(Call<EnderecoViaCep> call, Throwable t) {
                                         Log.i("Retrofit Endereço", t.getMessage());
                                         etCep.setError("CEP inválido");
                                     }
@@ -218,11 +220,6 @@ public class EditarActivity extends AppCompatActivity {
                             }
                         }
                     });
-
-                }else if(tvEditarLocal.getText().equals("Salvar")){
-                    btnCep.setTextColor(Color.parseColor("#b1b1b1"));
-                    tvEditarLocal.setText("Editar");
-                    etCep.setEnabled(false);
 
                 }
             }
@@ -240,26 +237,10 @@ public class EditarActivity extends AppCompatActivity {
                 imm.showSoftInput(etNome, InputMethodManager.SHOW_IMPLICIT);
 
                 if(tvEditarDados.getText().equals("Editar")){
+
+                    tvEditarDados.setVisibility(View.INVISIBLE);
                     contBack = 1;
-                    tvEditarDados.setText("Salvar");
 
-                }else if(tvEditarDados.getText().equals("Salvar")){
-
-                    /*VERIFICANDO SE AS SENHAS SÃO IGUAIS*/
-                    if(etSenhaConfirmacao.getText().toString().equals(etSenha.getText().toString())) {
-
-                        /*VALIDANDO OS CAMPOS*/
-                        if (validar() == true) {
-
-                            tvEditarDados.setText("Editar");
-                            contBack = 1;
-                            desativarCamposDadosPessoais();
-
-
-                        }
-                    }else{
-                        Toast.makeText(EditarActivity.this, "As senhas não correspondem", Toast.LENGTH_SHORT).show();
-                    }
                 }
             }
         });
@@ -290,16 +271,11 @@ public class EditarActivity extends AppCompatActivity {
 
                 if(tvEditarServico.getText().equals("Editar")){
 
-                    tvEditarServico.setText("Salvar");
+                    tvEditarServico.setVisibility(View.INVISIBLE);
+
                     contBack = 1;
 
 
-                }
-                else if(tvEditarServico.getText().equals("Salvar")){
-                    /*CHAMADA DAS CATEGORIAS*/
-                    tvEditarServico.setText("Editar");
-                    contBack = 1;
-                    desativarCamposDadosServico();
                 }
 
 
@@ -331,69 +307,84 @@ public class EditarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /*MONTANDO O OBJETO PROFISSIONAL QUE SERÁ ATUALIZADO*/
-                profissional.setNome(etNome.getText().toString());
-                profissional.setDataNasc(etData.getText().toString());
-                profissional.setCpf(etCpf.getText().toString());
-                profissional.setEmail(etEmail.getText().toString());
-                TipoUsuario tipoUsuario = new TipoUsuario();
-                tipoUsuario.setIdTipoUsuario(1);
-                tipoUsuario.setTipoDeUsuario('p');
-                profissional.setTipoUsuario(tipoUsuario);
-                Subcategoria subcategoria = new Subcategoria();
-                subcategoria.setIdSubcategoria(idSub);
-                profissional.setSubcategoria(subcategoria);
-                profissional.setResumoQualificacoes(etResumo.getText().toString());
-                profissional.setValorHora(Double.parseDouble(etValorHora.getText().toString()));
+                /*VERIFICANDO SE AS SENHAS SÃO IGUAIS*/
+                if(etSenhaConfirmacao.getText().toString().equals(etSenha.getText().toString())) {
 
-                if (etSenha.getText().equals(128)) {
-                    profissional.setSenha(profissional.getSenha());
-                }else{
-                    profissional.setSenha(EncryptString.gerarHash(etSenha.getText().toString()));
-                }
+                    /*VALIDANDO OS CAMPOS*/
+                    if (validar() == true) {
 
-                Endereco endereco = new Endereco();
-                endereco.setIdEndereco(profissional.getEndereco().getIdEndereco());
-                endereco.setCep(etCep.getText().toString());
-                endereco.setBairro(etBairro.getText().toString());
-                endereco.setLogradouro(etLogradouro.getText().toString());
-                Cidade cidade = new Cidade();
-                cidade.setIdCidade(idCidade);
-                endereco.setCidade(cidade);
+                        /*MONTANDO O OBJETO PROFISSIONAL QUE SERÁ ATUALIZADO*/
+                        profissional.setNome(etNome.getText().toString());
+                        profissional.setDataNasc(etData.getText().toString());
+                        profissional.setCpf(etCpf.getText().toString());
+                        profissional.setEmail(etEmail.getText().toString());
+                        TipoUsuario tipoUsuario = new TipoUsuario();
+                        tipoUsuario.setIdTipoUsuario(1);
+                        tipoUsuario.setTipoDeUsuario('p');
+                        profissional.setTipoUsuario(tipoUsuario);
+                        Subcategoria subcategoria = new Subcategoria();
+                        subcategoria.setIdSubcategoria(idSub);
+                        profissional.setSubcategoria(subcategoria);
+                        profissional.setResumoQualificacoes(etResumo.getText().toString());
+                        profissional.setValorHora(Double.parseDouble(etValorHora.getText().toString()));
 
-                if (validar() == true){
+                        if (etSenha.getText().equals(128)) {
+                            profissional.setSenha(profissional.getSenha());
+                        }else{
+                            profissional.setSenha(EncryptString.gerarHash(etSenha.getText().toString()));
+                        }
 
-                    /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
-                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(profissional.getEndereco().getIdEndereco(), endereco);
-                    call.enqueue(new Callback<Endereco>() {
-                        @Override
-                        public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+                        Endereco endereco = new Endereco();
+                        endereco.setIdEndereco(profissional.getEndereco().getIdEndereco());
+                        endereco.setCep(etCep.getText().toString());
+                        endereco.setBairro(etBairro.getText().toString());
+                        endereco.setLogradouro(etLogradouro.getText().toString());
+                        Cidade cidade = new Cidade();
+                        cidade.setIdCidade(idCidade);
+                        endereco.setCidade(cidade);
 
-                            response.body();
+                        if (validar() == true){
 
-                            /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
-                            Call<Profissional> call2 = new RetroFitConfig().getProfissionalService().atualizarPro(profissional.getIdProfissional(), profissional);
-                            call2.enqueue(new Callback<Profissional>() {
+                            /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
+                            Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(profissional.getEndereco().getIdEndereco(), endereco);
+                            call.enqueue(new Callback<Endereco>() {
                                 @Override
-                                public void onResponse(Call<Profissional> call2, Response<Profissional> response) {
-                                    profissionalAtualizado = response.body();
-                                    contBack = 0;
-                                    tvNome.setText(etNome.getText());
-                                    Toast.makeText(EditarActivity.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
+                                public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+
+                                    response.body();
+
+                                    /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
+                                    Call<Profissional> call2 = new RetroFitConfig().getProfissionalService().atualizarPro(profissional.getIdProfissional(), profissional);
+                                    call2.enqueue(new Callback<Profissional>() {
+                                        @Override
+                                        public void onResponse(Call<Profissional> call2, Response<Profissional> response) {
+                                            profissionalAtualizado = response.body();
+                                            contBack = 0;
+                                            tvNome.setText(etNome.getText());
+                                            Toast.makeText(EditarActivity.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
+                                        }
+                                        @Override
+                                        public void onFailure(Call<Profissional> call2, Throwable t) {
+                                            Log.i("PROFISSIONAL", t.getMessage());
+                                        }
+                                    });
                                 }
                                 @Override
-                                public void onFailure(Call<Profissional> call2, Throwable t) {
-                                    Log.i("PROFISSIONAL", t.getMessage());
+                                public void onFailure(Call<Endereco> call, Throwable t) {
+                                    Log.i("ENDERECO", t.getMessage());
                                 }
                             });
-                        }
-                        @Override
-                        public void onFailure(Call<Endereco> call, Throwable t) {
-                            Log.i("ENDERECO", t.getMessage());
-                        }
-                    });
 
+                        }
+
+
+
+                    }
+                }else{
+                    Toast.makeText(EditarActivity.this, "As senhas não correspondem", Toast.LENGTH_SHORT).show();
                 }
+
+
 
             }
         });
@@ -472,16 +463,15 @@ public class EditarActivity extends AppCompatActivity {
 
 
     /*MÉTODO DE CARREGAR ENDEREÇO*/
-    private void carregarEndereco(Endereco endereco){
-        this.endereco = endereco;
-        etUf.setText(endereco.getCidade().getMicrorregiao().getUf().toString());
-        etBairro.setText(endereco.getBairro());
-        etLogradouro.setText(endereco.getLogradouro());
-        etCidade.setText(endereco.getCidade().getCidade().toString());
-        idCidade = endereco.getCidade().getIdCidade();
+    private void carregarEndereco(EnderecoViaCep enderecoViaCep){
+        this.enderecoViaCep = enderecoViaCep;
+        etUf.setText(enderecoViaCep.getUf());
+        etBairro.setText(enderecoViaCep.getBairro());
+        etLogradouro.setText(enderecoViaCep.getLogradouro());
+        etCidade.setText(enderecoViaCep.getLocalidade());
+        idCidade = enderecoViaCep.getIbge();
 
     }
-
     /*MÉTODO DE CARREGAR DADOS NO PERFIL*/
     private void carregarDados(Profissional profissional){
         etNome.setText(profissional.getNome());
@@ -498,6 +488,7 @@ public class EditarActivity extends AppCompatActivity {
         etBairro.setText(profissional.getEndereco().getBairro());
         etResumo.setText(profissional.getResumoQualificacoes());
         etValorHora.setText(String.valueOf(profissional.getValorHora()));
+
         etCategoria.setText(profissional.getSubcategoria().getCategoria().getCategoria());
         etSubcategoria.setText(profissional.getSubcategoria().getSubcategoria());
 
