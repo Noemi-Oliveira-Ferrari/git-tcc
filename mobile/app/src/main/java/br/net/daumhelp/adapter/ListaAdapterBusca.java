@@ -15,7 +15,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import br.net.daumhelp.PerfilProfissionalBuscaActivity;
 import br.net.daumhelp.R;
@@ -60,9 +62,14 @@ public class ListaAdapterBusca extends ArrayAdapter<Profissional> {
             }
         });
 
-        tvNome.setText(listaProfissional.getNome());
+        tvNome.setText(listaProfissional.getNome().toUpperCase());
         tvServico.setText(listaProfissional.getSubcategoria().getSubcategoria());
-        tvValor.setText(listaProfissional.getValorHora().toString());
+
+
+        Locale ptBr = new Locale("pt", "BR");
+        String valorString = NumberFormat.getCurrencyInstance(ptBr).format(listaProfissional.getValorHora());
+
+        tvValor.setText(valorString);
         tvLocal.setText(listaProfissional.getEndereco().getCidade().getCidade() + " - " +  listaProfissional.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
 
 

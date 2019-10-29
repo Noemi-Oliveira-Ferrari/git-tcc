@@ -12,6 +12,15 @@ public class Endereco implements Serializable{
     private String cep;
     private String bairro;
     private Cidade cidade;
+    private int numero;
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
 
     public Long getIdEndereco() {
         return idEndereco;
@@ -61,6 +70,7 @@ public class Endereco implements Serializable{
                 ", cep='" + cep + '\'' +
                 ", bairro='" + bairro + '\'' +
                 ", cidade=" + cidade +
+                ", numero=" + numero +
                 '}';
     }
 }

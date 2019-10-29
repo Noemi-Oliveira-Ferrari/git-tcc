@@ -104,11 +104,6 @@ public class CadastroFotoActivity extends AppCompatActivity {
                 }
             });
         }
-
-
-
-
-
     }
 
     @Override

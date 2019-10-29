@@ -22,11 +22,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
+
             android:text="Pedro de Almeida Santos"
             android:textSize="20dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:textStyle="bold" />
+            android:textStyle="italic"/>
 
         <TextView
             android:id="@+id/tv_servico"
@@ -118,6 +119,7 @@
             android:layout_marginTop="105dp"
             android:layout_marginEnd="10dp"
             android:background="#00FFFFFF"
+            android:soundEffectsEnabled="true"
             android:drawableTop="@drawable/ic_visualizar"
             android:text="Visualizar"
             android:textColor="#77C9D4"

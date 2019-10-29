@@ -26,6 +26,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
     private EditText etUf;
     private EditText etLogradouro;
     private EditText etBairro;
+    private EditText etNumero;
     private EditText etCidade;
     private Button btnCep;
     private Endereco endereco;
@@ -46,6 +47,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
         etBairro = findViewById(R.id.et_bairro);
         etCidade = findViewById(R.id.et_cidade);
         btnCep = findViewById(R.id.btn_gerar_cep);
+        etNumero = findViewById(R.id.et_numero);
 
         btnProximo.setVisibility(View.INVISIBLE);
 
@@ -104,6 +106,12 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
         if(intent.getSerializableExtra("dados_pessoais") != null){
             final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais");
 
+            if(listaDados[6].equals("p")){
+                etNumero.setVisibility(View.GONE);
+            }else{
+                etNumero.setVisibility(View.VISIBLE);
+            }
+
             btnProximo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -116,9 +124,11 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                         String logradouro = etLogradouro.getText().toString();
                         String bairro = etBairro.getText().toString();
                         String cidade = etCidade.getText().toString();
+                        String numero = etNumero.getText().toString();
+
 
                         /*ARRAY DO ENDEREÇO PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
-                        String[] listaEndereco = new String[]{cep, logradouro, bairro, idCidade.toString()};
+                        String[] listaEndereco = new String[]{cep, logradouro, bairro, idCidade.toString(), numero};
 
                         if(listaDados[6].equals("p")){
                             Intent intent = new Intent(CadastroEnderecoActivity.this, CadastroServicoActivity.class);

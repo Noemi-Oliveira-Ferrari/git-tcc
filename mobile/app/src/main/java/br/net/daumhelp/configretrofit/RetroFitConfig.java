@@ -13,6 +13,13 @@ public class RetroFitConfig {
 
     private Retrofit retroFit;
 
+    /*public RetroFitConfig(){
+        retroFit = new Retrofit.Builder()
+                .baseUrl("http://10.107.144.24:8080/")
+                .addConverterFactory(JacksonConverterFactory.create())
+                .build();
+    }*/
+
     public RetroFitConfig(){
         retroFit = new Retrofit.Builder()
                 .baseUrl("http://ec2-3-220-68-195.compute-1.amazonaws.com:8080/")

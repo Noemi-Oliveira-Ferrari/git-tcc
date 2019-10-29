@@ -40,6 +40,8 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
     private ListaAdapterBusca listaProfissional;
     private SwipeRefreshLayout mSwipeToRefresh;
 
+    private ListView listView;
+
     ArrayList<Profissional> lista = new ArrayList<Profissional>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -60,9 +62,8 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-
+        listView =  getView().findViewById(R.id.lv_busca_pro);
         mSwipeToRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_container);
-
         mSwipeToRefresh.setOnRefreshListener(this);
 
         Intent intent = getActivity().getIntent();
@@ -87,7 +88,6 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
                 for(Profissional p : lista){
                     listaProfissional.add(p);
                 }
-                ListView listView = (ListView) getView().findViewById(R.id.lv_busca_pro);
                 listView.setAdapter(listaProfissional);
 
             }
@@ -118,7 +118,7 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
     @Override
     public void onRefresh() {
 
-        
+
         int idMicroCliente = cliente.getEndereco().getCidade().getMicrorregiao().getIdMicro();
         Call<List<Profissional>> call = new RetroFitConfig().getProfissionalService().buscarProfissionalMicro(idMicroCliente);
         call.enqueue(new Callback<List<Profissional>>() {
