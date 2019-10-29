@@ -1,0 +1,1 @@
+export const DOMINIO = "http://localhost:8080/";
