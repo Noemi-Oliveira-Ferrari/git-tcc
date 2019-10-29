@@ -11,12 +11,13 @@ import CadastroCliente from './pages/CadastroCliente';
 
 ReactDOM.render(
     <Router history={browserHistory}>
-        <Route path="/" component={App}>
+        {/* <Route path="/" component={App}> */}
+        <Route path={process.env.PUBLIC_URL + '/'} component={App}>
             <IndexRoute component={Login}/>
-            <Route path="/escolha" component={CardsEscolha}/>
-            <Route path="/profissional/cadastro" component={CadastroPro}/>
-            <Route path="/cliente/cadastro" component={CadastroCliente}/>
-            <Route path="/cadastro/confirmacao" component={Confirmacao}/>
+            <Route path={process.env.PUBLIC_URL + '/escolha'} component={CardsEscolha}/>
+            <Route path={process.env.PUBLIC_URL + '/profissional/cadastro'} component={CadastroPro}/>
+            <Route path={process.env.PUBLIC_URL + '/cliente/cadastro'} component={CadastroCliente}/>
+            <Route path={process.env.PUBLIC_URL + '/cadastro/confirmacao'} component={Confirmacao}/>
         </Route>
     </Router>,    
     document.getElementById('root')
