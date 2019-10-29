@@ -33,7 +33,7 @@ function Confirmacao() {
     function cadastrarEndereco(){
         axios({
             method: 'POST',
-            url: "${DOMINIO}enderecos",
+            url: `${DOMINIO}enderecos`,
             type: "application/json",
             timeout: 30000,
             data: {
@@ -63,7 +63,7 @@ function Confirmacao() {
         function cadastrarProfissional(idEndereco){
             axios({
                 method: 'POST',
-                url: "${DOMINIO}profissionais",
+                url: `${DOMINIO}profissionais`,
                 type: "application/json",
                 timeout: 30000,
                 data: 
@@ -102,7 +102,7 @@ function Confirmacao() {
         function cadastrarCliente(idEndereco){
             axios({
                 method: 'POST',
-                url: "${DOMINIO}clientes",
+                url: `${DOMINIO}clientes`,
                 type: "application/json",
                 timeout: 30000,
                 data: 

@@ -1,0 +1,331 @@
+
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px)
+{
+	.capa-perfil-pro
+	{
+		width: 100%;
+		height: 300px;
+		position:relative;
+		border-bottom: 3px solid #fff;
+		background-position:center;
+		/* background-image: url("https://i.ytimg.com/vi/TN2fJ24pKXs/maxresdefault.jpg"); */
+		background-image: url("../img/imagem.png");
+		/* background-color:rgba(58, 153, 148, 0.493); */
+		background-size:cover;
+		background-attachment: fixed;
+	}
+
+	.caixa-servicos
+	{
+		width: 100%;
+		height: 600px;
+		margin: auto;
+		/* background-color: #ffffff; */
+		background-image: url(../img/fundo03.jpg);
+		background-position: center;
+		background-size: cover;
+		background-position: center;
+		font-family: 'Lexend Deca';
+		text-align: center;
+		color: rgb(31, 30, 30);
+		font-size: 18px;
+	}
+
+	.avatar
+	{
+		width: 250px;
+		height: 250px;
+		z-index:1;
+		position: relative;
+		margin: auto;
+		margin-top: -150px;
+		border-radius: 100%;
+		border: 4px solid rgba(255, 255, 255, 1);
+		/* background: url("http://meredithcnn.images.worldnow.com/images/10389401_G.jpg"); */
+		/* background-color: #969FAA; */
+		background-image: url(../img/imagem01.png);
+		background-position: center;
+		background-size: cover;
+		background-position: center;
+	}
+
+	.nome-cliente
+	{
+		font-family: 'Lexend Deca';
+		margin-bottom: 51px;
+		margin-top: 15px;
+        color: #84848D;     
+
+	}
+
+	.caixa-informacoes-basicas-servicos
+	{
+		width: 1200px;
+		height: 145px;
+		/* background-color: chocolate; */
+		margin: auto;
+		/* color: #47525E; */
+        color: #84848D;     
+
+		font-family: 'Lexend Deca';
+		font-size: 1.5em;
+		letter-spacing: 2px;
+	}
+
+	.linha-perfil
+	{
+		width: 700px;
+		height: 5px;
+		color: #000000;
+		background-color: #000000;
+		border-radius: 8px;
+	}
+	
+	.caixa-conteudo-servico-pro
+	{
+		width: 1300px;
+		min-height: 880px;
+		/* overflow: auto; */
+		/* background-color: #57bc90; */
+		margin: auto;
+		margin-top: 20px;
+	}
+
+	.conteudo-pro-servico
+	{
+		width: 1415px;
+		height: 700px;
+		/* background-color: #c6c6c6; */
+		margin: auto;
+		box-sizing: border-box;
+		padding-top: 30px;
+	}
+	
+	.text-dados
+	{
+		width: inherit;
+		height: 53px;
+		font-family: 'Lexend Deca';
+		padding-left: 56px;
+		box-sizing: border-box;
+		color: #84848D;     
+	}
+
+	/* CAIXA DE SERVIÇOS PENDENTES DO PROFISSIONAL */
+	
+	.caixa-conteudo-informacoes-pendentes
+	{
+		width: 635px;
+		height: 690px;
+		background-color:rgb(255, 255, 255);
+		float: left;
+		border-radius: 10px;
+		margin-right: 20px;
+		padding-top: 50px;
+		box-sizing: border-box;
+		overflow-y:auto;
+		overflow-x: hidden;
+	}
+
+	
+	.caixa-servico-pendente
+	{
+		width: 520px;
+		height: 300px;
+		/* background-color:rgb(32, 32, 219); */
+        background-color: #57bc902f;
+		border-radius: 10px;
+		padding-top: 40px;
+		box-sizing: border-box;
+		margin: auto;
+		margin-bottom: 40px;
+		box-shadow: 5px 5px 15px#0000005b;		
+	}
+	
+	.title-pendente
+	{
+		width: inherit;
+		height: 40px;
+		text-align: center;
+		font-family: 'Lexend Deca';
+		color: #57BC90;
+		font-size: 1.8em;
+		/* background-color: lightcyan; */
+		margin: 0;
+		
+	}
+	.cliente-pendente{
+		width: inherit;
+		height: 25px;
+		/* background-color: ivory; */
+		font-size: 17px;
+		text-align: right;
+		box-sizing: border-box;
+		padding-right: 20px;
+		color: #84848D;
+	}
+	
+	.linha-servico-pendente
+	{
+		width: 290px;
+		height: 1px;
+		color: #57BC90;
+		background-color: #57BC90;
+	}
+	
+	.text-pendente
+	{
+		height: 100px;
+		/* background-color: lawngreen; */
+		text-align: center;
+		padding: 10px;
+		font-family: 'Lexend Deca';
+		color: #84848D;
+		box-sizing: border-box;
+		font-size: 1.1em;
+		display: flex;
+		justify-content: center;
+		margin: 0;
+	}
+	
+	
+	.caixa-link-pendente
+	{
+		width: 100px;
+		height: 50px;
+		/* background-color: khaki; */
+		display: flex;
+		box-sizing: border-box;
+		margin-left: 400px;
+		margin-top: -10px;
+	}
+	
+	.caixa-link-pendente img
+	{
+		width:40px;
+		height: 40px;
+		/* background-color:rgb(255, 255, 255); */
+        background-color: #57bc900e;
+		border: 0px;
+		text-align: center;
+		color: #57bc90;
+		/* margin-top: 28px; */
+	}
+	
+
+	/* CAIXA DE CONCLUUIDOS COM  AVLIAÇAO */
+	
+	.caixa-comentarios-servicos
+	{
+		width: 635px;
+		height: 690px;
+        background-color: rgb(255, 255, 255);
+        /* background-color: red; */
+		float: left;
+		border-radius: 10px;
+		padding-top: 50px;
+		box-sizing: border-box;
+		overflow-y: auto;
+		overflow-x: hidden;
+
+	}
+	
+	.caixa-servico-concluido
+	{
+		width: 520px;
+		height: 300px;
+		/* background-color:rgb(32, 32, 219); */
+		background-color: #57bc902f;
+		border-radius: 10px;
+		padding-top: 25px;
+		box-sizing: border-box;
+		margin: auto;
+		margin-bottom: 40px;
+		box-shadow: 5px 5px 15px#0000005b;		
+	}
+	.dados-usuario-servico
+	{
+		width: inherit;
+		height: inherit;
+		background-color: transparent;
+		float: left;
+        /* background-color: red; */
+	}
+
+	.title-concluido
+	{
+		width: inherit;
+		height: 40px;
+		text-align: center;
+		font-family: 'Lexend Deca';
+		color: #57BC90;
+		font-size: 1.8em;
+		/* background-color: lightcyan; */
+		margin: 0;
+	}
+
+	.linha-concluidos
+	{
+		width: 250px;
+		height: 1px;
+		color: #57BC90;
+		background-color: #57BC90;
+		border-radius: 5px;
+		margin-top: -5px;
+	
+	}
+
+	.caixa-star
+	{
+		width: 190px;
+		height: 25px;
+		/* background-color:#969FAA; */
+		margin: auto;
+	}
+
+	/*----- Avaliação/Estrelas -----*/
+	.estrelas
+	{
+		margin: auto;
+		text-align: center;
+	}
+
+	.estrelas input[type=radio] {
+		display: none;
+	}
+	.estrelas label i.fa{
+		font-size: 1.5em
+	}
+	.estrelas label i.fa:before {
+		content:'\f005';
+		color: #77C9D4;
+	}
+	.estrelas input[type=radio]:checked ~ label i.fa:before {
+		color: #CCC;
+		/* color: #FC0; */
+	}
+
+	.text-concluido
+	{
+		height: 100px;
+		/* background-color: lawngreen; */
+		text-align: center;
+		padding: 10px;
+		font-family: 'Lexend Deca';
+		color: #84848D;
+		box-sizing: border-box;
+		font-size: 1.1em;
+		display: flex;
+		justify-content: center;
+		margin: 0;
+	}
+	
+}
+
+
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:880px)
+{
+
+}

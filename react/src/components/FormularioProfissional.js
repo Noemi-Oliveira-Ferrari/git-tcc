@@ -5,13 +5,13 @@ import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import {ModalLoadConst, modalAlertas} from './ModaisLoad';
+import {ModalLoadConst, ModalAlertas} from './ModaisLoad';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfPro, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
          formataData, limpaValor, validarIdade} from '../js/validar';
 
-class DadosPessoaisPro extends Component{
+export class DadosPessoaisPro extends Component{
 
     constructor(){
         super();
@@ -28,7 +28,7 @@ class DadosPessoaisPro extends Component{
             endereco: [], profissional: []
         }
         this.modalLoad = this.modalLoad.bind(this);
-        this.modalAlertas = this.modalAlertas.bind(this);
+        this.ModalAlertas = this.ModalAlertas.bind(this);
            
         this.setNome = this.setNome.bind(this);
         this.setCep = this.setCep.bind(this);
@@ -44,7 +44,7 @@ class DadosPessoaisPro extends Component{
         this.getEmail = this.getEmail.bind(this);
     }
 
-    modalAlertas = () =>{
+    ModalAlertas = () =>{
         // if(this.state.showModalErro){
         //     $("body").css("overflow-y", "hidden");
         // }else{
@@ -115,6 +115,7 @@ class DadosPessoaisPro extends Component{
     
     getCpf(cpf){
         let erros = [];
+        console.log(cpf);
         axios.get(`${DOMINIO}profissionais/verificar/cpf/${cpf}`)
         .then((response)=>{
             let jsonPro = response.data;
@@ -123,19 +124,15 @@ class DadosPessoaisPro extends Component{
                 withError($("#txt-cpfCnpj"));
                 erros.push(`CPF ${cpf} ja cadastrado`);
                 this.setState({erros: erros});
-                setTimeout(()=>{this.modalAlertas();}, 500);
+                setTimeout(()=>{this.ModalAlertas();}, 500);
                 this.setState({cpfCnpj: ""});
             }
             setTimeout(()=>{this.modalLoad();}, 500);
         })
         .catch((error)=>{
-            erros.push(`CEP ... Não existe!`);
+            erros.push(`CPF ${cpf} ja cadastrado`);
             this.setState({erros: erros});
-            this.modalAlertas();
-            console.log(error);
-            // erros.push(`Não foi possível conectar-se ao servidor!`);
-            // this.setState({erros: erros});
-            // setTimeout(()=>{this.modalAlertas();}, 500);
+            setTimeout(()=>{this.ModalAlertas();}, 500);
             this.modalLoad();
         })
         .onload = this.modalLoad();
@@ -151,7 +148,7 @@ class DadosPessoaisPro extends Component{
                 withError($("#txt-cpfCnpj"));
                 erros.push(`CNPJ ${cnpj} ja cadastrada`);
                 this.setState({erros: erros});
-                setTimeout(()=>{this.modalAlertas();}, 500);
+                setTimeout(()=>{this.ModalAlertas();}, 500);
                 this.setState({cpfCnpj: ""});
             }
             setTimeout(()=>{this.modalLoad()}, 500);
@@ -202,7 +199,7 @@ class DadosPessoaisPro extends Component{
                     withError($("#txt-email"));
                     erros.push(`E-mail ${email} ja cadastrado`);
                     this.setState({erros: erros});
-                    setTimeout(()=>{this.modalAlertas();}, 500);
+                    setTimeout(()=>{this.ModalAlertas();}, 500);
                     this.setState({email: ""});
                     setTimeout(() => {
                         $("#txt-email").focus();
@@ -257,7 +254,7 @@ class DadosPessoaisPro extends Component{
             console.error(error);
             // erros.push(`CEP ${cep} Não existe!`);
             // this.setState({erros: erros});
-            // this.modalAlertas();
+            // this.ModalAlertas();
 
             this.setState({logradouro: ""});
             this.setState({bairro: ""});
@@ -299,7 +296,7 @@ class DadosPessoaisPro extends Component{
         return(
             <Fragment>
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
-                <modalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalAlertas}/>
+                <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <div className="flex-center">
                     <div className="card-formulario-pessoal">
                         <div className="caixa-title-card">
@@ -493,7 +490,7 @@ class DadosPessoaisPro extends Component{
     }
 }
 
-class DadosProfissional extends Component{
+export class DadosProfissional extends Component{
     
     constructor(){
         super();        
@@ -691,13 +688,13 @@ export default class FormularioProfissional extends Component{
             erros: [],
             showModalErro: false
         }
-        this.modalAlertas = this.modalAlertas.bind(this);
+        this.ModalAlertas = this.ModalAlertas.bind(this);
 
         this.realizarCadastro = this.realizarCadastro.bind(this);   
         this.validarCampos = this.validarCampos.bind(this);  
     }
 
-    modalAlertas = () =>{
+    ModalAlertas = () =>{
         if(!this.state.showModalErro){
             $("body").css("overflow-y", "hidden");
         }else{
@@ -825,7 +822,7 @@ export default class FormularioProfissional extends Component{
             browserHistory.push("/cadastro/confirmacao");
         }else{
             setTimeout(() => {
-                this.modalAlertas();
+                this.ModalAlertas();
             }, 500);
             moveToError();
         }
@@ -834,7 +831,7 @@ export default class FormularioProfissional extends Component{
     render(){
         return(
             <Fragment>
-                <modalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.modalAlertas}/>
+                <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <form className="form-pro" name="form_profissional" method="GET" onSubmit={this.realizarCadastro}>
                     <DadosPessoaisPro/>
                     <DadosProfissional/>
