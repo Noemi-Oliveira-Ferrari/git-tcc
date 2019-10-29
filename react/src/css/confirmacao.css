@@ -1,0 +1,379 @@
+/* DESKTOOPPPPP  */
+@media screen and (min-device-width:1000px){
+ 
+    /* CONTEUDO */
+    
+    section{
+        width: 800px;
+        min-height: 800px;
+        /* background-color: rgb(48, 202, 202); */
+        margin: auto;
+    }
+
+    .caixa-confirmacao-email{
+        width: 700px;
+        height: 700px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 10px 10px 15px #015249;
+        border-radius: 10px;
+        display:flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: space-around
+    }
+    
+    .title-confirmacao{
+        width: 550px;
+        height: 150px;
+        text-align: center;
+        /* background-color: #77C9D4; */
+        font-size: 40px;
+        color: #84848D;
+        border-radius: 10px;
+        box-sizing: border-box;
+        /* padding-top: 30px; */
+        font-family: 'Lexend Deca';
+    }
+    
+    .text-confirmacao{
+        color: #A5A5AF;
+        width: 500px;
+        height: 150px;
+        /* background-color: cadetblue; */
+        font-size: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        font-family: 'Manjari';
+        margin-top: -20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .img-email{
+        width: 250px;
+        min-height: 50px;
+        height: auto;
+        overflow: hidden;
+        /* background-color: #015249; */
+        background-size: cover;
+    }
+
+    .img-email img{
+        max-width: 250px;
+        /* background-color: #95dad2; */
+    }
+    
+    .caixa-input-confirm{
+        width: 330px;
+        height: 50px;
+        /* background-color: #34beae; */
+        margin-top: -20px;
+    }
+    
+    .input-cod-confirm{
+        width: 200px;
+        height: 40px;
+        outline: none;
+        border: none;
+        border-bottom: 2px #d0d0d0 solid;
+        color: #616161;
+        font-size: 35px;
+        text-align: center;
+        letter-spacing: 30px;
+        background: none;
+        float: left;
+        margin-right: 20px;
+    }
+    
+    .img-check img{
+        width: 50px;
+        height: 50px;
+        float: left;
+    }
+
+    #btn-confirm{
+        background-color: rgba(0, 0, 0, 0);
+        border: none;
+        cursor: pointer;
+    
+    }
+    
+    .links-email{
+        width: 400px;
+        height: 50px;
+        /* background-color: #015249; */
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        text-decoration: none;
+        font-family: 'Manjari';
+    }
+    .link-reenviar-email,
+    .link-alterar-email{
+        width: 47%;
+        height: 42px;
+        box-sizing: border-box;
+        padding-top: 7px;
+        cursor: pointer;
+        font-size: 18px;
+        color: #449692;
+        background: none;
+        border: none;
+
+        -moz-transition: .4s ;
+        -webkit-transition: .4s ;
+        transition: .4s ;
+    }
+    .link-reenviar-email:hover,
+    .link-alterar-email:hover{
+        -moz-transition: .4s ;
+        -webkit-transition: .4s ;
+        transition: .4s ;
+        background-color: #ededed;
+        /* box-sizing: inherit; */
+        border-bottom: solid 2px #77c9d4;
+        /* font-weight: bold; */
+
+    }
+        /* MODAAALLL */
+    /* .modal{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(87, 188, 144, 0.445);
+    } */
+
+    .caixa-modal{
+        width: 700px;
+        height: 700px;
+        background-color: white;
+        border-radius: 15px;
+    }
+
+    .img-confirm{
+        width:100%;
+        height: 200px;
+        /* background-color: #77C9D4; */
+    }
+
+    .img-confirm img{
+        width: 200px;
+        height: 100%;
+    }
+
+    .title-confirm{
+        width:100%;
+        height: 200px;
+        /* background-color: brown; */
+        text-align: center;
+        font-size: 55px;
+        box-sizing: border-box;
+        padding: 30px;
+        color: #84848D;
+    }
+
+    .text-confirm{
+        width:100%;
+        height: 150px;
+        /* background-color: #77C9D4; */
+        color: #A5A5AF;
+        font-size: 25px;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    .btn{
+        width:100%;
+        height: 150px;
+        /* background-color: #015249; */
+    }
+
+    .btn-inicio{
+        width: 60%;
+        height: 80px;
+        font-size: 25px;
+        border-radius: 15px;
+        background-color: #57BC90;
+        color: white;
+    }
+        
+        
+
+
+}
+
+/* RESPONSIVOOOO */
+@media screen and (max-device-width:880px){
+
+    /* CONTEUDO */
+    
+    section{
+        width: 100%;
+        /* min-height: 80%; */
+        min-height: 100%;
+        height: auto;
+        overflow: hidden;
+        /* background-color: rgb(2, 8, 8); */
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        margin-bottom: 10vw;
+    }
+    
+    .caixa-confirmacao{
+        width: 80%;
+        height: 1200px;
+        background-color: white;
+        /* float: left; */
+        /* margin-right: 10%; */
+        box-shadow: 10px 10px 15px #015249;                                                                                      ;
+        border-radius: 10px;
+        margin-top: 25vw;
+        margin-bottom: 10vw;
+    }
+    
+    .title-confirmacao{
+        width: 550px;
+        height: 20%;
+        text-align: center;
+        /* background-color: #77C9D4; */
+        font-size: 55px;
+        color: #84848D;
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding-top: 30px;
+    }
+    
+    .text-confirmacao{
+        color: #A5A5AF;
+        width: 100%;
+        height: 20%;
+        /* background-color: cadetblue; */
+        font-size: 30px;
+        box-sizing: border-box;
+        padding: 30px;
+        padding-top: 20px;
+        text-align: center;
+    }
+    
+    .img img{
+        width:250px;
+        height: 35%;
+        /* background-color: #015249; */
+        background-size: cover;
+    }
+    
+    .caixa-input-confirm{
+        width: 50%;
+        height: 100px;
+        /* background-color: #e227b9; */
+        flex-wrap: wrap;
+    }
+    
+    .input-cod-confirm{
+        width:100%;
+        height: 100%;
+        outline: none;
+        border: none;
+        border-bottom: 1px black solid;
+        font-size: 50px;
+        letter-spacing: 30px;
+        /* text-align: center; */
+        /* background-color: rgb(222, 222, 231); */
+        /* float: left; */
+        margin-right: 20px;
+        align-items: center;
+        text-align: center;
+    
+    
+    }
+    
+    .img-check img{
+        width: 90px;
+        height: 85px;
+        /* float: left; */
+        /* background-color: #57BC90; */
+        margin-top: 20px;
+        
+    }
+    #btn-confirm{
+        background-color: rgba(85, 76, 76, 0);
+        border: none;
+        cursor: pointer;
+    
+    }
+    
+    .links{
+        width: 300px;
+        height: 100px;
+        /* background-color: #015249; */
+        margin-top: 150px;
+        text-decoration: none;
+        font-size: 30px;
+        text-align: center;
+    }
+    
+    a:hover{
+        text-decoration: underline;
+    }
+
+    /* MODAAALL*/
+    /* .modal{
+        height: 100%;
+        width: 100%;
+        background-color: rgba(87, 188, 144, 0.445);
+    }
+
+    .caixa-modal{
+        width: 900px;
+        height: 1000px;
+        background-color: white;
+        border-radius: 15px;
+    }
+
+    .img-confirm{
+        width:100%;
+        height: 300px;
+        background-color: #77C9D4; 
+    }
+
+    .img-confirm img{
+        width: 300px;
+        height: 100%;
+    }
+
+    .title-confirm{
+        width:100%;
+        height: 250px;
+        text-align: center;
+        font-size: 60px;
+        box-sizing: border-box;
+        padding: 30px;
+        color: #84848D;
+    }
+
+    .text-confirm{
+        width:100%;
+        height: 250px;
+        color: #A5A5AF;
+        font-size: 35px;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+    .btn{
+        width:100%;
+        height: 200px;
+    }
+
+    .btn-inicio{
+        width: 60%;
+        height: 100px;
+        font-size: 40px;
+        border-radius: 15px;
+        background-color: #57BC90;
+        color: white;
+    }  */
+        
+}

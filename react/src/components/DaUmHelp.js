@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/App.css';
+import '../css/login.css';
 
 
 export class DaUmHelp extends Component{
@@ -7,7 +7,7 @@ export class DaUmHelp extends Component{
     return(
         
     <div className={this.props.classNome}>
-        DaUmHelp!
+        <h2>DaUmHelp!</h2>
     </div>
         
     );

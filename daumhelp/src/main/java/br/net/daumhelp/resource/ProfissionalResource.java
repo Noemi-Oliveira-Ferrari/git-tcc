@@ -25,13 +25,13 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.net.daumhelp.model.Confirmacao;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.ProfissionalDTO;
+import br.net.daumhelp.repository.ClienteDTORepository;
 import br.net.daumhelp.repository.ProfissionalDTORepository;
 import br.net.daumhelp.repository.ProfissionalRepository;
-import br.net.daumhelp.utils.HandleDates;
 import br.net.daumhelp.utils.HandleEmails;
 
-@CrossOrigin(origins = "http://ec2-35-170-248-132.compute-1.amazonaws.com")
 //@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/profissionais")
 public class ProfissionalResource {
@@ -40,11 +40,49 @@ public class ProfissionalResource {
 	private ProfissionalRepository proRepository;
 	@Autowired
 	private ProfissionalDTORepository proDTORepository;
+	@Autowired
+	private ClienteDTORepository clienteDTORepository;
 	
+
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/confirmacao")
-	@ResponseStatus(code = HttpStatus.OK, reason = "E-mail enviado", value = HttpStatus.OK)
-	public boolean confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
-		return HandleEmails.enviar(confirm);
+	public ResponseEntity<Confirmacao> confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
+		System.out.println("__________\n"+confirm);
+		if(HandleEmails.enviar(confirm)) {
+			return new ResponseEntity<Confirmacao>(HttpStatus.OK);
+		}else{
+			return new ResponseEntity<Confirmacao>(HttpStatus.REQUEST_TIMEOUT);
+		}
+	}
+
+	@GetMapping("/verificar/cpf/{cpf}")
+	public Optional<?> buscarCpfExistente(@Validated @PathVariable String cpf) {
+		if(clienteDTORepository.verificarCpf(cpf) == Optional.empty()) {
+			if(proDTORepository.verificarCpf(cpf) != Optional.empty()) {
+				Optional<?> optionalProDTO = proDTORepository.verificarCpf(cpf);
+				return optionalProDTO;
+			}else {
+				return Optional.empty();
+			}
+		}else {
+			Optional<?> optionalClienteDTO = clienteDTORepository.verificarCpf(cpf);
+			return optionalClienteDTO;	
+		}
+	}
+	
+	@GetMapping("/verificar/email/{email}")
+	public Optional<?> buscarEmailExistente(@Validated @PathVariable String email) {
+		if(clienteDTORepository.verificarEmail(email) == Optional.empty()) {
+			if(proDTORepository.verificarEmail(email) != Optional.empty()) {
+				Optional<?> optionalProDTO = proDTORepository.verificarEmail(email);
+				return optionalProDTO;
+			}else {
+				return Optional.empty();
+			}
+		}else {
+			Optional<?> optionalClienteDTO = clienteDTORepository.verificarEmail(email);
+			return optionalClienteDTO;	
+		}
 	}
 
 
@@ -118,9 +156,9 @@ public class ProfissionalResource {
 			@RequestBody Profissional profissional,
 			HttpServletResponse response){
 
-		
-//		profissional.setCriadoEm(HandleDates.dataHoraAtual());
-//		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
+		System.out.println("_____________");
+		System.out.println(profissional.getSenha());
+		System.out.println("_____________");
 		
 		 Profissional proSalvo = proRepository.save(profissional);
 		 

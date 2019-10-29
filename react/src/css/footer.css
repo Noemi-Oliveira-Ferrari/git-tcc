@@ -1,0 +1,569 @@
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px)
+{
+    footer
+    {
+        background-image: url(../img/background.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .caixa-rodape-cadastro
+    {
+        width: 100%;
+        height: 285px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        box-sizing: border-box;
+        text-align: center; 
+        /* box-shadow: 0 1px 30px 5px rgba(13, 16, 20, 0.863); */
+    }
+
+    .caixa-rodape
+    {
+        width: 1200px;
+        height: auto;
+        /* background-color: chocolate; */
+        margin-bottom: 30px;
+        margin: auto;
+    }
+
+    .titulo-rodape
+    {
+        font-size: 40px;
+        color: #ffffff;
+        font-family: "Lexend Deca";
+    }
+
+    .texto-rodape
+    {
+        font-family: 'Manjari';
+        font-size: 30px;
+        color: #ffffff;
+    }
+
+    .btn-cadastro-rodape
+    {
+        width: 180px;
+        height: 40px;
+        font-size: 1em;
+        border-radius: 8px;
+        font-family: Lexend Deca;
+        background-color: transparent;
+        color: #ffffff;
+        border: solid #ffffff;
+        font-weight: bold;
+        letter-spacing: 1px;
+        outline: none;
+        font-family: "Lexend Deca";
+    }
+
+    .btn-cadastro-rodape:hover
+    {
+        cursor: pointer;
+        background-color:rgba(119, 201, 212, 0.253);
+        transition: 0.8s;
+        transform: scale(1.1);
+    }
+
+    .caixa-rodape-informacoes
+    {
+        width: 100%;
+        height: 330px;
+        background-color: #11161c;
+        color: #ffffff;
+    }
+
+    .caixa2-rodape
+    {
+        width: 1200px;
+        height: 260px;
+        display: flex;
+        /* background-color: chocolate; */
+        margin-bottom: 30px;
+        margin: auto;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    .caixa-informacao-rodape
+    {
+        width: inherit;
+        height: inherit;
+        float: left;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        /* background-color: green; */
+    }
+
+    .caixas-conteudo-rodape
+    {
+        width: 250px;
+        height: 200px;
+        /* background-color: chocolate; */
+        margin-top: 20px;
+        box-sizing: border-box;
+        padding-left: 40px;
+        font-family: "Lexend Deca";
+        float: left;
+    }
+
+    .itens
+    {
+        font-size: 16px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: normal;
+        margin-left: 5px;
+    }
+
+    .itens:hover
+    {
+        color: #77C9D4;
+        transition: 0.8s;
+        font-weight: normal;
+        cursor: pointer;
+        /* text-decoration: underline; */
+    }
+
+    .tamanho-caixa
+    {
+        width: 200px;
+        height: auto;
+        margin-right: 10px;
+        margin-top: 20px;
+    }
+
+    .tamanho-icone
+    {
+        width: 170px;
+        height: 65px;
+    }
+ 
+    .tamanho-caixa-cima
+    {
+        width: 200px;
+        height: auto;
+        margin-left: 10px;
+    }
+
+    .linha-responsiva
+    {
+        visibility: hidden;
+    }
+
+    .logo-rede-social
+    {
+        width: 40px;
+        height: 30px;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        float: left;
+    }
+
+    .icon-footer
+    {
+        width: 30px;
+        height: 30px;
+        filter: grayscale(100%)
+    }
+
+    .icon-footer:hover
+    {
+        filter: grayscale(10%);
+        transition: 0.8s;
+        cursor: pointer
+    }
+
+    .caixa-info-rodape
+    {
+        width: 1200px;
+        height: auto;
+        margin: auto;
+        /* background-color: rgb(18, 44, 189); */
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .linha
+    {
+        width: 940px;
+        border: 1.5px solid #a2a2a2;
+        border-radius: 8px;
+    }
+
+    .caixa-copyright-rodape
+    {
+        width: 550px;
+        text-align: left;
+        /* background-color: #987a65; */
+        display: flex;
+        justify-content: left;
+        padding-left: 22px;
+        box-sizing: border-box;
+    }
+
+    .text-rodape
+    {
+        float: left;
+        font-family: "Lexend Deca";
+    }
+
+    .caixa-info-itens-rodape
+    {
+        width: 420px;
+        text-align: right;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+
+    .itens-rodape
+    {
+        font-size: 16px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: normal;
+        padding-left: 30px;
+        box-sizing: border-box;
+    }
+
+    .itens-rodape:hover
+    {
+        color: #77C9D4;
+        transition: 0.8s;
+        font-weight: normal;
+        cursor: pointer;
+    }
+    
+    .google-responsivo
+    {
+        visibility: hidden;
+    }
+
+    .text-responsive
+    {
+        visibility: hidden;
+    }
+
+    .caixa-rede-social
+    {
+        width: inherit;
+        height: 20px;
+        margin-top: -50px;
+    }
+
+
+}
+
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:880px)
+{
+    /*----- Padronização -----*/
+    body
+    {
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(255, 255, 255);
+    }
+
+    body, html
+    {
+        height: 100%;
+    }
+
+    * html #all
+    {
+        height: 100%;
+    }
+
+    #all{
+        min-height: 100%;
+        position: relative;
+    }
+
+
+ 
+    /*----- Conteúdo -----*/
+    footer
+    {
+        justify-content: center;
+        background-image: url(../img/background04.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    .caixa-rodape-cadastro
+    {
+        width: 100%;
+        height: 350px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        box-sizing: border-box;
+        text-align: center;
+        /* box-shadow: 0 1px 30px 5px rgba(13, 16, 20, 0.863); */
+    }
+
+    .caixa-rodape
+    {
+        width: 100%;
+        height: auto;
+        /* background-color: chocolate; */
+        margin-bottom: 30px;
+        margin: auto;
+    }
+
+    .titulo-rodape
+    {
+        font-size: 4em;
+        color: #ffffff;
+        font-family: "Lexend Deca";
+        margin: 0;
+    }
+
+    .texto-rodape
+    {
+        font-family: Lexend Deca;
+        font-size: 2.2em;
+        color: #ffffff;
+    }
+
+    .btn-cadastro-rodape
+    {
+        width: 300px;
+        height: 65px;
+        font-size: 1.8em;
+        border-radius: 18px;
+        font-family: "Lexend Deca";
+        background-color: transparent;
+        color: #ffffff;
+        border: solid #ffffff;
+        font-weight: bold;
+        letter-spacing: 1px;
+        outline: none;
+        font-family: "Lexend Deca";
+    }
+
+    .btn-cadastro-rodape:hover
+    {
+        cursor: pointer;
+        background-color:rgba(119, 201, 212, 0.253);
+        transition: 0.8s;
+    }
+
+    .caixa-rodape-informacoes
+    {
+        width: 100%;
+        height: 405px;
+        /* background-color: #11ba1c; */
+        color: #ffffff;
+    }
+
+    .caixa2-rodape
+    {   
+        width: 100%;
+        height: 650px;
+        display: flex;
+        /* background-color: chocolate; */
+        margin-bottom: 30px;
+        margin: auto;
+        /* align-items: center; */
+        justify-content: center;
+        display: flex;
+        background-color: #11161c;
+    }
+
+    .caixas-conteudo-rodape1
+    {
+        width: 250px;
+        height: 230px;
+        /* background-color: chocolate; */
+        margin-top: 20px;
+        box-sizing: border-box;
+        padding-left: 40px;
+        font-family: "Lexend Deca";
+        float: left;
+    }
+    
+
+    .caixas-conteudo-rodape-responsiva
+    {
+        width: 100%;
+        height: 240px;
+        /* background-color: chocolate; */
+        margin-top: 20px;
+        box-sizing: border-box;
+        padding-left: 40px;
+        clear: both;
+    }
+
+    .tamanho-caixa-cima
+    {
+        width: 100%;
+        height: 90px;
+        /* margin-left: 10px; */
+        /* background-color: blue; */
+    }
+
+    .linha-responsiva
+    {
+        width: 710px;
+        height: auto;
+        clear: both;
+    }
+
+    .tamanho-caixa
+    {
+        width: 200px;
+        height: auto;
+        margin-right: 10px;
+        margin-top: 20px;
+    }
+
+    .tamanho-icone
+    {
+        visibility: hidden;
+    }
+
+    .text-desktop
+    {
+        visibility: hidden;
+    }
+
+    .tamanho-icone-res
+    {
+        width: 330px;
+        height: 124px;
+        margin-top: -15px;
+        margin-left: -23px;
+    }
+
+    .logo-rede-social
+    {
+        width: 95px;
+        height: 30px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        float: left;
+        /* background-color: red; */
+    }
+
+    .icon-footer
+    {
+        width: 60px;
+        height: 60px;
+        filter: grayscale(100%)
+    }
+
+    .icon-footer:hover
+    {
+        filter: grayscale(10%);
+        transition: 0.8s;
+        cursor: pointer
+    }
+
+    .caixa-info-rodape 
+    {
+        width: 100%;
+        height: 120px;
+        margin: auto;
+        background-color: #090c0f;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: -10px;
+    }
+
+    .linha
+    {
+        visibility: hidden;
+    }
+
+    .caixa-copyright-rodape
+    {
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;  
+    }
+
+    .text-rodape
+    {
+        font-size: 1.6em;
+        font-family: "Lexend Deca";
+        color: #bdbdbd;
+    }
+
+    .caixa-info-itens-rodape
+    {
+        width: 100%;
+        height: 30px;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        margin-top: 10px;
+        /* background-color: blue; */
+    }
+
+    .itens-rodape
+    {
+        text-decoration: none;
+        color: #bdbdbd;
+        font-weight: normal;
+        padding-left: 50px;
+        box-sizing: border-box;
+        padding-right: 50px;
+    }
+
+    .itens-rodape:hover
+    {
+        color: #77C9D4;
+        transition: 0.8s;
+        font-weight: normal;
+        cursor: pointer;
+    }
+
+    .google-responsivo
+    {
+        width: 300px;
+        height: 150px;
+        margin-top: -10px;
+        /* background-color: green; */
+    }
+
+    .text-responsive
+    {
+        font-size: 1.6em;
+        font-family: verdana;
+    }
+    
+    .titulos-rodape
+    {
+        font-size: 1.5em;    
+    }
+    
+    .subtitulo-rodape
+    {
+        font-size: 1.4em;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: normal;
+        margin-left: 5px;
+    }
+    
+    .subtitulo-rodape:hover
+    {
+        color: #77C9D4;
+        transition: 0.8s;
+        font-weight: normal;
+    }
+    
+    
+    
+    
+}

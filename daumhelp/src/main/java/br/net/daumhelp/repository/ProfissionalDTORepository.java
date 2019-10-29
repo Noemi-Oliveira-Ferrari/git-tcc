@@ -1,6 +1,7 @@
 package br.net.daumhelp.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -17,6 +18,12 @@ public interface ProfissionalDTORepository extends JpaRepository<ProfissionalDTO
 
 	@Query("SELECT p FROM ProfissionalDTO p WHERE p.cpf = ?1")
 	public ProfissionalDTO findByCpf(String cpf);
+
+	@Query("SELECT p FROM ProfissionalDTO p WHERE p.cpf = ?1")
+	public Optional<?> verificarCpf(String cpf);
+
+	@Query("SELECT p FROM ProfissionalDTO p WHERE p.email = ?1")
+	public Optional<?> verificarEmail(String email);
 
 	@Query("SELECT p FROM ProfissionalDTO p WHERE p.cnpj = ?1")
 	public ProfissionalDTO findByCnpj(String cnpj);
