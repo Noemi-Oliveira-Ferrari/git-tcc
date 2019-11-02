@@ -209,55 +209,55 @@ function Confirmacao() {
             $("#btn-confirm").attr("disabled", true);
             console.clear();
             console.log(codeConfirm);
+            // setModalAlertas(true);
             getUsuario();
             setRenderizar(false);
         }
     });
 
     return(
-        <section className="flex-center center">
-            <div className="caixa-confirmacao-email">
+        <section className="container-confirm-email flex-center center">
+            <div className="caixa-confirmacao-email flex-center">
                 <div className="title-confirmacao center flex-center">
                     Confirmação de E-mail
                 </div>
                 <div className="text-confirmacao flex-center">
-                    <p>Um código de verificação foi enviado ao e-mail <span className="negrito">{cliente === null ? profissional.email : cliente.email}</span>. Verifique sua caixa de entrada e escreva o código no campo à baixo para finalizar o cadastro.</p>
+                    <p className="txt-confirm">Um código de verificação foi enviado ao e-mail <span className="negrito">{cliente === null ? profissional.email : cliente.email}</span>. Verifique sua caixa de entrada e escreva o código no campo à baixo para finalizar o cadastro.</p>
                 </div>
-                <div className="img-email flex-center center">
+                <div className="img-email flex-center">
                     <figure>
                         <img src={EmailImg}  alt="Ícone E-mail"/>
                     </figure>
                 </div>
-                    <div className="caixa-input-confirm flex-center center">
-                        <div className="input-cod-confirm">
-                            <input required onChange={definirTxtCodeConfirm} id="input-cod-confirm" className="input-cod-confirm"  type="text" pattern="[0-9]*" maxLength="4" name="cod_email"/>
-                        </div>
-                        <div className="img-check">
-                            <ButtonToolbar>
-                                <button onClick={() => confirmarEmail()} data-toggle="modal" data-target="#exampleModalCenter" type="submit" name="button" id="btn-confirm">
-                                    <figure>
-                                        <img src={check} alt="Confirmar" title="Confirmar" /> 
-                                    </figure>
-                                </button>
-                                <ModalSucesso
-                                    show={modalSucessoShow}
-                                    onHide={() => setModalSucessoShow(false)}/>
-                                    
-                                <ModalAlertasFun
-                                    erros={codeAlerta}
-                                    show={showAlertas}
-                                    titulo={tituloAlerta}
-                                    tipoAlerta={tipoAlerta}
-                                    onHide={() => setModalAlertas(false)}/>
-
-                                <ModalLoadFun
-                                    show={initLoad}
-                                    />
-
-                            </ButtonToolbar>
-                            
-                        </div>
+                <div className="caixa-input-confirm flex-center center">
+                    <div className="caixa-txt-cod-confirm">
+                        <input required onChange={definirTxtCodeConfirm} id="input-cod-confirm" className="input-cod-confirm"  type="text" pattern="[0-9]*" maxLength="4" name="cod_email"/>
                     </div>
+                    <div className="img-check">
+                        <ButtonToolbar>
+                            <button onClick={() => confirmarEmail()} data-toggle="modal" data-target="#exampleModalCenter" type="submit" name="button" id="btn-confirm">
+                                <figure>
+                                    <img src={check} alt="Confirmar" title="Confirmar" /> 
+                                </figure>
+                            </button>
+                            <ModalSucesso
+                                show={modalSucessoShow}
+                                onHide={() => setModalSucessoShow(false)}/>
+                                
+                            <ModalAlertasFun
+                                erros={codeAlerta}
+                                show={showAlertas}
+                                titulo={tituloAlerta}
+                                tipoAlerta={tipoAlerta}
+                                onHide={() => setModalAlertas(false)}/>
+
+                            <ModalLoadFun
+                                show={initLoad}
+                                />
+
+                        </ButtonToolbar>
+                    </div>
+                </div>
                 <div className="links-email center">
                     <button onClick={() => getUsuario()} className="link-reenviar-email "> Reenviar E-mail </button>
                     <button onClick={()=>{browserHistory.push(profissional === null ? "/cliente/cadastro" : "/profissional/cadastro")}} className="link-alterar-email "> Alterar E-mail</button>

@@ -156,7 +156,7 @@
         outline: none;
         box-sizing: border-box;
         padding-left: 20px;
-        background-color: #d6d6d6;
+        background-color: #d6d6d6 !important;
         transition: .2s ease;
         font-size: 18px;
     }

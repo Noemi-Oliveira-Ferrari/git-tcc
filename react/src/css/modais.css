@@ -163,7 +163,7 @@
         width: 600px;
         height: 320px;
         /* padding: 20px 20px 20px; */
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         text-align: center;
         background-color: #f5f5f5;
         position: absolute;
@@ -191,7 +191,6 @@
         padding: 20px;
         text-align: left;
         font-family: 'Manjari';
-        border-radius: 0 0 10px 10px;
         clear: both;
     }
     /* MODAL ERROS FUNCTION */
@@ -205,12 +204,12 @@
         text-align: center;
         background-color: #ffffff;
         position: absolute;
-        margin-top: 30vh;
-        margin-left: -16vh;
+        padding-top: 25vh;
         box-shadow: 3px 3px 5px #00000060;
         z-index: 1041 !important;
     }
     .header-modal-erros-function{
+        width: 550px;
         height: 50px;
         background-color: #eaeaea;
         padding: 0px !important; 
@@ -227,6 +226,7 @@
         float: left;
     }
     .body-modal-erros-function{
+        width: 550px;
         background-color: #ffffff;
         padding: 0px !important; 
     }
@@ -244,7 +244,7 @@
         clear: both;
     }
     #footer-modal-erros-function{
-        width: inherit;
+        width: 550px;
         height: 60px !important;
         background-color: #eaeaea;
         border-radius: 0 0 10px 10px !important;
@@ -333,8 +333,8 @@
         /* background-color: #aad464; */
         background-color: #ececec;
         position: absolute;
-        top: 45vh;
-        left: 4vw;
+        top: 40vh;
+        left: 25vw;
         box-shadow: 3px 3px 5px #00000060;
     }
     .load-function{
@@ -445,7 +445,7 @@
         width: 95%;
         height: 60%;
         /* padding: 20px 20px 20px; */
-        border-radius: 10px;
+        border-radius: 10px 10px 0 0;
         text-align: center;
         background-color: #f5f5f5;
         position: absolute;
@@ -477,32 +477,21 @@
         padding: 20px;
         text-align: left;
         font-family: 'Manjari';
-        border-radius: 0 0 10px 10px;
         clear: both;
     }
     /* MODAL ERROS  */
     
     /* MODAL ERROS FUNCTION */
     .caixa-modal-erros-function {
-        width: 600px;
-        height: 320px;
-        /* padding: 20px 20px 20px; */
-        border-radius: 10px;
-        text-align: center;
-        background-color: #ffffff;
-        position: absolute;
-        margin-top: 30vh;
-        margin-left: -16vh;
-        box-shadow: 3px 3px 5px #00000060;
+        padding-top: 20vh;
     }
     .header-modal-erros-function{
         height: 50px;
-        background-color: #eaeaea;
         padding: 0px !important; 
-        border-radius: 10px 10px 0 0 !important;
+        border-radius: 10px 0 0 0 !important;
     }
     .titulo-modal-erros-function{
-        width: 550px;
+        width: 90%;
         height: 50px;
         background-color: #eaeaea;
         color: #ca422a;
@@ -517,12 +506,14 @@
         border-radius: 0 0 10px 10px !important;
     }
     .txt-modal-erros-function{
-        width: inherit;
+        width: 100%;
         height: 270px;
-        overflow: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
         box-sizing: border-box;
         padding: 20px;
         border-radius: 0 0 10px 10px;
+        /* background-color: #ac7373; */
     
         font-size: 22px;
         text-align: left;
@@ -531,6 +522,18 @@
     }
     /* MODAL ERROS FUNCTION */
     
+    #btn-ok-modal{
+        width: 70px;
+        height: 40px;
+        background-color: #2884cf;
+        color: #ffffff;
+        /* font-weight: border; */
+        border-radius: 7px;
+        border: none;
+        box-shadow: 2px 2px 3px #00000049;
+        outline: none;
+        font-family: 'Lexend Deca';
+    }
     .erroAlt{
         color: #cf1c1c;
         text-shadow: 1px 1px 3px #00000027;

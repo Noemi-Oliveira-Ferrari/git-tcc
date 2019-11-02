@@ -21,8 +21,8 @@ ReactDOM.render(
             <Route path='/profissional/cadastro' component={CadastroPro}/>
             <Route path='/cliente/cadastro' component={CadastroCliente}/>
             <Route path='/cadastro/confirmacao' component={Confirmacao}/>
-            <Route path='/app/pro/prefil' component={PerfilPro}/>
-            <Route path='/app/pro/servicos' component={ServicosPro}/>
+            <Route path='/app/profissional/perfil' component={PerfilPro}/>
+            <Route path='/app/profissional/servicos' component={ServicosPro}/>
             <Route path='/home' component={Home}/>
         </Route>
     </Router>,    

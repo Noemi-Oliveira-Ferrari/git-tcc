@@ -29,9 +29,7 @@
 		margin-top: -150px;
 		border-radius: 100%;
 		border: 4px solid rgb(250, 243, 243);
-		/* background: url("http://meredithcnn.images.worldnow.com/images/10389401_G.jpg"); */
-		/* background-color: #969FAA; */
-		background-image: url(../img/imagem01.png);
+		/* background-image: url(../img/imagem01.png); */
 		background-position: center;
 		background-size: cover;
 		background-position: center;
@@ -107,11 +105,21 @@
 	}
 
 	/* COnteudo */
-	.text-editar-perfil{
+	.caixa-control-perfil{
+		width: inherit;
+		height: fit-content;
+		margin: auto;
+		/* background-color: blueviolet; */
+		justify-content: flex-end;
+		box-sizing: border-box;
+		padding-right: 30px;
+	}
+	.text-editar-perfil,
+	.text-atualizar-perfil{
 		width: 80px;
 		height: 70px;
 		background-color:rgb(234, 234, 234);
-		margin-left: 700px;
+		margin-left: 10px;
 		border-radius: 10px 10px 0px 0px;
 		justify-items: center;
 		box-sizing: border-box;
@@ -119,14 +127,16 @@
 		transition: .4s ease;
 		cursor: pointer;
 		box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.253);
+		/* float: left; */
 	}
-
-	.text-editar-perfil:hover{
+	.text-editar-perfil:hover,
+	.text-atualizar-perfil:hover{
 		background-color: #e2e2e2;
 		transition: .4s ease;
 	}
 
-	.text-editar-perfil img{
+	.text-editar-perfil img,
+	.text-atualizar-perfil img{
 		width: 50px;
 		height: 50px;
 		/* background-color: rgb(255, 255, 255); */

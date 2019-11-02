@@ -29,6 +29,7 @@ export class DadosPessoaisPro extends Component{
         }
         this.modalLoad = this.modalLoad.bind(this);
         this.ModalAlertas = this.ModalAlertas.bind(this);
+        this.noConnection = this.noConnection.bind(this);
            
         this.setNome = this.setNome.bind(this);
         this.setCep = this.setCep.bind(this);
@@ -63,8 +64,27 @@ export class DadosPessoaisPro extends Component{
     }
     
     componentDidMount(){
+        let app = sessionStorage.getItem("app");
+        
+        if(app !== null && app !== ""){
+            $(".container-senha").css("display", "none");
+            if(app === "cliente"){
+                console.log("cliente");
+            }else if(app === "profissional"){
+                console.log("profissional");
+            }
+            $("input, select, textarea").attr("disabled", "disabled");
+            $("input, select, textarea").css("background-color", "#d5d5d5");
+        }else{            
+            $(".container-senha").css("display", "flex");
+        }
+
         let profissional = JSON.parse(sessionStorage.getItem("profissional"));
         let endereco = JSON.parse(sessionStorage.getItem("endereco"));
+
+        if(app === "profissional"){
+            endereco = profissional.endereco;
+        }
 
         if(profissional !== null){
             this.setState({profissional: profissional});
@@ -96,6 +116,11 @@ export class DadosPessoaisPro extends Component{
         }
     }    
 
+    noConnection(){
+        let erros = [`Não foi possível obter resposta do servidor. Tente novamente mais tarde.`];
+        this.setState({erros: erros});
+        setTimeout(()=>{this.ModalAlertas();}, 500);
+    }
 
     setCpfCnpj(event){
         this.setState({cpfCnpj: event.target.value});
@@ -116,35 +141,43 @@ export class DadosPessoaisPro extends Component{
     getCpf(cpf){
         let erros = [];
         console.log(cpf);
-        axios.get(`${DOMINIO}profissionais/verificar/cpf/${cpf}`)
+        axios({
+            method:"GET",
+            url: `${DOMINIO}profissionais/cpf/${cpf}`,
+            timeout: 30000
+        })
         .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);
-            if(jsonPro !== null){
+            if(jsonPro !== null && jsonPro !== ''){
                 withError($("#txt-cpfCnpj"));
                 erros.push(`CPF ${cpf} ja cadastrado`);
                 this.setState({erros: erros});
                 setTimeout(()=>{this.ModalAlertas();}, 500);
                 this.setState({cpfCnpj: ""});
             }
-            setTimeout(()=>{this.modalLoad();}, 500);
+            setTimeout(()=>{this.modalLoad();}, 200);
         })
         .catch((error)=>{
-            erros.push(`CPF ${cpf} ja cadastrado`);
-            this.setState({erros: erros});
-            setTimeout(()=>{this.ModalAlertas();}, 500);
+            this.noConnection();
             this.modalLoad();
         })
         .onload = this.modalLoad();
     }
+    // {"message":"Network Error","name":"Error","stack":"Error: Network Error\n    at createError (http://localhost:3000/static/js/bundle.js:68072:16)\n    at XMLHttpRequest.handleError (http://localhost:3000/static/js/bundle.js:67920:15)","config":{"url":"http://localhost:8080/profissionais/cpf/48683336824","headers":{"Accept":"application/json, text/plain, */*"},"transformRequest":[null],"transformResponse":[null],"timeout":30000,"xsrfCookieName":"XSRF-TOKEN","xsrfHeaderName":"X-XSRF-TOKEN","maxContentLength":-1,"method":"get"}}
     
     getCnpj(cnpj){
         let erros = [];
-        axios.get(`${DOMINIO}profissionais/cnpj/${cnpj}`)
+
+        axios({
+            method: "GET",
+            url: `${DOMINIO}profissionais/cnpj/${cnpj}`,
+            timeout: 30000
+        })
         .then((response)=>{
             let jsonPro = response.data;
             console.log(jsonPro);
-            if(jsonPro !== ""){
+            if(jsonPro !== null && jsonPro !== ''){
                 withError($("#txt-cpfCnpj"));
                 erros.push(`CNPJ ${cnpj} ja cadastrada`);
                 this.setState({erros: erros});
@@ -154,7 +187,7 @@ export class DadosPessoaisPro extends Component{
             setTimeout(()=>{this.modalLoad()}, 500);
         })
         .catch((error)=>{
-            console.log(error);
+            this.noConnection();
             this.modalLoad();
         })
         .onload = this.modalLoad();
@@ -189,13 +222,17 @@ export class DadosPessoaisPro extends Component{
         let email = event.target.value;
         console.log(email);
         if(email.length > 5){
-            let erros = [];
+            let erros = []; 
 
-            axios.get(`${DOMINIO}clientes/verificar/email/${email}`)
+            axios({
+                method: "GET",
+                url: `${DOMINIO}profissionais/email/${email}`,
+                timeout: 30000
+            })
             .then((response)=>{
                 let jsonPro = response.data;
                 console.log(jsonPro);
-                if(jsonPro !== null){
+                if(jsonPro !== null && jsonPro !== ''){
                     withError($("#txt-email"));
                     erros.push(`E-mail ${email} ja cadastrado`);
                     this.setState({erros: erros});
@@ -209,7 +246,7 @@ export class DadosPessoaisPro extends Component{
                 setTimeout(()=>{this.modalLoad()}, 500);
             })
             .catch((error)=>{
-                console.log(error);
+                this.noConnection();
                 this.modalLoad();
             })
             .onload = this.modalLoad();
@@ -230,12 +267,28 @@ export class DadosPessoaisPro extends Component{
             method: "GET",
             url: `https://viacep.com.br/ws/${cep}/json/`,
             type: "application/json",
-            // timeout: 30000,  
+            timeout: 30000,
         })
         .then((response)=>{
             let jsonEndereco = response.data;
-            console.log(jsonEndereco);
-            if(jsonEndereco !== null || jsonEndereco !== null){
+            let cepError = jsonEndereco.erro;
+            if(jsonEndereco === null || jsonEndereco === "" || cepError === true){
+                this.setState({logradouro: ""});
+                this.setState({bairro: ""});
+                this.setState({cidade: ""});
+                this.setState({uf: ""});
+                this.setState({idCidade: ""});
+                
+                withError($('#txt-cep'));
+                withError($('#txt-logradouro'));
+                withError($('#txt-cidade'));
+                withError($('#txt-bairro'));
+                withError($('#txt-uf'));
+                this.modalLoad();
+                erros.push(`O CEP ${cep} é invalido`);
+                this.setState({erros: erros});
+                setTimeout(()=>{this.ModalAlertas();}, 500);
+            }else if(cepError !== true){
                 this.setState({logradouro: jsonEndereco.logradouro});
                 this.setState({bairro: jsonEndereco.bairro});
                 this.setState({cidade: jsonEndereco.localidade});
@@ -247,26 +300,12 @@ export class DadosPessoaisPro extends Component{
                 withoutError($('#txt-cidade'));
                 withoutError($('#txt-bairro'));
                 withoutError($('#txt-uf'));
-                setTimeout(()=>{this.modalLoad();}, 500);
+                setTimeout(()=>{this.modalLoad();}, 200);
             }
         })
         .catch((error)=>{
-            console.error(error);
-            // erros.push(`CEP ${cep} Não existe!`);
-            // this.setState({erros: erros});
-            // this.ModalAlertas();
+            this.noConnection();
 
-            this.setState({logradouro: ""});
-            this.setState({bairro: ""});
-            this.setState({cidade: ""});
-            this.setState({uf: ""});
-            this.setState({idCidade: ""});
-
-            withError($('#txt-cep'));
-            withError($('#txt-logradouro'));
-            withError($('#txt-cidade'));
-            withError($('#txt-bairro'));
-            withError($('#txt-uf'));
             this.modalLoad();
         })
         .onload = this.modalLoad();
@@ -503,8 +542,12 @@ export class DadosProfissional extends Component{
             valorHora: "",
             qualificacoes: "",
             loading: false,
+            showModalErro: false,
+            error: []
         }
         this.modalLoad = this.modalLoad.bind(this);
+        this.noConnection = this.noConnection.bind(this);
+        this.ModalAlertas = this.ModalAlertas.bind(this);
 
         this.getCategorias = this.getCategorias.bind(this);
         this.getSubcategorias = this.getSubcategorias.bind(this);
@@ -512,6 +555,10 @@ export class DadosProfissional extends Component{
         // this.setSubcategoria = this.setSubcategoria.bind(this);
     }
 
+    ModalAlertas = () =>{
+        this.setState({showModalErro: !this.state.showModalErro});
+    }
+    
     modalLoad = () =>{
         if(!this.state.loading){
             $("body").css("overflow-y", "hidden");
@@ -521,6 +568,12 @@ export class DadosProfissional extends Component{
         this.setState({loading: !this.state.loading});
     }
     
+    noConnection(){
+        let erros = [`Não foi possível obter resposta do servidor. Tente novamente mais tarde.`];
+        this.setState({erros: erros});
+        setTimeout(()=>{this.ModalAlertas();}, 500);
+    }
+
     setValorHora(event){
         this.setState({valorHora: event.target.value});
     }
@@ -529,10 +582,18 @@ export class DadosProfissional extends Component{
         let profissional = JSON.parse(sessionStorage.getItem("profissional"));
         let categoria = JSON.parse(sessionStorage.getItem("categoria"));
         let subcategoria = JSON.parse(sessionStorage.getItem("subcategoria"));
-        // console.clear();
+        let app = sessionStorage.getItem("app");
+        
+        
+        if(app === "profissional"){
+            categoria = profissional.subcategoria.categoria.idCategoria;
+            subcategoria = profissional.subcategoria.idSubcategoria;
+        }
+
         console.log(categoria);
         console.log(subcategoria);
-        if(categoria !== null && subcategoria !== null){
+
+        if((categoria !== null && subcategoria !== null)){
             // console.log("/////////////////////");
             // console.log(this.getSubcategorias)
             this.getCategorias();
@@ -568,9 +629,11 @@ export class DadosProfissional extends Component{
             }
         })
         .catch((error)=>{
-            console.error("======"+error);
+            console.log("++++++++++++");
             this.setState({loading: !this.state.loading});
             this.modalLoad();
+            this.setState({showModalErro: this.state.showModalErro});
+            this.noConnection();
         })
         .onload =  this.modalLoad();
     }
@@ -591,6 +654,7 @@ export class DadosProfissional extends Component{
         .catch((error)=>{
             console.error(error);
             this.modalLoad();
+            this.noConnection();
         })
         .onload = this.modalLoad();
     }
@@ -598,6 +662,7 @@ export class DadosProfissional extends Component{
     render(){
         return(
             <Fragment>
+                <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
                 <div className="flex-center">
                     <div className="card-formulario-servico">
@@ -823,7 +888,7 @@ export default class FormularioProfissional extends Component{
         }else{
             setTimeout(() => {
                 this.ModalAlertas();
-            }, 500);
+            }, 200);
             moveToError();
         }
     }

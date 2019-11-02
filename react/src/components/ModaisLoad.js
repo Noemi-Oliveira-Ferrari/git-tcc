@@ -57,38 +57,33 @@ export function ModalAlertasFun (props) {
 
     return(        
         <Modal {...props}
-        size="sm"
-        // className="fundo-modal"
+        size="sm"className="caixa-modal-erros-function"
         >
-            <div 
-            className="caixa-modal-erros-function"
-            >
-                <Modal.Header className="header-modal-erros-function">
-                    <div className="titulo-modal-erros-function flex-center">
-                        <h3 className={props.tipoAlerta}>{props.titulo}</h3>
-                    </div>
-                    <div className="close-modal flex-center" onClick={props.onHide}>
-                        <figure>
-                            <img src={close} alt="Fechar" title="Fechar"/>
-                        </figure>
-                    </div>
-                </Modal.Header>
-                <Modal.Body className="body-modal-erros-function">
-                    <div className="txt-modal-erros-function">
-                        <ul>
-                        {props.erros.map((erro, i=1)=>(
-                                <li key={++i}>{erro}</li>
-                            ))
-                        }
-                        </ul>
-                    </div>
-                </Modal.Body>
-                <Modal.Footer id="footer-modal-erros-function">
-                    <button onClick={props.onHide} id="btn-ok-modal">
-                        OK!
-                    </button>
-                </Modal.Footer>
-            </div>
+            <Modal.Header className="header-modal-erros-function">
+                <div className="titulo-modal-erros-function flex-center">
+                    <h3 className={props.tipoAlerta}>{props.titulo}</h3>
+                </div>
+                <div className="close-modal flex-center" onClick={props.onHide}>
+                    <figure>
+                        <img src={close} alt="Fechar" title="Fechar"/>
+                    </figure>
+                </div>
+            </Modal.Header>
+            <Modal.Body className="body-modal-erros-function">
+                <div className="txt-modal-erros-function">
+                    <ul>
+                    {props.erros.map((erro, i=1)=>(
+                            <li key={++i}>{erro}</li>
+                        ))
+                    }
+                    </ul>
+                </div>
+            </Modal.Body>
+            <Modal.Footer id="footer-modal-erros-function">
+                <button onClick={props.onHide} id="btn-ok-modal">
+                    OK!
+                </button>
+            </Modal.Footer>
         </Modal>
         
     );
@@ -116,6 +111,11 @@ export const ModalAlertas = ({tipoAlerta, titulo, erros, onClose, abrir}) =>
                         ))
                     }
                     </ul>
+                </div>
+                <div id="footer-modal-erros-function" className="flex-center">
+                    <button onClick={onClose} id="btn-ok-modal">
+                        OK!
+                    </button>
                 </div>
             </div>
         </div>,

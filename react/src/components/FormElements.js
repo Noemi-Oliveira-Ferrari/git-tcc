@@ -58,7 +58,6 @@ export class Inputs extends Component {
                     onChange={this.props.onChange}
                     data-idCidade={this.props.data}
                     value={this.props.valueInput}
-                    // readOnly={this.props.readOnly}
                     maskChar=""
                     checked={this.props.radioChecked}
                     onBlur={this.props.onBlur}

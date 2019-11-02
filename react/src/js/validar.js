@@ -78,6 +78,15 @@ export const validarEmail = (email) =>{
     }
 }
 
+export const validarLogin = (email) =>{
+
+    if(EmailValidator.validate(email.value)){
+        return withoutError($('#txt-email'));
+    }else{
+        return withError($('#txt-email'));
+    }
+}
+
 export const validarSenha = (input) =>{
     let regras = new passwordValidator();
     

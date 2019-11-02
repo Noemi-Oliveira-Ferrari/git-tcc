@@ -32,6 +32,7 @@ export class DadosPessoaisCliente extends Component{
         }
         this.modalLoad = this.modalLoad.bind(this);
         this.ModalAlertas = this.ModalAlertas.bind(this);
+        this.noConnection = this.noConnection.bind(this);
 
         this.setNome = this.setNome.bind(this);
         this.setData = this.setData.bind(this);
@@ -47,11 +48,6 @@ export class DadosPessoaisCliente extends Component{
     }
 
     ModalAlertas = () =>{
-        if(this.state.showModalErro){
-            $("body").css("overflow-y", "hidden");
-        }else{
-            $("body").css("overflow-y", "auto");
-        }
         this.setState({showModalErro: !this.state.showModalErro});
     }
 
@@ -64,6 +60,11 @@ export class DadosPessoaisCliente extends Component{
         this.setState({loading: !this.state.loading});
     }
     
+    noConnection(){
+        let erros = [`Não foi possível obter resposta do servidor. Tente novamente mais tarde.`];
+        this.setState({erros: erros});
+        setTimeout(()=>{this.ModalAlertas();}, 500);
+    }
     
 
     componentDidMount(){
@@ -114,20 +115,25 @@ export class DadosPessoaisCliente extends Component{
     
     getCpf(cpf){
         let erros = [];
-        axios.get(`${DOMINIO}clientes/verificar/cpf/${cpf}`)
+        axios({
+            method:"GET",
+            url: `${DOMINIO}clientes/cpf/${cpf}`,
+            timeout: 30000
+        })
         .then((response)=>{
             let jsonCliente = response.data;
             console.log(jsonCliente);
-            if(jsonCliente !== null){
+            if(jsonCliente !== null && jsonCliente !== ''){
                 withError($("#txt-cpf"));
                 erros.push(`CPF ${cpf} ja cadastrado`);
                 this.setState({erros: erros});
                 setTimeout(()=>{this.ModalAlertas();}, 500);
                 this.setState({cpf: ""});
             }
-            setTimeout(()=>{this.modalLoad();}, 500);
+            setTimeout(()=>{this.modalLoad();}, 200);
         })
         .catch((error)=>{
+            this.noConnection();
             console.log(error);
         })
         .onload = this.modalLoad();
@@ -150,11 +156,15 @@ export class DadosPessoaisCliente extends Component{
         console.log(email);
         if(email.length > 5){
 
-            axios.get(`${DOMINIO}clientes/verificar/email/${email}`)
+            axios({
+                method: "GET",
+                url: `${DOMINIO}clientes/email/${email}`,
+                timeout: 30000
+            })
             .then((response)=>{
-            let jsonPro = response.data;
-            console.log(jsonPro);
-                if(jsonPro !== null){
+                let jsonCliente = response.data;
+                console.log(jsonCliente);
+                if(jsonCliente !== null && jsonCliente !== ''){
                     withError($("#txt-email"));
                     erros.push(`E-mail ${email} ja cadastrado`);
                     this.setState({erros: erros});
@@ -162,11 +172,12 @@ export class DadosPessoaisCliente extends Component{
                     this.setState({email: ""});
                     setTimeout(() => {
                         $("#txt-email").focus();
-                    }, 500);                
+                    }, 200);                
                 }
-                setTimeout(()=>{this.modalLoad();}, 500);
+                setTimeout(()=>{this.modalLoad();}, 200);
             })
             .catch((error)=>{
+                this.noConnection();
                 console.log(error);
             })
             .onload = this.modalLoad();
@@ -194,12 +205,34 @@ export class DadosPessoaisCliente extends Component{
     }
 
     getEndereco = (cep) =>{
-        axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+        let erros = [];
+        // axios.get(`${DOMINIO}enderecos/cep/${cep}`)
+        axios({
+            method: "GET",
+            url: `https://viacep.com.br/ws/${cep}/json/`,
+            type: "application/json",
+            timeout: 30000,
+        })
         .then((response)=>{
             let jsonEndereco = response.data;
-            // console.clear();
-            console.log(response);
-            if(jsonEndereco.cep != null){
+            let cepError = jsonEndereco.erro;
+            if(jsonEndereco === null || jsonEndereco === "" || cepError === true){
+                this.setState({logradouro: ""});
+                this.setState({bairro: ""});
+                this.setState({cidade: ""});
+                this.setState({uf: ""});
+                this.setState({idCidade: ""});
+                
+                withError($('#txt-cep'));
+                withError($('#txt-logradouro'));
+                withError($('#txt-cidade'));
+                withError($('#txt-bairro'));
+                withError($('#txt-uf'));
+                this.modalLoad();
+                erros.push(`O CEP ${cep} é invalido`);
+                this.setState({erros: erros});
+                setTimeout(()=>{this.ModalAlertas();}, 500);
+            }else if(cepError !== true){
                 this.setState({logradouro: jsonEndereco.logradouro});
                 this.setState({bairro: jsonEndereco.bairro});
                 this.setState({cidade: jsonEndereco.localidade});
@@ -211,21 +244,13 @@ export class DadosPessoaisCliente extends Component{
                 withoutError($('#txt-cidade'));
                 withoutError($('#txt-bairro'));
                 withoutError($('#txt-uf'));
-                setTimeout(()=>{this.modalLoad();}, 500);
+                setTimeout(()=>{this.modalLoad();}, 200);
             }
         })
         .catch((error)=>{
-            this.setState({logradouro: "CEP INVÁLIDO"});
-            this.setState({bairro: ""});
-            this.setState({cidade: ""});
-            this.setState({uf: ""});
-            this.setState({idCidade: ""});
-            
-            withError($('#txt-cep'));
-            withError($('#txt-logradouro'));
-            withError($('#txt-cidade'));
-            withError($('#txt-bairro'));
-            withError($('#txt-uf'));
+            this.noConnection();
+
+            this.modalLoad();
         })
         .onload = this.modalLoad();
     }
@@ -534,7 +559,7 @@ export default class FormularioCliente extends Component{
         }else{
             setTimeout(() => {
                 this.ModalAlertas();
-            }, 500);
+            }, 200);
             moveToError();
         }
     }
