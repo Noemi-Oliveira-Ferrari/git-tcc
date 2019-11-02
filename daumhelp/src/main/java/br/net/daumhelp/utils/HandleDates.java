@@ -9,7 +9,7 @@ public class HandleDates {
 
     public static String dataToBrString(Date data) {
 
-        DateFormat dateToString = new SimpleDateFormat("dd/MM/yy HH:mm");
+        DateFormat dateToString = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String dataFormatada = dateToString.format(data);
 
         return dataFormatada;
@@ -39,5 +39,13 @@ public class HandleDates {
     	Date data = new Date();
     	String dataAtual = HandleDates.dataToString(data);
     	return dataAtual;
+    }
+    
+    public static String dataHoraAtualBr() {
+    	Date data = new Date();
+        DateFormat dateToString = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String dataFormatada = dateToString.format(data);
+        
+    	return dataFormatada;
     }
 }

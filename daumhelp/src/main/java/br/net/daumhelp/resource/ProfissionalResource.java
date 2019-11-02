@@ -18,20 +18,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.net.daumhelp.dto.ProfissionalDTO;
+import br.net.daumhelp.dto.repository.ClienteDTORepository;
+import br.net.daumhelp.dto.repository.ProfissionalDTORepository;
 import br.net.daumhelp.model.Confirmacao;
 import br.net.daumhelp.model.Profissional;
-import br.net.daumhelp.model.ProfissionalDTO;
-import br.net.daumhelp.repository.ProfissionalDTORepository;
 import br.net.daumhelp.repository.ProfissionalRepository;
-import br.net.daumhelp.utils.HandleDates;
 import br.net.daumhelp.utils.HandleEmails;
 
-@CrossOrigin(origins = "http://ec2-35-170-248-132.compute-1.amazonaws.com")
-//@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin
+@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/profissionais")
 public class ProfissionalResource {
@@ -40,13 +40,20 @@ public class ProfissionalResource {
 	private ProfissionalRepository proRepository;
 	@Autowired
 	private ProfissionalDTORepository proDTORepository;
+	@Autowired
+	private ClienteDTORepository clienteDTORepository;
 	
-	@PostMapping("/confirmacao")
-	@ResponseStatus(code = HttpStatus.OK, reason = "E-mail enviado", value = HttpStatus.OK)
-	public boolean confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
-		return HandleEmails.enviar(confirm);
-	}
 
+	@CrossOrigin(origins = "http://localhost:3000")
+	@PostMapping("/confirmacao")
+	public ResponseEntity<Confirmacao> confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
+		System.out.println("__________\n"+confirm);
+		if(HandleEmails.enviar(confirm)) {
+			return new ResponseEntity<Confirmacao>(HttpStatus.OK);
+		}else{
+			return new ResponseEntity<Confirmacao>(HttpStatus.REQUEST_TIMEOUT);
+		}
+	}
 
 	@PostMapping("/login")
 	public Profissional buscarUsuario(@RequestBody Profissional profissional) {
@@ -76,6 +83,11 @@ public class ProfissionalResource {
 	@GetMapping("/cpf/{cpf}")
 	public ProfissionalDTO getProByCpf(@PathVariable String cpf) {
 		return proDTORepository.findByCpf(cpf);
+	}
+	
+	@GetMapping("/email/{email}")
+	public ProfissionalDTO getProByEmail(@PathVariable String email) {
+		return proDTORepository.findByEmail(email);
 	}
 
 	@GetMapping("/cnpj/{cnpj}")
@@ -118,9 +130,9 @@ public class ProfissionalResource {
 			@RequestBody Profissional profissional,
 			HttpServletResponse response){
 
-		
-//		profissional.setCriadoEm(HandleDates.dataHoraAtual());
-//		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
+		System.out.println("_____________");
+		System.out.println(profissional.getSenha());
+		System.out.println("_____________");
 		
 		 Profissional proSalvo = proRepository.save(profissional);
 		 

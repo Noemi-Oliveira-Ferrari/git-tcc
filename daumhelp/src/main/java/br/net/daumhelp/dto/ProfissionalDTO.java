@@ -1,4 +1,4 @@
-package br.net.daumhelp.model;
+package br.net.daumhelp.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,13 +11,22 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Entity
-@Table(name = "tbl_cliente")
-public class Cliente {
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.net.daumhelp.model.Endereco;
+import br.net.daumhelp.model.Subcategoria;
+import br.net.daumhelp.model.TipoUsuario;
+
+@Entity
+@Table(name = "tbl_profissional")
+public class ProfissionalDTO {
+
+	
+
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idCliente;
+	private Long idProfissional;
 	@NotNull
 	@Size(min = 3, max = 200, message = "O nome não pode ter menos que 3 caractéres")
 	private String nome;
@@ -25,23 +34,36 @@ public class Cliente {
 	@Size(min = 5, max = 255, message = "O e-mail digitado é pssui menos que 5 caractéres")
 	private String email;
 
+	@Size(min = 4, max = 150)
+	private String foto;
+
+	@Size(min = 11, max = 20, message = "CNPJ menor que 14 digitos")
+	private String cnpj;
+
 	@Size(min = 11, max = 20, message = "CPF menor que 11 digitos")
 	private String cpf;
 
-	private String foto;
-
 	@NotNull
 	@Size(min = 8, max = 130, message = "A senha deve conter pelo ao menos 8 caractéres")
+	@JsonIgnore
 	private String senha;
-
 	@NotNull
 	@Size(min = 6, max = 20, message = "Data digitado tem menos que 6 digitos")
 	private String dataNasc;
 
 	@NotNull
+	private Double valorHora;
+
+	private String resumoQualificacoes;
+
+	@NotNull
 	@OneToOne
 	@JoinColumn(name = "idEndereco")
 	private Endereco endereco;
+	@NotNull
+	@OneToOne
+	@JoinColumn(name = "idSubcategoria")
+	private Subcategoria subcategoria;
 
 	@NotNull
 	@ManyToOne
@@ -51,12 +73,12 @@ public class Cliente {
 	private String criadoEm;
 	private String atualizadoEm;
 
-	public Long getIdCliente() {
-		return idCliente;
+	public Long getIdProfissional() {
+		return idProfissional;
 	}
 
-	public void setIdCliente(Long idCliente) {
-		this.idCliente = idCliente;
+	public void setIdProfissional(Long idProfissional) {
+		this.idProfissional = idProfissional;
 	}
 
 	public String getNome() {
@@ -75,20 +97,28 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
 	public String getFoto() {
 		return foto;
 	}
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getSenha() {
@@ -107,12 +137,36 @@ public class Cliente {
 		this.dataNasc = dataNasc;
 	}
 
+	public Double getValorHora() {
+		return valorHora;
+	}
+
+	public void setValorHora(Double valorHora) {
+		this.valorHora = valorHora;
+	}
+
+	public String getResumoQualificacoes() {
+		return resumoQualificacoes;
+	}
+
+	public void setResumoQualificacoes(String resumoQualificacoes) {
+		this.resumoQualificacoes = resumoQualificacoes;
+	}
+
 	public Endereco getEndereco() {
 		return endereco;
 	}
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public Subcategoria getSubcategoria() {
+		return subcategoria;
+	}
+
+	public void setSubcategoria(Subcategoria subcategoria) {
+		this.subcategoria = subcategoria;
 	}
 
 	public TipoUsuario getTipoUsuario() {
@@ -141,9 +195,11 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf + ", foto="
-				+ foto + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco + ", tipoUsuario="
-				+ tipoUsuario + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+		return "ProfissionalDTO [idProfissional=" + idProfissional + ", nome=" + nome + ", email=" + email + ", foto="
+				+ foto + ", cnpj=" + cnpj + ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc
+				+ ", valorHora=" + valorHora + ", resumoQualificacoes=" + resumoQualificacoes + ", endereco=" + endereco
+				+ ", subcategoria=" + subcategoria + ", tipoUsuario=" + tipoUsuario + ", criadoEm=" + criadoEm
+				+ ", atualizadoEm=" + atualizadoEm + "]";
 	}
 
 }

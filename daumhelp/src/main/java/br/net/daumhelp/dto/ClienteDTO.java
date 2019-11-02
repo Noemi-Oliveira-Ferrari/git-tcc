@@ -1,4 +1,4 @@
-package br.net.daumhelp.model;
+package br.net.daumhelp.dto;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,9 +11,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.net.daumhelp.model.Endereco;
+import br.net.daumhelp.model.TipoUsuario;
+
 @Entity
 @Table(name = "tbl_cliente")
-public class Cliente {
+public class ClienteDTO {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,15 +33,16 @@ public class Cliente {
 	@Size(min = 11, max = 20, message = "CPF menor que 11 digitos")
 	private String cpf;
 
-	private String foto;
-
 	@NotNull
 	@Size(min = 8, max = 130, message = "A senha deve conter pelo ao menos 8 caractéres")
+	@JsonIgnore
 	private String senha;
 
 	@NotNull
 	@Size(min = 6, max = 20, message = "Data digitado tem menos que 6 digitos")
 	private String dataNasc;
+
+	private String foto;
 
 	@NotNull
 	@OneToOne
@@ -83,14 +89,6 @@ public class Cliente {
 		this.cpf = cpf;
 	}
 
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-
 	public String getSenha() {
 		return senha;
 	}
@@ -105,6 +103,14 @@ public class Cliente {
 
 	public void setDataNasc(String dataNasc) {
 		this.dataNasc = dataNasc;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
 	}
 
 	public Endereco getEndereco() {
@@ -141,9 +147,9 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf + ", foto="
-				+ foto + ", senha=" + senha + ", dataNasc=" + dataNasc + ", endereco=" + endereco + ", tipoUsuario="
-				+ tipoUsuario + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+		return "ClienteDTO [idCliente=" + idCliente + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf
+				+ ", senha=" + senha + ", dataNasc=" + dataNasc + ", foto=" + foto + ", endereco=" + endereco
+				+ ", tipoUsuario=" + tipoUsuario + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
 
 }

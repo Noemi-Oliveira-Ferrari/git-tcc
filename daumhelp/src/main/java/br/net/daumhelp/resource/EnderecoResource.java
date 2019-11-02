@@ -1,7 +1,6 @@
 package br.net.daumhelp.resource;
 
 import java.net.URI;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,11 +26,11 @@ import br.net.daumhelp.model.Endereco;
 import br.net.daumhelp.model.EnderecoCep;
 import br.net.daumhelp.repository.CidadeRepository;
 import br.net.daumhelp.repository.EnderecoRepository;
-import br.net.daumhelp.utils.HandleDates;
-import br.net.daumhelp.utils.HandleEmails;
 import br.net.daumhelp.utils.HandleJsonInJava;
-@CrossOrigin(origins = "http://ec2-35-170-248-132.compute-1.amazonaws.com")
+
+@CrossOrigin
 //@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/enderecos")
 public class EnderecoResource {
@@ -81,7 +80,7 @@ public class EnderecoResource {
 //		
 //		endereco.setCriadoEm(HandleDates.dataHoraAtual());
 //		endereco.setAtualizadoEm(HandleDates.dataHoraAtual());
-	
+		
 		Endereco enderecoSalvo = enderecoRepository.save(endereco);
 		
 		URI uri = ServletUriComponentsBuilder	

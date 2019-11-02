@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import br.net.daumhelp.model.Microrregiao;
 import br.net.daumhelp.repository.MicrorregiaoRepository;
 
-@CrossOrigin(origins = "http://ec2-35-170-248-132.compute-1.amazonaws.com")
+@CrossOrigin
 //@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/microrregioes")
 public class MicrorregiaoResource {

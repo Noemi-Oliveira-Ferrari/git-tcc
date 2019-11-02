@@ -1,41 +1,30 @@
 package br.net.daumhelp.resource;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.net.daumhelp.model.UF;
-import br.net.daumhelp.repository.UFRepository;
+import br.net.daumhelp.model.TipoUsuario;
+import br.net.daumhelp.repository.TipoUsuarioRepository;
 
 @CrossOrigin
 //@CrossOrigin(origins = "http://localhost:3000")
 //@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
-@RequestMapping("/ufs")
-public class UFResource {
-
+@RequestMapping("/tipos")
+public class TipoUsuarioResource {
+	
 	@Autowired
-	private UFRepository ufRepository;
+	public TipoUsuarioRepository tipoRepository;
 	
 	@GetMapping
-	public List<UF> getUFs(){
-		return ufRepository.findAll();
-	}
-
-	@GetMapping("/uf/{uf}")
-	public UF getUFByUf(@PathVariable String uf) {
-		return ufRepository.findByUf(uf);		
+	public List<TipoUsuario> getTipos() {
+		return tipoRepository.findAll();
 	}
 	
-	@GetMapping("/id/{id}")
-	public Optional<UF> getUFById(@PathVariable Long id) {
-		return ufRepository.findById(id);
-	}
 	
 }
