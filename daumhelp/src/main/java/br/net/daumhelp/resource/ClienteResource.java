@@ -21,18 +21,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import br.net.daumhelp.dto.ClienteDTO;
+import br.net.daumhelp.dto.repository.ClienteDTORepository;
+import br.net.daumhelp.dto.repository.ProfissionalDTORepository;
 import br.net.daumhelp.model.Cliente;
-import br.net.daumhelp.model.ClienteDTO;
 import br.net.daumhelp.model.Confirmacao;
-import br.net.daumhelp.model.Cliente;
-import br.net.daumhelp.model.ClienteDTO;
-import br.net.daumhelp.repository.ClienteDTORepository;
 import br.net.daumhelp.repository.ClienteRepository;
-import br.net.daumhelp.repository.ProfissionalDTORepository;
-import br.net.daumhelp.utils.HandleDates;
 import br.net.daumhelp.utils.HandleEmails;
 
-
+//@CrossOrigin
 //@CrossOrigin(origins = "http://localhost:3000")
 @CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
@@ -83,34 +80,9 @@ public class ClienteResource {
 		return clienteDTORepository.findByCpf(cpf);
 	}
 
-	@GetMapping("/verificar/cpf/{cpf}")
-	public Optional<?> buscarCpfExistente(@Validated @PathVariable String cpf) {
-		if(clienteDTORepository.verificarCpf(cpf) == Optional.empty()) {
-			if(proDTORepository.verificarCpf(cpf) != Optional.empty()) {
-				Optional<?> optionalProDTO = proDTORepository.verificarCpf(cpf);
-				return optionalProDTO;
-			}else {
-				return Optional.empty();
-			}
-		}else {
-			Optional<?> optionalClienteDTO = clienteDTORepository.verificarCpf(cpf);
-			return optionalClienteDTO;	
-		}
-	}
-
-	@GetMapping("/verificar/email/{email}")
-	public Optional<?> buscarEmailExistente(@Validated @PathVariable String email) {
-		if(clienteDTORepository.verificarEmail(email) == Optional.empty()) {
-			if(proDTORepository.verificarEmail(email) != Optional.empty()) {
-				Optional<?> optionalProDTO = proDTORepository.verificarEmail(email);
-				return optionalProDTO;
-			}else {
-				return Optional.empty();
-			}
-		}else {
-			Optional<?> optionalClienteDTO = clienteDTORepository.verificarEmail(email);
-			return optionalClienteDTO;	
-		}
+	@GetMapping("/email/{email}")
+	public ClienteDTO buscarEmailExistente(@Validated @PathVariable String email) {
+		return clienteDTORepository.findByEmail(email);
 	}
 
 	@GetMapping("/endereco/{idEndereco}")

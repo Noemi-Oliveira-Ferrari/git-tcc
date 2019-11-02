@@ -11,10 +11,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.annotations.ManyToAny;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
 @Table(name = "tbl_profissional")
 public class Profissional {

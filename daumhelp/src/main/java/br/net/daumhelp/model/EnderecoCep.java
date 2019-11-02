@@ -1,11 +1,5 @@
 package br.net.daumhelp.model;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-
 public class EnderecoCep {
 
 	private String logradouro;
