@@ -129,7 +129,6 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Profissional> call, Response<Profissional> response) {
                         response.body();
-                        //Toast.makeText(MainActivity.this, "PROFISSIONAL LOGADO" + response.body().getValorHora(), Toast.LENGTH_SHORT).show();
 
                         Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
                         intent.putExtra("profissional", response.body());

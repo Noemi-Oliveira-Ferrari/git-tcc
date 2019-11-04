@@ -29,7 +29,5 @@ public class PedidosFragmentActivity extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //Toast.makeText(getActivity(),"Aqui vai ser os pedidos!",Toast.LENGTH_SHORT).show();
     }
 }

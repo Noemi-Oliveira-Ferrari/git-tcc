@@ -1,5 +1,6 @@
 package br.net.daumhelp.menuCli.homeCli;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -39,6 +40,8 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
     private Cliente cliente;
     private ListaAdapterBusca listaProfissional;
     private SwipeRefreshLayout mSwipeToRefresh;
+    private Button btnFiltro;
+    private Dialog alertDialog;
 
     private ListView listView;
 
@@ -52,26 +55,34 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
 
         getActivity().getWindow().setStatusBarColor(Color.parseColor("#77C9D4"));
 
-
-
         return root;
-
 
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        btnFiltro = getView().findViewById(R.id.btn_filtro);
         listView =  getView().findViewById(R.id.lv_busca_pro);
         mSwipeToRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_container);
         mSwipeToRefresh.setOnRefreshListener(this);
+
+        alertDialog = new Dialog(getContext());
 
         Intent intent = getActivity().getIntent();
         if(intent.getSerializableExtra("cliente") != null) {
 
             cliente = (Cliente) intent.getSerializableExtra("cliente");
-            Toast.makeText(getContext(), "" + cliente.getEndereco().getCidade().getMicrorregiao().getIdMicro(), Toast.LENGTH_SHORT).show();
         }
+
+
+        btnFiltro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.setContentView(R.layout.adapter_filtro_profissional);
+                alertDialog.show();
+            }
+        });
 
         final ListaAdapterBusca listaProfissional = new ListaAdapterBusca(getContext(), lista);
 
@@ -99,14 +110,6 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
 
         });
 
-
-
-
-
-
-
-
-
     }
 
     @Override
@@ -131,14 +134,12 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
 
                 listView.setAdapter(listaProfissional);
 
-                Toast.makeText(getContext(), "ON RESPONSE", Toast.LENGTH_SHORT).show();
                 mSwipeToRefresh.setRefreshing(false);
             }
 
             @Override
             public void onFailure(Call<List<Profissional>> call, Throwable t) {
                 Log.i("PROFISSIONAIS BUSCA", t.getMessage());
-                Toast.makeText(getContext(), "ON FAILURE", Toast.LENGTH_SHORT).show();
             }
 
         });

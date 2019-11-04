@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +81,6 @@ public class PerfilFragmentActivity extends Fragment {
 
             profissional = (Profissional) intent.getSerializableExtra("profissional");
 
-            Toast.makeText(getContext(), "" + profissional.getNome(), Toast.LENGTH_SHORT).show();
 
             tvNome.setText(profissional.getNome().toUpperCase());
             tvLocal.setText(profissional.getEndereco().getCidade().getCidade() + ", " + profissional.getEndereco().getCidade().getMicrorregiao().getUf());
