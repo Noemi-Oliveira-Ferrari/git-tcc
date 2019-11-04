@@ -43,7 +43,7 @@ public class JwtAuthenticationResource {
 			throws Exception {
 		final Cliente cliente = clienteRepository.findUserLogin(
 				authenticationRequest.getEmail(),
-				authenticationRequest.getPassword());
+				authenticationRequest.getSenha());
 
 		if (cliente != null) {
 			final String token = jwtTokenUtil.generateTokenCliente(cliente);
@@ -58,7 +58,7 @@ public class JwtAuthenticationResource {
 			throws Exception {
 		final Profissional profissional = profissionalRepository.findUserLogin(
 				authenticationRequest.getEmail(), 
-				authenticationRequest.getPassword());
+				authenticationRequest.getSenha());
 
 		if (profissional != null) {
 			final String token = jwtTokenUtil.generateTokenProfissional(profissional);

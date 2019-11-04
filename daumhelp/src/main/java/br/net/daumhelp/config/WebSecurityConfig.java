@@ -49,18 +49,25 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable()
-			.authorizeRequests().antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-			.antMatchers("/profissionais/**",
+			.authorizeRequests()
+			.antMatchers(HttpMethod.POST,
+				"/clientes**",
+				"/profissionais/**", 
+				"/enderecos/**",
+				"/login/**")
+			.permitAll()
+//			.antMatchers("/profissionais/**",
 //					"/clientes/**",
-					"/imagens/**",
-					"/cidades/**",
-					"/ufs/**",
-					"/login/**",
-					"/categorias",
-					"/subcategorias",
-					"/").permitAll().
-			anyRequest().authenticated().and().
-			exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
+//					"/imagens/**",
+//					"/cidades/**",
+//					"/ufs/**",
+//					"/login/**",
+//					"/categorias",
+//					"/subcategorias",
+//					"/")
+//			.permitAll()
+			.anyRequest().authenticated().and()
+			.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}

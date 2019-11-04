@@ -4,14 +4,14 @@ import java.io.Serializable;
 public class JWTRequest implements Serializable {
 	private static final long serialVersionUID = 5926468583005150707L;
 	private String email;
-	private String password;
+	private String senha;
 
 	public JWTRequest() {
 	}
 
-	public JWTRequest(String email, String password) {
+	public JWTRequest(String email, String senha) {
 		this.setEmail(email);
-		this.setPassword(password);
+		this.setSenha(senha);
 	}
 
 	public String getEmail() {
@@ -22,11 +22,11 @@ public class JWTRequest implements Serializable {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return this.password;
+	public String getSenha() {
+		return this.senha;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 }
