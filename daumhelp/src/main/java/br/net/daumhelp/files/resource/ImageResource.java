@@ -36,7 +36,7 @@ public class ImageResource {
 		ClienteDTO cliente = clienteDTOrepository.findById(idCliente).get();
 	
 		if(cliente.getFoto() != null) {			
-			if(!cliente.getFoto().isBlank() && !cliente.getFoto().isEmpty()) {
+			if(cliente.getFoto() != "" && !cliente.getFoto().isEmpty()) {
 				disco.apagar(cliente.getFoto());			
 			}
 		}
@@ -51,7 +51,7 @@ public class ImageResource {
 		ProfissionalDTO pro = proDTOrepository.findById(idPro).get();
 		
 		if(pro.getFoto() != null) {
-			if(!pro.getFoto().isBlank() && !pro.getFoto().isEmpty()) {
+			if(pro.getFoto() != "" && !pro.getFoto().isEmpty()) {
 				disco.apagar(pro.getFoto());			
 			}			
 		}
