@@ -64,6 +64,9 @@
         <activity
             android:name=".CadastroFotoActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".DetalhesServicoActivity"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

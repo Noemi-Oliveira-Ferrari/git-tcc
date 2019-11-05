@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         //etEmail.setText("noemi@noemi.comc");
         etSenha.setText("123123123");
 
+
         /*VERIFICAÇÃO DA CONEXÃO*/
         final ConnectivityManager conmag = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
 

@@ -66,6 +66,16 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getSerializableExtra("profissionalBusca") != null) {
 
+
+            ibSolicitar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, DetalhesServicoActivity.class);
+                    startActivity(intent);
+                    Toast.makeText(PerfilProfissionalBuscaActivity.this, "Agradeço sua preferência =)", Toast.LENGTH_SHORT).show();
+                }
+            });
+
             profissionalSelecionado = (Profissional) intent.getSerializableExtra("profissionalBusca");
             carregarDados(profissionalSelecionado);
 
@@ -92,6 +102,8 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
                     btnSolicitarAlert.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, DetalhesServicoActivity.class);
+                            startActivity(intent);
                             Toast.makeText(PerfilProfissionalBuscaActivity.this, "Agradeço sua preferência =)", Toast.LENGTH_SHORT).show();
                         }
                     });
