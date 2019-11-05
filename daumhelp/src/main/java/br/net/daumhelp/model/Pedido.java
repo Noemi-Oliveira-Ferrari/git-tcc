@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -21,13 +22,16 @@ public class Pedido {
 	@Size(min = 10, message = "A descrição está muito curta")
 	private String descricao;
 
-	@NotNull
 	private String dataHora;
 
 	private Integer horasServico;
 
 	@NotNull
 	private String data_servico;
+
+	private String horarioInicial;
+
+	private String horarioFinal;
 
 	private String foto1;
 
@@ -37,16 +41,18 @@ public class Pedido {
 
 	private Double valorServico;
 
-	@NotNull
 	@ManyToOne
+	@JoinColumn(name = "idStatusPedido")
 	private StatusPedido status;
 
 	@NotNull
 	@ManyToOne
+	@JoinColumn(name = "idCliente")
 	private Cliente cliente;
 
 	@NotNull
 	@ManyToOne
+	@JoinColumn(name = "idProfissional")
 	private Profissional profissional;
 
 	private String criadoEm;
@@ -91,6 +97,22 @@ public class Pedido {
 
 	public void setData_servico(String data_servico) {
 		this.data_servico = data_servico;
+	}
+
+	public String getHorarioInicial() {
+		return horarioInicial;
+	}
+
+	public void setHorarioInicial(String horarioInicial) {
+		this.horarioInicial = horarioInicial;
+	}
+
+	public String getHorarioFinal() {
+		return horarioFinal;
+	}
+
+	public void setHorarioFinal(String horarioFinal) {
+		this.horarioFinal = horarioFinal;
 	}
 
 	public String getFoto1() {
@@ -167,11 +189,11 @@ public class Pedido {
 
 	@Override
 	public String toString() {
-		return "Pedidos [idPedido=" + idPedido + ", descricao=" + descricao + ", dataHora=" + dataHora
-				+ ", horasServico=" + horasServico + ", data_servico=" + data_servico + ", foto1=" + foto1 + ", foto2="
-				+ foto2 + ", foto3=" + foto3 + ", valorServico=" + valorServico + ", status=" + status + ", cliente="
-				+ cliente + ", profissional=" + profissional + ", criadoEm=" + criadoEm + ", atualizadoEm="
-				+ atualizadoEm + "]";
+		return "Pedido [idPedido=" + idPedido + ", descricao=" + descricao + ", dataHora=" + dataHora
+				+ ", horasServico=" + horasServico + ", data_servico=" + data_servico + ", horarioInicial="
+				+ horarioInicial + ", horarioFinal=" + horarioFinal + ", foto1=" + foto1 + ", foto2=" + foto2
+				+ ", foto3=" + foto3 + ", valorServico=" + valorServico + ", status=" + status + ", cliente=" + cliente
+				+ ", profissional=" + profissional + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
-}
 
+}

@@ -50,27 +50,37 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable()
 			.authorizeRequests()
-			.antMatchers(HttpMethod.GET,
-				"/clientes**",
-				"/profissionais/**", 
-				"/enderecos/**",
-				"/pedidos/**",
-				"/login/**")
-			.permitAll()
-			
-//			.antMatchers("/profissionais/**",
-//					"/clientes/**",
-//					"/imagens/**",
-//					"/cidades/**",
-//					"/ufs/**",
-//					"/login/**",
-//					"/categorias",
-//					"/subcategorias",
-//					"/")
-//			.permitAll()
+			.antMatchers(HttpMethod.POST, "/clientes/**").permitAll()
+			.antMatchers(HttpMethod.POST, "/profissionais/**").permitAll()
+			.antMatchers(HttpMethod.POST, "/enderecos/**").permitAll()
+			.antMatchers(HttpMethod.POST, "/pedidos/**").permitAll()
+			.antMatchers(HttpMethod.GET, "/clientes/**").permitAll()
+			.antMatchers(HttpMethod.GET, "/profissionais/**").permitAll()
+			.antMatchers(HttpMethod.GET, "/enderecos/**").permitAll()
+			.antMatchers(HttpMethod.GET, "/pedidos/**").permitAll()
+			.antMatchers(HttpMethod.PUT, "/pedidos/**").permitAll()
 			.anyRequest().authenticated().and()
 			.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
