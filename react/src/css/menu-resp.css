@@ -14,30 +14,18 @@ html, body {
     user-select: none;
 }
 
+
+/* CORPO DO MENU DE DENTRO */
 div.background {
     position: absolute;
     top: 0px; left: 0px;
     min-width: 435px;
     min-height: 1000px;
     height: 100%; width: 100%;
-    /* background: #408dce url('https://hoidrop.s3-us-west-2.amazonaws.com/cp_social_app_background.jpg') no-repeat center center;  */
     -webkit-background-size: cover;
        -moz-background-size: cover;
          -o-background-size: cover;
             background-size: cover;
-}
-
-div.circle {
-    height: 77px; width: 77px;
-    /* background: url('https://hoidrop.s3-us-west-2.amazonaws.com/cp_social_app_circle.png'); */
-    position: absolute;
-    top: 50%; left: 50%;
-    z-index: 200;
-    margin: -328px 0px 0px -180px;	
-    pointer-events: none;
-    animation: pulse 5s infinite;
-    -webkit-animation: pulse 1.5s infinite; 
-    opacity: 0;
 }
     @keyframes pulse {
         0%   { opacity: 0; }
@@ -49,42 +37,21 @@ div.circle {
         50%  { opacity: 1; }
         100% { opacity: 0; }
     }
-    
 
 
-
-/*	The Device */
-
-div.iphone {
-    height: 810px; width: 435px; 
-    position: absolute;
-    margin: auto;
-    top: 0px; bottom: 80px; left: 0px; right: 0px;
-    /* background: url('https://hoidrop.s3-us-west-2.amazonaws.com/cp_social_app_iphone.png') no-repeat center center;  */
-    -webkit-background-size: cover;
-       -moz-background-size: cover;
-         -o-background-size: cover;
-            background-size: cover;
-}
 div.screen {
     height: 100%; 
     width: 100%;
     position: absolute;
-    /* top: 119px; */
-    /* left: 59px; */
     overflow: hidden;
     position: relative;
 }
-
 
 /*	Content */
 div.menu {
     position: absolute;
     height: 100%;
     width: 100%;
-    /* background: url('https://hoidrop.s3-us-west-2.amazonaws.com/cp_social_app_blur.jpg') no-repeat center center;  */
-    /* background-color: #57BC90; */
-    
     background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -119,32 +86,16 @@ div.menu {
         opacity: 1;
     }
     div.menu li a {
-        color: rgba(255,255,255,0.9);
+        color: rgba(255, 255, 255, 0.9);
         text-decoration: none;
     }
-    
-div.status {
-    position: absolute;
-    top: 0px; left: 0px;
-    z-index: 200;
-    height: 20px; width: 100%;
-    background: url('https://hoidrop.s3-us-west-2.amazonaws.com/cp_social_app_status_black.png') no-repeat center center; 
-    -webkit-background-size: cover;
-       -moz-background-size: cover;
-         -o-background-size: cover;
-            background-size: cover;
-}
-div.status.active {
-    background-image: url('https://hoidrop.s3-us-west-2.amazonaws.com/cp_social_app_status_white.png'); 
-}
+
 
 div.content {
     position: absolute;
     top: 0px; left: 0px;
     height: 568px; 
     width: 100%;
-    background: #fff url('https://hoidrop.s3-us-west-2.amazonaws.com/cp_social_app_screen.jpg') no-repeat center center; 
-    /* background-color: #408dce; */
     -webkit-background-size: cover;
        -moz-background-size: cover;
          -o-background-size: cover;
@@ -166,45 +117,60 @@ div.content {
 
 
     div.button {
-        width: 30px; height: 30px;
+        width: 50px; 
+        height: 50px;
         position: absolute;
-        top: 23px; left: 3px;
+    }
+
+    div.button img {
+        width: 40px; 
+        height: 40px;
+        position: absolute;
+        top: 5px; left: 3px;
         cursor: pointer;
-        background-color: #ffffff;
+        
     }
 
-
-
-
-
-
-    /*Extras*/
-    .conteudo
-    {
-        width: auto;
-        height: auto;
-        background-color: aqua;
-    }
-
+    /*CONEYUDO HEADER*/
     .caixa1
     {
         width: 100%;
-        height: 100px;
-        background-color: rgb(59, 71, 70);
+        height: 50px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
+    .caixa-menu-resp{
+        width: 100%;
+        height: inherit;
+        /* background-color: lightblue;       */
+    }
+
+    .caixa-menu-resp img{
+        max-height: 40px;
+        justify-content: center;
+        margin-top: 15px;
+        /* background-color: khaki; */
+    }
+
+    /* CONTEUDO DO SITE */
     .caixa2
     {
         width: 100%;
         min-height: 1000px;
         height: auto;
         overflow: hidden;
-        background-color: rgb(255, 255, 255);
+        background-color: rgb(230, 230, 230);
     }
 
+    /* ICONE DO MENU DE DENTRO */
     .icon-menu
     {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         top: 5px;
+        margin-right: 10px;
+        /* background-color: red; */
     }

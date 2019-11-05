@@ -53,6 +53,16 @@ body{
 }
 
 
+html, body {
+    /* min-width: 435px;
+    min-height: 1000px; */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 #all{
     flex: 1;
 }
