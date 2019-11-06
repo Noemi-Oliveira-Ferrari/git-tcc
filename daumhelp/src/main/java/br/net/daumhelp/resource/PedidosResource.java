@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.net.daumhelp.model.Cliente;
+import br.net.daumhelp.dto.ClienteDTO;
+import br.net.daumhelp.dto.ProfissionalDTO;
+import br.net.daumhelp.dto.repository.ClienteDTORepository;
+import br.net.daumhelp.dto.repository.ProfissionalDTORepository;
+import br.net.daumhelp.model.CodeStatusPedido;
 import br.net.daumhelp.model.Pedido;
-import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.StatusPedido;
-import br.net.daumhelp.repository.ClienteRepository;
 import br.net.daumhelp.repository.PedidoRepository;
-import br.net.daumhelp.repository.ProfissionalRepository;
 import br.net.daumhelp.repository.StatusPedidosRepository;
 
 
@@ -37,15 +38,15 @@ public class PedidosResource {
 	private PedidoRepository pedidoRepository;
 
 	@Autowired
-	private ProfissionalRepository proRepository;
+	private ProfissionalDTORepository proDTORepository;
 	
 	@Autowired
-	private ClienteRepository clienteRepository;
+	private ClienteDTORepository clienteDTORepository;
 	
 	@Autowired
 	private StatusPedidosRepository statusRepository;
 
-	Long status;
+//	Long status;
 	
 	@GetMapping
 	public List<Pedido> getPedidos() {
@@ -77,13 +78,10 @@ public class PedidosResource {
 			@RequestBody Pedido pedido,
 			@PathVariable Long idPedido){
 
-		Profissional proPedido = proRepository.findById(pedido.getProfissional().getIdProfissional()).get();
-		Cliente clientePedido = clienteRepository.findById(pedido.getCliente().getIdCliente()).get();
+		ProfissionalDTO proPedido = proDTORepository.findById(pedido.getProfissional().getIdProfissional()).get();
+		ClienteDTO clientePedido = clienteDTORepository.findById(pedido.getCliente().getIdCliente()).get();
 		
-		status = (long) 2;
-		
-		StatusPedido statusPedido = statusRepository.findById(status).get();
-		
+		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.ORCADO.getValue()).get();
 		
 		pedido.setProfissional(proPedido);
 		pedido.setCliente(clientePedido);
@@ -99,22 +97,73 @@ public class PedidosResource {
 	}
 
 	@PutMapping("/aceitar/{idPedido}")
-	public ResponseEntity<Pedido> aceitarPedido(
-			@RequestBody Pedido pedido,
-			@PathVariable Long idPedido){
+	public ResponseEntity<Pedido> aceitarPedido(@PathVariable Long idPedido){
 		
-		status = (long) 3;		
-		StatusPedido statusPedido = statusRepository.findById(status).get();
+		Pedido pedido = pedidoRepository.findById(idPedido).get();
+		
+		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.ACEITO.getValue()).get();
 		
 		pedido.setStatus(statusPedido);
 		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
 		
-		pedido.setValorServico(pedido.getHorasServico()*pedido.getProfissional().getValorHora());
+		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
+		pedidoRepository.save(pedidoSalvo);
+		
+		return ResponseEntity.ok(pedido);
+	}
+	
+	@PutMapping("/rejeitar/{idPedido}")
+	public ResponseEntity<Pedido> rejeitarPedido(@PathVariable Long idPedido){
+		
+		Pedido pedido = pedidoRepository.findById(idPedido).get();
+		
+		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.REJEITADO.getValue()).get();
+		
+		pedido.setStatus(statusPedido);
+		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
 		
 		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
 		pedidoRepository.save(pedidoSalvo);
 		
-		return ResponseEntity.ok(pedidoSalvo);
+		return ResponseEntity.ok(pedido);
+	}
+	
+	@PutMapping("/cancelar/{usuario}/{idPedido}")
+	public ResponseEntity<Pedido> proClientePedido(@PathVariable String usuario, @PathVariable Long idPedido){
+		
+		Pedido pedido = pedidoRepository.findById(idPedido).get();
+		StatusPedido statusPedido = pedido.getStatus();
+		
+		if(usuario.equals("cliente")) {
+			statusPedido = statusRepository.findById((long)CodeStatusPedido.CANCELADO_CLIENTE.getValue()).get();
+		}else if(usuario.equals("profissional")){
+			statusPedido = statusRepository.findById((long)CodeStatusPedido.CANCELADO_PROFISSIONAL.getValue()).get();		
+		}
+		
+		pedido.setStatus(statusPedido);
+		
+		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
+		
+		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
+		pedidoRepository.save(pedidoSalvo);
+		
+		return ResponseEntity.ok(pedido);
+	}
+	
+	@PutMapping("/concluir/{idPedido}")
+	public ResponseEntity<Pedido> concluirPedido(@PathVariable Long idPedido){
+		
+		Pedido pedido = pedidoRepository.findById(idPedido).get();
+		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.CONCLUIDO.getValue()).get();
+
+		pedido.setStatus(statusPedido);
+		
+		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
+		
+		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
+		pedidoRepository.save(pedidoSalvo);
+		
+		return ResponseEntity.ok(pedido);
 	}
 	
 	

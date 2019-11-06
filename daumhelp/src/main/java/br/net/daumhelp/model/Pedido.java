@@ -10,6 +10,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import br.net.daumhelp.dto.ClienteDTO;
+import br.net.daumhelp.dto.ProfissionalDTO;
+
 @Entity
 @Table(name = "tbl_pedido")
 public class Pedido {
@@ -27,7 +30,7 @@ public class Pedido {
 	private Integer horasServico;
 
 	@NotNull
-	private String data_servico;
+	private String dataServico;
 
 	private String horarioInicial;
 
@@ -48,12 +51,12 @@ public class Pedido {
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "idCliente")
-	private Cliente cliente;
+	private ClienteDTO cliente;
 
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "idProfissional")
-	private Profissional profissional;
+	private ProfissionalDTO profissional;
 
 	private String criadoEm;
 
@@ -91,12 +94,12 @@ public class Pedido {
 		this.horasServico = horasServico;
 	}
 
-	public String getData_servico() {
-		return data_servico;
+	public String getDataServico() {
+		return dataServico;
 	}
 
-	public void setData_servico(String data_servico) {
-		this.data_servico = data_servico;
+	public void setDataServico(String dataServico) {
+		this.dataServico = dataServico;
 	}
 
 	public String getHorarioInicial() {
@@ -155,19 +158,19 @@ public class Pedido {
 		this.status = status;
 	}
 
-	public Cliente getCliente() {
+	public ClienteDTO getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Cliente cliente) {
+	public void setCliente(ClienteDTO cliente) {
 		this.cliente = cliente;
 	}
 
-	public Profissional getProfissional() {
+	public ProfissionalDTO getProfissional() {
 		return profissional;
 	}
 
-	public void setProfissional(Profissional profissional) {
+	public void setProfissional(ProfissionalDTO profissional) {
 		this.profissional = profissional;
 	}
 
@@ -190,7 +193,7 @@ public class Pedido {
 	@Override
 	public String toString() {
 		return "Pedido [idPedido=" + idPedido + ", descricao=" + descricao + ", dataHora=" + dataHora
-				+ ", horasServico=" + horasServico + ", data_servico=" + data_servico + ", horarioInicial="
+				+ ", horasServico=" + horasServico + ", dataServico=" + dataServico + ", horarioInicial="
 				+ horarioInicial + ", horarioFinal=" + horarioFinal + ", foto1=" + foto1 + ", foto2=" + foto2
 				+ ", foto3=" + foto3 + ", valorServico=" + valorServico + ", status=" + status + ", cliente=" + cliente
 				+ ", profissional=" + profissional + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";

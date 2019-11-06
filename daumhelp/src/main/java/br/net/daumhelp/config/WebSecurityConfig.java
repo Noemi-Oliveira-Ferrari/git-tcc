@@ -54,10 +54,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.POST, "/profissionais/**").permitAll()
 			.antMatchers(HttpMethod.POST, "/enderecos/**").permitAll()
 			.antMatchers(HttpMethod.POST, "/pedidos/**").permitAll()
+			
 			.antMatchers(HttpMethod.GET, "/clientes/**").permitAll()
 			.antMatchers(HttpMethod.GET, "/profissionais/**").permitAll()
 			.antMatchers(HttpMethod.GET, "/enderecos/**").permitAll()
 			.antMatchers(HttpMethod.GET, "/pedidos/**").permitAll()
+			
 			.antMatchers(HttpMethod.PUT, "/pedidos/**").permitAll()
 			.anyRequest().authenticated().and()
 			.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
