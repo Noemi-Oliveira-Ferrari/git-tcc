@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextClock;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +23,7 @@ import java.util.Locale;
 import br.net.daumhelp.PerfilProfissionalBuscaActivity;
 import br.net.daumhelp.R;
 import br.net.daumhelp.menuCli.homeCli.BuscaFragmentActivity;
+import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Profissional;
 
 public class ListaAdapterBusca extends ArrayAdapter<Profissional> {
@@ -34,11 +36,13 @@ public class ListaAdapterBusca extends ArrayAdapter<Profissional> {
     private TextView tvValor;
     private TextView tvLocal;
     private Button btnVisualizar;
+    private Cliente cliente;
 
-    public ListaAdapterBusca(@NonNull Context context, ArrayList<Profissional> lista) {
+    public ListaAdapterBusca(@NonNull Context context, ArrayList<Profissional> lista, Cliente cliente) {
         super(context, 0, lista);
         this.context = context;
         this.lista = lista;
+        this.cliente = cliente;
     }
 
     @NonNull
@@ -58,9 +62,11 @@ public class ListaAdapterBusca extends ArrayAdapter<Profissional> {
             public void onClick(View v) {
                 Intent intent = new Intent(context, PerfilProfissionalBuscaActivity.class);
                 intent.putExtra("profissionalBusca", listaProfissional);
+                intent.putExtra("cliente", cliente);
                 context.startActivity(intent);
             }
         });
+        //Toast.makeText(context, "" + cliente.getCpf(), Toast.LENGTH_SHORT).show();
 
         tvNome.setText(listaProfissional.getNome().toUpperCase());
         tvServico.setText(listaProfissional.getSubcategoria().getSubcategoria());

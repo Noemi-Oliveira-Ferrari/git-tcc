@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,8 +21,17 @@ import androidx.core.content.FileProvider;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.Date;
 
+import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.model.Cliente;
+import br.net.daumhelp.model.Pedido;
+import br.net.daumhelp.model.Profissional;
+import br.net.daumhelp.recursos.Data;
 import br.net.daumhelp.recursos.Mascara;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetalhesServicoActivity extends AppCompatActivity {
 
@@ -37,6 +47,8 @@ public class DetalhesServicoActivity extends AppCompatActivity {
     private Button btnFoto3;
     private Button btnConfirmar;
     private String caminhoFoto;
+    private Profissional profissionalSolicitado;
+    private Cliente clienteLogado;
     public static final int CAMERA_REQUEST = 1;
     public static final int CAMERA_REQUEST2 = 2;
     public static final int CAMERA_REQUEST3 = 3;
@@ -69,6 +81,58 @@ public class DetalhesServicoActivity extends AppCompatActivity {
 
         Mascara maskHoraF = new Mascara("##:##", etHoraFim);
         etHoraFim.addTextChangedListener(maskHoraF);
+
+
+
+
+        Intent intent = getIntent();
+        if (intent.getSerializableExtra("profissionalSolicitado") != null && intent.getSerializableExtra("clienteLogado") != null) {
+
+
+            profissionalSolicitado = (Profissional) intent.getSerializableExtra("profissionalSolicitado");
+            clienteLogado = (Cliente) intent.getSerializableExtra("clienteLogado");
+
+
+
+
+
+            btnConfirmar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    final Pedido pedido = new Pedido();
+                    pedido.setCliente(clienteLogado);
+                    pedido.setProfissional(profissionalSolicitado);
+                    pedido.setDescricao(etDescricao.getText().toString());
+                    pedido.setHorarioInicial(etHoraInicio.getText().toString());
+                    pedido.setHorarioFinal(etHoraFim.getText().toString());
+
+
+                    Date data = Data.stringToDate(etData.getText().toString());
+                    String dataFormatada = Data.dataToString(data);
+                    pedido.setDataServico(dataFormatada);
+
+
+                    if(validar()){
+                        Call<Pedido> call = new RetroFitConfig().getPedidoService().solicitarProfissional(pedido);
+                        call.enqueue(new Callback<Pedido>() {
+                            @Override
+                            public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                                response.body();
+                                Toast.makeText(DetalhesServicoActivity.this, "foi", Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(Call<Pedido> call, Throwable t) {
+                                Log.i("Retrofit PEDIDO", t.getMessage());
+                                Toast.makeText(DetalhesServicoActivity.this, "nao foi", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+            });
+
+        }
 
 
         /*INTENT PARA ABRIR A CÂMERA*/
@@ -117,14 +181,8 @@ public class DetalhesServicoActivity extends AppCompatActivity {
             }
         });
 
-        btnConfirmar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(validar()){
-                    Toast.makeText(DetalhesServicoActivity.this, "FOI", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+
+
 
 
     }

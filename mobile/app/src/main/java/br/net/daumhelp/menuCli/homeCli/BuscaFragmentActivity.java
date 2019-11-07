@@ -71,7 +71,6 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
 
         Intent intent = getActivity().getIntent();
         if(intent.getSerializableExtra("cliente") != null) {
-
             cliente = (Cliente) intent.getSerializableExtra("cliente");
         }
 
@@ -84,7 +83,7 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
             }
         });
 
-        final ListaAdapterBusca listaProfissional = new ListaAdapterBusca(getContext(), lista);
+        final ListaAdapterBusca listaProfissional = new ListaAdapterBusca(getContext(), lista, cliente);
 
         int idMicroCliente = cliente.getEndereco().getCidade().getMicrorregiao().getIdMicro();
 
@@ -129,7 +128,7 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
             public void onResponse(Call<List<Profissional>> call, Response<List<Profissional>> response) {
 
                 lista = (ArrayList<Profissional>) response.body();
-                listaProfissional = new ListaAdapterBusca(getContext(), lista);
+                listaProfissional = new ListaAdapterBusca(getContext(), lista, cliente);
                 ListView listView = (ListView) getView().findViewById(R.id.lv_busca_pro);
 
                 listView.setAdapter(listaProfissional);

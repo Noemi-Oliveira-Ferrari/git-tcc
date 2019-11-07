@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Profissional;
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -42,6 +43,7 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
     private TextView tvNomeAlert;
     private TextView tvCategoriaAlert;
     private TextView tvQualificacoesAlert;
+    private Cliente clienteLogado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,19 +66,24 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
         alertDialog = new Dialog(this);
 
         Intent intent = getIntent();
-        if (intent.getSerializableExtra("profissionalBusca") != null) {
+        if (intent.getSerializableExtra("profissionalBusca") != null && intent.getSerializableExtra("cliente") != null) {
+
+
+            profissionalSelecionado = (Profissional) intent.getSerializableExtra("profissionalBusca");
+            clienteLogado = (Cliente) intent.getSerializableExtra("cliente");
 
 
             ibSolicitar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, DetalhesServicoActivity.class);
+                    intent.putExtra("profissionalSolicitado", profissionalSelecionado);
+                    intent.putExtra("clienteLogado", clienteLogado);
                     startActivity(intent);
-                    Toast.makeText(PerfilProfissionalBuscaActivity.this, "Agradeço sua preferência =)", Toast.LENGTH_SHORT).show();
                 }
             });
 
-            profissionalSelecionado = (Profissional) intent.getSerializableExtra("profissionalBusca");
+
             carregarDados(profissionalSelecionado);
 
             btnVisualizar.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +111,8 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
                         public void onClick(View view) {
                             Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, DetalhesServicoActivity.class);
                             startActivity(intent);
-                            Toast.makeText(PerfilProfissionalBuscaActivity.this, "Agradeço sua preferência =)", Toast.LENGTH_SHORT).show();
+
+
                         }
                     });
 
