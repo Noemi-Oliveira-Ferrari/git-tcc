@@ -86,6 +86,7 @@ public class PedidosResource {
 		pedido.setProfissional(proPedido);
 		pedido.setCliente(clientePedido);
 		pedido.setStatus(statusPedido);
+		System.out.println(idPedido);
 		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
 		
 		pedido.setValorServico(pedido.getHorasServico()*pedido.getProfissional().getValorHora());
@@ -128,14 +129,20 @@ public class PedidosResource {
 		return ResponseEntity.ok(pedido);
 	}
 	
-	@PutMapping("/cancelar/{usuario}/{idPedido}")
+	@PutMapping("/{usuario}/cancelar/{idPedido}")
 	public ResponseEntity<Pedido> proClientePedido(@PathVariable String usuario, @PathVariable Long idPedido){
 		
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
 		StatusPedido statusPedido = pedido.getStatus();
 		
 		if(usuario.equals("cliente")) {
+			ProfissionalDTO proPedido = proDTORepository.findById(pedido.getProfissional().getIdProfissional()).get();
+			
 			statusPedido = statusRepository.findById((long)CodeStatusPedido.CANCELADO_CLIENTE.getValue()).get();
+			
+			pedido.setMultaCliente(proPedido.getValorHora()*0.2);	
+			
+			 
 		}else if(usuario.equals("profissional")){
 			statusPedido = statusRepository.findById((long)CodeStatusPedido.CANCELADO_PROFISSIONAL.getValue()).get();		
 		}

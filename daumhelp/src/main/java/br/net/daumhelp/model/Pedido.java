@@ -44,6 +44,10 @@ public class Pedido {
 
 	private Double valorServico;
 
+	private Double multaCliente;
+
+	private String finalizado;
+
 	@ManyToOne
 	@JoinColumn(name = "idStatusPedido")
 	private StatusPedido status;
@@ -150,6 +154,22 @@ public class Pedido {
 		this.valorServico = valorServico;
 	}
 
+	public Double getMultaCliente() {
+		return multaCliente;
+	}
+
+	public void setMultaCliente(Double multaCliente) {
+		this.multaCliente = multaCliente;
+	}
+
+	public String getFinalizado() {
+		return finalizado;
+	}
+
+	public void setFinalizado(String finalizado) {
+		this.finalizado = finalizado;
+	}
+
 	public StatusPedido getStatus() {
 		return status;
 	}
@@ -195,8 +215,9 @@ public class Pedido {
 		return "Pedido [idPedido=" + idPedido + ", descricao=" + descricao + ", dataHora=" + dataHora
 				+ ", horasServico=" + horasServico + ", dataServico=" + dataServico + ", horarioInicial="
 				+ horarioInicial + ", horarioFinal=" + horarioFinal + ", foto1=" + foto1 + ", foto2=" + foto2
-				+ ", foto3=" + foto3 + ", valorServico=" + valorServico + ", status=" + status + ", cliente=" + cliente
-				+ ", profissional=" + profissional + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
+				+ ", foto3=" + foto3 + ", valorServico=" + valorServico + ", multaCliente=" + multaCliente
+				+ ", finalizado=" + finalizado + ", status=" + status + ", cliente=" + cliente + ", profissional="
+				+ profissional + ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
 
 }
