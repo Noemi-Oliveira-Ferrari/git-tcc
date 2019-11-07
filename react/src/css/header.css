@@ -1,6 +1,13 @@
 
 @media screen and (min-device-width:1000px){
-header{
+
+.header-resp{
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.header-desktop{
     width: 100%;
     height: 95px;
     background-color: #f5f5f5;
@@ -8,12 +15,10 @@ header{
     z-index: 990;
 }
 
-
-
 .caixa-header{
     width: 100%;
     height: 60px;
-    background-color: #c34343;
+    background-color: #ffffff;
     box-sizing: border-box;
 }
 
@@ -196,7 +201,7 @@ header{
 }
 
 
-@media screen and (max-device-width:880px){
+/* @media screen and (max-device-width:880px){
     header{
         width: 100%;
         height: 50px;
@@ -204,4 +209,4 @@ header{
         position: fixed;
         z-index: 990;
     }
-}
+} */
