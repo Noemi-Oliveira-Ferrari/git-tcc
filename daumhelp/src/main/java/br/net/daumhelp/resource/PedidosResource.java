@@ -1,6 +1,7 @@
 package br.net.daumhelp.resource;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,13 +16,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.net.daumhelp.dto.ClienteDTO;
 import br.net.daumhelp.dto.ProfissionalDTO;
 import br.net.daumhelp.dto.repository.ClienteDTORepository;
 import br.net.daumhelp.dto.repository.ProfissionalDTORepository;
+import br.net.daumhelp.files.ImgUpload;
 import br.net.daumhelp.model.CodeStatusPedido;
 import br.net.daumhelp.model.Pedido;
 import br.net.daumhelp.model.StatusPedido;
@@ -46,30 +50,55 @@ public class PedidosResource {
 	@Autowired
 	private StatusPedidosRepository statusRepository;
 
-//	Long status;
+	private ImgUpload upload = new ImgUpload();
 	
 	@GetMapping
 	public List<Pedido> getPedidos() {
 		return pedidoRepository.findAll();
 	}
 
+//	@PostMapping("/solicitar")
+//	public ResponseEntity<Pedido> solicitarPedido(
+//			@RequestBody Pedido pedido,
+//			HttpServletResponse response){
+//
+//		pedido.setValorServico(0.0);
+//		
+//		Pedido pedidoSalvo = pedidoRepository.save(pedido);
+//			
+//		URI uri = ServletUriComponentsBuilder
+//				.fromCurrentRequestUri()
+//				.buildAndExpand(pedido.getIdPedido())
+//				.toUri();
+//		response.addHeader("Location", uri.toASCIIString());
+//		 
+//		return ResponseEntity.created(uri).body(pedido);
+//	}
 	@PostMapping("/solicitar")
 	public ResponseEntity<Pedido> solicitarPedido(
+			@RequestParam List<MultipartFile> imgs,
 			@RequestBody Pedido pedido,
 			HttpServletResponse response){
-
+		
 		pedido.setValorServico(0.0);
 		
 		Pedido pedidoSalvo = pedidoRepository.save(pedido);
 		
-		 
-		 URI uri = ServletUriComponentsBuilder
-				 .fromCurrentRequestUri()
-				 .buildAndExpand(pedido.getIdPedido())
-				 .toUri();
-		 response.addHeader("Location", uri.toASCIIString());
-		 
-		 return ResponseEntity.created(uri).body(pedido);
+		ArrayList<String> caminhosImgs = upload.multiUploadPedido(imgs, pedido.getIdPedido());
+		
+		pedido.setFoto1(caminhosImgs.get(0));
+		pedido.setFoto2(caminhosImgs.get(1));
+		pedido.setFoto3(caminhosImgs.get(2));
+		
+		pedidoRepository.save(pedido);
+		
+		URI uri = ServletUriComponentsBuilder
+				.fromCurrentRequestUri()
+				.buildAndExpand(pedido.getIdPedido())
+				.toUri();
+		response.addHeader("Location", uri.toASCIIString());
+		
+		return ResponseEntity.created(uri).body(pedido);
 	}
 	
 

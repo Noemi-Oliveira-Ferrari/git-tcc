@@ -24,6 +24,9 @@ public class Disco {
 	@Value("${pro.disco.diretorio-imgs}")
 	private String dirImgPro;
 	
+	@Value("${pedido.disco.diretorio-imgs}")
+	private String dirImgPedido;
+	
 	
 	public String salvarFotoCliente(MultipartFile imgCliente, Long idCliente) {
 		return this.salvar(this.dirImgClientes, imgCliente, idCliente, "cli");
@@ -32,6 +35,10 @@ public class Disco {
 	
 	public String salvarFotoPro(MultipartFile imgPro, Long idPro) {
 		return this.salvar(this.dirImgPro, imgPro, idPro, "pro");
+	}
+	
+	public String salvarFotoPedido(MultipartFile imgPro, Long idPedido) {
+		return this.salvar(this.dirImgPro, imgPro, idPedido, "pedido");
 	}
 	
 	public String salvar(String diretorio, MultipartFile img, Long id, String tipoUsr) {		
