@@ -1,0 +1,506 @@
+
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px)
+{
+	.capa-perfil-pro
+	{
+		width: 100%;
+		height: 300px;
+		position:relative;
+		border-bottom: 3px solid #fff;
+		background-position:center;
+		/* background-image: url("https://i.ytimg.com/vi/TN2fJ24pKXs/maxresdefault.jpg"); */
+		background-image: url("../img/imagem.png");
+		/* background-color:rgba(58, 153, 148, 0.493); */
+		background-size:cover;
+		background-attachment: fixed;
+	}
+
+
+	.caixa-conteudo-perfil-pro
+	{
+		width: 1300px;
+		min-height: 1000px;
+		/* overflow: auto; */
+		/* background-color: #57bc90; */
+		margin: auto;
+	}
+
+	.avatar
+	{
+		width: 250px;
+		height: 250px;
+		z-index:1;
+		position: relative;
+		margin: auto;
+		margin-top: -150px;
+		border-radius: 100%;
+		border: 4px solid rgb(250, 243, 243);
+		/* background: url("http://meredithcnn.images.worldnow.com/images/10389401_G.jpg"); */
+		/* background-color: #969FAA; */
+		background-image: url(../img/imagem01.png);
+		background-position: center;
+		background-size: cover;
+		background-position: center;
+	}
+
+	.caixa-perfil
+	{
+		width: 100%;
+		height: 600px;
+		margin: auto;
+		background-color: rgb(255, 255, 255);
+		font-family: 'Lexend Deca';
+		text-align: center;
+		color: rgb(31, 30, 30);
+		font-size: 18px;
+		margin-bottom: 50px;
+		border-radius: 10px;
+		background-image: url(../img/fundo03.jpg);
+	}
+
+	.nome-cliente
+	{
+		width: inherit;
+		height: 100px;
+		/* background-color: violet; */
+		font-family: 'Lexend Deca';
+		/* margin-bottom: 51px; */
+		margin-top: 15px;
+        color: #84848D;     
+
+
+	}
+
+	.caixa-informacoes-basicas
+	{
+		width: inherit;
+		height: 200px;
+		background-color: chocolate;
+		margin: auto;
+	}
+
+	.caixa-info
+	{
+		width: 1000px;
+		height: 80px;
+		clear: both;
+		/* background-color:lightblue; */
+		margin: auto;
+        color: #84848D;     
+
+	}
+
+	.caixa-info1
+	{
+		width: 500px;
+		height: 30px;
+		float: left;
+		margin-right: 10px;
+		/* background-color: lawngreen; */
+		margin: auto;
+		font-family: 'Lexend Deca';
+		font-size: 25px;
+		letter-spacing: 2px;
+	}
+
+	.caixa-info1:hover
+	{
+		color: #57bc90;
+		transition: 0.8s;
+		/* text-decoration: underline; */
+	}
+
+	.conteudo-pro
+	{
+		width: 1300px;
+		height: 700px;
+		/* background-color: #c6c6c6; */
+		margin: auto;
+	}
+
+	.caixa-informacoes1
+	{
+		width: 785px;
+		height: inherit;
+		/* background-color: rgb(127, 24, 24); */
+		float: left;
+		border-radius: 10px;
+		margin-right: 5px;
+	}
+
+	.text-dados
+	{
+		width: 200px;
+		height: 50px;
+		font-family: 'Lexend Deca';
+		/* background-color: pink; */
+		margin-right: 500px;
+        color: #84848D;     
+
+	}
+
+	.text-dados-editar
+	{
+		width: 200px;
+		width: 50px;
+		text-align: right;
+		/* background-color: plum; */
+		font-family: 'Lexend Deca';
+		font-size: 18px;
+        color: #84848D;     
+
+	}
+
+	.text-dados-editar:hover
+	{
+		/* width: inherit; */
+		/* height: auto; */
+		text-decoration: underline;
+		cursor: pointer;
+		color: #57BC90;
+		transition: 0.3s;
+	}
+
+	.caixa-informacoes2
+	{
+		width: 785px;
+		height: 600px;
+		background-color: rgb(235, 235, 235);
+		float: left;
+		border-radius: 10px;
+		margin-right: 20px
+	}
+
+	/* Formulario*/
+	/*----- Conteudo -----*/
+	.container-conteudo
+	{
+		max-width: 1200px;
+		min-height: 700px;
+		height: auto;
+		overflow: hidden;
+		margin: auto;
+		padding-top: 50px;
+		padding-bottom: 50px;
+		box-sizing: border-box;
+		/* background-color: plum; */
+	}
+
+	.card-formulario-pessoal
+	{
+		height: auto;
+		overflow: hidden;
+		border-radius: 10px;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: center;
+		align-items:center;
+		flex-wrap: wrap;
+		margin-bottom: 40px;
+		padding-bottom: 30px;
+	}
+
+	.container-flex
+	{  
+		display: flex;
+		justify-content: center;
+	}
+
+	.container-servico-pro
+	{
+		width: 350px;
+		height: 260px;
+		/* background-color: #984366; */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.campos-dados
+	{
+		width: 750px;
+		height: 450px;
+		/* background-color: violet; */
+		float: left;
+	}
+
+	#txt-nome,#txt-dataNasc,#txt-cpfCnpj,#txt-email,#txt-senha,#txt-confirmar-senha,#txt-cep,#txt-logradouro,#txt-bairro,#txt-cidade,#txt-uf,#txt-categoria,#txt-subcat,#txt-valor-hora
+	{
+		height: 50px;
+		font-family: "manjari regular";
+		font-size: 18px;
+		box-sizing: border-box;
+		padding-top: 10px;
+		background-color: rgba(143, 197, 173, 0.185);
+
+	}
+
+	#txt-uf
+	{
+		text-transform: uppercase;
+		text-align: center;
+	}
+
+	.container-nome-dataNasc,
+	.container-cpfCnpj-email,
+	.container-senha,
+	.container-cep-logradouro,
+	.container-bairro-cidade-uf,
+	.container-categoria,
+	.container-subcat,
+	.container-valor-hora
+	{
+		width: inherit;
+		height: fit-content;
+		/* background-color: rgb(219, 231, 110); */
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		margin-bottom: 2px;
+	}
+
+	.form-input
+	{
+		margin-top: -25px;
+	}
+
+	.caixa-nome, .caixa-dataNasc,
+	.caixa-cpfCnpj, .caixa-email,
+	.caixa-senha, .caixa-confirmar-senha,
+	.caixa-cep, .caixa-logradouro,
+	.caixa-bairro, .caixa-cidade,
+	.caixa-uf
+	{
+		height: 90px;
+		/* background-color: rgb(57, 207, 115); */
+		display: flex;
+		justify-content: start;
+		flex-wrap: wrap;
+	}
+
+	.caixa-nome{
+		width: 365px;
+	}
+
+	.caixa-dataNasc{
+		width: 365px;
+	}
+
+	.caixa-cpfCnpj{
+		width: 275px;
+	}
+
+	.caixa-email{
+		width: 455px;
+	}
+
+	.caixa-senha{
+		width: 365px;
+	}
+
+	.caixa-confirmar-senha {
+		width: 365px;
+	}
+
+	.caixa-cep{
+		max-width: 265px;
+	}
+
+	.caixa-logradouro{
+		max-width: 465px;
+	}
+
+	.caixa-bairro{
+		width: 310px;
+	}
+
+	.caixa-cidade{
+		width: 350px;
+	}
+
+	.caixa-uf{
+		width: 60px;
+	}
+
+	.campos-servicos{
+		width: 800px;
+		height: 300px;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		/* background-color: #f7dede; */
+	}
+
+	.caixa-categoria,
+	.caixa-subcat,
+	.caixa-valor-hora
+	{
+		width: 330px;
+		height: 80px;
+		display: flex;
+		align-items: center;
+		justify-content: start;
+		flex-wrap: wrap;
+		/* background-color: #57bc90; */
+	}
+
+	.container-qualificacoes
+	{
+		width: inherit;
+		height: inherit;
+		/* background-color: #57bc90; */
+	}
+
+	.caixa-qualificacoes
+	{        
+		width: inherit;
+		height: inherit;
+		justify-content: space-around;
+		box-sizing: border-box;
+		padding-top: 5px;
+		display: flex;
+		align-items: flex-start;
+		justify-content: start;
+		flex-wrap: wrap;
+	}
+
+	#txt-qualificacoes
+	{
+		height: 225px;
+		resize: none;
+		overflow: auto;
+		font-size: 22px;
+		font-family: "manjari regular";
+		background-color: #cce5e9;
+	}
+
+	.caixa-comentarios
+	{
+		width: 480px;
+		height: 500px;
+		background-color: rgb(255, 255, 255);
+		float: left;
+		border-radius: 8px;
+		padding-top: 20px;
+		box-sizing: border-box;
+		margin-left: 30px;
+        color: #84848D;     
+
+	}
+
+	.title-avaliacao
+	{
+		text-align: center;
+		font-family: 'Lexend Deca';
+		/* color: #0000005d; */
+        color: #84848D;     
+
+		font-size: 28px;
+		margin-bottom: 35px;
+	}
+
+	.caixa-comentario-usuario
+	{
+		width: 430px;
+		height: 170px;
+		background-color: rgba(194, 194, 194, 0.43);
+		margin: auto;
+		border-radius: 10px;
+		margin-bottom: 20px;
+	}
+
+	.usuario
+	{
+		width: 130px;
+		height: inherit;
+		background-color: transparent;
+		float: left;
+		border-radius: 10px 0px 0px 10px;
+		padding-top: 15px;
+		box-sizing: border-box;
+	}
+
+	.circulo-usuario
+	{
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background-color: #ffffff;
+		margin: auto;
+		margin-top: 5px;
+	}
+
+	.nome-usuario
+	{
+		text-align: center;
+		margin-bottom: 30px;
+		box-sizing: border-box;
+		font-size: 20px;
+		font-family: 'Lexend Deca';
+		padding-top: 10px;
+		box-sizing: border-box;
+	}
+
+	.dados-usuario
+	{
+		width: 300px;
+		height: inherit;
+		background-color: transparent;
+		float: left;
+	}
+
+	.titulo-comentario
+	{
+		box-sizing: border-box;
+		padding-left: 15px;
+		text-align: left;
+		margin-top: 15px;
+		color: #57BC90;
+	}
+
+	.caixa-star
+	{
+		width: 190px;
+		height: 25px;
+		/* background-color:#969FAA; */
+		margin-left: 15px;
+		margin-bottom: 5px;
+	}
+
+	/*----- Avaliação/Estrelas -----*/
+	.estrelas input[type=radio] {
+		display: none;
+	}
+	.estrelas label i.fa{
+		font-size: 1.5em
+	}
+	.estrelas label i.fa:before {
+		content:'\f005';
+		color: #77C9D4;
+	}
+	.estrelas input[type=radio]:checked ~ label i.fa:before {
+		color: #CCC;
+		/* color: #FC0; */
+	}
+
+	.texto-comentario
+	{
+		font-family: 'Lexend Deca';
+		font-size: 15px;
+		box-sizing: border-box;
+		padding-left: 15px;
+		padding-right: 30px;
+		text-align: justify;
+		color: rgb(77, 77, 77);
+	}
+	
+}
+
+
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:880px)
+{
+
+}

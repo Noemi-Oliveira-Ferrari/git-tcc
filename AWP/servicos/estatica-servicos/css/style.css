@@ -1,0 +1,392 @@
+/*----- Padronização -----*/
+body
+{
+	width:100%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	margin:0;
+	padding:0;
+}
+
+html
+{
+	height: 100%;
+}
+
+#all
+{
+	flex: 1;
+}
+
+
+/*----- Estilização -----*/
+@font-face
+{
+    font-family: 'Lexend Deca';
+    src: url("../fontes/LexendDeca-Regular.ttf");
+}
+
+@font-face
+{
+	font-family: "manjari regular";
+    src: url("../fontes/Manjari/Manjari-Regular.ttf");
+}
+
+
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px)
+{
+	.capa-perfil-pro
+	{
+		width: 100%;
+		height: 300px;
+		position:relative;
+		border-bottom: 3px solid #fff;
+		background-position:center;
+		/* background-image: url("https://i.ytimg.com/vi/TN2fJ24pKXs/maxresdefault.jpg"); */
+		background-image: url("../imagens/imagem.png");
+		/* background-color:rgba(58, 153, 148, 0.493); */
+		background-size:cover;
+		background-attachment: fixed;
+	}
+
+	.caixa-perfil
+	{
+		width: 100%;
+		height: 600px;
+		margin: auto;
+		/* background-color: #ffffff; */
+		background-image: url(../imagens/fundo03.jpg);
+		background-position: center;
+		background-size: cover;
+		background-position: center;
+		font-family: 'Lexend Deca';
+		text-align: center;
+		color: rgb(31, 30, 30);
+		font-size: 18px;
+	}
+
+	.avatar
+	{
+		width: 250px;
+		height: 250px;
+		z-index:1;
+		position: relative;
+		margin: auto;
+		margin-top: -150px;
+		border-radius: 100%;
+		border: 4px solid rgba(255, 255, 255, 1);
+		/* background: url("http://meredithcnn.images.worldnow.com/images/10389401_G.jpg"); */
+		/* background-color: #969FAA; */
+		background-image: url(../imagens/imagem01.png);
+		background-position: center;
+		background-size: cover;
+		background-position: center;
+	}
+
+	.nome-cliente
+	{
+		font-family: 'Lexend Deca';
+		margin-bottom: 51px;
+		margin-top: 15px;
+	}
+
+	.caixa-informacoes-basicas
+	{
+		width: 1200px;
+		height: 145px;
+		/* background-color: chocolate; */
+		margin: auto;
+		color: #47525E;
+		font-family: 'Lexend Deca';
+		font-size: 1.5em;
+		letter-spacing: 2px;
+	}
+
+	.linha-perfil
+	{
+		width: 700px;
+		height: 5px;
+		color: #000000;
+		background-color: #000000;
+		border-radius: 8px;
+	}
+	
+	.caixa-conteudo-perfil-pro
+	{
+		width: 1300px;
+		min-height: 880px;
+		/* overflow: auto; */
+		/* background-color: #57bc90; */
+		margin: auto;
+		margin-top: 20px;
+	}
+
+	.conteudo-pro
+	{
+		width: 1415px;
+		height: 700px;
+		/* background-color: #c6c6c6; */
+		margin: auto;
+		box-sizing: border-box;
+		padding-top: 30px;
+	}
+
+	.caixa-informacoes-pendentes
+	{
+		width: 635px;
+		height: inherit;
+		/* background-color: rgb(127, 24, 24); */
+		float: left;
+		border-radius: 10px;
+		margin-right: 5px;
+		margin-bottom: 20px;
+	}
+
+	.caixa-conteudo-informacoes-pendentes
+	{
+		width: 635px;
+		height: 690px;
+		background-color: rgb(235, 235, 235);
+		float: left;
+		border-radius: 10px;
+		margin-right: 20px;
+		padding-top: 50px;
+		box-sizing: border-box;
+		overflow: auto;
+	}
+
+	.text-dados
+	{
+		width: inherit;
+		height: 53px;
+		font-family: 'Lexend Deca';
+		padding-left: 56px;
+		box-sizing: border-box;
+		color: #47525E;
+		/* background-color: antiquewhite;*/
+	}
+
+	.caixa-comentario-usuario
+	{
+		width: 520px;
+		min-height: 270px;
+		height: auto;
+		background-color: rgba(194, 194, 194, 0.43);
+		margin: auto;
+		border-radius: 10px;
+		margin-bottom: 40px;
+		overflow-y: auto;
+	}
+
+	.caixa-servico-pendente
+	{
+		width: 520px;
+		height: 275px;
+		background-color: rgba(194, 194, 194, 0.43);
+		border-radius: 8px;
+		padding-top: 12px;
+		box-sizing: border-box;
+		margin: auto;
+		margin-bottom: 40px;
+	}
+
+	.title-pendente
+	{
+		text-align: center;
+		font-family: 'Lexend Deca';
+		color: #57BC90;
+		font-size: 1.8em;
+	}
+
+	.linha-servico-pendente
+	{
+		width: 290px;
+		height: 1px;
+		color: #57BC90;
+		background-color: #57BC90;
+		margin-top: 0px;
+	}
+
+	.text-pendente
+	{
+		text-align: justify;
+		font-family: 'Lexend Deca';
+		color: #47525E;
+		box-sizing: border-box;
+		font-size: 1.1em;
+		display: flex;
+		justify-content: center;
+		padding-right: 30px;
+		padding-left: 30px;
+	}
+
+	.caixa-link-pendente
+	{
+		width: inherit;
+		height: 50px;
+		/* background-color: khaki; */
+		display: flex;
+		justify-content: flex-end;
+		box-sizing: border-box;
+		padding-right: 28px;
+	}
+
+	.link-pendente
+	{
+		width: 200px;
+		height: 45px;
+		background-color:#57BC90;
+		border: 0px;
+		text-align: center;
+		color: #ffffff;
+		font-family: 'Lexend Deca';
+		font-size: 1.1em;
+		border-radius: 5px;
+		margin-top: 28px;
+	}
+
+	.link-pendente:hover
+	{
+		box-shadow: 5px 5px 10px#013f38;
+		transition: 0.8s;
+	}
+
+	.caixa-informacoes-concluidos
+	{
+		width: 630px;
+		height: inherit;
+		/* background-color: rgb(127, 24, 24); */
+		float: left;
+		border-radius: 10px;
+		margin-right: 5px;
+		margin-left: 30px;
+	}
+
+	.caixa-comentarios
+	{
+		width: 635px;
+		height: 690px;
+		background-color: rgb(235, 235, 235);
+		float: left;
+		border-radius: 8px;
+		padding-top: 50px;
+		box-sizing: border-box;
+		overflow-y: auto;
+	}
+
+	.dados-usuario
+	{
+		width: inherit;
+		height: inherit;
+		background-color: transparent;
+		float: left;
+	}
+
+	.titulo-comentario
+	{
+		box-sizing: border-box;
+		padding-left: 15px;
+		text-align: center;
+		margin-top: 15px;
+		color: #57BC90;
+	}
+
+	.linha-concluidos
+	{
+		width: 250px;
+		height: 1px;
+		color: #57BC90;
+		background-color: #57BC90;
+		border-radius: 5px;
+		margin-top: 0px;
+	
+	}
+
+	.caixa-star
+	{
+		width: 190px;
+		height: 25px;
+		/* background-color:#969FAA; */
+		margin-left: 15px;
+		margin-bottom: 5px;
+		margin: auto;
+	}
+
+	/*----- Avaliação/Estrelas -----*/
+	.estrelas
+	{
+		margin: auto;
+		text-align: center;
+	}
+
+	.estrelas input[type=radio] {
+		display: none;
+	}
+	.estrelas label i.fa{
+		font-size: 1.5em
+	}
+	.estrelas label i.fa:before {
+		content:'\f005';
+		color: #77C9D4;
+	}
+	.estrelas input[type=radio]:checked ~ label i.fa:before {
+		color: #CCC;
+		/* color: #FC0; */
+	}
+
+	.texto-comentario
+	{
+		font-family: 'Lexend Deca';
+		font-size: 1.1em;
+		box-sizing: border-box;
+		padding-left: 30px;
+		padding-right: 30px;
+		padding-top: 8px;
+		text-align: justify;
+		color: rgb(77, 77, 77);
+	}
+
+	.caixa-btn
+	{
+		width: inherit;
+		/* background-color: khaki; */
+		display: flex;
+		justify-content: flex-end;
+		box-sizing: border-box;
+		padding-right: 28px;
+	}
+
+	.btn-ver-mais
+	{
+		width: 200px;
+		height: 45px;
+		background-color:#57BC90;
+		border: 0px;
+		text-align: center;
+		color: #ffffff;
+		font-family: 'Lexend Deca';
+		font-size: 1.1em;
+		border-radius: 5px;
+	}
+
+	.btn-ver-mais:hover
+	{
+		box-shadow: 5px 5px 10px#013f38;
+		transition: 0.8s;
+	}
+
+	
+}
+
+
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:880px)
+{
+
+}
