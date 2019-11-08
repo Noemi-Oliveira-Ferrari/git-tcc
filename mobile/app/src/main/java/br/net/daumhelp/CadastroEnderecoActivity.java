@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.model.EnderecoViaCep;
 import br.net.daumhelp.recursos.Mascara;
 import br.net.daumhelp.model.Endereco;
 import retrofit2.Call;
@@ -25,10 +26,12 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
     private EditText etUf;
     private EditText etLogradouro;
     private EditText etBairro;
+    private EditText etNumero;
     private EditText etCidade;
     private Button btnCep;
     private Endereco endereco;
     private Long idCidade;
+    private EnderecoViaCep enderecoViaCep;
 
 
     @Override
@@ -44,6 +47,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
         etBairro = findViewById(R.id.et_bairro);
         etCidade = findViewById(R.id.et_cidade);
         btnCep = findViewById(R.id.btn_gerar_cep);
+        etNumero = findViewById(R.id.et_numero);
 
         btnProximo.setVisibility(View.INVISIBLE);
 
@@ -65,14 +69,14 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                 /*VALIDAÇÃO DO TAMANHO DO CEP*/
                 if(etCep.length() == 8 || etCep.length() == 9){
                     if(validar() == true) {
-                        Call<Endereco> call = new RetroFitConfig().getEnderecoService().buscarEndereco(cep);
-                        call.enqueue(new Callback<Endereco>() {
+                        Call<EnderecoViaCep> call = new RetroFitConfig().getEnderecoService().buscarEnderecoViaCep(cep);
+                        call.enqueue(new Callback<EnderecoViaCep>() {
                             @Override
-                            public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+                            public void onResponse(Call<EnderecoViaCep> call, Response<EnderecoViaCep> response) {
 
 
                                 if(response.code() == 404){
-                                    etCep.setError("CPF inválido");
+                                    etCep.setError("CEP inválido");
                                 }else{
                                     carregarEndereco(response.body());
                                     btnProximo.setVisibility(View.VISIBLE);
@@ -80,7 +84,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                             }
 
                             @Override
-                            public void onFailure(Call<Endereco> call, Throwable t) {
+                            public void onFailure(Call<EnderecoViaCep> call, Throwable t) {
 
                                 Log.i("Retrofit Endereço" + call, t.getMessage());
                                 etCep.setError("CEP inválido");
@@ -102,6 +106,12 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
         if(intent.getSerializableExtra("dados_pessoais") != null){
             final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais");
 
+            if(listaDados[6].equals("p")){
+                etNumero.setVisibility(View.GONE);
+            }else{
+                etNumero.setVisibility(View.VISIBLE);
+            }
+
             btnProximo.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -114,9 +124,11 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                         String logradouro = etLogradouro.getText().toString();
                         String bairro = etBairro.getText().toString();
                         String cidade = etCidade.getText().toString();
+                        String numero = etNumero.getText().toString();
+
 
                         /*ARRAY DO ENDEREÇO PARA SER LEVADO PRA PRÓXIMA ACTIVITY*/
-                        String[] listaEndereco = new String[]{cep, logradouro, bairro, idCidade.toString()};
+                        String[] listaEndereco = new String[]{cep, logradouro, bairro, idCidade.toString(), numero};
 
                         if(listaDados[6].equals("p")){
                             Intent intent = new Intent(CadastroEnderecoActivity.this, CadastroServicoActivity.class);
@@ -159,13 +171,13 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
     }
 
     /*MÉTODO DE CARREGAR ENDEREÇO*/
-    private void carregarEndereco(Endereco endereco){
-        this.endereco = endereco;
-        etUf.setText(endereco.getCidade().getMicrorregiao().getUf().toString());
-        etBairro.setText(endereco.getBairro());
-        etLogradouro.setText(endereco.getLogradouro());
-        etCidade.setText(endereco.getCidade().getCidade().toString());
-        idCidade = endereco.getCidade().getIdCidade();
+    private void carregarEndereco(EnderecoViaCep enderecoViaCep){
+        this.enderecoViaCep = enderecoViaCep;
+        etUf.setText(enderecoViaCep.getUf());
+        etBairro.setText(enderecoViaCep.getBairro());
+        etLogradouro.setText(enderecoViaCep.getLogradouro());
+        etCidade.setText(enderecoViaCep.getLocalidade());
+        idCidade = enderecoViaCep.getIbge();
 
     }
 

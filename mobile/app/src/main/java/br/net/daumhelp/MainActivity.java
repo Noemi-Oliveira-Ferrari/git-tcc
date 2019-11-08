@@ -53,8 +53,9 @@ public class MainActivity extends AppCompatActivity {
         cvSucesso.setVisibility(View.INVISIBLE);
         cvOpacity.setVisibility(View.INVISIBLE);
 
-        etEmail.setText("noemi@noemi.com");
+        //etEmail.setText("noemi@noemi.comc");
         etSenha.setText("123123123");
+
 
         /*VERIFICAÇÃO DA CONEXÃO*/
         final ConnectivityManager conmag = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -129,9 +130,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Profissional> call, Response<Profissional> response) {
                         response.body();
-                        //Toast.makeText(MainActivity.this, "PROFISSIONAL LOGADO" + response.body().getValorHora(), Toast.LENGTH_SHORT).show();
 
-                        Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                        Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
                         intent.putExtra("profissional", response.body());
                         startActivity(intent);
                     }
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
                                 response.body();
-                                Intent intent = new Intent(MainActivity.this, MenuClienteActivity.class);
+                                Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
                                 intent.putExtra("cliente", response.body());
                                 startActivity(intent);
                             }

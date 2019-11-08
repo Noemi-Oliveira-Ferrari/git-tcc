@@ -36,7 +36,6 @@ public class MenuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getSerializableExtra("profissional") != null) {
             Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
-            //Toast.makeText(this, "OI " + profissional.getNome(), Toast.LENGTH_SHORT).show();
         }
 
 

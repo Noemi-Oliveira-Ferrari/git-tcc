@@ -108,7 +108,7 @@
         android:ems="10"
         android:hint="* * * *"
         android:maxLength="4"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/tv_reenviar"
         app:layout_constraintEnd_toEndOf="parent"

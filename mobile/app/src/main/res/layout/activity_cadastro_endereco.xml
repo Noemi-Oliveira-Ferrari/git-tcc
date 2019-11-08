@@ -6,6 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <EditText
+        android:id="@+id/et_numero"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Número"
+        android:drawableLeft="@drawable/ic_numero"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_cep" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
@@ -86,7 +101,7 @@
 
     <EditText
         android:id="@+id/et_uf"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="15dp"
@@ -105,9 +120,9 @@
         android:id="@+id/et_logradouro"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="36dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="36dp"
         android:drawableLeft="@drawable/ic_logradouro"
         android:ems="10"
         android:hint="Logradouro"
@@ -115,7 +130,7 @@
         android:textColor="@android:color/background_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_cep" />
+        app:layout_constraintTop_toBottomOf="@+id/et_numero" />
 
     <EditText
         android:id="@+id/et_bairro"

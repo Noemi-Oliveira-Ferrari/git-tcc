@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <EditText
         android:id="@+id/et_valor_hora"
@@ -13,7 +13,6 @@
         android:layout_height="46dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:drawableLeft="@drawable/ic_valor"
         android:ems="10"
         android:inputType="number"
@@ -27,7 +26,7 @@
         android:layout_height="0dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="Valor/Hora:"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -113,7 +112,7 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="115dp"
+        android:layout_marginTop="100dp"
         android:elevation="3dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -143,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="28dp"
+                android:layout_marginTop="15dp"
                 android:text="Em qual categoria o seu serviço se encaixa:"
                 android:textSize="14dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -169,7 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:text="Escolha o serviço que prestará:"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.022"
@@ -201,7 +200,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cv_servico">

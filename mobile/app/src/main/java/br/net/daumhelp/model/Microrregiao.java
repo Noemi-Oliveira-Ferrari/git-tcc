@@ -10,6 +10,16 @@ public class Microrregiao implements Serializable {
 
     private UF uf;
 
+    private int idMicro;
+
+    public int getIdMicro() {
+        return idMicro;
+    }
+
+    public void setIdMicro(int idMicro) {
+        this.idMicro = idMicro;
+    }
+
     public UF getUf() {
         return uf;
     }
@@ -22,6 +32,7 @@ public class Microrregiao implements Serializable {
     public String toString() {
         return "Microrregiao{" +
                 "uf=" + uf +
+                ", idMicro=" + idMicro +
                 '}';
     }
 }

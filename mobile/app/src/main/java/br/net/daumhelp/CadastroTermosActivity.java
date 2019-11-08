@@ -135,6 +135,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
                     Cidade cidade = new Cidade();
                     cidade.setIdCidade(Long.parseLong(listaEndereco[3]));
                     endereco.setCidade(cidade);
+                    endereco.setNumero(Integer.parseInt(listaEndereco[4]));
 
                     btnProximo.setOnClickListener(new View.OnClickListener() {
                         @Override

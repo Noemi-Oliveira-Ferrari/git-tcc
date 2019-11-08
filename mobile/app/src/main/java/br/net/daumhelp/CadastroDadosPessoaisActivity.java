@@ -53,10 +53,10 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
         Mascara maskData = new Mascara("##/##/####", etDataNasc);
         etDataNasc.addTextChangedListener(maskData);
 
-        etNome.setText("pedro");
+        /*etNome.setText("pedro");
         etDataNasc.setText("03/10/2000");
         etCpf.setText("503.356.118-93");
-        etEmail.setText("noemi@noemi");
+        etEmail.setText("noemi@noemi");*/
         etSenha.setText("123123123");
         etConfirmacao.setText("123123123");
 

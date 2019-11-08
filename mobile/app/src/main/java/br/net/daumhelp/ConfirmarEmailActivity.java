@@ -43,9 +43,6 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
         tvReenviar = findViewById(R.id.tv_reenviar);
         tvTimer = findViewById(R.id.tv_timer);
 
-
-        etCodigo.setText("1234");
-
         Intent intent = getIntent();
         if(intent.getSerializableExtra("dados_pessoais") != null){
             final String[] listaDados = (String[]) intent.getSerializableExtra("dados_pessoais");
@@ -122,12 +119,12 @@ public class ConfirmarEmailActivity extends AppCompatActivity {
             btnConfirmar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(etCodigo.getText().toString().equals("1234")){
-
+                    if(etCodigo.getText().toString().equals(listaDados[5])){
 
                         Intent intent = new Intent(ConfirmarEmailActivity.this, CadastroEnderecoActivity.class);
                         intent.putExtra("dados_pessoais", listaDados);
                         startActivity(intent);
+
                     }else{
                         Toast.makeText(ConfirmarEmailActivity.this, "Código incorreto", Toast.LENGTH_SHORT).show();
                     }

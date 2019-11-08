@@ -1,5 +1,7 @@
 package br.net.daumhelp.service;
 
+import java.util.List;
+
 import br.net.daumhelp.model.Confirmacao;
 import br.net.daumhelp.model.Profissional;
 import retrofit2.Call;
@@ -23,5 +25,8 @@ public interface ProfissionalService {
 
     @GET("profissionais/id/{id}")
     Call<Profissional> buscarProfissional(@Path("id") int id);
+
+    @GET("profissionais/microrregiao/{idMicro}")
+    Call<List<Profissional>> buscarProfissionalMicro(@Path("idMicro") int idMicro);
 
 }

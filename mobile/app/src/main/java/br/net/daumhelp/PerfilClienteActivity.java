@@ -19,8 +19,7 @@ import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Cidade;
 import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Endereco;
-import br.net.daumhelp.model.Profissional;
-import br.net.daumhelp.model.Subcategoria;
+import br.net.daumhelp.model.EnderecoViaCep;
 import br.net.daumhelp.model.TipoUsuario;
 import br.net.daumhelp.recursos.EncryptString;
 import br.net.daumhelp.recursos.Mascara;
@@ -51,11 +50,12 @@ public class PerfilClienteActivity extends AppCompatActivity {
     private ImageButton btnAjuda;
     private Endereco endereco;
     private Long idCidade;
+    private EnderecoViaCep enderecoViaCep;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil_cliente);
+        setContentView(R.layout.activity_fragment_perfil_cliente);
         getWindow().setStatusBarColor(Color.parseColor("#77C9D4"));
 
         etNome = findViewById(R.id.et_nome_pro);
@@ -122,10 +122,10 @@ public class PerfilClienteActivity extends AppCompatActivity {
                             String cep = etCep.getText().toString();
                             /*VALIDAÇÃO DO TAMANHO DO CEP*/
                             if(etCep.length() == 8 || etCep.length() == 9){
-                                Call<Endereco> call = new RetroFitConfig().getEnderecoService().buscarEndereco(cep);
-                                call.enqueue(new Callback<Endereco>() {
+                                Call<EnderecoViaCep> call = new RetroFitConfig().getEnderecoService().buscarEnderecoViaCep(cep);
+                                call.enqueue(new Callback<EnderecoViaCep>() {
                                     @Override
-                                    public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+                                    public void onResponse(Call<EnderecoViaCep> call, Response<EnderecoViaCep> response) {
                                         if(response.code() == 404){
                                             etCep.setError("CPF inválido");
                                         }else{
@@ -134,7 +134,7 @@ public class PerfilClienteActivity extends AppCompatActivity {
                                     }
 
                                     @Override
-                                    public void onFailure(Call<Endereco> call, Throwable t) {
+                                    public void onFailure(Call<EnderecoViaCep> call, Throwable t) {
                                         Log.i("Retrofit Endereço", t.getMessage());
                                         etCep.setError("CEP inválido");
                                     }
@@ -254,13 +254,13 @@ public class PerfilClienteActivity extends AppCompatActivity {
 
 
     /*MÉTODO DE CARREGAR ENDEREÇO*/
-    private void carregarEndereco(Endereco endereco){
-        this.endereco = endereco;
-        etUf.setText(endereco.getCidade().getMicrorregiao().getUf().toString());
-        etBairro.setText(endereco.getBairro());
-        etLogradouro.setText(endereco.getLogradouro());
-        etCidade.setText(endereco.getCidade().getCidade().toString());
-        idCidade = endereco.getCidade().getIdCidade();
+    private void carregarEndereco(EnderecoViaCep enderecoViaCep){
+        this.enderecoViaCep = enderecoViaCep;
+        etUf.setText(enderecoViaCep.getUf());
+        etBairro.setText(enderecoViaCep.getBairro());
+        etLogradouro.setText(enderecoViaCep.getLogradouro());
+        etCidade.setText(enderecoViaCep.getLocalidade());
+        idCidade = enderecoViaCep.getIbge();
 
     }
 

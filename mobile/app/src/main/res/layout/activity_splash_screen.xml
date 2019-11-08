@@ -9,28 +9,18 @@
     <ImageView
         android:id="@+id/iv_splash"
         android:layout_width="200dp"
-        android:src="@drawable/pro"
+        android:src="@drawable/duh_icon"
         android:layout_marginTop="180dp"
         android:layout_gravity="center"
         android:layout_height="200dp" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="235dp"
-        android:layout_height="72dp"
-        android:src="@drawable/nome_splash"
-        android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp" />
 
     <ProgressBar
         android:id="@+id/progressBar2"
         android:indeterminate="true"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="150dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="180dp"
+        android:layout_marginTop="70dp"
         android:layout_gravity="center"
         android:layout_height="wrap_content" />
 

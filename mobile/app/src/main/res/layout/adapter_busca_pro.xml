@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="384dp"
+        android:layout_height="186dp"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="20dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_nome_profissional"
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+
+            android:text="Pedro de Almeida Santos"
+            android:textSize="20dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textStyle="italic"/>
+
+        <TextView
+            android:id="@+id/tv_servico"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="50dp"
+            android:text="Serviço:"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_servico_pro"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="95dp"
+            android:layout_marginTop="50dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Jardineiro"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tv_valor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="90dp"
+            android:text="Valor/hora:"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_valor_profissional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="90dp"
+            android:text="R$ 50,00"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/tv_local"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="125dp"
+            android:text="Local:"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_local_profissional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="125dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="Jandira - SP"
+            android:textSize="18dp" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="280dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/pedro"
+            app:civ_border_color="@color/colorTest2"
+            app:civ_border_width="1dp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="200dp"
+            android:layout_height="2dp"
+            android:layout_marginStart="170dp"
+            android:layout_marginTop="96dp"
+            android:background="@color/colorTest2"
+            android:rotation="90" />
+
+        <Button
+            android:id="@+id/btn_visualizar"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="105dp"
+            android:layout_marginEnd="10dp"
+            android:background="#00FFFFFF"
+            android:soundEffectsEnabled="true"
+            android:drawableTop="@drawable/ic_visualizar"
+            android:text="Visualizar"
+            android:textColor="#77C9D4"
+            android:textSize="14dp" />
+
+    </androidx.cardview.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>
