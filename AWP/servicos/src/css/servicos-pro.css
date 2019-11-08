@@ -112,9 +112,9 @@
 		color: #84848D;     
 	}
 
-	/* CAIXA DE SERVIÇOS PENDENTES DO PROFISSIONAL */
+	/* CSS DOS SERVIÇOS CONCLUIDOS E PENDENTES DO PROFISSIONAL */
 	
-	.caixa-conteudo-informacoes-pendentes
+	.caixa-conteudo-informacoes-servico
 	{
 		width: 635px;
 		height: 690px;
@@ -129,7 +129,7 @@
 	}
 
 	
-	.caixa-servico-pendente
+	.caixa-servico
 	{
 		width: 520px;
 		height: 300px;
@@ -143,19 +143,19 @@
 		box-shadow: 5px 5px 15px#0000005b;		
 	}
 	
-	.title-pendente
+	.title-servico
 	{
 		width: inherit;
-		height: 40px;
+		min-height: 40px;
 		text-align: center;
 		font-family: 'Lexend Deca';
 		color: #57BC90;
-		font-size: 1.8em;
+		font-size: 1.6em;
 		/* background-color: lightcyan; */
 		margin: 0;
 		
 	}
-	.cliente-pendente{
+	.cliente-servico{
 		width: inherit;
 		height: 25px;
 		/* background-color: ivory; */
@@ -166,7 +166,7 @@
 		color: #84848D;
 	}
 	
-	.linha-servico-pendente
+	.linha-servico
 	{
 		width: 290px;
 		height: 1px;
@@ -174,7 +174,7 @@
 		background-color: #57BC90;
 	}
 	
-	.text-pendente
+	.text-servico
 	{
 		height: 100px;
 		/* background-color: lawngreen; */
@@ -190,7 +190,7 @@
 	}
 	
 	
-	.caixa-link-pendente
+	.caixa-link
 	{
 		width: 100px;
 		height: 50px;
@@ -201,7 +201,7 @@
 		margin-top: -10px;
 	}
 	
-	.caixa-link-pendente img
+	.caixa-link img
 	{
 		width:40px;
 		height: 40px;
@@ -214,74 +214,24 @@
 	}
 	
 
-	/* CAIXA DE CONCLUUIDOS COM  AVLIAÇAO */
-	
-	.caixa-comentarios-servicos
-	{
-		width: 635px;
-		height: 690px;
-        background-color: rgb(255, 255, 255);
-        /* background-color: red; */
-		float: left;
-		border-radius: 10px;
-		padding-top: 50px;
-		box-sizing: border-box;
-		overflow-y: auto;
-		overflow-x: hidden;
-
-	}
-	
-	.caixa-servico-concluido
-	{
-		width: 520px;
-		height: 300px;
-		/* background-color:rgb(32, 32, 219); */
-		background-color: #57bc902f;
-		border-radius: 10px;
-		padding-top: 25px;
-		box-sizing: border-box;
-		margin: auto;
-		margin-bottom: 40px;
-		box-shadow: 5px 5px 15px#0000005b;		
-	}
-	.dados-usuario-servico
-	{
-		width: inherit;
-		height: inherit;
-		background-color: transparent;
-		float: left;
-        /* background-color: red; */
-	}
-
-	.title-concluido
-	{
-		width: inherit;
-		height: 40px;
-		text-align: center;
-		font-family: 'Lexend Deca';
-		color: #57BC90;
-		font-size: 1.8em;
-		/* background-color: lightcyan; */
-		margin: 0;
-	}
-
-	.linha-concluidos
-	{
-		width: 250px;
-		height: 1px;
-		color: #57BC90;
-		background-color: #57BC90;
-		border-radius: 5px;
-		margin-top: -5px;
-	
-	}
+	/* ESTRELAS DE AVALIAÇOES */
 
 	.caixa-star
 	{
 		width: 190px;
 		height: 25px;
-		/* background-color:#969FAA; */
+		background-color:#969FAA;
 		margin: auto;
+	}
+	.caixa-star-hidden
+	{
+		width: 190px;
+		height: 25px;
+		background-color:#969FAA;
+		margin: auto;
+		visibility: hidden;
+		opacity: 0;
+		display: none;
 	}
 
 	/*----- Avaliação/Estrelas -----*/
@@ -306,21 +256,6 @@
 		/* color: #FC0; */
 	}
 
-	.text-concluido
-	{
-		height: 100px;
-		/* background-color: lawngreen; */
-		text-align: center;
-		padding: 10px;
-		font-family: 'Lexend Deca';
-		color: #84848D;
-		box-sizing: border-box;
-		font-size: 1.1em;
-		display: flex;
-		justify-content: center;
-		margin: 0;
-	}
-	
 }
 
 
