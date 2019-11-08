@@ -1,19 +1,22 @@
 package br.net.daumhelp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Status implements Serializable {
 
 
-    private int idStatus;
+    private int idStatusPedido;
     private String status;
 
     public int getIdStatus() {
-        return idStatus;
+        return idStatusPedido;
     }
 
     public void setIdStatus(int idStatus) {
-        this.idStatus = idStatus;
+        this.idStatusPedido = idStatus;
     }
 
     public String getStatus() {
@@ -27,7 +30,7 @@ public class Status implements Serializable {
     @Override
     public String toString() {
         return "Status{" +
-                "idStatus=" + idStatus +
+                "idStatusPedido=" + idStatusPedido +
                 ", status='" + status + '\'' +
                 '}';
     }

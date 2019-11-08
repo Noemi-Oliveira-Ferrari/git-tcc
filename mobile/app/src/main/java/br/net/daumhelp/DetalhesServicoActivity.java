@@ -19,8 +19,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Date;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
@@ -108,24 +106,26 @@ public class DetalhesServicoActivity extends AppCompatActivity {
                     pedido.setHorarioFinal(etHoraFim.getText().toString());
 
 
-                    Date data = Data.stringToDate(etData.getText().toString());
-                    String dataFormatada = Data.dataToString(data);
-                    pedido.setDataServico(dataFormatada);
-
 
                     if(validar()){
+
+                        Date data = Data.brStringToDate(etData.getText().toString());
+                        String dataFormatada = Data.dataToString(data);
+                        pedido.setDataServico(dataFormatada);
+
                         Call<Pedido> call = new RetroFitConfig().getPedidoService().solicitarProfissional(pedido);
                         call.enqueue(new Callback<Pedido>() {
                             @Override
                             public void onResponse(Call<Pedido> call, Response<Pedido> response) {
                                 response.body();
                                 Toast.makeText(DetalhesServicoActivity.this, "foi", Toast.LENGTH_SHORT).show();
+                                finish();
                             }
 
                             @Override
                             public void onFailure(Call<Pedido> call, Throwable t) {
                                 Log.i("Retrofit PEDIDO", t.getMessage());
-                                Toast.makeText(DetalhesServicoActivity.this, "nao foi", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DetalhesServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional =( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

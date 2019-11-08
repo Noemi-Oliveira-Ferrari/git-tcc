@@ -85,7 +85,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
 
                                     Profissional profissional = new Profissional();
                                     profissional.setNome(listaDados[0]);
-                                    Date data = Data.stringToDate(listaDados[1]);
+                                    Date data = Data.brStringToDate(listaDados[1]);
                                     String dataFormatada = Data.dataToString(data);
                                     profissional.setDataNasc(dataFormatada);
                                     profissional.setCpf(listaDados[2]);
@@ -154,7 +154,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
 
                                     Cliente cliente = new Cliente();
                                     cliente.setNome(listaDados[0]);
-                                    Date data = Data.stringToDate(listaDados[1]);
+                                    Date data = Data.brStringToDate(listaDados[1]);
                                     String dataFormatada = Data.dataToString(data);
                                     cliente.setDataNasc(dataFormatada);
                                     cliente.setCpf(listaDados[2]);
