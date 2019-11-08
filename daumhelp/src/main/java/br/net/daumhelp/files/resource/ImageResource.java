@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import br.net.daumhelp.dto.ClienteDTO;
+import br.net.daumhelp.dto.ProfissionalDTO;
 import br.net.daumhelp.dto.repository.ClienteDTORepository;
 import br.net.daumhelp.dto.repository.ProfissionalDTORepository;
 import br.net.daumhelp.files.Disco;
-import br.net.daumhelp.files.ImgUpload;
 import br.net.daumhelp.model.Pedido;
 import br.net.daumhelp.repository.PedidoRepository;
 
@@ -26,46 +27,82 @@ import br.net.daumhelp.repository.PedidoRepository;
 @RequestMapping("/imagens")
 public class ImageResource {
 
+	@Autowired
+	private Disco disco;
+	
+	@Autowired
+	private ClienteDTORepository clienteDTOrepository;
+	
+	@Autowired
+	private ProfissionalDTORepository proDTOrepository;
+	
+	@Autowired
+	private PedidoRepository pedidoRepository;
 
-	private ImgUpload upload = new ImgUpload();
 	
 	@PostMapping("/cliente/{idCliente}")
 	public void uploadImgCliente(@RequestParam MultipartFile img, @PathVariable Long idCliente) {
+
+		ClienteDTO cliente = clienteDTOrepository.findById(idCliente).get();
+	
+		if(cliente.getFoto() != null) {			
+			if(cliente.getFoto() != "" && !cliente.getFoto().isEmpty()) {
+				disco.apagar(cliente.getFoto());			
+			}
+		}
+		String imgClienteCaminho = disco.salvarFotoCliente(img, idCliente);
 		
-		upload.uploadImgCliente(img, idCliente);
+		cliente.setFoto(imgClienteCaminho);
+		clienteDTOrepository.save(cliente);	
 	}
 	
 	@PostMapping("/profissional/{idPro}")
 	public void uploadImgPro(@RequestParam MultipartFile img, @PathVariable Long idPro) {
+
+		ProfissionalDTO pro = proDTOrepository.findById(idPro).get();
 		
-		upload.uploadImgPro(img, idPro);
+		if(pro.getFoto() != null) {
+			if(pro.getFoto() != "" && !pro.getFoto().isEmpty()) {
+				disco.apagar(pro.getFoto());			
+			}			
+		}
+		
+		String imgProCaminho = disco.salvarFotoPro(img, idPro);
+		
+		pro.setFoto(imgProCaminho);
+		proDTOrepository.save(pro);	
 	}
 	
-//
-//	@PostMapping("/pedido/{idPedido}")
-//	public void uploadImgsPedido(@RequestParam List<MultipartFile> imgs, @PathVariable Long idPedido) {
-////		public void uploadImgsPedido(@PathVariable Long idPedido) {
-//
-////		Pedido pedido = proDTOrepository.findById(idPro).get();
-////		
-////		if(pro.getFoto() != null) {
-////			if(pro.getFoto() != "" && !pro.getFoto().isEmpty()) {
-////				disco.apagar(pro.getFoto());			
-////			}			
-////		}
-////		
-////		pro.setFoto(imgProCaminho);
-////		proDTOrepository.save(pro);
-//		
-//		
-//		
-//		
-//		
-//		System.out.println(pedido);
-//		
-//		
-//	}
-//	
+
+	@PostMapping("/pedido/{idPedido}")
+	public void uploadImgsPedido(@RequestParam List<MultipartFile> imgs, @PathVariable Long idPedido) {
+
+		Pedido pedido = pedidoRepository.findById(idPedido).get();
+		
+		
+		ArrayList<String> imgsPedidoCaminho = new ArrayList<String>();
+
+		int i = -1;
+
+		for(MultipartFile img : imgs) {
+			if(!img.getOriginalFilename().isEmpty() && img.getSize() > 0) {
+				imgsPedidoCaminho.add(disco.salvarFotoPedido(img, idPedido));
+				++i;				
+				if(i == 0) {
+					pedido.setFoto1(imgsPedidoCaminho.get(i));				
+				}else if(i == 1) {
+					pedido.setFoto2(imgsPedidoCaminho.get(i));				
+				}else if(i == 2){
+					pedido.setFoto3(imgsPedidoCaminho.get(i));
+				}
+			}
+		}
+		
+		
+		pedidoRepository.save(pedido);
+		
+	}
+	
 	
 	
 	
