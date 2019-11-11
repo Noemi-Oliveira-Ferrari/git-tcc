@@ -3,6 +3,7 @@ package br.net.daumhelp.configretrofit;
 import br.net.daumhelp.service.CategoriaService;
 import br.net.daumhelp.service.ClienteService;
 import br.net.daumhelp.service.EnderecoService;
+import br.net.daumhelp.service.FotoService;
 import br.net.daumhelp.service.LoginService;
 import br.net.daumhelp.service.PedidoService;
 import br.net.daumhelp.service.ProfissionalService;
@@ -14,19 +15,19 @@ public class RetroFitConfig {
 
     private Retrofit retroFit;
 
-    public RetroFitConfig(){
-        retroFit = new Retrofit.Builder()
-                .baseUrl("http://10.107.144.24:8080/")
-                .addConverterFactory(JacksonConverterFactory.create())
-                .build();
-    }
-
 //    public RetroFitConfig(){
 //        retroFit = new Retrofit.Builder()
-//                .baseUrl("http://ec2-3-220-68-195.compute-1.amazonaws.com:8080/")
+//                .baseUrl("http://10.107.144.43:8080/")
 //                .addConverterFactory(JacksonConverterFactory.create())
 //                .build();
 //    }
+
+    public RetroFitConfig(){
+        retroFit = new Retrofit.Builder()
+                .baseUrl("http://ec2-3-220-68-195.compute-1.amazonaws.com:8080/")
+                .addConverterFactory(JacksonConverterFactory.create())
+                .build();
+    }
 
 
     public CategoriaService getCategoriaService(){
@@ -55,6 +56,11 @@ public class RetroFitConfig {
 
     public LoginService getLoginService(){
         return this.retroFit.create(LoginService.class);
+    }
+
+
+    public FotoService getFotoService(){
+        return this.retroFit.create(FotoService.class);
     }
 
 

@@ -15,8 +15,8 @@ public interface PedidoService {
     @POST("pedidos/solicitar")
     Call<Pedido> solicitarProfissional(@Body Pedido pedido);
 
-    @GET("pedidos/solicitados/profissional/{idProfissional}")
-    Call<List<Pedido>> buscarPedidosPendentes(@Path("idProfissional") int idProfissional);
+    @GET("pedidos/profissional/{idProfissional}/status/{idStatusPedido}")
+    Call<List<Pedido>> buscarPedidosPendentes(@Path("idProfissional") int idProfissional, @Path("idStatusPedido") int idStatus);
 
     @PUT("pedidos/rejeitar/{idPedido}")
     Call<Pedido>  recusarPedidoPendente(@Path("idPedido") int idPedido);

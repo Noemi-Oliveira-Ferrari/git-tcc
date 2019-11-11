@@ -17,7 +17,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
+            android:id="@+id/profile_image_alert"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="40dp"
@@ -35,7 +35,7 @@
             android:layout_height="1dp"
             android:layout_marginTop="84dp"
             android:background="@color/colorWhite"
-            app:layout_constraintEnd_toStartOf="@+id/profile_image"
+            app:layout_constraintEnd_toStartOf="@+id/profile_image_alert"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -48,7 +48,7 @@
             android:background="@color/colorWhite"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/profile_image"
+            app:layout_constraintStart_toEndOf="@+id/profile_image_alert"
             app:layout_constraintTop_toTopOf="@+id/view" />
 
         <View
@@ -74,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+            app:layout_constraintTop_toBottomOf="@+id/profile_image_alert" />
 
         <Button
             android:id="@+id/ib_sair"

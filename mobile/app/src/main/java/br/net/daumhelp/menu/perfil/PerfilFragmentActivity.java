@@ -2,15 +2,20 @@ package br.net.daumhelp.menu.perfil;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +24,9 @@ import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+
+import com.squareup.picasso.Picasso;
+
 import br.net.daumhelp.EditarActivity;
 import br.net.daumhelp.adapter.ListaAdapterComentario;
 import br.net.daumhelp.configretrofit.RetroFitConfig;
@@ -38,6 +46,7 @@ public class PerfilFragmentActivity extends Fragment {
     private Profissional profissional;
     private TextView tvNome;
     private TextView tvLocal;
+    private ImageView ivProfileImg;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -74,16 +83,20 @@ public class PerfilFragmentActivity extends Fragment {
         btnConfig = getView().findViewById(R.id.ic_config);
         tvLocal = getView().findViewById(R.id.tv_local);
         tvNome = getView().findViewById(R.id.tv_nome);
-
+        ivProfileImg = getView().findViewById(R.id.profile_image);
 
         Intent intent = getActivity().getIntent();
         if (intent.getSerializableExtra("profissional") != null) {
 
             profissional = (Profissional) intent.getSerializableExtra("profissional");
 
+            String fotoPro = profissional.getFoto();
+            Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivProfileImg);
 
             tvNome.setText(profissional.getNome().toUpperCase());
+
             tvLocal.setText(profissional.getEndereco().getCidade().getCidade() + ", " + profissional.getEndereco().getCidade().getMicrorregiao().getUf());
+
 
             btnConfig.setOnClickListener(new View.OnClickListener() {
                 @Override

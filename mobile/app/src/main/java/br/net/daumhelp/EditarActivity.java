@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
@@ -74,6 +76,7 @@ public class EditarActivity extends AppCompatActivity {
     private String categoriaAtt;
     private String subCategoriaAtt;
     private Button btnAtualizar;
+    private ImageView ivFotoProfissional;
     private int contBack = 0;
     private Profissional profissionalAtualizado;
     private EnderecoViaCep enderecoViaCep;
@@ -109,6 +112,7 @@ public class EditarActivity extends AppCompatActivity {
         etCategoria = findViewById(R.id.et_categoria);
         etSubcategoria = findViewById(R.id.et_subcategoria);
         btnAtualizar = findViewById(R.id.btn_atualizar_dados);
+        ivFotoProfissional = findViewById(R.id.profile_image);
 
 
         desativarCamposDadosPessoais();
@@ -488,6 +492,9 @@ public class EditarActivity extends AppCompatActivity {
         etBairro.setText(profissional.getEndereco().getBairro());
         etResumo.setText(profissional.getResumoQualificacoes());
         etValorHora.setText(String.valueOf(profissional.getValorHora()));
+
+        String fotoPro = profissional.getFoto();
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivFotoProfissional);
 
         etCategoria.setText(profissional.getSubcategoria().getCategoria().getCategoria());
         etSubcategoria.setText(profissional.getSubcategoria().getSubcategoria());

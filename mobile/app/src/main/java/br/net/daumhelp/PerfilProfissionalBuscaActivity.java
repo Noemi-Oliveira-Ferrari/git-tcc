@@ -1,20 +1,19 @@
 package br.net.daumhelp;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -44,6 +43,8 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
     private TextView tvCategoriaAlert;
     private TextView tvQualificacoesAlert;
     private Cliente clienteLogado;
+    private ImageView ivFotoProfissional;
+    private ImageView ivFotoProfissionalAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,7 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
         ibAvaliar = findViewById(R.id.ic_avaliar);
         ibFavoritar = findViewById(R.id.ic_salvar);
         btnVisualizar = findViewById(R.id.btn_resumo);
+        ivFotoProfissional = findViewById(R.id.profile_image);
 
 
         alertDialog = new Dialog(this);
@@ -76,7 +78,7 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
             ibSolicitar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, DetalhesServicoActivity.class);
+                    Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, DetalhesSolicitacaoServicoActivity.class);
                     intent.putExtra("profissionalSolicitado", profissionalSelecionado);
                     intent.putExtra("clienteLogado", clienteLogado);
                     startActivity(intent);
@@ -97,6 +99,7 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
                     tvNomeAlert = alertDialog.findViewById(R.id.tv_nome_pro_alert);
                     tvCategoriaAlert = alertDialog.findViewById(R.id.tv_nome_cat_alert);
                     tvQualificacoesAlert = alertDialog.findViewById(R.id.tv_qualificacoes_alert);
+                    ivFotoProfissionalAlert = alertDialog.findViewById(R.id.profile_image_alert);
 
                     tvQualificacoesAlert.setMovementMethod(new ScrollingMovementMethod());
 
@@ -104,12 +107,15 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
                     tvQualificacoesAlert.setText(profissionalSelecionado.getResumoQualificacoes());
                     tvCategoriaAlert.setText(profissionalSelecionado.getSubcategoria().getSubcategoria());
 
+                    String fotoPro = profissionalSelecionado.getFoto();
+                    Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivFotoProfissionalAlert);
+
                     alertDialog.show();
 
                     btnSolicitarAlert.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, DetalhesServicoActivity.class);
+                            Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, DetalhesSolicitacaoServicoActivity.class);
                             startActivity(intent);
 
 
@@ -132,6 +138,9 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
     private void carregarDados(Profissional profissional){
         tvNome.setText(profissional.getNome().toUpperCase());
         tvLocal.setText(profissional.getEndereco().getCidade().getCidade() + ", " + profissional.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
+
+        String fotoPro = profissional.getFoto();
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivFotoProfissional);
 
         Locale ptBr = new Locale("pt", "BR");
         String valorString = NumberFormat.getCurrencyInstance(ptBr).format(profissional.getValorHora());

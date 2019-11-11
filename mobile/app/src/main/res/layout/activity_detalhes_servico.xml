@@ -1,194 +1,239 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
-        android:id="@+id/view5"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@+id/iv_data" />
 
-    <TextView
-        android:id="@+id/tv_titulo_detalhes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Detalhes do serviço"
-        android:textSize="22dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_foto1"
-        android:layout_width="76dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/pedro"
-        app:civ_border_color="@color/colorTest2"
-        app:civ_border_width="1dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_titulo_detalhes" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_foto2"
-        android:layout_width="76dp"
-        android:layout_height="76dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/pedro"
-        app:civ_border_color="@color/colorTest2"
-        app:civ_border_width="1dp"
-        app:layout_constraintStart_toEndOf="@+id/civ_foto1"
-        app:layout_constraintTop_toBottomOf="@+id/tv_titulo_detalhes" />
-
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/civ_foto3"
-        android:layout_width="76dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:src="@drawable/pedro"
-        app:civ_border_color="@color/colorTest2"
-        app:civ_border_width="1dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_titulo_detalhes" />
-
-    <ImageView
-        android:id="@+id/iv_data"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="46dp"
-        android:layout_marginTop="70dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/civ_foto1"
-        app:srcCompat="@drawable/galeria" />
-
-    <TextView
-        android:id="@+id/tv_titulo_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="75dp"
-        android:text="Data"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/iv_data"
-        app:layout_constraintTop_toBottomOf="@+id/civ_foto2" />
-
-    <TextView
-        android:id="@+id/tv_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="03/10/2000"
-        android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/iv_data"
-        app:layout_constraintTop_toBottomOf="@+id/tv_titulo_data" />
-
-    <ImageView
-        android:id="@+id/iv_horario"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="46dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_data"
-        app:srcCompat="@drawable/camera" />
-
-    <TextView
-        android:id="@+id/tv_titulo_horario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="20dp"
-        android:text="Horário"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/iv_horario"
-        app:layout_constraintTop_toBottomOf="@+id/iv_data" />
-
-    <TextView
-        android:id="@+id/tv_horario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:text="Das 13:00 às 15:00"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/iv_horario"
-        app:layout_constraintTop_toBottomOf="@+id/tv_titulo_horario" />
-
-<!--    <ImageView-->
-<!--        android:id="@+id/iv_descricao"-->
-<!--        android:layout_width="80dp"-->
-<!--        android:layout_height="80dp"-->
-<!--        android:layout_marginStart="46dp"-->
-<!--        android:layout_marginTop="40dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/iv_horario"-->
-<!--        app:srcCompat="@drawable/galeria" />-->
-
-    <TextView
-        android:id="@+id/tv_titulo_descricao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="45dp"
-        android:text="Descrição"
-        android:textSize="24dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_horario" />
-
-    <TextView
-        android:id="@+id/tv_descricao"
-        android:layout_width="340dp"
-        android:layout_height="120dp"
-        android:textAlignment="center"
-        android:text="Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker."
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_titulo_descricao" />
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout3"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btn_orcamento"
+        <View
+            android:id="@+id/view5"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="75dp"
-            android:background="@color/colorTest2"
-            android:text="Fazer Orçamento"
-            android:textColor="@color/colorWhite"
-            tools:layout_editor_absoluteY="638dp" />
+            android:layout_height="120dp"
+            android:layout_marginTop="20dp"
+            android:background="#E9E9E9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_data" />
 
-        <Button
-            android:id="@+id/button4"
+        <!--    <View-->
+        <!--        android:id="@+id/view9"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="120dp"-->
+        <!--        android:layout_marginTop="70dp"-->
+        <!--        android:background="#E9E9E9"-->
+        <!--        app:layout_constraintEnd_toEndOf="parent"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toTopOf="@+id/relativeLayout3" />-->
+
+        <View
+            android:id="@+id/view10"
             android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="40dp"
+            android:background="#E9E9E9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/civ_foto2" />
+
+        <View
+            android:id="@+id/view11"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_marginTop="40dp"
+            android:background="#E9E9E9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_descricao" />
+
+        <TextView
+            android:id="@+id/tv_titulo_detalhes"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/button_filtro_cancelar"
-            android:text="Cancelar"
-            android:textColor="@color/colorTest2" />
+            android:layout_marginTop="25dp"
+            android:text="Detalhes do serviço"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </RelativeLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_foto1"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/pedro"
+            app:civ_border_color="@color/colorTest"
+            app:civ_border_width="1dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_titulo_detalhes" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_foto2"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="35dp"
+            android:src="@drawable/pedro"
+            app:civ_border_color="@color/colorTest"
+            app:civ_border_width="1dp"
+            app:layout_constraintEnd_toStartOf="@+id/civ_foto3"
+            app:layout_constraintStart_toEndOf="@+id/civ_foto1"
+            app:layout_constraintTop_toBottomOf="@+id/tv_titulo_detalhes" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/civ_foto3"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="50dp"
+            android:src="@drawable/pedro"
+            app:civ_border_color="@color/colorTest"
+            app:civ_border_width="1dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_titulo_detalhes" />
+
+        <ImageView
+            android:id="@+id/iv_data"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="46dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/civ_foto1"
+            app:srcCompat="@drawable/galeria" />
+
+        <TextView
+            android:id="@+id/tv_titulo_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="70dp"
+            android:text="Data"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/iv_data"
+            app:layout_constraintTop_toBottomOf="@+id/civ_foto2" />
+
+        <TextView
+            android:id="@+id/tv_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="03/10/2000"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@+id/iv_data"
+            app:layout_constraintTop_toBottomOf="@+id/tv_titulo_data" />
+
+        <ImageView
+            android:id="@+id/iv_horario"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="46dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_data"
+            app:srcCompat="@drawable/camera" />
+
+        <TextView
+            android:id="@+id/tv_titulo_horario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:layout_marginEnd="20dp"
+            android:text="Horário"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/iv_horario"
+            app:layout_constraintTop_toBottomOf="@+id/iv_data" />
+
+        <TextView
+            android:id="@+id/tv_horario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="Das 13:00 às 15:00"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toStartOf="@+id/iv_horario"
+            app:layout_constraintTop_toBottomOf="@+id/tv_titulo_horario" />
+
+        <!--    <ImageView-->
+        <!--        android:id="@+id/iv_descricao"-->
+        <!--        android:layout_width="80dp"-->
+        <!--        android:layout_height="80dp"-->
+        <!--        android:layout_marginStart="46dp"-->
+        <!--        android:layout_marginTop="40dp"-->
+        <!--        app:layout_constraintStart_toStartOf="parent"-->
+        <!--        app:layout_constraintTop_toBottomOf="@+id/iv_horario"-->
+        <!--        app:srcCompat="@drawable/galeria" />-->
+
+        <TextView
+            android:id="@+id/tv_titulo_descricao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:text="Descrição"
+            android:textSize="24dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_horario" />
+
+        <TextView
+            android:id="@+id/tv_descricao"
+            android:layout_width="340dp"
+            android:layout_height="120dp"
+            android:textAlignment="center"
+            android:text="Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos. Lorem Ipsum sobreviveu não só a cinco séculos, como também ao salto para a editoração eletrônica, permanecendo essencialmente inalterado. Se popularizou na década de 60, quando a Letraset lançou decalques contendo passagens de Lorem Ipsum, e mais recentemente quando passou a ser integrado a softwares de editoração eletrônica como Aldus PageMaker."
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_titulo_descricao" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view11">
+
+            <Button
+                android:id="@+id/btn_orcamento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="75dp"
+                android:background="@color/colorTest"
+                android:text="Fazer Orçamento"
+                android:textColor="@color/colorWhite"
+                tools:layout_editor_absoluteY="638dp" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_quadrado_verde"
+                android:text="Cancelar"
+                android:textColor="@color/colorTest" />
+
+        </RelativeLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+
+
+</ScrollView>

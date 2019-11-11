@@ -95,11 +95,12 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
             public void onResponse(Call<List<Profissional>> call, Response<List<Profissional>> response) {
 
                 lista = (ArrayList<Profissional>) response.body();
-                for(Profissional p : lista){
-                    listaProfissional.add(p);
+                if (lista != null) {
+                    for (Profissional p : lista) {
+                        listaProfissional.add(p);
+                    }
+                    listView.setAdapter(listaProfissional);
                 }
-                listView.setAdapter(listaProfissional);
-
             }
 
             @Override
@@ -128,12 +129,20 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
             public void onResponse(Call<List<Profissional>> call, Response<List<Profissional>> response) {
 
                 lista = (ArrayList<Profissional>) response.body();
-                listaProfissional = new ListaAdapterBusca(getContext(), lista, cliente);
-                ListView listView = (ListView) getView().findViewById(R.id.lv_busca_pro);
+                
+                if(lista != null){
 
-                listView.setAdapter(listaProfissional);
+                    listaProfissional = new ListaAdapterBusca(getContext(), lista, cliente);
+                    ListView listView = (ListView) getView().findViewById(R.id.lv_busca_pro);
 
-                mSwipeToRefresh.setRefreshing(false);
+                    listView.setAdapter(listaProfissional);
+
+                    mSwipeToRefresh.setRefreshing(false);
+                }else{
+
+                    mSwipeToRefresh.setRefreshing(false);
+                }
+
             }
 
             @Override

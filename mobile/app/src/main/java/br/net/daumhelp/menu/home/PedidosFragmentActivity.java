@@ -67,16 +67,18 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
             profissional = (Profissional) intent.getSerializableExtra("profissional");
             idProfissional = profissional.getIdProfissional();
 
-            Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosPendentes(idProfissional);
+            Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosPendentes(idProfissional, 1);
             call.enqueue(new Callback<List<Pedido>>() {
                 @Override
                 public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
 
                     lista = (ArrayList<Pedido>) response.body();
-                    for(Pedido p : lista){
-                        listaPedidos.add(p);
+                    if(lista != null){
+                        for(Pedido p : lista){
+                            listaPedidos.add(p);
+                        }
+                        listView.setAdapter(listaPedidos);
                     }
-                    listView.setAdapter(listaPedidos);
 
                 }
 
@@ -99,17 +101,26 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
     @Override
     public void onRefresh() {
 
-
-        Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosPendentes(idProfissional);
+        Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosPendentes(idProfissional, 1);
         call.enqueue(new Callback<List<Pedido>>() {
             @Override
             public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
 
                 lista = (ArrayList<Pedido>) response.body();
-                listaPedidos = new ListaAdapterPedidosPendentes(getContext(), lista);
-                ListView listView = (ListView) getView().findViewById(R.id.lv_pedidos_pendentes);
-                listView.setAdapter(listaPedidos);
-                mSwipeToRefresh.setRefreshing(false);
+
+                if(lista != null){
+
+                    listaPedidos = new ListaAdapterPedidosPendentes(getContext(), lista);
+                    ListView listView = (ListView) getView().findViewById(R.id.lv_pedidos_pendentes);
+                    listView.setAdapter(listaPedidos);
+                    mSwipeToRefresh.setRefreshing(false);
+
+                }else{
+
+                    mSwipeToRefresh.setRefreshing(false);
+                }
+
+
             }
 
             @Override

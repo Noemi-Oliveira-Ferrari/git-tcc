@@ -31,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DetalhesServicoActivity extends AppCompatActivity {
+public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
 
     private EditText etData;
     private EditText etHoraInicio;
@@ -118,14 +118,14 @@ public class DetalhesServicoActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<Pedido> call, Response<Pedido> response) {
                                 response.body();
-                                Toast.makeText(DetalhesServicoActivity.this, "foi", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "foi", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
 
                             @Override
                             public void onFailure(Call<Pedido> call, Throwable t) {
                                 Log.i("Retrofit PEDIDO", t.getMessage());
-                                Toast.makeText(DetalhesServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional =( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional =( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
@@ -144,7 +144,7 @@ public class DetalhesServicoActivity extends AppCompatActivity {
                 caminhoFoto = getExternalFilesDir(null) + nomeFoto;
 
                 File arquivoFoto = new File(caminhoFoto);
-                Uri fotoUri = FileProvider.getUriForFile(DetalhesServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto);
+                Uri fotoUri = FileProvider.getUriForFile(DetalhesSolicitacaoServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto);
 
                 intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
                 startActivityForResult(intentCamera, CAMERA_REQUEST);
@@ -159,7 +159,7 @@ public class DetalhesServicoActivity extends AppCompatActivity {
                 caminhoFoto = getExternalFilesDir(null) + nomeFoto;
 
                 File arquivoFoto = new File(caminhoFoto);
-                Uri fotoUri = FileProvider.getUriForFile(DetalhesServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto);
+                Uri fotoUri = FileProvider.getUriForFile(DetalhesSolicitacaoServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto);
 
                 intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
                 startActivityForResult(intentCamera, CAMERA_REQUEST2);
@@ -174,7 +174,7 @@ public class DetalhesServicoActivity extends AppCompatActivity {
                 caminhoFoto = getExternalFilesDir(null) + nomeFoto;
 
                 File arquivoFoto = new File(caminhoFoto);
-                Uri fotoUri = FileProvider.getUriForFile(DetalhesServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto);
+                Uri fotoUri = FileProvider.getUriForFile(DetalhesSolicitacaoServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto);
 
                 intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
                 startActivityForResult(intentCamera, CAMERA_REQUEST3);

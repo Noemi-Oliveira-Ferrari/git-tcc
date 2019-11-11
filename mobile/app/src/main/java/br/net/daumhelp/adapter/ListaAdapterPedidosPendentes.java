@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +19,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -25,6 +28,7 @@ import java.util.List;
 import br.net.daumhelp.MainActivity;
 import br.net.daumhelp.MenuActivity;
 import br.net.daumhelp.R;
+import br.net.daumhelp.VisualizarDetalhesServicoActivity;
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.menu.home.PedidosFragmentActivity;
 import br.net.daumhelp.model.Pedido;
@@ -42,7 +46,9 @@ public class ListaAdapterPedidosPendentes extends ArrayAdapter<Pedido> {
     private TextView tvCidadeCliente;
     private TextView tvDataSolicitacao;
     private Button btnRecusar;
+    private Button btnAnalisar;
     private ListView listView;
+    private ImageView ivFotoCliente;
 
 
     public ListaAdapterPedidosPendentes(@NonNull Context context, ArrayList<Pedido> lista) {
@@ -64,6 +70,8 @@ public class ListaAdapterPedidosPendentes extends ArrayAdapter<Pedido> {
         tvCidadeCliente = convertView.findViewById(R.id.tv_cidade_cliente);
         tvDataSolicitacao = convertView.findViewById(R.id.tv_solicitacao_data);
         btnRecusar = convertView.findViewById(R.id.ib_recusar);
+        btnAnalisar = convertView.findViewById(R.id.ib_analisar);
+        ivFotoCliente = convertView.findViewById(R.id.profile_image);
 
         tvNomeCliente.setText(listaPedidos.getCliente().getNome().toUpperCase());
         tvCidadeCliente.setText(listaPedidos.getCliente().getEndereco().getCidade().getCidade() + ", " + listaPedidos.getCliente().getEndereco().getCidade().getMicrorregiao().getUf().getUf());
@@ -72,6 +80,18 @@ public class ListaAdapterPedidosPendentes extends ArrayAdapter<Pedido> {
         Date data = Data.stringToDate(listaPedidos.getDataHora());
         String dataFormatada = Data.dataHoraToBrString(data);
         tvDataSolicitacao.setText(dataFormatada);
+
+
+        String fotoCli = listaPedidos.getCliente().getFoto();
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).into(ivFotoCliente);
+
+        btnAnalisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), VisualizarDetalhesServicoActivity.class);
+                getContext().startActivity(intent);
+            }
+        });
 
         btnRecusar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +129,8 @@ public class ListaAdapterPedidosPendentes extends ArrayAdapter<Pedido> {
                 }).show();
             }
         });
+
+
 
 
 

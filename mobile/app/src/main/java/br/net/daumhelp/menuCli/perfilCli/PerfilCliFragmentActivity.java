@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -67,6 +70,7 @@ public class PerfilCliFragmentActivity extends Fragment {
     private Endereco endereco;
     private Long idCidade;
     private EnderecoViaCep enderecoViaCep;
+    private ImageView ivFotoCliente;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -104,6 +108,7 @@ public class PerfilCliFragmentActivity extends Fragment {
         btnEditar = getView().findViewById(R.id.ib_editar);
         btnSalvar = getView().findViewById(R.id.ib_salvar);
         btnAjuda = getView().findViewById(R.id.ib_ajuda);
+        ivFotoCliente = getView().findViewById(R.id.profile_image_cliente);
 
         desativarCamposDadosPessoais();
         desativarCamposDadosEndereco();
@@ -320,6 +325,7 @@ public class PerfilCliFragmentActivity extends Fragment {
         etUf.setText(cliente.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
         etBairro.setText(cliente.getEndereco().getBairro());
         tvNome.setText(cliente.getNome());
+        Picasso.get().load("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_GOzRJinPUlzWcM8hqBAsPnRvkzjYoOIPwq2swChRz-xzw8Hp").into(ivFotoCliente);
 
     }
 

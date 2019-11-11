@@ -65,7 +65,10 @@
             android:name=".CadastroFotoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".DetalhesServicoActivity"
+            android:name=".DetalhesSolicitacaoServicoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VisualizarDetalhesServicoActivity"
             android:screenOrientation="portrait" />
 
         <provider

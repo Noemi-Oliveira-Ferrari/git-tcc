@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,9 +17,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
+import com.squareup.picasso.Picasso;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Locale;
+
+import javax.crypto.spec.IvParameterSpec;
 
 import br.net.daumhelp.PerfilProfissionalBuscaActivity;
 import br.net.daumhelp.R;
@@ -37,6 +42,7 @@ public class ListaAdapterBusca extends ArrayAdapter<Profissional> {
     private TextView tvLocal;
     private Button btnVisualizar;
     private Cliente cliente;
+    private ImageView ivFotoProfissional;
 
     public ListaAdapterBusca(@NonNull Context context, ArrayList<Profissional> lista, Cliente cliente) {
         super(context, 0, lista);
@@ -56,6 +62,7 @@ public class ListaAdapterBusca extends ArrayAdapter<Profissional> {
        tvValor = convertView.findViewById(R.id.tv_valor_profissional);
        tvLocal = convertView.findViewById(R.id.tv_local_profissional);
         btnVisualizar = convertView.findViewById(R.id.btn_visualizar);
+        ivFotoProfissional = convertView.findViewById(R.id.profile_image);
 
         btnVisualizar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +78,8 @@ public class ListaAdapterBusca extends ArrayAdapter<Profissional> {
         tvNome.setText(listaProfissional.getNome().toUpperCase());
         tvServico.setText(listaProfissional.getSubcategoria().getSubcategoria());
 
+        String fotoPro = listaProfissional.getFoto();
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivFotoProfissional);
 
         Locale ptBr = new Locale("pt", "BR");
         String valorString = NumberFormat.getCurrencyInstance(ptBr).format(listaProfissional.getValorHora());
