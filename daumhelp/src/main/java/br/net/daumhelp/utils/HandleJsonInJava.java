@@ -6,6 +6,7 @@ import br.net.daumhelp.model.EnderecoCep;
 
 public class HandleJsonInJava {
 	
+	//CONVERTE JSON DE ENDERECO VIACEP PARA OBJETO DO TIPO ENDERECO VIACEP
 	public static EnderecoCep convertEnderecoJsonToJavaObject(String json) {
 		Gson gson = new Gson();
 		EnderecoCep enderecoCep = gson.fromJson(json, EnderecoCep.class);
