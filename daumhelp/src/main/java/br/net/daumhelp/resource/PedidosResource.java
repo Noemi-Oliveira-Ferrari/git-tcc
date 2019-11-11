@@ -51,6 +51,26 @@ public class PedidosResource {
 	public List<Pedido> getPedidos() {
 		return pedidoRepository.findAll();
 	}
+	
+	@GetMapping("/cliente/{idCliente}")
+	public List<Pedido> getPedidoByCliente(@PathVariable Long idCliente){
+		return pedidoRepository.buscarPorCliente(idCliente);
+	}
+	
+	@GetMapping("/cliente/{idCliente}/status/{idStatusPedido}")
+	public List<Pedido> getPedidoByCliente(@PathVariable Long idCliente, @PathVariable Long idStatusPedido){
+		return pedidoRepository.buscarPorClienteStatus(idCliente, idStatusPedido);
+	}
+	
+	@GetMapping("/profissional/{idProfissional}")
+	public List<Pedido> getPedidoByPro(@PathVariable Long idProfissional){
+		return pedidoRepository.buscarPorPro(idProfissional);
+	}
+	
+	@GetMapping("/profissional/{idProfissional}/status/{idStatusPedido}")
+	public List<Pedido> getPedidoByPro(@PathVariable Long idProfissional, @PathVariable Long idStatusPedido){
+		return pedidoRepository.buscarPorClienteStatus(idProfissional, idStatusPedido);
+	}
 
 	@PostMapping("/solicitar")
 	public ResponseEntity<Pedido> solicitarPedido(
@@ -69,53 +89,30 @@ public class PedidosResource {
 		 
 		return ResponseEntity.created(uri).body(pedido);
 	}
-	
-//	@PostMapping("/solicitar")
-//	public ResponseEntity<Pedido> solicitarPedido(
-//			@RequestParam List<MultipartFile> imgs,
-//			@RequestBody Pedido pedido,
-//			HttpServletResponse response){
-//		
-//		pedido.setValorServico(0.0);
-//		
-//		Pedido pedidoSalvo = pedidoRepository.save(pedido);
-//		
-//		ArrayList<String> caminhosImgs = upload.multiUploadPedido(imgs, pedido.getIdPedido());
-//		
-//		pedido.setFoto1(caminhosImgs.get(0));
-//		pedido.setFoto2(caminhosImgs.get(1));
-//		pedido.setFoto3(caminhosImgs.get(2));
-//		
-//		pedidoRepository.save(pedido);
-//		
-//		URI uri = ServletUriComponentsBuilder
-//				.fromCurrentRequestUri()
-//				.buildAndExpand(pedido.getIdPedido())
-//				.toUri();
-//		response.addHeader("Location", uri.toASCIIString());
-//		
-//		return ResponseEntity.created(uri).body(pedido);
-//	}
-	
 
 	@PutMapping("/resposta/{idPedido}")
 	public ResponseEntity<Pedido> respostaPedido(
 			@RequestBody Pedido pedido,
 			@PathVariable Long idPedido){
 
+		//BUSCA OS USUARIO ENVOLVIDOS NO PEDIDO
 		ProfissionalDTO proPedido = proDTORepository.findById(pedido.getProfissional().getIdProfissional()).get();
 		ClienteDTO clientePedido = clienteDTORepository.findById(pedido.getCliente().getIdCliente()).get();
 		
+		//BUSCA O NOVO STATUS DO PEDIDO 
 		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.ORCADO.getValue()).get();
+		pedido.setStatus(statusPedido);
 		
+		//DEFINE OS USUARIOS DO PEDIDO ATUAL
 		pedido.setProfissional(proPedido);
 		pedido.setCliente(clientePedido);
-		pedido.setStatus(statusPedido);
-		System.out.println(idPedido);
-		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
 		
+		//BUSCA PEDIDO NO BANCO
+		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
+		//DEFINE O VALOR DO SERVIÇO SEGUNDO O TEMPO DE DURAÇÃO DEFINIDO PELO PROFISSIONAL 
 		pedido.setValorServico(pedido.getHorasServico()*pedido.getProfissional().getValorHora());
 		
+		//ATUALIZA OS DADOS DO PEDIDO E SALVA NO BANCO
 		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
 		pedidoRepository.save(pedidoSalvo);
 		
@@ -127,9 +124,10 @@ public class PedidosResource {
 		
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
 		
-		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.ACEITO.getValue()).get();
-		
+		//DEFINE O NOVO STATUS DO PEDIDO ATUAL
+		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.ACEITO.getValue()).get();		
 		pedido.setStatus(statusPedido);
+		
 		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
 		
 		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
@@ -142,10 +140,11 @@ public class PedidosResource {
 	public ResponseEntity<Pedido> rejeitarPedido(@PathVariable Long idPedido){
 		
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
-		
+
+		//DEFINE O NOVO STATUS DO PEDIDO ATUAL
 		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.REJEITADO.getValue()).get();
-		
 		pedido.setStatus(statusPedido);
+		
 		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
 		
 		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
@@ -163,12 +162,15 @@ public class PedidosResource {
 		if(usuario.equals("cliente")) {
 			ProfissionalDTO proPedido = proDTORepository.findById(pedido.getProfissional().getIdProfissional()).get();
 			
+			//STATUS DO PEDIDO QUE É CANCELADO PELO CLIENTE
 			statusPedido = statusRepository.findById((long)CodeStatusPedido.CANCELADO_CLIENTE.getValue()).get();
 			
+			//CALCULA MULTA DE CANCELAMENTO A SER PAGA QUA DO PEDIDO É CANCELADO PELO CLEINTE
 			pedido.setMultaCliente(proPedido.getValorHora()*0.2);	
 			
 			 
 		}else if(usuario.equals("profissional")){
+			//STATUS DO PEDIDO QUE É CANCELADO PELO PROFISSIONAL
 			statusPedido = statusRepository.findById((long)CodeStatusPedido.CANCELADO_PROFISSIONAL.getValue()).get();		
 		}
 		
@@ -186,8 +188,9 @@ public class PedidosResource {
 	public ResponseEntity<Pedido> concluirPedido(@PathVariable Long idPedido){
 		
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
-		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.CONCLUIDO.getValue()).get();
 
+		//DEFINE O NOVO STATUS DO PEDIDO ATUAL		
+		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.CONCLUIDO.getValue()).get();
 		pedido.setStatus(statusPedido);
 		
 		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();

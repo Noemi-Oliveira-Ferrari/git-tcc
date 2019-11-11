@@ -17,6 +17,8 @@ import br.net.daumhelp.model.Endereco;
 import br.net.daumhelp.model.Subcategoria;
 import br.net.daumhelp.model.TipoUsuario;
 
+//CLASSE DATA OBJECT QUE RETORNA O PROFISSIONAL SEM SENHA EM REQUISIÇÕES GET
+
 @Entity
 @Table(name = "tbl_profissional")
 public class ProfissionalDTO {

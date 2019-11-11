@@ -23,9 +23,12 @@ public class Disco {
 	
 	@Value("${pro.disco.diretorio-imgs}")
 	private String dirImgPro;
-	
+
 	@Value("${pedido.disco.diretorio-imgs}")
 	private String dirImgPedido;
+	
+	@Value("${duh.disco.img}")
+	private String dirImgs;
 	
 	
 	public String salvarFotoCliente(MultipartFile imgCliente, Long idCliente) {
@@ -44,12 +47,13 @@ public class Disco {
 		String dataHora = HandleDates.dataHoraAtualBr();
 		dataHora = dataHora.replaceAll(" ", "_").replaceAll("[/:]", "");
 		
+		
 		String novoNome = "duh_"+fromOf+"_"+id+"_"+dataHora+"_"+GetRandom.random()+"."+img.getContentType().split("/")[1];
 		
 		//destino da imagem server
 		Path caminhoImgServer = Paths.get(this.raiz, diretorio);
 		//destino sem raiz para guardar no banco
-		Path caminhoImg = Paths.get(diretorio);
+		Path caminhoImg = Paths.get(this.dirImgs, diretorio);
 		
 		//caminho da imagem
 		Path imgPath = caminhoImgServer.resolve(novoNome);
