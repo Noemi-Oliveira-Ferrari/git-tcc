@@ -2,9 +2,9 @@ import React, { Component, Fragment } from 'react';
 import '../css/servicos-pro.css';
 import '../css/bootstrap.css';
 import '../css/padroes.css';
-import ServPendentes from '../components/ServPendentes';
-import ServConcluidos from '../components/ServConcluidos';
+import '../css/perfil-pro.css';
 import CapaPerfilPro from '../components/CapaPerfilPro';
+import CardServico from '../components/CardServico';
 
 
 export class ServicosPro extends Component{
@@ -20,21 +20,44 @@ export class ServicosPro extends Component{
            ></CapaPerfilPro>
             <div class="caixa-conteudo-servico-pro">
                 <div class="conteudo-pro-servico">
-                    <div class="caixa-conteudo-informacoes-pendentes">
+                    <div class="caixa-conteudo-informacoes-servico">
                         <div class="text-dados">
                             <h3>Pendentes</h3>
                         </div>
-                        <ServPendentes/>
-                        <ServPendentes/>
-                        <ServPendentes/>
+                        <div className="servico-overflow">
+                            <CardServico
+                                titulo="Concerto maquina de lavar Brastemp"
+                                cliente="Maria Gasolina, Barueri - SP"
+                                comentario="Minha maquina quebrou e nao funciona a peça tal pegou fogo e preciso de uma nova"
+                                estrelas="caixa-star-hidden"
+                            ></CardServico>
+                            <CardServico
+                                titulo="Concerto maquina de lavar Brastemp"
+                                cliente="Maria Gasolina, Barueri - SP"
+                                comentario="Minha maquina quebrou e nao funciona a peça tal pegou fogo e preciso de uma nova"
+                                estrelas="caixa-star-hidden"
+                            ></CardServico>
+                        </div>
                     </div>
-                    <div class="caixa-comentarios-servicos">
+                    <div class="caixa-conteudo-informacoes-servico">
                         <div class="text-dados">
                             <h3>Concluídos</h3>
                         </div>
-                        <ServConcluidos/>
-                        <ServConcluidos/>
-                        <ServConcluidos/>
+                        <div className="servico-overflow">
+                            <CardServico
+                                titulo="Fiamento de dois comodos"
+                                cliente="Maria Gasolina, Barueri - SP"
+                                comentario="Otimo profissional, chegou no horario e fez o trabalho bem feito, mto educado so deixou sujo"
+                                estrelas="caixa-star"
+                            ></CardServico>
+                        
+                            <CardServico
+                                titulo="Fiamento de dois comodos"
+                                cliente="Maria Gasolina, Barueri - SP"
+                                comentario="Otimo profissional, chegou no horario e fez o trabalho bem feito, mto educado so deixou sujo"
+                                estrelas="caixa-star"
+                            ></CardServico>
+                       </div>
                     </div>
                 </div>
             </div>

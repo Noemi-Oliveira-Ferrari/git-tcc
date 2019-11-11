@@ -8,21 +8,21 @@ export class CapaPerfilPro extends Component{
     return(
        <Fragment>
             <div class="capa-perfil-pro">
-                klugkglkj
+
             </div>
             <div class="caixa-perfil">
             <div class="avatar" style={{backgroundImage: this.props.fotoPro}}>
             </div>
             
-                <h1 class="nome-cliente flex-center">{this.props.nomePro}</h1>
+                <h1 class="nome-cliente flex-center">{this.props.titulo}</h1>
                 <div class="caixa-informacoes-basicas">
                     <div class="caixa-info flex-center">
-                        <div class="caixa-info1">{this.props.servicoPro}</div>
-                        <div class="caixa-info1">{this.props.localPro}</div>
+                        <div class="caixa-info1">{this.props.texto1}</div>
+                        <div class="caixa-info1">{this.props.texto2}</div>
                     </div>
                     <div class="caixa-info flex-center">
-                        <div class="caixa-info1">{this.props.notaPro}</div>
-                        <div class="caixa-info1">{this.props.valorPro}</div>
+                        <div class="caixa-info1">{this.props.texto3}</div>
+                        <div class="caixa-info1">{this.props.texto4}</div>
                     </div>
                 </div>
             </div>
