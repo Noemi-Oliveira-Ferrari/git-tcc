@@ -8,7 +8,7 @@ import "../css/modais.css";
 
 export function ModalLoadFun (props) {
 
-    return(        
+    return(
         <Modal {...props}
         size="sm"
         // className="fundo-modal"
@@ -57,7 +57,7 @@ export function ModalAlertasFun (props) {
 
     return(        
         <Modal {...props}
-        size="sm"className="caixa-modal-erros-function"
+        size="sm" className="caixa-modal-erros-function"
         >
             <Modal.Header className="header-modal-erros-function">
                 <div className="titulo-modal-erros-function flex-center">
@@ -112,7 +112,7 @@ export const ModalAlertas = ({tipoAlerta, titulo, erros, onClose, abrir}) =>
                     }
                     </ul>
                 </div>
-                <div id="footer-modal-erros-function" className="flex-center">
+                <div id="footer-modal-erros" className="flex-center">
                     <button onClick={onClose} id="btn-ok-modal">
                         OK!
                     </button>

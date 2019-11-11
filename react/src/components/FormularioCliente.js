@@ -4,7 +4,7 @@ import TermosDeUso from '../components/TermosDeUso';
 import $ from 'jquery';
 import axios from 'axios';
 import { DOMINIO } from '../global';
-import {ModalLoadConst, ModalAlertas} from './ModaisLoad';
+import {ModalLoadConst, ModalAlertas} from './Modais';
 import {browserHistory} from 'react-router';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCpfCliente, validarEmail,
