@@ -61,6 +61,7 @@ public class ClienteResource {
 
 	@PostMapping("/login")
 	public Cliente buscarUsuario(@RequestBody Cliente cliente) {
+		System.out.println(clienteRepository.findUserLogin(cliente.getEmail(), cliente.getSenha()));
 		return clienteRepository.findUserLogin(cliente.getEmail(), cliente.getSenha());
 	}	
 

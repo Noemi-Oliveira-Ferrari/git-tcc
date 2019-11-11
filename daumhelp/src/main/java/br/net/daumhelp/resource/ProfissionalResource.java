@@ -53,39 +53,6 @@ public class ProfissionalResource {
 		}else{
 			return new ResponseEntity<Confirmacao>(HttpStatus.REQUEST_TIMEOUT);
 		}
-<<<<<<< HEAD
-	}
-
-	@GetMapping("/verificar/cpf/{cpf}")
-	public Optional<?> buscarCpfExistente(@Validated @PathVariable String cpf) {
-		if(clienteDTORepository.verificarCpf(cpf) == Optional.empty()) {
-			if(proDTORepository.verificarCpf(cpf) != Optional.empty()) {
-				Optional<?> optionalProDTO = proDTORepository.verificarCpf(cpf);
-				return optionalProDTO;
-			}else {
-				return Optional.empty();
-			}
-		}else {
-			Optional<?> optionalClienteDTO = clienteDTORepository.verificarCpf(cpf);
-			return optionalClienteDTO;	
-		}
-	}
-	
-	@GetMapping("/verificar/email/{email}")
-	public Optional<?> buscarEmailExistente(@Validated @PathVariable String email) {
-		if(clienteDTORepository.verificarEmail(email) == Optional.empty()) {
-			if(proDTORepository.verificarEmail(email) != Optional.empty()) {
-				Optional<?> optionalProDTO = proDTORepository.verificarEmail(email);
-				return optionalProDTO;
-			}else {
-				return Optional.empty();
-			}
-		}else {
-			Optional<?> optionalClienteDTO = clienteDTORepository.verificarEmail(email);
-			return optionalClienteDTO;	
-		}
-=======
->>>>>>> card-41/upload
 	}
 
 	@PostMapping("/login")
