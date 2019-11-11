@@ -1,5 +1,8 @@
 package br.net.daumhelp.files.resource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +17,8 @@ import br.net.daumhelp.dto.ProfissionalDTO;
 import br.net.daumhelp.dto.repository.ClienteDTORepository;
 import br.net.daumhelp.dto.repository.ProfissionalDTORepository;
 import br.net.daumhelp.files.Disco;
+import br.net.daumhelp.model.Pedido;
+import br.net.daumhelp.repository.PedidoRepository;
 
 @CrossOrigin
 //@CrossOrigin(origins = "http://localhost:3000")
@@ -30,13 +35,18 @@ public class ImageResource {
 	
 	@Autowired
 	private ProfissionalDTORepository proDTOrepository;
-		
+	
+	@Autowired
+	private PedidoRepository pedidoRepository;
+
+	
 	@PostMapping("/cliente/{idCliente}")
 	public void uploadImgCliente(@RequestParam MultipartFile img, @PathVariable Long idCliente) {
+
 		ClienteDTO cliente = clienteDTOrepository.findById(idCliente).get();
 	
 		if(cliente.getFoto() != null) {			
-			if(!cliente.getFoto().isBlank() && !cliente.getFoto().isEmpty()) {
+			if(cliente.getFoto() != "" && !cliente.getFoto().isEmpty()) {
 				disco.apagar(cliente.getFoto());			
 			}
 		}
@@ -48,10 +58,11 @@ public class ImageResource {
 	
 	@PostMapping("/profissional/{idPro}")
 	public void uploadImgPro(@RequestParam MultipartFile img, @PathVariable Long idPro) {
+
 		ProfissionalDTO pro = proDTOrepository.findById(idPro).get();
 		
 		if(pro.getFoto() != null) {
-			if(!pro.getFoto().isBlank() && !pro.getFoto().isEmpty()) {
+			if(pro.getFoto() != "" && !pro.getFoto().isEmpty()) {
 				disco.apagar(pro.getFoto());			
 			}			
 		}
@@ -61,6 +72,37 @@ public class ImageResource {
 		pro.setFoto(imgProCaminho);
 		proDTOrepository.save(pro);	
 	}
+	
+
+	@PostMapping("/pedido/{idPedido}")
+	public void uploadImgsPedido(@RequestParam List<MultipartFile> imgs, @PathVariable Long idPedido) {
+
+		Pedido pedido = pedidoRepository.findById(idPedido).get();
+		
+		
+		ArrayList<String> imgsPedidoCaminho = new ArrayList<String>();
+
+		int i = -1;
+
+		for(MultipartFile img : imgs) {
+			if(!img.getOriginalFilename().isEmpty() && img.getSize() > 0) {
+				imgsPedidoCaminho.add(disco.salvarFotoPedido(img, idPedido));
+				++i;				
+				if(i == 0) {
+					pedido.setFoto1(imgsPedidoCaminho.get(i));				
+				}else if(i == 1) {
+					pedido.setFoto2(imgsPedidoCaminho.get(i));				
+				}else if(i == 2){
+					pedido.setFoto3(imgsPedidoCaminho.get(i));
+				}
+			}
+		}
+		
+		
+		pedidoRepository.save(pedido);
+		
+	}
+	
 	
 	
 	

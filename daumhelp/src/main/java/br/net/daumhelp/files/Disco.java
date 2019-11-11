@@ -24,21 +24,27 @@ public class Disco {
 	@Value("${pro.disco.diretorio-imgs}")
 	private String dirImgPro;
 	
+	@Value("${pedido.disco.diretorio-imgs}")
+	private String dirImgPedido;
+	
 	
 	public String salvarFotoCliente(MultipartFile imgCliente, Long idCliente) {
 		return this.salvar(this.dirImgClientes, imgCliente, idCliente, "cli");
-	}
-	
+	}	
 	
 	public String salvarFotoPro(MultipartFile imgPro, Long idPro) {
 		return this.salvar(this.dirImgPro, imgPro, idPro, "pro");
 	}
 	
-	public String salvar(String diretorio, MultipartFile img, Long id, String tipoUsr) {		
+	public String salvarFotoPedido(MultipartFile imgs, Long idPedido) {
+		return this.salvar(this.dirImgPedido, imgs, idPedido, "pedido");
+	}
+	
+	public String salvar(String diretorio, MultipartFile img, Long id, String fromOf) {		
 		String dataHora = HandleDates.dataHoraAtualBr();
 		dataHora = dataHora.replaceAll(" ", "_").replaceAll("[/:]", "");
 		
-		String novoNome = "duh_"+tipoUsr+"_"+id+"_"+dataHora+"_"+GetRandom.random()+"."+img.getContentType().split("/")[1];
+		String novoNome = "duh_"+fromOf+"_"+id+"_"+dataHora+"_"+GetRandom.random()+"."+img.getContentType().split("/")[1];
 		
 		//destino da imagem server
 		Path caminhoImgServer = Paths.get(this.raiz, diretorio);
@@ -57,7 +63,7 @@ public class Disco {
 			error.printStackTrace();
 			throw new RuntimeException("Problemas para salvar arquivo");
 		}
-		System.out.println(novoCaminho);
+//		System.out.println(novoCaminho);
 		return novoCaminho.toString();
 		
 	}
