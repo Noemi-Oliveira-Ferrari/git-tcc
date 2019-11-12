@@ -16,11 +16,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+
+//import org.apache.commons.codec.binary.Base64;
+
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Cliente;
+import br.net.daumhelp.model.JwtToken;
 import br.net.daumhelp.model.Login;
 import br.net.daumhelp.model.Profissional;
+import br.net.daumhelp.model.TokenBodyCliente;
+import br.net.daumhelp.model.TokenBodyProfissional;
+import br.net.daumhelp.recursos.Base64Utils;
 import br.net.daumhelp.recursos.EncryptString;
+import br.net.daumhelp.recursos.HandleJson;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvSucesso;
     private EditText etSenha;
     private EditText etEmail;
+//    private Base64 base64;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,45 +125,73 @@ public class MainActivity extends AppCompatActivity {
 
                 final String senha = EncryptString.gerarHash(etSenha.getText().toString());
                 final String email = etEmail.getText().toString();
-                /*Login login = new Login();
+
+                final Login login = new Login();
                 login.setEmail(email);
-                login.setSenha(senha);*/
-
-                final Profissional profissional = new Profissional();
-                profissional.setEmail(email);
-                profissional.setSenha(senha);
+                login.setSenha(senha);
 
 
-                Call<Profissional> call = new RetroFitConfig().getLoginService().buscarPro(profissional);
-                call.enqueue(new Callback<Profissional>() {
+                Call<JwtToken> call = new RetroFitConfig().getLoginService().buscarPro(login);
+                call.enqueue(new Callback<JwtToken>() {
                     @Override
-                    public void onResponse(Call<Profissional> call, Response<Profissional> response) {
-                        response.body();
+                    public void onResponse(Call<JwtToken> call, Response<JwtToken> response) {
+
+                        String data = null;
+                        String tokenBody = null;
+                        String token = response.body().getToken();
+
+                        try {
+                            tokenBody = Base64Utils.getTokenBody(token);
+                            data = Base64Utils.getJson(tokenBody);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        TokenBodyProfissional tokenBodyProfissional = HandleJson.getJsonTokenBodyProfissional(data);
+                        Profissional profissionalToken = tokenBodyProfissional.getProfissional();
+                        Log.d("TOKEN", profissionalToken.getIdProfissional() + " <----");
 
                         Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
-                        intent.putExtra("profissional", response.body());
+                        intent.putExtra("profissional", profissionalToken);
+                        intent.putExtra("tokenProfissional", token);
                         startActivity(intent);
                     }
 
                     @Override
-                    public void onFailure(Call<Profissional> call, Throwable t) {
+                    public void onFailure(Call<JwtToken> call, Throwable t) {
 
-                        Cliente cliente = new Cliente();
-                        cliente.setEmail(email);
-                        cliente.setSenha(senha);
+//                        Login login = new Login();
+                        login.setEmail(email);
+                        login.setSenha(senha);
 
-                        Call<Cliente> call2 = new RetroFitConfig().getLoginService().buscarCli(cliente);
-                        call2.enqueue(new Callback<Cliente>() {
+                        Call<JwtToken> call2 = new RetroFitConfig().getLoginService().buscarCli(login);
+                        call2.enqueue(new Callback<JwtToken>() {
                             @Override
-                            public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
-                                response.body();
+                            public void onResponse(Call<JwtToken> call2, Response<JwtToken> response) {
+
+                                String data = null;
+                                String tokenBody = null;
+                                String token = response.body().getToken();
+
+                                try {
+                                    tokenBody = Base64Utils.getTokenBody(token);
+                                    data = Base64Utils.getJson(tokenBody);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                TokenBodyCliente tokenBodyCliente = HandleJson.getJsonTokenBodyCliente(data);
+                                Cliente clienteToken = tokenBodyCliente.getCliente();
+                                Log.d("TOKEN", clienteToken.getIdCliente() + " <----");
+
                                 Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
-                                intent.putExtra("cliente", response.body());
+                                intent.putExtra("cliente", clienteToken);
+                                intent.putExtra("tokenCliente", token);
                                 startActivity(intent);
                             }
 
                             @Override
-                            public void onFailure(Call<Cliente> call, Throwable t) {
+                            public void onFailure(Call<JwtToken> call, Throwable t) {
                                 Log.i("Retrofit LOGIN", t.getMessage());
                                 Toast.makeText(MainActivity.this, "Esse usuario não existe", Toast.LENGTH_SHORT).show();
                             }

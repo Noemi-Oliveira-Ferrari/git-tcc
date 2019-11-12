@@ -45,6 +45,8 @@ public class CadastroFotoActivity extends AppCompatActivity {
     private File arquivoFoto;
     public static final int GALERIA_REQUEST = 1;
     public static final int CAMERA_REQUEST = 2;
+    private String tokenProfissional;
+    private String tokenCliente;
 
 
 
@@ -89,6 +91,21 @@ public class CadastroFotoActivity extends AppCompatActivity {
 
         final Intent intent = getIntent();
 
+
+        if (intent.getSerializableExtra("tokenCliente") != null) {
+
+           tokenCliente = (String) intent.getSerializableExtra("tokenCliente");
+
+        }
+
+        if (intent.getSerializableExtra("tokenProfissional") != null) {
+
+
+            tokenProfissional = (String) intent.getSerializableExtra("tokenProfissional");
+
+            Log.d("token" , tokenProfissional);
+        }
+
         if (intent.getSerializableExtra("cliente") != null) {
 
             final Cliente cliente = (Cliente) intent.getSerializableExtra("cliente");
@@ -102,7 +119,7 @@ public class CadastroFotoActivity extends AppCompatActivity {
                     MultipartBody.Part multipartBody = MultipartBody.Part.createFormData("img", arquivoFoto.getName(), fbody);
                     RequestBody idClienteBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(cliente.getIdCliente()));
 
-                    Call<Cliente> call = new RetroFitConfig().getFotoService().cadastrarFotoCli(idClienteBody, multipartBody);
+                    Call<Cliente> call = new RetroFitConfig().getFotoService().cadastrarFotoCli(tokenCliente, idClienteBody, multipartBody);
                     call.enqueue(new Callback<Cliente>() {
                         @Override
                         public void onResponse(Call<Cliente> call, Response<Cliente> response) {
@@ -146,7 +163,7 @@ public class CadastroFotoActivity extends AppCompatActivity {
                     MultipartBody.Part multipartBody = MultipartBody.Part.createFormData("img", arquivoFoto.getName(), fbody);
                     RequestBody idProBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(profissional.getIdProfissional()));
 
-                    Call<Profissional> call2 = new RetroFitConfig().getFotoService().cadastrarFotoPro(idProBody, multipartBody);
+                    Call<Profissional> call2 = new RetroFitConfig().getFotoService().cadastrarFotoPro(tokenProfissional, idProBody, multipartBody);
                     call2.enqueue(new Callback<Profissional>() {
                         @Override
                         public void onResponse(Call<Profissional> call2, Response<Profissional> response) {

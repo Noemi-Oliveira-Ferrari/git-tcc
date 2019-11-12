@@ -1,6 +1,7 @@
 package br.net.daumhelp.service;
 
 import br.net.daumhelp.model.Cliente;
+import br.net.daumhelp.model.JwtToken;
 import br.net.daumhelp.model.Login;
 import br.net.daumhelp.model.Profissional;
 import retrofit2.Call;
@@ -13,12 +14,18 @@ import retrofit2.http.Path;
 
 public interface LoginService {
 
-    @POST("/profissionais/login")
-    Call<Profissional> buscarPro(@Body Profissional profissional);
+    /*@POST("/profissionais/login")
+    Call<Profissional> buscarPro(@Body Profissional profissional);*/
+
+    /*@POST("/clientes/login")
+    Call<Cliente> buscarCli(@Body Cliente cliente);*/
+
+    @POST("/login/profissional")
+    Call<JwtToken> buscarPro(@Body Login login);
+
+    @POST("/login/cliente")
+    Call<JwtToken> buscarCli(@Body Login login);
 
 
-
-    @POST("/clientes/login")
-    Call<Cliente> buscarCli(@Body Cliente cliente);
     
 }
