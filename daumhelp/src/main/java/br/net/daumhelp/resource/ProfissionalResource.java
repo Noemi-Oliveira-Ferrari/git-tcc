@@ -44,10 +44,10 @@ public class ProfissionalResource {
 	private ClienteDTORepository clienteDTORepository;
 	
 
+	//ENVIAR EMAIL COM CODIGO DE CONFIRMAÇÃO PARA USUARIO CLIENTE
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/confirmacao")
 	public ResponseEntity<Confirmacao> confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
-		System.out.println("__________\n"+confirm);
 		if(HandleEmails.enviar(confirm)) {
 			return new ResponseEntity<Confirmacao>(HttpStatus.OK);
 		}else{
@@ -130,10 +130,6 @@ public class ProfissionalResource {
 			@RequestBody Profissional profissional,
 			HttpServletResponse response){
 
-		System.out.println("_____________");
-		System.out.println(profissional.getSenha());
-		System.out.println("_____________");
-		
 		 Profissional proSalvo = proRepository.save(profissional);
 		 
 		 URI uri = ServletUriComponentsBuilder
@@ -151,9 +147,6 @@ public class ProfissionalResource {
 			@PathVariable Long idPro){
 		
 		Profissional proSalvo = proRepository.findById(idPro).get();
-		
-//		profissional.setAtualizadoEm(HandleDates.dataHoraAtual());
-//		profissional.setCriadoEm(proSalvo.getCriadoEm());
 		
 		BeanUtils.copyProperties(profissional, proSalvo, "idProfissional", "criadoEm", "atualizadoEm");
 

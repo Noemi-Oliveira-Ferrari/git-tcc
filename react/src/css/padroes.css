@@ -5,6 +5,11 @@ h3, h4, h5, h6, div, section, form, *{
     padding: 0 ;
 }
 
+figure{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 @font-face{
     font-family: 'Lexend Deca';
     src: url("../fonts/LexendDeca-Regular.ttf");

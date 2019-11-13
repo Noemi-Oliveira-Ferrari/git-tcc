@@ -7,19 +7,21 @@ import org.apache.commons.mail.HtmlEmail;
 
 import br.net.daumhelp.model.Confirmacao;
 
+//ENVIAR EMAIL COM CODIGO DE CONFIRMAÇÃO PARA USUARIOS
 public class HandleEmails {
 	
 	public static boolean enviar(Confirmacao confirm) {	
 		HtmlEmail email = new HtmlEmail();
-		email.setSmtpPort(465);
-		email.setHostName("smtp.googlemail.com");
+		email.setSmtpPort(465);//PORTA DE SAIDA DO EMAIL
+		email.setHostName("smtp.googlemail.com");//HOST DE ENVIO(NO CASO O GMAIL
 		try {
-			email.setAuthenticator(new DefaultAuthenticator("brace.everything@gmail.com", "duh2019s2@"));
+			email.setAuthenticator(new DefaultAuthenticator("brace.everything@gmail.com", "duh2019s2@"));//AUTENTICAÇÃO DO REMETENTE DO EMAIL
 			email.setSSLOnConnect(true);
-			email.setFrom("brace.everything@gmail.com", "DaUmHelp!");
+			email.setFrom("brace.everything@gmail.com", "DaUmHelp!");//REMETENTE
 			email.addTo(confirm.getDestinatario(), confirm.getNome());
-			email.setSubject("Código de Confirmação DaUmHelp!");
+			email.setSubject("Código de Confirmação DaUmHelp!");//ASSUNTO
 
+			//MENSAGEM DE DE EMAIL EM HTML
 			String msgHTML = 
 					"<head> "+
 					"    <link href=\"https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap\" rel=\"stylesheet\"> "+
@@ -70,8 +72,8 @@ public class HandleEmails {
 //					"    </div>  \n" + 
 //					"</section>  \n" + 
 //					"<div class=\"caixa-logo-be\" style=\"padding:0px;margin:0px;  width: 50%;height: 100%;box-sizing: border-box;padding-right: 20px;display: flex;align-items: center;justify-content: flex-end;float: left;font-family: 'Space Mono', monospace;font-weight: normal;color: #ffffff;font-size: 18px;\"><p>Brace {Everything}</p></div>";
-			email.setHtmlMsg(msgHTML);
-			email.send();
+			email.setHtmlMsg(msgHTML);//DEFININDO QUAL A MENSAGEM DO EMAIL
+			email.send();//ENVIANDO EMAIL
 			return true;
 		} catch (EmailException e) {
 			e.printStackTrace();

@@ -50,6 +50,7 @@ public class EnderecoResource {
 		return enderecoRepository.findById(idEndereco);
 	}
 	
+	//BUSCA ENDEREÇO NO VIACEP E USA SEUS DADOS PARA CRIAR UM OBJETO DE CLASSE ENDEREÇO
 	@GetMapping("/cep/{cep}")
 	public ResponseEntity<Endereco> getEnderecosViacep (@PathVariable String cep){
 		Endereco endereco = new Endereco(); 

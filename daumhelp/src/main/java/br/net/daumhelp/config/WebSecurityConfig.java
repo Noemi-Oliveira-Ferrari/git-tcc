@@ -50,18 +50,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
 		httpSecurity.csrf().disable()
 			.authorizeRequests()
-			.antMatchers(HttpMethod.POST, "/clientes/**").permitAll()
-			.antMatchers(HttpMethod.POST, "/profissionais/**").permitAll()
-			.antMatchers(HttpMethod.POST, "/enderecos/**").permitAll()
-			.antMatchers(HttpMethod.POST, "/pedidos/**").permitAll()
-			.antMatchers(HttpMethod.POST, "/imagens/**").permitAll()
+			.antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+			.antMatchers("/profissionais/confirmacao").permitAll()
+			.antMatchers(HttpMethod.POST, "/**").permitAll()
 			
-			.antMatchers(HttpMethod.GET, "/clientes/**").permitAll()
-			.antMatchers(HttpMethod.GET, "/profissionais/**").permitAll()
-			.antMatchers(HttpMethod.GET, "/enderecos/**").permitAll()
-			.antMatchers(HttpMethod.GET, "/pedidos/**").permitAll()
+			.antMatchers(HttpMethod.GET, "/**").permitAll()
 			
-			.antMatchers(HttpMethod.PUT, "/pedidos/**").permitAll()
+			.antMatchers(HttpMethod.PUT, "/**").permitAll()
 			.anyRequest().authenticated().and()
 			.exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 			.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
