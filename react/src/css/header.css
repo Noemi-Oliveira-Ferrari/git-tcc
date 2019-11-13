@@ -1,12 +1,19 @@
-header{
+
+@media screen and (min-device-width:1000px){
+
+.header-resp{
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.header-desktop{
     width: 100%;
     height: 95px;
     background-color: #f5f5f5;
     position: fixed;
     z-index: 990;
 }
-
-
 
 .caixa-header{
     width: 100%;
@@ -40,22 +47,18 @@ header{
     max-height: 60px;
 }
 
-.entrar-cadastro{
-    width: 400px;
-    height: 57px;
-}
 
-
-.area-sing{
+.entre-cadastre{
     width: 400px;
     height: 57px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    background-color: blue;
 }
 
-.area-sing img{
+.entre-cadastre img{
     width: 30px;
     height: 30px;
     margin-top: 15px;   
@@ -116,3 +119,94 @@ header{
     transition: .5s;
     cursor: pointer;
 }
+
+/* CSS PARA QUANDO O USUARIO ESTIVER LOGADO */
+
+.login-usuario{
+    width: 350px;
+    height: 57px;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: rgb(204, 204, 218); */
+}
+
+.avatar-usuario{
+    width: 47px;
+    height: 47px;
+    /* margin-top: 15px; */
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px #57bc90;
+    /* background-color: rgb(78, 240, 105); */
+}
+.avatar-usuario figure {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.avatar-usuario figure img{
+    width: 40px;
+    height: 40px;
+    /* margin-top: 15px; */
+    border-radius: 100%;
+    background-color: brown;
+}
+
+.box-nome{
+    float: left;
+    min-width: 120px;
+    height: 40px;
+    /* background-color: rgb(172, 49, 49); */
+    font-size: 20px;
+    transition: .5s;
+    font-family: 'Manjari';
+    color: #58aeb9;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.box-sair{
+    float: left;
+    width: 130px;
+    height: 40px;
+    /* background-color: rgb(255, 13, 13); */
+    box-sizing: border-box;
+    transition: .5s;
+    font-family: 'Manjari';
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 5px;    
+
+}
+
+.box-sair img{
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    /* float: left; */
+    /* background-color: cadetblue; */
+}
+
+.box-nome:hover,
+.box-sair img:hover{
+    transform: scale(1.1);
+    transition: .5s;
+    cursor: pointer;
+    color: #77c9d4;
+}
+
+}
+
+
+/* @media screen and (max-device-width:880px){
+    header{
+        width: 100%;
+        height: 50px;
+        background-color: #f5f5f5;
+        position: fixed;
+        z-index: 990;
+    }
+} */
