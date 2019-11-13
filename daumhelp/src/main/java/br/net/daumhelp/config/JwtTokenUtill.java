@@ -50,16 +50,28 @@ public class JwtTokenUtill implements Serializable {
 
 	public String generateTokenCliente(Cliente cliente) {
 		Map<String, Object> claims = new HashMap<>();
-		return doGenerateToken(claims, cliente.getEmail(), cliente.getIdCliente());
+		return doGenerateTokenCliente(claims, cliente);
 	}
 
 	public String generateTokenProfissional(Profissional profissional) {
 		Map<String, Object> claims = new HashMap<>();
-		return doGenerateToken(claims, profissional.getEmail(), profissional.getIdProfissional());
+		return doGenerateTokenPro(claims, profissional);
 	}
 	
-	private String doGenerateToken(Map<String, Object> claims, String subject, Long id) {
-		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+	private String doGenerateTokenCliente(Map<String, Object> claims, Cliente cliente) {
+		return Jwts.builder()
+				.claim("cliente", cliente)
+				.setSubject(cliente.getEmail())
+				.setIssuedAt(new Date(System.currentTimeMillis()))
+				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+				.signWith(SignatureAlgorithm.HS512, secret).compact();
+	}
+	
+	private String doGenerateTokenPro(Map<String, Object> claims, Profissional pro) {
+		return Jwts.builder()
+				.claim("profissional", pro)
+				.setSubject(pro.getEmail())
+				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
 				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}

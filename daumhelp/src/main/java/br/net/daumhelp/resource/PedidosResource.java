@@ -57,7 +57,7 @@ public class PedidosResource {
 		return pedidoRepository.buscarPorCliente(idCliente);
 	}
 	
-	@GetMapping("/cliente/{idCliente}/status/{idStatus}")
+	@GetMapping("/cliente/{idCliente}/status/{idStatusPedido}")
 	public List<Pedido> getPedidoByCliente(@PathVariable Long idCliente, @PathVariable Long idStatusPedido){
 		return pedidoRepository.buscarPorClienteStatus(idCliente, idStatusPedido);
 	}
@@ -67,7 +67,7 @@ public class PedidosResource {
 		return pedidoRepository.buscarPorPro(idProfissional);
 	}
 	
-	@GetMapping("/profissional/{idProfissional}/status/{idStatus}")
+	@GetMapping("/profissional/{idProfissional}/status/{idStatusPedido}")
 	public List<Pedido> getPedidoByPro(@PathVariable Long idProfissional, @PathVariable Long idStatusPedido){
 		return pedidoRepository.buscarPorClienteStatus(idProfissional, idStatusPedido);
 	}

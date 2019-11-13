@@ -42,8 +42,8 @@ public class ImageResource {
 	private PedidoRepository pedidoRepository;
 
 	//FAZ UPLOAD DE IMAGENS DE CLIENTES
-	@PostMapping("/cliente/{idCliente}")
-	public void uploadImgCliente(@RequestParam MultipartFile img, @PathVariable Long idCliente) {
+	@PostMapping("/cliente")
+	public void uploadImgCliente(@RequestParam MultipartFile img, @RequestParam Long idCliente) {
 
 		//BUSCA CLIENTE PARA DA FOTO **1
 		ClienteDTO cliente = clienteDTOrepository.findById(idCliente).get();
@@ -63,8 +63,8 @@ public class ImageResource {
 	}
 	
 	//FAZ UPLOADS DE IUMAGENS DE PROFISSIONAIS
-	@PostMapping("/profissional/{idPro}")
-	public void uploadImgPro(@RequestParam MultipartFile img, @PathVariable Long idPro) {
+	@PostMapping("/profissional")
+	public void uploadImgPro(@RequestParam MultipartFile img, @RequestParam Long idPro) {
 		
 		//**1
 		ProfissionalDTO pro = proDTOrepository.findById(idPro).get();
@@ -82,11 +82,11 @@ public class ImageResource {
 		//**5
 		pro.setFoto(imgProCaminho);
 		proDTOrepository.save(pro);	
-	}
+	} 
 	
 	//FAZ UPLOAD DE ATÉ 3 IMAGENS DE UMA VEZ DE PEDIDOS
-	@PostMapping("/pedido/{idPedido}")
-	public void uploadImgsPedido(@RequestParam List<MultipartFile> imgs, @PathVariable Long idPedido) {
+	@PostMapping("/pedido")
+	public void uploadImgsPedido(@RequestParam List<MultipartFile> imgs, @RequestParam Long idPedido) {
 
 		//**1
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
