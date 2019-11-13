@@ -10,6 +10,11 @@ figure{
     padding: 0 !important;
 }
 
+figure{
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
 @font-face{
     font-family: 'Lexend Deca';
     src: url("../fonts/LexendDeca-Regular.ttf");

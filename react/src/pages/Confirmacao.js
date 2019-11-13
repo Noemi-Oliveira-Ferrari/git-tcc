@@ -174,6 +174,7 @@ function Confirmacao() {
             method: 'POST',
             url: `${DOMINIO}${tipoCadastro}/confirmacao`,
             timeout: 30000,
+            headers: {'token': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYXZpZCIsImV4cCI6MTU3MzUwNjI0MCwiaWF0IjoxNTczNDg4MjQwfQ.AlgvbK4_NuSEg9nch72ab_LNL6ZIaCnqV87-6n9AAKjqnTUG4mKqt6CBeuHyC6V8HyEKkhP1_mL05q9cqy3OAw'},
             data: {
                 nome: usuario.nome,
                 destinatario: usuario.email,
@@ -212,8 +213,8 @@ function Confirmacao() {
             console.clear();
             console.log(codeConfirm);
             // setModalAlertas(true);
-            // getUsuario();
-            setModalSucessoShow(true);
+            getUsuario();
+            // setModalSucessoShow(true);
             setRenderizar(false);
         }
     });

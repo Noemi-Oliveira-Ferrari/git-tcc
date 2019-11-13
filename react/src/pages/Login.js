@@ -35,7 +35,7 @@ export class Login extends Component{
 		// this.buscarCliente = this.buscarCliente.bind(this);
 	}
 	componentDidMount(){
-		sessionStorage.clear();
+		// sessionStorage.clear();
 		$("txt-senha").attr("disabled", true);
 	}
 
