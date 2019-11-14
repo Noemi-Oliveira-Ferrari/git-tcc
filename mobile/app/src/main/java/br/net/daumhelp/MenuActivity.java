@@ -38,9 +38,6 @@ public class MenuActivity extends AppCompatActivity {
             Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
         }
 
-
-
-
     }
 
     @Override

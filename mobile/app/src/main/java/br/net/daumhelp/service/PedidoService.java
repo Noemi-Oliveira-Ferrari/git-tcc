@@ -6,6 +6,7 @@ import br.net.daumhelp.model.Pedido;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -13,11 +14,11 @@ import retrofit2.http.Path;
 public interface PedidoService {
 
     @POST("pedidos/solicitar")
-    Call<Pedido> solicitarProfissional(@Body Pedido pedido);
+    Call<Pedido> solicitarProfissional(@Header("token") String token, @Body Pedido pedido);
 
     @GET("pedidos/profissional/{idProfissional}/status/{idStatusPedido}")
-    Call<List<Pedido>> buscarPedidosPendentes(@Path("idProfissional") int idProfissional, @Path("idStatusPedido") int idStatus);
+    Call<List<Pedido>> buscarPedidosPendentes(@Header("token") String token, @Path("idProfissional") int idProfissional, @Path("idStatusPedido") int idStatus);
 
     @PUT("pedidos/rejeitar/{idPedido}")
-    Call<Pedido>  recusarPedidoPendente(@Path("idPedido") int idPedido);
+    Call<Pedido>  recusarPedidoPendente(@Header("token") String token, @Path("idPedido") int idPedido);
 }

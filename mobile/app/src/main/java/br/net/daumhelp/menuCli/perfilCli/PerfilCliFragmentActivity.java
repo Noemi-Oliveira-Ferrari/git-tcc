@@ -71,6 +71,7 @@ public class PerfilCliFragmentActivity extends Fragment {
     private Long idCidade;
     private EnderecoViaCep enderecoViaCep;
     private ImageView ivFotoCliente;
+    private String tokenCliente;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -117,6 +118,12 @@ public class PerfilCliFragmentActivity extends Fragment {
         etCep.addTextChangedListener(maskCep);
 
         Intent intent = getActivity().getIntent();
+
+        if (intent.getSerializableExtra("tokenCliente") != null) {
+            tokenCliente = (String) intent.getSerializableExtra("tokenCliente");
+        }
+
+
         if (intent.getSerializableExtra("cliente") != null) {
 
             cliente = (Cliente) intent.getSerializableExtra("cliente");
@@ -250,15 +257,15 @@ public class PerfilCliFragmentActivity extends Fragment {
                 if (validar() == true){
 
                     /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
-                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(cliente.getEndereco().getIdEndereco(), endereco);
+                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(tokenCliente, cliente.getEndereco().getIdEndereco(), endereco);
                     call.enqueue(new Callback<Endereco>() {
                         @Override
                         public void onResponse(Call<Endereco> call, Response<Endereco> response) {
 
                             response.body();
 
-                            /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
-                            Call<Cliente> call2 = new RetroFitConfig().getClienteService().atualizarCli(cliente.getIdCliente(), cliente);
+                            /*CHAMADA PARA ATUALIZAR CLIENTE*/
+                            Call<Cliente> call2 = new RetroFitConfig().getClienteService().atualizarCli(tokenCliente, cliente.getIdCliente(), cliente);
                             call2.enqueue(new Callback<Cliente>() {
                                 @Override
                                 public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
@@ -324,7 +331,7 @@ public class PerfilCliFragmentActivity extends Fragment {
         etLogradouro.setText(cliente.getEndereco().getLogradouro());
         etUf.setText(cliente.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
         etBairro.setText(cliente.getEndereco().getBairro());
-        tvNome.setText(cliente.getNome());
+        tvNome.setText(cliente.getNome().toUpperCase());
         Picasso.get().load("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_GOzRJinPUlzWcM8hqBAsPnRvkzjYoOIPwq2swChRz-xzw8Hp").into(ivFotoCliente);
 
     }

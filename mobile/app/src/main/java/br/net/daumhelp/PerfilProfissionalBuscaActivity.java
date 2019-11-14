@@ -45,6 +45,7 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
     private Cliente clienteLogado;
     private ImageView ivFotoProfissional;
     private ImageView ivFotoProfissionalAlert;
+    private String tokenCliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,12 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
         alertDialog = new Dialog(this);
 
         Intent intent = getIntent();
+
+
+        if (intent.getSerializableExtra("tokenCliente") != null) {
+            tokenCliente = (String) intent.getSerializableExtra("tokenCliente");
+        }
+
         if (intent.getSerializableExtra("profissionalBusca") != null && intent.getSerializableExtra("cliente") != null) {
 
 
@@ -81,6 +88,7 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
                     Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, DetalhesSolicitacaoServicoActivity.class);
                     intent.putExtra("profissionalSolicitado", profissionalSelecionado);
                     intent.putExtra("clienteLogado", clienteLogado);
+                    intent.putExtra("tokenCliente", tokenCliente);
                     startActivity(intent);
                 }
             });

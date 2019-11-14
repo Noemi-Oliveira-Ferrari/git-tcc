@@ -1,5 +1,6 @@
 package br.net.daumhelp;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,7 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Cliente;
@@ -27,6 +30,9 @@ import br.net.daumhelp.model.Pedido;
 import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.recursos.Data;
 import br.net.daumhelp.recursos.Mascara;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,9 +53,17 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
     private String caminhoFoto;
     private Profissional profissionalSolicitado;
     private Cliente clienteLogado;
+    private String tokenCliente;
     public static final int CAMERA_REQUEST = 1;
     public static final int CAMERA_REQUEST2 = 2;
     public static final int CAMERA_REQUEST3 = 3;
+    private boolean resultadoSolicitacao;
+    private boolean resultadoSolicitacaoFoto;
+    private Pedido pedidoFeito;
+    private File arquivoFoto1;
+    private File arquivoFoto2;
+    private File arquivoFoto3;
+    Integer id;
 
 
     @Override
@@ -71,29 +85,27 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
         btnFoto3 = findViewById(R.id.btn_image_3);
         btnConfirmar = findViewById(R.id.btn_confirmar_solicitacao);
 
+        /*MÁSCARAS*/
         Mascara maskData = new Mascara("##/##/####", etData);
         etData.addTextChangedListener(maskData);
-
         Mascara maskHoraI = new Mascara("##:##", etHoraInicio);
         etHoraInicio.addTextChangedListener(maskHoraI);
-
         Mascara maskHoraF = new Mascara("##:##", etHoraFim);
         etHoraFim.addTextChangedListener(maskHoraF);
 
 
-
-
         Intent intent = getIntent();
+        /*PEGANDO O TOKEN*/
+        if (intent.getSerializableExtra("tokenCliente") != null) {
+            tokenCliente = (String) intent.getSerializableExtra("tokenCliente");
+        }
+
         if (intent.getSerializableExtra("profissionalSolicitado") != null && intent.getSerializableExtra("clienteLogado") != null) {
-
-
+            
             profissionalSolicitado = (Profissional) intent.getSerializableExtra("profissionalSolicitado");
             clienteLogado = (Cliente) intent.getSerializableExtra("clienteLogado");
 
-
-
-
-
+            /*SOLICITAÇÃO DO PROFISSIONAL*/
             btnConfirmar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -105,35 +117,40 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
                     pedido.setHorarioInicial(etHoraInicio.getText().toString());
                     pedido.setHorarioFinal(etHoraFim.getText().toString());
 
-
-
                     if(validar()){
 
                         Date data = Data.brStringToDate(etData.getText().toString());
                         String dataFormatada = Data.dataToString(data);
                         pedido.setDataServico(dataFormatada);
 
-                        Call<Pedido> call = new RetroFitConfig().getPedidoService().solicitarProfissional(pedido);
-                        call.enqueue(new Callback<Pedido>() {
-                            @Override
-                            public void onResponse(Call<Pedido> call, Response<Pedido> response) {
-                                response.body();
-                                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "foi", Toast.LENGTH_SHORT).show();
-                                finish();
-                            }
+                       Integer id = solicitar(pedido, tokenCliente);
 
-                            @Override
-                            public void onFailure(Call<Pedido> call, Throwable t) {
-                                Log.i("Retrofit PEDIDO", t.getMessage());
-                                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional =( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "FOI", Toast.LENGTH_SHORT).show();
+
+                            RequestBody fbody1 = RequestBody.create(MediaType.parse("image/png"), arquivoFoto1);
+                            MultipartBody.Part multipartBody1 = MultipartBody.Part.createFormData("img", arquivoFoto1.getName(), fbody1);
+
+                            RequestBody fbody2 = RequestBody.create(MediaType.parse("image/png"), arquivoFoto2);
+                            MultipartBody.Part multipartBody2 = MultipartBody.Part.createFormData("img", arquivoFoto2.getName(), fbody2);
+
+                            RequestBody fbody3 = RequestBody.create(MediaType.parse("image/png"), arquivoFoto1);
+                            MultipartBody.Part multipartBody3 = MultipartBody.Part.createFormData("img", arquivoFoto3.getName(), fbody3);
+
+                            RequestBody idPedidoBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(id));
+
+                            List<MultipartBody.Part> lista = new ArrayList<MultipartBody.Part>();
+                            lista.add(multipartBody1);
+                            lista.add(multipartBody2);
+                            lista.add(multipartBody3);
+                            
+                            if(cadastrarFotoSolicitacao(tokenCliente,lista , idPedidoBody) == true){
+                                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "FOTO FOI", Toast.LENGTH_SHORT).show();
                             }
-                        });
-                    }
+                        }
                 }
             });
 
         }
-
 
         /*INTENT PARA ABRIR A CÂMERA*/
         btnFoto1.setOnClickListener(new View.OnClickListener() {
@@ -143,13 +160,14 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
                 String nomeFoto = "/IMG_" + System.currentTimeMillis() + ".jpg";
                 caminhoFoto = getExternalFilesDir(null) + nomeFoto;
 
-                File arquivoFoto = new File(caminhoFoto);
-                Uri fotoUri = FileProvider.getUriForFile(DetalhesSolicitacaoServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto);
+                arquivoFoto1 = new File(caminhoFoto);
+                Uri fotoUri = FileProvider.getUriForFile(DetalhesSolicitacaoServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto1);
 
                 intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
                 startActivityForResult(intentCamera, CAMERA_REQUEST);
             }
         });
+
         /*INTENT PARA ABRIR A CÂMERA*/
         btnFoto2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,13 +176,14 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
                 String nomeFoto = "/IMG_" + System.currentTimeMillis() + ".jpg";
                 caminhoFoto = getExternalFilesDir(null) + nomeFoto;
 
-                File arquivoFoto = new File(caminhoFoto);
-                Uri fotoUri = FileProvider.getUriForFile(DetalhesSolicitacaoServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto);
+                arquivoFoto2 = new File(caminhoFoto);
+                Uri fotoUri = FileProvider.getUriForFile(DetalhesSolicitacaoServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto2);
 
                 intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
                 startActivityForResult(intentCamera, CAMERA_REQUEST2);
             }
         });
+
         /*INTENT PARA ABRIR A CÂMERA*/
         btnFoto3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,8 +192,8 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
                 String nomeFoto = "/IMG_" + System.currentTimeMillis() + ".jpg";
                 caminhoFoto = getExternalFilesDir(null) + nomeFoto;
 
-                File arquivoFoto = new File(caminhoFoto);
-                Uri fotoUri = FileProvider.getUriForFile(DetalhesSolicitacaoServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto);
+                arquivoFoto3 = new File(caminhoFoto);
+                Uri fotoUri = FileProvider.getUriForFile(DetalhesSolicitacaoServicoActivity.this, BuildConfig.APPLICATION_ID + ".provider", arquivoFoto3);
 
                 intentCamera.putExtra(MediaStore.EXTRA_OUTPUT, fotoUri);
                 startActivityForResult(intentCamera, CAMERA_REQUEST3);
@@ -182,15 +201,11 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
         });
 
 
-
-
-
     }
 
+    /*TRATAMENTO DE ERRO CASO NÃO SEJA SELECIONADA NENHUMA FOTO*/
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-
-
 
             if (requestCode == CAMERA_REQUEST){
                 Bitmap bitmap = BitmapFactory.decodeFile(caminhoFoto);
@@ -211,6 +226,7 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
 
      }
 
+     /*VALIDAÇÃO DOS CAMPOS*/
     private boolean validar(){
         boolean validado = true;
 
@@ -233,4 +249,64 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
 
         return validado;
     }
+
+    /*SOLICITAÇÃO SEM FOTO*/
+    private Integer solicitar(final Pedido pedido, String  tokenCliente){
+
+        resultadoSolicitacao = true;
+
+
+        Call<Pedido> call = new RetroFitConfig().getPedidoService().solicitarProfissional(tokenCliente, pedido);
+        call.enqueue(new Callback<Pedido>() {
+
+            @Override
+            public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                pedidoFeito = response.body();
+                id = pedidoFeito.getIdPedido();
+                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Aguarde a resposta do profissional! =D", Toast.LENGTH_SHORT).show();
+                //finish();
+                //Log.d("iddopedido", String.valueOf(pedidoFeito.getIdPedido()));
+                resultadoSolicitacao = true;
+            }
+
+            @Override
+            public void onFailure(Call<Pedido> call, Throwable t) {
+                Log.i("Retrofit PEDIDO", t.getMessage());
+                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional =( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
+                resultadoSolicitacao = false;
+            }
+        });
+
+        return id;
+
+    }
+
+    /*UPLOAD FOTOS DA SOLICITAÇÃO*/
+    private boolean cadastrarFotoSolicitacao(String tokenCliente, List<MultipartBody.Part> fotos, RequestBody idPedido){
+
+        Call<List<Pedido>> call = new RetroFitConfig().getFotoService().cadastrarFotoSolicitacao(tokenCliente, idPedido, fotos);
+        call.enqueue(new Callback<List<Pedido>>() {
+
+            @Override
+            public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
+                response.body();
+                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Aguarde a resposta do profissional! =D", Toast.LENGTH_SHORT).show();
+                //finish();
+                resultadoSolicitacaoFoto = true;
+            }
+
+            @Override
+            public void onFailure(Call<List<Pedido>> call, Throwable t) {
+                Log.i("Retrofit PEDIDO", t.getMessage());
+                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional |||=( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
+                resultadoSolicitacaoFoto = false;
+            }
+        });
+
+        return resultadoSolicitacaoFoto;
+
+    }
+
+
+
 }

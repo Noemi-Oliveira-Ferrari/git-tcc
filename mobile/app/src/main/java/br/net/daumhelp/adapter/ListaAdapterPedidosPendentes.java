@@ -49,12 +49,14 @@ public class ListaAdapterPedidosPendentes extends ArrayAdapter<Pedido> {
     private Button btnAnalisar;
     private ListView listView;
     private ImageView ivFotoCliente;
+    private String tokenProfissional;
 
 
-    public ListaAdapterPedidosPendentes(@NonNull Context context, ArrayList<Pedido> lista) {
+    public ListaAdapterPedidosPendentes(@NonNull Context context, ArrayList<Pedido> lista, String tokenProfissional) {
         super(context, 0, lista);
         this.context = context;
         this.lista = lista;
+        this.tokenProfissional = tokenProfissional;
     }
 
     @NonNull
@@ -103,7 +105,7 @@ public class ListaAdapterPedidosPendentes extends ArrayAdapter<Pedido> {
                         
                         int idPedido = listaPedidos.getIdPedido();
 
-                        Call<Pedido> call = new RetroFitConfig().getPedidoService().recusarPedidoPendente(idPedido);
+                        Call<Pedido> call = new RetroFitConfig().getPedidoService().recusarPedidoPendente(tokenProfissional,idPedido);
                         call.enqueue(new Callback<Pedido>() {
                             @Override
                             public void onResponse(Call<Pedido> call, Response<Pedido> response) {

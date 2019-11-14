@@ -42,6 +42,7 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
     private SwipeRefreshLayout mSwipeToRefresh;
     private Button btnFiltro;
     private Dialog alertDialog;
+    private String tokenCliente;
 
     private ListView listView;
 
@@ -70,6 +71,11 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
         alertDialog = new Dialog(getContext());
 
         Intent intent = getActivity().getIntent();
+
+        if (intent.getSerializableExtra("tokenCliente") != null) {
+            tokenCliente = (String) intent.getSerializableExtra("tokenCliente");
+        }
+
         if(intent.getSerializableExtra("cliente") != null) {
             cliente = (Cliente) intent.getSerializableExtra("cliente");
         }
@@ -83,13 +89,13 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
             }
         });
 
-        final ListaAdapterBusca listaProfissional = new ListaAdapterBusca(getContext(), lista, cliente);
+        final ListaAdapterBusca listaProfissional = new ListaAdapterBusca(getContext(), lista, cliente, tokenCliente);
 
         int idMicroCliente = cliente.getEndereco().getCidade().getMicrorregiao().getIdMicro();
 
         tvNome = getView().findViewById(R.id.tv_nome_profissional);
 
-        Call<List<Profissional>> call = new RetroFitConfig().getProfissionalService().buscarProfissionalMicro(idMicroCliente);
+        Call<List<Profissional>> call = new RetroFitConfig().getProfissionalService().buscarProfissionalMicro(tokenCliente, idMicroCliente);
         call.enqueue(new Callback<List<Profissional>>() {
             @Override
             public void onResponse(Call<List<Profissional>> call, Response<List<Profissional>> response) {
@@ -123,7 +129,7 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
 
 
         int idMicroCliente = cliente.getEndereco().getCidade().getMicrorregiao().getIdMicro();
-        Call<List<Profissional>> call = new RetroFitConfig().getProfissionalService().buscarProfissionalMicro(idMicroCliente);
+        Call<List<Profissional>> call = new RetroFitConfig().getProfissionalService().buscarProfissionalMicro(tokenCliente, idMicroCliente);
         call.enqueue(new Callback<List<Profissional>>() {
             @Override
             public void onResponse(Call<List<Profissional>> call, Response<List<Profissional>> response) {
@@ -132,7 +138,7 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
                 
                 if(lista != null){
 
-                    listaProfissional = new ListaAdapterBusca(getContext(), lista, cliente);
+                    listaProfissional = new ListaAdapterBusca(getContext(), lista, cliente, tokenCliente);
                     ListView listView = (ListView) getView().findViewById(R.id.lv_busca_pro);
 
                     listView.setAdapter(listaProfissional);

@@ -22,7 +22,7 @@ public class Pedido {
 	private Long idPedido;
 
 	@NotNull
-	@Size(min = 10, message = "A descrição está muito curta")
+//	@Size(min = 10, message = "A descrição está muito curta")
 	private String descricao;
 
 	private String dataHora;

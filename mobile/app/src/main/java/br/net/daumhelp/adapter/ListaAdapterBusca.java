@@ -43,12 +43,14 @@ public class ListaAdapterBusca extends ArrayAdapter<Profissional> {
     private Button btnVisualizar;
     private Cliente cliente;
     private ImageView ivFotoProfissional;
+    private String tokenCliente;
 
-    public ListaAdapterBusca(@NonNull Context context, ArrayList<Profissional> lista, Cliente cliente) {
+    public ListaAdapterBusca(@NonNull Context context, ArrayList<Profissional> lista, Cliente cliente, String tokenCliente) {
         super(context, 0, lista);
         this.context = context;
         this.lista = lista;
         this.cliente = cliente;
+        this.tokenCliente = tokenCliente;
     }
 
     @NonNull
@@ -70,6 +72,7 @@ public class ListaAdapterBusca extends ArrayAdapter<Profissional> {
                 Intent intent = new Intent(context, PerfilProfissionalBuscaActivity.class);
                 intent.putExtra("profissionalBusca", listaProfissional);
                 intent.putExtra("cliente", cliente);
+                intent.putExtra("tokenCliente", tokenCliente);
                 context.startActivity(intent);
             }
         });

@@ -218,33 +218,33 @@ public class PerfilClienteActivity extends AppCompatActivity {
                 if (validar() == true){
 
                     /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
-                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(cliente.getEndereco().getIdEndereco(), endereco);
-                    call.enqueue(new Callback<Endereco>() {
-                        @Override
-                        public void onResponse(Call<Endereco> call, Response<Endereco> response) {
-
-                            response.body();
-
-                            /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
-                            Call<Cliente> call2 = new RetroFitConfig().getClienteService().atualizarCli(cliente.getIdCliente(), cliente);
-                            call2.enqueue(new Callback<Cliente>() {
-                                @Override
-                                public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
-                                    response.body();
-                                    tvNome.setText(etNome.getText());
-                                    Toast.makeText(PerfilClienteActivity.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
-                                }
-                                @Override
-                                public void onFailure(Call<Cliente> call2, Throwable t) {
-                                    Log.i("CLIENTE", t.getMessage());
-                                }
-                            });
-                        }
-                        @Override
-                        public void onFailure(Call<Endereco> call, Throwable t) {
-                            Log.i("ENDERECO", t.getMessage());
-                        }
-                    });
+//                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(cliente.getEndereco().getIdEndereco(), endereco);
+//                    call.enqueue(new Callback<Endereco>() {
+//                        @Override
+//                        public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+//
+//                            response.body();
+//
+//                            /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
+//                            Call<Cliente> call2 = new RetroFitConfig().getClienteService().atualizarCli(cliente.getIdCliente(), cliente);
+//                            call2.enqueue(new Callback<Cliente>() {
+//                                @Override
+//                                public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
+//                                    response.body();
+//                                    tvNome.setText(etNome.getText());
+//                                    Toast.makeText(PerfilClienteActivity.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
+//                                }
+//                                @Override
+//                                public void onFailure(Call<Cliente> call2, Throwable t) {
+//                                    Log.i("CLIENTE", t.getMessage());
+//                                }
+//                            });
+//                        }
+//                        @Override
+//                        public void onFailure(Call<Endereco> call, Throwable t) {
+//                            Log.i("ENDERECO", t.getMessage());
+//                        }
+//                    });
 
                 }
 

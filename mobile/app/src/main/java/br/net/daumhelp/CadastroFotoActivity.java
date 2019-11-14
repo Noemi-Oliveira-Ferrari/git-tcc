@@ -93,16 +93,11 @@ public class CadastroFotoActivity extends AppCompatActivity {
 
 
         if (intent.getSerializableExtra("tokenCliente") != null) {
-
            tokenCliente = (String) intent.getSerializableExtra("tokenCliente");
-
         }
 
         if (intent.getSerializableExtra("tokenProfissional") != null) {
-
-
             tokenProfissional = (String) intent.getSerializableExtra("tokenProfissional");
-
             Log.d("token" , tokenProfissional);
         }
 
@@ -144,7 +139,9 @@ public class CadastroFotoActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(CadastroFotoActivity.this, MenuClienteActivity.class);
                     intent.putExtra("cliente", cliente);
+                    intent.putExtra("tokenCliente", tokenCliente);
                     startActivity(intent);
+                    finish();
                 }
             });
 
@@ -189,6 +186,8 @@ public class CadastroFotoActivity extends AppCompatActivity {
 
                     Intent intent= new Intent(CadastroFotoActivity.this, MenuActivity.class);
                     intent.putExtra("profissional", profissional);
+                    intent.putExtra("tokenProfissional", tokenProfissional);
+                    finish();
                     startActivity(intent);
                 }
             });

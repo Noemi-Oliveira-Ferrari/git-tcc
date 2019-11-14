@@ -31,7 +31,6 @@ public class MenuClienteActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getSerializableExtra("cliente") != null) {
             Cliente cliente = (Cliente) intent.getSerializableExtra("cliente");
-
         }
 
 

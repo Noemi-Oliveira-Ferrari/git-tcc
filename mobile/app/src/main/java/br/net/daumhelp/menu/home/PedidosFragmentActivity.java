@@ -37,6 +37,7 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
     private Profissional profissional;
     private int idProfissional;
     private ListView listView;
+    private String tokenProfissional;
 
     ArrayList<Pedido> lista = new ArrayList<Pedido>();
 
@@ -59,15 +60,23 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
         listView =  getView().findViewById(R.id.lv_pedidos_pendentes);
 
 
-        final ListaAdapterPedidosPendentes listaPedidos =  new ListaAdapterPedidosPendentes(getContext(), lista);
+        final ListaAdapterPedidosPendentes listaPedidos =  new ListaAdapterPedidosPendentes(getContext(), lista, tokenProfissional);
         //final ListView listView = (ListView) getView().findViewById(R.id.lv_pedidos_pendentes);
 
         Intent intent = getActivity().getIntent();
+
+        if (intent.getSerializableExtra("tokenProfissional") != null) {
+            tokenProfissional = (String) intent.getSerializableExtra("tokenProfissional");
+        }
+
+
         if (intent.getSerializableExtra("profissional") != null){
             profissional = (Profissional) intent.getSerializableExtra("profissional");
             idProfissional = profissional.getIdProfissional();
 
-            Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosPendentes(idProfissional, 1);
+            Log.d("pedidos ---> ", tokenProfissional + " - " + idProfissional);
+
+            Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosPendentes(tokenProfissional, idProfissional, 1);
             call.enqueue(new Callback<List<Pedido>>() {
                 @Override
                 public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
@@ -101,7 +110,7 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
     @Override
     public void onRefresh() {
 
-        Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosPendentes(idProfissional, 1);
+        Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosPendentes(tokenProfissional, idProfissional, 1);
         call.enqueue(new Callback<List<Pedido>>() {
             @Override
             public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
@@ -110,7 +119,7 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
 
                 if(lista != null){
 
-                    listaPedidos = new ListaAdapterPedidosPendentes(getContext(), lista);
+                    listaPedidos = new ListaAdapterPedidosPendentes(getContext(), lista, tokenProfissional);
                     ListView listView = (ListView) getView().findViewById(R.id.lv_pedidos_pendentes);
                     listView.setAdapter(listaPedidos);
                     mSwipeToRefresh.setRefreshing(false);

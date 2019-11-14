@@ -1,6 +1,9 @@
 package br.net.daumhelp.service;
 
+import java.util.List;
+
 import br.net.daumhelp.model.Cliente;
+import br.net.daumhelp.model.Pedido;
 import br.net.daumhelp.model.Profissional;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -18,7 +21,13 @@ public interface FotoService {
     Call<Profissional> cadastrarFotoPro(@Header("token") String token, @Part("idPro") RequestBody idPro, @Part MultipartBody.Part file);
 
 
+    @Multipart
     @POST("imagens/cliente")
     Call<Cliente> cadastrarFotoCli(@Header("token") String token, @Part("idCliente") RequestBody idCliente, @Part MultipartBody.Part file);
+
+    @Multipart
+    @POST("imagens/pedido")
+    Call<List<Pedido>> cadastrarFotoSolicitacao(@Header("token") String token, @Part("idPedido") RequestBody idPedido, @Part List<MultipartBody.Part> file);
+
 
 }

@@ -80,6 +80,7 @@ public class EditarActivity extends AppCompatActivity {
     private int contBack = 0;
     private Profissional profissionalAtualizado;
     private EnderecoViaCep enderecoViaCep;
+    private String tokenProfissional;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -130,6 +131,11 @@ public class EditarActivity extends AppCompatActivity {
 
         /*PEGANDO PROFISSIONAL PARA CARREGAR O PERFIL*/
         Intent intent = getIntent();
+
+        if (intent.getSerializableExtra("tokenProfissional") != null) {
+            tokenProfissional = (String) intent.getSerializableExtra("tokenProfissional");
+        }
+
         if (intent.getSerializableExtra("profissional") != null) {
             profissional = (Profissional) intent.getSerializableExtra("profissional");
 
@@ -272,23 +278,13 @@ public class EditarActivity extends AppCompatActivity {
                     }
                 });
 
-
                 if(tvEditarServico.getText().equals("Editar")){
-
                     tvEditarServico.setVisibility(View.INVISIBLE);
-
                     contBack = 1;
-
-
                 }
-
-
-
-
 
             }
         });
-
 
         /*CHAMADA DAS SUBCATEGORIAS*/
         Call<List<Subcategoria>> callsub = new RetroFitConfig().getSubcategoriaService().buscarSubcategorias(Integer.parseInt(profissional.getSubcategoria().getCategoria().getIdCategoria().toString()));
@@ -350,7 +346,7 @@ public class EditarActivity extends AppCompatActivity {
                         if (validar() == true){
 
                             /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
-                            Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(profissional.getEndereco().getIdEndereco(), endereco);
+                            Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(tokenProfissional, profissional.getEndereco().getIdEndereco(), endereco);
                             call.enqueue(new Callback<Endereco>() {
                                 @Override
                                 public void onResponse(Call<Endereco> call, Response<Endereco> response) {
@@ -358,7 +354,7 @@ public class EditarActivity extends AppCompatActivity {
                                     response.body();
 
                                     /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
-                                    Call<Profissional> call2 = new RetroFitConfig().getProfissionalService().atualizarPro(profissional.getIdProfissional(), profissional);
+                                    Call<Profissional> call2 = new RetroFitConfig().getProfissionalService().atualizarPro(tokenProfissional, profissional.getIdProfissional(), profissional);
                                     call2.enqueue(new Callback<Profissional>() {
                                         @Override
                                         public void onResponse(Call<Profissional> call2, Response<Profissional> response) {

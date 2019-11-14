@@ -47,6 +47,7 @@ public class PerfilFragmentActivity extends Fragment {
     private TextView tvNome;
     private TextView tvLocal;
     private ImageView ivProfileImg;
+    private String tokenProfissional;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -86,11 +87,17 @@ public class PerfilFragmentActivity extends Fragment {
         ivProfileImg = getView().findViewById(R.id.profile_image);
 
         Intent intent = getActivity().getIntent();
+
+        if (intent.getSerializableExtra("tokenProfissional") != null) {
+            tokenProfissional = (String) intent.getSerializableExtra("tokenProfissional");
+        }
+
         if (intent.getSerializableExtra("profissional") != null) {
 
             profissional = (Profissional) intent.getSerializableExtra("profissional");
 
             String fotoPro = profissional.getFoto();
+          //  Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivProfileImg);
             Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivProfileImg);
 
             tvNome.setText(profissional.getNome().toUpperCase());
@@ -103,6 +110,7 @@ public class PerfilFragmentActivity extends Fragment {
                 public void onClick(View view) {
                     Intent intent = new Intent(getContext(), EditarActivity.class);
                     intent.putExtra("profissional", profissional);
+                    intent.putExtra("tokenProfissional", tokenProfissional);
                     startActivity(intent);
                 }
             });
@@ -123,7 +131,7 @@ public class PerfilFragmentActivity extends Fragment {
     public void onResume() {
         super.onResume();
 
-        Call<Profissional> call = new RetroFitConfig().getProfissionalService().buscarProfissional(profissional.getIdProfissional());
+        Call<Profissional> call = new RetroFitConfig().getProfissionalService().buscarProfissional(tokenProfissional, profissional.getIdProfissional());
         call.enqueue(new Callback<Profissional>() {
             @Override
             public void onResponse(Call<Profissional> call, Response<Profissional> response) {
@@ -137,6 +145,7 @@ public class PerfilFragmentActivity extends Fragment {
                     public void onClick(View view) {
                         Intent intent = new Intent(getContext(), EditarActivity.class);
                         intent.putExtra("profissional", profissionalAtualizado);
+                        intent.putExtra("tokenProfissional", tokenProfissional);
                         startActivity(intent);
                     }
                 });

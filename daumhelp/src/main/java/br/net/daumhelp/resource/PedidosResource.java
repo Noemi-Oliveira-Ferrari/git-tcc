@@ -69,7 +69,7 @@ public class PedidosResource {
 	
 	@GetMapping("/profissional/{idProfissional}/status/{idStatusPedido}")
 	public List<Pedido> getPedidoByPro(@PathVariable Long idProfissional, @PathVariable Long idStatusPedido){
-		return pedidoRepository.buscarPorClienteStatus(idProfissional, idStatusPedido);
+		return pedidoRepository.buscarPorProfissionalStatus(idProfissional, idStatusPedido);
 	}
 
 	@PostMapping("/solicitar")
