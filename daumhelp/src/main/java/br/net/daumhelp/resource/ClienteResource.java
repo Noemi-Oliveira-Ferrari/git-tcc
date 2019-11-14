@@ -23,7 +23,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.net.daumhelp.dto.ClienteDTO;
 import br.net.daumhelp.dto.repository.ClienteDTORepository;
-import br.net.daumhelp.dto.repository.ProfissionalDTORepository;
 import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Confirmacao;
 import br.net.daumhelp.repository.ClienteRepository;
@@ -42,29 +41,27 @@ public class ClienteResource {
 	@Autowired
 	private ClienteDTORepository clienteDTORepository;
 	
-	@Autowired
-	private ProfissionalDTORepository proDTORepository;
 	
 
+	//ENVIAR EMAIL COM CODIGO DE CONFIRMAÇÃO PARA USUARIO CLIENTE
 	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping("/confirmacao")
 	public ResponseEntity<Confirmacao> confirmarEmail(@RequestBody @Validated Confirmacao confirm) {
-		System.out.println("__________\n"+confirm);
 		if(HandleEmails.enviar(confirm)) {
 			return new ResponseEntity<Confirmacao>(HttpStatus.OK);
 		}else{
 			return new ResponseEntity<Confirmacao>(HttpStatus.REQUEST_TIMEOUT);
 		}
 	}
-
 	
-
+	
 	@PostMapping("/login")
 	public Cliente buscarUsuario(@RequestBody Cliente cliente) {
+		System.out.println(clienteRepository.findUserLogin(cliente.getEmail(), cliente.getSenha()));
 		return clienteRepository.findUserLogin(cliente.getEmail(), cliente.getSenha());
 	}	
 
-	
+	//
 	@GetMapping
 	public List<ClienteDTO> getClientes(){
 		return clienteDTORepository.findAll();

@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import org.jboss.jandex.Main;
 
+
+//GERA NUMEROS ALEATORIAS DE n ALGARISMOS
 public class GetRandom {
 	public static String random() {
-        int max = 6;
+        int max = 6;//QTD DE ALGARISMOS 
 		ArrayList<Integer> numeros = new ArrayList<Integer>();
 		String codigo = "";
 		for(int i = 0; i < max; i++){

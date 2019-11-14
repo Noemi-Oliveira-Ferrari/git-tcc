@@ -16,6 +16,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import br.net.daumhelp.model.Endereco;
 import br.net.daumhelp.model.TipoUsuario;
 
+//CLASSE DATA OBJECT QUE RETORNA O CLIENTE SEM SENHA EM REQUISIÇÕES GET
+
 @Entity
 @Table(name = "tbl_cliente")
 public class ClienteDTO {

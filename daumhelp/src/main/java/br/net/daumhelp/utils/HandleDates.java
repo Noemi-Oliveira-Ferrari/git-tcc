@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class HandleDates {
 
+	//CONVERTE JAVA DATE UMA UM STRING COM FORMATO BR
     public static String dataToBrString(Date data) {
 
         DateFormat dateToString = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -15,6 +16,7 @@ public class HandleDates {
         return dataFormatada;
     }
 
+    //CONVERTE UMA STRING NO FORMATO EUA EM UM JAVA DATE
     public static Date stringToDate(String data) {
         Date stringData = null;
         try {
@@ -27,6 +29,7 @@ public class HandleDates {
         return stringData;
     }
   
+    //CONVERTE UM JAVA DATE EM UMA STRING COM FORMATO EUA
     public static String dataToString(Date data) {
 
         DateFormat dateToString = new SimpleDateFormat("yyyy-MM-dd HH:mm:00");
@@ -35,12 +38,14 @@ public class HandleDates {
         return dataFormatada;
     }
     
+    //RETORNA UMA STRING COM FORMTO EUA COM A DATA E HORA ATUAIS
     public static String dataHoraAtual() {
     	Date data = new Date();
     	String dataAtual = HandleDates.dataToString(data);
     	return dataAtual;
     }
     
+    //RETORNA UMA STRING COM FORMATO BR COM A DATA E HORA ATUAIS
     public static String dataHoraAtualBr() {
     	Date data = new Date();
         DateFormat dateToString = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
