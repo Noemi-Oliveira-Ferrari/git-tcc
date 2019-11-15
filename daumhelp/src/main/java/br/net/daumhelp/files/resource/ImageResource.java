@@ -85,8 +85,13 @@ public class ImageResource {
 	} 
 	
 	//FAZ UPLOAD DE ATÉ 3 IMAGENS DE UMA VEZ DE PEDIDOS
+<<<<<<< HEAD
 	@PostMapping("/pedido")
 	public void uploadImgsPedido(@RequestParam List<MultipartFile> imgs, @RequestParam Long idPedido) {
+=======
+	@PostMapping("/pedido/{idPedido}")
+	public void uploadImgsPedido(@RequestParam List<MultipartFile> imgs, @PathVariable Long idPedido) {
+>>>>>>> origin/card-50/modalcss
 
 		//**1
 		Pedido pedido = pedidoRepository.findById(idPedido).get();

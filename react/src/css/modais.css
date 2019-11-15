@@ -15,6 +15,76 @@
         z-index: 992;
     }
     
+    /* MODAL SUCESSO */
+    
+    .caixa-modal-sucesso{
+        width: 500px;
+        max-height: 700px;
+        height: fit-content;
+        padding: 0px !important;
+        border-radius: 10px 10px 0 0;
+        text-align: center;
+        position: fixed;
+        margin-top: 5vh;
+        margin-left: 32vw;
+    }
+
+    .img-modal-sucesso{
+        width: 100%;
+        height: 200px;
+        /* background-color: #77C9D4; */
+    }
+
+    .img-modal-sucesso img{
+        max-height: 250px;
+    }
+
+    .body-modal-sucesso{
+        background-color: #f8000060;
+        padding: 0px;
+    }
+    .title-modal-sucesso{
+        width: 100%;
+        max-height: 1200px;
+        height: fit-content;
+        /* background-color: brown; */
+        text-align: center;
+        font-size: 40px;
+        box-sizing: border-box;
+        color: #84848D;
+    }
+
+    .text-modal-sucesso{
+        width:100%;
+        max-height: 150px;
+        height: fit-content;
+        /* background-color: rgb(121, 61, 170); */
+        text-align: center;
+        box-sizing: border-box;
+        padding: 20px;
+
+        color: #A5A5AF;
+        font-size: 25px;
+    }
+    .caixa-btn-modal-sucesso{
+        width:100%;
+        height: 100px;
+        /* background-color: #015249; */
+    }
+
+    .btn-sucesso-login{
+        width: 300px;
+        height: 80px;
+        border-radius: 10px;
+        background-color: #51dfa1;
+        color: #ffffff !important;
+        border: none;
+
+        font-size: 25px;
+        color: white;
+    }
+    /* MODAL SUCESSO */
+
     /* MODAL LOAD CONST */
     .caixa-const-load {
         width: 170px;
@@ -197,26 +267,27 @@
     
     /* MODAL ERROS */
     .caixa-modal-erros-function {
-        width: 600px;
-        height: 320px;
+        /* width: 600px; */
+        /* height: 320px; */
         /* padding: 20px 20px 20px; */
         border-radius: 10px;
         text-align: center;
-        background-color: #ffffff;
-        position: absolute;
-        padding-top: 25vh;
+        /* background-color: #ffffff; */
+        position: fixed;
+        padding-right: 20vw !important;
+        padding-top: 20vh !important;
         box-shadow: 3px 3px 5px #00000060;
         z-index: 1041 !important;
     }
     .header-modal-erros-function{
-        width: 550px;
+        width: 600px;
         height: 50px;
         background-color: #eaeaea;
         padding: 0px !important; 
         border-radius: 10px 10px 0 0 !important;
     }
     .titulo-modal-erros-function{
-        width: 550px;
+        width: 600px;
         height: 50px;
         background-color: #eaeaea;
         color: #ca422a;
@@ -226,7 +297,7 @@
         float: left;
     }
     .body-modal-erros-function{
-        width: 550px;
+        width: 600px;
         background-color: #ffffff;
         padding: 0px !important; 
     }
@@ -243,11 +314,13 @@
         font-family: 'Manjari';
         clear: both;
     }
-    #footer-modal-erros-function{
-        width: 550px;
+    #footer-modal-erros-function,
+    #footer-modal-erros{
+        width: 600px;
         height: 60px !important;
         background-color: #eaeaea;
         border-radius: 0 0 10px 10px !important;
+        box-shadow: 3px 3px 5px #00000060;
     }
     /* MODAL ERROS FUNCTION */
     
@@ -269,7 +342,7 @@
     }
     
     .alertaAlt{
-        color: #d2df21;
+        color: #e7cc52;
         text-shadow: 1px 1px 3px #00000027;
     }
     
@@ -297,6 +370,117 @@
         width: 100%;
         z-index: 992;
     }
+
+    /* MODAL SUCESSO */
+    
+    .caixa-modal-sucesso{
+        /* width: 95%;
+        max-height: 700px;
+        height: fit-content;
+        padding: 0px !important;
+        border-radius: 10px 10px 0 0;
+        text-align: center;
+        position: fixed; */
+        width: 95%;
+        max-height: 90%;
+        height: fit-content;
+        padding: 0px !important;
+        border-radius: 10px 10px 0 0;
+        text-align: center;
+        position: fixed;
+        margin-top: 10vh;
+        margin-left: 2.4vw;
+    }
+
+    .img-modal-sucesso{
+        /* width: 100%;
+        height: 200px; */
+        /* background-color: #77C9D4; */
+        width: 100%;
+        height: 150px;
+        
+    }
+
+    .img-modal-sucesso img{
+        /* max-height: 250px; */
+        max-height: 180px;
+    }
+
+    .body-modal-sucesso{
+        background-color: #f8000060;
+        padding: 0px;
+    }
+    .title-modal-sucesso{
+        /* width: 100%;
+        max-height: 120px;
+        height: fit-content;
+        text-align: center;
+        font-size: 40px;
+        box-sizing: border-box;
+        color: #84848D; */
+
+        width: 100%;
+        max-height: 120px;
+        height: -webkit-fit-content;
+        height: fit-content;
+        text-align: center;
+        font-size: 34px;
+        box-sizing: border-box;
+        color: #84848D;
+    }
+
+    .text-modal-sucesso{
+        /* width:100%;
+        max-height: 150px;
+        height: fit-content;
+        text-align: center;
+        box-sizing: border-box;
+        padding: 20px;
+
+        color: #A5A5AF;
+        font-size: 25px; */
+
+        width: 100%;
+        max-height: 150px;
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
+        height: fit-content;
+        /* background-color: rgb(121, 61, 170); */
+        text-align: center;
+        box-sizing: border-box;
+        padding: 15px;
+        color: #A5A5AF;
+        font-size: 16px;
+    }
+    .caixa-btn-modal-sucesso{
+        /* width:100%;
+        height: 100px; */
+        /* background-color: #015249; */
+        width: 100%;
+        height: 80px;
+    }
+
+    .btn-sucesso-login{
+        /* width: 300px;
+        height: 80px;
+        border-radius: 10px;
+        background-color: #51dfa1;
+        color: #ffffff !important;
+        border: none;
+
+        font-size: 25px;
+        color: white; */
+
+        width: 250px;
+        height: 60px;
+        border-radius: 10px;
+        background-color: #00000000;
+        color: #51dfa1 !important;
+        border: none;
+        font-size: 19px;
+        border: solid 3px #51dfa1;
+    }
+    /* MODAL SUCESSO */
     
     /* MODAL LOAD CONST */
     .caixa-const-load {
@@ -467,10 +651,11 @@
 
     .titulo-modal-erros h3{
         font-size: 22px;
+        font-family: 'Lexend Deca';
     }
     .txt-modal-erros{
         width: inherit;
-        height: 270px;
+        height: 350px;
         /* background-color: rgb(61, 228, 83); */
         overflow: auto;
         box-sizing: border-box;
@@ -513,12 +698,19 @@
         box-sizing: border-box;
         padding: 20px;
         border-radius: 0 0 10px 10px;
-        /* background-color: #ac7373; */
+        background-color: #ac7373;
     
         font-size: 22px;
         text-align: left;
         font-family: 'Manjari';
         clear: both;
+    }
+    #footer-modal-erros-function,
+    #footer-modal-erros{
+        width: 100%;
+        height: 60px !important;
+        background-color: #eaeaea;
+        border-radius: 0 0 10px 10px !important;
     }
     /* MODAL ERROS FUNCTION */
     
