@@ -21,29 +21,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3a3b6222-8535-4045-9904-8936c522a52a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../daumhelp/main/resource/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../daumhelp/main/resource/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../daumhelp/src/main/java/br/net/daumhelp/resource/PedidosResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../daumhelp/src/main/java/br/net/daumhelp/resource/PedidosResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../daumhelp/src/main/java/br/net/daumhelp/files/resource/ImageResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../daumhelp/src/main/java/br/net/daumhelp/files/resource/ImageResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/CadastroFotoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/CadastroFotoActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/DetalhesSolicitacaoServicoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/DetalhesSolicitacaoServicoActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/EditarActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/EditarActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/MenuActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/MenuActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/MenuClienteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/MenuClienteActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/PerfilClienteActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/PerfilClienteActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/PerfilProfissionalBuscaActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/PerfilProfissionalBuscaActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterBusca.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterBusca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/VisualizarDetalhesServicoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/VisualizarDetalhesServicoActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterPedidosPendentes.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterPedidosPendentes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menu/home/PedidosFragmentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menu/home/PedidosFragmentActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menu/perfil/PerfilFragmentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menu/perfil/PerfilFragmentActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menuCli/homeCli/BuscaFragmentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menuCli/homeCli/BuscaFragmentActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menuCli/perfilCli/PerfilCliFragmentActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menuCli/perfilCli/PerfilCliFragmentActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/model/Pedido.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/model/Pedido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/ClienteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/ClienteService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/EnderecoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/EnderecoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/FotoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/FotoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/PedidoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/PedidoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/ProfissionalService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/ProfissionalService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_detalhes_solicitacao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_detalhes_solicitacao.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,131 +67,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/DetalhesSolicitacaoServicoActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="286" column="80" selection-start-line="286" selection-start-column="80" selection-end-line="286" selection-end-column="80" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3890#6342#0" expanded="true" />
-                <element signature="e#5823#5843#0" expanded="true" />
-                <element signature="e#6341#6342#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menu/home/PedidosFragmentActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="382">
-              <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-              <folding>
-                <element signature="e#1335#1343#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="246">
+              <caret line="67" column="7" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="69" selection-end-column="9" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detalhes_solicitacao.xml">
-          <provider selected="true" editor-type-id="android-designer2" />
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="169" column="70" selection-start-line="169" selection-start-column="70" selection-end-line="169" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/model/Pedido.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterPedidosPendentes.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="157" column="18" selection-start-line="157" selection-start-column="18" selection-end-line="157" selection-end-column="18" />
+            <state relative-caret-position="336">
+              <caret line="93" column="66" lean-forward="true" selection-start-line="93" selection-start-column="66" selection-end-line="93" selection-end-column="66" />
               <folding>
-                <element signature="e#744#745#0" expanded="true" />
-                <element signature="e#775#776#0" expanded="true" />
-                <element signature="e#824#825#0" expanded="true" />
-                <element signature="e#864#865#0" expanded="true" />
-                <element signature="e#900#901#0" expanded="true" />
-                <element signature="e#932#933#0" expanded="true" />
-                <element signature="e#982#983#0" expanded="true" />
-                <element signature="e#1024#1025#0" expanded="true" />
-                <element signature="e#1059#1060#0" expanded="true" />
-                <element signature="e#1090#1091#0" expanded="true" />
-                <element signature="e#1138#1139#0" expanded="true" />
-                <element signature="e#1178#1179#0" expanded="true" />
-                <element signature="e#1217#1218#0" expanded="true" />
-                <element signature="e#1252#1253#0" expanded="true" />
-                <element signature="e#1308#1309#0" expanded="true" />
-                <element signature="e#1356#1357#0" expanded="true" />
-                <element signature="e#1394#1395#0" expanded="true" />
-                <element signature="e#1428#1429#0" expanded="true" />
-                <element signature="e#1482#1483#0" expanded="true" />
-                <element signature="e#1528#1529#0" expanded="true" />
-                <element signature="e#1569#1570#0" expanded="true" />
-                <element signature="e#1606#1607#0" expanded="true" />
-                <element signature="e#1666#1667#0" expanded="true" />
-                <element signature="e#1718#1719#0" expanded="true" />
-                <element signature="e#1757#1758#0" expanded="true" />
-                <element signature="e#1792#1793#0" expanded="true" />
-                <element signature="e#1848#1849#0" expanded="true" />
-                <element signature="e#1896#1897#0" expanded="true" />
-                <element signature="e#1928#1929#0" expanded="true" />
-                <element signature="e#1956#1957#0" expanded="true" />
-                <element signature="e#1998#1999#0" expanded="true" />
-                <element signature="e#2032#2033#0" expanded="true" />
-                <element signature="e#2064#2065#0" expanded="true" />
-                <element signature="e#2092#2093#0" expanded="true" />
-                <element signature="e#2134#2135#0" expanded="true" />
-                <element signature="e#2168#2169#0" expanded="true" />
-                <element signature="e#2200#2201#0" expanded="true" />
-                <element signature="e#2228#2229#0" expanded="true" />
-                <element signature="e#2270#2271#0" expanded="true" />
-                <element signature="e#2304#2305#0" expanded="true" />
-                <element signature="e#2343#2344#0" expanded="true" />
-                <element signature="e#2378#2379#0" expanded="true" />
-                <element signature="e#2434#2435#0" expanded="true" />
-                <element signature="e#2482#2483#0" expanded="true" />
-                <element signature="e#2521#2522#0" expanded="true" />
-                <element signature="e#2556#2557#0" expanded="true" />
-                <element signature="e#2612#2613#0" expanded="true" />
-                <element signature="e#2660#2661#0" expanded="true" />
-                <element signature="e#2697#2698#0" expanded="true" />
-                <element signature="e#2730#2731#0" expanded="true" />
-                <element signature="e#2782#2783#0" expanded="true" />
-                <element signature="e#2826#2827#0" expanded="true" />
-                <element signature="e#2859#2860#0" expanded="true" />
-                <element signature="e#2888#2889#0" expanded="true" />
-                <element signature="e#2932#2933#0" expanded="true" />
-                <element signature="e#2968#2969#0" expanded="true" />
-                <element signature="e#3003#3004#0" expanded="true" />
-                <element signature="e#3033#3034#0" expanded="true" />
-                <element signature="e#3080#3081#0" expanded="true" />
-                <element signature="e#3118#3119#0" expanded="true" />
-                <element signature="e#3163#3164#0" expanded="true" />
-                <element signature="e#3198#3199#0" expanded="true" />
-                <element signature="e#3260#3261#0" expanded="true" />
-                <element signature="e#3308#3309#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/CadastroFotoActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="367">
-              <caret line="116" column="115" selection-start-line="116" selection-start-column="115" selection-end-line="116" selection-end-column="115" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/FotoService.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/VisualizarDetalhesServicoActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+            <state relative-caret-position="544">
+              <caret line="32" column="52" lean-forward="true" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -216,14 +100,11 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/configretrofit/RetroFitConfig.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detalhes_servico.xml">
+          <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-162">
-              <caret line="19" column="46" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="46" />
-              <folding>
-                <element signature="e#1936#1937#0" expanded="true" />
-                <element signature="e#1998#1999#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="275">
+              <caret line="187" column="8" selection-start-line="187" selection-start-column="8" selection-end-line="187" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -242,7 +123,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>teclado</find>
       <find>desativarCampos</find>
       <find>ativarCampos</find>
       <find>onCrea</find>
@@ -272,6 +152,7 @@
       <find>upper</find>
       <find>view</find>
       <find>tvNome</find>
+      <find>Aguarde a respost</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\18175298\Documents\GIT-TCC\mobile\app</dir>
@@ -296,9 +177,7 @@
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/recursos/Data.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/FotoActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/VisualizarDetalhesServicoActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/button_quadrado_verde.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_detalhes_servico.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/layout_lista_comentario.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/adapter_alert.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterComentario.java" />
@@ -313,8 +192,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/model/TokenBodyProfissional.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/recursos/HandleJson.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterPedidosPendentes.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menu/home/PedidosFragmentActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menu/perfil/PerfilFragmentActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/EnderecoService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/EditarActivity.java" />
@@ -330,10 +207,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterBusca.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/PerfilProfissionalBuscaActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/PedidoService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/FotoService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/model/Pedido.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_detalhes_solicitacao.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/FotoService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/DetalhesSolicitacaoServicoActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menu/home/PedidosFragmentActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterPedidosPendentes.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_detalhes_servico.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/VisualizarDetalhesServicoActivity.java" />
       </list>
     </option>
   </component>
@@ -351,7 +232,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -422,8 +304,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -598,8 +479,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8" visible="true" weight="0.14498934" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8" visible="true" weight="0.14498934" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Build Variants" order="3" sideWeight="0.2" side_tool="true" visible="true" weight="0.14498934" />
@@ -607,7 +489,7 @@
       <window_info id="Favorites" order="5" sideWeight="0.50165564" side_tool="true" weight="0.1684435" />
       <window_info id="Captures" order="6" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="7" />
-      <window_info id="Resources Explorer" order="8" />
+      <window_info id="Resources Explorer" order="8" weight="0.32995737" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49946696" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.4" />
@@ -617,7 +499,7 @@
       <window_info anchor="bottom" id="Build" order="6" sideWeight="0.49573562" weight="0.3311111" />
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.44509596" side_tool="true" weight="0.5588889" />
-      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.49946696" weight="0.3288889" />
+      <window_info anchor="bottom" id="Logcat" order="9" sideWeight="0.49946696" weight="0.40222222" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Terminal" order="11" />
       <window_info anchor="bottom" id="Run" order="12" sideWeight="0.55490404" weight="0.25777778" />
@@ -668,30 +550,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_quadrado_verde.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/button_filtro_cancelar.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" lean-forward="true" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/VisualizarDetalhesServicoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="59" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fragment_perfil.xml">
       <provider selected="true" editor-type-id="android-designer2" />
       <provider editor-type-id="text-editor" />
@@ -858,12 +716,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/navigation/mobile_navigation_cliente.xml">
+      <provider editor-type-id="nav-designer" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="56" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
         </state>
       </provider>
-      <provider editor-type-id="nav-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -954,16 +812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterPedidosPendentes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-157">
-          <caret line="107" column="97" lean-forward="true" selection-start-line="107" selection-start-column="97" selection-end-line="107" selection-end-column="97" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/ClienteService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1018,19 +866,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/configretrofit/RetroFitConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-162">
-          <caret line="19" column="46" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="46" />
+        <state relative-caret-position="136">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
           <folding>
             <element signature="e#1936#1937#0" expanded="true" />
             <element signature="e#1998#1999#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/CadastroFotoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="116" column="115" selection-start-line="116" selection-start-column="115" selection-end-line="116" selection-end-column="115" />
         </state>
       </provider>
     </entry>
@@ -1044,9 +885,70 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterComentario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="501">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/CadastroFotoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="116" column="115" selection-start-line="116" selection-start-column="115" selection-end-line="116" selection-end-column="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/DetalhesSolicitacaoServicoActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="157" column="37" lean-forward="true" selection-start-line="157" selection-start-column="37" selection-end-line="157" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3906#8782#0" expanded="true" />
+            <element signature="e#8781#8782#0" expanded="true" />
+            <element signature="e#8872#9574#0" expanded="true" />
+            <element signature="e#9573#9574#0" expanded="true" />
+            <element signature="e#9653#10356#0" expanded="true" />
+            <element signature="e#10355#10356#0" expanded="true" />
+            <element signature="e#10435#11138#0" expanded="true" />
+            <element signature="e#11137#11138#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit2/retrofit/2.4.0/451207353948708405a08287e2a315c3f23553fe/retrofit-2.4.0-sources.jar!/retrofit2/ExecutorCallAdapterFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="71" selection-start-line="71" selection-end-line="71" />
+          <folding>
+            <element signature="e#2141#2573#0" expanded="true" />
+            <element signature="e#2572#2573#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detalhes_solicitacao.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="217" column="74" selection-start-line="217" selection-start-column="73" selection-end-line="217" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/FotoService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="118" selection-start-line="29" selection-start-column="118" selection-end-line="29" selection-end-column="118" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/model/Pedido.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
+        <state relative-caret-position="520">
           <caret line="157" column="18" selection-start-line="157" selection-start-column="18" selection-end-line="157" selection-end-column="18" />
           <folding>
             <element signature="e#744#745#0" expanded="true" />
@@ -1117,48 +1019,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterComentario.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/adapter/ListaAdapterPedidosPendentes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="336">
+          <caret line="93" column="66" lean-forward="true" selection-start-line="93" selection-start-column="66" selection-end-line="93" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detalhes_solicitacao.xml">
-      <provider selected="true" editor-type-id="android-designer2" />
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="169" column="70" selection-start-line="169" selection-start-column="70" selection-end-line="169" selection-end-column="70" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_detalhes_servico.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="187" column="8" selection-start-line="187" selection-start-column="8" selection-end-line="187" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/menu/home/PedidosFragmentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-          <folding>
-            <element signature="e#1335#1343#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="246">
+          <caret line="67" column="7" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="69" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/DetalhesSolicitacaoServicoActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/VisualizarDetalhesServicoActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="286" column="80" selection-start-line="286" selection-start-column="80" selection-end-line="286" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3890#6342#0" expanded="true" />
-            <element signature="e#5823#5843#0" expanded="true" />
-            <element signature="e#6341#6342#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/br/net/daumhelp/service/FotoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="23" selection-start-line="29" selection-start-column="23" selection-end-line="29" selection-end-column="23" />
+        <state relative-caret-position="544">
+          <caret line="32" column="52" lean-forward="true" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

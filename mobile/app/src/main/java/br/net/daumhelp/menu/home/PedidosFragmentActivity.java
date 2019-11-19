@@ -60,7 +60,7 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
         listView =  getView().findViewById(R.id.lv_pedidos_pendentes);
 
 
-        final ListaAdapterPedidosPendentes listaPedidos =  new ListaAdapterPedidosPendentes(getContext(), lista, tokenProfissional);
+
         //final ListView listView = (ListView) getView().findViewById(R.id.lv_pedidos_pendentes);
 
         Intent intent = getActivity().getIntent();
@@ -69,6 +69,7 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
             tokenProfissional = (String) intent.getSerializableExtra("tokenProfissional");
         }
 
+        final ListaAdapterPedidosPendentes listaPedidos =  new ListaAdapterPedidosPendentes(getContext(), lista, tokenProfissional);
 
         if (intent.getSerializableExtra("profissional") != null){
             profissional = (Profissional) intent.getSerializableExtra("profissional");

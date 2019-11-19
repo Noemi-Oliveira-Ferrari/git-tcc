@@ -123,29 +123,55 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
                         String dataFormatada = Data.dataToString(data);
                         pedido.setDataServico(dataFormatada);
 
-                       Integer id = solicitar(pedido, tokenCliente);
-
                             Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "FOI", Toast.LENGTH_SHORT).show();
 
                             RequestBody fbody1 = RequestBody.create(MediaType.parse("image/png"), arquivoFoto1);
-                            MultipartBody.Part multipartBody1 = MultipartBody.Part.createFormData("img", arquivoFoto1.getName(), fbody1);
+                            final MultipartBody.Part multipartBody1 = MultipartBody.Part.createFormData("img1", arquivoFoto1.getName(), fbody1);
 
                             RequestBody fbody2 = RequestBody.create(MediaType.parse("image/png"), arquivoFoto2);
-                            MultipartBody.Part multipartBody2 = MultipartBody.Part.createFormData("img", arquivoFoto2.getName(), fbody2);
+                            final MultipartBody.Part multipartBody2 = MultipartBody.Part.createFormData("img2", arquivoFoto2.getName(), fbody2);
 
-                            RequestBody fbody3 = RequestBody.create(MediaType.parse("image/png"), arquivoFoto1);
-                            MultipartBody.Part multipartBody3 = MultipartBody.Part.createFormData("img", arquivoFoto3.getName(), fbody3);
+                            RequestBody fbody3 = RequestBody.create(MediaType.parse("image/png"), arquivoFoto3);
+                            final MultipartBody.Part multipartBody3 = MultipartBody.Part.createFormData("img3", arquivoFoto3.getName(), fbody3);
 
-                            RequestBody idPedidoBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(id));
 
-                            List<MultipartBody.Part> lista = new ArrayList<MultipartBody.Part>();
-                            lista.add(multipartBody1);
-                            lista.add(multipartBody2);
-                            lista.add(multipartBody3);
-                            
-                            if(cadastrarFotoSolicitacao(tokenCliente,lista , idPedidoBody) == true){
-                                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "FOTO FOI", Toast.LENGTH_SHORT).show();
+                        Call<Pedido> call = new RetroFitConfig().getPedidoService().solicitarProfissional(tokenCliente, pedido);
+                        call.enqueue(new Callback<Pedido>() {
+
+
+
+                            @Override
+                            public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                                pedidoFeito = response.body();
+                                id = pedidoFeito.getIdPedido();
+
+                                RequestBody idPedidoBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(id));
+
+                                Call<Pedido> call2 = new RetroFitConfig().getFotoService().cadastrarFotoSolicitacao(tokenCliente, idPedidoBody, multipartBody1, multipartBody2, multipartBody3);
+                                call2.enqueue(new Callback<Pedido>() {
+
+                                    @Override
+                                    public void onResponse(Call<Pedido> call2, Response<Pedido> response) {
+                                        response.body();
+                                        Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Aguarde a resposta do profissional! =D", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<Pedido> call2, Throwable t) {
+                                        Log.i("Retrofit FOTO", t.getMessage());
+                                        Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional |||=( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
+
+                            @Override
+                            public void onFailure(Call<Pedido> call, Throwable t) {
+                                Log.i("Retrofit PEDIDO", t.getMessage());
+                                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional =( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                         }
                 }
             });
@@ -249,64 +275,6 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
 
         return validado;
     }
-
-    /*SOLICITAÇÃO SEM FOTO*/
-    private Integer solicitar(final Pedido pedido, String  tokenCliente){
-
-        resultadoSolicitacao = true;
-
-
-        Call<Pedido> call = new RetroFitConfig().getPedidoService().solicitarProfissional(tokenCliente, pedido);
-        call.enqueue(new Callback<Pedido>() {
-
-            @Override
-            public void onResponse(Call<Pedido> call, Response<Pedido> response) {
-                pedidoFeito = response.body();
-                id = pedidoFeito.getIdPedido();
-                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Aguarde a resposta do profissional! =D", Toast.LENGTH_SHORT).show();
-                //finish();
-                //Log.d("iddopedido", String.valueOf(pedidoFeito.getIdPedido()));
-                resultadoSolicitacao = true;
-            }
-
-            @Override
-            public void onFailure(Call<Pedido> call, Throwable t) {
-                Log.i("Retrofit PEDIDO", t.getMessage());
-                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional =( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
-                resultadoSolicitacao = false;
-            }
-        });
-
-        return id;
-
-    }
-
-    /*UPLOAD FOTOS DA SOLICITAÇÃO*/
-    private boolean cadastrarFotoSolicitacao(String tokenCliente, List<MultipartBody.Part> fotos, RequestBody idPedido){
-
-        Call<List<Pedido>> call = new RetroFitConfig().getFotoService().cadastrarFotoSolicitacao(tokenCliente, idPedido, fotos);
-        call.enqueue(new Callback<List<Pedido>>() {
-
-            @Override
-            public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
-                response.body();
-                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Aguarde a resposta do profissional! =D", Toast.LENGTH_SHORT).show();
-                //finish();
-                resultadoSolicitacaoFoto = true;
-            }
-
-            @Override
-            public void onFailure(Call<List<Pedido>> call, Throwable t) {
-                Log.i("Retrofit PEDIDO", t.getMessage());
-                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional |||=( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
-                resultadoSolicitacaoFoto = false;
-            }
-        });
-
-        return resultadoSolicitacaoFoto;
-
-    }
-
 
 
 }

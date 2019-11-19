@@ -91,6 +91,7 @@ public class ListaAdapterPedidosPendentes extends ArrayAdapter<Pedido> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), VisualizarDetalhesServicoActivity.class);
+                intent.putExtra("pedidoPendente", listaPedidos.getIdPedido());
                 getContext().startActivity(intent);
             }
         });

@@ -96,6 +96,8 @@ public class ImageResource {
 		//**1
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
 		
+		
+		
 		//ARRAY QUE GUARDA CAMINHO DAS IMAGENS DO PEDIDO
 		ArrayList<String> imgsPedidoCaminho = new ArrayList<String>();
 
@@ -109,6 +111,8 @@ public class ImageResource {
 		
 
 		for(MultipartFile img : imgs) {
+			
+			System.out.println("entrou aqui!!! ---->>>  " + img.getName());
 			if(img != null) {				
 				System.out.println(img.getOriginalFilename());
 				//VERIFICA SE A IMAGEM EXISTE

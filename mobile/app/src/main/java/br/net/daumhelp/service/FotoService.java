@@ -27,7 +27,7 @@ public interface FotoService {
 
     @Multipart
     @POST("imagens/pedido")
-    Call<List<Pedido>> cadastrarFotoSolicitacao(@Header("token") String token, @Part("idPedido") RequestBody idPedido, @Part List<MultipartBody.Part> file);
+    Call<Pedido> cadastrarFotoSolicitacao(@Header("token") String token, @Part("idPedido") RequestBody idPedido, @Part MultipartBody.Part file1, @Part MultipartBody.Part file2, @Part MultipartBody.Part file3);
 
 
 }
