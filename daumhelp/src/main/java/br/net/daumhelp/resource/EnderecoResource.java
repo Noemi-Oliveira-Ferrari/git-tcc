@@ -78,10 +78,6 @@ public class EnderecoResource {
 			(@RequestBody Endereco endereco, 
 			HttpServletResponse response){
 		
-//		
-//		endereco.setCriadoEm(HandleDates.dataHoraAtual());
-//		endereco.setAtualizadoEm(HandleDates.dataHoraAtual());
-		
 		Endereco enderecoSalvo = enderecoRepository.save(endereco);
 		
 		URI uri = ServletUriComponentsBuilder	
@@ -100,9 +96,6 @@ public class EnderecoResource {
 			@PathVariable Long idEndereco){
 		Endereco enderecoSalvo = enderecoRepository.findById(idEndereco).get();
 		
-//		endereco.setAtualizadoEm(HandleDates.dataHoraAtual());
-//		endereco.setCriadoEm(enderecoSalvo.getCriadoEm());
-//		
 		BeanUtils.copyProperties(endereco, enderecoSalvo, "idEndereco", "criadoEm", "atualizadoEm");
 		
 		enderecoRepository.save(enderecoSalvo);

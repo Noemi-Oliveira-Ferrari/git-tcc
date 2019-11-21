@@ -22,14 +22,26 @@ public interface ProfissionalDTORepository extends JpaRepository<ProfissionalDTO
 	@Query("SELECT p FROM ProfissionalDTO p WHERE p.cpf = ?1")
 	public ProfissionalDTO findByCpf(String cpf);
 
+	//BUSCA CPF DE PROFISSIONAL ESPECIFICO
+	@Query("SELECT p FROM ProfissionalDTO p WHERE p.idProfissional = ?1 AND p.cpf= ?2")
+	public ProfissionalDTO findByCpfPro(Long idProfissional, String cpf);
+	
 	//BUSCA PROFISSIONAL PELO EMAIL
 	@Query("SELECT p FROM ProfissionalDTO p WHERE p.email = ?1")
 	public ProfissionalDTO findByEmail(String email);
+
+	//BUSCA EMAIL DE PROFISSIONAL ESPECIFICO
+	@Query("SELECT p FROM ProfissionalDTO p WHERE p.idProfissional = ?1 AND p.email = ?2")
+	public ProfissionalDTO findByEmailPro(Long idProfissional, String email);
 
 	//BUSCA PROFISSIONAL PELO CNPJ
 	@Query("SELECT p FROM ProfissionalDTO p WHERE p.cnpj = ?1")
 	public ProfissionalDTO findByCnpj(String cnpj);
 
+	//BUSCA CNPJ DE PROFISSIONAL ESPECIFICO
+	@Query("SELECT p FROM ProfissionalDTO p WHERE p.idProfissional = ?1 AND p.cnpj= ?2")
+	public ProfissionalDTO findByCnpjPro(Long idProfissional, String cnpj);
+	
 	//BUSCA PROFISSIONAL PELO ID DO ENDERECO
 	@Query("SELECT p FROM ProfissionalDTO p WHERE p.endereco.idEndereco = ?1")
 	public List<ProfissionalDTO> findByIdEndereco(Long idEndereco);

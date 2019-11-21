@@ -94,6 +94,24 @@ public class ProfissionalResource {
 	public ProfissionalDTO getProByCnpj(@PathVariable String cnpj) {
 		return proDTORepository.findByCnpj(cnpj);
 	}
+	
+//**************************************
+	@GetMapping("{idProfissional}/cpf/{cpf}")
+	public String getCpfByPro(@PathVariable Long idProfissional, @PathVariable String cpf) {
+		return proDTORepository.findByCpfPro(idProfissional, cpf).getCpf();
+		
+	}
+	
+	@GetMapping("{idProfissional}/email/{email}")
+	public String getEmailByPro(@PathVariable Long idProfissional, @PathVariable String email) {
+		return proDTORepository.findByEmailPro(idProfissional, email).getEmail();
+	}
+
+	@GetMapping("{idProfissional}/cnpj/{cnpj}")
+	public String getCnpjByPro(@PathVariable Long idProfissional, @PathVariable String cnpj) {
+		return proDTORepository.findByCnpjPro(idProfissional, cnpj).getCnpj();
+	}
+//**************************************
 
 	@GetMapping("/endereco/{idEndereco}")
 	public List<ProfissionalDTO> getProByIdEndereco(@PathVariable Long idEndereco) {
@@ -148,7 +166,13 @@ public class ProfissionalResource {
 		
 		Profissional proSalvo = proRepository.findById(idPro).get();
 		
-		BeanUtils.copyProperties(profissional, proSalvo, "idProfissional", "criadoEm", "atualizadoEm");
+		if(!profissional.getSenha().isEmpty() && profissional.getSenha() != null) {
+			BeanUtils.copyProperties(profissional, proSalvo, "idProfissional", "criadoEm", "atualizadoEm", "senha");
+			
+		}else {
+			BeanUtils.copyProperties(profissional, proSalvo, "idProfissional", "criadoEm", "atualizadoEm");			
+		}
+		
 
 		proRepository.save(proSalvo);
 		
