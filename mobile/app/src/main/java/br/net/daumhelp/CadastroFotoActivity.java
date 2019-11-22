@@ -120,6 +120,11 @@ public class CadastroFotoActivity extends AppCompatActivity {
                         public void onResponse(Call<Cliente> call, Response<Cliente> response) {
 
                             response.body();
+                            Intent intent = new Intent(CadastroFotoActivity.this, MenuClienteActivity.class);
+                            intent.putExtra("cliente", cliente);
+                            intent.putExtra("tokenCliente", tokenCliente);
+                            startActivity(intent);
+                            finish();
 
                         }
 
@@ -131,6 +136,7 @@ public class CadastroFotoActivity extends AppCompatActivity {
                         }
                     });
 
+
                 }
             });
 
@@ -141,12 +147,14 @@ public class CadastroFotoActivity extends AppCompatActivity {
                     intent.putExtra("cliente", cliente);
                     intent.putExtra("tokenCliente", tokenCliente);
                     startActivity(intent);
+                    Toast.makeText(CadastroFotoActivity.this, "Foto cadastrada :)", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             });
 
         }
         if (intent.getSerializableExtra("profissional") != null) {
+
 
             final Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
 
@@ -164,18 +172,23 @@ public class CadastroFotoActivity extends AppCompatActivity {
                     call2.enqueue(new Callback<Profissional>() {
                         @Override
                         public void onResponse(Call<Profissional> call2, Response<Profissional> response) {
-
                             response.body();
-
+                            Intent intent = new Intent(CadastroFotoActivity.this, MenuActivity.class);
+                            intent.putExtra("profissional", profissional);
+                            intent.putExtra("tokenProfissional", tokenProfissional);
+                            Toast.makeText(CadastroFotoActivity.this, "Foto cadastrada :)", Toast.LENGTH_SHORT).show();
+                            startActivity(intent);
+                            finish();
                         }
 
                         @Override
                         public void onFailure(Call<Profissional> call, Throwable t) {
 
-                            Log.i("FOTOPROCADASTRO", t.getMessage());
 
                         }
                     });
+
+
 
                 }
             });

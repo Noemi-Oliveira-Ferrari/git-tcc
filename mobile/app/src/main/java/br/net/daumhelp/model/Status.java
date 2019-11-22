@@ -11,11 +11,11 @@ public class Status implements Serializable {
     private int idStatusPedido;
     private String status;
 
-    public int getIdStatus() {
+    public int getIdStatusPedido() {
         return idStatusPedido;
     }
 
-    public void setIdStatus(int idStatus) {
+    public void setIdStatusPedido(int idStatus) {
         this.idStatusPedido = idStatus;
     }
 

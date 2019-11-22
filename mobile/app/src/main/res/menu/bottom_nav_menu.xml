@@ -14,6 +14,12 @@
         android:icon="@drawable/ic_phone"
         android:title="Pedidos"/>
 
+
+    <item
+        android:id="@+id/navigation_resposta"
+        android:icon="@drawable/ic_resposta"
+        android:title="Resposta" />
+
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_person"

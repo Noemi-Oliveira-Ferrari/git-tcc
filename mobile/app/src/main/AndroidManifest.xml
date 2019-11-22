@@ -70,6 +70,12 @@
         <activity
             android:name=".VisualizarDetalhesServicoActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".RespostaOrcamentoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ComentarioActivity"
+            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

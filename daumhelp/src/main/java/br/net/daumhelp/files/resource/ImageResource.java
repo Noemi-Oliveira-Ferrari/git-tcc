@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +21,7 @@ import br.net.daumhelp.dto.repository.ClienteDTORepository;
 import br.net.daumhelp.dto.repository.ProfissionalDTORepository;
 import br.net.daumhelp.files.Disco;
 import br.net.daumhelp.model.Pedido;
+import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.repository.PedidoRepository;
 
 //REQUISIÇOES QUE REALIZAM O UPLOAD DE IMAGENS DA PLATAFORMA
@@ -44,7 +47,7 @@ public class ImageResource {
 
 	//FAZ UPLOAD DE IMAGENS DE CLIENTES
 	@PostMapping("/cliente")
-	public void uploadImgCliente(@RequestParam MultipartFile img, @RequestParam Long idCliente) {
+	public ClienteDTO uploadImgCliente(@RequestParam MultipartFile img, @RequestParam Long idCliente) {
 
 		//BUSCA CLIENTE PARA DA FOTO **1
 		ClienteDTO cliente = clienteDTOrepository.findById(idCliente).get();
@@ -60,12 +63,13 @@ public class ImageResource {
 		
 		//COLOCA O CAMINHO DA IMGAME NO CLIENTE E O AUTALIZA NO BANCO **5
 		cliente.setFoto(imgClienteCaminho);
-		clienteDTOrepository.save(cliente);	
+		ClienteDTO clienteSalvo = clienteDTOrepository.save(cliente);	
+		return clienteSalvo;
 	}
 	
 	//FAZ UPLOADS DE IUMAGENS DE PROFISSIONAIS
 	@PostMapping("/profissional")
-	public void uploadImgPro(@RequestParam MultipartFile img, @RequestParam Long idPro) {
+	public ProfissionalDTO uploadImgPro(@RequestParam MultipartFile img, @RequestParam Long idPro) {
 		
 		//**1
 		ProfissionalDTO pro = proDTOrepository.findById(idPro).get();
@@ -82,12 +86,13 @@ public class ImageResource {
 		
 		//**5
 		pro.setFoto(imgProCaminho);
-		proDTOrepository.save(pro);	
+		ProfissionalDTO profissionalSalvo = proDTOrepository.save(pro);	
+		return profissionalSalvo;
 	} 
 	
 	//FAZ UPLOAD DE ATÉ 3 IMAGENS DE UMA VEZ DE PEDIDOS
 	@PostMapping("/pedido")
-	public void uploadImgsPedido(
+	public Pedido uploadImgsPedido(
 			@Nullable @RequestParam MultipartFile img1,
 			@Nullable @RequestParam MultipartFile img2,
 			@Nullable @RequestParam MultipartFile img3,
@@ -131,9 +136,14 @@ public class ImageResource {
 				}
 			}
 		}
-//		
+
+		
+		
 //		//ATUALIZA O PEDIDO NO BANCO
-		pedidoRepository.save(pedido);
+		Pedido pedidoSalvo = pedidoRepository.save(pedido);
+		return pedidoSalvo;
+		
+		
 		
 	}
 	

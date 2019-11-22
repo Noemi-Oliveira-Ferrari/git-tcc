@@ -123,8 +123,6 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
                         String dataFormatada = Data.dataToString(data);
                         pedido.setDataServico(dataFormatada);
 
-                            Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "FOI", Toast.LENGTH_SHORT).show();
-
                             RequestBody fbody1 = RequestBody.create(MediaType.parse("image/png"), arquivoFoto1);
                             final MultipartBody.Part multipartBody1 = MultipartBody.Part.createFormData("img1", arquivoFoto1.getName(), fbody1);
 
@@ -160,7 +158,7 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
                                     @Override
                                     public void onFailure(Call<Pedido> call2, Throwable t) {
                                         Log.i("Retrofit FOTO", t.getMessage());
-                                        Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional |||=( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional |||=( \nTente mais tarde", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                             }
@@ -168,7 +166,7 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(Call<Pedido> call, Throwable t) {
                                 Log.i("Retrofit PEDIDO", t.getMessage());
-                                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional =( \n Tente mais tarde", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Ocorreu um erro ao solicitar esse profissional =( \nTente mais tarde", Toast.LENGTH_SHORT).show();
                             }
                         });
 

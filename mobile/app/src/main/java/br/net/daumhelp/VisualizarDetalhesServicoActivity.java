@@ -1,13 +1,31 @@
 package br.net.daumhelp;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.model.Pedido;
+import br.net.daumhelp.model.Status;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
 
@@ -18,12 +36,30 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
     private TextView hora;
     private TextView data;
     private TextView descricao;
+    private Button btnFazerOrcamento;
+
+    private Dialog dialogOrcamento;
+    private Button btnFecharAlert;
+    private Button btnEnviarAlert;
+    private Button btnAumentarAlert;
+    private Button btnDiminuirAlert;
+    private TextView tvHorasAlert;
+    private TextView tvValorAlert;
+    private String horas = "1";
+    private String valorHora = "50";
+    private Double valorOrcado;
+    private String moeda;
+    private String token;
+    private int idPedido;
+    private Pedido pedido;
+    private String valorMostrar;
+    private String valorString = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_servico);
-
 
         foto1 = findViewById(R.id.civ_foto1);
         foto2 = findViewById(R.id.civ_foto2);
@@ -31,14 +67,157 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
         hora = findViewById(R.id.tv_horario);
         data = findViewById(R.id.tv_data);
         descricao = findViewById(R.id.tv_descricao);
+        btnFazerOrcamento = findViewById(R.id.btn_orcamento);
+        dialogOrcamento = new Dialog(VisualizarDetalhesServicoActivity.this);
 
         Intent intent = getIntent();
-        if (intent.getSerializableExtra("pedidoPendente") != null) {
-          int id = (int) intent.getSerializableExtra("pedidoPendente");
-            Toast.makeText(this, "id->" + id, Toast.LENGTH_SHORT).show();
+
+        if (intent.getSerializableExtra("tokenProfissional") != null) {
+            token = (String) intent.getSerializableExtra("tokenProfissional");
+
+            if (intent.getSerializableExtra("idPedido") != null) {
+                idPedido = (int) intent.getSerializableExtra("idPedido");
+
+                Call<Pedido> call = new RetroFitConfig().getPedidoService().buscarPedidosPorId(token, idPedido);
+                call.enqueue(new Callback<Pedido>() {
+                    @Override
+                    public void onResponse(Call<Pedido>call, Response<Pedido> response) {
+                        pedido =  response.body();
+                        data.setText(pedido.getDataServico());
+                        hora.setText("Das " + pedido.getHorarioInicial() + " às " +  pedido.getHorarioFinal());
+                        descricao.setText(pedido.getDescricao());
+                    }
+                    @Override
+                    public void onFailure(Call<Pedido> call, Throwable t) {
+                        Log.i("BUSCA-PEDIDO", t.getMessage());
+                    }
+                });
+
+            }
+
         }
 
+        btnFazerOrcamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                dialogOrcamento.setContentView(R.layout.adapter_orcamento);
+
+                btnFecharAlert = dialogOrcamento.findViewById(R.id.btn_fechar);
+                btnDiminuirAlert = dialogOrcamento.findViewById(R.id.btn_diminuir_horas);
+                btnAumentarAlert = dialogOrcamento.findViewById(R.id.btn_aumentar_horas);
+                btnEnviarAlert = dialogOrcamento.findViewById(R.id.btn_enviar_orcamento);
+                tvHorasAlert = dialogOrcamento.findViewById(R.id.tv_quantidade_horas);
+                tvValorAlert = dialogOrcamento.findViewById(R.id.tv_valor_multiplicado);
+
+                tvHorasAlert.setText("1");
+
+                final Double valorHoraProfissional = pedido.getProfissional().getValorHora();
+                Locale ptBr = new Locale("pt", "BR");
+                valorString = NumberFormat.getCurrencyInstance(ptBr).format(valorHoraProfissional);
+                tvValorAlert.setText(valorString);
+
+
+                btnFecharAlert.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //tvValorAlert.setText(valorString);
+                        tvHorasAlert.setText("1");
+                        valorString = "";
+                        horas = "1";
+                        dialogOrcamento.dismiss();
+
+                    }
+                });
+
+                btnEnviarAlert.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        if(horas == String.valueOf(1)){
+                            moeda = "hr";
+                        }else{
+                            moeda = "hrs";
+                        }
+
+                        AlertDialog.Builder alert = new AlertDialog.Builder(VisualizarDetalhesServicoActivity.this);
+                        alert.setTitle("Confirmar Orçamento").setMessage("Tempo de trabalho: " + horas+moeda + "\nValor: "  + "R$"+valorOrcado).setPositiveButton(" Confirmar Valor", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                int id = pedido.getIdPedido();
+                                //Pedido pedido = pedido;
+                                pedido.setHorasServico(tvHorasAlert.getText().toString());
+                                Status status = new Status();
+                                status.setIdStatusPedido(2);
+                                pedido.setStatus(status);
+
+                                Call<Pedido> call = new RetroFitConfig().getPedidoService().fazerOrcamento(token, id,pedido);
+                                call.enqueue(new Callback<Pedido>() {
+
+                                    @Override
+                                    public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                                        response.body();
+
+                                    }
+                                    @Override
+                                    public void onFailure(Call<Pedido> call, Throwable t) {
+                                        Log.i("ORÇAMENTO", t.getMessage());
+                                    }
+
+
+                                });
+
+                                Toast.makeText(VisualizarDetalhesServicoActivity.this, "Enviamos, vamos ver se ele aceita ;D", Toast.LENGTH_SHORT).show();
+                                dialogOrcamento.dismiss();
+                            }
+                        }).setNegativeButton("Alterar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).show();
+                    }
+                });
+
+                btnAumentarAlert.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        horas = String.valueOf(Integer.parseInt(horas) + 1);
+                        tvHorasAlert.setText(horas);
+                        valorOrcado = valorHoraProfissional * Integer.parseInt(horas);
+                        valorMostrar = tranformarDinheiroBr(valorOrcado);
+                        tvValorAlert.setText(valorMostrar);
+
+                    }
+                });
+
+                btnDiminuirAlert.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        horas = String.valueOf(Integer.parseInt(horas) - 1);
+                        tvHorasAlert.setText(horas);
+                        valorOrcado = valorHoraProfissional * Integer.parseInt(horas);
+                        valorMostrar = tranformarDinheiroBr(valorOrcado);
+                        tvValorAlert.setText(valorMostrar);
+
+                    }
+                });
+
+                dialogOrcamento.show();
+
+            }
+        });
+
+    }
+
+    private String tranformarDinheiroBr(Double valorOrcado){
+
+        Locale ptBr = new Locale("pt", "BR");
+        final String valorMostrar = NumberFormat.getCurrencyInstance(ptBr).format(valorOrcado);
+        return valorMostrar;
 
     }
 

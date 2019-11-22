@@ -146,6 +146,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="350dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -154,7 +156,6 @@
             android:id="@+id/lv_comentarios"
             android:layout_width="match_parent"
             android:layout_height="461dp"
-            android:layout_marginBottom="10dp"
             android:divider="#00FFFFFF"
             android:dividerHeight="5dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -162,6 +163,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
         </ListView>
+
     </LinearLayout>
 
 

@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/navigation_dashboard_cliente"
+        android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_moneyb"
         app:itemIconTint="@drawable/item_selector1"
         app:itemTextColor="@drawable/item_selector1"
@@ -13,6 +13,12 @@
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_busca"
         android:title="Buscar"/>
+
+
+    <item
+        android:id="@+id/navigation_resposta"
+        android:icon="@drawable/ic_resposta"
+        android:title="Resposta"/>
 
     <item
         android:id="@+id/navigation_notifications"

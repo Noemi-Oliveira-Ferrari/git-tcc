@@ -151,10 +151,20 @@ public class MainActivity extends AppCompatActivity {
                         Profissional profissionalToken = tokenBodyProfissional.getProfissional();
                         Log.d("TOKEN", profissionalToken.getIdProfissional() + " <----");
 
-                        Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
-                        intent.putExtra("profissional", profissionalToken);
-                        intent.putExtra("tokenProfissional", token);
-                        startActivity(intent);
+                        if(profissionalToken.getFoto() == null){
+
+                            Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
+                            intent.putExtra("profissional", profissionalToken);
+                            intent.putExtra("profissionalToken", token);
+                            startActivity(intent);
+
+                        }else{
+
+                            Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                            intent.putExtra("profissional", profissionalToken);
+                            intent.putExtra("profissionalToken", token);
+                            startActivity(intent);
+                        }
                     }
 
                     @Override
@@ -184,10 +194,21 @@ public class MainActivity extends AppCompatActivity {
                                 Cliente clienteToken = tokenBodyCliente.getCliente();
                                 Log.d("TOKEN", clienteToken.getIdCliente() + " <----");
 
-                                Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
-                                intent.putExtra("cliente", clienteToken);
-                                intent.putExtra("tokenCliente", token);
-                                startActivity(intent);
+                                if(tokenBodyCliente.getCliente().getFoto() == null){
+
+                                    Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
+                                    intent.putExtra("cliente", clienteToken);
+                                    intent.putExtra("tokenCliente", token);
+                                    startActivity(intent);
+
+                                }else{
+
+                                    Intent intent = new Intent(MainActivity.this, MenuClienteActivity.class);
+                                    intent.putExtra("cliente", clienteToken);
+                                    intent.putExtra("tokenCliente", token);
+                                    startActivity(intent);
+                                }
+
                             }
 
                             @Override
