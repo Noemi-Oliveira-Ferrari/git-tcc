@@ -51,14 +51,10 @@ public class Disco {
 		String novoNome = "duh_"+fromOf+"_"+id+"_"+dataHora+"_"+GetRandom.random()+"."+img.getContentType().split("/")[1];
 		
 		//destino da imagem server
-		Path caminhoImgServer = Paths.get(this.raiz, diretorio);
-		//destino sem raiz para guardar no banco
-		Path caminhoImg = Paths.get(this.dirImgs, diretorio);
+		Path caminhoImgServer = Paths.get(this.raiz, this.dirImgs, diretorio);
 		
 		//caminho da imagem
 		Path imgPath = caminhoImgServer.resolve(novoNome);
-		//caminho da imagem sem raiz para guardar no banco
-		Path novoCaminho = caminhoImg.resolve(novoNome);
 		
 		try {
 			Files.createDirectories(caminhoImgServer);
@@ -67,6 +63,13 @@ public class Disco {
 			error.printStackTrace();
 			throw new RuntimeException("Problemas para salvar arquivo");
 		}
+		
+		//destino sem raiz para guardar no banco
+		Path caminhoImg = Paths.get(this.dirImgs, diretorio);
+		
+		//caminho da imagem sem raiz para guardar no banco
+		Path novoCaminho = caminhoImg.resolve(novoNome);
+		
 //		System.out.println(novoCaminho);
 		return novoCaminho.toString();
 		
