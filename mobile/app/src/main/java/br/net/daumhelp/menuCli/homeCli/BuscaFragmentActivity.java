@@ -122,6 +122,7 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
     }
 
     @Override
@@ -135,7 +136,7 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
             public void onResponse(Call<List<Profissional>> call, Response<List<Profissional>> response) {
 
                 lista = (ArrayList<Profissional>) response.body();
-                
+
                 if(lista != null){
 
                     listaProfissional = new ListaAdapterBusca(getContext(), lista, cliente, tokenCliente);

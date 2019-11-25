@@ -1,8 +1,11 @@
 package br.net.daumhelp;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -10,6 +13,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.text.NumberFormat;
+import java.util.Locale;
+
+import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.model.Pedido;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RespostaOrcamentoActivity extends AppCompatActivity {
 
@@ -21,6 +33,12 @@ public class RespostaOrcamentoActivity extends AppCompatActivity {
     private TextView tvBalaoResposta;
     private ImageView ivFotoProfissional;
     private View vResposta;
+
+
+    private Dialog alertDialog;
+    private Button btnCerto;
+    private ImageView ivResposta;
+    private TextView tvTextoAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,53 +54,139 @@ public class RespostaOrcamentoActivity extends AppCompatActivity {
         ivFotoProfissional = findViewById(R.id.iv_foto_profissional);
         vResposta = findViewById(R.id.v_resposta);
 
+        alertDialog = new Dialog(this);
+
+        alertDialog.setContentView(R.layout.adapter_resposta);
+        btnCerto = alertDialog.findViewById(R.id.btn_alert_resposta);
+        tvTextoAlert = alertDialog.findViewById(R.id.tv_texto_reposta);
+        ivResposta = alertDialog.findViewById(R.id.iv_imagem_resposta);
+
+        getWindow().setStatusBarColor(Color.parseColor("#77C9D4"));
 
         vResposta.setVisibility(View.INVISIBLE);
 
-        btnAceitar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                vResposta.setVisibility(View.VISIBLE);
-                tvBalaoResposta.setText("Eu aceito! :)");
-                btnAceitar.setVisibility(View.INVISIBLE);
-                btnRecusar.setVisibility(View.INVISIBLE);
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+        Intent intent = getIntent();
+        if(intent.getSerializableExtra("pedido") != null){
 
-                        Toast.makeText(RespostaOrcamentoActivity.this, "Orçamento aceito, o profissional está vindo até você!", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(RespostaOrcamentoActivity.this, ComentarioActivity.class);
-                        startActivity(intent);
-                        //finish();
-                    }
-                }, 2000);
+            Pedido pedidoSelecionado = (Pedido) intent.getSerializableExtra("pedido");
+            final int idPedido = pedidoSelecionado.getIdPedido();
 
-            }
-        });
+            if(intent.getSerializableExtra("tokenCliente") != null){
 
-        btnRecusar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                final String tokenCliente = (String) intent.getSerializableExtra("tokenCliente");
 
-                vResposta.setVisibility(View.VISIBLE);
-                tvBalaoResposta.setText("Dessa vez vou recusar,\nmuito obrigada!");
-                btnAceitar.setVisibility(View.INVISIBLE);
-                btnRecusar.setVisibility(View.INVISIBLE);
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(RespostaOrcamentoActivity.this, "Orçamento recusado =(", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(RespostaOrcamentoActivity.this, ComentarioActivity.class);
-                        startActivity(intent);
-                       // finish();
-                    }
-                }, 2000);
-            }
-        });
+            Locale ptBr = new Locale("pt", "BR");
+            String valorString = NumberFormat.getCurrencyInstance(ptBr).format(pedidoSelecionado.getValorServico());
+
+            tvNomeProfissional.setText(pedidoSelecionado.getProfissional().getNome().toUpperCase());
+            tvSubcategoriaProfissional.setText(pedidoSelecionado.getProfissional().getSubcategoria().getSubcategoria());
+            tvOrcamento.setText("Vou levar cerca de " + pedidoSelecionado.getHorasServico() +"h\nO valor do serviço vai ser " + valorString);
+
+
+
+            btnAceitar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    vResposta.setVisibility(View.VISIBLE);
+                    tvBalaoResposta.setText("Eu aceito! :)");
+                    btnAceitar.setVisibility(View.INVISIBLE);
+                    btnRecusar.setVisibility(View.INVISIBLE);
+
+                    Call<Pedido> call = new RetroFitConfig().getPedidoService().aceitarOrcamento(tokenCliente, idPedido);
+                    call.enqueue(new Callback<Pedido>() {
+                        @Override
+                        public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+                            response.body();
+
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+
+                                    ivResposta.setImageResource(R.drawable.ic_successg);
+                                    tvTextoAlert.setText("Aguarde o profissional em sua casa \nconforme a data e horário\n combinado.");
+                                    alertDialog.show();
+
+                                    btnCerto.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            alertDialog.dismiss();
+                                            finish();
+                                        }
+                                    });
+
+
+                                }
+                            }, 2000);
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Pedido> call, Throwable t) {
+                            Log.i("Servico Pendente", t.getMessage());
+                        }
+
+                    });
+
+
+                }
+            });
+
+            btnRecusar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    vResposta.setVisibility(View.VISIBLE);
+                    tvBalaoResposta.setText("Dessa vez vou recusar,\nmuito obrigada!");
+                    btnAceitar.setVisibility(View.INVISIBLE);
+                    btnRecusar.setVisibility(View.INVISIBLE);
+
+
+                    Call<Pedido> call = new RetroFitConfig().getPedidoService().recusarPedidoPendente(tokenCliente,idPedido);
+                    call.enqueue(new Callback<Pedido>() {
+                        @Override
+                        public void onResponse(Call<Pedido> call, Response<Pedido> response) {
+
+                            response.body();
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    ivResposta.setImageResource(R.drawable.ic_errorg);
+                                    tvTextoAlert.setText("Orçamento recusado\n Tente encontrar um novo profissional para o seu problema!");
+                                    alertDialog.show();
+
+                                    btnCerto.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            alertDialog.dismiss();
+                                            finish();
+                                        }
+                                    });
+
+
+                                }
+                            }, 2000);
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Pedido> call, Throwable t) {
+                            Log.i("Servico Pendente", t.getMessage());
+                        }
+
+                    });
+
+                }
+            });
+
+        }
+
+        }
 
     }
+
 
 }

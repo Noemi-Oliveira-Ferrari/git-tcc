@@ -155,14 +155,14 @@ public class MainActivity extends AppCompatActivity {
 
                             Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
                             intent.putExtra("profissional", profissionalToken);
-                            intent.putExtra("profissionalToken", token);
+                            intent.putExtra("tokenProfissional", token);
                             startActivity(intent);
 
                         }else{
 
                             Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                             intent.putExtra("profissional", profissionalToken);
-                            intent.putExtra("profissionalToken", token);
+                            intent.putExtra("tokenProfissional", token);
                             startActivity(intent);
                         }
                     }

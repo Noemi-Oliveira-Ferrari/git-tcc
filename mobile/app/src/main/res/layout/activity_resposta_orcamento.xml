@@ -8,23 +8,27 @@
 
     <TextView
         android:id="@+id/tv_nome_profissional"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Pedro de Almeida Santos"
         android:textSize="26dp"
+        android:textAlignment="center"
         android:textStyle="bold"
+        android:ellipsize="end"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_subcategoria_profissional"
-        android:layout_width="wrap_content"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:text="Eletricista de manutenção"
         android:textSize="18dp"
         android:textStyle="italic"
+        android:textAlignment="center"
+        android:ellipsize="end"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_nome_profissional" />
@@ -35,7 +39,7 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/pedro"
+        android:src="@drawable/user"
         app:civ_border_color="@color/colorTest2"
         app:civ_border_width="1dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +84,6 @@
         android:layout_marginStart="35dp"
         android:textSize="15dp"
         android:layout_marginTop="10dp"
-        android:text="Vou levar cerca de 5h \nO valor do serviço vai ser R$1500,00"
         app:layout_constraintStart_toStartOf="@+id/v_balao_orcamento"
         app:layout_constraintTop_toTopOf="@+id/v_balao_orcamento" />
 
@@ -106,7 +109,7 @@
 
     <View
         android:id="@+id/v_linha"
-        android:layout_width="160dp"
+        android:layout_width="145dp"
         android:layout_height="2dp"
         android:layout_marginTop="86dp"
         android:background="@color/colorTest2"
@@ -117,7 +120,7 @@
 
     <View
         android:id="@+id/view14"
-        android:layout_width="155dp"
+        android:layout_width="145dp"
         android:layout_height="2dp"
         android:layout_marginTop="85dp"
         android:background="@color/colorTest2"

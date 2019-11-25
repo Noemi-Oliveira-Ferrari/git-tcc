@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation_cliente"
-    app:startDestination="@+id/navigation_resposta_cli">
+    app:startDestination="@+id/navigation_home">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -19,6 +19,11 @@
         tools:layout="@layout/activity_fragment_pagamento" />
 
 
+    <fragment
+        android:id="@+id/navigation_resposta"
+        android:name="br.net.daumhelp.menuCli.respostaCli.RespostaCliFragmentActivity"
+        android:label="@string/title_resposta"
+        tools:layout="@layout/activity_fragment_resposta_cliente" />
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -26,11 +31,5 @@
         android:label="@string/title_notification"
         tools:layout="@layout/activity_fragment_perfil_cliente" />
 
-
-    <fragment
-        android:id="@+id/navigation_resposta_cli"
-        android:name="br.net.daumhelp.menuCli.respostaCli.RespostaCliFragmentActivity"
-        android:label="@string/title_resposta"
-        tools:layout="@layout/activity_fragment_resposta_cliente" />
 
 </navigation>

@@ -45,7 +45,7 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
     private Button btnDiminuirAlert;
     private TextView tvHorasAlert;
     private TextView tvValorAlert;
-    private String horas = "1";
+    private int horas = 1;
     private String valorHora = "50";
     private Double valorOrcado;
     private String moeda;
@@ -71,12 +71,11 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
         dialogOrcamento = new Dialog(VisualizarDetalhesServicoActivity.this);
 
         Intent intent = getIntent();
-
         if (intent.getSerializableExtra("tokenProfissional") != null) {
             token = (String) intent.getSerializableExtra("tokenProfissional");
-
             if (intent.getSerializableExtra("idPedido") != null) {
                 idPedido = (int) intent.getSerializableExtra("idPedido");
+
 
                 Call<Pedido> call = new RetroFitConfig().getPedidoService().buscarPedidosPorId(token, idPedido);
                 call.enqueue(new Callback<Pedido>() {
@@ -86,6 +85,7 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
                         data.setText(pedido.getDataServico());
                         hora.setText("Das " + pedido.getHorarioInicial() + " às " +  pedido.getHorarioFinal());
                         descricao.setText(pedido.getDescricao());
+                        valorOrcado = pedido.getProfissional().getValorHora();
                     }
                     @Override
                     public void onFailure(Call<Pedido> call, Throwable t) {
@@ -124,7 +124,7 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
                         //tvValorAlert.setText(valorString);
                         tvHorasAlert.setText("1");
                         valorString = "";
-                        horas = "1";
+                        horas = 1;
                         dialogOrcamento.dismiss();
 
                     }
@@ -134,11 +134,14 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
 
-                        if(horas == String.valueOf(1)){
+                        if(horas == 1){
                             moeda = "hr";
                         }else{
                             moeda = "hrs";
                         }
+
+
+
 
                         AlertDialog.Builder alert = new AlertDialog.Builder(VisualizarDetalhesServicoActivity.this);
                         alert.setTitle("Confirmar Orçamento").setMessage("Tempo de trabalho: " + horas+moeda + "\nValor: "  + "R$"+valorOrcado).setPositiveButton(" Confirmar Valor", new DialogInterface.OnClickListener() {
@@ -152,7 +155,7 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
                                 status.setIdStatusPedido(2);
                                 pedido.setStatus(status);
 
-                                Call<Pedido> call = new RetroFitConfig().getPedidoService().fazerOrcamento(token, id,pedido);
+                                Call<Pedido> call = new RetroFitConfig().getPedidoService().fazerOrcamento(token, id ,pedido);
                                 call.enqueue(new Callback<Pedido>() {
 
                                     @Override
@@ -184,9 +187,9 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        horas = String.valueOf(Integer.parseInt(horas) + 1);
-                        tvHorasAlert.setText(horas);
-                        valorOrcado = valorHoraProfissional * Integer.parseInt(horas);
+                        horas = (horas) + 1;
+                        tvHorasAlert.setText(String.valueOf(horas));
+                        valorOrcado = valorHoraProfissional * horas;
                         valorMostrar = tranformarDinheiroBr(valorOrcado);
                         tvValorAlert.setText(valorMostrar);
 
@@ -197,15 +200,14 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        horas = String.valueOf(Integer.parseInt(horas) - 1);
-                        tvHorasAlert.setText(horas);
-                        valorOrcado = valorHoraProfissional * Integer.parseInt(horas);
+                        horas = horas - 1;
+                        tvHorasAlert.setText(String.valueOf(horas));
+                        valorOrcado = valorHoraProfissional * horas;
                         valorMostrar = tranformarDinheiroBr(valorOrcado);
                         tvValorAlert.setText(valorMostrar);
 
                     }
                 });
-
                 dialogOrcamento.show();
 
             }

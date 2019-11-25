@@ -38,6 +38,10 @@ public class MenuActivity extends AppCompatActivity {
             Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
         }
 
+        if (intent.getSerializableExtra("tokenProfissional") != null) {
+            String tokenProfissional = (String) intent.getSerializableExtra("tokenProfissional");
+        }
+
     }
 
     @Override
@@ -46,10 +50,7 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent.getSerializableExtra("profissional") != null) {
-
             Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
-
-
         }
     }
 }

@@ -70,7 +70,6 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
         }
 
         final ListaAdapterPedidosPendentes listaPedidos =  new ListaAdapterPedidosPendentes(getContext(), lista, tokenProfissional);
-
         if (intent.getSerializableExtra("profissional") != null){
             profissional = (Profissional) intent.getSerializableExtra("profissional");
             idProfissional = profissional.getIdProfissional();
