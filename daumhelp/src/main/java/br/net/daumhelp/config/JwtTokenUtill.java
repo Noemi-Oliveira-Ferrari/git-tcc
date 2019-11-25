@@ -50,11 +50,13 @@ public class JwtTokenUtill implements Serializable {
 
 	public String generateTokenCliente(Cliente cliente) {
 		Map<String, Object> claims = new HashMap<>();
+		cliente.setSenha("");
 		return doGenerateTokenCliente(claims, cliente);
 	}
 
 	public String generateTokenProfissional(Profissional profissional) {
 		Map<String, Object> claims = new HashMap<>();
+		profissional.setSenha("");
 		return doGenerateTokenPro(claims, profissional);
 	}
 	
