@@ -61,7 +61,7 @@ public class JwtTokenUtill implements Serializable {
 	private String doGenerateTokenCliente(Map<String, Object> claims, Cliente cliente) {
 		return Jwts.builder()
 				.claim("cliente", cliente)
-				.setSubject(cliente.getNome())
+				.setSubject(cliente.getEmail())
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
 				.signWith(SignatureAlgorithm.HS512, secret).compact();
@@ -70,7 +70,7 @@ public class JwtTokenUtill implements Serializable {
 	private String doGenerateTokenPro(Map<String, Object> claims, Profissional pro) {
 		return Jwts.builder()
 				.claim("profissional", pro)
-				.setSubject(pro.getNome())
+				.setSubject(pro.getEmail())
 				.setIssuedAt(new Date(System.currentTimeMillis()))
 				.setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
 				.signWith(SignatureAlgorithm.HS512, secret).compact();

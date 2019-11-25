@@ -6,10 +6,12 @@ import $ from 'jquery';
 import axios from 'axios';
 import {browserHistory} from 'react-router';
 import { DOMINIO } from '../global';
+import Botao from '../components/Botao';
+
 
 import '../css/confirmacao.css';
 import ModalSucesso from '../components/ModalSucesso';
-import {ModalLoadFun, ModalAlertasFun} from '../components/ModaisLoad';
+import {ModalLoadFun, ModalAlertasFun} from '../components/Modais';
 
 function Confirmacao() {
 
@@ -172,6 +174,7 @@ function Confirmacao() {
             method: 'POST',
             url: `${DOMINIO}${tipoCadastro}/confirmacao`,
             timeout: 30000,
+            headers: {'token': 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJkYXZpZCIsImV4cCI6MTU3MzUwNjI0MCwiaWF0IjoxNTczNDg4MjQwfQ.AlgvbK4_NuSEg9nch72ab_LNL6ZIaCnqV87-6n9AAKjqnTUG4mKqt6CBeuHyC6V8HyEKkhP1_mL05q9cqy3OAw'},
             data: {
                 nome: usuario.nome,
                 destinatario: usuario.email,
@@ -192,7 +195,7 @@ function Confirmacao() {
         })
         .catch((error)=>{
             setInitLoad(false);
-            alertas.push(`Não foi possível envial o código para ${usuario.email}`);
+            alertas.push(`Não foi possível enviar o código para ${usuario.email}`);
             setCodeAlerta(alertas);
             setTipoAlerta("erroAlt");
             setTituloAlerta("ERRO!");
@@ -211,6 +214,7 @@ function Confirmacao() {
             console.log(codeConfirm);
             // setModalAlertas(true);
             getUsuario();
+            // setModalSucessoShow(true);
             setRenderizar(false);
         }
     });
@@ -259,8 +263,16 @@ function Confirmacao() {
                     </div>
                 </div>
                 <div className="links-email center">
-                    <button onClick={() => getUsuario()} className="link-reenviar-email "> Reenviar E-mail </button>
-                    <button onClick={()=>{browserHistory.push(profissional === null ? "/cliente/cadastro" : "/profissional/cadastro")}} className="link-alterar-email "> Alterar E-mail</button>
+                    <Botao
+                        clickBotao={() => getUsuario()}
+                        classBotao="link-reenviar-email"
+                        valueBotao="Reenviar E-mail"
+                    />
+                    <Botao
+                        clickBotao={()=>{browserHistory.push(profissional === null ? "/cliente/cadastro" : "/profissional/cadastro")}} 
+                        classBotao="link-alterar-email"
+                        valueBotao="Alterar E-mail"
+                    />
                 </div>
             </div>
         </section>

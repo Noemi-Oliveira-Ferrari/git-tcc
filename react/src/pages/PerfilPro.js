@@ -66,11 +66,11 @@ export class PerfilPro extends Component{
         return(
             <Fragment>
                 <CapaPerfilPro
-                    nomePro={this.state.nomePro}
-                    servicoPro={this.state.servicoPro}
-                    localPro={this.state.localPro}
-                    notaPro="Média Geral: 4.9"
-                    valorPro={`R$ ${this.state.valorPro}`}
+                    titulo={this.state.nomePro}
+                    texto1={this.state.servicoPro}
+                    texto2={this.state.localPro}
+                    texto3="Média Geral: 4.9"
+                    texto4={`R$ ${this.state.valorPro}`}
                     fotoPro={this.state.fotoPro}
                 />
                 <div className="caixa-conteudo-perfil-pro">

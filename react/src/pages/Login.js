@@ -7,7 +7,7 @@ import IconLogin from '../img/log-in.png';
 import {DOMINIO} from '../global';
 import $ from 'jquery';
 import axios from 'axios';
-import {ModalLoadConst, ModalAlertas} from '../components/ModaisLoad';
+import {ModalLoadConst, ModalAlertas} from '../components/Modais';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCpfCliente, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
@@ -35,7 +35,7 @@ export class Login extends Component{
 		// this.buscarCliente = this.buscarCliente.bind(this);
 	}
 	componentDidMount(){
-		sessionStorage.clear();
+		// sessionStorage.clear();
 		$("txt-senha").attr("disabled", true);
 	}
 
@@ -112,7 +112,7 @@ export class Login extends Component{
 			console.log("procura cliente");
 			console.log(jsonCliente);
 			if(jsonCliente === null || jsonCliente === ''){
-				let erros = [`Nenhum cliente com essas credenciais foi encontrado.`];
+				let erros = [`Nenhum usuário com essas credenciais foi encontrado.`];
 				this.setState({erros: erros});
 				this.setState({tipoAlerta: "alertaAlt"});
 				this.setState({titleAlt: "ERRO!"});

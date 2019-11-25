@@ -10,6 +10,7 @@ export class Botao extends Component{
             id={this.props.idBotao} 
             name={this.props.nameBotao}
             type={this.props.typeBotao}
+            onClick={this.props.clickBotao}
             >
                 {this.props.valueBotao}
         </button>

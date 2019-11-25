@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -86,7 +87,11 @@ public class ImageResource {
 	
 	//FAZ UPLOAD DE ATÉ 3 IMAGENS DE UMA VEZ DE PEDIDOS
 	@PostMapping("/pedido")
-	public void uploadImgsPedido(@RequestParam List<MultipartFile> imgs, @RequestParam Long idPedido) {
+	public void uploadImgsPedido(
+			@Nullable @RequestParam MultipartFile img1,
+			@Nullable @RequestParam MultipartFile img2,
+			@Nullable @RequestParam MultipartFile img3,
+			@RequestParam Long idPedido) {
 
 		//**1
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
@@ -95,25 +100,35 @@ public class ImageResource {
 		ArrayList<String> imgsPedidoCaminho = new ArrayList<String>();
 
 		int i = -1;//CONTROLA QUAL POSIÇÃO DO ARRAY O CAMINHO DA CADA IMAGEM FICARÁ
+		
+		
+		List<MultipartFile> imgs = new ArrayList<>();
+		imgs.add(img1);
+		imgs.add(img2);
+		imgs.add(img3);
+		
 
 		for(MultipartFile img : imgs) {
-			//VERIFICA SE A IMAGEM EXISTE
-			if(!img.getOriginalFilename().isEmpty() && img.getSize() > 0) {
-				//SALVA IMAGEM E RETORNA SEU NOVO CAMINHO
-				imgsPedidoCaminho.add(disco.salvarFotoPedido(img, idPedido));
-				++i;
-				//COLOCA CADA IMAGEM NO PEDIDO
-				if(i == 0) {
-					pedido.setFoto1(imgsPedidoCaminho.get(i));				
-				}else if(i == 1) {
-					pedido.setFoto2(imgsPedidoCaminho.get(i));				
-				}else if(i == 2){
-					pedido.setFoto3(imgsPedidoCaminho.get(i));
+			if(img != null) {				
+				System.out.println(img.getOriginalFilename());
+				//VERIFICA SE A IMAGEM EXISTE
+				if(!img.getOriginalFilename().isEmpty() && img.getSize() > 0) {
+					//SALVA IMAGEM E RETORNA SEU NOVO CAMINHO
+					imgsPedidoCaminho.add(disco.salvarFotoPedido(img, idPedido));
+					++i;
+					//COLOCA CADA IMAGEM NO PEDIDO
+					if(i == 0) {
+						pedido.setFoto1(imgsPedidoCaminho.get(i));				
+					}else if(i == 1) {
+						pedido.setFoto2(imgsPedidoCaminho.get(i));				
+					}else if(i == 2){
+						pedido.setFoto3(imgsPedidoCaminho.get(i));
+					}
 				}
 			}
 		}
-		
-		//ATUALIZA O PEDIDO NO BANCO
+//		
+//		//ATUALIZA O PEDIDO NO BANCO
 		pedidoRepository.save(pedido);
 		
 	}
