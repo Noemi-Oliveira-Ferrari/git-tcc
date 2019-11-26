@@ -1,6 +1,8 @@
 package br.net.daumhelp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -107,6 +109,11 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                final ProgressDialog progressDialog = new ProgressDialog(CadastroDadosPessoaisActivity.this);
+                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.layout_progressbar);
+
                 /*PEGAR DADOS QUE O USUÁRIO DIGITOU*/
                 String nome = etNome.getText().toString();
                 String dataNasc = etDataNasc.getText().toString();
@@ -142,6 +149,7 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
                                     @Override
                                     public void onResponse(Call<Confirmacao> call, Response<Confirmacao> response) {
                                         response.body();
+                                        progressDialog.show();
                                     }
 
                                     @Override
