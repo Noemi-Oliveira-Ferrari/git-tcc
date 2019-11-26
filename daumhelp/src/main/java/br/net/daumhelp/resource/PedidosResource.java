@@ -80,12 +80,13 @@ public class PedidosResource {
 		return pedidoRepository.buscarPorClienteStatus(idProfissional, idStatusPedido);
 	}
 	
-	@GetMapping("/profissional/{idProfissional}/status/{idStatusSolicitado}/{idStatusAceito}")
+	@GetMapping("/profissional/{idProfissional}/status/{idStatusSolicitado}/{idStatusAceito}/{idStatusRejeitado}")
 	public List<Pedido> getPedidosParaProfissional(
 			@PathVariable Long idProfissional, 
 			@PathVariable Long idStatusSolicitado,
-			@PathVariable Long idStatusAceito){
-		return pedidoRepository.buscarParaProfissional(idProfissional, idStatusSolicitado, idStatusAceito);
+			@PathVariable Long idStatusAceito,
+			@PathVariable Long idStatusRejeitado){
+		return pedidoRepository.buscarParaProfissional(idProfissional, idStatusSolicitado, idStatusAceito, idStatusRejeitado);
 	}
 
 	@PostMapping("/solicitar")
