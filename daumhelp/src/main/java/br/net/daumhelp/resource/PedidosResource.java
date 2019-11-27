@@ -68,6 +68,14 @@ public class PedidosResource {
 		return pedidoRepository.buscarPorClienteStatus(idCliente, idStatusPedido);
 	}
 	
+	@GetMapping("/cliente/{idCliente}/status/{idStatusOrcado}/{idStatusRejeitado}")
+	public List<Pedido> getPedidosParaCliente(
+			@PathVariable Long idCliente, 
+			@PathVariable Long idStatusOrcado,
+			@PathVariable Long idStatusRejeitado){
+		return pedidoRepository.buscarParaCliente(idCliente, idStatusOrcado, idStatusRejeitado);
+	}
+	
 	@GetMapping("/profissional/{idProfissional}")
 	public List<Pedido> getPedidoByPro(@PathVariable Long idProfissional){
 		return pedidoRepository.buscarPorPro(idProfissional);
@@ -76,6 +84,15 @@ public class PedidosResource {
 	@GetMapping("/profissional/{idProfissional}/status/{idStatusPedido}")
 	public List<Pedido> getPedidoByPro(@PathVariable Long idProfissional, @PathVariable Long idStatusPedido){
 		return pedidoRepository.buscarPorClienteStatus(idProfissional, idStatusPedido);
+	}
+	
+	@GetMapping("/profissional/{idProfissional}/status/{idStatusSolicitado}/{idStatusAceito}/{idStatusRejeitado}")
+	public List<Pedido> getPedidosParaProfissional(
+			@PathVariable Long idProfissional, 
+			@PathVariable Long idStatusSolicitado,
+			@PathVariable Long idStatusAceito,
+			@PathVariable Long idStatusRejeitado){
+		return pedidoRepository.buscarParaProfissional(idProfissional, idStatusSolicitado, idStatusAceito, idStatusRejeitado);
 	}
 
 	@PostMapping("/solicitar")
