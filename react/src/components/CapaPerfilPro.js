@@ -42,7 +42,7 @@ export class CapaPerfilPro extends Component{
     }
     
     componentDidMount(){
-        this.confirmUploadMode();
+        this.confirmUploadMode()  ;
     }
 
     //MOSTRA ALERTA SE ÃO HOUVER CONEXAÃO COM O SERVIDOR
