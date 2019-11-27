@@ -11,11 +11,11 @@ import Save from '../img/save.png';
 import SaveDisabled from '../img/save-disabled.png';
 import Cancel from '../img/cancel.png';
 import axios from 'axios';
+import MenuLateral from '../components/MenuLateral';
+import {Inputs, Selects, InputNumber} from '../components/FormElements';
 import { verificarLogado, getToken, getUsuarioPro, getUpdatedPro } from '../utils/verificaSessionStrg';
 import { Route, browserHistory } from 'react-router';
 import { DadosPessoaisPro, DadosProfissional } from '../components/FormularioProfissional';
-import MenuLateral from '../components/MenuLateral';
-import {Inputs, Selects, InputNumber} from '../components/FormElements';
 import { BotaoImg } from '../components/Botao';
 import { ModalLoadConst, ModalAlertas} from '../components/ModaisLoad';
 import { DOMINIO } from '../global';
@@ -388,7 +388,7 @@ class PerfilPro extends Component{
             <Fragment>
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
                 <ModalAlertas tipoAlerta={this.state.tipoAlerta} titulo={this.state.tituloAlerta} erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
-                <MenuLateral/>
+                {/* <MenuLateral/> */}
                 <CapaPerfilPro
                     nome={this.state.nomePro}
                     texto1={this.state.servicoPro}

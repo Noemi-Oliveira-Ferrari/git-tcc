@@ -76,7 +76,7 @@
 		margin: 0;
 		
 	}
-	.cliente-servico{
+	.endereco-cliente-servico{
 		width: inherit;
 		height: 25px;
 		/* background-color: ivory; */
@@ -266,7 +266,7 @@
 		margin: 0;
 		
 	}
-	.cliente-servico{
+	.endereco-cliente-servico{
 		width: 100%;
 		height: 20px;
 		/* background-color: ivory; */
