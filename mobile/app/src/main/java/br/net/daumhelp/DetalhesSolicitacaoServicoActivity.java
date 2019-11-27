@@ -1,10 +1,12 @@
 package br.net.daumhelp;
 
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -110,6 +112,12 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+
+                    final ProgressDialog progressDialog = new ProgressDialog(DetalhesSolicitacaoServicoActivity.this);
+                    progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    progressDialog.show();
+                    progressDialog.setContentView(R.layout.layout_progressbar);
+
                     final Pedido pedido = new Pedido();
                     pedido.setCliente(clienteLogado);
                     pedido.setProfissional(profissionalSolicitado);
@@ -150,6 +158,7 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onResponse(Call<Pedido> call2, Response<Pedido> response) {
+                                        progressDialog.dismiss();
                                         response.body();
                                         Toast.makeText(DetalhesSolicitacaoServicoActivity.this, "Aguarde a resposta do profissional! =D", Toast.LENGTH_SHORT).show();
                                         finish();

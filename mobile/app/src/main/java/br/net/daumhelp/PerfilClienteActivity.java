@@ -1,8 +1,10 @@
 package br.net.daumhelp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -119,6 +121,11 @@ public class PerfilClienteActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
 
+                            final ProgressDialog progressDialog = new ProgressDialog(PerfilClienteActivity.this);
+                            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                            progressDialog.show();
+                            progressDialog.setContentView(R.layout.layout_progressbar);
+
                             String cep = etCep.getText().toString();
                             /*VALIDAÇÃO DO TAMANHO DO CEP*/
                             if(etCep.length() == 8 || etCep.length() == 9){
@@ -126,6 +133,9 @@ public class PerfilClienteActivity extends AppCompatActivity {
                                 call.enqueue(new Callback<EnderecoViaCep>() {
                                     @Override
                                     public void onResponse(Call<EnderecoViaCep> call, Response<EnderecoViaCep> response) {
+
+                                        progressDialog.dismiss();
+
                                         if(response.code() == 404){
                                             etCep.setError("CPF inválido");
                                         }else{
@@ -135,6 +145,8 @@ public class PerfilClienteActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<EnderecoViaCep> call, Throwable t) {
+                                        progressDialog.dismiss();
+
                                         Log.i("Retrofit Endereço", t.getMessage());
                                         etCep.setError("CEP inválido");
                                     }
@@ -189,6 +201,12 @@ public class PerfilClienteActivity extends AppCompatActivity {
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                final ProgressDialog progressDialog = new ProgressDialog(PerfilClienteActivity.this);
+                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.layout_progressbar);
+
 
                 /*MONTANDO O OBJETO PROFISSIONAL QUE SERÁ ATUALIZADO*/
                 cliente.setNome(etNome.getText().toString());

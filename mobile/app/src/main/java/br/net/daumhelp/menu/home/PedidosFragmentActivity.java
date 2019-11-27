@@ -1,6 +1,8 @@
 package br.net.daumhelp.menu.home;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import br.net.daumhelp.EditarActivity;
 import br.net.daumhelp.R;
 import br.net.daumhelp.adapter.ListaAdapterBusca;
 import br.net.daumhelp.adapter.ListaAdapterPedidosPendentes;
@@ -55,6 +58,11 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.layout_progressbar);
+
         mSwipeToRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_pedidos);
         mSwipeToRefresh.setOnRefreshListener(this);
         listView =  getView().findViewById(R.id.lv_pedidos_pendentes);
@@ -81,12 +89,14 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
                 @Override
                 public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
 
+
                     lista = (ArrayList<Pedido>) response.body();
                     if(lista != null){
                         for(Pedido p : lista){
                             listaPedidos.add(p);
                         }
                         listView.setAdapter(listaPedidos);
+                        progressDialog.dismiss();
                     }
 
                 }
@@ -94,6 +104,7 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
                 @Override
                 public void onFailure(Call<List<Pedido>> call, Throwable t) {
                     Log.i("Servico Pendente", t.getMessage());
+                    progressDialog.dismiss();
                 }
 
             });

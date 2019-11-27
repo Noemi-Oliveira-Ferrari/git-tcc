@@ -111,6 +111,8 @@ public class PerfilCliFragmentActivity extends Fragment {
         btnAjuda = getView().findViewById(R.id.ib_ajuda);
         ivFotoCliente = getView().findViewById(R.id.profile_image_cliente);
 
+
+
         desativarCamposDadosPessoais();
         desativarCamposDadosEndereco();
 
@@ -332,7 +334,8 @@ public class PerfilCliFragmentActivity extends Fragment {
         etUf.setText(cliente.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
         etBairro.setText(cliente.getEndereco().getBairro());
         tvNome.setText(cliente.getNome().toUpperCase());
-        Picasso.get().load("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_GOzRJinPUlzWcM8hqBAsPnRvkzjYoOIPwq2swChRz-xzw8Hp").into(ivFotoCliente);
+        String fotoCli = cliente.getFoto();
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).into(ivFotoCliente);
 
     }
 

@@ -84,8 +84,8 @@ public class ListaAdapterPedidosPendentes extends ArrayAdapter<Pedido> {
         tvDataSolicitacao.setText(dataFormatada);
 
 
-        /*String fotoCli = listaPedidos.getCliente().getFoto();
-        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).into(ivFotoCliente);*/
+        String fotoCli = listaPedidos.getCliente().getFoto();
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).into(ivFotoCliente);
 
         btnAnalisar.setOnClickListener(new View.OnClickListener() {
             @Override

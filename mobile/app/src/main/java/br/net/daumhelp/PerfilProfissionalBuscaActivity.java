@@ -39,6 +39,7 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
     private Dialog alertDialog;
     private Button btnSolicitarAlert;
     private Button btnSair;
+    private ImageButton btnAvaliar;
     private TextView tvNomeAlert;
     private TextView tvCategoriaAlert;
     private TextView tvQualificacoesAlert;
@@ -64,6 +65,7 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
         ibFavoritar = findViewById(R.id.ic_salvar);
         btnVisualizar = findViewById(R.id.btn_resumo);
         ivFotoProfissional = findViewById(R.id.profile_image);
+        btnAvaliar = findViewById(R.id.ic_avaliar);
 
 
         alertDialog = new Dialog(this);
@@ -81,6 +83,14 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
             profissionalSelecionado = (Profissional) intent.getSerializableExtra("profissionalBusca");
             clienteLogado = (Cliente) intent.getSerializableExtra("cliente");
 
+
+            btnAvaliar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, ComentarioActivity.class);
+                    startActivity(intent);
+                }
+            });
 
             ibSolicitar.setOnClickListener(new View.OnClickListener() {
                 @Override

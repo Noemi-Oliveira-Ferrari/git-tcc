@@ -15,6 +15,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import br.net.daumhelp.R;
@@ -56,7 +58,7 @@ public class ListaAdapterRespostaOrcamento extends ArrayAdapter<Pedido> {
         final Pedido listaPedidos = this.lista.get(position);
         convertView = LayoutInflater.from(this.context).inflate(R.layout.layout_lista_orcado, null);
 
-        ivProfissional = convertView.findViewById(R.id.iv_foto_profissional);
+        ivProfissional = convertView.findViewById(R.id.civ_foto_pro);
         tvNomeProfissional = convertView.findViewById(R.id.tv_nome_profissional);
         tvSubcategoriaProfissional = convertView.findViewById(R.id.tv_subcategoria_profissional);
         tvTextoOrcamento = convertView.findViewById(R.id.tv_texto_orcamento);
@@ -65,6 +67,10 @@ public class ListaAdapterRespostaOrcamento extends ArrayAdapter<Pedido> {
 
         tvNomeProfissional.setText(listaPedidos.getProfissional().getNome().toUpperCase());
         tvSubcategoriaProfissional.setText(listaPedidos.getProfissional().getSubcategoria().getSubcategoria());
+
+
+        String fotoPro = listaPedidos.getProfissional().getFoto();
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivProfissional);
 
         final int idStatus = listaPedidos.getIdPedido();
 

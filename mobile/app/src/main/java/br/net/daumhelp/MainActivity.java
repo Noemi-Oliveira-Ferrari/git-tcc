@@ -1,8 +1,10 @@
 package br.net.daumhelp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -123,6 +125,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.layout_progressbar);
+
+
                 final String senha = EncryptString.gerarHash(etSenha.getText().toString());
                 final String email = etEmail.getText().toString();
 
@@ -139,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                         String data = null;
                         String tokenBody = null;
                         String token = response.body().getToken();
+                        progressDialog.dismiss();
 
                         try {
                             tokenBody = Base64Utils.getTokenBody(token);
@@ -214,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(Call<JwtToken> call, Throwable t) {
                                 Log.i("Retrofit LOGIN", t.getMessage());
+                                progressDialog.dismiss();
                                 Toast.makeText(MainActivity.this, "Esse usuario não existe", Toast.LENGTH_SHORT).show();
                             }
                         });

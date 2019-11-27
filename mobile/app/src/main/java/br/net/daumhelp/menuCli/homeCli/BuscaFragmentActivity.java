@@ -1,8 +1,10 @@
 package br.net.daumhelp.menuCli.homeCli;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -63,6 +65,12 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
+        final ProgressDialog progressDialog = new ProgressDialog(getContext());
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.layout_progressbar);
+
+
         btnFiltro = getView().findViewById(R.id.btn_filtro);
         listView =  getView().findViewById(R.id.lv_busca_pro);
         mSwipeToRefresh = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_container);
@@ -106,12 +114,14 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
                         listaProfissional.add(p);
                     }
                     listView.setAdapter(listaProfissional);
+                    progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Profissional>> call, Throwable t) {
                 Log.i("PROFISSIONAIS BUSCA", t.getMessage());
+                progressDialog.dismiss();
             }
 
         });
@@ -122,12 +132,10 @@ public class BuscaFragmentActivity extends Fragment implements SwipeRefreshLayou
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
     }
 
     @Override
     public void onRefresh() {
-
 
         int idMicroCliente = cliente.getEndereco().getCidade().getMicrorregiao().getIdMicro();
         Call<List<Profissional>> call = new RetroFitConfig().getProfissionalService().buscarProfissionalMicro(tokenCliente, idMicroCliente);

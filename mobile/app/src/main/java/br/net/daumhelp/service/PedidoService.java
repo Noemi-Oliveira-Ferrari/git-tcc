@@ -29,15 +29,14 @@ public interface PedidoService {
     @PUT("pedidos/resposta/{idPedido}")
     Call<Pedido> fazerOrcamento(@Header("token") String token, @Path("idPedido") int idPedido, @Body Pedido pedido);
 
-
-
-
-
     @PUT("pedidos/rejeitar/{idPedido}")
     Call<Pedido> recusarPedidoPendente(@Header("token") String token, @Path("idPedido") int idPedido);
 
     @PUT("pedidos/aceitar/{idPedido}")
     Call<Pedido> aceitarOrcamento(@Header("token") String token, @Path("idPedido") int idPedido);
+
+    @PUT("pedidos/concluir/{idPedido}")
+    Call<Pedido> concluirServico(@Header("token") String token, @Path("idPedido") int idPedido);
 
 
 

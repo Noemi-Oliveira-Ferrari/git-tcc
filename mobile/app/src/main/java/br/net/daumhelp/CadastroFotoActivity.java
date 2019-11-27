@@ -1,10 +1,12 @@
 package br.net.daumhelp;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -110,6 +112,11 @@ public class CadastroFotoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    final ProgressDialog progressDialog = new ProgressDialog(CadastroFotoActivity.this);
+                    progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    progressDialog.show();
+                    progressDialog.setContentView(R.layout.layout_progressbar);
+
                     final RequestBody fbody = RequestBody.create(MediaType.parse("image/png"), arquivoFoto);
                     MultipartBody.Part multipartBody = MultipartBody.Part.createFormData("img", arquivoFoto.getName(), fbody);
                     RequestBody idClienteBody = RequestBody.create(MediaType.parse("text/plain"), String.valueOf(cliente.getIdCliente()));
@@ -118,7 +125,7 @@ public class CadastroFotoActivity extends AppCompatActivity {
                     call.enqueue(new Callback<Cliente>() {
                         @Override
                         public void onResponse(Call<Cliente> call, Response<Cliente> response) {
-
+                            progressDialog.dismiss();
                             response.body();
                             Intent intent = new Intent(CadastroFotoActivity.this, MenuClienteActivity.class);
                             intent.putExtra("cliente", cliente);
@@ -130,7 +137,7 @@ public class CadastroFotoActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Cliente> call, Throwable t) {
-
+                            progressDialog.dismiss();
                             Log.i("FOTOCLICADASTRO", t.getMessage());
 
                         }

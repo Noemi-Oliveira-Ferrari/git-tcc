@@ -41,8 +41,8 @@ public class ListaAdapterComentario extends ArrayAdapter<Comentario> {
         Comentario comentarioPosicao = this.lista.get(position);
         convertView = LayoutInflater.from(this.context).inflate(R.layout.layout_lista_comentario, null);
 
-        ivFotoCliente = convertView.findViewById(R.id.profile_image);
-        Picasso.get().load("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcT_GOzRJinPUlzWcM8hqBAsPnRvkzjYoOIPwq2swChRz-xzw8Hp").into(ivFotoCliente);
+          ivFotoCliente = convertView.findViewById(R.id.profile_image);
+//        Picasso.get().load("").into(ivFotoCliente);
 
         tvComentario = convertView.findViewById(R.id.tv_comentario);
         tvComentario.setText(comentarioPosicao.getComentario());

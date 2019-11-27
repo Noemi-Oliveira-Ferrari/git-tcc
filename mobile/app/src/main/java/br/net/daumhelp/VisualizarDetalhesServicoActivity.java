@@ -1,9 +1,11 @@
 package br.net.daumhelp;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +16,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -30,9 +34,9 @@ import retrofit2.Response;
 public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
 
 
-    private ImageView foto1;
-    private ImageView foto2;
-    private ImageView foto3;
+    private ImageView ivFoto1;
+    private ImageView ivFoto2;
+    private ImageView ivFoto3;
     private TextView hora;
     private TextView data;
     private TextView descricao;
@@ -61,9 +65,14 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalhes_servico);
 
-        foto1 = findViewById(R.id.civ_foto1);
-        foto2 = findViewById(R.id.civ_foto2);
-        foto3 = findViewById(R.id.civ_foto3);
+        final ProgressDialog progressDialog = new ProgressDialog(VisualizarDetalhesServicoActivity.this);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.layout_progressbar);
+
+        ivFoto1 = findViewById(R.id.civ_foto1);
+        ivFoto2 = findViewById(R.id.civ_foto2);
+        ivFoto3 = findViewById(R.id.civ_foto3);
         hora = findViewById(R.id.tv_horario);
         data = findViewById(R.id.tv_data);
         descricao = findViewById(R.id.tv_descricao);
@@ -81,11 +90,23 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
                 call.enqueue(new Callback<Pedido>() {
                     @Override
                     public void onResponse(Call<Pedido>call, Response<Pedido> response) {
+                        progressDialog.dismiss();
                         pedido =  response.body();
                         data.setText(pedido.getDataServico());
                         hora.setText("Das " + pedido.getHorarioInicial() + " às " +  pedido.getHorarioFinal());
                         descricao.setText(pedido.getDescricao());
                         valorOrcado = pedido.getProfissional().getValorHora();
+
+
+                        String foto1 = pedido.getFoto1();
+                        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + foto1).into(ivFoto1);
+
+                        String foto2 = pedido.getFoto2();
+                        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + foto2).into(ivFoto2);
+
+                        String foto3 = pedido.getFoto3();
+                        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + foto3).into(ivFoto3);
+
                     }
                     @Override
                     public void onFailure(Call<Pedido> call, Throwable t) {

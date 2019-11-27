@@ -1,7 +1,9 @@
 package br.net.daumhelp;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -68,6 +70,13 @@ public class CadastroTermosActivity extends AppCompatActivity {
                     btnProximo.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
+
+                            final ProgressDialog progressDialog = new ProgressDialog(CadastroTermosActivity.this);
+                            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                            progressDialog.show();
+                            progressDialog.setContentView(R.layout.layout_progressbar);
+
                             int i = 1;
                             Intent intent = new Intent(CadastroTermosActivity.this, MainActivity.class);
                             intent.putExtra("cadastro", i);
@@ -105,10 +114,12 @@ public class CadastroTermosActivity extends AppCompatActivity {
 
                                         @Override
                                         public void onResponse(Call<Profissional> call, Response<Profissional> response) {
+                                            progressDialog.dismiss();
                                             response.body();
                                         }
                                         @Override
                                         public void onFailure(Call<Profissional> call, Throwable t) {
+                                            progressDialog.dismiss();
                                           Log.i("BOM DIA", t.getMessage());
                                         }
 
