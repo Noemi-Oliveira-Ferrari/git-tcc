@@ -23,8 +23,8 @@ import br.net.daumhelp.repository.PedidoRepository;
 
 //REQUISIÇOES QUE REALIZAM O UPLOAD DE IMAGENS DA PLATAFORMA
 
-//@CrossOrigin
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
+//@CrossOrigin(origins = "http://localhost:3000")
 //@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/imagens")
