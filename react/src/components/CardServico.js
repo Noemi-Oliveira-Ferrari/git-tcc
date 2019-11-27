@@ -12,7 +12,7 @@ export class CardServico extends Component{
          
         <div className="caixa-servico">
             <h3 className="title-servico">{this.props.titulo}</h3>
-            <h6 className="cliente-servico">{this.props.cliente}</h6>
+            <h6 className="endereco-cliente-servico">{this.props.enderecoCliente}</h6>
             <hr className="linha-servico"/>
             <div className={this.props.estrelas}>
                 <Estrelas/>
