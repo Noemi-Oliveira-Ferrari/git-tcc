@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router';
 import '../css/cadastro-pro.css';
-import Botao from './Botao';
+import {Botao} from './Botao';
 
 
 export class TermosDeUso extends Component{
@@ -22,11 +22,21 @@ export class TermosDeUso extends Component{
                     </div>
                     <div className="caixa-voltar-termos">
                         <Link className="link" to="/escolha">
-                            <Botao classBotao="btn-voltar flex-center" typeBotao="button" name="btn_voltar" id="btn-voltar" valueBotao="VOLTAR"/>
+                            <Botao 
+                            classBotao="btn-voltar flex-center" 
+                            typeBotao="button" 
+                            name="btn_voltar" 
+                            id="btn-voltar" 
+                            valueBotao="Voltar"/>
                         </Link>
                     </div>
                     <div className="caixa-continuar-termos">
-                        <Botao classBotao="btn-prox flex-center" name="btn_prox" id="btn-prox" valueBotao="CONTINUAR" typeBotao="submit"/>
+                        <Botao 
+                        classBotao="btn-prox flex-center" 
+                        name="btn_prox"
+                        id="btn-prox" 
+                        valueBotao="Continuar" 
+                        typeBotao="submit"/>
                     </div>
                 </div>
             </div>

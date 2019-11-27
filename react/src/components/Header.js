@@ -2,10 +2,49 @@ import React, { Component } from 'react';
 import '../css/header.css';
 import Avatar from '../img/avatar.png';
 import Logo from '../img/daum_help.png';
-import {Link} from 'react-router';
+import {Link, browserHistory} from 'react-router';
+import FotoPerfil from '../img/ester.JPG';
+import Not from '../img/bell.png';
+import Config from '../img/gear.png';
+import { getToken, getUsuario, getTipoLogado } from '../utils/verificaSessionStrg';
+
+export class HeaderLogin extends Component{
+    render(){
+        return(
+            <div className="entrar-cadastro">
+                <Link to="/" className="link"><div className="box-entrar flex-center">Entre</div></Link>
+                <Link to="/escolha" className="link"><div className="box-cadastrar flex-center">Cadastra-se</div></Link>
+            </div>
+        );  
+    }   
+}
+export class HeaderUsuario extends Component{
+    render(){
+        return(
+            <div className="login-usuario">
+                <div className="avatar-usuario">
+                    <figure><img src={FotoPerfil} alt="Login" title="Login"/></figure>
+                </div>
+                <Link to="/app/profissional/perfil" className="link">
+                    <div className="box-nome flex-center">
+                        {this.props.username}
+                    </div>
+                </Link>
+
+                <Link to="/" className="link">
+                    <div className="box-sair">
+                        <figure><img src={Not} alt="notificações" title="notificações"/></figure>
+                        <figure><img src={Config} alt="configuraçoes" title="configuraçoes"/></figure>
+                    </div>
+                </Link>
+            </div>
+        );  
+    }   
+}
 
 
 export default class Header extends Component{
+
     render(){
         return(        
             <header>
@@ -18,13 +57,18 @@ export default class Header extends Component{
                                 </figure>
                             </div>
                         </Link>
-                        <div className="entrar-cadastro">
-                            <div className="area-sing">
-                                <figure><img src={Avatar} alt="Login" title="Login"/></figure>
-                                <Link to="/" className="link"><div className="box-entrar flex-center">Entre</div></Link>
-                                <Link to="/escolha" className="link"><div className="box-cadastrar flex-center">Cadastra-se</div></Link>
-                            </div>
-                        </div>
+                        {
+                            getToken() !== "" ? 
+                                getToken() !== null ? 
+                                    <HeaderUsuario
+                                        username={getUsuario().nome}
+                                    /> 
+                                : <HeaderLogin/> 
+                            : <HeaderLogin/>
+                        }
+                        {/* { 1 === 1 ? console.log(">>>>>> "+getToken() !== "") : ""}  */}
+                        {/* <HeaderLogin/> */}
+                        {/* <HeaderUsuario/> */}
                     </div>
                 </div>
                 <div className="caixa-menu center flex-center">

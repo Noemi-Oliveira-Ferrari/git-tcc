@@ -1,7 +1,7 @@
 import React from 'react';
 import { Component, Fragment } from 'react';
 import Header from './components/Header';
-// import Footer from './components/Footer';
+import Footer from './components/Footer';
 
 // css e js
 import "./css/padroes.css";
@@ -24,7 +24,7 @@ return (
 
 			<div className="aux-footer"/>
 		</div>
-		{/* <Footer/> */}
+		<Footer/>
 	</Fragment>
   );
 }

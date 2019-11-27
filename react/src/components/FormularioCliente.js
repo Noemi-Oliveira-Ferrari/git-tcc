@@ -47,10 +47,12 @@ export class DadosPessoaisCliente extends Component{
         this.getEmail = this.getEmail.bind(this);
     }
 
+    //CONTROLA A MODAL DE ALERTAS, SE ESTA ABERTA OU NÃO
     ModalAlertas = () =>{
         this.setState({showModalErro: !this.state.showModalErro});
     }
 
+    //CONTROLA CAIXA DE LOAD, SE ESTA ABERTA OU NÃO
     modalLoad = () =>{
         if(!this.state.loading){
             $("body").css("overflow-y", "hidden");
@@ -60,6 +62,7 @@ export class DadosPessoaisCliente extends Component{
         this.setState({loading: !this.state.loading});
     }
     
+    //MOSTRA UM ALERTA DEQUE O APP ESTÁ SME CONEXÃO COM O SERVIDOR
     noConnection(){
         let erros = [`Não foi possível obter resposta do servidor. Tente novamente mais tarde.`];
         this.setState({erros: erros});
@@ -69,6 +72,7 @@ export class DadosPessoaisCliente extends Component{
 
     componentDidMount(){
 
+        //BUSCA CLIENTE E ENDEREÇO DO CLIENTE CASO O USUARIO RETORNE A PAGINA SEM FINALIZAR O CADASTRO
         let cliente = JSON.parse(sessionStorage.getItem("cliente"));
         let endereco = JSON.parse(sessionStorage.getItem("endereco"));
 
@@ -87,11 +91,13 @@ export class DadosPessoaisCliente extends Component{
         }
     } 
 
+    //VALIDA A DIGITAÇÃO DO NOME 
     setNome(event){
         this.setState({nome: event.target.value});
         validarString(event.target);
     }
 
+    //VALIDA A IDADE DA PESSOA, SE ELA É MAIOR DE IDADE
     setData(event){
         this.setState({dataNasc: event.target.value});
         let value = event.target.value;
@@ -106,6 +112,7 @@ export class DadosPessoaisCliente extends Component{
     setCpf(event){
         this.setState({cpf: event.target.value});
         let cpf = event.target.value;
+        //VALIDA O DIGITO VERIFICADOR DO CPF DO CLIENTE 
         validarCpfCliente(cpf);
         
         if(!cpf.includes("_") && cpf.length === 14){
@@ -113,6 +120,7 @@ export class DadosPessoaisCliente extends Component{
         }
     }
     
+    //BUSCA CPF DIGITADO NO BANCO DE DADOS PARA VERIFICAR SE JA ESTA CADASTRADO
     getCpf(cpf){
         let erros = [];
         axios({
@@ -123,6 +131,7 @@ export class DadosPessoaisCliente extends Component{
         .then((response)=>{
             let jsonCliente = response.data;
             console.log(jsonCliente);
+            //MOSTRA ALERTA SE HOUVER UM CLIENTE COM O CPF DIGITADO CADASTRADO NO BANCO
             if(jsonCliente !== null && jsonCliente !== ''){
                 withError($("#txt-cpf"));
                 erros.push(`CPF ${cpf} ja cadastrado`);
@@ -130,25 +139,27 @@ export class DadosPessoaisCliente extends Component{
                 setTimeout(()=>{this.ModalAlertas();}, 500);
                 this.setState({cpf: ""});
             }
-            setTimeout(()=>{this.modalLoad();}, 200);
+            setTimeout(()=>{this.modalLoad();}, 200);//FECHA CAIXA DE LOAD
         })
         .catch((error)=>{
             this.noConnection();
             console.log(error);
         })
-        .onload = this.modalLoad();
+        .onload = this.modalLoad(); //MOSTRA CAIXA DE LOAD
     }
 
     setNumero(event){
         this.setState({numero: event.target.value});
     }
 
+    //VERIFICA SE EMAIL É VALIDO
     setEmail(event){
         this.setState({email: event.target.value});
         // this.getEmail(event.target.value);
         validarEmail(event.target);
     }
 
+    //BUSCA EMAIL DIGITADO NO BANCO DE DADOS PARA VERIFICAR SE JA ESTA CADASTRADO
     getEmail(event){
         let erros = [];
         this.setState({email: event.target.value});
@@ -164,6 +175,7 @@ export class DadosPessoaisCliente extends Component{
             .then((response)=>{
                 let jsonCliente = response.data;
                 console.log(jsonCliente);
+                //MOSTRA ALERTA SE HOUVER UM CLIENTE COM O EMAIL DIGITADO CADASTRADO NO BANCO
                 if(jsonCliente !== null && jsonCliente !== ''){
                     withError($("#txt-email"));
                     erros.push(`E-mail ${email} ja cadastrado`);
@@ -174,13 +186,13 @@ export class DadosPessoaisCliente extends Component{
                         $("#txt-email").focus();
                     }, 200);                
                 }
-                setTimeout(()=>{this.modalLoad();}, 200);
+                setTimeout(()=>{this.modalLoad();}, 200);//FECHA CAIXA DE LOAD
             })
             .catch((error)=>{
                 this.noConnection();
                 console.log(error);
             })
-            .onload = this.modalLoad();
+            .onload = this.modalLoad();//MOSTRA CAIXA DE LOAD
         }   
     }
 
@@ -204,6 +216,7 @@ export class DadosPessoaisCliente extends Component{
         }
     }
 
+    //BUSCA ENDEREÇO DO CEP DIGITADO NA API DO VIACEP E PREENCHE OS CAMPOS
     getEndereco = (cep) =>{
         let erros = [];
         // axios.get(`${DOMINIO}enderecos/cep/${cep}`)
@@ -259,7 +272,9 @@ export class DadosPessoaisCliente extends Component{
     render(){
         return(
             <Fragment>
+                {/* CAIXA DE LOAD */}
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
+                {/* MODAL DE ALERTA */}
                 <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <div className="flex-center">
                     <div className="card-formulario-pessoal">
@@ -292,6 +307,7 @@ export class DadosPessoaisCliente extends Component{
                                     classInput="form-control form-input"
                                     onChange={this.setData}
                                     valueInput={this.state.dataNasc || ""}
+                                    tempMask="_"
                                 />
                             
                             </div>
@@ -307,6 +323,7 @@ export class DadosPessoaisCliente extends Component{
                                     onChange={this.setCpf}
                                     mascara="###.###.###-##"
                                     valueInput={this.state.cpf || ""}
+                                    tempMask="_"
                                 />
 
                                 <Inputs
@@ -390,6 +407,7 @@ export class DadosPessoaisCliente extends Component{
                                     permitirNegativo="false"
                                     onChange={this.setNumero}
                                     valueInput={this.state.numero || ""}
+                                    tempMask="_"
                                 />
                                 
                             </div>
@@ -468,7 +486,7 @@ export default class FormularioCliente extends Component{
         this.setState({showModalErro: !this.state.showModalErro});
     }
 
-
+    //VALIDAS TODOS OS CAMPOS ANTED DE SEGUIR COM O CADASTRO
     validarCampos(){
         
         let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email]");
@@ -520,6 +538,7 @@ export default class FormularioCliente extends Component{
         return semErro;
     }
 
+    //ENVIAR OS DADOS PARA O PROXIMO PASSO DE CADASTRO
     realizarCadastro(event){
         event.preventDefault();
         // console.clear();
@@ -567,6 +586,7 @@ export default class FormularioCliente extends Component{
     render(){
         return(
             <Fragment>
+                {/* MODAL DE ALERTAS */}
                 <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <form className="form-cliente" name="form_cliente" method="GET" onSubmit={this.realizarCadastro}>
                     <DadosPessoaisCliente/>

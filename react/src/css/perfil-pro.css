@@ -18,92 +18,6 @@
 
 
 	
-
-	.avatar
-	{
-		width: 250px;
-		height: 250px;
-		z-index:1;
-		position: relative;
-		margin: auto;
-		margin-top: -150px;
-		border-radius: 100%;
-		border: 4px solid rgb(250, 243, 243);
-		/* background-image: url(../img/imagem01.png); */
-		background-position: center;
-		background-size: cover;
-		background-position: center;
-	}
-
-	.caixa-perfil
-	{
-		width: 100%;
-		height: 550px;
-		margin: auto;
-		background-color: rgb(255, 255, 255);
-		font-family: 'Lexend Deca';
-		text-align: center;
-		color: rgb(31, 30, 30);
-		font-size: 18px;
-		margin-bottom: 50px;
-		border-radius: 10px;
-		background-image: url(../img/fundo03.jpg);
-		background-repeat: no-repeat;
-		background-size: cover;
-	}
-
-	.nome-cliente
-	{
-		width: inherit;
-		height: 50px;
-		/* background-color: violet; */
-		font-family: 'Lexend Deca';
-		/* margin-bottom: 51px; */
-		margin-top: 15px;
-        color: #84848D;     
-
-
-	}
-
-	.caixa-informacoes-basicas
-	{
-		width: inherit;
-		height: 200px;
-		/* background-color: chocolate; */
-		margin: auto;
-	}
-
-	.caixa-info
-	{
-		width: 1000px;
-		height: 80px;
-		clear: both;
-		/* background-color:lightblue; */
-		margin: auto;
-        color: #84848D;     
-
-	}
-
-	.caixa-info1
-	{
-		width: 500px;
-		height: 30px;
-		float: left;
-		margin-right: 10px;
-		/* background-color: lawngreen; */
-		margin: auto;
-		font-family: 'Lexend Deca';
-		font-size: 25px;
-		letter-spacing: 2px;
-	}
-
-	.caixa-info1:hover
-	{
-		color: #57bc90;
-		transition: 0.8s;
-		/* text-decoration: underline; */
-	}
-
 	/* COnteudo */
 	.caixa-control-perfil{
 		width: inherit;
@@ -118,7 +32,7 @@
 	.text-atualizar-perfil{
 		width: 80px;
 		height: 70px;
-		background-color:rgb(234, 234, 234);
+		background-color:#ebebeb;
 		margin-left: 10px;
 		border-radius: 10px 10px 0px 0px;
 		justify-items: center;
@@ -127,6 +41,8 @@
 		transition: .4s ease;
 		cursor: pointer;
 		box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.253);
+		border: none;
+		outline: none;
 		/* float: left; */
 	}
 	.text-editar-perfil:hover,
@@ -300,4 +216,197 @@
 @media screen and (max-device-width:880px)
 {
 
+	/* CONTEUDO */
+	
+	.caixa-conteudo-perfil-pro
+	{
+		width: 100%;
+		min-height: 1200px;
+		/* background-color: #7257bc; */
+		margin: auto;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+		flex-wrap: wrap;
+	}
+
+
+	.container-flex
+	{  
+		/* background-color: tomato; */
+		width: 90%;
+		min-height: 1200px;
+		display: flex;
+		justify-content: center;
+		/* padding-top: 150px; */
+		flex-wrap: wrap;
+		/* float: ; */
+	}
+
+		.caixa-control-perfil{
+			width: 100px;
+			height: 40px;
+			margin: auto;
+			/* background-color: rgb(49, 226, 43); */
+			justify-content: flex-end;
+			box-sizing: border-box;
+			/* padding-right: 30px; */
+			margin-right: 30px;
+		}
+		.text-editar-perfil,
+		.text-atualizar-perfil{
+			width:50px;
+			height:40px;
+			background-color:rgb(234, 234, 234);
+			margin-left: 10px;
+			border-radius: 10px 10px 0px 0px;
+			justify-items: center;
+			box-sizing: border-box;
+			padding-top: 15px;
+			transition: .4s ease;
+			cursor: pointer;
+			box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.253);
+			/* float: left; */
+		}
+	
+		.text-editar-perfil img,
+		.text-atualizar-perfil img{
+			width: 35px;
+			height: 35px;
+			/* background-color: rgb(255, 255, 255); */
+			color: rgb(255, 255, 255);
+			text-decoration: underline;
+			padding: 5px;
+		}
+
+
+	/* CAIXA DE COMENTARIOS */
+
+	.caixa-comentarios-perfil
+	{
+		width: 90%;
+		height: 250px;
+		background-color: rgb(255, 255, 255);
+		/* float: left; */
+		border-radius:10px;
+		color: #84848D;
+		/* flex-wrap: wrap; */
+		/* margin-top: -1800px;    */
+	}
+
+	.title-avaliacao
+	{
+		width: 100%;
+		height: 30px;
+		text-align: center;
+		font-family: 'Lexend Deca';
+		/* background-col	or: limegreen; */
+        color: #84848D;     
+		font-size: 1.3em;
+		/* box-sizing: border-box; */
+		/* padding: 20px; */
+		/* margin-bottom: px; */
+	}
+
+	.caixa-comentario-usuario
+	{
+		width: 90%;
+		height: 200px;
+		background-color: #cce5e9;
+		margin: auto;
+		border-radius: 10px;
+		margin-bottom: 20px;
+	}
+
+	.usuario-perfil
+	{
+		width: 25%;
+		height: inherit;
+		background-color: #cce5e9;
+		float: left;
+		border-radius: 10px 0px 0px 10px;
+		padding-top: 15px;
+		box-sizing: border-box;
+		border-right: white 1px solid;
+	}
+
+	.circulo-usuario
+	{
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		background-color: #ffeeee;
+		margin: auto;
+		margin-top: 30px;
+
+	}
+
+	.nome-usuario
+	{
+		width: 100%;
+		height: 50px;
+		background-color: #cce5e9;
+		text-align: center;
+		box-sizing: border-box;
+		font-size: 1em;
+		font-family: 'Lexend Deca';
+	}
+
+	.dados-usuario
+	{
+		width: 75%;
+		height: inherit;
+		float: left;
+		background-color: #cce5e9;
+		border-radius: 10px;
+	}
+
+	.titulo-comentario
+	{
+		width: 100%;
+		height: 50px;
+		background-color: cce5e9;
+		text-align: left;
+		color: #57BC90;
+		margin: 0;
+	}
+
+	.caixa-star-perfil
+	{
+		width: 1005;
+		height: 30px;
+		/* background-color:#969FAA; */
+		margin: 0%;
+	}
+
+	/*----- Avaliação/Estrelas -----*/
+	.estrelas input[type=radio] {
+		display: none;
+	}
+	.estrelas label i.fa{
+		font-size: 1.2em
+	}
+	.estrelas label i.fa:before {
+		content:'\f005';
+		color: #77C9D4;
+	}
+	.estrelas input[type=radio]:checked ~ label i.fa:before {
+		color: #CCC;
+		/* color: #FC0; */
+	}
+
+	.texto-comentario-perfil
+	{
+		width: 100%;
+		height: 100px;
+		background-color: #cce5e9;	
+		font-family: 'Lexend Deca';
+		font-size: 15px;
+		box-sizing: border-box;
+		text-align: center;
+		color: #84848D;  
+		padding: 20px; 		
+	}
+	
+	
 }

@@ -1,0 +1,363 @@
+
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px)
+{
+	.capa-perfil-pro
+	{
+		width: 100%;
+		height: 300px;
+		position:relative;
+		border-bottom: 3px solid #fff;
+		background-position:center;
+		/* background-image: url("https://i.ytimg.com/vi/TN2fJ24pKXs/maxresdefault.jpg"); */
+		background-image: url("../img/imagem.png");
+		background-color:rgba(22, 179, 171, 0.836);
+		background-size:cover;
+		background-attachment: fixed;
+		z-index: 890;
+    }
+    
+	.caixa-perfil
+	{
+		width: 100%;
+		height: 545px;
+		margin: auto;
+		background-color: rgb(224, 118, 118);
+		font-family: 'Lexend Deca';
+		text-align: center;
+		color: rgb(31, 30, 30);
+		font-size: 18px;
+		margin-bottom: 20px;
+		border-radius: 10px;
+		background-image: url(../img/fundo03.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+    }
+    .avatar-auxiliar{
+		width: 250px;
+		height: 250px;
+		background-color: rgb(24, 92, 240);
+		z-index: 1;
+		position: relative;
+		margin: auto;
+		margin-top: -130px;
+		margin-bottom: 10px;
+		border-radius: 100%;
+		border: 4px solid rgb(249, 252, 249);
+		/* background-image: url(../img/imagem01.png); */
+		z-index: 891
+	}
+	.avatar
+	{
+		width: 243px;
+		height: 243px;
+		border-radius: 100%;
+		background-position: center;
+		background-size: cover;
+		background-position: center;
+	}
+
+    .center-info-usuario{
+        width: 100%;
+        height: 250px;
+        /* background-color: coral; */
+        margin: auto;
+	}
+	
+    .center-info-usuario hr{
+		width: 1000px;
+		border: solid 0.103rem rgba(0, 0, 0, 0.205);
+	}
+    
+    .caixa-nome-usuario{
+        width: inherit;
+        height: 50px;
+		/* background-color: crimson; */
+		box-sizing: border-box
+    }
+
+	.nome-usuario-capa
+	{
+        text-align: center;
+		font-family: 'Lexend Deca';
+        color: #84848D;
+		font-size: 40px;
+	}
+
+	.caixa-informacoes-basicas
+	{
+		width: inherit;
+		height: 200px;
+		/* background-color: rgba(30, 93, 210, 0.63); */
+		margin: auto;
+        padding-top: 20px;
+        box-sizing: border-box;
+	}
+	.icons-capa-perfil{
+		width: 55px;
+		height: 55px;
+		/* background-color: wheat; */
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	.icons-capa-perfil figure{
+		padding: 0 !important;
+		margin: 0 !important;
+	}
+	.icons-capa-perfil img{
+		max-height: 50px;
+	}
+
+
+	.caixa-info
+	{
+		width: 1100px;
+		height: 80px;
+		/* background-color:rgba(212, 238, 247, 0.863); */
+		margin: auto;
+        color: #84848D;     
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+	}
+
+	.caixa-info1
+	{
+		width: 480px;
+		height: 70px;
+		/* background-color: rgba(126, 252, 0, 0.459); */
+        transition: 0.4s;      
+        display: flex;
+        align-items: center;
+        justify-content: center; 
+        /* box-sizing: border-box; */
+        padding-top: 10px;
+        
+        font-family: 'Manjari';
+        font-size: 25px;
+        text-align: center;
+	}
+
+	
+	.caixa-info1:hover{
+		transition: .4s ease;
+		color: #51ce92;
+	}
+	
+	
+
+    .caixa-botoes-upload{
+        position: absolute;
+		width: 100%;
+        margin-top: -110px;
+		outline: none;
+		/* background-color: brown; */
+    }
+/* 	
+    .caixa-botoes-upload div{
+		outline: none;
+        background-color: #57bc90;
+        z-index: 0;
+        position: relative;
+        margin: auto;
+        margin-left: 0px;
+        width: 280px;
+        height: 50px;
+        border-radius: 1000px;
+        padding: 0px 35px 0px 5px;
+        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.2);
+        box-shadow: 0 0 2px rgba(0,0,0,.12),0 2px 2px rgba(0,0,0,.2);
+    }
+    
+    .caixa-botoes-upload div:nth-child(2){
+		margin-left: 70px;
+        padding:0px 5px 0px 35px;
+		outline: none;
+    }
+    
+    .caixa-botoes-upload div .text{
+		outline: none;
+        font-size: 18px;
+        font-weight: 600;
+        color: #efefef ;
+    } */
+    
+	.perfil-pro-upload-label {
+		font-family: 'Lexend Deca';
+		display: block;
+		/* padding: 14px 10px; */
+		/* background: rgb(195, 210, 57); */
+		font-size: 20px;
+		/* transition: all .3s; */
+		cursor: pointer;
+		padding-top: 8px;
+	}
+	.perfil-pro-upload {
+		position: absolute;
+		top: 0; left: 0;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	
+	.caixa-input-file,
+	.caixa-confirm-file{
+		width: 280px;
+        height: 50px;
+		/* border: none; */
+        border-radius: 1000px;
+		cursor: pointer;
+		margin-left: 70px;
+		margin-right: 70px;
+		box-shadow: 0 0 7px #00000065;
+		border: none;
+		/* box-sizing: border-box; */
+		
+		font-family: 'Lexend Deca';
+		font-size: 20px;
+		transition: .3s ease;
+		
+	}
+	.caixa-input-file,
+	.caixa-confirm-file{
+		background-color: #57bc90;
+		color: #ffffff;
+	}
+	.caixa-input-file:hover,
+	.caixa-confirm-file:hover{
+		background-color: #8aefc0;
+		color: #1e8b62;
+		transition: .3s ease;
+		box-shadow: 0 0 12px #00000042;
+	}
+	.caixa-input-file:hover > label{
+		transition: .3s ease;
+		color: #1e8b62;
+	}
+
+	.btn-upload-disabled{
+		width: 280px;
+        height: 50px;
+		/* border: none; */
+        border-radius: 1000px;
+		cursor: pointer;
+		margin-left: 70px;
+		margin-right: 70px;
+		box-shadow: 0 0 7px #00000065;
+		border: none;
+		/* box-sizing: border-box; */
+		
+		font-family: 'Lexend Deca';
+		font-size: 20px;
+		background-color: #64726c;
+		color: #d4d4d4;
+	}
+}
+
+@media screen and (max-device-width:880px)
+{
+
+	.capa-perfil-pro
+	{
+		width: 100%;
+		height: 100px;
+		position:relative;
+		border-bottom: 3px solid #fff;
+		background-position:center;
+		/* background-image: url("https://i.ytimg.com/vi/TN2fJ24pKXs/maxresdefault.jpg"); */
+		background-image: url("../img/imagem.png");
+		/* background-color:rgba(58, 153, 148, 0.493); */
+		background-size:cover;
+		background-attachment: fixed;
+	}
+
+	.avatar
+	{
+		width: 100px;
+		height: 100px;
+		z-index:1;
+		position: relative;
+		margin: auto;
+		margin-top: -50px;
+		border-radius: 100%;
+		border: 4px solid rgb(250, 243, 243);
+		background-image: url(../img/imagem01.png);
+		background-position: center;
+		background-size: cover;
+		background-position: center;
+	}
+
+	.caixa-perfil
+	{
+		width: 100%;
+		height: 250px;
+		margin: auto;
+		/* background-color: rgb(197, 41, 41); */
+		font-family: 'Lexend Deca';
+		text-align: center;
+		color: rgb(31, 30, 30);
+		/* font-size: 1.5em; */
+		/* margin-bottom: 5px; */
+		border-radius: 10px;
+		background-image: url(../img/fundo03.jpg);
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.nome-cliente
+	{
+		width: inherit;
+		height: 20px;
+		/* background-color: violet; */
+		font-family: 'Lexend Deca';
+		/* margin-bottom: 51px; */
+		margin-top: 10px;
+		margin-bottom: 10px;
+        color: #84848D;     
+		font-size: 1.5em;
+		
+	}
+	
+	.caixa-informacoes-basicas
+	{
+		width: inherit;
+		min-height: 100px;
+		/* background-color: chocolate; */
+		margin: auto;
+	}
+	
+	.caixa-info
+	{
+		width: 100%;
+		min-height: 30px;
+		/* clear: both; */
+		/* background-color:lightblue; */
+		margin: auto;
+        color: #84848D;     
+		font-size: 0.8em;
+	}
+	
+	.caixa-info1
+	{
+		width: 50%;
+		min-height: 20px;
+		float: left;
+		margin-right: 10px;
+		/* background-color: lawngreen; */
+		margin: auto;
+		font-family: 'Lexend Deca';
+		word-spacing: 1px;
+		margin-bottom: 20px;
+	}
+	
+	.caixa-info1:hover
+	{
+		color: #57bc90;
+		transition: 0.8s;
+		/* text-decoration: underline; */
+	}
+	
+
+}

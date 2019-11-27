@@ -20,7 +20,7 @@ header{
     /* min-height: 800px; */
     height: 35px;
     box-sizing: border-box;
-    padding-top: 5px;
+    /* background-color: rgb(241, 124, 124); */
 }
 .head-menu{
     max-width: 1200px; 
@@ -41,8 +41,20 @@ header{
 }
 
 .entrar-cadastro{
-    width: 400px;
+    width: 350px;
     height: 57px;
+    /* background-color: darkblue; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.avatar-login{
+    max-width: 40px;
+    max-height: 40px;
+    /* background-color: blueviolet; */
+    margin-top: 18px;
 }
 
 
@@ -62,57 +74,165 @@ header{
 
 }
 
+.box-entrar{
+    background-color: #57bc90;
+    color: #fefefe;
+}
+
+.box-cadastrar{
+    background-color: #fefefe;
+    color: #77c9d4;
+}
+
 .box-entrar,
 .box-cadastrar{
     float: left;
     width: 160px;
     height: 40px;
-    background-color: rgba(255, 13, 13, 0.02);
-    font-size: 16px;
+    font-size: 18px;
     border: solid 2px #57bc90;
     padding-top: 5px;
     box-sizing: border-box;
     transition: .5s;
     font-family: 'Manjari';
-    color: #58aeb9;
+    border-radius: 20px;
+    font-weight: bold;
 
 }
 
 
+.box-entrar:hover{
+    background-color: #68cda1;
+    color: #fefefe;
+}
+
+.box-cadastrar:hover{
+    background-color: #f5f5f5;
+    color: #66b8c3;
+}
 
 .box-entrar:hover,
 .box-cadastrar:hover{
     transform: scale(1.05);
     transition: .5s;
     cursor: pointer;
-    color: #77c9d4;
 }
 
 .area-itens-menu{
     width: 1000px;
-    height: 60px;
-    /* background-color: #2ce4ce; */
+    height: inherit;
     display: flex;
     justify-content: space-around;
+    /* background-color: cornflowerblue; */
 
 }
 .item-menu-header{
-    float: left;
     width: 150px;
-    height: 60px;
-    text-align: center;
+    height: inherit;
     box-sizing: border-box;
-    /* background-color: #51ce92; */
-    font-size: 20px;
-    color:#51ce92;
+    /* background-color: #f5f11a; */
     transition: .5s;
+    margin-left: 5px;
+    align-items: flex-end !important;
+    font-size: 20px;
+    color:#45ac98;
     font-family: 'Manjari';
-    
-
 }
 
 .item-menu-header:hover{
-    transform: scale(1.25);
+    transform: scale(1.05);
+    transition: .2s ease-in-out;
+    cursor: pointer;
+    background-color: #eeeeee;
+}
+
+/* CSS PARA QUANDO O USUARIO ESTIVER LOGADO */
+
+.login-usuario{
+    width: 350px;
+    height: 57px;
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: rgb(204, 204, 218); */
+}
+
+.avatar-usuario{
+    width: 47px;
+    height: 47px;
+    /* margin-top: 15px; */
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px #57bc90;
+    /* background-color: rgb(78, 240, 105); */
+}
+.avatar-usuario figure {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.avatar-usuario figure img{
+    width: 40px;
+    height: 40px;
+    /* margin-top: 15px; */
+    border-radius: 100%;
+    background-color: brown;
+}
+
+.box-nome{
+    float: left;
+    min-width: 120px;
+    height: 40px;
+    /* background-color: rgb(172, 49, 49); */
+    font-size: 20px;
+    transition: .5s;
+    font-family: 'Manjari';
+    color: #58aeb9;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.box-sair{
+    float: left;
+    width: 130px;
+    height: 40px;
+    /* background-color: rgb(255, 13, 13); */
+    box-sizing: border-box;
+    transition: .5s;
+    font-family: 'Manjari';
+    display: flex;
+    justify-content: flex-start;
+    padding-top: 5px;    
+
+}
+
+.box-sair img{
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+    /* float: left; */
+    /* background-color: cadetblue; */
+}
+
+.box-nome:hover,
+.box-sair img:hover{
+    transform: scale(1.1);
     transition: .5s;
     cursor: pointer;
+    color: #77c9d4;
 }
+
+
+
+
+/* @media screen and (max-device-width:880px){
+    header{
+        width: 100%;
+        height: 50px;
+        background-color: #f5f5f5;
+        position: fixed;
+        z-index: 990;
+    }
+} */

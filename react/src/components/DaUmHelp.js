@@ -6,9 +6,10 @@ export class DaUmHelp extends Component{
    render(){
     return(
         
-    <div className={this.props.classNome}>
-        <h2>DaUmHelp!</h2>
-    </div>
+    // <div className={this.props.classNome}>
+    //     <h2>DaUmHelp!</h2>
+    // </div>
+        <span className="titulo-daumhelp">DaUmHelp!</span>
         
     );
    }

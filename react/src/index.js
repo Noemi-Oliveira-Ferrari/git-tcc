@@ -11,6 +11,7 @@ import CadastroCliente from './pages/CadastroCliente';
 import PerfilPro from './pages/PerfilPro';
 import ServicosPro from './pages/ServicosPro';
 import Home from './pages/Home';
+import Sobrenos from './pages/Sobrenos';
 
 ReactDOM.render(
     <Router history={browserHistory}>
@@ -24,6 +25,7 @@ ReactDOM.render(
             <Route path='/app/profissional/perfil' component={PerfilPro}/>
             <Route path='/app/profissional/servicos' component={ServicosPro}/>
             <Route path='/home' component={Home}/>
+            <Route path='/sobrenos' component={Sobrenos}/>
         </Route>
     </Router>,    
     document.getElementById('root')

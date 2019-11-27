@@ -26,7 +26,7 @@ export class InputNumber extends Component {
                     allowNegative={this.props.permitirNegativo}
                     prefix={this.props.prefixo}
                     decimalScale={this.props.qtdDecimal}
-                    mask="_"
+                    mask={this.props.tempMask}
                     suffix={this.props.sufixo}
                 />
             </div>

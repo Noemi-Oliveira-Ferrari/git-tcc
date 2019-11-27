@@ -10,6 +10,7 @@ import { DOMINIO } from '../global';
 import '../css/confirmacao.css';
 import ModalSucesso from '../components/ModalSucesso';
 import {ModalLoadFun, ModalAlertasFun} from '../components/ModaisLoad';
+import {Botao} from '../components/Botao';
 
 function Confirmacao() {
 
@@ -210,6 +211,7 @@ function Confirmacao() {
             console.clear();
             console.log(codeConfirm);
             // setModalAlertas(true);
+            // setModalSucessoShow(true);
             getUsuario();
             setRenderizar(false);
         }
@@ -259,8 +261,20 @@ function Confirmacao() {
                     </div>
                 </div>
                 <div className="links-email center">
-                    <button onClick={() => getUsuario()} className="link-reenviar-email "> Reenviar E-mail </button>
-                    <button onClick={()=>{browserHistory.push(profissional === null ? "/cliente/cadastro" : "/profissional/cadastro")}} className="link-alterar-email "> Alterar E-mail</button>
+                    <Botao
+                        clickBotao={() => getUsuario()}
+                        classBotao="link-reenviar-email"
+                        valueBotao="Reenviar E-mail"
+                    />
+                    <Botao
+                        clickBotao={()=>{browserHistory.push(profissional === null ? "/cliente/cadastro" : "/profissional/cadastro")}}
+                        classBotao="link-alterar-email "
+                        valueBotao="Alterar E-mail"
+                    />
+                    {/* <button onClick={() => getUsuario()} className="link-reenviar-email "> Reenviar E-mail </button>
+                    <button 
+                    onClick={()=>{browserHistory.push(profissional === null ? "/cliente/cadastro" : "/profissional/cadastro")}} 
+                    className="link-alterar-email "> Alterar E-mail</button> */}
                 </div>
             </div>
         </section>

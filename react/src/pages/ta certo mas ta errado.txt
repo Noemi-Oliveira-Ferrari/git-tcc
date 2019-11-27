@@ -1,0 +1,543 @@
+
+export class DadosPessoaisPro extends Component{
+
+    
+    constructor(){
+        super();
+        this.state = {
+            nome: "", dataNasc: "", cpf: "", cnpj: "", cpfCnpj: "",
+            email: "", senha: "", confirmSenha: "",
+            loading: false,
+            showModalErro: false,
+            erros: [],
+            
+            cep: "", logradouro: "", idCidade: "",
+            bairro: "", cidade: "", uf: "", subcategoria: "",
+            tipoPro: "rdo-pf", radioChecked: "rdo-pf",
+            endereco: [], profissional: []
+        }
+        this.modalLoad = this.modalLoad.bind(this);
+        this.ModalAlertas = this.ModalAlertas.bind(this);
+        this.noConnection = this.noConnection.bind(this);
+        this.jaCadastrado = this.jaCadastrado.bind(this);
+           
+        this.setNome = this.setNome.bind(this);
+        this.setCep = this.setCep.bind(this);
+        this.setEmail = this.setEmail.bind(this);
+        this.setSenha = this.setSenha.bind(this);
+        this.setConfirmSenha = this.setConfirmSenha.bind(this);
+        this.setCpfCnpj = this.setCpfCnpj.bind(this);
+        this.setTipoPfPj = this.setTipoPfPj.bind(this);
+        this.setData = this.setData.bind(this);
+        this.preencherCampos = this.preencherCampos.bind(this);
+        
+        this.getCpf = this.getCpf.bind(this);
+        this.getCnpj = this.getCnpj.bind(this);
+        this.getEmail = this.getEmail.bind(this);
+    }
+    //CONTROLA MODAL DE ALERTAS
+    ModalAlertas = () =>{
+        this.setState({showModalErro: !this.state.showModalErro});
+    }
+    
+    //CONTROLA CAIXA DE LOAD
+    modalLoad = () =>{
+        if(!this.state.loading){
+            $("body").css("overflow-y", "hidden");
+        }else{
+            $("body").css("overflow-y", "auto");
+        }
+        this.setState({loading: !this.state.loading});
+    }
+    
+    componentDidMount(){
+        this.preencherCampos();
+    }
+    
+    preencherCampos(){
+        //VERIFICA SE HÁ ALGUEM LOGADO E QUE SE O O TIPO DE USUARIO É PRO
+        let app = sessionStorage.getItem("app");
+        
+        if(app !== null && app !== ""){
+            $(".container-senha").css("display", "none");
+            if(app === "cliente"){
+                console.log("cliente");
+            }else if(app === "profissional"){
+                console.log("profissional");
+            }
+            $("input, select, textarea").attr("disabled", "disabled");
+            $("input, select, textarea").css("background-color", "#d5d5d5");
+        }else{            
+            $(".container-senha").css("display", "flex");
+        }
+
+        //BUSCA PRO E ENDERECO CASO USUARIO RETORNA PARA CADASTRO SEM FINALIZA-LO
+        let profissional = JSON.parse(sessionStorage.getItem("profissional"));
+        let endereco = profissional.endereco;
+
+        this.setState({profissional: profissional});
+        
+        this.setState({nome: profissional.nome});
+        this.setState({dataNasc: formataData(profissional.dataNasc, "-", "/")});
+        if(profissional.cpf === "" || profissional.cpf === null){
+            this.setState({radioChecked: "rdo-pj"});
+            this.setState({tipoPro: "rdo-pj"});
+            this.setState({cpfCnpj: profissional.cnpj});
+        }else{
+            this.setState({radioChecked: "rdo-pf"});
+            this.setState({tipoPro: "rdo-pf"});
+            this.setState({cpfCnpj: profissional.cpf || profissional.cnpj});
+        }
+        this.setState({email: profissional.email});
+        this.setState({endereco: endereco});
+        this.setState({cep: endereco.cep});
+        this.getEndereco(endereco.cep);
+        this.setState({numero: endereco.numero});
+        this.setState({idCidade: endereco.cidade.idCidade});
+    }
+
+    jaCadastrado(tipo, input, elemento){
+        withError(elemento);
+        let erros = [];
+        erros.push(`${tipo} ${input} ja cadastrado`);
+        this.setState({erros: erros});
+        setTimeout(()=>{this.mostrarAlerta("erroAlt", "ERRO no cadadstro");}, 500);
+    }
+
+
+    //MOSTRA ALERTA SE ÃO HOUVER CONEXAÃO COM O SERVIDOR
+    noConnection(){
+        let erros = [`Não foi possível obter resposta do servidor. Tente novamente mais tarde.`];
+        this.setState({erros: erros});
+        setTimeout(()=>{this.mostrarAlerta("erroAlt", "ERRO");}, 500);
+    }
+
+    //VALIDA O DIGITO VERIFICADOR DO CPF OU CNPJ DIGITADO PELO USUARIO
+    setCpfCnpj(event){
+        this.setState({cpfCnpj: event.target.value});
+        let cpfCnpj = event.target.value;
+        if(this.state.radioChecked === "rdo-pf"){
+            validarCpfPro(cpfCnpj);
+            if(!cpfCnpj.includes("_") && cpfCnpj.length === 14){
+                this.getCpf(retirarSimbolos(cpfCnpj));
+            }
+        }else{
+            validarCnpj(cpfCnpj);
+            if(!cpfCnpj.includes("_") && cpfCnpj.length === 18){
+                this.getCnpj(retirarSimbolos(cpfCnpj));
+            }
+        }
+    }
+    
+    getCpf(cpf){
+        let erros = [];
+        console.log(cpf);
+        axios({
+            method:"GET",
+            url: `${DOMINIO}profissionais/cpf/${cpf}`,
+            timeout: 30000
+        })
+        .then((response)=>{
+            let jsonPro = response.data;
+            console.log(jsonPro);
+            
+            const mostraErroCpf = () =>{
+                this.jaCadastrado("CPF", cpf, $("#txt-cpfCnpj"))
+                this.setState({cpfCnpj: ""});
+            }
+            
+            if(jsonPro !== null && jsonPro !== ''){
+                if(getToken() !== null && getToken() !== ""){
+                    if(getUsuarioPro().cpf !== jsonPro.cpf && (getUsuarioPro().cpf !== null && getUsuarioPro().cpf !== "")){
+                        mostraErroCpf();
+                    }
+                }else{
+                    mostraErroCpf();
+                }
+            }
+
+            setTimeout(()=>{this.modalLoad();}, 200);
+        })
+        .catch((error)=>{
+            this.noConnection();
+            this.modalLoad();
+        })
+        .onload = this.modalLoad();
+    }
+    
+    getCnpj(cnpj){
+        let erros = [];
+
+        axios({
+            method: "GET",
+            url: `${DOMINIO}profissionais/cnpj/${cnpj}`,
+            timeout: 30000
+        })
+        .then((response)=>{
+            let jsonPro = response.data;
+            console.log(jsonPro);
+            
+            const mostraErroCnpj = () =>{
+                this.jaCadastrado("CNPJ", cnpj, $("#txt-cpfCnpj"))
+                this.setState({cpfCnpj: ""});
+            }
+            if(jsonPro !== null && jsonPro !== ''){
+                if(getToken() !== null && getToken() !== ""){
+                    if(getUsuarioPro().cnpj !== jsonPro.cnpj && (getUsuarioPro().cnpj !== null && getUsuarioPro().cnpj !== "")){
+                        mostraErroCnpj();
+                    }
+                }else {
+                mostraErroCnpj();
+                }
+            }
+
+            setTimeout(()=>{this.modalLoad()}, 500);
+        })
+        .catch((error)=>{
+            this.noConnection();
+            this.modalLoad();
+        })
+        .onload = this.modalLoad();
+    }
+
+    setNome(event){
+        this.setState({nome: event.target.value});
+        validarString(event.target);
+    }
+
+    setData(event){
+        this.setState({dataNasc: event.target.value});
+        let data = event.target.value;
+
+        if(!data.includes("_") && validarIdade(event.target)){
+            withoutError($("#txt-dataNasc"));
+        }else{
+            withError($("#txt-dataNasc"));
+        }
+    }
+
+    setEmail(event){
+        this.setState({email: event.target.value});
+        // this.getEmail(event.target.value);
+        validarEmail(event.target);
+    }
+
+    getEmail(event){
+        // if()
+        this.setState({email: event.target.value});
+        let email = event.target.value;
+        console.log(email);
+        if(email.length > 5){
+            axios({
+                method: "GET",
+                url: `${DOMINIO}profissionais/email/${email}`,
+                timeout: 30000
+            })
+            .then((response)=>{
+                let jsonPro = response.data;
+                console.log(jsonPro);
+
+                const mostraErroEmail = () =>{
+                    this.jaCadastrado("E-mail", email, $("#txt-email"));
+                    this.setState({email: ""});
+                }
+
+                if(jsonPro !== null && jsonPro !== ""){
+                    if(getToken() !== null && getToken() !== ""){
+                        if(getUsuarioPro().email !== jsonPro.email){
+                            mostraErroEmail();
+                        }
+                    }else {
+                        mostraErroEmail();
+                    }
+                }
+
+                setTimeout(()=>{this.modalLoad()}, 500);
+            })
+            .catch((error)=>{
+                console.log("errorororor");
+                this.noConnection();
+                this.modalLoad();
+            })
+            .onload = this.modalLoad();
+        }   
+    }
+
+    setCep(event){
+        this.setState({cep: event.target.value});
+        let cepSize = event.target.value.length;
+        if (cepSize > 8) {
+            this.getEndereco(event.target.value);
+        }
+    }
+
+    getEndereco = (cep) =>{
+        let erros = [];
+        
+        axios({
+            method: "GET",
+            url: `https://viacep.com.br/ws/${cep}/json/`,
+            type: "application/json",
+            timeout: 30000,
+        })
+        .then((response)=>{
+            let jsonEndereco = response.data;
+            let cepError = jsonEndereco.erro;
+            if(jsonEndereco === null || jsonEndereco === "" || cepError === true){
+                this.setState({logradouro: ""});
+                this.setState({bairro: ""});
+                this.setState({cidade: ""});
+                this.setState({uf: ""});
+                this.setState({idCidade: ""});
+                
+                withError($('#txt-cep'));
+                withError($('#txt-logradouro'));
+                withError($('#txt-cidade'));
+                withError($('#txt-bairro'));
+                withError($('#txt-uf'));
+                this.modalLoad();
+                erros.push(`O CEP ${cep} é invalido`);
+                this.setState({erros: erros});
+                setTimeout(()=>{this.ModalAlertas();}, 500);
+            }else if(cepError !== true){
+                this.setState({logradouro: jsonEndereco.logradouro});
+                this.setState({bairro: jsonEndereco.bairro});
+                this.setState({cidade: jsonEndereco.localidade});
+                this.setState({uf: jsonEndereco.uf});
+                this.setState({idCidade: jsonEndereco.ibge});
+
+                withoutError($('#txt-cep'));
+                withoutError($('#txt-logradouro'));
+                withoutError($('#txt-cidade'));
+                withoutError($('#txt-bairro'));
+                withoutError($('#txt-uf'));
+                setTimeout(()=>{this.modalLoad();}, 200);
+            }
+        })
+        .catch((error)=>{
+            this.noConnection();
+
+            this.modalLoad();
+        })
+        .onload = this.modalLoad();
+    }
+    
+    setSenha(event){
+        this.setState({senha: event.target.value});
+        let senha = event.target.value;
+        validarSenha(senha);
+    }
+
+    setConfirmSenha(event){
+        this.setState({confirmSenha: event.target.value});
+        validarConfirmacaoSenha($('#txt-senha').get(0), event.target);
+    }
+    
+    setTipoPfPj(event){
+        this.setState({radioChecked: event.target.value});
+
+        this.setState({tipoPro: event.target.value})
+        setTimeout(()=>{
+            console.log(`tipoPro ${this.state.tipoPro}`);
+        }, 1000);    
+    }
+
+    render(){
+        return(
+            <Fragment>
+                <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
+                <ModalAlertas tipoAlerta="erroAlt" titulo="ERRO NO CADASTRO" erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
+                <div className="flex-center">
+                    <div className="card-formulario-pessoal">
+                        <div className="caixa-title-card">
+                            <h3 className="title-card-pro">Dados Pessoais</h3>
+                        </div>
+                        <div className="title-card-pjPf">
+                            <Inputs
+                                id="rdo-pf"
+                                type="radio"
+                                name="rdos_pfpj"
+                                label="Pessoa Física:"
+                                classDivInput="caixa-rdo-pf"
+                                forInput="rdo-pf"
+                                onChange={this.setTipoPfPj}
+                                // onChange={(e) => this.setState({ radioChecked: e.target.value })}
+                                radioChecked={this.state.radioChecked === 'rdo-pf'}
+                                valueInput="rdo-pf"
+                            />
+                            <Inputs
+                                id="rdo-pj"
+                                type="radio"
+                                name="rdos_pfpj"
+                                label="Pessoa Jurídica:"
+                                classDivInput="caixa-rdo-pj"
+                                forInput="rdo-pj"
+                                onChange={this.setTipoPfPj}
+                                // onChange={(e) => this.setState({ radioChecked: e.target.value })}
+                                radioChecked={this.state.radioChecked === 'rdo-pj'}
+                                valueInput="rdo-pj"
+                            />
+                        </div>
+                        
+                        <div className="float campos-dados">
+                            <div className="flex-center container-nome-dataNasc">
+
+                                <Inputs
+                                    label="Nome:"
+                                    id="txt-nome"
+                                    name="txt_nome"
+                                    maxLength="100"
+                                    type="text"
+                                    classDivInput="caixa-nome"
+                                    classInput="form-control form-input"
+                                    onChange={this.setNome}
+                                    valueInput={this.state.nome || ""}
+                                />
+
+                                <InputNumber
+                                    classDivInput="caixa-dataNasc"
+                                    label="Data de Nascimento:"
+                                    id="txt-dataNasc"
+                                    type="text"
+                                    name="txt_data_nasc"
+                                    mascara="##/##/####"
+                                    classInput="form-control form-input"
+                                    onChange={this.setData}
+                                    valueInput={this.state.dataNasc || ""}
+                                    tempMask="_"
+                                />
+                            
+                            </div>
+                            <div className="flex-center container-cpfCnpj-email">
+
+                                <InputNumber
+                                    classDivInput="caixa-cpfCnpj"
+                                    label={this.state.tipoPro === "rdo-pf" ? "CPF" : "CNPJ"}
+                                    id="txt-cpfCnpj"
+                                    type="text"
+                                    name="txt_cpfCnpj"
+                                    classInput="form-control form-input"
+                                    onChange={this.setCpfCnpj}
+                                    mascara={this.state.tipoPro === "rdo-pf" ? "###.###.###-##" : "##.###.###/####-##"}
+                                    valueInput={this.state.cpfCnpj || ""}
+                                    tempMask="_"
+                                />
+
+                                <Inputs
+                                    classDivInput="caixa-email"
+                                    label="E-mail:"
+                                    maxLength="150"
+                                    id="txt-email"
+                                    type="email"
+                                    name="txt_email"
+                                    onChange={this.setEmail}
+                                    onBlur={this.getEmail}
+                                    classInput="form-control form-input"
+                                    valueInput={this.state.email || ""}
+                                />
+
+                                
+                            </div>
+                            <div className="flex-center container-senha">
+
+                                <Inputs
+                                    classDivInput="caixa-senha"
+                                    label="Senha:"
+                                    maxLength="130"
+                                    id="txt-senha"
+                                    type="password"
+                                    name="txt_senha"
+                                    onChange={this.setSenha}
+                                    classInput="form-control form-input"
+                                />
+
+                                <Inputs
+                                    classDivInput="caixa-confirmar-senha"
+                                    label="Confirmar Senha:"
+                                    maxLength="130"
+                                    id="txt-confirmar-senha"
+                                    type="password"
+                                    name="txt_confirmar_senha"
+                                    onChange={this.setConfirmSenha}                           
+                                    classInput="form-control form-input"
+                                />
+
+                            </div>
+
+                            <div className="flex-center container-cep-logradouro">
+
+                                <Inputs
+                                    classDivInput="caixa-cep"
+                                    label="CEP:"
+                                    id="txt-cep"
+                                    type="text"
+                                    name="txt_cep"
+                                    onChange={this.setCep}
+                                    classInput="form-control form-input"
+                                    mascara="99999-999"
+                                    valueInput={this.state.cep || ""}
+                                />
+
+                                <Inputs
+                                    classDivInput="caixa-logradouro"
+                                    label="Logradouro:"
+                                    maxLength="120"
+                                    id="txt-logradouro"
+                                    type="text"
+                                    name="txt_logradouro"
+                                    valueInput={this.state.logradouro || ""}
+                                    readOnly
+                                    classInput="form-control form-input"
+                                />
+                                
+                            </div>
+                            <div className="flex-center container-bairro-cidade-uf">
+
+                                <Inputs
+                                    classDivInput="caixa-bairro"
+                                    label="Bairro:"
+                                    maxLength="120"
+                                    id="txt-bairro"
+                                    type="text"
+                                    name="txt_bairro"
+                                    valueInput={this.state.bairro || ""}
+                                    disabled
+                                    
+                                    classInput="form-control form-input"
+                                />
+
+                                <Inputs
+                                    classDivInput="caixa-cidade"
+                                    label="Cidade:"
+                                    maxLength="120"
+                                    id="txt-cidade"
+                                    type="text"
+                                    name="txt_cidade"
+                                    data={this.state.idCidade}
+                                    valueInput={this.state.cidade || ""}
+                                    readOnly
+                                    
+                                    classInput="form-control form-input"
+                                />
+
+                                <Inputs
+                                    classDivInput="caixa-uf"
+                                    label="UF:"
+                                    maxLength="2"
+                                    id="txt-uf"
+                                    type="text"
+                                    name="txt_uf"
+                                    valueInput={this.state.uf || ""}
+                                    readOnly
+                                    
+                                    classInput="form-control form-input"
+                                />
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Fragment>
+        );
+    }
+}

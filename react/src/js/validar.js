@@ -168,13 +168,17 @@ export const retirarSimbolos = (texto) =>{
 export const limpaValor = (valor) =>{
     valor = valor.replace(/(R\$)/g, "");
     let num;
-    let decimal = valor.substring(valor.length-3, valor.length);
-    // array = array.replace(/./g, "");
+    let decimal;
+    let valorLength = valor.length;
+    let decimalCorte = valorLength <= 4 ? 2 : 3;
+
     if(valor.includes(",")){
-        valor = valor.substring(0, valor.length-3);
+        decimal = valor.substring(valorLength-decimalCorte, valorLength);
+        decimal = decimal.replace(/,/g, ".");
+        valor = valor.substring(0, valorLength-decimalCorte);
     }
     valor = valor.replace(/\./g, "");
-    decimal = decimal.replace(/,/g, ".");
+
     num = parseFloat(valor+decimal);
     return num;
 }

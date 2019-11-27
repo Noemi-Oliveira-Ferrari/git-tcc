@@ -1,0 +1,1004 @@
+
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px)
+{
+    .caixa-peguntas-frenquentes
+    {
+        width: 100%;
+        min-height: 450px;
+        height: auto;
+        background-color: #ffffff;
+        margin-top: -50px;
+    }
+    .caixa-perguntar-faq
+    {       
+        width: 100%;
+        height: 450px;
+        /* background-image: url(../imagens/fundo-faq.jpg); */
+        /* background-color: rgb(9, 194, 194); */
+        background-image: url(../img/fundo-faq1.jpg);
+        background-size: cover;
+        margin: auto;
+        box-sizing: border-box;
+        flex-direction: column;
+        padding-top: 130px;
+        background-attachment: fixed;
+    }
+
+    .titulo-duvida-faq
+    {
+        font-family: 'Lexend Deca';
+        color: #ffffff;
+        text-align: center;
+        font-size: 2.8em;
+    }
+
+    .caixa-inputs-duvida-faq
+    {
+        width: 1300px;
+        height: 100px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .caixa-input-text-penguntar-faq
+    {
+        width: 505px;
+        height: 100px;
+        background-color: transparent;
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input-text-penguntar-faq
+    {        
+        width: 480px;
+        height: 50px;
+        font-family: 'Lexend Deca';
+        font-size: 1em;
+        box-sizing: border-box;
+        padding-left: 20px;
+        border: 0px;
+        margin: auto;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        float: left;
+        outline: none;
+    }
+
+    .caixa-btn-buscar-faq
+    {
+        width: 100px;
+        height: 100px;
+        background-color: transparent;
+        float: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-buscar-faq
+    {    
+        width: 120px;
+        height: 55px;
+        background-color: #26cbd3;
+        border-radius: 10px;
+        margin-top: 30px;
+        font-family: 'Lexend Deca';
+        border: 0px;
+        color: #ffffff;
+        font-size: 1.2em;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .tamanho-caixa-perguntas-frequentes-faq
+    {
+        width: 100%;
+        height: 1120px;
+        background-color:#000000;
+        background-size: cover;
+        position: relative;
+    }
+
+    .caixa-perguntas-frequentes-faq
+    {
+        width: 1300px;
+        height: 1000px;
+        /* background-color: rgb(146, 130, 238); */
+        margin: auto;
+        box-sizing: border-box;
+        padding: 50px;    
+    }
+
+    .box-faq 
+    {
+        background-color: #26cbd38c;
+        margin-top: 50px;
+        padding: 5% 20px; /* Added a percentage value for top/bottom padding to keep the wrapper inside of the parent */
+        box-sizing: border-box;
+        -webkit-transform: skewY(-5deg);
+        -moz-transform: skewY(-5deg);
+        -ms-transform: skewY(-5deg);
+        -o-transform: skewY(-5deg);
+        transform: skewY(-10deg);
+    }
+      
+    .box-faq > .wrapper-faq 
+    {
+    -webkit-transform: skewY(5deg);
+    -moz-transform: skewY(5deg);
+    -ms-transform: skewY(5deg);
+    -o-transform: skewY(5deg);
+    transform: skewY(10deg);
+    }
+
+    .titulo-pergunta-frequente-faq
+    {
+        font-family: 'Lexend Deca';
+        font-size: 2.2em;
+        color: #47525E;
+        text-align: left;
+        box-sizing: border-box;
+        padding-left: 5px;
+    }
+
+    .caixa-conteudo-duvidas-frequentes-faq
+    {
+        width: 1300px;
+        height: 660px;
+        /* background-color: #552d2dc2; */
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    .row-conteudo-duvidas-frequentes-faq
+    {
+        width: inherit;
+        height: 220px;
+        /* background-color: rgb(201, 201, 181); */
+        /* margin-top: 1px; */
+    }
+
+    .caixa-duvidas-frequentes-faq
+    {
+        width: 640px;
+        height: 170px;
+        float: left;
+        /* background-color: rgb(177, 204, 197); */
+        margin: 5px;
+        box-sizing: border-box;
+        padding-right: 20px;
+    }
+
+    .title-pergunta-frequente-faq
+    {
+        font-family: 'Lexend Deca';
+        font-size: 1.6em;
+        color: #47525E;
+    }
+
+    .text-pergunta-frequente-faq
+    {    
+        font-family: 'Lexend Deca';
+        font-size: 1.55em;
+        color: #47525E;
+    }
+
+    .caixa-btn-mostar-mais-faq
+    {
+        width: inherit;
+        height: 178px;
+        /* background-color: aqua; */
+        box-sizing: border-box;
+        padding: 55px;
+    }
+
+    .btn-mostar-mais-faq
+    {
+        width: 600px;
+        height: 70px;
+        font-family: 'Lexend Deca';
+        font-size: 1.8em;
+        border-radius: 10px;
+        border: 2px solid #5A6978;
+        background-color: transparent;
+        color: #5A6978;
+        margin: auto;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        outline: none;
+    }
+
+    .btn-mostar-mais-faq:hover
+    {
+        background-color: #ffffff50;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+    .caixa-problema-faq
+    {
+        width: 100%;
+        height: 965px;
+        /* background-color: rgb(230, 230, 230); */
+        background-image: url(../img/image-faq1.jpg);
+        background-size: cover;
+        position: absolute;
+    }
+
+    .caixa-titulo-problema-faq
+    {
+        width: inherit;
+        height: 150px;
+        /* background-color: #57bc90; */
+        background-image: linear-gradient(to bottom right, #77c9d4, #57bc90);
+    }
+
+    .titulo-problema-nao-resolvido-faq
+    {
+        font-family: 'Lexend Deca';
+        font-size: 2.5em;
+        color: #ffffff;
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 50px;
+    }
+
+    .conteudo-problemas-nao-resolvidos-faq
+    {
+        width: 1300px;
+        height: 500px;
+        background-color: transparent;
+        margin: auto;
+        box-sizing: border-box;
+        padding-top: 25px;
+    }
+
+    .text-problema-faq
+    {
+        font-family: 'Lexend Deca';
+        font-size: 2.28em;
+        text-align: center;
+        color: #47525E;
+    }
+
+    .caixa-inputs-faq
+    {
+        width: 1300px;
+        height: 100px;
+        margin: auto;
+        display: flex;
+        background-color: transparent;
+        justify-content: center;
+        box-sizing: border-box;
+        padding-top: 25px;
+    }
+
+    .caixa-inputs-formulario-contato
+    {
+        width: 1070px;
+        height: 585px;
+        background-color: transparent;
+        position: absolute;
+        z-index: 2;
+        display: flex;
+    }
+    
+    /*----- Formulário -----*/
+    .container-flex-contato
+    {
+        display: flex;
+        width: 1075px;
+        height: inherit;
+        justify-content: center;
+    }
+
+    .card-formulario-contato
+    {
+        width: 1075px;
+        min-height: 600px;
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+    }
+
+    .campos-dados-contato
+    {
+        width: 1075px;
+        height: 450px;
+        /* background-color: violet; */
+    }
+
+    .container-nome-email-contato,
+    .container-enviar-contato
+    {
+        width: inherit;
+        height: fit-content;
+        /* background-color: rgb(219, 231, 110); */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2px;
+    }
+
+    .form-input-contato
+    {
+        margin-top: -25px;
+    }
+
+    .caixa-nome-contato,
+    .caixa-cpf-contato
+    {
+        height: 90px;
+        /* background-color: rgb(57, 207, 115); */
+        display: flex;
+        justify-content: start;
+        flex-wrap: wrap;
+    }
+
+    .caixa-nome-contato
+    {
+        width: 440px;
+    }
+
+    .caixa-cpf-contato
+    {
+        width: 440px;
+    }
+
+    .btn-enviar-fomr-fale-conosco
+    {
+        
+        width: 350px;
+        height: 50px;
+        clear: both;
+        display: flex;
+        justify-content: center;
+        /* flex-direction: column; */
+        margin: auto;
+        text-align: center;
+        font-family: 'Lexend Deca';
+        font-size: 1em;
+        border: 0px;
+        border-radius: 10px;
+        background-color: #26cbd3d9;
+        color: #ffffff;
+        font-size: 1.3em;
+        outline: none;
+        margin-top: 25px;
+    }
+
+    .btn-enviar-fomr-fale-conosco:hover
+    {
+        background-color: rgb(48, 183, 190);
+        transition: 0.8s;
+        cursor: pointer;
+    }
+
+    #txt-nome-contato,
+    #txt-email-contato
+    {
+        height: 50px;
+        font-family: "manjari regular";
+        box-sizing: border-box;
+        padding-top: 10px;
+        margin-top: -15px;
+        border: 0px;
+        border-radius: 8px;
+        background-color: rgba(60, 171, 199, 0.46);
+        box-sizing: border-box;
+        padding: 10px;
+        outline: none;
+    }
+
+    #txt-mensagem-contato
+    {
+        height: 50px;
+        font-family: "manjari regular";
+        box-sizing: border-box;
+        padding-top: 10px;
+        margin-top: 1px;
+        border: 0px;
+        border-radius: 8px;
+        background-color: rgba(60, 171, 199, 0.46);
+        box-sizing: border-box;
+        padding: 10px;
+        outline: none;
+    }
+
+    .caixa-titulo-outros-contato
+    {    
+        width: 100%;
+        height: 138px;
+        background-color: #5fce9e;
+        box-sizing: border-box;
+        padding-top: 20px;
+    
+    }
+
+    .title-principal-outras-formas-contato
+    {
+        font-size: 2.2em;
+        color: #47525E;
+        font-family: 'Lexend Deca';
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 30px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .caixa-outros-contato
+    {
+        width: 1300px;
+        height: 400px;
+        margin: auto;
+        /* background-color: rgb(243, 236, 174); */
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .caixas-itens-outras-formas-contato
+    {
+        width: 350px;
+        height: 250px;
+        /* background-color: lightcoral; */
+        margin: 5px;
+    }
+
+    .image-outras-contato
+    {    
+        width: 180px;
+        height: 150px;
+        background-color: rgb(158, 158, 158);
+        margin: auto;
+        border-radius: 8px;
+    }
+
+    .caixa-conteudo-itens-outras-contato
+    {    
+        width: inherit;
+        height: 220px;
+        /* background-color: #c9c9c9; */
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    .form-label
+    {
+        font-family: 'Lexend Deca'; 
+    }
+
+
+
+
+
+
+    
+
+
+
+
+}
+
+
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:1000px)
+{
+    .caixa-perguntar-faq
+    {       
+        width: 1400px;
+        height: 570px;
+        /* background-image: url(../imagens/fundo-faq.jpg); */
+        /* background-color: rgb(9, 194, 194); */
+        /* background-image: url(../imagens/fundo-faq1.jpg); */
+        background-size: cover;
+        margin: auto;
+        box-sizing: border-box;
+        flex-direction: column;
+        padding-top: 130px;
+    }
+
+    .titulo-duvida-faq
+    {
+        font-family: 'Lexend Deca';
+        color: #ffffff;
+        text-align: center;
+        font-size: 4.5em;
+        box-sizing: border-box;
+        padding-left: 300px;
+        padding-right: 300px;
+        padding-bottom: 15px;
+    }
+
+    .caixa-inputs-duvida-faq
+    {
+        width: 1300px;
+        height: 100px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .caixa-input-text-penguntar-faq
+    {
+        width: 600px;
+        height: 100px;
+        background-color: transparent;
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .input-text-penguntar-faq
+    {        
+        width: 600px;
+        height: 75px;
+        font-family: 'Lexend Deca';
+        font-size: 2.4em;
+        box-sizing: border-box;
+        padding-left: 20px;
+        border: 0px;
+        margin: auto;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        float: left;
+        outline: none;
+    }
+
+    .caixa-btn-buscar-faq
+    {
+        width: 225px;
+        height: 100px;
+        background-color: transparent;
+        float: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn-buscar-faq
+    {        
+        width: 195px;
+        height: 80px;
+        background-color: #26cbd3;
+        border-radius: 10px;
+        margin-top: 30px;
+        font-family: 'Lexend Deca';
+        border: 0px;
+        color: #ffffff;
+        font-size: 2.4em;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .tamanho-caixa-perguntas-frequentes-faq
+    {
+        width: 1400px;
+        height: 2370px;
+        background-color:#000000;
+        background-size: cover;
+        position: relative;
+    }
+
+    .box-faq 
+    {
+        background-color: #26cbd38c;
+        margin-top: 50px;
+        padding: 5% 20px; /* Added a percentage value for top/bottom padding to keep the wrapper inside of the parent */
+        box-sizing: border-box;
+        -webkit-transform: skewY(-5deg);
+        -moz-transform: skewY(-5deg);
+        -ms-transform: skewY(-5deg);
+        -o-transform: skewY(-5deg);
+        transform: skewY(-10deg);
+      }
+      
+    .box-faq > .wrapper-faq 
+    {
+    -webkit-transform: skewY(5deg);
+    -moz-transform: skewY(5deg);
+    -ms-transform: skewY(5deg);
+    -o-transform: skewY(5deg);
+    transform: skewY(10deg);
+    }
+
+    .caixa-perguntas-frequentes-faq
+    {
+        width: 1300px;
+        height: 1600px;
+        /* background-color: rgb(146, 130, 238); */
+        margin: auto;
+        box-sizing: border-box;
+        padding: 50px;    
+    }
+
+    .titulo-pergunta-frequente-faq
+    {
+        font-family: 'Lexend Deca';
+        font-size: 4em;
+        color: #47525E;
+        text-align: center;
+        padding-bottom: 25px;
+    }
+
+    .caixa-conteudo-duvidas-frequentes-faq
+    {
+        width: 1200px;
+        height: 1270px;
+        /* background-color: #552d2dc2; */
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    .row-conteudo-duvidas-frequentes-faq
+    {
+        width: inherit;
+        height: 440px;
+        /* background-color: rgb(201, 201, 181); */
+        /* margin-top: 1px; */ 
+        margin-bottom: 175px;
+    }
+
+    .caixa-duvidas-frequentes-faq
+    {
+        width: 1200px;
+        height: 265px;
+        /* float: left; */
+        /* background-color: rgb(177, 204, 197); */
+        margin: 5px;
+        box-sizing: border-box;
+        padding-right: 20px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 50px;
+        padding-left: 85px;
+        padding-right: 85px;
+    }
+
+    .title-pergunta-frequente-faq
+    {
+        font-family: 'Lexend Deca';
+        font-size: 3.4em;
+        box-sizing: border-box;
+        color: #47525E;
+        padding-top: 20px;
+    }
+
+    .text-pergunta-frequente-faq
+    {    
+        font-family: 'Lexend Deca';
+        font-size: 2.5em;
+        color: #47525E;
+        margin-top: 10px;
+    }
+
+    .caixa-btn-mostar-mais-faq
+    {
+        width: inherit;
+        height: 178px;
+        /* background-color: aqua; */
+        box-sizing: border-box;
+        padding: 55px;
+    }
+
+    .btn-mostar-mais-faq
+    {    
+        width: 696px;
+        height: 115px;
+        font-family: 'Lexend Deca';
+        font-size: 2.8em;
+        border-radius: 10px;
+        border: 3px solid #5A6978;
+        background-color: transparent;
+        color: #5A6978;
+        margin: auto;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        outline: none;
+    }
+
+    .btn-mostar-mais-faq:hover
+    {
+        background-color: #ffffff50;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+    .caixa-problema-faq
+    {
+        width: 1400px;
+        height: 1205px;
+        /* background-color: rgb(230, 230, 230); */
+        background-image: url(../img/image-faq1.jpg);
+        background-size: cover;
+        position: absolute;
+        background-position: left;
+    }
+
+    .caixa-titulo-problema-faq
+    {
+        width: 1400px;
+        height: 255px;
+        /* background-color: #57bc90; */
+        background-image: linear-gradient(to bottom right, #77c9d4, #57bc90);
+    }
+
+    
+
+    .titulo-problema-nao-resolvido-faq
+    {    
+        font-family: 'Lexend Deca';
+        font-size: 4em;
+        color: #ffffff;
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 50px;
+        padding-left: 180px;
+        padding-right: 180px;
+    }
+
+    .conteudo-problemas-nao-resolvidos-faq
+    {
+        width: 1300px;
+        height: 500px;
+        background-color: transparent;
+        margin: auto;
+        box-sizing: border-box;
+        padding-top: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    .text-problema-faq
+    {
+        font-family: 'Lexend Deca';
+        font-size: 3.4em;
+        text-align: center;
+        box-sizing: border-box;
+        color: #47525E;
+        padding-top: 20px;
+    }
+
+    .caixa-inputs-faq
+    {
+        width: 1265px;
+        height: 500px;
+        margin: auto;
+        /* display: flex; */
+        /* background-color: #00000042; */
+        justify-content: center;
+    }
+
+    .caixas-input-faq
+    {
+        width: 1008px;
+        height: 130px;
+        /* background-color: #80f098; */
+        /* float: left; */
+        margin-left: 10px;
+        margin-right: 10px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+
+    .label-input-faq
+    {
+        font-family: 'Lexend Deca';
+        font-size: 2.8em;
+        display: flex;
+    }
+
+    .input-perguntar-faq
+    {        
+        width: 800px;
+        height: 80px;
+        border: 0px;
+        border-radius: 8px;
+        background-color: rgba(60, 171, 199, 0.46);
+        box-sizing: border-box;
+        padding: 10px;
+        outline: none;
+    }
+
+    .btn-enviar-faq
+    {      
+        width: 500px;
+        height: 98px;
+        clear: both;
+        display: flex;
+        justify-content: center;
+        /* flex-direction: column; */
+        margin: auto;
+        text-align: center;
+        font-family: 'Lexend Deca';
+        font-size: 1em;
+        border: 0px;
+        border-radius: 20px;
+        background-color: #26cbd3d9;
+        color: #ffffff;
+        font-size: 2.8em;
+        margin-top: -220px;
+        outline: none;
+    }
+
+    .caixa-contato-inputs-faq
+    {
+        width: 1000px;
+        height: 500px;
+        /* background-color: lawngreen; */
+        margin: auto;
+    }
+
+    .btn-enviar-faq:hover
+    {
+        background-color: rgb(48, 183, 190);
+        transition: 0.8s;
+        cursor: pointer;
+    }
+
+
+
+
+/*----- Formulário -----*/
+.container-flex-contato
+{  
+    display: flex;
+    justify-content: center;
+    /* background-color: rgb(95, 248, 56); */
+    padding-top: 20px;
+    height: fit-content;
+    /* padding-bottom: 50px */
+}
+
+.card-formulario-contato
+{
+    width: 100%;
+    min-height: 500px;
+    height: fit-content;
+    overflow: hidden;
+    /* background-color: rgb(255, 255, 255); */
+    /* box-shadow: #0000005b 3px 3px 5px; */
+    padding-bottom: 20px;
+}
+
+.campos-dados-contato
+{
+    width: 100%;
+    height: fit-content;
+    /* background-color: rgb(255, 238, 0); */
+}
+
+.container-nome-cpf-contato,
+.container-email-telefone-contato,
+.container-mensagem-contato
+{
+    width: 1130px;
+    height: fit-content;
+    /* background-color: rgb(221, 255, 71); */
+    justify-content: space-around;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+
+.container-enviar-contato
+{
+    width: 1250px;
+    height: fit-content;
+    /* background-color: rgb(221, 255, 71); */
+    justify-content: space-around;
+    margin-top: -120px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+
+.caixa-nome-contato,
+.caixa-cpf-contato,
+.caixa-email-contato,
+.caixa-telefone-contato,
+.caixa-mensagem-contato
+{
+    width: 100%;
+}
+
+.form-label
+{
+    font-size: 45px;
+} 
+
+#txt-nome-contato,
+#txt-cpf-contato,
+#txt-email-contato,
+#txt-telefone-contato
+{
+    height: 110px;
+    font-family: "manjari regular";
+    font-size: 18px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    margin-top: -8px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    margin-top: -15px;
+    border: 0px;
+    border-radius: 8px;
+    background-color: rgba(60, 171, 199, 0.46);
+    outline: none;
+}
+
+#txt-mensagem-contato
+{
+    height: 380px;
+    font-family: "manjari regular";
+    font-size: 18px;
+    box-sizing: border-box;
+    padding-top: 10px;
+    border: 2.5px solid #35A675;
+    background-color: transparent;
+    margin-top: -8px;
+    margin-bottom: 15px;
+    outline: none;
+}
+
+.form-input-contato
+{
+    margin-top: -25px;
+}
+
+.btn-enviar-fomr-fale-conosco
+{
+    width: 625px;
+    height: 110px;
+    background-color: #26cbd3d9;
+    border: 0px;
+    border-radius: 20px;
+    font-family: 'Lexend Deca';
+    font-size: 3.2em;
+    color: rgba(231, 237, 234, 0.897);
+    margin-top: 200px;
+    outline: none;
+}
+
+.caixa-outras-formas-contato
+{
+    width: 1400px;
+    height: 2480px;
+    background-color: #dcdcdc;
+    margin-top: 1592px;
+    position: absolute;
+    z-index: 2;
+}
+
+}

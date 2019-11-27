@@ -423,43 +423,39 @@
         flex-direction: column;
     }
 
-    .btn-voltar
-    {
+    .btn-prox,
+    .btn-voltar{
         width: 120px;
         height: 45px;
         border:0px;
-        background-color: #57bc90;
-        border-radius: 8px;
-        color: #ffffff;
-        font-size: 18px;
-        outline: none;
-    }
-
-    .btn-voltar:hover
-    {
-        transition: 0.5s;
-        background-color: #5fce9e;
-        cursor: pointer;
-    }
-
-    .btn-prox
-    {
-        width: 120px;
-        height: 45px;
-        border:0px;
-        background-color: #57bc90;
-        border-radius: 8px;
-        color: #ffffff;
         font-size: 18px;
         justify-items:right;
         outline: none;
+        cursor: pointer;
+        transition: 0.4s;
+        border-radius: 30px;
+        border: solid 2px #57bc90;
     }
-
+    .btn-voltar{
+        background-color: #fefefe;
+        color: #57afbb;
+    }
+    
+    .btn-voltar:hover
+    {
+        transition: 0.4s;
+        background-color: #eaeaea;
+    }
+    
+    .btn-prox
+    {
+        background-color: #51ce92;
+        color: #ffffff;
+    }
     .btn-prox:hover
     {
-        transition: 0.5s;
-        background-color: #5fce9e;
-        cursor: pointer;
+        transition: 0.4s;
+        background-color: #46ab80;
     }
 
     .confirmar-termos
