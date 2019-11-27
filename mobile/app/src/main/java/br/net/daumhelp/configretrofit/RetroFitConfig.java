@@ -17,7 +17,7 @@ public class RetroFitConfig {
 
 //    public RetroFitConfig(){
 //        retroFit = new Retrofit.Builder()
-//                .baseUrl("http://10.107.144.13:8080/")
+//                .baseUrl("http://10.107.144.43:8080/")
 //                .addConverterFactory(JacksonConverterFactory.create())
 //                .build();
 //    }
