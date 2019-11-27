@@ -2,6 +2,7 @@ package br.net.daumhelp.resource;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -50,6 +51,11 @@ public class PedidosResource {
 	@GetMapping
 	public List<Pedido> getPedidos() {
 		return pedidoRepository.findAll();
+	}
+	
+	@GetMapping("/id/{idPedido}")
+	public Optional<Pedido> getPedidoById(@PathVariable Long idPedido){
+		return pedidoRepository.findById(idPedido);
 	}
 	
 	@GetMapping("/cliente/{idCliente}")
