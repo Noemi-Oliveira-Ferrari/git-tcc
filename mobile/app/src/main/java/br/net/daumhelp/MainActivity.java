@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
                         Profissional profissionalToken = tokenBodyProfissional.getProfissional();
                         Log.d("TOKEN", profissionalToken.getIdProfissional() + " <----");
 
-                        if(profissionalToken.getFoto() == null){
+                        if(profissionalToken.getFoto() == null || profissionalToken.getFoto() == ""){
 
                             Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
                             intent.putExtra("profissional", profissionalToken);
@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                                 Cliente clienteToken = tokenBodyCliente.getCliente();
                                 Log.d("TOKEN", clienteToken.getIdCliente() + " <----");
 
-                                if(tokenBodyCliente.getCliente().getFoto() == null){
+                                if(tokenBodyCliente.getCliente().getFoto() == null  || tokenBodyCliente.getCliente().getFoto() == ""){
 
                                     Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
                                     intent.putExtra("cliente", clienteToken);
@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
-                Intent intent = new Intent(MainActivity.this, EscolhaActivity.class);
+               // Intent intent = new Intent(MainActivity.this, EscolhaActivity.class);
             }
         });
 

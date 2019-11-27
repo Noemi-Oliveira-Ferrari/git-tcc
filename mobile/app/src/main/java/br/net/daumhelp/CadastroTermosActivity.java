@@ -107,7 +107,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     tipoUsuario.setIdTipoUsuario(1);
                                     tipoUsuario.setTipoDeUsuario('p');
                                     profissional.setTipoUsuario(tipoUsuario);
-                                    profissional.setFoto("foto.png");
+                                    //profissional.setFoto("foto.png");
 
                                     Call<Profissional> callPro = new RetroFitConfig().getProfissionalService().cadastrarProfissional(profissional);
                                     callPro.enqueue(new Callback<Profissional>() {
@@ -175,7 +175,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     tipoUsuario.setIdTipoUsuario(2);
                                     tipoUsuario.setTipoDeUsuario('c');
                                     cliente.setTipoUsuario(tipoUsuario);
-                                    cliente.setFoto("foto.png");
+                                    //cliente.setFoto("foto.png");
 
                                     Call<Cliente> callCli = new RetroFitConfig().getClienteService().cadastrarCliente(cliente);
                                     callCli.enqueue(new Callback<Cliente>() {

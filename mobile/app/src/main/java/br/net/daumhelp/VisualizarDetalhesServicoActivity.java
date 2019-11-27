@@ -21,12 +21,14 @@ import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Pedido;
 import br.net.daumhelp.model.Status;
+import br.net.daumhelp.recursos.Data;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -92,7 +94,10 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
                     public void onResponse(Call<Pedido>call, Response<Pedido> response) {
                         progressDialog.dismiss();
                         pedido =  response.body();
-                        data.setText(pedido.getDataServico());
+
+                        Date dataPedido = Data.usStringToDate(pedido.getDataServico());
+                        String dataFormatada = Data.dataToBrString(dataPedido);
+                        data.setText(dataFormatada);
                         hora.setText("Das " + pedido.getHorarioInicial() + " às " +  pedido.getHorarioFinal());
                         descricao.setText(pedido.getDescricao());
                         valorOrcado = pedido.getProfissional().getValorHora();
@@ -182,6 +187,7 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
                                     @Override
                                     public void onResponse(Call<Pedido> call, Response<Pedido> response) {
                                         response.body();
+                                        finish();
 
                                     }
                                     @Override

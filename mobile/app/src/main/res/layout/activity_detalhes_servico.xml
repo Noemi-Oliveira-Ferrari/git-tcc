@@ -101,13 +101,13 @@
 
         <ImageView
             android:id="@+id/iv_data"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginStart="46dp"
             android:layout_marginTop="60dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/civ_foto1"
-            app:srcCompat="@drawable/galeria" />
+            app:srcCompat="@drawable/ic_calendario" />
 
         <TextView
             android:id="@+id/tv_titulo_data"
@@ -132,13 +132,13 @@
 
         <ImageView
             android:id="@+id/iv_horario"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginTop="40dp"
             android:layout_marginEnd="46dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/iv_data"
-            app:srcCompat="@drawable/camera" />
+            app:srcCompat="@drawable/ic_time" />
 
         <TextView
             android:id="@+id/tv_titulo_horario"
