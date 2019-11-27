@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvSucesso;
     private EditText etSenha;
     private EditText etEmail;
-//    private ProgressBar pbLoading;
 //    private Base64 base64;
 
     @Override
@@ -62,11 +60,9 @@ public class MainActivity extends AppCompatActivity {
         tvSucesso = findViewById(R.id.tv_txt_sucesso);
         etEmail = findViewById(R.id.et_login_email);
         etSenha = findViewById(R.id.et_login_senha);
-//        pbLoading = findViewById(R.id.pb_loading);
 
         cvSucesso.setVisibility(View.INVISIBLE);
         cvOpacity.setVisibility(View.INVISIBLE);
-
 
         //etEmail.setText("noemi@noemi.comc");
         etSenha.setText("123123123");
@@ -134,6 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 progressDialog.show();
                 progressDialog.setContentView(R.layout.layout_progressbar);
 
+
                 final String senha = EncryptString.gerarHash(etSenha.getText().toString());
                 final String email = etEmail.getText().toString();
 
@@ -141,12 +138,12 @@ public class MainActivity extends AppCompatActivity {
                 login.setEmail(email);
                 login.setSenha(senha);
 
+
                 Call<JwtToken> call = new RetroFitConfig().getLoginService().buscarPro(login);
                 call.enqueue(new Callback<JwtToken>() {
                     @Override
                     public void onResponse(Call<JwtToken> call, Response<JwtToken> response) {
 
-                        progressDialog.dismiss();
                         String data = null;
                         String tokenBody = null;
                         String token = response.body().getToken();
@@ -169,7 +166,6 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("profissional", profissionalToken);
                             intent.putExtra("tokenProfissional", token);
                             startActivity(intent);
-                            finish();
 
                         }else{
 
@@ -177,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("profissional", profissionalToken);
                             intent.putExtra("tokenProfissional", token);
                             startActivity(intent);
-                            finish();
                         }
                     }
 
