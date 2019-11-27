@@ -1,0 +1,1326 @@
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px)
+{
+    .section-plano
+    {
+        width: 100%;
+        height: 1300px;
+        /* background-image: url(../img/fundo03.jpg); */
+        background-color: gold;
+        background-size: cover;
+        flex-wrap: wrap;
+    }
+
+    .caixa-titulo-plano
+    {
+        width: 100%;
+        height: 100px;
+    }
+
+    .titulo-plano
+    {
+        font-family: 'Lexend Deca';
+        text-align: center;
+        font-size: 4em;
+        color: #15caac;
+    }
+
+    .section-plano-renda 
+    { 
+        width: 1300px;
+        height: 700px;
+        /* background-color: hotpink; */
+    }
+
+    
+
+    .caixa-btn-editar
+    {
+        width: 1300px;
+        height: 45px;
+        display: flex;
+        justify-content: flex-end;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+        padding-right: 80px;
+    }
+
+    .btn-editar
+    {
+        width: 200px;
+        height: 40px;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 0.5rem;
+        -webkit-transition: all 0.2s;
+        background-color: hsla(165, 69%, 49%, 0.795);
+        transition: all 0.2s;
+        position: relative;
+        font-size: 1.5em;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        text-align: center;
+        font-family: 'Lexend Deca';
+    }
+
+    .btn-editar:hover 
+    {
+        -webkit-transform: translateY(-3px);
+        transform: translateY(-3px);
+        -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    }
+    
+
+    .caixa-plano-home 
+    {
+        width: 1300px;
+        height: 600px;
+        /* background-color: indigo; */
+    }
+      
+    .caixa-plano-home:not(:last-child) 
+    {
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+    }
+    
+    .caixa-plano-home::after 
+    {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    
+    .caixa-plano-home [class^="col-"] 
+    {
+    float: left;
+    }
+    
+    .caixa-plano-home [class^="col-"]:not(:last-child) 
+    {
+    margin-right: 6rem;
+    }
+    
+    .caixa-plano-home .col-1-of-3 
+    {
+        width: calc((100% - 2 * 6rem) / 3);
+        font-weight: 400;
+        line-height: 1.7;
+        color: rgb(255, 255, 255);
+    }
+    
+    .caixa-check
+    {
+        width: 100%;
+        height: 100px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .check
+    {
+        width: 65px;
+        height: 65px;
+        background-image: url(../img/verified.png);
+        background-repeat: no-repeat;
+        margin-top: 30px;
+    }
+    
+    .caixa-titulo-renda
+    {
+        width: 100%;
+        height: 120px;
+        background-color: hsla(165, 69%, 49%, 0.795);
+        box-sizing: border-box;
+        padding-top: 30px;
+    }
+    
+    .titulo-renda
+    {
+        font-family: 'Lexend Deca';
+        text-align: center;
+        font-size: 4.5em;
+        color: #ffffff;
+    }
+    
+    .caixa-centro
+    {
+        width: 100%;
+        height: auto;
+        min-height: 1050px;
+        overflow: auto;
+        /* display: flex; */
+        /* justify-content: center; */
+        margin: auto;
+        background-color: #ffffff;
+        box-sizing: border-box;
+        padding-top: 55px;
+    }
+
+    .caixa-valores
+    {
+        width: 950px;
+        height: 200px;
+        background-color: #cecbcbd9;
+        /* background-color: #E1E1E1; */
+        margin: auto;
+        border-radius: 10px 10px 0px 0px;
+        box-sizing: border-box;
+        padding-left: 30px;
+        padding-top: 30px;
+    }
+
+    .caixa-servicos
+    {
+        width: 1100px;
+        min-height: 500px;
+        height: auto;
+        overflow: auto;
+        background-color: #dcdcdcd1;
+        margin: auto;
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding-top: 30px;
+        padding-left: 20px;
+    }
+
+    .title-servicos-prestados
+    {
+        width: 300px;
+        height: 55px;
+        font-size: 3em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+        margin-left: 20px;
+    }
+
+    .title-valor
+    {
+        font-size: 2em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+    }
+
+    .caixa-renda
+    {    
+        width: 1300px;
+        height: 910px;
+        background-color: #eaeaead6;
+        margin: auto;
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding-top: 50px;
+    }
+    
+    .text-valor
+    {
+        font-size: 6em;
+        font-family: 'Lexend Deca';
+        margin-top: -5px;
+        color: #47525E;
+    }
+    
+    .servico-prestado
+    {
+        width: inherit;
+        height: 230px;
+        /* background-color: tomato; */
+        margin: auto;
+        margin-left: -20px;
+    }
+
+    .caixa-esquerda-servico
+    {
+        width: 240px;
+        height: 230px;
+        float: left;
+        /* background-color: #ffff00; */
+        box-sizing: border-box;
+        padding-top: 20px;
+    }
+    
+    .perfil-cliente-servico-prestado
+    {
+        width: 120px;
+        height: 120px;
+/*        background-color: #47525E;*/
+        background-image: url(../img/imagem01.png);
+        background-position: center;
+        background-size: cover;
+        border-radius: 100%;
+        margin: auto;
+/*        border: 3px solid hsla(165, 69%, 49%, 0.795);*/
+    }
+
+    .nome-cliente-servico
+    {
+        text-align: center;
+        font-size: 2em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+    }
+
+    .caixa-direita-servico
+    {
+        width: 860px;
+        height: 230px;
+        float: left;
+        /* background-color: rgb(255, 0, 234); */
+        box-sizing: border-box;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 65px;
+    
+    }
+
+    .title-servico
+    {
+        font-size: 2em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+    }
+
+    .text-servico
+    {
+        text-align: justify;
+        font-size: 2em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+        box-sizing: border-box;
+        padding-top: 8px;
+        padding-bottom: 15px;
+    }
+
+    .btn-detalhes-servico
+    {
+        width: 150px;
+        height: 45px;
+        background-color: transparent;
+        border: 3px solid hsla(165, 69%, 49%, 0.795);
+        font-size: 2em;
+        font-family: 'Lexend Deca';
+        color: hsla(165, 69%, 49%, 0.795);
+        border-radius: 10px;
+        transition: 0.5s;
+    }
+    
+    .btn-detalhes-servico:hover
+    {
+        width: 200px;
+        transition: 0.5s;
+        cursor: pointer;;
+        background-color: hsla(165, 69%, 49%, 0.05);
+    }
+    
+    
+/*
+    .btn-detalhes-servico::after,
+    .btn-detalhes-servico::before
+    {
+        width: 150px;
+        transition: 0.5s;
+    }
+*/
+    
+    /*----- Planos -----*/
+    .card 
+    {
+      -webkit-perspective: 150rem;
+              perspective: 150rem;
+      -moz-perspective: 150rem;
+      position: relative;
+      background: none;
+      border: none;
+      height: 700px;
+    }
+
+    .card:hover .card__side--front-1,
+    .card:hover .card__side--front-2,
+    .card:hover .card__side--front-3 
+    {
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+    }
+    
+    .card:hover .card__side--back 
+    {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    }
+
+    .card__side 
+    {
+        height: 700px;
+        -webkit-transition: all 0.8s ease;
+        transition: all 0.8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+        border-radius: 15px;
+        overflow: hidden;
+        -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+                box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    }
+
+
+    .card__title 
+    {
+      height: 150px;
+      padding: 4rem 2rem 2rem;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+    }
+    
+    .card__title--1 .image-card-home1 
+    {
+      font-size: 2em;
+    }
+
+    .image1-card-home
+    {
+        width: 66px;
+        height: 65px;
+        background-image: url(../img/sent-mail.png);
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        /* margin-top: 65px; */
+
+    }
+
+    .image2-card-home
+    {    
+        width: 80px;
+        height: 100px;
+        background-image: url(../img/aviao.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        /* /* margin-top: 65px; */
+
+    }
+
+    .image3-card-home
+    {
+        width: 66px;
+        height: 65px;
+        background-image: url(../img/rocket.png);
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        /* margin-top: 65px;  */
+
+    }
+
+    .card__heading 
+    {
+        font-size: 2.4em;
+        font-weight: 300;
+        text-transform: uppercase;
+        font-family: 'Lexend Deca';
+        text-align: center;
+        color: #fff;
+        width: 75%;
+    }
+
+    .card__details 
+    {
+    padding: 0 2rem 2rem;
+    }
+
+  
+    .text-card
+    {
+        font-size: 1.6em;
+        text-align: center;
+        font-family: 'Lexend Deca';
+    }
+
+    *,
+    *::after,
+    *::before 
+    {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+    
+    .card__side--front 
+    {
+    background-color: rgb(204, 45, 45);
+    }
+     
+    .card__side--front-2 
+    {
+    background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+    }
+    
+    .card__side--front-3 
+    {
+    background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+
+    }
+    
+    .card__side--back 
+    {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+    
+    .card__side--back-1 
+    {
+        background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+    }
+    
+    .card__side--back-2 
+    {
+        background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+    }
+    
+    .card__side--back-3 
+    {
+        background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+    }
+    
+    .card__title 
+    {
+        height: 215px;
+        padding: 4rem 2rem 2rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    
+    .card__title--1 .fas 
+    {
+        font-size: 5rem;
+    }
+    
+    .card__title--2 .fas 
+    {
+        font-size: 5rem;
+    }
+    
+    .card__title--3 .fas 
+    {
+        font-size: 5rem;
+    }
+    
+    .card__heading-span 
+    {
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
+    .card__cta 
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+        
+    .card__price-box 
+    {
+        text-align: center;
+        color: rgb(247, 245, 245);
+        margin-bottom: 8rem;
+    }
+    
+    .card__price-only 
+    {
+        font-size: 1.5em;
+        text-transform: uppercase;
+        font-family: 'Lexend Deca';
+    }
+    
+    .card__price-value 
+    {
+        font-size: 5em;
+        font-family: 'Lexend Deca';
+    }
+
+}
+
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:1000px)
+{
+    
+    .caixa-btn-editar
+    {
+        width: 865px;
+        height: 45px;
+        display: flex;
+        justify-content: flex-end;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+        padding-top: 40px;
+        padding-right: 80px;
+    }
+
+    .btn-editar
+    {
+        width: 230px;
+        height: 70px;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 15px;
+        -webkit-transition: all 0.2s;
+        background-color: hsla(165, 69%, 49%, 0.795);
+        transition: all 0.2s;
+        position: relative;
+        font-size: 3.4em;
+        border: none;
+        cursor: pointer;
+        color: #fff;
+        text-align: center;
+        font-family: 'Lexend Deca';
+    }
+
+    .btn-editar:hover 
+    {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+    -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-editar:hover::after 
+    {
+        -webkit-transform: scaleX(1.4) scaleY(1.6);
+            transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+    }
+    
+    .caixa-check
+    {
+        width: 100%;
+        height: 100px;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .check
+    {
+        width: 65px;
+        height: 65px;
+        background-image: url(../img/verified.png);
+        background-repeat: no-repeat;
+        margin-top: 30px;
+    }
+    
+    .section-plano
+    {
+        width: 980px;
+        min-height: 2620px;
+        overflow: auto;
+        background-image: url(../img/fundo03.jpg);
+        background-size: cover;
+/*        background-attachment: fixed;*/
+    }
+    
+    .caixa-titulo-plano
+    {
+        width: 980px;
+        height: 150px;
+        background-color: hsla(165, 69%, 49%, 0.795);
+        box-sizing: border-box;
+        padding-top: 30px;
+    }
+    
+    .titulo-plano
+    {
+        font-family: 'Lexend Deca';
+        text-align: center;
+        font-size: 6.5em;
+        color: #ffffff;
+    }
+    
+    .caixa-conteudo-plano
+    {
+        width: 865px;
+        height: 2090px;
+        /* margin: auto; */
+        box-sizing: border-box;
+        padding-top: 50px;
+    }
+    
+    .conteudo-plano
+    {
+        width: 860px;
+        height: 2300px;
+        background-color: #eaeaeade;
+        margin: auto;
+        border-radius: 20px;
+    }
+    
+    
+    .caixa-titulo-renda
+    {
+        width: 980px;
+        height: 150px;
+        background-color: hsla(165, 69%, 49%, 0.795);
+        box-sizing: border-box;
+        padding-top: 30px;
+    }
+    
+    .titulo-renda
+    {
+        font-family: 'Lexend Deca';
+        text-align: center;
+        font-size: 6.5em;
+        color: #ffffff;
+    }
+    
+    .caixa-centro
+    {
+        width: 100%;
+        height: auto;
+        min-height: 1080px;
+        overflow: auto;
+        /* display: flex; */
+        /* justify-content: center; */
+        margin: auto;
+        background-color: #ffffff;
+        box-sizing: border-box;
+/*        padding-top: 55px;*/
+    }
+
+    .caixa-valores
+    {
+        width: 750px;
+        height: 230px;
+        background-color: #cecbcbd9;
+        /* background-color: #E1E1E1; */
+        margin: auto;
+        border-radius: 25px 25px 0px 0px;
+        box-sizing: border-box;
+        padding-left: 30px;
+        padding-top: 30px;
+    }
+
+    .caixa-servicos
+    {
+        width: 880px;
+        min-height: 580px;
+        height: auto;
+        overflow: auto;
+        background-color: #dcdcdcd1;
+        margin: auto;
+        border-radius: 25px;
+        box-sizing: border-box;
+        padding-top: 30px;
+        padding-left: 20px;
+    }
+
+    .title-servicos-prestados
+    {
+        width: 795px;
+        height: 55px;
+        font-size: 5em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+        margin-left: 20px;
+        margin: auto;
+        margin-bottom: 30px;
+    }
+
+    .title-valor
+    {
+        font-size: 3em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+    }
+
+    .caixa-renda
+    {    
+        width: 980px;
+        height: 1325px;
+        background-color: #eaeaead6;
+        margin: auto;
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding-top: 50px;
+    }
+    
+    .text-valor
+    {
+        font-size: 8em;
+        font-family: 'Lexend Deca';
+/*        margin-top: -30px;*/
+        color: #47525E;
+    }
+    
+    .servico-prestado
+    {
+        width: inherit;
+        height: 410px;
+/*        background-color: tomato;*/
+        margin: 5px;
+        margin-left: -20px;
+    }
+
+    .caixa-esquerda-servico
+    {
+        width: 240px;
+        height: 230px;
+        float: left;
+        /* background-color: #ffff00; */
+        box-sizing: border-box;
+        padding-top: 20px;
+    }
+    
+    .perfil-cliente-servico-prestado
+    {    
+        width: 135px;
+        height: 135px;
+/*        background-color: #47525E;*/
+        background-image: url(../img/imagem01.png);
+        background-position: center;
+        background-size: cover;
+        border-radius: 100%;
+        margin: auto;
+/*        border: 3px solid hsla(165, 69%, 49%, 0.795);*/
+    }
+
+    .nome-cliente-servico
+    {
+        text-align: center;
+        font-size: 3.4em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+        margin-top: 15px;
+    }
+
+    .caixa-direita-servico
+    {
+        width: 600px;
+        height: 230px;
+        float: left;
+        /* background-color: rgb(255, 0, 234); */
+        box-sizing: border-box;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 65px;
+    
+    }
+
+    .title-servico
+    {
+        font-size: 3.8em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+    }
+
+    .text-servico
+    {
+        text-align: justify;
+        font-size: 3em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+        box-sizing: border-box;
+        padding-top: 8px;
+        padding-bottom: 15px;
+    }
+
+    .btn-detalhes-servico
+    {
+        width: 337px;
+        height: 65px;
+        background-color: transparent;
+        border: 5px solid hsla(165, 69%, 49%, 0.795);
+        font-size: 3.6em;
+        font-family: 'Lexend Deca';
+        color: hsla(165, 69%, 49%, 0.795);
+        border-radius: 10px;
+        margin-top: 15px;
+    }
+    
+    /*----- Planos -----*/
+    .tamanho-conteudo-plano-home
+    {
+        width: 100%;
+        height: auto;
+        min-height: 500px;
+        overflow: auto;
+        /* background-color: #dedede; */
+        /* background-image: url(../img/fundo.jpg); */
+        background-size: cover;;
+    }
+    
+    .caixa-titulo-plano-home
+    {
+        width: 100%;
+        font-family: 'Lexend Deca';
+        height: 165px;
+        background-color: hsla(165, 69%, 49%, 0.795);
+        /* background-color: rgba(44, 210, 205, 0.801); */
+        margin-bottom: 50px;
+        box-sizing: border-box;
+        padding-top: 36px;
+    } 
+
+    .titulo-plano-home 
+    {
+        font-size: 6em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: transparent;
+        letter-spacing: 0.2rem;
+        line-height: 1;
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+        color: #eee;
+    }
+
+    .section-caixa-plano-home
+    {
+        width: 920px;
+        height: 1930px;
+        background-color: transparent;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        margin-bottom: 50px;
+    }
+
+    .section-plano-renda 
+    { 
+        width: 980px;
+        height: 2400px;
+    }
+
+    .caixa-plano-home 
+    {
+        width: 630px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+      
+    .caixa-plano-home:not(:last-child) 
+    {
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+    }
+    
+    .caixa-plano-home::after 
+    {
+    content: "";
+    display: table;
+    clear: both;
+    }
+    
+    .caixa-plano-home [class^="col-"] 
+    {
+    float: left;
+    width: 470px;
+    height: 700px;    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    }
+    
+    .caixa-plano-home [class^="col-"]:not(:last-child) 
+    {
+        margin-right: 6rem;
+
+    }
+    
+    .caixa-plano-home .col-1-of-3 
+    {
+           /* width: calc((100% - 2 * 6rem) / 3); */
+        width: calc((100% - 2 * -2rem) / 1);
+        font-weight: 400;
+        line-height: 1.7;
+        color: #fff;
+    }
+
+    .card 
+    {
+      -webkit-perspective: 150rem;
+              perspective: 150rem;
+      -moz-perspective: 150rem;
+      position: relative;
+      height: 52rem;
+    }
+
+    .card:hover .card__side--front-1,
+    .card:hover .card__side--front-2,
+    .card:hover .card__side--front-3 
+    {
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
+    }
+    
+    .card:hover .card__side--back 
+    {
+    -webkit-transform: rotateY(0);
+            transform: rotateY(0);
+    }
+
+    .card__side 
+    {
+        height: 635px;
+        -webkit-transition: all 0.8s ease;
+        transition: all 0.8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+        border-radius: 30px;
+        overflow: hidden;
+        -webkit-box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+                box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    }
+
+    .card__side--front-1 
+    {
+    background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+    }
+
+    .card__title 
+    {
+      height: 150px;
+      padding: 4rem 2rem 2rem;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+    }
+    
+    .card__title--1 .image-card-home1 
+    {
+      font-size: 5rem;
+    }
+
+    .image1-card-home
+    {
+        width: 80px;
+        height: 80px;
+        background-image: url(../img/sent-mail-res.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        /* margin-top: 65px; */
+
+    }
+
+    .image2-card-home
+    {
+        width: 80px;
+        height: 80px;
+        background-image: url(../img/plane-res.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        /* margin-top: 65px; */
+
+    }
+
+    .image3-card-home
+    {
+        width: 80px;
+        height: 80px;
+        background-image: url(../img/rocket-res.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        /* margin-top: 65px; */
+    }
+
+    .card__heading 
+    {
+        font-size: 5em;
+        font-weight: 300;
+        text-transform: uppercase;
+        font-family: 'Lexend Deca';
+        text-align: center;
+        color: #fff;
+        width: 75%;
+    }
+
+    .card__details 
+    {
+    padding: 0 2rem 2rem;
+    }
+
+    .subtitle-card
+    {
+        text-align: center;
+        font-size: 4em;
+        margin-bottom: 8px;
+        font-family: 'Lexend Deca';
+    }
+    
+    .text-card
+    {
+        font-size: 3.8em;
+        text-align: center;
+        font-family: 'Lexend Deca';
+    }
+
+    *,
+    *::after,
+    *::before 
+    {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: inherit;
+        box-sizing: inherit;
+    }
+    
+    .card__side--front 
+    {
+    background-color: #fff;
+    }
+     
+    .card__side--front-2 
+    {
+    background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+    }
+    
+    .card__side--front-3 
+    {
+    background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+
+    }
+    
+    .card__side--back 
+    {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+    
+    .card__side--back-1 
+    {
+        background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+    }
+    
+    .card__side--back-2 
+    {
+        background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+    }
+    
+    .card__side--back-3 
+    {
+        background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
+    }
+    
+    .card__title 
+    {
+        height: 230px;
+        padding: 4rem 2rem 2rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    
+    .card__title--1 .fas 
+    {
+        font-size: 5rem;
+    }
+    
+    .card__title--2 .fas 
+    {
+        font-size: 5rem;
+    }
+    
+    .card__title--3 .fas 
+    {
+        font-size: 5rem;
+    }
+    
+    .card__heading-span 
+    {
+        padding: 1rem 1.5rem;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
+    .card__cta 
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+        width: 90%;
+        text-align: center;
+    }
+        
+    .card__price-box 
+    {
+        text-align: center;
+        color: #fff;
+        margin-bottom: 8rem;
+    }
+    
+    .card__price-only 
+    {
+        font-size: 3.5em;
+        text-transform: uppercase;
+        font-family: 'Lexend Deca';
+    }
+    
+    .card__price-value 
+    {
+        font-size: 9em;
+        font-family: 'Lexend Deca';
+    }
+
+    .btn-card-home, .btn-card-home:link, .btn-card-home:visited 
+    {
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 0.5rem;
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+        position: relative;
+        font-size: 1.6rem;
+        border: none;
+        width: 226px;
+        cursor: pointer;
+        height: 40px;
+        font-size: 2.6em;
+        font-family: 'Lexend Deca';
+        background-color: #fff;
+        color: #777;
+    }
+    
+    .btn-card-home::after
+    {
+        background-color: #fff;
+    }
+
+    .btn-card-home:hover 
+    {
+    -webkit-transform: translateY(-3px);
+            transform: translateY(-3px);
+    -webkit-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    }
+    
+    .btn-card-home:hover::after 
+    {
+        -webkit-transform: scaleX(1.4) scaleY(1.6);
+            transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+    }
+    
+    .btn-card-home:active, .btn-card-home:focus 
+    {
+    outline: none;
+    -webkit-transform: translateY(-1px);
+            transform: translateY(-1px);
+    -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-vamos-comecar
+    {
+        width: 363px;
+        height: 90px;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 0.5rem;
+        -webkit-transition: all 0.2s;
+        transition: all 0.2s;
+        position: relative;
+        border: none;
+        cursor: pointer;
+        font-size: 3em;
+        font-family: 'Lexend Deca';
+        background: linear-gradient(to right,#27d3a8cb, rgba(1, 82, 73, 0.747));
+        color: #fff;
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 30px;
+    }
+
+    .btn-vamos-comecar::after 
+    {
+        background-color: #55c57a;
+    }
+
+    .caixa-btn-preco-home
+    {
+        width: 980px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 60px;
+    }
+    
+    
+}
