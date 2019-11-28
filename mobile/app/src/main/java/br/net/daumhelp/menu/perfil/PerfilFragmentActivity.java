@@ -97,7 +97,7 @@ public class PerfilFragmentActivity extends Fragment {
             profissional = (Profissional) intent.getSerializableExtra("profissional");
 
             String fotoPro = profissional.getFoto();
-            Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivProfileImg);
+            Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).rotate(90).into(ivProfileImg);
 
             tvNome.setText(profissional.getNome().toUpperCase());
 

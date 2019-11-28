@@ -104,13 +104,13 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
 
 
                         String foto1 = pedido.getFoto1();
-                        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + foto1).into(ivFoto1);
+                        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + foto1).resize(100,100).rotate(90).into(ivFoto1);
 
                         String foto2 = pedido.getFoto2();
-                        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + foto2).into(ivFoto2);
+                        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + foto2).resize(100,100).rotate(90).into(ivFoto2);
 
                         String foto3 = pedido.getFoto3();
-                        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + foto3).into(ivFoto3);
+                        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + foto3).resize(100,100).rotate(90).into(ivFoto3);
 
                     }
                     @Override

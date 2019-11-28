@@ -70,7 +70,7 @@ public class ListaAdapterRespostaOrcamento extends ArrayAdapter<Pedido> {
 
 
         String fotoPro = listaPedidos.getProfissional().getFoto();
-        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivProfissional);
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).rotate(90).into(ivProfissional);
 
         final int idStatus = listaPedidos.getIdPedido();
 

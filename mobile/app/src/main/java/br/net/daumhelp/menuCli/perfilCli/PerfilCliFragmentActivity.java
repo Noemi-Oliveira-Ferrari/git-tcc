@@ -335,7 +335,7 @@ public class PerfilCliFragmentActivity extends Fragment {
         etBairro.setText(cliente.getEndereco().getBairro());
         tvNome.setText(cliente.getNome().toUpperCase());
         String fotoCli = cliente.getFoto();
-        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).into(ivFotoCliente);
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).resize(100,100).into(ivFotoCliente);
 
     }
 

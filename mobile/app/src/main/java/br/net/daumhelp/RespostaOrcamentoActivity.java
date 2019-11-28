@@ -87,7 +87,7 @@ public class RespostaOrcamentoActivity extends AppCompatActivity {
             tvSubcategoriaProfissional.setText(pedidoSelecionado.getProfissional().getSubcategoria().getSubcategoria());
             tvOrcamento.setText("Vou levar cerca de " + pedidoSelecionado.getHorasServico() +"h\nO valor do serviço vai ser " + valorString);
             String fotoPro = pedidoSelecionado.getProfissional().getFoto();
-            Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivFotoProfissional);
+            Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).rotate(90).into(ivFotoProfissional);
 
 
             btnAceitar.setOnClickListener(new View.OnClickListener() {

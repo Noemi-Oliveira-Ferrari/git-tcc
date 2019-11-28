@@ -60,7 +60,7 @@ public class ListaAdapterRespostaFinal extends ArrayAdapter<Pedido> {
         tvTexto.setText(nomeCliente + "\n aceitou o seu orçamento e quer \nque você realize o serviço");
 
         String fotoCli = listaPedidos.getCliente().getFoto();
-        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).into(ivFotoCliente);
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).resize(100,100).rotate(90).into(ivFotoCliente);
 
         btnVisualizar.setOnClickListener(new View.OnClickListener() {
             @Override

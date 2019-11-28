@@ -226,6 +226,9 @@ public class CadastroFotoActivity extends AppCompatActivity {
                     ivFoto.setImageBitmap(bitmap);
                 }
                 if (requestCode == CAMERA_REQUEST){
+
+//                    Matrix matrix = new Matrix();
+//                    matrix.postRotate(90);
                     Bitmap bitmap = BitmapFactory.decodeFile(caminhoFoto);
                     Bitmap bitmapReduzido = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
                     ivFoto.setImageBitmap(bitmapReduzido);

@@ -82,7 +82,7 @@ public class ListaAdapterBusca extends ArrayAdapter<Profissional> {
         tvServico.setText(listaProfissional.getSubcategoria().getSubcategoria());
 
         String fotoPro = listaProfissional.getFoto();
-        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).into(ivFotoProfissional);
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).into(ivFotoProfissional);
 
         Locale ptBr = new Locale("pt", "BR");
         String valorString = NumberFormat.getCurrencyInstance(ptBr).format(listaProfissional.getValorHora());
