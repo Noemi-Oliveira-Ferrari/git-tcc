@@ -7,6 +7,7 @@ import FotoPerfil from '../img/ester.JPG';
 import Not from '../img/bell.png';
 import Config from '../img/gear.png';
 import { getToken, getUsuario, getTipoLogado } from '../utils/verificaSessionStrg';
+import {DOMINIO_IMG} from '../global';
 
 export class HeaderLogin extends Component{
     render(){
@@ -19,11 +20,26 @@ export class HeaderLogin extends Component{
     }   
 }
 export class HeaderUsuario extends Component{
+
+    constructor(){
+        super();
+        this.logout = this.logout.bind(this);
+    }
+
+    logout(event){
+        sessionStorage.clear();
+        setTimeout(() => {
+            browserHistory.push("/");
+        }, 600);
+
+    }
+
+
     render(){
         return(
             <div className="login-usuario">
                 <div className="avatar-usuario">
-                    <figure><img src={FotoPerfil} alt="Login" title="Login"/></figure>
+                    <figure><img src={`${DOMINIO_IMG}${getUsuario().foto}`} alt="Login" title="Login"/></figure>
                 </div>
                 <Link to="/app/profissional/perfil" className="link">
                     <div className="box-nome flex-center">
@@ -31,12 +47,14 @@ export class HeaderUsuario extends Component{
                     </div>
                 </Link>
 
-                <Link to="/" className="link">
+                {/* <Link to="/" className="link"> */}
                     <div className="box-sair">
-                        <figure><img src={Not} alt="notificações" title="notificações"/></figure>
-                        <figure><img src={Config} alt="configuraçoes" title="configuraçoes"/></figure>
+                        <Link to="/app/profissional/servicos" className="link">
+                            <figure><img src={Not} alt="Notificações" title="Notificações"/></figure> 
+                        </Link> 
+                        <figure><img src={Config} alt="Configurações" title="Configurações" onClick={this.logout}/></figure>
                     </div>
-                </Link>
+                {/* </Link> */}
             </div>
         );  
     }   

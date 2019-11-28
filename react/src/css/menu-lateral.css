@@ -8,23 +8,22 @@
 	font-weight:300;
 
 }
-
-.logo{
-  
-} */
+*/
 
 .settings {
 
   height: 55px; 
   float:left;
-  background:url( https://s3.postimg.org/bqfooag4z/startific.jpg);
+  background:url(../img/fundo03.jpg);
   background-repeat:no-repeat;
   width:250px;
   margin:0px;
   text-align: center;
-  font-size:20px;
+  font-size: 18px;
+  box-sizing: border-box;
+  padding-top: 12px;
   font-family: 'Strait', sans-serif;
-  /* background-color: brown; */
+  color: #84848d;
 }
 
 

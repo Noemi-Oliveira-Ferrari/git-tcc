@@ -16,7 +16,8 @@ export class ServicosPro extends Component{
         super();
         this.state = {
             pedidosPendentes: [],
-            pedidosConcluidos: []
+            pedidosConcluidos: [],
+            avaliacao: ""
         }
         this.buscarPendentes = this.buscarPendentes.bind(this);
         this.buscarConcluidos = this.buscarConcluidos.bind(this);
@@ -64,6 +65,24 @@ export class ServicosPro extends Component{
             console.log(error);
         })
     }
+
+    buscarAvaliacoes(){
+
+        axios({
+            method: "GET",
+            url: `${DOMINIO}avaliacoes/`,
+            headers: {"token": getToken()},
+            timeout: 30000
+        })
+        .then(response =>{
+            let nota = response.data;
+            this.setState({avaliacao: nota});
+            console.log(nota);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
     
 
     render(){
@@ -72,10 +91,10 @@ export class ServicosPro extends Component{
             {/* <MenuLateral/> */}
             <CapaPerfilPro
                 nome="Seus Pedidos"
-                texto1="Veja o estado dos pedidos"
+                texto1="Veja o estado dos Pedidos"
                 texto2="Fique sempre por dentro"
-                texto3="verifique suas atividades"
-                texto4="Veja suas avaliações"
+                texto3="Verifique suas Atividades"
+                texto4="Veja suas Avaliações"
             />
             <div class="caixa-conteudo-servico-pro">
                 <div class="conteudo-pro-servico">
@@ -97,12 +116,13 @@ export class ServicosPro extends Component{
                                     />
                                 ))
                             }
-                            {/* <CardServico
+                            <CardServico
                                 titulo="Concerto maquina de lavar Brastemp"
-                                enderecoCliente="Maria Gasolina, Barueri - SP"
-                                comentario="Minha maquina quebrou e nao funciona a peça tal pegou fogo e preciso de uma nova"
+                                enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
                                 estrelas="caixa-star-hidden"
                             />
+                            {/*
                             <CardServico
                                 titulo="Concerto maquina de lavar Brastemp"
                                 enderecoCliente="Maria Gasolina, Barueri - SP"
@@ -129,13 +149,14 @@ export class ServicosPro extends Component{
                                     />
                                 ))
                             }
-                            {/* <CardServico
+                            <CardServico
                                 titulo="Fiamento de dois comodos"
-                                enderecoCliente="Maria Gasolina, Barueri - SP"
-                                comentario="Otimo profissional, chegou no horario e fez o trabalho bem feito, mto educado so deixou sujo"
+                                enderecoCliente="Maria Fernandes, Barueri - SP"
+                                comentario="Ótimo profissional, chegou no horário e fez o trabalho bem feito, mto educado, só deixou sujo"
                                 estrelas="caixa-star"
+                                avaliacao={`Avalação do Cliente: 9`}
                             />
-                        
+                            {/* 
                             <CardServico
                                 titulo="Fiamento de dois comodos"
                                 enderecoCliente="Maria Gasolina, Barueri - SP"

@@ -117,6 +117,7 @@ option{
 }
 
 /* width */
+p::-webkit-scrollbar,
 div::-webkit-scrollbar,
 textarea::-webkit-scrollbar {
     width: 10px;
@@ -124,6 +125,7 @@ textarea::-webkit-scrollbar {
 }
 
 /* Track */
+p::-webkit-scrollbar-track,
 div::-webkit-scrollbar-track,
 textarea::-webkit-scrollbar-track {
     background: #cbf3e1;
@@ -131,6 +133,7 @@ textarea::-webkit-scrollbar-track {
 }
 
 /* Handle */
+p::-webkit-scrollbar-thumb,
 div::-webkit-scrollbar-thumb,
 textarea::-webkit-scrollbar-thumb {
     background: #a2dee6;
@@ -138,6 +141,7 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 /* Handle on hover */
+p::-webkit-scrollbar-thumb:hover,
 div::-webkit-scrollbar-thumb:hover,
 textarea::-webkit-scrollbar-thumb:hover {
     background: #77c9d4;

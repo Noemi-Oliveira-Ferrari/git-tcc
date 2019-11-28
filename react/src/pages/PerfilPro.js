@@ -10,6 +10,7 @@ import Edit from '../img/edit.png';
 import Save from '../img/save.png';
 import SaveDisabled from '../img/save-disabled.png';
 import Cancel from '../img/cancel.png';
+import ImgPadrao from '../img/padrao_perfil.png';
 import axios from 'axios';
 import MenuLateral from '../components/MenuLateral';
 import {Inputs, Selects, InputNumber} from '../components/FormElements';
@@ -18,7 +19,7 @@ import { Route, browserHistory } from 'react-router';
 import { DadosPessoaisPro, DadosProfissional } from '../components/FormularioProfissional';
 import { BotaoImg } from '../components/Botao';
 import { ModalLoadConst, ModalAlertas} from '../components/ModaisLoad';
-import { DOMINIO } from '../global';
+import { DOMINIO, DOMINIO_IMG } from '../global';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfPro, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
@@ -128,7 +129,8 @@ class PerfilPro extends Component{
             this.setState({servicoPro: pro.subcategoria.subcategoria});
             this.setState({localPro: localPro});
             this.setState({valorPro: valorHora});
-            this.setState({fotoPro: "url(https://images.pexels.com/photos/2760241/pexels-photo-2760241.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260)"});
+            // this.setState({fotoPro: ImgPadrao});
+            this.setState({fotoPro: `url(${DOMINIO_IMG}duh/imagens/padrao_perfil.png)`});
         }
     }
 

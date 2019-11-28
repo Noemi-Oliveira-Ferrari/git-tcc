@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import br.net.daumhelp.model.AvaliacaoPedido;
 import br.net.daumhelp.model.Pedido;
 import br.net.daumhelp.repository.AvaliacaoPedidoRepository;
+import br.net.daumhelp.utils.HandleDates;
 
 @CrossOrigin
 //@CrossOrigin(origins = "http://localhost:3000")
@@ -25,6 +27,7 @@ import br.net.daumhelp.repository.AvaliacaoPedidoRepository;
 @RequestMapping("/avaliacoes")
 public class AvaliacaoPedidoResource {
 
+	@Autowired
 	private AvaliacaoPedidoRepository avaliacaoRepository;
 	
 	@GetMapping
@@ -32,12 +35,15 @@ public class AvaliacaoPedidoResource {
 		return avaliacaoRepository.findAll();
 	}
 
-	@PostMapping("/avaliar/pedido/{idPedido}")
+	@PostMapping("/comentar")
 	public ResponseEntity<AvaliacaoPedido> solicitarPedido(
 			@RequestBody AvaliacaoPedido avaliacao,
 			HttpServletResponse response){
 
+		avaliacao.setDataAvaliacao(HandleDates.dataHoraAtual());
+		System.out.println(avaliacao);
 		AvaliacaoPedido avaliacaoSalva = avaliacaoRepository.save(avaliacao);
+		System.out.println(avaliacaoSalva);
 			
 		URI uri = ServletUriComponentsBuilder
 				.fromCurrentRequestUri()

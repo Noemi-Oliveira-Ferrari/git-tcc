@@ -15,7 +15,8 @@ export class CardServico extends Component{
             <h6 className="endereco-cliente-servico">{this.props.enderecoCliente}</h6>
             <hr className="linha-servico"/>
             <div className={this.props.estrelas}>
-                <Estrelas/>
+                {/* <Estrelas/> */}
+                {this.props.avaliacao}
             </div>
             <p className="text-servico">{this.props.comentario}</p>
             <div className="caixa-link flex-center">

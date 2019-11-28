@@ -3,7 +3,7 @@ import '../css/capa-perfil-pro.css';
 import axios from 'axios';
 import { Botao } from '../components/Botao';
 import { DOMINIO, DOMINIO_IMG } from '../global';
-import { getTipoLogado, getUsuario, getToken } from '../utils/verificaSessionStrg';
+import { getTipoLogado, getUsuario, getToken,setUsuarioPro } from '../utils/verificaSessionStrg';
 import {ModalLoadConst, ModalAlertas} from './ModaisLoad';
 import $ from 'jquery';
 import iconServico from '../img/servico.png';
@@ -21,8 +21,8 @@ export class CapaPerfilPro extends Component{
             texto3: this.props.texto3,
             texto4: this.props.texto4,
             foto: "",
-            imgPerfil: "",
-            // imgPerfil: `${DOMINIO_IMG}${getUsuario().foto}`,
+            // imgPerfil: "",
+            imgPerfil: getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : "",
             upload: "",
             confirmUpload: false,
             erros: [],
@@ -113,17 +113,31 @@ export class CapaPerfilPro extends Component{
             }
         })
         .then(response =>{
-            console.log(response);
-            this.modalLoad();
-            alertas.push("O upload da sua nova imagem de perfil realizado com sucesso!");
-            this.setState({erros: alertas});
-            this.mostrarAlerta("msgAlt", "Perfil Atualizado");
-
             this.setState({upload: ""});
+            let profissional = response.data;
+            console.log(profissional);
 
+            console.log(-5);
+            
             if(this.state.upload === ""){
+                console.log(-4);
+                setUsuarioPro(profissional);
+                console.log(-3);
                 this.confirmUploadMode();
+                console.log(-2);
+                this.setState({imgPerfil: `${DOMINIO_IMG}${profissional.foto}`});
+                console.log(-1);
             }
+            
+            console.log(1);
+            this.modalLoad();
+            console.log(2);
+            alertas.push("O upload da sua nova imagem de perfil realizado com sucesso!");
+            console.log(3);
+            this.setState({erros: alertas});
+            console.log(4);
+            this.mostrarAlerta("msgAlt", "Perfil Atualizado");
+            console.log(5);
         })
         .catch(error=>{
             this.modalLoad();
@@ -185,7 +199,7 @@ export class CapaPerfilPro extends Component{
             }
         }
         output.push(texts.foto);
-        console.log(output);
+        // console.log(output);
         return output;
     }
     
@@ -201,7 +215,7 @@ export class CapaPerfilPro extends Component{
                 </div>
                 <div className="caixa-perfil">
                     <div className="avatar-auxiliar">
-                        <div className="avatar" style={{backgroundImage: this.state.imgPerfil !== "" ? `url(${this.state.imgPerfil})` : props[5]}}></div>
+                        <div className="avatar" style={{backgroundImage: this.state.imgPerfil !== "" ? this.state.imgPerfil !== null ? `url(${this.state.imgPerfil})` : props[5] : props[5]}}></div>
                     </div>
                     <form method="POST" name ="frm_upload_perfil_pro" onSubmit={this.uploadPhoto}>
                         <div className="caixa-botoes-upload">

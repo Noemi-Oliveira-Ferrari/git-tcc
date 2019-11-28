@@ -11,13 +11,15 @@ export default class MenuLateral extends Component{
 
     render(){
         return(        
-            <nav class="main-menu">
+            <nav className="main-menu">
                 <div>
-                    <a class="logo" href="http://startific.com">
+                    <a className="logo" href="http://startific.com">
                     </a> 
                 </div> 
-                <div class="settings"></div>
-                <div class="scrollbar" id="style-1">
+                <div className="settings">
+                    <h3>MENU</h3>
+                </div>
+                <div className="scrollbar" id="style-1">
                     
                     <ul>
                         <Link className="link" to="/app/profissional/perfil">
@@ -28,7 +30,7 @@ export default class MenuLateral extends Component{
                                             <img id="img-perfil-sidebar" src={Perfil}/>
                                         </figure>
                                     </i>
-                                    <span class="nav-text">Meu Perfil</span>
+                                    <span className="nav-text">Meu Perfil</span>
                                 </div>
                             </li>   
                         </Link>
@@ -41,7 +43,7 @@ export default class MenuLateral extends Component{
                                             <img id="img-perfil-sidebar" src={Servicos}/>
                                         </figure>
                                     </i>
-                                    <span class="nav-text">Meus Serviços</span>
+                                    <span className="nav-text">Meus Serviços</span>
                                 </div>
                             </li>
                         </Link>

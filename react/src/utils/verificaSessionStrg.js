@@ -65,9 +65,10 @@ export const getUsuario = () =>{
     return user;
 }
 
-export const setUsuarioPro = (profissisonal) =>{
-    const pro = JSON.parse(sessionStorage.setItem("profissional", profissisonal));
-    return pro;
+export const setUsuarioPro = (profissional) =>{
+    console.log("*************")
+    console.log(profissional);
+    sessionStorage.setItem("profissional", JSON.stringify(profissional));
 }
 
 export const getUsuarioCliente = () =>{
