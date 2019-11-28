@@ -31,7 +31,6 @@ export class HeaderUsuario extends Component{
         setTimeout(() => {
             browserHistory.push("/");
         }, 600);
-
     }
 
 
@@ -91,12 +90,16 @@ export default class Header extends Component{
                 </div>
                 <div className="caixa-menu center flex-center">
                     <nav className="area-itens-menu flex-center">
-                        <div className="item-menu-header flex-center"> 
-                            Início
-                        </div>
-                        <div className="item-menu-header flex-center"> 
-                            Sobre nós
-                        </div> 
+                        <Link className="link" to="/" > 
+                            <div className="item-menu-header flex-center"> 
+                                Início
+                            </div>
+                        </Link>
+                        <Link className="link" to="/sobrenos" >
+                            <div className="item-menu-header flex-center"> 
+                                Sobre Nós
+                            </div> 
+                        </Link>
                         <div className="item-menu-header flex-center"> 
                             Contato
                         </div>

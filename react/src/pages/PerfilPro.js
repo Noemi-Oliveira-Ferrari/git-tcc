@@ -345,8 +345,10 @@ class PerfilPro extends Component{
                 alerta = [];
                 alerta.push("Não foi possível gravar seus dados!");
                 alerta.push(error);
+                this.setState({erros: alerta})
                 this.mostrarAlerta("erroAlt", "ERRO");
                 console.error(error);
+                this.modalLoad();
             })
             // .onload = this.modalLoad();
         }

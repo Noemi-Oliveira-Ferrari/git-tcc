@@ -17,7 +17,7 @@
     {
         width: 1300px;
         height: 200px;
-        background-color: red;
+        /* background-color: red; */
         margin: auto;
         box-sizing: border-box;
         /* padding-top: 105px; */
@@ -32,7 +32,7 @@
         font-size: 4em;
         color: #ffffff;
         font-family: 'Lexend Deca';
-        background-color: lightblue;
+        /* background-color: lightblue; */
         box-sizing: border-box;
         padding-top: 120px;
     }
@@ -41,8 +41,8 @@
     {
         width: 100%;
         height: 1300px;
-        background-color: rgb(77, 29, 62);
-        /* background-image: url(../img/fundo03.jpg); */
+        /* background-color: rgb(77, 29, 62); */
+        background-image: url(../img/fundo03.jpg);
         background-size: cover;
         display: flex;
         justify-content: center;
@@ -50,9 +50,9 @@
     .caixa-informacoes-empresa-quem-somos
     {        
         width: inherit;
-        height: 700px;
-        /* background-color: #26cbd3d9; */
-        background-color: #3ad326d9;
+        height: 600px;
+        background-color: #26cbd3d9;
+        /* background-color: #3ad326d9; */
         position: absolute;
         /* margin-top: 100px; */
         border-radius: 10px;
@@ -60,38 +60,30 @@
         box-shadow: 20px 20px 30px #00000055;
         z-index: 2;
     }
-
     
-    .imagem-quem-somos
-    {
-        width: 250px;
-        height: 250px;
-        border-radius: 10px;
-        background-color: #a81717;
-        margin: 35px;
-        margin-top: 550px;
-    }
-
+    
+    
     .caixa-conteudo-quem-somos
     {
         width: 500px;
         height: 400px;
-        background-color: blueviolet;
+        /* background-color: blueviolet; */
         float: left;
         margin: auto;
         flex-wrap: wrap;
-   }
-
+    }
+    
     .titulo-caixa-quem-somos
     {
         width: inherit;
         height: 100px;
         font-family: 'Lexend Deca';
-        font-size: 2em;
+        font-size: 2.5em;
+        text-align: left;
         color: #ffffff;
-        background-color: chocolate;
+        /* background-color: chocolate; */
     }
-
+    
     .text-caixa-quem-somos
     {
         width: inherit;
@@ -99,49 +91,63 @@
         font-family: 'Lexend Deca';
         font-size: 1.5em;
         color: #ffffff;
-        background-color: rgb(145, 128, 240);
+        text-align: center;
+        /* background-color: rgb(44, 22, 168); */
     }
-
-    .caixa-missao-vissao-valor-quem-somos
+    .caixa-cor-missao-vissao-valor-quem-somos
+    {   
+        position: absolute;
+        width: 1300px;
+        height: 1000px;
+        background-color: #57a0bcc4;
+        /* background-color: #bc57b4; */
+        display: flex;
+        justify-content: center;
+        border-radius: 20px 20px 20px 20px;
+        z-index: 1;
+        margin-top: -120px;
+        padding-top: 200px;
+    }
+    
+    .caixa-mvv-quem-somos
     {
         width: 330px;
-        height: 1000px;
-        background-color: transparent;
+        height:650px;
+        /* background-color: fuchsia; */
         float: left;
+        flex-wrap: wrap;
     }
-
-    .title-missao-visao-valor-quem-somos
+    
+    .imagem-mvv-quem-somos img
     {
+        width: 250px;
+        height: 250px;
+        border-radius: 10px;
+        /* background-color: #00ffd5; */
+    }
+    .title-mvv-quem-somos
+    {
+        width: 300px;
+        height: 40px;
+        /* background-color:gainsboro ; */
         font-family: 'Lexend Deca';
         font-size: 2em;
         color: #ffffff;
         text-align: center;
     }
 
-    .text-missao-visao-valor-quem-somos
+    .text-mvv-quem-somos
     {
+        width: 300px;
+        height: 300px;
+        /* background-color: black; */
         font-family: 'Lexend Deca';
-        font-size: 1.8em;
+        font-size: 1.2em;
         color: #ffffff;
         text-align: center;
-        box-sizing: border-box;
-        padding-left: 20px;
         letter-spacing: 0.04em;
-        padding-right: 20px;
     }
 
-    .caixa-cor-missao-vissao-valor-quem-somos
-    {   
-        position: absolute;
-        width: 1300px;
-        height: 1250px;
-        background-color: #57a0bcc4;
-        display: flex;
-        justify-content: center;
-        border-radius: 20px 20px 20px 20px;
-        z-index: 1;
-        margin-top: -120px;
-    }
 }
 
 /*----- Web-Responsivo -----*/
