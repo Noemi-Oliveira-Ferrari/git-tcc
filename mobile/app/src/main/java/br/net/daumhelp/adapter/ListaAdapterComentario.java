@@ -35,27 +35,27 @@ public class ListaAdapterComentario extends ArrayAdapter<Comentario> {
         this.lista = lista;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-
-        Comentario comentarioPosicao = this.lista.get(position);
-        convertView = LayoutInflater.from(this.context).inflate(R.layout.layout_lista_comentario, null);
-
-          ivFotoCliente = convertView.findViewById(R.id.profile_image);
-//        Picasso.get().load("").into(ivFotoCliente);
-
-        tvComentario = convertView.findViewById(R.id.tv_comentario);
-        tvComentario.setText(comentarioPosicao.getComentario());
-
-        tvNome = convertView.findViewById(R.id.tv_nome);
-        tvNome.setText(comentarioPosicao.getNome());
-
-        tvData = convertView.findViewById(R.id.tv_data_comentario);
-        tvData.setText(comentarioPosicao.getData());
-
-        return convertView;
-
-    }
+//    @Override
+//    public View getView(int position, View convertView, ViewGroup parent) {
+//
+//        Comentario comentarioPosicao = this.lista.get(position);
+//        convertView = LayoutInflater.from(this.context).inflate(R.layout.layout_lista_comentario, null);
+//
+//          ivFotoCliente = convertView.findViewById(R.id.profile_image);
+////        Picasso.get().load("").into(ivFotoCliente);
+//
+//        tvComentario = convertView.findViewById(R.id.tv_comentario);
+//        tvComentario.setText(comentarioPosicao.getComentario());
+//
+//        tvNome = convertView.findViewById(R.id.tv_nome);
+//        tvNome.setText(comentarioPosicao.getNome());
+//
+//        tvData = convertView.findViewById(R.id.tv_data_comentario);
+//        tvData.setText(comentarioPosicao.getData());
+//
+//        return convertView;
+//
+//    }
 
 
 }

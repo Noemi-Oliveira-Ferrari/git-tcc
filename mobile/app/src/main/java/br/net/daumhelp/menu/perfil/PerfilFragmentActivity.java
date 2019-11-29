@@ -62,24 +62,24 @@ public class PerfilFragmentActivity extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
 
-        ArrayList<Comentario> lista = new ArrayList<Comentario>();
+//        ArrayList<Comentario> lista = new ArrayList<Comentario>();
+//
+//        Comentario comentario0 = new Comentario("PEDRO DE ALMEIDA SANTOS", "05/10/2019", "Comentário que o cliente vai fazer sobre o profissional ou serviço ...", 5);
+//        Comentario comentario1 = new Comentario("PEDRO DE ALMEIDA SANTOS", "05/10/2019", "Comentário que o cliente vai fazer sobre o profissional ou serviço ...", 5);
+//        Comentario comentario2 = new Comentario("PEDRO DE ALMEIDA SANTOS", "05/10/2019", "Comentário que o cliente vai fazer sobre o profissional ou serviço ...", 5);
+//        Comentario comentario3 = new Comentario("PEDRO DE ALMEIDA SANTOS", "05/10/2019", "Comentário que o cliente vai fazer sobre o profissional ou serviço ...", 5);
+//        Comentario comentario4 = new Comentario("PEDRO DE ALMEIDA SANTOS", "05/10/2019", "Comentário que o cliente vai fazer sobre o profissional ou serviço ...", 5);
+//
+//        lista.add(comentario0);
+//        lista.add(comentario1);
+//        lista.add(comentario2);
+//        lista.add(comentario3);
+//        lista.add(comentario4);
 
-        Comentario comentario0 = new Comentario("PEDRO DE ALMEIDA SANTOS", "05/10/2019", "Comentário que o cliente vai fazer sobre o profissional ou serviço ...", 5);
-        Comentario comentario1 = new Comentario("PEDRO DE ALMEIDA SANTOS", "05/10/2019", "Comentário que o cliente vai fazer sobre o profissional ou serviço ...", 5);
-        Comentario comentario2 = new Comentario("PEDRO DE ALMEIDA SANTOS", "05/10/2019", "Comentário que o cliente vai fazer sobre o profissional ou serviço ...", 5);
-        Comentario comentario3 = new Comentario("PEDRO DE ALMEIDA SANTOS", "05/10/2019", "Comentário que o cliente vai fazer sobre o profissional ou serviço ...", 5);
-        Comentario comentario4 = new Comentario("PEDRO DE ALMEIDA SANTOS", "05/10/2019", "Comentário que o cliente vai fazer sobre o profissional ou serviço ...", 5);
+//        ListaAdapterComentario listaComentario = new ListaAdapterComentario(getContext(), lista);
 
-        lista.add(comentario0);
-        lista.add(comentario1);
-        lista.add(comentario2);
-        lista.add(comentario3);
-        lista.add(comentario4);
-
-        ListaAdapterComentario listaComentario = new ListaAdapterComentario(getContext(), lista);
-
-        ListView listView = (ListView) getView().findViewById(R.id.lv_comentarios);
-        listView.setAdapter(listaComentario);
+//        ListView listView = (ListView) getView().findViewById(R.id.lv_comentarios);
+//        listView.setAdapter(listaComentario);
 
         btnConfig = getView().findViewById(R.id.ic_config);
         tvLocal = getView().findViewById(R.id.tv_local);

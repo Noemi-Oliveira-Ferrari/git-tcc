@@ -2,6 +2,7 @@ package br.net.daumhelp.configretrofit;
 
 import br.net.daumhelp.service.CategoriaService;
 import br.net.daumhelp.service.ClienteService;
+import br.net.daumhelp.service.ComentarioService;
 import br.net.daumhelp.service.EnderecoService;
 import br.net.daumhelp.service.FotoService;
 import br.net.daumhelp.service.LoginService;
@@ -62,6 +63,8 @@ public class RetroFitConfig {
     public FotoService getFotoService(){
         return this.retroFit.create(FotoService.class);
     }
+
+    public ComentarioService getComentarioService(){return  this.retroFit.create(ComentarioService.class);}
 
 
 }

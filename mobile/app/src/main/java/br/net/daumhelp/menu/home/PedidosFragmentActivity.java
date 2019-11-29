@@ -88,8 +88,6 @@ public class PedidosFragmentActivity extends Fragment implements SwipeRefreshLay
             call.enqueue(new Callback<List<Pedido>>() {
                 @Override
                 public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
-
-
                     lista = (ArrayList<Pedido>) response.body();
                     if(lista != null){
                         for(Pedido p : lista){

@@ -163,6 +163,7 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
                                 intent.putExtra("dados_pessoais", listaDados);
                                 startActivity(intent);
                             } else{
+                                progressDialog.dismiss();
                                 etCpf.setError("CPF inválido");
                             }
                         }else {
@@ -183,11 +184,13 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
                                     @Override
                                     public void onResponse(Call<Confirmacao> call, Response<Confirmacao> response) {
                                         response.body();
+                                        progressDialog.dismiss();
                                     }
 
                                     @Override
                                     public void onFailure(Call<Confirmacao> call, Throwable t) {
                                         Log.i("Retrofit Email", t.getMessage());
+                                        progressDialog.dismiss();
                                     }
                                 });
 
@@ -196,12 +199,18 @@ public class CadastroDadosPessoaisActivity extends AppCompatActivity {
                                 startActivity(intent);
                             } else {
                                 etCpf.setError("CNPJ inválido");
+                                progressDialog.dismiss();
                             }
                         }
+
+                    }else{
+
+                        progressDialog.dismiss();
 
                     }
                 }else{
 
+                    progressDialog.dismiss();
                     Toast.makeText(CadastroDadosPessoaisActivity.this, "As senhas não correspondem", Toast.LENGTH_SHORT).show();
 
                 }

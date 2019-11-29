@@ -71,23 +71,22 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
         alertDialog = new Dialog(this);
 
         Intent intent = getIntent();
-
-
         if (intent.getSerializableExtra("tokenCliente") != null) {
             tokenCliente = (String) intent.getSerializableExtra("tokenCliente");
         }
 
         if (intent.getSerializableExtra("profissionalBusca") != null && intent.getSerializableExtra("cliente") != null) {
 
-
             profissionalSelecionado = (Profissional) intent.getSerializableExtra("profissionalBusca");
             clienteLogado = (Cliente) intent.getSerializableExtra("cliente");
-
 
             btnAvaliar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(PerfilProfissionalBuscaActivity.this, ComentarioActivity.class);
+                    intent.putExtra("profissional", profissionalSelecionado);
+                    intent.putExtra("cliente", clienteLogado);
+                    intent.putExtra("tokenCliente", tokenCliente);
                     startActivity(intent);
                 }
             });

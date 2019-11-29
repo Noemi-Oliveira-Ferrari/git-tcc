@@ -243,6 +243,11 @@ public class CadastroFotoActivity extends AppCompatActivity {
 
         }
 
+
+
+
+
+
     }
 
 }

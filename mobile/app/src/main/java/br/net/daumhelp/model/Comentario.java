@@ -4,25 +4,19 @@ import java.io.Serializable;
 
 public class Comentario implements Serializable {
 
-    private String nome;
     private String data;
     private String comentario;
     private int avaliacao;
+    private Profissional profissional;
+    private Cliente cliente;
 
-    public Comentario(String nome, String data, String comentario, int avaliacao) {
+    /*public Comentario(String nome, String data, String comentario, int avaliacao) {
         this.nome = nome;
         this.data = data;
         this.comentario = comentario;
         this.avaliacao = avaliacao;
-    }
+    }*/
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
 
     public String getData() {
         return data;
@@ -48,13 +42,30 @@ public class Comentario implements Serializable {
         this.avaliacao = avaliacao;
     }
 
+    public Profissional getProfissional() {
+        return profissional;
+    }
+
+    public void setProfissional(Profissional profissional) {
+        this.profissional = profissional;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
     @Override
     public String toString() {
         return "Comentario{" +
-                "nome='" + nome + '\'' +
-                ", data='" + data + '\'' +
+                "data='" + data + '\'' +
                 ", comentario='" + comentario + '\'' +
                 ", avaliacao=" + avaliacao +
+                ", profissional=" + profissional +
+                ", cliente=" + cliente +
                 '}';
     }
 }

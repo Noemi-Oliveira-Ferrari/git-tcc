@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import br.net.daumhelp.R;
+//import me.pagar.model.PagarMe;
 
 public class PagamentoFragmentActivity extends Fragment {
 
@@ -28,6 +29,9 @@ public class PagamentoFragmentActivity extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
 
         Toast.makeText(getActivity(),"Aqui vai ser o pagamento!",Toast.LENGTH_SHORT).show();
     }
