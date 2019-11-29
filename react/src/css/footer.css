@@ -154,7 +154,8 @@
 
     .linha-responsiva
     {
-        visibility: hidden;
+        visibility: hidden;   
+        display: none;
     }
 
     .logo-rede-social
@@ -258,7 +259,7 @@
     {
         width: inherit;
         height: 20px;
-        margin-top: -50px;
+        margin-top: -40px;
     }
 
 

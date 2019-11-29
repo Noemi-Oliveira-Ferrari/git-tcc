@@ -100,9 +100,11 @@ export default class Header extends Component{
                                 Sobre Nós
                             </div> 
                         </Link>
-                        <div className="item-menu-header flex-center"> 
-                            Contato
-                        </div>
+                        <Link className="link" to="/faq" >
+                            <div className="item-menu-header flex-center"> 
+                                FAQ
+                            </div> 
+                        </Link>
                     </nav>
                 </div>
             </header>        

@@ -15,6 +15,9 @@ export class Sobrenos extends Component{
     render(){
         return(
             <>
+                <video autoplay muted loop id="myVideo">
+                    <source src="../../" type="video/mp4"/>
+                </video>
                 <div class="tamanho-caixa-quem-somos">
                 <div class="caixa-quem-somos">
                     <h1 class="titulo-quem-somos">Quem Somos?</h1>

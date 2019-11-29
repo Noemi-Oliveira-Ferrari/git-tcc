@@ -3,6 +3,7 @@ import '../css/font-awesome.css';
 import '../css/menu-lateral.css';
 import Perfil from '../img/user.png';
 import Servicos from '../img/suitcase.png';
+import Renda from '../img/renda.png';
 import { Link } from 'react-router';
 
 
@@ -44,6 +45,19 @@ export default class MenuLateral extends Component{
                                         </figure>
                                     </i>
                                     <span className="nav-text">Meus Serviços</span>
+                                </div>
+                            </li>
+                        </Link>
+
+                        <Link className="link" to="/app/profissional/renda">             
+                            <li>       
+                                <div className="ola">
+                                    <i className="fa fa-lg">
+                                        <figure>
+                                            <img id="img-perfil-sidebar" src={Renda}/>
+                                        </figure>
+                                    </i>
+                                    <span className="nav-text">Minha Renda</span>
                                 </div>
                             </li>
                         </Link>

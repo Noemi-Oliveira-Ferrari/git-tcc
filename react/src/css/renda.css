@@ -4,10 +4,11 @@
     .section-plano
     {
         width: 100%;
-        height: 1300px;
-        /* background-image: url(../img/fundo03.jpg); */
-        background-color: gold;
+        height: 1000px;
+        background-image: url(../img/fundo_branco.jfif);
+        /* background-color: gold; */
         background-size: cover;
+        background-attachment: fixed;
         flex-wrap: wrap;
     }
 
@@ -15,6 +16,7 @@
     {
         width: 100%;
         height: 100px;
+        /* background-color: #15caac */
     }
 
     .titulo-plano
@@ -28,11 +30,10 @@
     .section-plano-renda 
     { 
         width: 1300px;
-        height: 700px;
+        height: 800px;
         /* background-color: hotpink; */
     }
 
-    
 
     .caixa-btn-editar
     {
@@ -129,6 +130,16 @@
         margin-top: 30px;
     }
     
+    .caixa-renda
+    {    
+        width: 1300px;
+        height: 910px;
+        /* background-color: #09ddecd6; */
+        margin: auto;
+        border-radius: 20px;
+        box-sizing: border-box;
+        padding-top: 50px;
+    }
     .caixa-titulo-renda
     {
         width: 100%;
@@ -138,12 +149,16 @@
         padding-top: 30px;
     }
     
+    
     .titulo-renda
     {
+        width: inherit;
+        height: 100px;
         font-family: 'Lexend Deca';
         text-align: center;
         font-size: 4.5em;
         color: #ffffff;
+        /* background-color: fuchsia; */
     }
     
     .caixa-centro
@@ -151,180 +166,82 @@
         width: 100%;
         height: auto;
         min-height: 1050px;
-        overflow: auto;
         /* display: flex; */
         /* justify-content: center; */
         margin: auto;
-        background-color: #ffffff;
+        /* background-color: #9c1e1e; */
         box-sizing: border-box;
         padding-top: 55px;
+        padding-bottom: 55px;
     }
-
+    
+    
     .caixa-valores
     {
         width: 950px;
         height: 200px;
-        background-color: #cecbcbd9;
-        /* background-color: #E1E1E1; */
+        background-color: #ffffff;
+        /* background-color: rgb(36, 38, 71); */
         margin: auto;
         border-radius: 10px 10px 0px 0px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
         box-sizing: border-box;
-        padding-left: 30px;
-        padding-top: 30px;
+        padding: 20px;
+        /* box-sizing: border-box; */
+        /* padding-left: 30px; */
+        /* padding-top: 30px; */
     }
+    
+    .title-valor
+    {
+        width: inherit;
+        height: 50px;
+        font-size: 2em;
+        font-family: 'Lexend Deca';
+        color: #47525E;
+        /* background-color: lightblue; */
+    }
+    .text-valor
+    {
+        width: inherit;
+        height: 100px;
+        /* background-color: #15caac; */
+        font-size: 5em;
+        font-family: 'Lexend Deca';
+        /* margin-top: -5px; */
+        color: #47525E;
+    }
+    
 
     .caixa-servicos
     {
-        width: 1100px;
-        min-height: 500px;
-        height: auto;
-        overflow: auto;
-        background-color: #dcdcdcd1;
+        width: 1200px;
+        height: 800px;
+        overflow-y: auto;
+        background-color: #ffffff;
         margin: auto;
         border-radius: 10px;
         box-sizing: border-box;
-        padding-top: 30px;
-        padding-left: 20px;
+        flex-wrap: wrap;
     }
 
     .title-servicos-prestados
     {
-        width: 300px;
-        height: 55px;
-        font-size: 3em;
+        width:inherit;
+        height: 70px;
+        font-size: 1.5em;
         font-family: 'Lexend Deca';
-        color: #47525E;
-        margin-left: 20px;
-    }
+        color: rgb(255, 255, 255);
+        /* margin-left: 20px; */
+        background-color: #77c9d481;
+        margin-bottom: 50px;
 
-    .title-valor
-    {
-        font-size: 2em;
-        font-family: 'Lexend Deca';
-        color: #47525E;
-    }
-
-    .caixa-renda
-    {    
-        width: 1300px;
-        height: 910px;
-        background-color: #eaeaead6;
-        margin: auto;
-        border-radius: 20px;
-        box-sizing: border-box;
-        padding-top: 50px;
     }
     
-    .text-valor
-    {
-        font-size: 6em;
-        font-family: 'Lexend Deca';
-        margin-top: -5px;
-        color: #47525E;
-    }
-    
-    .servico-prestado
-    {
-        width: inherit;
-        height: 230px;
-        /* background-color: tomato; */
-        margin: auto;
-        margin-left: -20px;
-    }
 
-    .caixa-esquerda-servico
-    {
-        width: 240px;
-        height: 230px;
-        float: left;
-        /* background-color: #ffff00; */
-        box-sizing: border-box;
-        padding-top: 20px;
-    }
-    
-    .perfil-cliente-servico-prestado
-    {
-        width: 120px;
-        height: 120px;
-/*        background-color: #47525E;*/
-        background-image: url(../img/imagem01.png);
-        background-position: center;
-        background-size: cover;
-        border-radius: 100%;
-        margin: auto;
-/*        border: 3px solid hsla(165, 69%, 49%, 0.795);*/
-    }
-
-    .nome-cliente-servico
-    {
-        text-align: center;
-        font-size: 2em;
-        font-family: 'Lexend Deca';
-        color: #47525E;
-    }
-
-    .caixa-direita-servico
-    {
-        width: 860px;
-        height: 230px;
-        float: left;
-        /* background-color: rgb(255, 0, 234); */
-        box-sizing: border-box;
-        padding-top: 20px;
-        padding-left: 20px;
-        padding-right: 65px;
-    
-    }
-
-    .title-servico
-    {
-        font-size: 2em;
-        font-family: 'Lexend Deca';
-        color: #47525E;
-    }
-
-    .text-servico
-    {
-        text-align: justify;
-        font-size: 2em;
-        font-family: 'Lexend Deca';
-        color: #47525E;
-        box-sizing: border-box;
-        padding-top: 8px;
-        padding-bottom: 15px;
-    }
-
-    .btn-detalhes-servico
-    {
-        width: 150px;
-        height: 45px;
-        background-color: transparent;
-        border: 3px solid hsla(165, 69%, 49%, 0.795);
-        font-size: 2em;
-        font-family: 'Lexend Deca';
-        color: hsla(165, 69%, 49%, 0.795);
-        border-radius: 10px;
-        transition: 0.5s;
-    }
-    
-    .btn-detalhes-servico:hover
-    {
-        width: 200px;
-        transition: 0.5s;
-        cursor: pointer;;
-        background-color: hsla(165, 69%, 49%, 0.05);
-    }
-    
-    
-/*
-    .btn-detalhes-servico::after,
-    .btn-detalhes-servico::before
-    {
-        width: 150px;
-        transition: 0.5s;
-    }
-*/
-    
     /*----- Planos -----*/
     .card 
     {
@@ -335,6 +252,7 @@
       background: none;
       border: none;
       height: 700px;
+      cursor: pointer;
     }
 
     .card:hover .card__side--front-1,
@@ -467,9 +385,10 @@
         box-sizing: inherit;
     }
     
-    .card__side--front 
+    .card__side--front-1
     {
-    background-color: rgb(204, 45, 45);
+        
+    background-image: linear-gradient(to bottom right, hsla(165, 69%, 49%, 0.795), rgba(44, 210, 205, 0.801));
     }
      
     .card__side--front-2 

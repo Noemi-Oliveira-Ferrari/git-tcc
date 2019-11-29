@@ -9,13 +9,66 @@ import CaixaImagem from '../components/CaixaImagem';
 import Valor from '../img/value.png'
 import Missao from '../img/target.png'
 import Visao from '../img/flag.png'
+import CardServico from '../components/CardServico';
+import CapaPerfilPro from '../components/CapaPerfilPro';
+import { getUsuario } from '../utils/verificaSessionStrg';
+import { DOMINIO, DOMINIO_IMG } from '../global';
 
 export class RendaPro extends Component{
+
+    constructor() {
+        super();
+        this.state = {
+            nomePro: "", servicoPro: "",
+            localPro: "", notaPro: "",
+            valorPro: "", fotoPro: "",
+        }
+
+    }
+
+    colocaDadosNaCapa(pro){
+        let decimal;
+        let valorHora;
+        let localPro = `${pro.endereco.cidade.cidade}, ${pro.endereco.cidade.microrregiao.uf.estado} - ${pro.endereco.cidade.microrregiao.uf.uf}`;
+        let valor = pro.valorHora.toString();
+
+        if(valor.includes(".")){
+            valorHora = valor.split(".")[0];
+            decimal = valor.split(".")[1];
+            decimal = decimal.length < 2 ? decimal+"0" : decimal;
+            valorHora += ","+decimal;
+        }else{
+            valorHora = valor+",00";
+        }
+        // valorHora = valorHora.includes(".") ? valorHora.replace(".", ",") : valorHora+",00";
+        valorHora += "/h"
+
+        if(pro !== null && pro !== ""){
+            this.setState({nomePro: pro.nome});
+            this.setState({servicoPro: pro.subcategoria.subcategoria});
+            this.setState({localPro: localPro});
+            this.setState({valorPro: valorHora});
+            // this.setState({fotoPro: ImgPadrao});
+            this.setState({fotoPro: `url(${DOMINIO_IMG}duh/imagens/padrao_perfil.png)`});
+        }
+    }
+
+    componentDidMount(){
+        this.colocaDadosNaCapa(getUsuario());
+    }
 
     render(){
         return(
             <>
-            <section class="section-plano">
+            <CapaPerfilPro
+                nome={this.state.nomePro}
+                texto1={this.state.servicoPro}
+                texto2={this.state.localPro}
+                texto3="Média Geral: 4.9"
+                texto4={`R$ ${this.state.valorPro}`}
+                foto={this.state.fotoPro}
+            />
+            <section class="section-plano flex-center">
                 <div class="caixa-titulo-plano flex-center">
                     <h1 class="titulo-plano">Seus Planos</h1>
                 </div>
@@ -104,30 +157,38 @@ export class RendaPro extends Component{
                         <p class="title-valor">Renda atual</p>
                         <p class="text-valor">120,00</p>
                     </div>
-                    <div class="caixa-servicos">
+                    <div class="caixa-servicos flex-center">
                         <h2 class="title-servicos-prestados">Serviços Prestados</h2>
-                        <div class="servico-prestado">
-                            <div class="caixa-esquerda-servico">
-                                <div class="perfil-cliente-servico-prestado"></div>
-                                <p class="nome-cliente-servico">TextText TextText</p>
-                            </div>
-                            <div class="caixa-direita-servico">
-                                <h3 class="title-servico">Type something here</h3>
-                                <p class="text-servico">Type something here Type  dfgdsfg something here Type something fvb gb hereType something here fgdgdf Type something fvb gb hereType something here fgdgdf</p>
-                                <button class="btn-detalhes-servico">Detalhes</button>
-                            </div>
-                        </div>
-                        <div class="servico-prestado">
-                            <div class="caixa-esquerda-servico">
-                                <div class="perfil-cliente-servico-prestado"></div>
-                                <p class="nome-cliente-servico">TextText TextText</p>
-                            </div>
-                            <div class="caixa-direita-servico">
-                                <h3 class="title-servico">Type something here</h3>
-                                <p class="text-servico">Type something here Type  dfgdsfg something here Type something fvb gb hereType something here fgdgdf Type something fvb gb hereType something here fgdgdf</p>
-                                <button class="btn-detalhes-servico">Detalhes</button>
-                            </div>
-                        </div>
+                        <CardServico
+                                titulo="Concerto maquina de lavar Brastemp"
+                                enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                estrelas="caixa-star-hidden"
+                            />
+                        <CardServico
+                                titulo="Concerto maquina de lavar Brastemp"
+                                enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                estrelas="caixa-star-hidden"
+                            />
+                        <CardServico
+                                titulo="Concerto maquina de lavar Brastemp"
+                                enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                estrelas="caixa-star-hidden"
+                            />
+                        <CardServico
+                                titulo="Concerto maquina de lavar Brastemp"
+                                enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                estrelas="caixa-star-hidden"
+                            />
+                        <CardServico
+                                titulo="Concerto maquina de lavar Brastemp"
+                                enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                estrelas="caixa-star-hidden"
+                            />
                     </div>
                 </div>
             </div>

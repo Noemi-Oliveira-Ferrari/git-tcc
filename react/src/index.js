@@ -12,6 +12,8 @@ import PerfilPro from './pages/PerfilPro';
 import ServicosPro from './pages/ServicosPro';
 import Home from './pages/Home';
 import Sobrenos from './pages/Sobrenos';
+import RendaPro from './pages/RendaPro';
+import Faq from './pages/Faq';
 
 ReactDOM.render(
     <Router history={browserHistory}>
@@ -26,6 +28,9 @@ ReactDOM.render(
             <Route path='/app/profissional/servicos' component={ServicosPro}/>
             <Route path='/home' component={Home}/>
             <Route path='/sobrenos' component={Sobrenos}/>
+            <Route path='/faq' component={Faq}/>
+            <Route path='/app/profissional/renda' component={RendaPro}/>
+            
         </Route>
     </Router>,    
     document.getElementById('root')

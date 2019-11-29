@@ -78,6 +78,9 @@ footer
     background-color: cyan;;
 } */
  
+hr{
+    margin: auto !important;
+}
 
 .link{
     text-decoration: none;

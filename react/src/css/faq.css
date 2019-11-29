@@ -103,7 +103,7 @@
         height: 1120px;
         background-color:#000000;
         background-size: cover;
-        position: relative;
+        /* position: relative; */
     }
 
     .caixa-perguntas-frequentes-faq
@@ -227,11 +227,13 @@
     .caixa-problema-faq
     {
         width: 100%;
-        height: 965px;
+        height: 850px;
         /* background-color: rgb(230, 230, 230); */
         background-image: url(../img/image-faq1.jpg);
         background-size: cover;
-        position: absolute;
+        position: relative;
+        margin-bottom: -20px;    
+        position: static;
     }
 
     .caixa-titulo-problema-faq
@@ -240,6 +242,7 @@
         height: 150px;
         /* background-color: #57bc90; */
         background-image: linear-gradient(to bottom right, #77c9d4, #57bc90);
+        position: relative;
     }
 
     .titulo-problema-nao-resolvido-faq
@@ -273,7 +276,7 @@
     .caixa-inputs-faq
     {
         width: 1300px;
-        height: 100px;
+        height: 120px;
         margin: auto;
         display: flex;
         background-color: transparent;
@@ -285,9 +288,9 @@
     .caixa-inputs-formulario-contato
     {
         width: 1070px;
-        height: 585px;
+        height: 400px;
         background-color: transparent;
-        position: absolute;
+        /* position: absolute; */
         z-index: 2;
         display: flex;
     }
@@ -304,9 +307,9 @@
     .card-formulario-contato
     {
         width: 1075px;
-        min-height: 600px;
+        min-height: 400px;
         height: auto;
-        overflow: hidden;
+        /* overflow: hidden; */
         border-radius: 10px;
         box-sizing: border-box;
         display: flex;
@@ -452,7 +455,7 @@
         display: flex;
         justify-content: center;
         margin-top: 50px;
-        position: relative;
+        /* position: relative; */
         z-index: 3;
     }
 

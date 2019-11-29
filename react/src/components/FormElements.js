@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import '../css/cadastro-pro.css';
 import InputMask from 'react-input-mask';
 import CurrencyFormat from 'react-currency-format';
@@ -85,3 +85,37 @@ export class Selects extends Component{
         );
     }
 }
+
+export class InputFaq extends Component{
+    render(){
+     return(
+ 
+         // <Inputs 
+         //     classDivInput="caixa-campo-login"
+         //     label="E-mail"
+         //     classInput="input-login"
+         //     type="email"
+         //     name="txt_email"/>
+ 
+        
+         <input 
+         className={this.props.classInput} type={this.props.type} name="" id={this.props.idSelect}/>
+         
+     );
+    }
+ 
+ }
+
+export class InputProblema extends Component{
+    render(){
+     return(
+ 
+        <Fragment>
+            <label>{this.props.label}</label>
+            <input id={this.props.id} type="" value="" name="" className={this.props.classInput} />
+        </Fragment>
+         
+     );
+    }
+ 
+ }
