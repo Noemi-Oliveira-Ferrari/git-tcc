@@ -8,7 +8,6 @@ import MenuLateral from '../components/MenuLateral';
 import { getTipoLogado, getToken, getUsuario } from '../utils/verificaSessionStrg';
 import { DOMINIO } from '../global';
 import {SOLICITADO, ORCADO, ACEITO, REJEITADO, CANCELADO_CLIENTE, CANCELADO_PROFISSIONAL, CONCLUIDO} from '../utils/codeStatusPedidos';
-import { conditionalExpression } from '@babel/types';
 
 export class ServicosPro extends Component{
 
@@ -87,90 +86,90 @@ export class ServicosPro extends Component{
 
     render(){
         return(
-        <Fragment>
-            {/* <MenuLateral/> */}
-            <CapaPerfilPro
-                nome={getUsuario().nome}
-                texto1="Veja o estado dos Pedidos"
-                texto2="Fique sempre por dentro"
-                texto3="Verifique suas Atividades"
-                texto4="Veja suas Avaliações"
-            />
-            <div class="caixa-conteudo-servico-pro">
-                <div class="caixa-titulo-servico">
-                    <h1 class="titulo-servico">Seus Pedidos</h1>
-                </div>
-                <div class="conteudo-pro-servico">
-                    <div class="caixa-conteudo-informacoes-servico">
-                        <div class="text-dados">
-                            <h3>Pendentes</h3>
+            <Fragment>
+                {/* <MenuLateral/> */}
+                <CapaPerfilPro
+                    nome={getUsuario().nome}
+                    texto1="Veja o estado dos Pedidos"
+                    texto2="Fique sempre por dentro"
+                    texto3="Verifique suas Atividades"
+                    texto4="Veja suas Avaliações"
+                />
+                <div class="caixa-conteudo-servico-pro">
+                    <div class="caixa-titulo-servico">
+                        <h1 class="titulo-servico">Seus Pedidos</h1>
+                    </div>
+                    <div class="conteudo-pro-servico">
+                        <div class="caixa-conteudo-informacoes-servico">
+                            <div class="text-dados">
+                                <h3>Pendentes</h3>
+                            </div>
+                            <div className="servico-overflow">
+                                {
+                                    this.state.pedidosPendentes.map(pedido =>(
+                                        <CardServico 
+                                            titulo={pedido.cliente.nome}
+                                            enderecoCliente={`${pedido.cliente.endereco.logradouro}, 
+                                                ${pedido.cliente.endereco.cidade.cidade} - 
+                                                ${pedido.cliente.endereco.cidade.microrregiao.uf.uf}`
+                                            }
+                                            comentario={pedido.descricao}
+                                            estrelas="caixa-star-hidden"
+                                        />
+                                    ))
+                                }
+                                <CardServico
+                                    titulo="Concerto maquina de lavar Brastemp"
+                                    enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                    comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                    estrelas="caixa-star-hidden"
+                                />
+                                {/*
+                                <CardServico
+                                    titulo="Concerto maquina de lavar Brastemp"
+                                    enderecoCliente="Maria Gasolina, Barueri - SP"
+                                    comentario="Minha maquina quebrou e nao funciona a peça tal pegou fogo e preciso de uma nova"
+                                    estrelas="caixa-star-hidden"
+                                /> */}
+                            </div>
                         </div>
-                        <div className="servico-overflow">
-                            {
-                                this.state.pedidosPendentes.map(pedido =>(
-                                    <CardServico 
-                                        titulo={pedido.cliente.nome}
-                                        enderecoCliente={`${pedido.cliente.endereco.logradouro}, 
-                                            ${pedido.cliente.endereco.cidade.cidade} - 
-                                            ${pedido.cliente.endereco.cidade.microrregiao.uf.uf}`
-                                        }
-                                        comentario={pedido.descricao}
-                                        estrelas="caixa-star-hidden"
-                                    />
-                                ))
-                            }
-                            <CardServico
-                                titulo="Concerto maquina de lavar Brastemp"
-                                enderecoCliente="Rofrigo Amoedo, Jandira - SP"
-                                comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
-                                estrelas="caixa-star-hidden"
-                            />
-                            {/*
-                            <CardServico
-                                titulo="Concerto maquina de lavar Brastemp"
-                                enderecoCliente="Maria Gasolina, Barueri - SP"
-                                comentario="Minha maquina quebrou e nao funciona a peça tal pegou fogo e preciso de uma nova"
-                                estrelas="caixa-star-hidden"
-                            /> */}
+                        <div class="caixa-conteudo-informacoes-servico">
+                            <div class="text-dados">
+                                <h3>Concluídos</h3>
+                            </div>
+                            <div className="servico-overflow">
+                                {
+                                    this.state.pedidosConcluidos.map(pedido =>(
+                                        <CardServico 
+                                            titulo={pedido.cliente.nome}
+                                            enderecoCliente={`${pedido.cliente.endereco.logradouro}, 
+                                                ${pedido.cliente.endereco.cidade.cidade} - 
+                                                ${pedido.cliente.endereco.cidade.microrregiao.uf.uf}`
+                                            }
+                                            comentario={pedido.descricao}
+                                            estrelas="caixa-star"
+                                        />
+                                    ))
+                                }
+                                <CardServico
+                                    titulo="Fiamento de dois comodos"
+                                    enderecoCliente="Maria Fernandes, Barueri - SP"
+                                    comentario="Ótimo profissional, chegou no horário e fez o trabalho bem feito, mto educado, só deixou sujo"
+                                    estrelas="caixa-star"
+                                    avaliacao={`Avalação do Cliente: 9`}
+                                />
+                                {/* 
+                                <CardServico
+                                    titulo="Fiamento de dois comodos"
+                                    enderecoCliente="Maria Gasolina, Barueri - SP"
+                                    comentario="Otimo profissional, chegou no horario e fez o trabalho bem feito, mto educado so deixou sujo"
+                                    estrelas="caixa-star"
+                                /> */}
+                            </div>
                         </div>
                     </div>
-                    <div class="caixa-conteudo-informacoes-servico">
-                        <div class="text-dados">
-                            <h3>Concluídos</h3>
-                        </div>
-                        <div className="servico-overflow">
-                            {
-                                this.state.pedidosConcluidos.map(pedido =>(
-                                    <CardServico 
-                                        titulo={pedido.cliente.nome}
-                                        enderecoCliente={`${pedido.cliente.endereco.logradouro}, 
-                                            ${pedido.cliente.endereco.cidade.cidade} - 
-                                            ${pedido.cliente.endereco.cidade.microrregiao.uf.uf}`
-                                        }
-                                        comentario={pedido.descricao}
-                                        estrelas="caixa-star"
-                                    />
-                                ))
-                            }
-                            <CardServico
-                                titulo="Fiamento de dois comodos"
-                                enderecoCliente="Maria Fernandes, Barueri - SP"
-                                comentario="Ótimo profissional, chegou no horário e fez o trabalho bem feito, mto educado, só deixou sujo"
-                                estrelas="caixa-star"
-                                avaliacao={`Avalação do Cliente: 9`}
-                            />
-                            {/* 
-                            <CardServico
-                                titulo="Fiamento de dois comodos"
-                                enderecoCliente="Maria Gasolina, Barueri - SP"
-                                comentario="Otimo profissional, chegou no horario e fez o trabalho bem feito, mto educado so deixou sujo"
-                                estrelas="caixa-star"
-                            /> */}
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </Fragment>
+            </Fragment>
 
 
         );

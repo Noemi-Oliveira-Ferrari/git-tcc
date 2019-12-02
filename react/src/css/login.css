@@ -340,16 +340,12 @@
         box-shadow: 4px 3px 4px #0000002c;
     }
     
-    .input-login:hover
-    {
-        background-color: #cadbd1;
-    }
 
     .btn-entrar
     {    
         width: 150px;
         height: 60px;
-        border-radius: 10px;
+        border-radius: 30px;
         letter-spacing: 1.5;
         background-color: #fdfdfd00;
         border: solid 0.096em #ffffff;

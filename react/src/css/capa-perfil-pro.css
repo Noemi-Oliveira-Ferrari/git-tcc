@@ -255,15 +255,100 @@
 		background-color: #64726c;
 		color: #d4d4d4;
 	}
+	.voltar-topo{
+		display: none;
+	}
 }
 
 @media screen and (max-device-width:880px)
 {
 
+    .caixa-botoes-upload{
+        position: absolute;
+		width: 100%;
+        margin-top: -0px;
+		outline: none;
+		background-color: rgba(0, 0, 0, 0.061);
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+    }
+
+	.perfil-pro-upload-label {
+		font-family: 'Lexend Deca';
+		display: block;
+		/* padding: 14px 10px; */
+		/* background: rgb(195, 210, 57); */
+		font-size: 13px;
+		/* transition: all .3s; */
+		cursor: pointer;
+		padding-top: 7px;
+	}
+	.perfil-pro-upload {
+		position: absolute;
+		top: 0; left: 0;
+		opacity: 0;
+		cursor: pointer;
+	}
+
+	
+	.caixa-input-file,
+	.caixa-confirm-file{
+		width: 120px;
+        height: 40px;
+		/* border: none; */
+        border-radius: 20px;
+		cursor: pointer;
+		/* margin-left: 70px;
+		margin-right: 70px; */
+		box-shadow: 0 0 7px #00000065;
+		border: none;
+		/* box-sizing: border-box; */
+		
+		font-family: 'Lexend Deca';
+		font-size: 15px;
+		transition: .3s ease;
+		
+	}
+	.caixa-input-file,
+	.caixa-confirm-file{
+		background-color: #57bc90;
+		color: #ffffff;
+	}
+	.caixa-input-file:hover,
+	.caixa-confirm-file:hover{
+		background-color: #8aefc0;
+		color: #1e8b62;
+		transition: .3s ease;
+		box-shadow: 0 0 12px #00000042;
+	}
+	.caixa-input-file:hover > label{
+		transition: .3s ease;
+		color: #1e8b62;
+	}
+
+	.btn-upload-disabled{
+		width: 120px;
+        height: 40px;
+		/* border: none; */
+        border-radius: 20px;
+		cursor: pointer;
+		/* margin-left: 70px;
+		margin-right: 70px; */
+		box-shadow: 0 0 7px #00000065;
+		border: none;
+		/* box-sizing: border-box; */
+		
+		font-family: 'Lexend Deca';
+		font-size: 13px;
+		background-color: #64726c;
+		color: #d4d4d4;
+	}
+
 	.capa-perfil-pro
 	{
 		width: 100%;
-		height: 100px;
+		height: 150px;
 		position:relative;
 		border-bottom: 3px solid #fff;
 		background-position:center;
@@ -293,7 +378,7 @@
 	.caixa-perfil
 	{
 		width: 100%;
-		height: 250px;
+		height: 360px;
 		margin: auto;
 		/* background-color: rgb(197, 41, 41); */
 		font-family: 'Lexend Deca';
@@ -306,59 +391,58 @@
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
+	
+	.center-info-usuario{
+		width: 100%;
+		height: 190px;
+		/* background-color: rgb(28, 152, 209); */
+		margin-top: 50px;
+	}
 
-	.nome-cliente
+	.caixa-nome-usuario
 	{
 		width: inherit;
-		height: 20px;
+		height: 40px;
 		/* background-color: violet; */
-		font-family: 'Lexend Deca';
 		/* margin-bottom: 51px; */
 		margin-top: 10px;
 		margin-bottom: 10px;
-        color: #84848D;     
-		font-size: 1.5em;
 		
 	}
-	
+	.nome-usuario-capa{
+		font-size: 30px;
+		color: #84848D;
+		font-family: 'Lexend Deca';
+	}
+
 	.caixa-informacoes-basicas
 	{
 		width: inherit;
-		min-height: 100px;
-		/* background-color: chocolate; */
+		height: 130px;
+		/* background-color: rgb(214, 85, 175); */
 		margin: auto;
 	}
 	
 	.caixa-info
 	{
-		width: 100%;
-		min-height: 30px;
+		width: 95%;
+		max-height: 180px;
 		/* clear: both; */
 		/* background-color:lightblue; */
 		margin: auto;
         color: #84848D;     
-		font-size: 0.8em;
+		font-size: 1.12em;
 	}
 	
 	.caixa-info1
 	{
-		width: 50%;
-		min-height: 20px;
-		float: left;
+		width: 100%;
+		max-height: 70px;
 		margin-right: 10px;
 		/* background-color: lawngreen; */
 		margin: auto;
-		font-family: 'Lexend Deca';
-		word-spacing: 1px;
-		margin-bottom: 20px;
+		font-family: 'Manjari';
+		margin-bottom: 7px;
 	}
 	
-	.caixa-info1:hover
-	{
-		color: #57bc90;
-		transition: 0.8s;
-		/* text-decoration: underline; */
-	}
-	
-
 }

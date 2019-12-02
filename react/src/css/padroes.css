@@ -20,6 +20,11 @@ h3, h4, h5, h6, div, figure, section, form{
     src: url("../fonts/Kodchasan-Bold.ttf");
 }
 
+@font-face{
+    font-family: 'Anonymous';
+    src: url("../fonts/AnonymousPro-Bold.ttf");
+}
+
 .titulo-daumhelp{
     font-family: 'Koschasan';
 }

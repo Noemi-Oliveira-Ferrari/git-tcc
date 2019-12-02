@@ -248,7 +248,7 @@ export class Login extends Component{
 													classInput="input-login"
 													type="email"
 													name="txt_email"
-													id="txt-email"
+													id="txt-email-login"
 													onChange={this.setEmail}
 													// onBlur={this.getEmail}
 													disabled="false"/>
@@ -259,7 +259,7 @@ export class Login extends Component{
 													classInput="input-login"
 													type="password"
 													name="txt_senha"
-													id="txt-senha"
+													id="txt-senha-login"
 													onChange={this.setSenha}
 													disabled="true"/>
 

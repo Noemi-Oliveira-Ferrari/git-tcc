@@ -110,7 +110,7 @@ class PerfilPro extends Component{
     colocaDadosNaCapa(pro){
         let decimal;
         let valorHora;
-        let localPro = `${pro.endereco.cidade.cidade}, ${pro.endereco.cidade.microrregiao.uf.estado} - ${pro.endereco.cidade.microrregiao.uf.uf}`;
+        let localPro = `${pro.endereco.cidade.cidade} - ${pro.endereco.cidade.microrregiao.uf.estado}`;
         let valor = pro.valorHora.toString();
 
         if(valor.includes(".")){

@@ -211,9 +211,13 @@ export class CapaPerfilPro extends Component{
                 <ModalLoadConst abrir={this.state.loading} onClose={this.modalLoad}/>
                 <ModalAlertas tipoAlerta={this.state.tipoAlerta} titulo={this.state.tituloAlerta} erros={this.state.erros} abrir={this.state.showModalErro} onClose={this.ModalAlertas}/>
                 <div className="capa-perfil-pro">
-                    klugkglkj
                 </div>
                 <div className="caixa-perfil">
+                    <div className="voltar-top">
+                        <figure>
+                            
+                        </figure>
+                    </div>
                     <div className="avatar-auxiliar">
                         <div className="avatar" style={{backgroundImage: this.state.imgPerfil !== "" ? this.state.imgPerfil !== null ? `url(${this.state.imgPerfil})` : props[5] : props[5]}}></div>
                     </div>

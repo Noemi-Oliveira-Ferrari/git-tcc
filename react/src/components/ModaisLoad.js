@@ -112,7 +112,7 @@ export const ModalAlertas = ({tipoAlerta, titulo, erros, onClose, abrir}) =>
                     }
                     </ul>
                 </div>
-                <div id="footer-modal-erros-function" className="flex-center">
+                <div id="footer-modal-erros" className="flex-center">
                     <button onClick={onClose} id="btn-ok-modal">
                         OK!
                     </button>
