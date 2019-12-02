@@ -24,7 +24,8 @@ export const getUpdatedPro = (profissional) =>{
     axios({
         method: "GET",
         url: `${DOMINIO}profissionais/id/${profissional.idProfissional}`,
-        timeout: 30000
+        timeout: 30000,
+        headers: {"token": getToken()}
     })
     .then(response=>{
         console.log("---------------------9999");

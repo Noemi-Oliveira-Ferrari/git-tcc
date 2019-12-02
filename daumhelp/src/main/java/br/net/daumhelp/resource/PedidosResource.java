@@ -166,9 +166,25 @@ public class PedidosResource {
 		
 		return ResponseEntity.ok(pedido);
 	}
-	
-	@PutMapping("/rejeitar/{idPedido}")
-	public ResponseEntity<Pedido> rejeitarPedido(@PathVariable Long idPedido){
+
+	@PutMapping("/cliente/rejeitar/{idPedido}")
+	public ResponseEntity<Pedido> clienteRejeitarPedido(@PathVariable Long idPedido){
+		
+		Pedido pedido = pedidoRepository.findById(idPedido).get();
+
+		//DEFINE O NOVO STATUS DO PEDIDO ATUAL
+		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.CANCELADO_CLIENTE.getValue()).get();
+		pedido.setStatus(statusPedido);
+		
+		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
+		
+		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
+		pedidoRepository.save(pedidoSalvo);
+		
+		return ResponseEntity.ok(pedido);
+	}
+	@PutMapping("/profissional/rejeitar/{idPedido}")
+	public ResponseEntity<Pedido> proRejeitarPedido(@PathVariable Long idPedido){
 		
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
 

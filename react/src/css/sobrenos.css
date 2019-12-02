@@ -118,13 +118,28 @@
         flex-wrap: wrap;
     }
     
+    .imagem-mvv-quem-somos
+    {
+        animation-name: imagem-mvv-quem-somos;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+
     .imagem-mvv-quem-somos img
     {
         width: 250px;
         height: 250px;
         border-radius: 10px;
         /* background-color: #00ffd5; */
+    }    
+    
+    @keyframes imagem-mvv-quem-somos {
+        from { transform: translate(0,  0px); }
+        50%  { transform: translate(0, 10px); }
+        to   { transform: translate(0, -0px); }    
     }
+
     .title-mvv-quem-somos
     {
         width: 300px;
@@ -220,7 +235,19 @@
         margin: 35px;
         margin: auto;
         margin-bottom: 15px;
-    
+        animation-name: imagem-quem-somos;
+        animation-duration: 4s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        /* margin-left: 30px;
+        margin-top: 5px; */
+    }
+
+    @keyframes imagem-quem-somos
+    {
+        from { transform: translate(0,  0px); }
+        50%  { transform: translate(0, 10px); }
+        to   { transform: translate(0, -0px); }    
     }
 
     .caixa-esquerda-quem-somos

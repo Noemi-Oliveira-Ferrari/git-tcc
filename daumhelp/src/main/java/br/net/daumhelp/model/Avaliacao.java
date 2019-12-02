@@ -10,31 +10,34 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tbl_avaliacao_pedido")
-public class AvaliacaoPedido {
+@Table(name = "tbl_avaliacao")
+public class Avaliacao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idAvaliacaoPedido;
+	private Long idAvaliacao;
 	private String comentario;
 
 	@NotNull
 	private Integer nota;
 	private String dataAvaliacao;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "id_pedido")
-	private Pedido pedido;
-	
+	@JoinColumn(name = "id_profissional")
+	private Profissional profissional;
+	@ManyToOne
+	@JoinColumn(name = "id_cliente")
+	private Cliente cliente;
+
 	private String criadoEm;
 	private String atualizadoEm;
 
 	public Long getIdAvaliacaoPedido() {
-		return idAvaliacaoPedido;
+		return idAvaliacao;
 	}
 
 	public void setIdAvaliacaoPedido(Long idAvaliacaoPedido) {
-		this.idAvaliacaoPedido = idAvaliacaoPedido;
+		this.idAvaliacao = idAvaliacaoPedido;
 	}
 
 	public String getComentario() {
@@ -61,6 +64,22 @@ public class AvaliacaoPedido {
 		this.dataAvaliacao = dataAvaliacao;
 	}
 
+	public Profissional getProfissional() {
+		return profissional;
+	}
+
+	public void setProfissional(Profissional profissional) {
+		this.profissional = profissional;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+
 	public String getCriadoEm() {
 		return criadoEm;
 	}
@@ -77,19 +96,11 @@ public class AvaliacaoPedido {
 		this.atualizadoEm = atualizadoEm;
 	}
 
-	public Pedido getPedido() {
-		return pedido;
-	}
-
-	public void setPedido(Pedido pedido) {
-		this.pedido = pedido;
-	}
-
 	@Override
 	public String toString() {
-		return "AvaliacaoPedido [idAvaliacaoPedido=" + idAvaliacaoPedido + ", comentario=" + comentario + ", nota="
-				+ nota + ", dataAvaliacao=" + dataAvaliacao + ", criadoEm=" + criadoEm + ", atualizadoEm="
-				+ atualizadoEm + ", pedido=" + pedido + "]";
+		return "Avaliacao [idAvaliacaoPedido=" + idAvaliacao + ", comentario=" + comentario + ", nota=" + nota
+				+ ", dataAvaliacao=" + dataAvaliacao + ", profissional=" + profissional + ", cliente=" + cliente
+				+ ", criadoEm=" + criadoEm + ", atualizadoEm=" + atualizadoEm + "]";
 	}
 
 }

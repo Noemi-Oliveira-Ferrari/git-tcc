@@ -734,7 +734,7 @@
     #txt-valor-hora{
         height: 50px;
         font-family: "Manjari";
-        font-size: 23px;
+        font-size: 19px;
         box-sizing: border-box;
         padding-top: 10px;
         background-color: #dee0e0;
@@ -865,7 +865,7 @@
         resize: none;
         overflow: auto;
         background-color: #dee0e0;
-        font-size: 23px;
+        font-size: 18px;
     }
 
 

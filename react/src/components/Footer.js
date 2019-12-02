@@ -8,10 +8,10 @@ import Skype from '../img/skype.png';
 import Snapchat from '../img/snapchat.png';
 import Flaticon from '../img/flaticon.png';
 import {Link} from 'react-router';
+import DaUmHelp from '../components/DaUmHelp';
 const be = "Brace {Everything}"
 // import {}
 
-import DaUmHelp from '../components/DaUmHelp';
 
 
 export default class Footer extends Component{

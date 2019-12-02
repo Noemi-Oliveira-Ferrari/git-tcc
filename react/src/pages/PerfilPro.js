@@ -160,7 +160,7 @@ class PerfilPro extends Component{
             }
             console.log("a partir de agora NAO SALVA");
             this.setState({iconEdit: Edit});
-            // $("input, select, textarea").attr("disabled", "disabled");
+            $("input, select, textarea").attr("disabled", "disabled");
             $("input, select, textarea").css("background-color", "#d5d5d5");
             $("#text-atualizar-perfil").css("background-color", "#d2d2d2");
             $("#text-atualizar-perfil").attr("disabled", "disabled");
@@ -304,7 +304,7 @@ class PerfilPro extends Component{
                 method: 'PUT',
                 url: `${DOMINIO}profissionais/atualizar/id/${profissional.idProfissional}`,
                 type: "application/json",
-                header: {"token": getToken()},
+                headers: {"token": getToken()},
                 timeout: 30000,
                 data: 
                 {
@@ -357,7 +357,7 @@ class PerfilPro extends Component{
             method: 'PUT',
             url: `${DOMINIO}enderecos/atualizar/id/${endereco.idEndereco}`,
             type: "application/json",
-            header: {"token": getToken()},
+            headers: {"token": getToken()},
             timeout: 30000,
             data: {
                 idEndereco: endereco.idEndereco,

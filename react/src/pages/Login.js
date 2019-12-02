@@ -87,6 +87,7 @@ export class Login extends Component{
 			let tokenDecoded = jwtDecoder(tokenJson.token);
 			let jsonPro = tokenDecoded.profissional;
 			let token = tokenJson.token;
+			console.log(jsonPro);
 			
 			if(jsonPro === null || jsonPro === ''){
 				console.log("pro nao encontrado");
@@ -126,6 +127,7 @@ export class Login extends Component{
 			let tokenDecoded = jwtDecoder(tokenJson.token);
 			let jsonCliente = tokenDecoded.cliente;
 			let token = tokenJson.token;
+			console.log(jsonCliente);
 
 			console.log(jsonCliente);
 			console.log(token);
@@ -164,7 +166,12 @@ export class Login extends Component{
 		sessionStorage.setItem(user, JSON.stringify(jsonUser));
 		sessionStorage.setItem("app", user);
 		sessionStorage.setItem("token", token);
+		if(user === "profissional"){
+			sessionStorage.setItem("categoria", jsonUser.subcategoria.categoria.idCategoria);
+			sessionStorage.setItem("subcategoria", jsonUser.subcategoria.idSubcategoria);
+		}
 		browserHistory.push(`/app/${user}/perfil`);
+
 	}
 
 

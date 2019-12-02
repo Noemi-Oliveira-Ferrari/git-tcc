@@ -15,10 +15,10 @@ export class Sobrenos extends Component{
     render(){
         return(
             <Fragment>
-                <div class="tamanho-caixa-quem-somos">
-                    <div class="caixa-quem-somos">
-                        <h1 class="titulo-quem-somos">Quem Somos?</h1>
-                        <div class="caixa-informacoes-empresa-quem-somos flex-center">
+                <div className="tamanho-caixa-quem-somos">
+                    <div className="caixa-quem-somos">
+                        <h1 className="titulo-quem-somos">Quem Somos?</h1>
+                        <div className="caixa-informacoes-empresa-quem-somos flex-center">
                             <CaixaTexto
                                 titulo="Brace {Everything}"
                                 texto="A Brace Everything que foi fundada em 2019. Criou a DaUmHelp! A plataforma é um meio ágil de intermediação entre pessoas que precisam de determinado serviço e pessoas que desejam oferecer seus serviços.​"
@@ -30,18 +30,18 @@ export class Sobrenos extends Component{
                         </div>
                     </div>
                 </div>
-                <div class="caixa-sobre-empresa-quem-somos">
-                    <div class="caixa-cor-missao-vissao-valor-quem-somos flex-center">
+                <div className="caixa-sobre-empresa-quem-somos">
+                    <div className="caixa-cor-missao-vissao-valor-quem-somos flex-center">
                         <CaixaImagem
                             img={Missao}
                             titulo="Missão"
                             texto="A Brace Everything foi fundada em 2019 com a missão de: “ Desenvolver soluções para os mais diversos problemas por meio de inovações tecnológicas, afim de facilitar o dia a dia das pessoas de maneira ágil e eficaz."
-                        ></CaixaImagem>
+                        />
                         <CaixaImagem
                             img={Visao}
                             titulo="Visão"
                             texto="Ser reconhecida mundialmente por promover soluções convenientes ao máximo de pessoas possíveis."
-                        ></CaixaImagem>
+                        />
                         <CaixaImagem
                             img={Valor}
                             titulo="Valores"

@@ -159,3 +159,45 @@ textarea::-webkit-scrollbar-thumb:hover {
 .negrito{
     font-weight: bold;
 }
+
+@media screen and (min-device-width: 100px){
+    
+    .voltar-topo{
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        background-color: #4de4b1;
+        position: fixed;
+        border-radius: 30px;
+        left: 160vh;
+        top: 28vw;
+        z-index: 985;
+        box-shadow: 2px 2px 5px #0000004d;
+    }
+    #img-voltar-topo{
+        max-width: 40px;
+        transform: rotate(-90deg);
+    }
+
+}
+
+@media screen and (max-device-width: 880px){
+    
+    .voltar-topo{
+        cursor: pointer;
+        width: 60px;
+        height: 60px;
+        background-color: #4de4b1;
+        position: fixed;
+        border-radius: 30px;
+        left: 78vw;
+        top: 155vw;
+        z-index: 885;
+        box-shadow: 2px 2px 5px #0000004d;
+    }
+    #img-voltar-topo{
+        max-width: 40px;
+        transform: rotate(-90deg);
+    }
+
+}

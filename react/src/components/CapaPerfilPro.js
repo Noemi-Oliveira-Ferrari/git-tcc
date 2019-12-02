@@ -3,13 +3,16 @@ import '../css/capa-perfil-pro.css';
 import axios from 'axios';
 import { Botao } from '../components/Botao';
 import { DOMINIO, DOMINIO_IMG } from '../global';
-import { getTipoLogado, getUsuario, getToken,setUsuarioPro } from '../utils/verificaSessionStrg';
+import { getTipoLogado, getUsuario, getToken,setUsuarioPro, verificarLogado } from '../utils/verificaSessionStrg';
 import {ModalLoadConst, ModalAlertas} from './ModaisLoad';
+import ToTop from './ToTop';
 import $ from 'jquery';
 import iconServico from '../img/servico.png';
 import iconLocal from '../img/local.png';
 import iconAvaliacao from '../img/star.png';
 import iconValor from '../img/money.png';
+
+verificarLogado();
 
 export class CapaPerfilPro extends Component{
 
@@ -40,9 +43,9 @@ export class CapaPerfilPro extends Component{
         this.mostrarAlerta = this.mostrarAlerta.bind(this);
         this.noConnection = this.noConnection.bind(this);
     }
-    
+
     componentDidMount(){
-        this.confirmUploadMode()  ;
+        this.confirmUploadMode();
     }
 
     //MOSTRA ALERTA SE ÃO HOUVER CONEXAÃO COM O SERVIDOR
@@ -213,11 +216,7 @@ export class CapaPerfilPro extends Component{
                 <div className="capa-perfil-pro">
                 </div>
                 <div className="caixa-perfil">
-                    <div className="voltar-top">
-                        <figure>
-                            
-                        </figure>
-                    </div>
+                    <ToTop/>
                     <div className="avatar-auxiliar">
                         <div className="avatar" style={{backgroundImage: this.state.imgPerfil !== "" ? this.state.imgPerfil !== null ? `url(${this.state.imgPerfil})` : props[5] : props[5]}}></div>
                     </div>

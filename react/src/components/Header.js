@@ -5,7 +5,7 @@ import Logo from '../img/daum_help.png';
 import {Link, browserHistory} from 'react-router';
 import FotoPerfil from '../img/ester.JPG';
 import Not from '../img/bell.png';
-import Config from '../img/gear.png';
+import Logout from '../img/log-out.png';
 import { getToken, getUsuario, getTipoLogado } from '../utils/verificaSessionStrg';
 import {DOMINIO_IMG} from '../global';
 
@@ -49,9 +49,13 @@ export class HeaderUsuario extends Component{
                 {/* <Link to="/" className="link"> */}
                     <div className="box-sair">
                         <Link to="/app/profissional/servicos" className="link">
-                            <figure><img src={Not} alt="Notificações" title="Notificações"/></figure> 
+                            <figure>
+                                <img src={Not} alt="Notificações" title="Notificações"/>
+                            </figure> 
                         </Link> 
-                        <figure><img src={Config} alt="Configurações" title="Configurações" onClick={this.logout}/></figure>
+                        <figure>
+                            <img src={Logout} alt="Deslogar" title="Deslogar" onClick={this.logout}/>
+                        </figure>
                     </div>
                 {/* </Link> */}
             </div>
