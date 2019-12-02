@@ -92,7 +92,6 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
                 call.enqueue(new Callback<Pedido>() {
                     @Override
                     public void onResponse(Call<Pedido>call, Response<Pedido> response) {
-                        progressDialog.dismiss();
                         pedido =  response.body();
 
                         Date dataPedido = Data.usStringToDate(pedido.getDataServico());
@@ -111,6 +110,9 @@ public class VisualizarDetalhesServicoActivity extends AppCompatActivity {
 
                         String foto3 = pedido.getFoto3();
                         Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + foto3).resize(100,100).rotate(90).into(ivFoto3);
+
+
+                        progressDialog.dismiss();
 
                     }
                     @Override

@@ -237,6 +237,7 @@ public class EditarActivity extends AppCompatActivity {
 
                                 });
                             }else{
+                                progressDialog.dismiss();
                                 etCep.setError("CEP inválido");
                             }
                         }
@@ -331,6 +332,7 @@ public class EditarActivity extends AppCompatActivity {
                     /*VALIDANDO OS CAMPOS*/
                     if (validar() == true) {
 
+                        progressDialog.dismiss();
                         /*MONTANDO O OBJETO PROFISSIONAL QUE SERÁ ATUALIZADO*/
                         profissional.setNome(etNome.getText().toString());
                         profissional.setDataNasc(etData.getText().toString());
@@ -381,6 +383,7 @@ public class EditarActivity extends AppCompatActivity {
                                             contBack = 0;
                                             tvNome.setText(etNome.getText());
                                             Toast.makeText(EditarActivity.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
+                                            finish();
                                         }
                                         @Override
                                         public void onFailure(Call<Profissional> call2, Throwable t) {
@@ -395,17 +398,16 @@ public class EditarActivity extends AppCompatActivity {
                                 }
                             });
 
+                        }else{
+                            progressDialog.dismiss();
                         }
-
-
-
+                    }else{
+                        progressDialog.dismiss();
                     }
                 }else{
+                    progressDialog.dismiss();
                     Toast.makeText(EditarActivity.this, "As senhas não correspondem", Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
 
@@ -510,7 +512,7 @@ public class EditarActivity extends AppCompatActivity {
         etValorHora.setText(String.valueOf(profissional.getValorHora()));
 
         String fotoPro = profissional.getFoto();
-        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).rotate(90).into(ivFotoProfissional);
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).into(ivFotoProfissional);
 
         etCategoria.setText(profissional.getSubcategoria().getCategoria().getCategoria());
         etSubcategoria.setText(profissional.getSubcategoria().getSubcategoria());

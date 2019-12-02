@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,18 +24,12 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-
-import br.net.daumhelp.PerfilClienteActivity;
 import br.net.daumhelp.R;
-import br.net.daumhelp.adapter.ListaAdapterComentario;
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Cidade;
 import br.net.daumhelp.model.Cliente;
-import br.net.daumhelp.model.Comentario;
 import br.net.daumhelp.model.Endereco;
 import br.net.daumhelp.model.EnderecoViaCep;
-import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.TipoUsuario;
 import br.net.daumhelp.recursos.EncryptString;
 import br.net.daumhelp.recursos.Mascara;

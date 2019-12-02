@@ -8,20 +8,20 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import br.net.daumhelp.R;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.Date;
 
-import br.net.daumhelp.R;
+import br.net.daumhelp.model.Avaliacao;
+import br.net.daumhelp.recursos.Data;
 
-import br.net.daumhelp.model.Comentario;
-
-public class ListaAdapterComentario extends ArrayAdapter<Comentario> {
+public class ListaAdapterComentario extends ArrayAdapter<Avaliacao> {
 
     private Context context;
-    private ArrayList<Comentario> lista;
-
+    private ArrayList<Avaliacao> lista;
 
     private TextView tvNome;
     private TextView tvData;
@@ -29,33 +29,38 @@ public class ListaAdapterComentario extends ArrayAdapter<Comentario> {
     private Button btnLer;
     private ImageView ivFotoCliente;
 
-    public ListaAdapterComentario(Context context, ArrayList<Comentario> lista){
+    public ListaAdapterComentario(Context context, ArrayList<Avaliacao> lista){
         super(context, 0, lista);
         this.context = context;
         this.lista = lista;
     }
 
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//
-//        Comentario comentarioPosicao = this.lista.get(position);
-//        convertView = LayoutInflater.from(this.context).inflate(R.layout.layout_lista_comentario, null);
-//
-//          ivFotoCliente = convertView.findViewById(R.id.profile_image);
-////        Picasso.get().load("").into(ivFotoCliente);
-//
-//        tvComentario = convertView.findViewById(R.id.tv_comentario);
-//        tvComentario.setText(comentarioPosicao.getComentario());
-//
-//        tvNome = convertView.findViewById(R.id.tv_nome);
-//        tvNome.setText(comentarioPosicao.getNome());
-//
-//        tvData = convertView.findViewById(R.id.tv_data_comentario);
-//        tvData.setText(comentarioPosicao.getData());
-//
-//        return convertView;
-//
-//    }
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        Avaliacao comentarioPosicao = this.lista.get(position);
+        convertView = LayoutInflater.from(this.context).inflate(R.layout.layout_lista_comentario, null);
+
+        ivFotoCliente = convertView.findViewById(R.id.profile_image);
+        String fotoCli = comentarioPosicao.getCliente().getFoto();
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).resize(100,100).into(ivFotoCliente);
+
+        tvComentario = convertView.findViewById(R.id.tv_comentario);
+        tvComentario.setText(comentarioPosicao.getComentario());
+
+        tvNome = convertView.findViewById(R.id.tv_nome);
+        tvNome.setText(comentarioPosicao.getCliente().getNome());
+
+        tvData = convertView.findViewById(R.id.tv_data_comentario);
+
+        Date dataPedido = Data.usStringToDate(comentarioPosicao.getDataAvaliacao());
+        String dataFormatada = Data.dataToBrString(dataPedido);
+
+        tvData.setText(dataFormatada);
+
+        return convertView;
+
+    }
 
 
 }

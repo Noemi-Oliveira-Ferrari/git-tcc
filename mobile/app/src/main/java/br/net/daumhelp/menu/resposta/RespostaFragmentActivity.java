@@ -77,9 +77,11 @@ public class RespostaFragmentActivity extends Fragment implements SwipeRefreshLa
                 idProfissional = profissional.getIdProfissional();
 
                 idStatusAceito = 3;
+                int idStatusPedido = 3;
+                int idStatusRejeitado = 5;
                 final ListaAdapterRespostaFinal listaPedidos = new ListaAdapterRespostaFinal(getContext(), lista, tokenProfissional);
 
-                Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosPendentes(tokenProfissional, idProfissional, idStatusAceito);
+                Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosFinal(tokenProfissional, idProfissional, idStatusPedido, idStatusAceito, idStatusRejeitado);
                 call.enqueue(new Callback<List<Pedido>>() {
                     @Override
                     public void onResponse(Call<List<Pedido>> call, Response<List<Pedido>> response) {
@@ -117,6 +119,7 @@ public class RespostaFragmentActivity extends Fragment implements SwipeRefreshLa
 
     @Override
     public void onRefresh() {
+
         Call<List<Pedido>> call = new RetroFitConfig().getPedidoService().buscarPedidosPendentes(tokenProfissional, idProfissional, idStatusAceito);
         call.enqueue(new Callback<List<Pedido>>() {
             @Override

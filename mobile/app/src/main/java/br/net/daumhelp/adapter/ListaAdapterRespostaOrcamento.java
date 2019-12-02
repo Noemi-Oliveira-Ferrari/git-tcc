@@ -1,6 +1,7 @@
 package br.net.daumhelp.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,14 +15,19 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import br.net.daumhelp.MainActivity;
+import br.net.daumhelp.MenuActivity;
+import br.net.daumhelp.MenuClienteActivity;
 import br.net.daumhelp.R;
 import br.net.daumhelp.RespostaOrcamentoActivity;
 import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.menuCli.respostaCli.RespostaCliFragmentActivity;
 import br.net.daumhelp.model.Pedido;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -70,16 +76,17 @@ public class ListaAdapterRespostaOrcamento extends ArrayAdapter<Pedido> {
 
 
         String fotoPro = listaPedidos.getProfissional().getFoto();
-        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).rotate(90).into(ivProfissional);
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).into(ivProfissional);
 
         final int idStatus = listaPedidos.getIdPedido();
 
         int statusPedido = listaPedidos.getStatus().getIdStatusPedido();
+
         if(statusPedido == 2){
 
             tvTextoOrcamento.setText("Seu orçamento está pronto! =)");
             
-        }else if(statusPedido == 6){
+        }else if(statusPedido == 4){
 
             tvTextoOrcamento.setText("Infelizmente não estou disponível =(");
             btnConfirmar.setVisibility(View.GONE);
@@ -101,14 +108,23 @@ public class ListaAdapterRespostaOrcamento extends ArrayAdapter<Pedido> {
 
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(final View view) {
 
-                Call<Pedido> call = new RetroFitConfig().getPedidoService().recusarPedidoPendente(tokenCliente,idStatus);
+                Call<Pedido> call = new RetroFitConfig().getPedidoService().concluirServico(tokenCliente,idStatus);
                 call.enqueue(new Callback<Pedido>() {
                     @Override
                     public void onResponse(Call<Pedido> call, Response<Pedido> response) {
 
                         response.body();
+
+
+                        AlertDialog.Builder alert = new AlertDialog.Builder(getContext());
+                        alert.setTitle("Orçamento").setMessage("Esse profissional não está disponível, vamos tirá-lo da sua lista de resposta").setPositiveButton("Certo", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).show();
 
                     }
 

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -170,6 +171,11 @@ public class CadastroFotoActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
+                    final ProgressDialog progressDialog = new ProgressDialog(CadastroFotoActivity.this);
+                    progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                    progressDialog.show();
+                    progressDialog.setContentView(R.layout.layout_progressbar);
+
 
                     final RequestBody fbody = RequestBody.create(MediaType.parse("image/png"), arquivoFoto);
                     MultipartBody.Part multipartBody = MultipartBody.Part.createFormData("img", arquivoFoto.getName(), fbody);
@@ -180,6 +186,7 @@ public class CadastroFotoActivity extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Profissional> call2, Response<Profissional> response) {
                             response.body();
+                            progressDialog.dismiss();
                             Intent intent = new Intent(CadastroFotoActivity.this, MenuActivity.class);
                             intent.putExtra("profissional", profissional);
                             intent.putExtra("tokenProfissional", tokenProfissional);
@@ -190,8 +197,7 @@ public class CadastroFotoActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Profissional> call, Throwable t) {
-
-
+                            progressDialog.dismiss();
                         }
                     });
 
@@ -227,10 +233,10 @@ public class CadastroFotoActivity extends AppCompatActivity {
                 }
                 if (requestCode == CAMERA_REQUEST){
 
-//                    Matrix matrix = new Matrix();
-//                    matrix.postRotate(90);
+                    Matrix matrix = new Matrix();
+                    matrix.postRotate(90);
                     Bitmap bitmap = BitmapFactory.decodeFile(caminhoFoto);
-                    Bitmap bitmapReduzido = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+                    Bitmap bitmapReduzido = Bitmap.createBitmap(bitmap, 0, 0,bitmap.getWidth(), bitmap.getHeight(), matrix, true);
                     ivFoto.setImageBitmap(bitmapReduzido);
 
                 }

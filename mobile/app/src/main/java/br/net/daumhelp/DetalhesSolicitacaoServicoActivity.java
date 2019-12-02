@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -240,19 +241,25 @@ public class DetalhesSolicitacaoServicoActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
+            Matrix matrix = new Matrix();
+            matrix.postRotate(90);
+
             if (requestCode == CAMERA_REQUEST){
+
                 Bitmap bitmap = BitmapFactory.decodeFile(caminhoFoto);
-                Bitmap bitmapReduzido = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+                Bitmap bitmapReduzido = Bitmap.createBitmap(bitmap, 0, 0,bitmap.getWidth(), bitmap.getHeight(), matrix, true);
                 ivFoto1.setImageBitmap(bitmapReduzido);
 
             }else if (requestCode == CAMERA_REQUEST2){
+
                 Bitmap bitmap = BitmapFactory.decodeFile(caminhoFoto);
-                Bitmap bitmapReduzido = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+                Bitmap bitmapReduzido = Bitmap.createBitmap(bitmap, 0, 0,bitmap.getWidth(), bitmap.getHeight(), matrix, true);
                 ivFoto2.setImageBitmap(bitmapReduzido);
 
             }else if (requestCode == CAMERA_REQUEST3){
+
                 Bitmap bitmap = BitmapFactory.decodeFile(caminhoFoto);
-                Bitmap bitmapReduzido = Bitmap.createScaledBitmap(bitmap, 300, 300, true);
+                Bitmap bitmapReduzido = Bitmap.createBitmap(bitmap, 0, 0,bitmap.getWidth(), bitmap.getHeight(), matrix, true);
                 ivFoto3.setImageBitmap(bitmapReduzido);
 
             }

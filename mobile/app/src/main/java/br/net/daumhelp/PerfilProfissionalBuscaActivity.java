@@ -125,7 +125,7 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
                     tvCategoriaAlert.setText(profissionalSelecionado.getSubcategoria().getSubcategoria());
 
                     String fotoPro = profissionalSelecionado.getFoto();
-                    Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).rotate(90).into(ivFotoProfissionalAlert);
+                    Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).into(ivFotoProfissionalAlert);
 
                     alertDialog.show();
 
@@ -157,7 +157,7 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
         tvLocal.setText(profissional.getEndereco().getCidade().getCidade() + ", " + profissional.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
 
         String fotoPro = profissional.getFoto();
-        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).rotate(90).into(ivFotoProfissional);
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).into(ivFotoProfissional);
 
         Locale ptBr = new Locale("pt", "BR");
         String valorString = NumberFormat.getCurrencyInstance(ptBr).format(profissional.getValorHora());

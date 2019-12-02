@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             if (conmag.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnected()) {
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-                alert.setTitle("Conexão").setMessage("Você não está conectado ao WIFI, isso pode gerar cobranças adicionais. \n Deseja continuar?").setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                alert.setTitle("Conexão").setMessage("Você não está conectado ao WIFI, isso pode gerar cobranças adicionais. \nDeseja continuar?").setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -165,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
                             intent.putExtra("profissional", profissionalToken);
                             intent.putExtra("tokenProfissional", token);
+                            finish();
                             startActivity(intent);
 
                         }else{
@@ -172,6 +173,7 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(MainActivity.this, MenuActivity.class);
                             intent.putExtra("profissional", profissionalToken);
                             intent.putExtra("tokenProfissional", token);
+                            finish();
                             startActivity(intent);
                         }
                     }
@@ -208,13 +210,16 @@ public class MainActivity extends AppCompatActivity {
                                     Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
                                     intent.putExtra("cliente", clienteToken);
                                     intent.putExtra("tokenCliente", token);
+                                    finish();
                                     startActivity(intent);
+
 
                                 }else{
 
                                     Intent intent = new Intent(MainActivity.this, MenuClienteActivity.class);
                                     intent.putExtra("cliente", clienteToken);
                                     intent.putExtra("tokenCliente", token);
+                                    finish();
                                     startActivity(intent);
                                 }
 

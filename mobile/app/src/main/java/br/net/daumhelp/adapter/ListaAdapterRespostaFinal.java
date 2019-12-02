@@ -56,23 +56,45 @@ public class ListaAdapterRespostaFinal extends ArrayAdapter<Pedido> {
 
         String nomeCliente = listaPedidos.getCliente().getNome();
 
-
-        tvTexto.setText(nomeCliente + "\n aceitou o seu orçamento e quer \nque você realize o serviço");
+        int statusPedido = listaPedidos.getStatus().getIdStatusPedido();
 
         String fotoCli = listaPedidos.getCliente().getFoto();
-        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).resize(100,100).rotate(90).into(ivFotoCliente);
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).resize(100,100).into(ivFotoCliente);
 
-        btnVisualizar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, RespostaOrcamentoFinalActivity.class);
-                intent.putExtra("pedido", listaPedidos);
-                intent.putExtra("tokenProfissional", tokenProfissional);
-                getContext().startActivity(intent);
-            }
-        });
+        if(statusPedido == 3){
+
+            tvTexto.setText(nomeCliente + "\n aceitou o seu orçamento e quer \nque você realize o serviço");
+
+            btnVisualizar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, RespostaOrcamentoFinalActivity.class);
+                    intent.putExtra("pedido", listaPedidos);
+                    intent.putExtra("tokenProfissional", tokenProfissional);
+                    getContext().startActivity(intent);
+                }
+            });
+
+
+        }else if(statusPedido == 5){
+
+            tvTexto.setText(nomeCliente + "\nrecusou o seu orçamento");
+            btnVisualizar.setText("Ok!");
+
+            btnVisualizar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, RespostaOrcamentoFinalActivity.class);
+                    intent.putExtra("pedido", listaPedidos);
+                    intent.putExtra("tokenProfissional", tokenProfissional);
+                    getContext().startActivity(intent);
+                }
+            });
+
+        }
 
         return convertView;
+
     }
 
 }

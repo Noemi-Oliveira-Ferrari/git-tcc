@@ -78,7 +78,7 @@ public class RespostaCliFragmentActivity extends Fragment implements SwipeRefres
         }
 
         idStatusOrcado = 2;
-        idStatusRejeitado = 6;
+        idStatusRejeitado = 4;
         idCliente = cliente.getIdCliente();
         final ListaAdapterRespostaOrcamento listaPedidos = new ListaAdapterRespostaOrcamento(getContext(), lista, tokenCliente);
 
@@ -104,6 +104,8 @@ public class RespostaCliFragmentActivity extends Fragment implements SwipeRefres
             }
 
         });
+
+
 
     }
 

@@ -59,7 +59,6 @@ public class RetroFitConfig {
         return this.retroFit.create(LoginService.class);
     }
 
-
     public FotoService getFotoService(){
         return this.retroFit.create(FotoService.class);
     }
