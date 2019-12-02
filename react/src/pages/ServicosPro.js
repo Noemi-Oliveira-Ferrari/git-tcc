@@ -90,13 +90,16 @@ export class ServicosPro extends Component{
         <Fragment>
             {/* <MenuLateral/> */}
             <CapaPerfilPro
-                nome="Seus Pedidos"
+                nome={getUsuario().nome}
                 texto1="Veja o estado dos Pedidos"
                 texto2="Fique sempre por dentro"
                 texto3="Verifique suas Atividades"
                 texto4="Veja suas Avaliações"
             />
             <div class="caixa-conteudo-servico-pro">
+                <div class="caixa-titulo-servico">
+                    <h1 class="titulo-servico">Seus Pedidos</h1>
+                </div>
                 <div class="conteudo-pro-servico">
                     <div class="caixa-conteudo-informacoes-servico">
                         <div class="text-dados">

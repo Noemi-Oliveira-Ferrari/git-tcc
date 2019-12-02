@@ -28,13 +28,13 @@
     .titulo-quem-somos
     {
         width: inherit;
-        height: 200px;
+        height: 150px;
         font-size: 4em;
         color: #ffffff;
-        font-family: 'Lexend Deca';
-        /* background-color: lightblue; */
+        /* background-color: rgba(173, 216, 230, 0.377); */
         box-sizing: border-box;
-        padding-top: 120px;
+        padding-top: 40px;
+        font-family: 'Lexend Deca';
     }
     
     .caixa-sobre-empresa-quem-somos

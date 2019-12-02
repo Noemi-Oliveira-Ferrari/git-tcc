@@ -2,13 +2,33 @@
 /*----- Web-Desktop -----*/
 @media screen and (min-device-width:1000px)
 {
+    .caixa-titulo-servico
+    {
+        width: inherit;
+        height: 80px;
+        /* background-color: hsla(165, 69%, 49%, 0.795); */
+        box-sizing: border-box;
+    }
+    
+    
+    .titulo-servico
+    {
+        width: inherit;
+        height: 100px;
+        font-family: 'Lexend Deca';
+        text-align: center;
+        font-size: 60px;
+        color: #ffffff;
+        /* background-color: fuchsia; */
+    }
+    
 	
 	.caixa-conteudo-servico-pro
 	{
 		width: 1300px;
 		min-height: 880px;
 		/* overflow: auto; */
-		/* background-color: #57bc90; */
+		/* background-color: #da2020; */
 		margin: auto;
 		margin-top: 20px;
 	}

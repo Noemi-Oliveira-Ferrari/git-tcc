@@ -15,15 +15,12 @@ export class Sobrenos extends Component{
     render(){
         return(
             <>
-                <video autoplay muted loop id="myVideo">
-                    <source src="../../" type="video/mp4"/>
-                </video>
-                <div class="tamanho-caixa-quem-somos">
+            <div class="tamanho-caixa-quem-somos">
                 <div class="caixa-quem-somos">
                     <h1 class="titulo-quem-somos">Quem Somos?</h1>
                     <div class="caixa-informacoes-empresa-quem-somos flex-center">
                         <CaixaTexto
-                            titulo="Brace{Everything}"
+                            titulo="Brace {Everything}"
                             texto="A Brace Everything que foi fundada em 2019. Criou a DaUmHelp! A plataforma é um meio ágil de intermediação entre pessoas que precisam de determinado serviço e pessoas que desejam oferecer seus serviços.​"
                         ></CaixaTexto>
                         <CaixaTexto

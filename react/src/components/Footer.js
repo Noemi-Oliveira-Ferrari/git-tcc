@@ -22,7 +22,7 @@ export default class Footer extends Component{
                     <h2 className="titulo-rodape"> <DaUmHelp/> </h2>
                     {/* <h2 className="titulo-rodape">DaUmHelp!</h2> */}
                     <p className="texto-rodape">Se cadastre hoje, e comece a utilizar nossos serviços.</p>
-                    <button className="btn-cadastro-rodape">Cadastre-se</button>
+                    <Link className="link" to="/escolha"><div className="btn-cadastro-rodape flex-center">Cadastre-se</div></Link>
                 </div>
             </div>
             <div className="caixa-rodape-informacoes">

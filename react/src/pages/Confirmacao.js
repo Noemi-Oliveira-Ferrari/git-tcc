@@ -212,7 +212,7 @@ function Confirmacao() {
             console.log(codeConfirm);
             // setModalAlertas(true);
             // setModalSucessoShow(true);
-            getUsuario();
+            // getUsuario();
             setRenderizar(false);
         }
     });

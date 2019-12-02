@@ -803,7 +803,7 @@ export default class FormularioProfissional extends Component{
 
     validarCampos(){
         
-        let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=email], select");
+        let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=InputNumber], input[type=email], select");
         let semErro = true;
         let erros = [];
 
@@ -919,7 +919,7 @@ export default class FormularioProfissional extends Component{
             setTimeout(() => {
                 this.ModalAlertas();
             }, 200);
-            moveToError();
+            moveToError(200);
         }
     }
 

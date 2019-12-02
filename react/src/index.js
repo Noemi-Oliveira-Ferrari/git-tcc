@@ -26,10 +26,10 @@ ReactDOM.render(
             <Route path='/cadastro/confirmacao' component={Confirmacao}/>
             <Route path='/app/profissional/perfil' component={PerfilPro}/>
             <Route path='/app/profissional/servicos' component={ServicosPro}/>
+            <Route path='/app/profissional/renda' component={RendaPro}/>
             <Route path='/home' component={Home}/>
             <Route path='/sobrenos' component={Sobrenos}/>
             <Route path='/faq' component={Faq}/>
-            <Route path='/app/profissional/renda' component={RendaPro}/>
             
         </Route>
     </Router>,    

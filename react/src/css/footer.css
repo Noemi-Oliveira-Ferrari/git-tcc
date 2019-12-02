@@ -48,15 +48,17 @@
         height: 40px;
         font-size: 1em;
         border-radius: 8px;
-        font-family: Lexend Deca;
         background-color: transparent;
         color: #222222;
         border: solid #222222;
         font-weight: bold;
         letter-spacing: 1px;
         outline: none;
-        font-family: "Lexend Deca";
+        font-family: "Manjari";
+        box-sizing: border-box;
+        padding-top: 3px;
         transition: 0.3s;
+        margin: auto;
     }
 
     .btn-cadastro-rodape:hover

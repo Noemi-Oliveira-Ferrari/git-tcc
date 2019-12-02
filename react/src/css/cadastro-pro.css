@@ -89,6 +89,11 @@
         /* font-size: 11px !important; */
         /* background-color: rgb(233, 134, 20); */
     }
+    .caixa-rdo-pf label,.caixa-rdo-pj label,
+    .caixa-rdo-pf input[type="radio"], .caixa-rdo-pj input[type="radio"]
+    {
+        cursor: pointer;
+    }
     .caixa-rdo-pf{
         width: 200px;
         height: 50%;
@@ -178,13 +183,6 @@
         padding-top: 10px;
         background-color: #cce5e9;
         /* text-transform: capitalize; */
-    }
-
-    #txt-nome,
-    #txt-logradouro,
-    #txt-bairro,
-    #txt-cidade{
-        text-transform: capitalize;
     }
     
     #txt-uf{
@@ -413,8 +411,12 @@
         font-family: "Manjari";
     }
 
+    .caixa-confirmacao-termos input[type='checkbox']{
+        cursor: pointer;
+    }
     .caixa-confirmacao-termos label{
         margin-top: -3px;
+        cursor: pointer;
     }
     .caixa-button
     {

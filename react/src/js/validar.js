@@ -34,8 +34,12 @@ export const validarConfirmacaoSenha = (senha, confirmSenha) =>{
     }
 }
 
-export const moveToError = () =>{
-    window.scrollTo(0, 200);
+export const moveToError = (altura) =>{
+    window.scrollTo(0, altura);
+}
+
+export const movePage = (altura) =>{
+    window.scrollTo(0, altura);
 }
 
 export const generateHash = (input) =>{

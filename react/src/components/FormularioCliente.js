@@ -579,7 +579,7 @@ export default class FormularioCliente extends Component{
             setTimeout(() => {
                 this.ModalAlertas();
             }, 200);
-            moveToError();
+            moveToError(200);
         }
     }
 
