@@ -19,7 +19,7 @@ import { Route, browserHistory } from 'react-router';
 import { DadosPessoaisPro, DadosProfissional } from '../components/FormularioProfissional';
 import { BotaoImg } from '../components/Botao';
 import { ModalLoadConst, ModalAlertas} from '../components/ModaisLoad';
-import { DOMINIO, DOMINIO_IMG } from '../global';
+import { DOMINIO, DOMINIO_IMG, IMG_PERFIL_PADRAO } from '../global';
 import { validarConfirmacaoSenha, moveToError, generateHash, withError,
          withoutError, validarCnpj, validarCpfPro, validarEmail,
          validarSenha, validarString, validarVazios, retirarSimbolos,
@@ -130,12 +130,12 @@ class PerfilPro extends Component{
             this.setState({localPro: localPro});
             this.setState({valorPro: valorHora});
             // this.setState({fotoPro: ImgPadrao});
-            this.setState({fotoPro: `url(${DOMINIO_IMG}duh/imagens/padrao_perfil.png)`});
+            this.setState({fotoPro: `url(${IMG_PERFIL_PADRAO})`});
         }
     }
 
     enableFields(cancelar){
-        let continuar;
+        let parar;
         if(this.state.atualizar){
             console.log("a partir de agora SALVA");
             this.setState({iconEdit: Cancel});
@@ -150,21 +150,23 @@ class PerfilPro extends Component{
         }else{
 
             if(cancelar)
-                continuar = window.confirm("Deseja mesmo cancelar a operação?");
+                parar = window.confirm("Deseja mesmo cancelar a operação?");
             else
-                continuar = false;
+                parar = false;
 
-            if(continuar){              
+            if(parar){              
                 browserHistory.push("/app/profissional/servicos");
                 console.log("cancelou");
             }
+
             console.log("a partir de agora NAO SALVA");
             this.setState({iconEdit: Edit});
-            $("input, select, textarea").attr("disabled", "disabled");
-            $("input, select, textarea").css("background-color", "#d5d5d5");
+            // $("input, select, textarea").attr("disabled", "disabled");
+            // $("input, select, textarea").css("background-color", "#d5d5d5");
             $("#text-atualizar-perfil").css("background-color", "#d2d2d2");
             $("#text-atualizar-perfil").attr("disabled", "disabled");
             this.colocaDadosNaCapa(getUsuarioPro());
+
         }
         this.setState({atualizar: !this.state.atualizar});
     }

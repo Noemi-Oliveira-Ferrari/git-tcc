@@ -167,19 +167,20 @@ header{
     align-items: center;
     justify-content: center;
     border: solid 2px #57bc90;
-    /* background-color: rgb(78, 240, 105); */
+    background-color: rgb(219, 223, 220);
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
-.avatar-usuario figure {
+/* .avatar-usuario figure {
     margin: 0 !important;
     padding: 0 !important;
 }
 .avatar-usuario figure img{
-    width: 40px;
-    height: 40px;
-    /* margin-top: 15px; */
-    border-radius: 100%;
-    background-color: brown;
-}
+    max-width: 40px;
+    border-radius: 20px;
+    background-color: rgb(221, 221, 221);
+} */
 
 .box-nome{
     float: left;

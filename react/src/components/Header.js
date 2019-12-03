@@ -7,7 +7,7 @@ import FotoPerfil from '../img/ester.JPG';
 import Not from '../img/bell.png';
 import Logout from '../img/log-out.png';
 import { getToken, getUsuario, getTipoLogado } from '../utils/verificaSessionStrg';
-import {DOMINIO_IMG} from '../global';
+import {DOMINIO_IMG, IMG_PERFIL_PADRAO} from '../global';
 
 export class HeaderLogin extends Component{
     render(){
@@ -23,22 +23,40 @@ export class HeaderUsuario extends Component{
 
     constructor(){
         super();
+        this.state ={
+            imgPerfil: getUsuario().foto !== "" ? getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : IMG_PERFIL_PADRAO : IMG_PERFIL_PADRAO
+        }
         this.logout = this.logout.bind(this);
+        this.teste = this.teste.bind(this);
     }
 
     logout(event){
-        sessionStorage.clear();
+        localStorage.clear();
         setTimeout(() => {
             browserHistory.push("/");
         }, 600);
     }
 
+    componentDidMount(){
+        console.log("99999999999999999999999999999");
+        console.log(this.state.imgPerfil);
+        this.teste();
+    }
+
+    teste(){
+        setInterval(() => {
+            console.log("atualizar header!!!");
+            this.setState({imgPerfil: getUsuario().foto !== "" ? getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : IMG_PERFIL_PADRAO : IMG_PERFIL_PADRAO});
+        }, 60000);
+    }
+
 
     render(){
+
         return(
             <div className="login-usuario">
-                <div className="avatar-usuario">
-                    <figure><img src={`${DOMINIO_IMG}${getUsuario().foto}`} alt="Login" title="Login"/></figure>
+                <div className="avatar-usuario" style={{backgroundImage: `url(${this.state.imgPerfil})`}}>
+                    {/* <figure><img src={this.state.imgPerfil} alt="Login" title="Login"/></figure> */}
                 </div>
                 <Link to="/app/profissional/perfil" className="link">
                     <div className="box-nome flex-center">

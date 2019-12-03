@@ -73,8 +73,8 @@ export class DadosPessoaisCliente extends Component{
     componentDidMount(){
 
         //BUSCA CLIENTE E ENDEREÇO DO CLIENTE CASO O USUARIO RETORNE A PAGINA SEM FINALIZAR O CADASTRO
-        let cliente = JSON.parse(sessionStorage.getItem("cliente"));
-        let endereco = JSON.parse(sessionStorage.getItem("endereco"));
+        let cliente = JSON.parse(localStorage.getItem("cliente"));
+        let endereco = JSON.parse(localStorage.getItem("endereco"));
 
         if(cliente !== null){
             this.setState({nome: cliente.nome});
@@ -572,8 +572,8 @@ export default class FormularioCliente extends Component{
                     idEndereco: null
                 }
             };
-            sessionStorage.setItem("endereco", JSON.stringify(endereco));
-            sessionStorage.setItem("cliente", JSON.stringify(cliente));
+            localStorage.setItem("endereco", JSON.stringify(endereco));
+            localStorage.setItem("cliente", JSON.stringify(cliente));
             browserHistory.push("/cadastro/confirmacao");
         }else{
             setTimeout(() => {

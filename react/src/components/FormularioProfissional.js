@@ -51,7 +51,7 @@ export class DadosPessoaisPro extends Component{
     
     preencherCampos(){
         //VERIFICA SE HÁ ALGUEM LOGADO E QUE SE O O TIPO DE USUARIO É PRO
-        let app = sessionStorage.getItem("app");
+        let app = localStorage.getItem("app");
         
         if(app !== null && app !== ""){
             $(".container-senha").css("display", "none");
@@ -68,8 +68,8 @@ export class DadosPessoaisPro extends Component{
         }
 
         //BUSCA PRO E ENDERECO CASO USUARIO RETORNA PARA CADASTRO SEM FINALIZA-LO
-        let profissional = JSON.parse(sessionStorage.getItem("profissional"));
-        let endereco = JSON.parse(sessionStorage.getItem("endereco"));
+        let profissional = JSON.parse(localStorage.getItem("profissional"));
+        let endereco = JSON.parse(localStorage.getItem("endereco"));
 
         if(app === "profissional"){
             endereco = profissional.endereco;
@@ -613,10 +613,10 @@ export class DadosProfissional extends Component{
         
 
     preencherCamposServico(){
-        let profissional = JSON.parse(sessionStorage.getItem("profissional"));
-        let categoria = JSON.parse(sessionStorage.getItem("categoria"));
-        let subcategoria = JSON.parse(sessionStorage.getItem("subcategoria"));
-        let app = sessionStorage.getItem("app");
+        let profissional = JSON.parse(localStorage.getItem("profissional"));
+        let categoria = JSON.parse(localStorage.getItem("categoria"));
+        let subcategoria = JSON.parse(localStorage.getItem("subcategoria"));
+        let app = localStorage.getItem("app");
         
         
         if(app === "profissional"){
@@ -910,10 +910,10 @@ export default class FormularioProfissional extends Component{
                 valorHora: limpaValor($("#txt-valor-hora").val()),
                 resumoQualificacoes: $("#txt-qualificacoes").val()
             };
-            sessionStorage.setItem("endereco", JSON.stringify(endereco));
-            sessionStorage.setItem("profissional", JSON.stringify(profissional));
-            sessionStorage.setItem("categoria", $("#slt-categoria").find(":selected").val());    
-            sessionStorage.setItem("subcategoria", $("#slt-subcat").find(":selected").val());
+            localStorage.setItem("endereco", JSON.stringify(endereco));
+            localStorage.setItem("profissional", JSON.stringify(profissional));
+            localStorage.setItem("categoria", $("#slt-categoria").find(":selected").val());    
+            localStorage.setItem("subcategoria", $("#slt-subcat").find(":selected").val());
             browserHistory.push("/cadastro/confirmacao");
         }else{
             setTimeout(() => {

@@ -162,15 +162,17 @@ export class Login extends Component{
 	}
 
 	logarUsuario(jsonUser, user, token){
-		sessionStorage.clear();
-		sessionStorage.setItem(user, JSON.stringify(jsonUser));
-		sessionStorage.setItem("app", user);
-		sessionStorage.setItem("token", token);
+		localStorage.clear();
+		localStorage.setItem(user, JSON.stringify(jsonUser));
+		localStorage.setItem("app", user);
+		localStorage.setItem("token", token);
 		if(user === "profissional"){
-			sessionStorage.setItem("categoria", jsonUser.subcategoria.categoria.idCategoria);
-			sessionStorage.setItem("subcategoria", jsonUser.subcategoria.idSubcategoria);
+			localStorage.setItem("categoria", jsonUser.subcategoria.categoria.idCategoria);
+			localStorage.setItem("subcategoria", jsonUser.subcategoria.idSubcategoria);
+			browserHistory.push(`/app/${user}/servicos`);
+		}else{
+			browserHistory.push(`/app/${user}/perfil`);
 		}
-		browserHistory.push(`/app/${user}/perfil`);
 
 	}
 

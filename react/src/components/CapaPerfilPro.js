@@ -25,7 +25,7 @@ export class CapaPerfilPro extends Component{
             texto4: this.props.texto4,
             foto: "",
             // imgPerfil: "",
-            imgPerfil: getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : "",
+            imgPerfil: getUsuario().foto !== "" ? getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}`: "" : "",
             upload: "",
             confirmUpload: false,
             erros: [],
@@ -94,10 +94,11 @@ export class CapaPerfilPro extends Component{
 
     uploadPhoto(event){
         let alertas = [];
-        event.preventDefault();
-        const form = new FormData();
-        form.append("img", this.state.upload);
         let idUsuario;
+        const form = new FormData();
+
+        event.preventDefault();
+        form.append("img", this.state.upload);
         if(getTipoLogado() === "cliente"){
             idUsuario = getUsuario().idCliente;
             form.append("idCliente", idUsuario);
@@ -122,7 +123,6 @@ export class CapaPerfilPro extends Component{
 
             console.log(-5);
             
-            if(this.state.upload === ""){
                 console.log(-4);
                 setUsuarioPro(profissional);
                 console.log(-3);
@@ -130,7 +130,6 @@ export class CapaPerfilPro extends Component{
                 console.log(-2);
                 this.setState({imgPerfil: `${DOMINIO_IMG}${profissional.foto}`});
                 console.log(-1);
-            }
             
             console.log(1);
             this.modalLoad();

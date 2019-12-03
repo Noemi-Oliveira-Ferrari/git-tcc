@@ -169,8 +169,8 @@ textarea::-webkit-scrollbar-thumb:hover {
         background-color: #4de4b1;
         position: fixed;
         border-radius: 30px;
-        left: 160vh;
-        top: 28vw;
+        margin-left: 92vw;
+        margin-top: 10vh;
         z-index: 985;
         box-shadow: 2px 2px 5px #0000004d;
     }
@@ -182,7 +182,7 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 
 @media screen and (max-device-width: 880px){
-    
+
     .voltar-topo{
         cursor: pointer;
         width: 60px;
@@ -190,8 +190,8 @@ textarea::-webkit-scrollbar-thumb:hover {
         background-color: #4de4b1;
         position: fixed;
         border-radius: 30px;
-        left: 78vw;
-        top: 155vw;
+        margin-left: 80vw;
+        margin-top: 60vh;
         z-index: 885;
         box-shadow: 2px 2px 5px #0000004d;
     }

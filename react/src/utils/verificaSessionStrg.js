@@ -7,7 +7,7 @@ import { DOMINIO } from '../global';
 export const verificarLogado = () =>{
 
     console.log("_________→→→→");
-    console.log(sessionStorage.getItem("token") === "");
+    console.log(localStorage.getItem("token") === "");
 
     const token = getToken();
     if(token === "" || token === null || token === undefined){
@@ -31,7 +31,7 @@ export const getUpdatedPro = (profissional) =>{
         console.log("---------------------9999");
         console.log(response.data);
         let jsonPro = JSON.stringify(response.data);
-        sessionStorage.setItem("profissional", jsonPro);
+        localStorage.setItem("profissional", jsonPro);
         return jsonPro;
     })
     .catch(error=>{
@@ -42,26 +42,26 @@ export const getUpdatedPro = (profissional) =>{
 }
 
 export const getToken = () =>{
-    const token = sessionStorage.getItem("token");
+    const token = localStorage.getItem("token");
     return token;
 }
 
 export const getTipoLogado = () =>{
-    const tipo = sessionStorage.getItem("app");
+    const tipo = localStorage.getItem("app");
     return tipo;
 }
 
 export const getUsuarioPro = () =>{
-    const pro = JSON.parse(sessionStorage.getItem("profissional"));
+    const pro = JSON.parse(localStorage.getItem("profissional"));
     return pro;
 }
 
 export const getUsuario = () =>{
     let user;
     if(getTipoLogado() === "cliente"){
-        user = JSON.parse(sessionStorage.getItem("cliente"));
+        user = JSON.parse(localStorage.getItem("cliente"));
     }else{
-        user = JSON.parse(sessionStorage.getItem("profissional"))
+        user = JSON.parse(localStorage.getItem("profissional"))
     }
     return user;
 }
@@ -69,10 +69,10 @@ export const getUsuario = () =>{
 export const setUsuarioPro = (profissional) =>{
     console.log("*************")
     console.log(profissional);
-    sessionStorage.setItem("profissional", JSON.stringify(profissional));
+    localStorage.setItem("profissional", JSON.stringify(profissional));
 }
 
 export const getUsuarioCliente = () =>{
-    const cliente = sessionStorage.getItem("cliente");
+    const cliente = localStorage.getItem("cliente");
     return cliente;
 }
