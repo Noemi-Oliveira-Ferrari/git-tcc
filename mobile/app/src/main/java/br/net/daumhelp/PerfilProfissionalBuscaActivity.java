@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,11 +18,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.squareup.picasso.Picasso;
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
+import br.net.daumhelp.adapter.ListaAdapterComentario;
+import br.net.daumhelp.configretrofit.RetroFitConfig;
+import br.net.daumhelp.model.Avaliacao;
 import br.net.daumhelp.model.Cliente;
 import br.net.daumhelp.model.Profissional;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
@@ -35,6 +45,11 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
     private ImageButton ibSolicitar;
     private ImageButton ibAvaliar;
     private ImageButton ibFavoritar;
+    private ImageView ivBack;
+
+
+    private ListView listView;
+    ArrayList<Avaliacao> lista = new ArrayList<Avaliacao>();
 
     private Dialog alertDialog;
     private Button btnSolicitarAlert;
@@ -66,6 +81,8 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
         btnVisualizar = findViewById(R.id.btn_resumo);
         ivFotoProfissional = findViewById(R.id.profile_image);
         btnAvaliar = findViewById(R.id.ic_avaliar);
+        listView = findViewById(R.id.lv_comentarios);
+        ivBack = findViewById(R.id.iv_back);
 
 
         alertDialog = new Dialog(this);
@@ -147,6 +164,39 @@ public class PerfilProfissionalBuscaActivity extends AppCompatActivity {
                     });
                 }
             });
+
+            final ListaAdapterComentario listaComentario = new ListaAdapterComentario(PerfilProfissionalBuscaActivity.this, lista);
+
+            Call<List<Avaliacao>> call = new RetroFitConfig().getComentarioService().carregarComentarios(tokenCliente, profissionalSelecionado.getIdProfissional());
+            call.enqueue(new Callback<List<Avaliacao>>() {
+                @Override
+                public void onResponse(Call<List<Avaliacao>> call, Response<List<Avaliacao>> response) {
+                    lista = (ArrayList<Avaliacao>) response.body();
+                    if(lista != null){
+                        for(Avaliacao a : lista){
+                            listaComentario.add(a);
+                        }
+                        listView.setAdapter(listaComentario);
+                        // progressDialog.dismiss();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(Call<List<Avaliacao>> call, Throwable t) {
+                    Log.i("Servico Pendente", t.getMessage());
+                    // progressDialog.dismiss();
+                }
+
+            });
+
+            ivBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+
 
         }
     }

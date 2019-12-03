@@ -79,7 +79,7 @@ public class ComentarioActivity  extends AppCompatActivity {
                         Avaliacao avaliacao = new Avaliacao();
                         avaliacao.setProfissional(profissional);
                         avaliacao.setCliente(cliente);
-                        avaliacao.setNota(rbEstrelas.getNumStars());
+                        avaliacao.setNota(rbEstrelas.getProgress());
                         avaliacao.setComentario(etComentario.getText().toString());
 
                         Call<Avaliacao> call = new RetroFitConfig().getComentarioService().comentarProfissional(tokenCliente, avaliacao);

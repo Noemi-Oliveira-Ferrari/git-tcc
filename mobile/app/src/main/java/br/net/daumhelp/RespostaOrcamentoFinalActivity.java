@@ -14,6 +14,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.squareup.picasso.Picasso;
+
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Pedido;
 import retrofit2.Call;
@@ -101,6 +103,10 @@ public class RespostaOrcamentoFinalActivity extends AppCompatActivity {
                     }
                 });
 
+
+
+                String fotoCli = pedido.getCliente().getFoto();
+                Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).resize(100,100).into(ivFoto);
                 tvNomeCliente.setText(pedido.getCliente().getNome());
                 tvData.setText(pedido.getDataServico());
                 tvHorario.setText("Das " + pedido.getHorarioInicial() + " às " + pedido.getHorarioFinal());

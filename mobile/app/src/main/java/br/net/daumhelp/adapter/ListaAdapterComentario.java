@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import br.net.daumhelp.R;
 
@@ -28,6 +29,7 @@ public class ListaAdapterComentario extends ArrayAdapter<Avaliacao> {
     private TextView tvComentario;
     private Button btnLer;
     private ImageView ivFotoCliente;
+    private RatingBar rbNota;
 
     public ListaAdapterComentario(Context context, ArrayList<Avaliacao> lista){
         super(context, 0, lista);
@@ -50,6 +52,9 @@ public class ListaAdapterComentario extends ArrayAdapter<Avaliacao> {
 
         tvNome = convertView.findViewById(R.id.tv_nome);
         tvNome.setText(comentarioPosicao.getCliente().getNome());
+
+        rbNota = convertView.findViewById(R.id.    rb_comentario);
+        rbNota.setProgress(comentarioPosicao.getNota());
 
         tvData = convertView.findViewById(R.id.tv_data_comentario);
 
