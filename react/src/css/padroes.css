@@ -119,10 +119,6 @@ option{
     border-left: solid #ff01018e 5px !important;    
 }
 
-.aux-header{
-    width: 100%;
-    height: 95px;
-}
 
 /* width */
 p::-webkit-scrollbar,
@@ -179,6 +175,11 @@ textarea::-webkit-scrollbar-thumb:hover {
         transform: rotate(-90deg);
     }
 
+    .aux-header{
+        width: 100%;
+        height: 95px;
+        background-color: #77c9d4;
+    }
 }
 
 @media screen and (max-device-width: 880px){
@@ -198,6 +199,11 @@ textarea::-webkit-scrollbar-thumb:hover {
     #img-voltar-topo{
         max-width: 40px;
         transform: rotate(-90deg);
+    }
+    .aux-header{
+        width: 100%;
+        height: 100px;
+        background-color: #77c9d4;
     }
 
 }

@@ -276,6 +276,7 @@ class PerfilPro extends Component{
                 cnpj: cnpj,
                 email: $("#txt-email").val(),
                 senha: generateHash($("#txt-senha").val()),
+                foto: getUpdatedPro().nome,
                 tipoUsuario: {
                     idTipoUsuario: 1
                 },

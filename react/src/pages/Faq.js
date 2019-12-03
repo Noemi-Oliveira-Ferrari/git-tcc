@@ -58,6 +58,7 @@ export default class Faq extends Component {
                                                         <div className="caixa-nome-contato">
                                                             <InputProblema  
                                                                 classInput="form-control form-input-contato"
+                                                                classLabel="label-input-problema"
                                                                 label="Nome:"
                                                                 type="text"
                                                                 id="txt-email-contato"/>
@@ -65,6 +66,7 @@ export default class Faq extends Component {
                                                         <div className="caixa-cpf-contato">
                                                             <InputProblema  
                                                                 classInput="form-control form-input-contato"
+                                                                classLabel="label-input-problema"
                                                                 label="Email:"
                                                                 type="text"
                                                                 id="txt-email-contato"/>

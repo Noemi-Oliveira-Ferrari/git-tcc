@@ -19,6 +19,7 @@ class App extends Component{
 		movePage(0);
 	}
 
+
 	render(){	
 		return (
 			<Fragment>
@@ -27,6 +28,7 @@ class App extends Component{
 				<div id="all">
 					{getToken() !== "" ? getToken() !== null ? <MenuLateral/> : "" : ""}
 					{/* // <MenuLateral/> */}
+					
 					{this.props.children}
 
 					<div className="aux-footer"/>

@@ -68,6 +68,8 @@ public class ImageResource {
 	@PostMapping("/profissional")
 	public ProfissionalDTO uploadImgPro(@RequestParam MultipartFile img, @RequestParam Long idPro) {
 		
+		System.out.println(img.getOriginalFilename());
+		
 		//**1
 		ProfissionalDTO pro = proDTOrepository.findById(idPro).get();
 		

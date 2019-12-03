@@ -14,6 +14,7 @@ import Home from './pages/Home';
 import Sobrenos from './pages/Sobrenos';
 import RendaPro from './pages/RendaPro';
 import Faq from './pages/Faq';
+import FaleConosco from './pages/FaleConosco';
 
 ReactDOM.render(
     <Router history={browserHistory}>
@@ -30,6 +31,7 @@ ReactDOM.render(
             <Route path='/home' component={Home}/>
             <Route path='/sobrenos' component={Sobrenos}/>
             <Route path='/faq' component={Faq}/>
+            <Route path='/contato' component={FaleConosco}/>
             
         </Route>
     </Router>,    

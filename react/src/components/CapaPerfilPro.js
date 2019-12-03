@@ -93,12 +93,13 @@ export class CapaPerfilPro extends Component{
     }
 
     uploadPhoto(event){
+        event.preventDefault();
         let alertas = [];
         let idUsuario;
         const form = new FormData();
 
-        event.preventDefault();
         form.append("img", this.state.upload);
+        
         if(getTipoLogado() === "cliente"){
             idUsuario = getUsuario().idCliente;
             form.append("idCliente", idUsuario);
@@ -147,7 +148,7 @@ export class CapaPerfilPro extends Component{
             this.setState({upload: ""});
 
             if(this.state.upload === ""){
-                this.confirmUploadMode();
+                // this.confirmUploadMode();
             }            
             console.log(error);
         })

@@ -170,6 +170,7 @@ header{
     background-color: rgb(219, 223, 220);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center;
     
 }
 /* .avatar-usuario figure {

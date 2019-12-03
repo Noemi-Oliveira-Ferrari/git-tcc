@@ -27,7 +27,7 @@ export class HeaderUsuario extends Component{
             imgPerfil: getUsuario().foto !== "" ? getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : IMG_PERFIL_PADRAO : IMG_PERFIL_PADRAO
         }
         this.logout = this.logout.bind(this);
-        this.teste = this.teste.bind(this);
+        this.updateHeader = this.updateHeader.bind(this);
     }
 
     logout(event){
@@ -38,12 +38,10 @@ export class HeaderUsuario extends Component{
     }
 
     componentDidMount(){
-        console.log("99999999999999999999999999999");
-        console.log(this.state.imgPerfil);
-        this.teste();
+        this.updateHeader();
     }
 
-    teste(){
+    updateHeader(){
         setInterval(() => {
             console.log("atualizar header!!!");
             this.setState({imgPerfil: getUsuario().foto !== "" ? getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : IMG_PERFIL_PADRAO : IMG_PERFIL_PADRAO});
@@ -112,7 +110,7 @@ export default class Header extends Component{
                 </div>
                 <div className="caixa-menu center flex-center">
                     <nav className="area-itens-menu flex-center">
-                        <Link className="link" to="/" > 
+                        <Link className="link" to="/home" > 
                             <div className="item-menu-header flex-center"> 
                                 Início
                             </div>
@@ -125,6 +123,11 @@ export default class Header extends Component{
                         <Link className="link" to="/faq" >
                             <div className="item-menu-header flex-center"> 
                                 FAQ
+                            </div> 
+                        </Link>
+                        <Link className="link" to="/contato" >
+                            <div className="item-menu-header flex-center"> 
+                                Contato
                             </div> 
                         </Link>
                     </nav>
