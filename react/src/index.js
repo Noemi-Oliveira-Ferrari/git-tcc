@@ -20,7 +20,8 @@ ReactDOM.render(
     <Router history={browserHistory}>
         {/* <Route path="/" component={App}> */}
         <Route path='/' component={App}>
-            <IndexRoute component={Login}/>
+            <IndexRoute exact="/" component={Home}/>
+            {/* <Route path='\\' component={Home}/> */}
             <Route path='/escolha' component={CardsEscolha}/>
             <Route path='/profissional/cadastro' component={CadastroPro}/>
             <Route path='/cliente/cadastro' component={CadastroCliente}/>
@@ -28,11 +29,10 @@ ReactDOM.render(
             <Route path='/app/profissional/perfil' component={PerfilPro}/>
             <Route path='/app/profissional/servicos' component={ServicosPro}/>
             <Route path='/app/profissional/renda' component={RendaPro}/>
-            <Route path='/home' component={Home}/>
+            <Route path='/login' component={Login}/>
             <Route path='/sobrenos' component={Sobrenos}/>
             <Route path='/faq' component={Faq}/>
-            <Route path='/contato' component={FaleConosco}/>
-            
+            <Route path='/contato' component={FaleConosco}/>            
         </Route>
     </Router>,    
     document.getElementById('root')

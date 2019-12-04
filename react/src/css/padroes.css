@@ -16,7 +16,7 @@ h3, h4, h5, h6, div, figure, section, form{
 }
 
 @font-face{
-    font-family: 'Koschasan';
+    font-family: 'Kodchasan';
     src: url("../fonts/Kodchasan-Bold.ttf");
 }
 
@@ -26,7 +26,7 @@ h3, h4, h5, h6, div, figure, section, form{
 }
 
 .titulo-daumhelp{
-    font-family: 'Koschasan';
+    font-family: 'Kodchasan';
 }
 
 .flex-center

@@ -367,7 +367,7 @@
         height: 90px;
         /* background-color: rgb(57, 207, 115); */
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         flex-wrap: wrap;
     }
 
@@ -594,7 +594,7 @@
         align-items: center;
         justify-content: center;    
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
     }
 
     .btn-buscar-faq
@@ -977,11 +977,6 @@
 {
     width: 100%;
 }
-
-/* .form-label
-{
-    font-size: 45px;
-}  */
 
 #txt-nome-contato,
 #txt-cpf-contato,

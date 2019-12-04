@@ -18,7 +18,7 @@ export class CardServico extends Component{
                 {/* <Estrelas/> */}
                 {this.props.avaliacao}
             </div>
-            <p className="text-servico">{this.props.comentario}</p>
+            <div className="text-servico">{this.props.comentario}  </div>
             <div className="caixa-link flex-center">
                 <figure>
                     <img alt="Ver mais" title="Ver mais" src={Analisar}/>
@@ -27,7 +27,6 @@ export class CardServico extends Component{
         </div>
     );
    }
-
 }
 
 export default CardServico;

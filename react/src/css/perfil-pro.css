@@ -68,7 +68,7 @@
 		/* background-color: #7257bc; */
 		margin: auto;
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: space-around;
 	}
 
@@ -85,6 +85,21 @@
 		/* float: ; */
 	}
 
+	.caixa-avaliacoes{
+		width: 420px;
+		height: auto;
+		min-height: 300px;
+		margin-top: 50px;
+		overflow: hidden;
+		scroll-behavior: smooth;
+		flex-wrap: wrap;
+		/* background-color: #57BC90; */
+		display: flex;
+		/* flex-direction: column; */
+		align-items: center;
+		justify-content: space-around;
+		flex-wrap: wrap;
+	}
 
 	/* CAIXA DE COMENTARIOS */
 
@@ -96,7 +111,8 @@
 		float: left;
 		border-radius:10px;
 		color: #84848D;
-		margin-top: -760px;   
+		margin-top: 20px;
+		box-shadow: 2px 2px 5px #00000050;
 	}
 
 	.title-avaliacao
@@ -120,7 +136,6 @@
 		border-radius: 10px;
 		margin-bottom: 20px;
 	}
-
 	.usuario-perfil
 	{
 		width: 100px;
@@ -141,6 +156,9 @@
 		background-color: #ffeeee;
 		margin: auto;
 		margin-top: 30px;
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
 
 	}
 
@@ -152,6 +170,7 @@
 		box-sizing: border-box;
 		font-size: 20px;
 		font-family: 'Lexend Deca';
+		overflow: hidden;
 	}
 
 	.dados-usuario

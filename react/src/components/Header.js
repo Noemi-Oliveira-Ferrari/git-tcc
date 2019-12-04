@@ -13,7 +13,7 @@ export class HeaderLogin extends Component{
     render(){
         return(
             <div className="entrar-cadastro">
-                <Link to="/" className="link"><div className="box-entrar flex-center">Entre</div></Link>
+                <Link to="/login" className="link"><div className="box-entrar flex-center">Entre</div></Link>
                 <Link to="/escolha" className="link"><div className="box-cadastrar flex-center">Cadastra-se</div></Link>
             </div>
         );  
@@ -42,10 +42,12 @@ export class HeaderUsuario extends Component{
     }
 
     updateHeader(){
-        setInterval(() => {
-            console.log("atualizar header!!!");
-            this.setState({imgPerfil: getUsuario().foto !== "" ? getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : IMG_PERFIL_PADRAO : IMG_PERFIL_PADRAO});
-        }, 60000);
+        if(getToken() !== null && getToken() !== ""){
+            setInterval(() => {
+                console.log("atualizar header!!!");
+                this.setState({imgPerfil: getUsuario().foto !== "" ? getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : IMG_PERFIL_PADRAO : IMG_PERFIL_PADRAO});
+            }, 60000);
+        }
     }
 
 
@@ -110,7 +112,7 @@ export default class Header extends Component{
                 </div>
                 <div className="caixa-menu center flex-center">
                     <nav className="area-itens-menu flex-center">
-                        <Link className="link" to="/home" > 
+                        <Link className="link" to="/" > 
                             <div className="item-menu-header flex-center"> 
                                 Início
                             </div>

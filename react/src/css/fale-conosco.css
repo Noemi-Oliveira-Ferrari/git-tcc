@@ -132,7 +132,7 @@
         height: 90px;
         /* background-color: rgb(57, 207, 115); */
         display: flex;
-        justify-content: start;
+        justify-content: flex-start;
         flex-wrap: wrap;
     }
 
@@ -290,11 +290,6 @@
         /* background-color: #c9c9c9; */
         box-sizing: border-box;
         padding: 10px;
-    }
-
-    .form-label
-    {
-        font-family: 'Lexend Deca'; 
     }
 
     .title-outras-formas-contato
@@ -606,10 +601,6 @@
         width: 100%;
     }
 
-    .form-label
-    {
-        font-size: 45px;
-    } 
 
     #txt-nome-contato,
     #txt-cpf-contato,
@@ -653,7 +644,7 @@
         height: 110px;
         background-color: #5fce9e;
         border: 0px;
-        border-radius: 20px;
+        border-radius: 55px;
         font-family: 'Lexend Deca';
         font-size: 3.2em;
         color: rgba(231, 237, 234, 0.897);

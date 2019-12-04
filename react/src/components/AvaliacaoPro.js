@@ -12,12 +12,13 @@ export class AvaliacaoPro extends Component{
             <h2 className="title-avaliacao">Principais Avaliações</h2>
             <div className="caixa-comentario-usuario">
                 <div className="usuario-perfil">
-                    <div className="circulo-usuario"></div>
-                    <h4 className="nome-usuario flex-center">Ester Ribeiro</h4>
+                    <div className="circulo-usuario" style={{backgroundImage: `url(${this.props.fotoCliente})`}}>
+                    </div>
+                    <h4 className="nome-usuario">{this.props.nomeCliente}</h4>
                 </div>
                 <div className="dados-usuario">
-                    <h4 className="titulo-comentario flex-center">TextText TextText</h4>
-                    <div className="caixa-star-perfil flex-center">
+                    <h4 className="titulo-comentario flex-center">Avaliação: {this.props.nota}</h4>
+                    {/* <div className="caixa-star-perfil flex-center">
                         <div className="estrelas">
                             <input type="radio" id="cm_star-empty" name="fb" value="" />
                             <label htmlFor="cm_star-1"><i className="fa"></i></label>
@@ -31,8 +32,8 @@ export class AvaliacaoPro extends Component{
                             <label htmlFor="cm_star-5"><i className="fa"></i></label>
                             <input type="radio" id="cm_star-5" name="fb" value="5" />
                         </div>
-                    </div>
-                    <p className="texto-comentario-perfil flex-center">amei p profissional chegou no horario amrcado e blablabla</p>
+                    </div> */}
+                    <p className="texto-comentario-perfil flex-center">{this.props.comentario}</p>
                 </div>
             </div>
            

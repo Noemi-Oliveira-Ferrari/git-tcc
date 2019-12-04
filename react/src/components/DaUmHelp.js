@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../css/login.css';
 
 
-export class DaUmHelp extends Component{
+export default class DaUmHelp extends Component{
    render(){
     return(
         
@@ -16,5 +16,5 @@ export class DaUmHelp extends Component{
 
 }
 
-export default DaUmHelp;
+// export default DaUmHelp;
 

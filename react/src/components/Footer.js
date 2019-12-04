@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/footer.css';
 import PlayStore from '../img/google-play-badge.png';
 import Icons8 from '../img/icons8.png';
 import Instagram from '../img/instagram.png';
@@ -9,6 +8,12 @@ import Snapchat from '../img/snapchat.png';
 import Flaticon from '../img/flaticon.png';
 import {Link} from 'react-router';
 import DaUmHelp from '../components/DaUmHelp';
+import {DAUMHELP_APK} from '../global';
+import '../css/footer.css';
+
+
+
+
 const be = "Brace {Everything}"
 // import {}
 
@@ -49,7 +54,7 @@ export default class Footer extends Component{
                                 </Link>
                             </div>
                             <div className="tamanho-caixa">
-                                <a href="../fonts/Kodchasan-Bold.ttf" download>
+                            <a href={DAUMHELP_APK} download>
                                     <img src={PlayStore} className="tamanho-icone" alt="Ícone Google PlayStore" title="Disponível na Google Playstore"/>
                                 </a>
                             </div>
@@ -135,7 +140,7 @@ export default class Footer extends Component{
                             <div className="google-responsivo">
                                 {/* <p className="text-responsive">Disponível em:</p> */}
                                 <div className="tamanho-caixa-res">
-                                    <a href="../fonts/Kodchasan-Bold.ttf" download>
+                                    <a href={DAUMHELP_APK} download>
                                         <img src={PlayStore} className="tamanho-icone-res" alt="Ícone Google PlayStore" title="Disponível na Google Playstore"/>
                                     </a>
                                 </div>

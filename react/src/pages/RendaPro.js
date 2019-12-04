@@ -11,8 +11,11 @@ import Missao from '../img/target.png'
 import Visao from '../img/flag.png'
 import CardServico from '../components/CardServico';
 import CapaPerfilPro from '../components/CapaPerfilPro';
-import { getUsuario } from '../utils/verificaSessionStrg';
+import axios from 'axios';
 import { DOMINIO, DOMINIO_IMG } from '../global';
+import { getTipoLogado, getToken, getUsuario } from '../utils/verificaSessionStrg';
+import {SOLICITADO, ORCADO, ACEITO, REJEITADO, CANCELADO_CLIENTE, CANCELADO_PROFISSIONAL, CONCLUIDO} from '../utils/codeStatusPedidos';
+
 
 export class RendaPro extends Component{
 
@@ -22,7 +25,13 @@ export class RendaPro extends Component{
             nomePro: "", servicoPro: "",
             localPro: "", notaPro: "",
             valorPro: "", fotoPro: "",
+            avaliacoes: [],
+            pedidosConcluidos: [],
+            renda: ""
         }
+        
+        this.buscarAvaliacoes = this.buscarAvaliacoes.bind(this);
+        this.buscarConcluidos = this.buscarConcluidos.bind(this);
 
     }
 
@@ -54,9 +63,61 @@ export class RendaPro extends Component{
     }
 
     componentDidMount(){
+        this.buscarAvaliacoes();
+        this.buscarConcluidos();
         this.colocaDadosNaCapa(getUsuario());
     }
 
+    
+    buscarConcluidos(){
+
+        axios({
+            method: "GET",
+            url: `${DOMINIO}pedidos/profissional/${getUsuario().idProfissional}/status/${CONCLUIDO}`,
+            headers: {"token": getToken()},
+            timeout: 30000
+        })
+        .then(response =>{
+            let jsonConcluidos = response.data;
+            this.setState({pedidosConcluidos: jsonConcluidos});
+            let rendaTotal = 0;
+            let renda = "";
+
+            jsonConcluidos.map((concluido) => (
+                rendaTotal += ((concluido.valorServico)-(concluido.valorServico*.04))
+                // rendaTotal += (concluido.valorServico)
+            ));
+            renda = new String(rendaTotal.toFixed(2));
+            if(renda.includes(".")){
+                renda = renda.replace(".", ",");
+            }else{
+                renda += ",00"
+            }
+            
+            this.setState({renda: renda});
+            console.log(jsonConcluidos);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
+    buscarAvaliacoes(){
+
+        axios({
+            method: "GET",
+            url: `${DOMINIO}avaliacoes/profissional/id/${getUsuario().idProfissional}`,
+            headers: {"token": getToken()},
+            timeout: 30000
+        })
+        .then(response =>{
+            let jsonAvaliacoes = response.data;
+            this.setState({avaliacoes: jsonAvaliacoes});
+            console.log(jsonAvaliacoes);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
     render(){
         return(
             <Fragment>
@@ -160,11 +221,24 @@ export class RendaPro extends Component{
                     <div class="caixa-renda">
                         <div class="caixa-valores">
                             <p class="title-valor">Renda atual</p>
-                            <p class="text-valor">120,00</p>
+                            <p class="text-valor"><span style={{fontFamily: 'Manjari'}}>R$ </span>{this.state.renda}</p>
                         </div>
                         <div class="caixa-servicos flex-center">
                             <h2 class="title-servicos-prestados">Serviços Prestados</h2>
-                            <CardServico
+                                {
+                                    this.state.avaliacoes.map(avaliacao =>(
+                                        <CardServico 
+                                            titulo={avaliacao.cliente.nome}
+                                            enderecoCliente={`${avaliacao.cliente.endereco.logradouro}, 
+                                                ${avaliacao.cliente.endereco.cidade.cidade} - 
+                                                ${avaliacao.cliente.endereco.cidade.microrregiao.uf.uf}`
+                                            }
+                                            comentario={avaliacao.comentario}
+                                            estrelas="caixa-star"
+                                        />
+                                    ))
+                                }
+                            {/* <CardServico
                                     titulo="Concerto maquina de lavar Brastemp"
                                     enderecoCliente="Rofrigo Amoedo, Jandira - SP"
                                     comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
@@ -193,7 +267,7 @@ export class RendaPro extends Component{
                                     enderecoCliente="Rofrigo Amoedo, Jandira - SP"
                                     comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
                                     estrelas="caixa-star-hidden"
-                                />
+                                /> */}
                         </div>
                     </div>
                 </div>

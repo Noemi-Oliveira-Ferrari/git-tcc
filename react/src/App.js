@@ -27,7 +27,6 @@ class App extends Component{
 				<div className="aux-header"/>
 				<div id="all">
 					{getToken() !== "" ? getToken() !== null ? <MenuLateral/> : "" : ""}
-					{/* // <MenuLateral/> */}
 					
 					{this.props.children}
 

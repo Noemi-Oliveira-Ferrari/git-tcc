@@ -129,7 +129,9 @@
 		display: flex;
 		justify-content: center;
 		margin: auto;
-		overflow: auto;
+		overflow-x: auto;
+		overflow-y: none;
+		word-wrap: break-word;
 	}
 	
 	

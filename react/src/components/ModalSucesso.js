@@ -30,7 +30,7 @@ function ModalSucesso (props) {
                         <Botao
                         classBotao="btn-sucesso-login"
                         valueBotao="Retornar à página inicial"
-                        clickBotao={()=>{browserHistory.push("/")}}>
+                        clickBotao={()=>{browserHistory.push("/login")}}>
                         </Botao>
                     {/* </Link> */}
                 </div>

@@ -14,7 +14,7 @@ import ImgPadrao from '../img/padrao_perfil.png';
 import axios from 'axios';
 import MenuLateral from '../components/MenuLateral';
 import {Inputs, Selects, InputNumber} from '../components/FormElements';
-import { verificarLogado, getToken, getUsuarioPro, getUpdatedPro } from '../utils/verificaSessionStrg';
+import { verificarLogado, getToken, getUsuarioPro, getUpdatedPro, getUsuario } from '../utils/verificaSessionStrg';
 import { Route, browserHistory } from 'react-router';
 import { DadosPessoaisPro, DadosProfissional } from '../components/FormularioProfissional';
 import { BotaoImg } from '../components/Botao';
@@ -45,6 +45,7 @@ class PerfilPro extends Component{
             tituloAlerta: "",
             showModalErro: false,
             loading: false,
+            avaliacoes: []
         }
         this.enableFields = this.enableFields.bind(this);
         this.colocaDadosNaCapa = this.colocaDadosNaCapa.bind(this);
@@ -54,6 +55,7 @@ class PerfilPro extends Component{
         
         this.ModalAlertas = this.ModalAlertas.bind(this);
         this.mostrarAlerta = this.mostrarAlerta.bind(this);
+        this.buscarAvaliacoes = this.buscarAvaliacoes.bind(this);
     }
 
 
@@ -105,8 +107,26 @@ class PerfilPro extends Component{
         this.enableFields(false);
         console.log("********")
         console.log(this.state.atualizar);
+        this.buscarAvaliacoes();
     }
 
+    buscarAvaliacoes(){
+
+        axios({
+            method: "GET",
+            url: `${DOMINIO}avaliacoes/profissional/id/${getUsuario().idProfissional}`,
+            headers: {"token": getToken()},
+            timeout: 30000
+        })
+        .then(response =>{
+            let jsonAvaliacoes = response.data;
+            this.setState({avaliacoes: jsonAvaliacoes});
+            console.log(jsonAvaliacoes);
+        })
+        .catch(error =>{
+            console.log(error);
+        })
+    }
     colocaDadosNaCapa(pro){
         let decimal;
         let valorHora;
@@ -433,7 +453,34 @@ class PerfilPro extends Component{
                             <DadosProfissional/>
                         </form>
                     </div>
-                    <AvaliacaoPro/>
+                    <div className="caixa-avaliacoes">
+                        {
+                            this.state.avaliacoes.map(avaliacao =>(
+                                <AvaliacaoPro
+                                    nomeCliente={avaliacao.cliente.nome}
+                                    comentario={avaliacao.comentario}
+                                    nota={avaliacao.nota}
+                                    fotoCliente={`${DOMINIO_IMG}${avaliacao.cliente.foto}`}
+                                />
+                                // <CardServico 
+                                //     titulo={avaliacao.cliente.nome}
+                                //     enderecoCliente={`${avaliacao.cliente.endereco.logradouro}, 
+                                //         ${avaliacao.cliente.endereco.cidade.cidade} - 
+                                //         ${avaliacao.cliente.endereco.cidade.microrregiao.uf.uf}`
+                                //     }
+                                //     comentario={avaliacao.comentario}
+                                //     estrelas="caixa-star"
+                                // />
+                            ))
+                        }
+                        <AvaliacaoPro
+                            nomeCliente="José Maria"
+                            comentario="Terminou o serviço bem rápdo, e muito bem. E ainda por cima tem um preço muito alto, realmente recomendo!"
+                            nota="9"
+                            fotoCliente=""
+                        />
+
+                    </div>
                 </div>
             </Fragment>
         );

@@ -70,7 +70,7 @@ export class ServicosPro extends Component{
 
         axios({
             method: "GET",
-            url: `${DOMINIO}avaliacoes/`,
+            // url: `${DOMINIO}avaliacoes/profissional/id/${getUsuario().idProfissional}`,
             headers: {"token": getToken()},
             timeout: 30000
         })

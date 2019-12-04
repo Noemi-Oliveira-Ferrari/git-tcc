@@ -16,15 +16,18 @@ export class ServicosPro extends Component{
         this.state = {
             pedidosPendentes: [],
             pedidosConcluidos: [],
+            avaliacoes: [],
             avaliacao: ""
         }
         this.buscarPendentes = this.buscarPendentes.bind(this);
         this.buscarConcluidos = this.buscarConcluidos.bind(this);
+        this.buscarAvaliacoes = this.buscarAvaliacoes.bind(this);
     }
 
     componentDidMount(){
         this.buscarPendentes();
         this.buscarConcluidos();
+        this.buscarAvaliacoes();
     }
 
     buscarPendentes(){
@@ -69,14 +72,14 @@ export class ServicosPro extends Component{
 
         axios({
             method: "GET",
-            url: `${DOMINIO}avaliacoes/`,
+            url: `${DOMINIO}avaliacoes/profissional/id/${getUsuario().idProfissional}`,
             headers: {"token": getToken()},
             timeout: 30000
         })
         .then(response =>{
-            let nota = response.data;
-            this.setState({avaliacao: nota});
-            console.log(nota);
+            let jsonAvaliacoes = response.data;
+            this.setState({avaliacoes: jsonAvaliacoes});
+            console.log(jsonAvaliacoes);
         })
         .catch(error =>{
             console.log(error);
@@ -118,17 +121,10 @@ export class ServicosPro extends Component{
                                         />
                                     ))
                                 }
-                                <CardServico
+                                {/* <CardServico
                                     titulo="Concerto maquina de lavar Brastemp"
                                     enderecoCliente="Rofrigo Amoedo, Jandira - SP"
                                     comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
-                                    estrelas="caixa-star-hidden"
-                                />
-                                {/*
-                                <CardServico
-                                    titulo="Concerto maquina de lavar Brastemp"
-                                    enderecoCliente="Maria Gasolina, Barueri - SP"
-                                    comentario="Minha maquina quebrou e nao funciona a peça tal pegou fogo e preciso de uma nova"
                                     estrelas="caixa-star-hidden"
                                 /> */}
                             </div>
@@ -139,31 +135,24 @@ export class ServicosPro extends Component{
                             </div>
                             <div className="servico-overflow">
                                 {
-                                    this.state.pedidosConcluidos.map(pedido =>(
+                                    this.state.avaliacoes.map(avaliacao =>(
                                         <CardServico 
-                                            titulo={pedido.cliente.nome}
-                                            enderecoCliente={`${pedido.cliente.endereco.logradouro}, 
-                                                ${pedido.cliente.endereco.cidade.cidade} - 
-                                                ${pedido.cliente.endereco.cidade.microrregiao.uf.uf}`
+                                            titulo={avaliacao.cliente.nome}
+                                            enderecoCliente={`${avaliacao.cliente.endereco.logradouro}, 
+                                                ${avaliacao.cliente.endereco.cidade.cidade} - 
+                                                ${avaliacao.cliente.endereco.cidade.microrregiao.uf.uf}`
                                             }
-                                            comentario={pedido.descricao}
+                                            comentario={avaliacao.comentario}
                                             estrelas="caixa-star"
                                         />
                                     ))
                                 }
-                                <CardServico
+                                {/* <CardServico
                                     titulo="Fiamento de dois comodos"
                                     enderecoCliente="Maria Fernandes, Barueri - SP"
                                     comentario="Ótimo profissional, chegou no horário e fez o trabalho bem feito, mto educado, só deixou sujo"
                                     estrelas="caixa-star"
                                     avaliacao={`Avalação do Cliente: 9`}
-                                />
-                                {/* 
-                                <CardServico
-                                    titulo="Fiamento de dois comodos"
-                                    enderecoCliente="Maria Gasolina, Barueri - SP"
-                                    comentario="Otimo profissional, chegou no horario e fez o trabalho bem feito, mto educado so deixou sujo"
-                                    estrelas="caixa-star"
                                 /> */}
                             </div>
                         </div>
