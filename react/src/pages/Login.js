@@ -87,7 +87,7 @@ export class Login extends Component{
 			let tokenDecoded = jwtDecoder(tokenJson.token);
 			let jsonPro = tokenDecoded.profissional;
 			let token = tokenJson.token;
-			console.log(jsonPro);
+			console.log(token);
 			
 			if(jsonPro === null || jsonPro === ''){
 				console.log("pro nao encontrado");

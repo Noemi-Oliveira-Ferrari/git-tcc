@@ -25,6 +25,7 @@ export class HeaderUsuario extends Component{
     constructor(){
         super();
         this.state ={
+            username: getUsuario().nome,
             imgPerfil: getUsuario().foto !== "" ? getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : IMG_PERFIL_PADRAO : IMG_PERFIL_PADRAO
         }
         this.logout = this.logout.bind(this);
@@ -34,7 +35,7 @@ export class HeaderUsuario extends Component{
     logout(event){
         localStorage.clear();
         setTimeout(() => {
-            browserHistory.push("/");
+            browserHistory.push("/login");
         }, 600);
     }
 
@@ -46,6 +47,7 @@ export class HeaderUsuario extends Component{
         if(getToken() !== null && getToken() !== ""){
             setInterval(() => {
                 console.log("atualizar header!!!");
+                console.log(getUsuario().nome);
                 this.setState({imgPerfil: getUsuario().foto !== "" ? getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : IMG_PERFIL_PADRAO : IMG_PERFIL_PADRAO});
                 this.setState({username: getUsuario().nome});
             }, 60000);
@@ -62,17 +64,17 @@ export class HeaderUsuario extends Component{
                 </div>
                 <Link to="/app/profissional/perfil" className="link">
                     <div className="box-nome flex-center">
-                        {this.props.username}
+                        {this.state.username}
                     </div>
                 </Link>
 
                 {/* <Link to="/" className="link"> */}
                     <div className="box-sair">
-                        <Link to="/app/profissional/servicos" className="link">
+                        {/* <Link to="/app/profissional/servicos" className="link">
                             <figure>
                                 <img src={Not} alt="Notificações" title="Notificações"/>
                             </figure> 
-                        </Link> 
+                        </Link>  */}
                         <figure>
                             <img src={Logout} alt="Deslogar" title="Deslogar" onClick={this.logout}/>
                         </figure>
@@ -143,7 +145,7 @@ export default class Header extends Component{
                         <Link to="/" className="link">
                             <div className="logo-menu-mobile">
                                 <figure>
-                                    <img src={LogoMobile} alt="DaUmHelp!" title="DaUmHelp!"/>
+                                    <img src={Logo} alt="DaUmHelp!" title="DaUmHelp!"/>
                                 </figure>
                             </div>
                         </Link>
@@ -159,30 +161,25 @@ export default class Header extends Component{
                     </div>
                 </div>
                 <div className="caixa-menu-mobile center flex-center">
-                    <nav className="area-itens-menu-mobile flex-center">
+                    <nav className="area-itens-menu-mobile">
                         <Link className="link" to="/" > 
-                            <div className="item-menu-header-mobile flex-center"> 
-                                Início
+                            <div className="item-menu-header-mobile-home flex-center"> 
+                                
                             </div>
                         </Link>
                         <Link className="link" to="/sobrenos" >
-                            <div className="item-menu-header-mobile flex-center"> 
-                                Sobre Nós
+                            <div className="item-menu-header-mobile-sobrenos flex-center"> 
+                                
                             </div> 
                         </Link>
                         <Link className="link" to="/faq" >
-                            <div className="item-menu-header-mobile flex-center"> 
-                                FAQ
-                            </div> 
-                        </Link>
-                        <Link className="link" to="/contato" >
-                            <div className="item-menu-header-mobile flex-center"> 
-                                Contato
+                            <div className="item-menu-header-mobile-faq flex-center"> 
+                                
                             </div> 
                         </Link>
                     </nav>
                 </div>
-            </header>     
+            </header>       
             </Fragment>   
         );  
     }   

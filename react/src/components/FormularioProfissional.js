@@ -36,6 +36,7 @@ export class DadosPessoaisPro extends Component{
            
         this.setNome = this.setNome.bind(this);
         this.setCep = this.setCep.bind(this);
+        this.setNumero = this.setNumero.bind(this);
         this.setEmail = this.setEmail.bind(this);
         this.setSenha = this.setSenha.bind(this);
         this.setConfirmSenha = this.setConfirmSenha.bind(this);
@@ -293,6 +294,9 @@ export class DadosPessoaisPro extends Component{
         }
     }
 
+    setNumero(event){
+        this.setState({numero: event.target.value});
+    }
     getEndereco = (cep) =>{
         let erros = [];
         // axios.get(`${DOMINIO}enderecos/cep/${cep}`)
@@ -358,7 +362,17 @@ export class DadosPessoaisPro extends Component{
     setTipoPfPj(event){
         this.setState({radioChecked: event.target.value});
 
-        this.setState({tipoPro: event.target.value})
+        this.setState({tipoPro: event.target.value});
+
+        console.log(event.target.value);
+
+        if(event.target.value === "rdo-pj"){
+            this.setState({dataNasc: ""});
+            $("#txt-dataNasc").attr("disabled", "disabled");
+        }else{
+            $("#txt-dataNasc").removeAttr("disabled");
+        }
+        
         setTimeout(()=>{
             console.log(`tipoPro ${this.state.tipoPro}`);
         }, 1000);    
@@ -510,6 +524,22 @@ export class DadosPessoaisPro extends Component{
                                     valueInput={this.state.logradouro || ""}
                                     readOnly
                                     classInput="form-control form-input"
+                                />
+                                <InputNumber
+                                    classDivInput="caixa-numero"
+                                    label="Número:"
+                                    id="txt-numero"
+                                    type="text"
+                                    name="txt_numero"
+                                    classInput="form-control form-input"
+                                    maxLengthInput="10"
+                                    separadorMilhar="."
+                                    separadorDecimal=","
+                                    qtdDecimal="1"
+                                    permitirNegativo="false"
+                                    onChange={this.setNumero}
+                                    valueInput={this.state.numero || ""}
+                                    tempMask="_"
                                 />
                                 
                             </div>
@@ -803,7 +833,7 @@ export default class FormularioProfissional extends Component{
 
     validarCampos(){
         
-        let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=InputNumber], input[type=email], select");
+        let campos = document.querySelectorAll("input[type=password], input[type=text], input[type=InputNumber], input[type=email], input:not(#txt-dataNasc), select");
         let semErro = true;
         let erros = [];
 
@@ -819,17 +849,17 @@ export default class FormularioProfissional extends Component{
             console.log("validarString nome "+semErro);
         }
 
-        if(!validarIdade($('#txt-dataNasc').get(0))){
-            semErro = false;
-            erros.push("Para ser cadastrar é necessário ter no mínimo 18 anos!\n");
-            console.log("validarIdade "+semErro);
-        }
 
         if($('.caixa-cpfCnpj').text() === "CPF"){
             if(!validarCpfPro($('#txt-cpfCnpj').val())){
                 semErro = false;
             erros.push("CPF Inválido\n");
                 console.log("validarCpfPro "+semErro);
+            }
+            if(!validarIdade($('#txt-dataNasc').get(0))){
+                semErro = false;
+                erros.push("Para ser cadastrar é necessário ter no mínimo 18 anos!\n");
+                console.log("validarIdade "+semErro);
             }
         }else{
             if(!validarCnpj($('#txt-cpfCnpj').val())){
@@ -886,7 +916,7 @@ export default class FormularioProfissional extends Component{
                 cep: retirarSimbolos($("#txt-cep").val()),
                 logradouro: $("#txt-logradouro").val(),
                 bairro: $("#txt-bairro").val(),
-                numero: null,
+                numero: $("#txt-numero").val(),
                 cidade: {
                     idCidade: $("#txt-cidade").attr("data-idCidade")
                 }

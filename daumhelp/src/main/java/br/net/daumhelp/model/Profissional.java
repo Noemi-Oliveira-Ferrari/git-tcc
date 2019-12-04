@@ -37,7 +37,7 @@ public class Profissional {
 	@NotNull
 	@Size(min = 8, max = 128, message = "A senha deve conter pelo ao menos 8 caractéres")
 	private String senha;
-	@NotNull
+	
 	@Size(min = 6, max = 20, message = "Data digitado tem menos que 6 digitos")
 	private String dataNasc;
 

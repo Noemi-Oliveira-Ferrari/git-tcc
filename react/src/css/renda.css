@@ -180,7 +180,7 @@
     {
         width: 950px;
         height: 200px;
-        background-color: #ffffff;
+        background-color: #ebebeb;
         /* background-color: rgb(36, 38, 71); */
         margin: auto;
         border-radius: 10px 10px 0px 0px;
@@ -201,7 +201,7 @@
         height: 50px;
         font-size: 2em;
         font-family: 'Lexend Deca';
-        color: #47525E;
+        color: rgb(43, 52, 61);
         /* background-color: lightblue; */
     }
     .text-valor
@@ -212,7 +212,7 @@
         font-size: 5em;
         font-family: 'Lexend Deca';
         /* margin-top: -5px; */
-        color: #47525E;
+        color: rgb(125, 145, 167);
     }
     
 
@@ -220,25 +220,42 @@
     {
         width: 1200px;
         height: 800px;
-        overflow-y: auto;
-        background-color: #ffffff;
+        background-color: #ffffffc7;
         margin: auto;
         border-radius: 10px;
         box-sizing: border-box;
+        /* display: flex;
+        align-items: flex-start;
+        justify-content: center; */
         flex-wrap: wrap;
+        /* box */
     }
-
+    
     .title-servicos-prestados
     {
         width:inherit;
         height: 70px;
-        font-size: 1.5em;
+        font-size: 2rem;
         font-family: 'Lexend Deca';
         color: rgb(255, 255, 255);
         /* margin-left: 20px; */
-        background-color: #77c9d481;
-        margin-bottom: 50px;
+        /* background-color: #d9ff0081; */
+        background-color: #1db6cac4;
+        border-radius: 10px 10px 0 0;
+        /* margin-bottom: 50px; */
+        
+    }
+    .caixa-avaliacoes-renda{
+        width: inherit;
+        max-height: 700px;
+        height: auto;
 
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        overflow-y: auto;
     }
     
 

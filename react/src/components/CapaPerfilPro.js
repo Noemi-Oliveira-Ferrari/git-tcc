@@ -126,13 +126,13 @@ export class CapaPerfilPro extends Component{
 
             console.log(-5);
             
-                console.log(-4);
-                setUsuarioPro(profissional);
-                console.log(-3);
-                this.confirmUploadMode();
-                console.log(-2);
-                this.setState({imgPerfil: `${DOMINIO_IMG}${profissional.foto}`});
-                console.log(-1);
+            console.log(-4);
+            setUsuarioPro(profissional);
+            console.log(-3);
+            this.confirmUploadMode();
+            console.log(-2);
+            this.setState({imgPerfil: `${DOMINIO_IMG}${profissional.foto}`});
+            console.log(-1);
             
             console.log(1);
             this.modalLoad();
@@ -145,6 +145,7 @@ export class CapaPerfilPro extends Component{
             console.log(5);
         })
         .catch(error=>{
+            console.log(getToken());
             this.modalLoad();
             this.noConnection();
             this.setState({upload: ""});

@@ -44,7 +44,7 @@ function Confirmacao() {
                     idCidade: endereco.cidade.idCidade
                 },
                 logradouro: endereco.logradouro,
-                numero: null
+                numero: endereco.numero
             }
         })
         .then((response)=>{

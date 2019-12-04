@@ -16,7 +16,7 @@ import { DOMINIO, DOMINIO_IMG } from '../global';
 import { getTipoLogado, getToken, getUsuario } from '../utils/verificaSessionStrg';
 import {SOLICITADO, ORCADO, ACEITO, REJEITADO, CANCELADO_CLIENTE, CANCELADO_PROFISSIONAL, CONCLUIDO} from '../utils/codeStatusPedidos';
 
-
+ 
 export class RendaPro extends Component{
 
     constructor() {
@@ -223,51 +223,53 @@ export class RendaPro extends Component{
                             <p className="title-valor">Renda atual</p>
                             <p className="text-valor"><span style={{fontFamily: 'Manjari'}}>R$ </span>{this.state.renda}</p>
                         </div>
-                        <div className="caixa-servicos flex-center">
+                        <div className="caixa-servicos">
                             <h2 className="title-servicos-prestados">Serviços Prestados</h2>
-                                {
+                            <div className="caixa-avaliacoes-renda">
+                                {/* {
                                     this.state.avaliacoes.map(avaliacao =>(
                                         <CardServico 
-                                            titulo={avaliacao.cliente.nome}
-                                            enderecoCliente={`${avaliacao.cliente.endereco.logradouro}, 
+                                        titulo={avaliacao.cliente.nome}
+                                        enderecoCliente={`${avaliacao.cliente.endereco.logradouro}, 
                                                 ${avaliacao.cliente.endereco.cidade.cidade} - 
                                                 ${avaliacao.cliente.endereco.cidade.microrregiao.uf.uf}`
                                             }
                                             comentario={avaliacao.comentario}
                                             estrelas="caixa-star"
                                         />
-                                    ))
-                                }
-                            {/* <CardServico
-                                    titulo="Concerto maquina de lavar Brastemp"
-                                    enderecoCliente="Rofrigo Amoedo, Jandira - SP"
-                                    comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
-                                    estrelas="caixa-star-hidden"
-                                />
-                            <CardServico
-                                    titulo="Concerto maquina de lavar Brastemp"
-                                    enderecoCliente="Rofrigo Amoedo, Jandira - SP"
-                                    comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
-                                    estrelas="caixa-star-hidden"
-                                />
-                            <CardServico
-                                    titulo="Concerto maquina de lavar Brastemp"
-                                    enderecoCliente="Rofrigo Amoedo, Jandira - SP"
-                                    comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
-                                    estrelas="caixa-star-hidden"
-                                />
-                            <CardServico
-                                    titulo="Concerto maquina de lavar Brastemp"
-                                    enderecoCliente="Rofrigo Amoedo, Jandira - SP"
-                                    comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
-                                    estrelas="caixa-star-hidden"
-                                />
-                            <CardServico
-                                    titulo="Concerto maquina de lavar Brastemp"
-                                    enderecoCliente="Rofrigo Amoedo, Jandira - SP"
-                                    comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
-                                    estrelas="caixa-star-hidden"
-                                /> */}
+                                        ))
+                                } */}
+                                {/* <CardServico
+                                        titulo="Concerto maquina de lavar Brastemp"
+                                        enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                        comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                        estrelas="caixa-star-hidden"
+                                        />
+                                <CardServico
+                                        titulo="Concerto maquina de lavar Brastemp"
+                                        enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                        comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                        estrelas="caixa-star-hidden"
+                                        />
+                                <CardServico
+                                        titulo="Concerto maquina de lavar Brastemp"
+                                        enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                        comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                        estrelas="caixa-star-hidden"
+                                        />
+                                <CardServico
+                                        titulo="Concerto maquina de lavar Brastemp"
+                                        enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                        comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                        estrelas="caixa-star-hidden"
+                                        />
+                                <CardServico
+                                        titulo="Concerto maquina de lavar Brastemp"
+                                        enderecoCliente="Rofrigo Amoedo, Jandira - SP"
+                                        comentario="Minha maquina quebrou e nao funciona. O regulador de água estourou e preciso de um reparo urgente"
+                                        estrelas="caixa-star-hidden"
+                                        /> */}
+                            </div>
                         </div>
                     </div>
                 </div>

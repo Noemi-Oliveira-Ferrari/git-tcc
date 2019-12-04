@@ -142,16 +142,20 @@ export const validarString = (input) =>{
 export const validarVazios = (campos) =>{
     let semErro = [];
 
-
+    
     for(let i = 0; i< campos.length; i++){
-        if(campos[i].value === ""){
-            // console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
-            console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)-/g, ""));
-            semErro.push(withError(campos[i]));
+        if($(campos[i]).attr("id") === "txt-dataNasc"){
+
         }else{
-            // console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
-            console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)-/g, ""));
-            semErro.push(withoutError(campos[i]));
+            if(campos[i].value === ""){
+                // console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+                console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)-/g, ""));
+                semErro.push(withError(campos[i]));
+            }else{
+                // console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+                console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)-/g, ""));
+                semErro.push(withoutError(campos[i]));
+            }
         }
     }
     

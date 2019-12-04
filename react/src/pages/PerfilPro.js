@@ -255,18 +255,18 @@ class PerfilPro extends Component{
             console.log("validarString nome "+semErro);
         }
 
-        if(!validarIdade($('#txt-dataNasc').get(0))){
-            semErro = false;
-            erros.push("Para ser cadastrar é necessário ter no mínimo 18 anos!\n");
-            console.log("validarIdade "+semErro);
-        }
-
         if($('.caixa-cpfCnpj').text() === "CPF"){
             if(!validarCpfPro($('#txt-cpfCnpj').val())){
                 semErro = false;
             erros.push("CPF Inválido\n");
                 console.log("validarCpfPro "+semErro);
             }
+            if(!validarIdade($('#txt-dataNasc').get(0))){
+                semErro = false;
+                erros.push("Para ser cadastrar é necessário ter no mínimo 18 anos!\n");
+                console.log("validarIdade "+semErro);
+            }
+    
         }else{
             if(!validarCnpj($('#txt-cpfCnpj').val())){
                 semErro = false;
@@ -317,7 +317,7 @@ class PerfilPro extends Component{
                 cep: retirarSimbolos($("#txt-cep").val()),
                 logradouro: $("#txt-logradouro").val(),
                 bairro: $("#txt-bairro").val(),
-                numero: null,
+                numero: $("#txt-numero").val(),
                 cidade: {
                     idCidade: $("#txt-cidade").attr("data-idCidade")
                 }
@@ -425,7 +425,7 @@ class PerfilPro extends Component{
                     idCidade: endereco.cidade.idCidade
                 },
                 logradouro: endereco.logradouro,
-                numero: null
+                numero: endereco.numero
             }
         })
         .then((response)=>{
