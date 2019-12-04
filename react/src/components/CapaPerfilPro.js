@@ -44,6 +44,8 @@ export class CapaPerfilPro extends Component{
         this.noConnection = this.noConnection.bind(this);
     }
 
+    
+
     componentDidMount(){
         this.confirmUploadMode();
     }

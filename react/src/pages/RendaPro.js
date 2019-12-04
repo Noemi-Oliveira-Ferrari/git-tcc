@@ -38,7 +38,7 @@ export class RendaPro extends Component{
     colocaDadosNaCapa(pro){
         let decimal;
         let valorHora;
-        let localPro = `${pro.endereco.cidade.cidade}, ${pro.endereco.cidade.microrregiao.uf.estado} - ${pro.endereco.cidade.microrregiao.uf.uf}`;
+        let localPro = `${pro.endereco.cidade.cidade} - ${pro.endereco.cidade.microrregiao.uf.estado}`;
         let valor = pro.valorHora.toString();
 
         if(valor.includes(".")){
@@ -129,82 +129,82 @@ export class RendaPro extends Component{
                     texto4={`R$ ${this.state.valorPro}`}
                     foto={this.state.fotoPro}
                 />
-                <section class="section-plano flex-center">
-                    <div class="caixa-titulo-plano flex-center">
-                        <h1 class="titulo-plano">Seus Planos</h1>
+                <section className="section-plano flex-center">
+                    <div className="caixa-titulo-plano flex-center">
+                        <h1 className="titulo-plano">Seus Planos</h1>
                     </div>
-                    <div class="section-plano-renda" id="section-plans">
+                    <div className="section-plano-renda" id="section-plans">
                         
-                        <div class="caixa-btn-editar">
-                            <button class="btn-editar">Alterar Plano</button>
+                        <div className="caixa-btn-editar">
+                            <button className="btn-editar">Alterar Plano</button>
                         </div>
-                        <div class="caixa-plano-home">
-                            <div class="col-1-of-3">
-                                <div class="card">
-                                <div class="card__side card__side--front-1">
-                                    <div class="card__title card__title--1">
-                                        <div class="image1-card-home"></div>
-                                        <h4 class="card__heading">Mensal</h4>
+                        <div className="caixa-plano-home">
+                            <div className="col-1-of-3">
+                                <div className="card">
+                                <div className="card__side card__side--front-1">
+                                    <div className="card__title card__title--1">
+                                        <div className="image1-card-home"></div>
+                                        <h4 className="card__heading">Mensal</h4>
                                     </div>
-                                    <div class="card__details">
-                                        <p class="text-card">Type something hereType something hereType something here</p>
+                                    <div className="card__details">
+                                        <p className="text-card">Você renova todo mês com a nossa plataforma por um precinho camarada.</p>
                                     </div>
-                                    <div class="caixa-check">
-                                        <div class="check"></div>
-                                    </div>
-                                </div>
-                                <div class="card__side card__side--back card__side--back-1">
-                                    <div class="card__cta">
-                                    <div class="card__price-box">
-                                        <p class="card__price-only">Por apenas</p>
-                                        <p class="card__price-value">R$ 15,00</p>
-                                        <p class="card__price-month">por mês</p>
-                                    </div>
+                                    <div className="caixa-check">
+                                        <div className="check"></div>
                                     </div>
                                 </div>
+                                <div className="card__side card__side--back card__side--back-1">
+                                    <div className="card__cta">
+                                    <div className="card__price-box">
+                                        <p className="card__price-only">Por apenas</p>
+                                        <p className="card__price-value">R$ 15,00</p>
+                                        <p className="card__price-month">por mês</p>
+                                    </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-1-of-3">
-                                <div class="card">
-                                    <div class="card__side card__side--front-2">
-                                        <div class="card__title card__title--2">
-                                            <div class="image2-card-home"></div>
-                                        <h4 class="card__heading">Semestral</h4>
-                                        </div>
-                                        <div class="card__details">                
-                                            <p class="text-card">Type something hereType something hereType something here</p>
-                                        </div>
-                                    </div>
-                                    <div class="card__side card__side--back card__side--back-2">
-                                        <div class="card__cta">
-                                        <div class="card__price-box">
-                                            <p class="card__price-only">Por apenas</p>
-                                            <p class="card__price-value-full">R$ 72,00</p>
-                                            <p class="card__price-value">R$ 12,00</p>
-                                            <p class="card__price-month">por mês</p>
-                                        </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                            <div class="col-1-of-3">
-                                <div class="card">
-                                <div class="card__side card__side--front-3">
-                                    <div class="card__title card__title--3">
-                                        <div class="image3-card-home"></div>
-                                    <h4 class="card__heading">Anual</h4>
+                            <div className="col-1-of-3">
+                                <div className="card">
+                                    <div className="card__side card__side--front-2">
+                                        <div className="card__title card__title--2">
+                                            <div className="image2-card-home"></div>
+                                        <h4 className="card__heading">Semestral</h4>
+                                        </div>
+                                        <div className="card__details">                
+                                            <p className="text-card">Mais em conta. Fique durante 6 meses na plataforma, e pague menos por isso.</p>
+                                        </div>
                                     </div>
-                                    <div class="card__details">
-                                        <p class="text-card">Type something hereType something hereType something here</p>
+                                    <div className="card__side card__side--back card__side--back-2">
+                                        <div className="card__cta">
+                                        <div className="card__price-box">
+                                            <p className="card__price-only">Por apenas</p>
+                                            <p className="card__price-value-full">R$ 72,00</p>
+                                            <p className="card__price-value">R$ 12,00</p>
+                                            <p className="card__price-month">por mês</p>
+                                        </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="card__side card__side--back card__side--back-3">
-                                    <div class="card__cta">
-                                    <div class="card__price-box">
-                                            <p class="card__price-only">Por apenas</p>
-                                            <p class="card__price-value-full">R$ 120,00</p>
-                                            <p class="card__price-value">R$ 10,00</p>
-                                            <p class="card__price-month">por mês</p>
+                            </div>
+                            <div className="col-1-of-3">
+                                <div className="card">
+                                <div className="card__side card__side--front-3">
+                                    <div className="card__title card__title--3">
+                                        <div className="image3-card-home"></div>
+                                    <h4 className="card__heading">Anual</h4>
+                                    </div>
+                                    <div className="card__details">
+                                        <p className="text-card">Quanto mais tempo melhor. Assine por um ano e receba descontos com o tempo de uso</p>
+                                    </div>
+                                </div>
+                                <div className="card__side card__side--back card__side--back-3">
+                                    <div className="card__cta">
+                                    <div className="card__price-box">
+                                            <p className="card__price-only">Por apenas</p>
+                                            <p className="card__price-value-full">R$ 120,00</p>
+                                            <p className="card__price-value">R$ 10,00</p>
+                                            <p className="card__price-month">por mês</p>
                                     </div>
                                     </div>
                                 </div>
@@ -214,17 +214,17 @@ export class RendaPro extends Component{
                     </div>
                 </section>
 
-                <div class="caixa-titulo-renda">
-                    <h1 class="titulo-renda">Sua Renda</h1>
+                <div className="caixa-titulo-renda">
+                    <h1 className="titulo-renda">Sua Renda</h1>
                 </div>
-                <div class="caixa-centro">
-                    <div class="caixa-renda">
-                        <div class="caixa-valores">
-                            <p class="title-valor">Renda atual</p>
-                            <p class="text-valor"><span style={{fontFamily: 'Manjari'}}>R$ </span>{this.state.renda}</p>
+                <div className="caixa-centro">
+                    <div className="caixa-renda">
+                        <div className="caixa-valores">
+                            <p className="title-valor">Renda atual</p>
+                            <p className="text-valor"><span style={{fontFamily: 'Manjari'}}>R$ </span>{this.state.renda}</p>
                         </div>
-                        <div class="caixa-servicos flex-center">
-                            <h2 class="title-servicos-prestados">Serviços Prestados</h2>
+                        <div className="caixa-servicos flex-center">
+                            <h2 className="title-servicos-prestados">Serviços Prestados</h2>
                                 {
                                     this.state.avaliacoes.map(avaliacao =>(
                                         <CardServico 

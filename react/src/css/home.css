@@ -238,8 +238,8 @@
         width: inherit;
         /* background-color: gold; */
         font-size: 1.3em;
-        font-family: 'Lexend Deca';
-        color: #A5A5AF;
+        font-family: 'Manjari';
+        color: rgb(118, 118, 122);
         text-align:center;
     }
 
@@ -331,7 +331,7 @@
         /* background-color: #ff00bf; */
         width: 600px;
         height: 60px;
-        font-family: 'Lexend Deca';
+        font-family: 'Manjari';
         font-size: 1.5em;
     }
 
@@ -559,7 +559,7 @@
     {
         font-size: 2em;
         text-align: center;
-        font-family: 'Lexend Deca';
+        font-family: 'Manjari';
     }
 
     *,
@@ -1054,7 +1054,7 @@
 }
 
 /*----- Web-Responsivo -----*/
-@media screen and (max-device-width:1000px)
+@media screen and (max-device-width: 880px)
 {
 
     .tamanho-conteudo-home
@@ -1265,7 +1265,7 @@
        width: 100%;
        /* background-color: gold; */
        font-size: 1em;
-       font-family: 'Lexend Deca';
+       font-family: 'Manjari';
        color: #A5A5AF;
        text-align:center;
    }
@@ -1359,10 +1359,11 @@
    .text-list-empresa-home
    {
        /* background-color: #ff00bf; */
-       width: 100%;
+       width: 95%;
        height: 70px;
-       font-family: 'Lexend Deca';
-       font-size: 1em;
+       font-family: 'Manjari';
+       font-size: 1.11em;
+       margin: auto;
    }
 
    /*----- Planos -----*/
@@ -1591,7 +1592,7 @@
    {
        font-size: 2em;
        text-align: center;
-       font-family: 'Lexend Deca';
+       font-family: 'Manjari';
    }
 
    *,

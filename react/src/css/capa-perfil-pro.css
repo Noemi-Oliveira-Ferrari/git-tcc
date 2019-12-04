@@ -198,8 +198,8 @@
 	.perfil-pro-upload {
 		border-radius: 50px;
 		position: absolute;
-		top: -3px;
-		left: 309px;
+		margin-top: -3px;
+		margin-left: -140px;
 		opacity: 0;
 		cursor: pointer;
 		width: 275px;

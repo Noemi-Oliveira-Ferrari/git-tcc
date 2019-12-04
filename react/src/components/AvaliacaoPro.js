@@ -6,7 +6,7 @@ import '../css/padroes.css';
 
 export class AvaliacaoPro extends Component{
    render(){
-    return(
+    return( 
  
         <div className="caixa-comentarios-perfil">
             <h2 className="title-avaliacao">Principais Avaliações</h2>

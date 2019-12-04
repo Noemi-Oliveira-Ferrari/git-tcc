@@ -127,7 +127,7 @@
         height: 65px;
         background-image: url(../img/verified.png);
         background-repeat: no-repeat;
-        margin-top: 30px;
+        margin-top: -10px;
     }
     
     .caixa-renda
@@ -510,7 +510,7 @@
 }
 
 /*----- Web-Responsivo -----*/
-@media screen and (max-device-width:1000px)
+@media screen and (max-device-width: 880px)
 {
     
     .caixa-btn-editar
@@ -773,23 +773,6 @@
     
     }
 
-    .title-servico
-    {
-        font-size: 3.8em;
-        font-family: 'Lexend Deca';
-        color: #47525E;
-    }
-
-    .text-servico
-    {
-        text-align: justify;
-        font-size: 3em;
-        font-family: 'Lexend Deca';
-        color: #47525E;
-        box-sizing: border-box;
-        padding-top: 8px;
-        padding-bottom: 15px;
-    }
 
     .btn-detalhes-servico
     {

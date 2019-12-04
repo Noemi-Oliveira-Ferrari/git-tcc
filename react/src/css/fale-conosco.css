@@ -167,12 +167,13 @@
         height: 55px;
         background-color: #5fce9e;
         border: 0px;
-        border-radius: 8px;
+        border-radius: 28px;
         font-family: 'Lexend Deca'; 
         font-size: 1.2em;
         color: rgba(231, 237, 234, 0.897);
         margin-top: 200px;
         outline: none;
+        transition: .4s;
     }
 
     #txt-nome-contato,
@@ -296,8 +297,8 @@
     {
         text-align: center;
         font-family: 'Lexend Deca';
-        font-family: 'Lexend Deca';
         padding-top: 10px;
+        color: #4290aa
     }
 
     .text-outras-formas-contato
@@ -305,8 +306,8 @@
         display: flex;
         justify-content: center;
         text-align: center;
-        font-family: 'Lexend Deca';
-        font-size: 1.2em;
+        font-family: 'Manjari';
+        font-size: 1.32rem;
     }
     
     /* Efeito fundo */

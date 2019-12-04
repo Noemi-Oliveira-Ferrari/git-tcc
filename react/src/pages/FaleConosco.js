@@ -71,31 +71,31 @@ export default class FaleConosco extends Component {
 
                     <div className="caixa-titulo-outros-contato">
                         <h2 className="title-principal-outras-formas-contato">
-                            Outras Formas  de falar conosco
+                            Outras formas de entrar em contato!
                         </h2>
                     </div>
                     <div className="caixa-outros-contato">
                         <div className="caixas-itens-outras-formas-contato">
                             <div className="image-outras-contato1"></div>
                             <div className="caixa-conteudo-itens-outras-contato">
-                                <h4 className="title-outras-formas-contato">Via Email</h4>
+                                <h4 className="title-outras-formas-contato">brace.everything@gmail.com</h4>
                                 <p className="text-outras-formas-contato">Nos envie um email e entraremos em contato assim que possível.</p>
                             </div>
                         </div>
                         <div className="caixas-itens-outras-formas-contato">
                             <div className="image-outras-contato2"></div>
                             <div className="caixa-conteudo-itens-outras-contato">
-                                <h4 className="title-outras-formas-contato">Faq</h4>
+                                <h4 className="title-outras-formas-contato">FAQ</h4>
                                 <p className="text-outras-formas-contato">Resolva os seus problemas sobre a utilização da plaforma, e entre em contato caso necessário.</p>
                             </div>
                         </div>
-                         <div className="caixas-itens-outras-formas-contato">
+                         {/* <div className="caixas-itens-outras-formas-contato">
                             <div className="image-outras-contato"></div>
                             <div className="caixa-conteudo-itens-outras-contato">
                                 <h4 className="title-outras-formas-contato">Central  de Solução</h4>
                                 <p className="text-outras-formas-contato">TextText TextText TextText TextText TextText TextText TextText TextText TextText TextText TextText TextText</p>
                             </div>
-                        </div> 
+                        </div>  */}
                     </div>
                 </div>
             </div>

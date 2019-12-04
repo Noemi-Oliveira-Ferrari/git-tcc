@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import '../css/faq.css';
 import { InputFaq, InputProblema } from '../components/FormElements';
 import { Botao } from '../components/Botao';
-
+ 
 export default class Faq extends Component {
     render() {
         return (
@@ -23,16 +23,16 @@ export default class Faq extends Component {
                 <div className="caixa-peguntas-frenquentes">
                     <div className="tamanho-caixa-perguntas-frequentes-faq box-faq">
                         <div className="caixa-perguntas-frequentes-faq wrapper-faq">
-                            <h2 className="titulo-pergunta-frequente-faq">Dúvida frequentes</h2>
+                            <h2 className="titulo-pergunta-frequente-faq">DÚVIDAS FREQUENTES</h2>
                             <div className="caixa-conteudo-duvidas-frequentes-faq">
                                 <div className="row-conteudo-duvidas-frequentes-faq">
                                     <div className="caixa-duvidas-frequentes-faq">
-                                        <h3 className="title-pergunta-frequente-faq">Type something here</h3>
-                                        <p className="text-pergunta-frequente-faq">Type something here Type something here Type something here Type something here Type something here</p>
+                                        <h3 className="title-pergunta-frequente-faq">Como realizo meu cadastro?</h3>
+                                        <p className="text-pergunta-frequente-faq">Simple! Clique no botão cadastre-se no cabeçalho do site, escolha seu tipo de usuário e então é só preencher o formulário.</p>
                                     </div>
                                     <div className="caixa-duvidas-frequentes-faq">
-                                        <h3 className="title-pergunta-frequente-faq">Type something here</h3>
-                                        <p className="text-pergunta-frequente-faq">Type something here Type something here Type something here Type something here Type something here</p>
+                                        <h3 className="title-pergunta-frequente-faq">Há algum tipo de cobrança?</h3>
+                                        <p className="text-pergunta-frequente-faq">Sim. Para ter acesso ao pefil de profissional, é necessário escolhe uma assinatura. Os preços variam de R$10,00 à R$15,00 mensais.</p>
                                     </div>
                                 </div>
                                 

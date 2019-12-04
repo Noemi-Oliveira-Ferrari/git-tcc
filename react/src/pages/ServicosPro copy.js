@@ -96,10 +96,10 @@ export class ServicosPro extends Component{
                 texto3="Verifique suas Atividades"
                 texto4="Veja suas Avaliações"
             />
-            <div class="caixa-conteudo-servico-pro">
-                <div class="conteudo-pro-servico">
-                    <div class="caixa-conteudo-informacoes-servico">
-                        <div class="text-dados">
+            <div className="caixa-conteudo-servico-pro">
+                <div className="conteudo-pro-servico">
+                    <div className="caixa-conteudo-informacoes-servico">
+                        <div className="text-dados">
                             <h3>Pendentes</h3>
                         </div>
                         <div className="servico-overflow">
@@ -131,8 +131,8 @@ export class ServicosPro extends Component{
                             /> */}
                         </div>
                     </div>
-                    <div class="caixa-conteudo-informacoes-servico">
-                        <div class="text-dados">
+                    <div className="caixa-conteudo-informacoes-servico">
+                        <div className="text-dados">
                             <h3>Concluídos</h3>
                         </div>
                         <div className="servico-overflow">

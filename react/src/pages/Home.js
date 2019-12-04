@@ -14,7 +14,7 @@ import Profissional from '../img/pro.jpeg'
 import $ from 'jquery';
 import '../js/carousel';
 import '../js/index';
-import '../js/index-slider-home';
+import '../js/index-slider-home'; 
 import '../css/home.css';
 import '../css/bootstrap.css';
 import '../css/padroes.css';
@@ -102,13 +102,13 @@ export class Home extends Component{
                         <figure>
                             <img src={Pro2}/>
                         </figure>
-                        <div className="text-list-empresa-home">Multiplique e rentabilize</div>
+                        <div className="text-list-empresa-home">Multiplique seus ganhos recebendo boas avaliações de clientes</div>
                     </div>
                     <div className="caixa-itens-pro-home">
                         <figure>
                             <img src={Pro3}/>
                         </figure>
-                        <div className="text-list-empresa-home">O profissional pode utiliza-la realizando um pagamento com planos bem amigaveis.</div>
+                        <div className="text-list-empresa-home">As assinaturas não doem no bolso, e você sai no lucro</div>
                     </div>
                     <div className="caixa-itens-pro-home outro-home">
                         <figure>

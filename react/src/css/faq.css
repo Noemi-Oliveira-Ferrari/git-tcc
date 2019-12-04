@@ -91,7 +91,7 @@
         width: 120px;
         height: 55px;
         background-color: #26cbd3;
-        border-radius: 10px;
+        border-radius: 28px;
         margin-top: 30px;
         font-family: 'Lexend Deca';
         border: 0px;
@@ -148,7 +148,7 @@
         height: 90px;
         font-family: 'Lexend Deca';
         font-size: 2.2em;
-        color: #47525E;
+        color: rgb(44, 53, 63);
         text-align: left;
         box-sizing: border-box;
         padding-left: 5px;
@@ -196,9 +196,9 @@
     {    
         width: 620px;
         height: 120px;
-        font-family: 'Lexend Deca';
+        font-family: 'Manjari';
         font-size: 1.55em;
-        color: #47525E;
+        color: rgb(92, 105, 119);
     }
 
     .caixa-btn-mostar-mais-faq
@@ -216,7 +216,7 @@
         height: 70px;
         font-family: 'Lexend Deca';
         font-size: 1.8em;
-        border-radius: 10px;
+        border-radius: 35px;
         border: 2px solid #5A6978;
         background-color: transparent;
         color: #5A6978;
@@ -226,6 +226,7 @@
         justify-content: center;
         text-align: center;
         outline: none;
+        transition: 0.5s;
     }
 
     .btn-mostar-mais-faq:hover
@@ -505,7 +506,7 @@
 
 
 /*----- Web-Responsivo -----*/
-@media screen and (max-device-width:1000px)
+@media screen and (max-device-width: 880px)
 {
     .caixa-peguntas-frenquentes
     {
@@ -602,7 +603,7 @@
         width: 80px;
         height: 50px;
         background-color: #26cbd3;
-        border-radius: 10px;
+        border-radius: 25px;
         margin-top: 10px;
         font-family: 'Lexend Deca';
         border: 0px;
@@ -750,7 +751,7 @@
         height: 55px;
         font-family: 'Lexend Deca';
         font-size: 1.4em;
-        border-radius: 10px;
+        border-radius: 35px;
         border: 3px solid #5A6978;
         background-color: transparent;
         color: #5A6978;

@@ -154,8 +154,45 @@ class PerfilPro extends Component{
         }
     }
 
+    // enableFields(cancelar){
+    //     let parar;
+    //     if(this.state.atualizar){
+    //         console.log("a partir de agora SALVA");
+    //         this.setState({iconEdit: Cancel});
+    //         this.setState({iconSave: Save});
+    //         $("input, select, textarea").removeAttr("disabled");
+    //         // $("input, select, textarea").css("background-color", "#88ffcc");
+    //         $("input, select, textarea").css("background-color", "#CCE5E9");
+    //         $("#text-atualizar-perfil").css("background-color", "#ebebeb");
+    //         $("#text-atualizar-perfil").removeAttr("disabled");
+    //         $("#img-editar-perfil").attr("alt", "Cancelar");
+    //         $("#img-editar-perfil").attr("title", "Cancelar");
+    //     }else{
+
+    //         if(cancelar)
+    //             parar = window.confirm("Deseja mesmo cancelar a operação?");
+    //         else
+    //             parar = false;
+
+    //         if(parar){              
+    //             browserHistory.push("/app/profissional/servicos");
+    //             console.log("cancelou");
+    //         }
+
+    //         console.log("a partir de agora NAO SALVA");
+    //         this.setState({iconEdit: Edit});
+    //         // $("input, select, textarea").attr("disabled", "disabled");
+    //         // $("input, select, textarea").css("background-color", "#d5d5d5");
+    //         $("#text-atualizar-perfil").css("background-color", "#d2d2d2");
+    //         $("#text-atualizar-perfil").attr("disabled", "disabled");
+    //         this.colocaDadosNaCapa(getUsuarioPro());
+
+    //     }
+    //     this.setState({atualizar: !this.state.atualizar});
+    // }
+
     enableFields(cancelar){
-        let parar;
+        let continuar;
         if(this.state.atualizar){
             console.log("a partir de agora SALVA");
             this.setState({iconEdit: Cancel});
@@ -168,25 +205,22 @@ class PerfilPro extends Component{
             $("#img-editar-perfil").attr("alt", "Cancelar");
             $("#img-editar-perfil").attr("title", "Cancelar");
         }else{
-
             if(cancelar)
-                parar = window.confirm("Deseja mesmo cancelar a operação?");
+                continuar = window.confirm("Deseja mesmo cancelar a operação?");
             else
-                parar = false;
-
-            if(parar){              
+                continuar = false;
+            if(continuar){              
                 browserHistory.push("/app/profissional/servicos");
                 console.log("cancelou");
             }
-
             console.log("a partir de agora NAO SALVA");
             this.setState({iconEdit: Edit});
             // $("input, select, textarea").attr("disabled", "disabled");
-            // $("input, select, textarea").css("background-color", "#d5d5d5");
+            $("input, select, textarea").not("input[type='file']").attr("disabled", "disabled");
+            $("input, select, textarea").css("background-color", "#d5d5d5");
             $("#text-atualizar-perfil").css("background-color", "#d2d2d2");
             $("#text-atualizar-perfil").attr("disabled", "disabled");
             this.colocaDadosNaCapa(getUsuarioPro());
-
         }
         this.setState({atualizar: !this.state.atualizar});
     }
@@ -296,7 +330,7 @@ class PerfilPro extends Component{
                 cnpj: cnpj,
                 email: $("#txt-email").val(),
                 senha: generateHash($("#txt-senha").val()),
-                foto: getUpdatedPro().nome,
+                foto: getUsuarioPro().foto,
                 tipoUsuario: {
                     idTipoUsuario: 1
                 },
@@ -336,6 +370,7 @@ class PerfilPro extends Component{
                     cpf: profissional.cpf,
                     dataNasc: profissional.dataNasc,
                     email: profissional.email,
+                    foto: profissional.foto,
                     endereco:{
                         idEndereco: endereco.idEndereco
                     },
@@ -360,7 +395,7 @@ class PerfilPro extends Component{
                 this.mostrarAlerta("msgAlt", "SUCESSO");
 
                 setTimeout(() => {
-                    this.enableFields(false);                 
+                    this.enableFields(false);         
                 }, 1500);
                 this.modalLoad();
             })
@@ -475,7 +510,7 @@ class PerfilPro extends Component{
                         }
                         <AvaliacaoPro
                             nomeCliente="José Maria"
-                            comentario="Terminou o serviço bem rápdo, e muito bem. E ainda por cima tem um preço muito alto, realmente recomendo!"
+                            comentario="Terminou o serviço bem rápdo, e muito bem. E ainda por cima tem um preço não muito alto, realmente recomendo!"
                             nota="9"
                             fotoCliente=""
                         />

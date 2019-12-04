@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import '../css/header.css';
 import Avatar from '../img/avatar.png';
 import Logo from '../img/daum_help.png';
+import LogoMobile from '../img/duh_icon.png';
 import {Link, browserHistory} from 'react-router';
 import FotoPerfil from '../img/ester.JPG';
 import Not from '../img/bell.png';
@@ -46,6 +47,7 @@ export class HeaderUsuario extends Component{
             setInterval(() => {
                 console.log("atualizar header!!!");
                 this.setState({imgPerfil: getUsuario().foto !== "" ? getUsuario().foto !== null ? `${DOMINIO_IMG}${getUsuario().foto}` : IMG_PERFIL_PADRAO : IMG_PERFIL_PADRAO});
+                this.setState({username: getUsuario().nome});
             }, 60000);
         }
     }
@@ -85,8 +87,9 @@ export class HeaderUsuario extends Component{
 export default class Header extends Component{
 
     render(){
-        return(        
-            <header>
+        return(
+            <Fragment>
+            <header id="header-desktop">
                 <div className="caixa-header">
                     <div className="head-menu center">
                         <Link to="/" className="link">
@@ -105,9 +108,6 @@ export default class Header extends Component{
                                 : <HeaderLogin/> 
                             : <HeaderLogin/>
                         }
-                        {/* { 1 === 1 ? console.log(">>>>>> "+getToken() !== "") : ""}  */}
-                        {/* <HeaderLogin/> */}
-                        {/* <HeaderUsuario/> */}
                     </div>
                 </div>
                 <div className="caixa-menu center flex-center">
@@ -134,7 +134,56 @@ export default class Header extends Component{
                         </Link>
                     </nav>
                 </div>
-            </header>        
+            </header>    
+
+        
+            <header id="header-mobile">
+                <div className="caixa-header-mobile">
+                    <div className="head-menu-mobile center">
+                        <Link to="/" className="link">
+                            <div className="logo-menu-mobile">
+                                <figure>
+                                    <img src={LogoMobile} alt="DaUmHelp!" title="DaUmHelp!"/>
+                                </figure>
+                            </div>
+                        </Link>
+                        {
+                            getToken() !== "" ? 
+                                getToken() !== null ? 
+                                    <HeaderUsuario
+                                        username={getUsuario().nome}
+                                    /> 
+                                : <HeaderLogin/> 
+                            : <HeaderLogin/>
+                        }
+                    </div>
+                </div>
+                <div className="caixa-menu-mobile center flex-center">
+                    <nav className="area-itens-menu-mobile flex-center">
+                        <Link className="link" to="/" > 
+                            <div className="item-menu-header-mobile flex-center"> 
+                                Início
+                            </div>
+                        </Link>
+                        <Link className="link" to="/sobrenos" >
+                            <div className="item-menu-header-mobile flex-center"> 
+                                Sobre Nós
+                            </div> 
+                        </Link>
+                        <Link className="link" to="/faq" >
+                            <div className="item-menu-header-mobile flex-center"> 
+                                FAQ
+                            </div> 
+                        </Link>
+                        <Link className="link" to="/contato" >
+                            <div className="item-menu-header-mobile flex-center"> 
+                                Contato
+                            </div> 
+                        </Link>
+                    </nav>
+                </div>
+            </header>     
+            </Fragment>   
         );  
     }   
 }

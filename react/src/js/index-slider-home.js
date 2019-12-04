@@ -96,7 +96,7 @@ import $ from 'jquery';
 				};
 				for(var i = 0; i < totalSlides; i++){
 					$pagerList
-						.append('<li class="page" data-target="'+i+'">'+i+'</li>');
+						.append('<li className="page" data-target="'+i+'">'+i+'</li>');
 				};
 				$container.find('.page').bind('click',function(){
 					var target = $(this).attr('data-target');

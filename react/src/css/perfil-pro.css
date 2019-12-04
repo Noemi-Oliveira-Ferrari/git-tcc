@@ -16,7 +16,7 @@
 		background-attachment: fixed;
 	}
 
-
+ 
 	
 	/* COnteudo */
 	.caixa-control-perfil{
@@ -262,6 +262,22 @@
 		/* float: ; */
 	}
 
+	.caixa-avaliacoes{
+		width: 95%;
+		height: auto;
+		min-height: 300px;
+		margin-top: 50px;
+		overflow: hidden;
+		scroll-behavior: smooth;
+		flex-wrap: wrap;
+		/* background-color: rgb(188, 87, 87); */
+		display: flex;
+		/* flex-direction: column; */
+		align-items: center;
+		justify-content: space-around;
+		flex-wrap: wrap;
+	}
+
 		.caixa-control-perfil{
 			width: 100%;
 			height: 90px;
@@ -305,22 +321,26 @@
 	.caixa-comentarios-perfil
 	{
 		width: 90%;
-		height: 250px;
+		height: 280px;
 		background-color: rgb(255, 255, 255);
 		/* float: left; */
 		border-radius:10px;
 		color: #84848D;
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		flex-wrap: wrap;
 		/* flex-wrap: wrap; */
-		/* margin-top: -1800px;    */
+		margin-bottom: 20px;   
 	}
 
 	.title-avaliacao
 	{
-		width: 100%;
-		height: 30px;
+		width: 80%;
+		height: 15px;
 		text-align: center;
 		font-family: 'Lexend Deca';
-		/* background-col	or: limegreen; */
+		/* background-color: limegreen; */
         color: #84848D;     
 		font-size: 1.3em;
 		/* box-sizing: border-box; */

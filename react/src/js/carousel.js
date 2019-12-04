@@ -48,8 +48,8 @@ import jQuery from 'jquery';
                 appendDots: $(element),
                 arrows: true,
                 asNavFor: null,
-                prevArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button">Previous</button>',
-                nextArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button">Next</button>',
+                prevArrow: '<button type="button" data-role="none" className="slick-prev" aria-label="Previous" tabindex="0" role="button">Previous</button>',
+                nextArrow: '<button type="button" data-role="none" className="slick-next" aria-label="Next" tabindex="0" role="button">Next</button>',
                 autoplay: false,
                 autoplaySpeed: 3000,
                 centerMode: false,
@@ -523,11 +523,11 @@ import jQuery from 'jquery';
         _.$slider.addClass('slick-slider');
 
         _.$slideTrack = (_.slideCount === 0) ?
-            $('<div class="slick-track"/>').appendTo(_.$slider) :
-            _.$slides.wrapAll('<div class="slick-track"/>').parent();
+            $('<div className="slick-track"/>').appendTo(_.$slider) :
+            _.$slides.wrapAll('<div className="slick-track"/>').parent();
 
         _.$list = _.$slideTrack.wrap(
-            '<div aria-live="polite" class="slick-list"/>').parent();
+            '<div aria-live="polite" className="slick-list"/>').parent();
         _.$slideTrack.css('opacity', 0);
 
         if (_.options.centerMode === true || _.options.swipeToSlide === true) {
