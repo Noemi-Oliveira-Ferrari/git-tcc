@@ -31,7 +31,7 @@ export class Home extends Component{
             <section className="caixa-slider-home">
                 <div className="conteudo-slider-home">
                     <h1 className="titulo-slider-home"><DaUmHelp/></h1>
-                    <p className="subtitulo-slider-home">A mais velha solução para os problemas do seu cotidiano.</p>
+                    <p className="subtitulo-slider-home">A mais nova solução para os problemas do seu cotidiano.</p>
                     <div className="caixa-inputs-slider-home">
                         <input type="button" className="text-slider-home" value="Cadastre-se"/>
                         <Link className="btn-slider-home">Entrar</Link>

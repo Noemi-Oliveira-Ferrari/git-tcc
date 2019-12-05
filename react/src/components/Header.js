@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import '../css/header.css';
 import Avatar from '../img/avatar.png';
 import Logo from '../img/daum_help.png';
-import LogoMobile from '../img/duh_icon.png';
+import ServicosIcon from '../img/suitcase.png';
 import {Link, browserHistory} from 'react-router';
 import FotoPerfil from '../img/ester.JPG';
 import Not from '../img/bell.png';
@@ -55,21 +55,52 @@ export class HeaderUsuario extends Component{
     }
 
 
+    // render(){
+
+    //     return(
+    //         <div className="login-usuario">
+    //             <div className="avatar-usuario" style={{backgroundImage: `url(${this.state.imgPerfil})`}}>
+    //                 {/* <figure><img src={this.state.imgPerfil} alt="Login" title="Login"/></figure> */}
+    //             </div>
+    //             <Link to="/app/profissional/perfil" className="link">
+    //                 <div className="box-nome flex-center">
+    //                     {this.state.username}
+    //                 </div>
+    //             </Link>
+
+    //             {/* <Link to="/" className="link"> */}
+    //                 <div className="box-sair">
+    //                     {/* <Link to="/app/profissional/servicos" className="link">
+    //                         <figure>
+    //                             <img src={Not} alt="Notificações" title="Notificações"/>
+    //                         </figure> 
+    //                     </Link>  */}
+    //                     <figure>
+    //                         <img src={Logout} alt="Deslogar" title="Deslogar" onClick={this.logout}/>
+    //                     </figure>
+    //                 </div>
+    //             {/* </Link> */}
+    //         </div>
+    //     );  
+    // }   
     render(){
 
         return(
             <div className="login-usuario">
-                <div className="avatar-usuario" style={{backgroundImage: `url(${this.state.imgPerfil})`}}>
-                    {/* <figure><img src={this.state.imgPerfil} alt="Login" title="Login"/></figure> */}
-                </div>
                 <Link to="/app/profissional/perfil" className="link">
-                    <div className="box-nome flex-center">
-                        {this.state.username}
-                    </div>
+                    <div className="avatar-usuario" style={{backgroundImage: `url(${this.state.imgPerfil})`}}></div>
                 </Link>
+                    <div className="box-nome">
+                        <Link to="/app/profissional/perfil" className="link">
+                            <span className="username-header">{this.props.username}</span>
+                        </Link>
+                        <Link to="/app/profissional/servicos" className="link">
+                            <div className="servicos-header" style={{backgroundImage: `url(${ServicosIcon})`}}></div>
+                        </Link>
+                    </div>
 
                 {/* <Link to="/" className="link"> */}
-                    <div className="box-sair">
+                    <div className="box-sair fle">
                         {/* <Link to="/app/profissional/servicos" className="link">
                             <figure>
                                 <img src={Not} alt="Notificações" title="Notificações"/>
@@ -91,95 +122,95 @@ export default class Header extends Component{
     render(){
         return(
             <Fragment>
-            <header id="header-desktop">
-                <div className="caixa-header">
-                    <div className="head-menu center">
-                        <Link to="/" className="link">
-                            <div className="logo-menu">
-                                <figure>
-                                    <img src={Logo} alt="DaUmHelp!" title="DaUmHelp!"/>
-                                </figure>
-                            </div>
-                        </Link>
-                        {
-                            getToken() !== "" ? 
-                                getToken() !== null ? 
-                                    <HeaderUsuario
-                                        username={getUsuario().nome}
-                                    /> 
-                                : <HeaderLogin/> 
-                            : <HeaderLogin/>
-                        }
+                <header id="header-desktop">
+                    <div className="caixa-header">
+                        <div className="head-menu center">
+                            <Link to="/" className="link">
+                                <div className="logo-menu">
+                                    <figure>
+                                        <img src={Logo} alt="DaUmHelp!" title="DaUmHelp!"/>
+                                    </figure>
+                                </div>
+                            </Link>
+                            {
+                                getToken() !== "" ? 
+                                    getToken() !== null ? 
+                                        <HeaderUsuario
+                                            username={getUsuario().nome}
+                                        /> 
+                                    : <HeaderLogin/> 
+                                : <HeaderLogin/>
+                            }
+                        </div>
                     </div>
-                </div>
-                <div className="caixa-menu center flex-center">
-                    <nav className="area-itens-menu flex-center">
-                        <Link className="link" to="/" > 
-                            <div className="item-menu-header flex-center"> 
-                                Início
-                            </div>
-                        </Link>
-                        <Link className="link" to="/sobrenos" >
-                            <div className="item-menu-header flex-center"> 
-                                Sobre Nós
-                            </div> 
-                        </Link>
-                        <Link className="link" to="/faq" >
-                            <div className="item-menu-header flex-center"> 
-                                FAQ
-                            </div> 
-                        </Link>
-                        <Link className="link" to="/contato" >
-                            <div className="item-menu-header flex-center"> 
-                                Contato
-                            </div> 
-                        </Link>
-                    </nav>
-                </div>
-            </header>    
+                    <div className="caixa-menu center flex-center">
+                        <nav className="area-itens-menu flex-center">
+                            <Link className="link" to="/" > 
+                                <div className="item-menu-header flex-center"> 
+                                    Início
+                                </div>
+                            </Link>
+                            <Link className="link" to="/sobrenos" >
+                                <div className="item-menu-header flex-center"> 
+                                    Sobre Nós
+                                </div> 
+                            </Link>
+                            <Link className="link" to="/faq" >
+                                <div className="item-menu-header flex-center"> 
+                                    FAQ
+                                </div> 
+                            </Link>
+                            <Link className="link" to="/contato" >
+                                <div className="item-menu-header flex-center"> 
+                                    Contato
+                                </div> 
+                            </Link>
+                        </nav>
+                    </div>
+                </header>    
 
-        
-            <header id="header-mobile">
-                <div className="caixa-header-mobile">
-                    <div className="head-menu-mobile center">
-                        <Link to="/" className="link">
-                            <div className="logo-menu-mobile">
-                                <figure>
-                                    <img src={Logo} alt="DaUmHelp!" title="DaUmHelp!"/>
-                                </figure>
-                            </div>
-                        </Link>
-                        {
-                            getToken() !== "" ? 
-                                getToken() !== null ? 
-                                    <HeaderUsuario
-                                        username={getUsuario().nome}
-                                    /> 
-                                : <HeaderLogin/> 
-                            : <HeaderLogin/>
-                        }
+            
+                <header id="header-mobile">
+                    <div className="caixa-header-mobile">
+                        <div className="head-menu-mobile">
+                            <Link to="/" className="link">
+                                <div className="logo-menu-mobile">
+                                    <figure>
+                                        <img src={Logo} alt="DaUmHelp!" title="DaUmHelp!"/>
+                                    </figure>
+                                </div>
+                            </Link>
+                            {
+                                getToken() !== "" ? 
+                                    getToken() !== null ? 
+                                        <HeaderUsuario
+                                            username={getUsuario().nome}
+                                        /> 
+                                    : <HeaderLogin/> 
+                                : <HeaderLogin/>
+                            }
+                        </div>
                     </div>
-                </div>
-                <div className="caixa-menu-mobile center flex-center">
-                    <nav className="area-itens-menu-mobile">
-                        <Link className="link" to="/" > 
-                            <div className="item-menu-header-mobile-home flex-center"> 
-                                
-                            </div>
-                        </Link>
-                        <Link className="link" to="/sobrenos" >
-                            <div className="item-menu-header-mobile-sobrenos flex-center"> 
-                                
-                            </div> 
-                        </Link>
-                        <Link className="link" to="/faq" >
-                            <div className="item-menu-header-mobile-faq flex-center"> 
-                                
-                            </div> 
-                        </Link>
-                    </nav>
-                </div>
-            </header>       
+                    <div className="caixa-menu-mobile flex-center">
+                        <nav className="area-itens-menu-mobile">
+                            <Link className="link" to="/" > 
+                                <div className="item-menu-header-mobile-home flex-center"> 
+                                    
+                                </div>
+                            </Link>
+                            <Link className="link" to="/sobrenos" >
+                                <div className="item-menu-header-mobile-sobrenos flex-center"> 
+                                    
+                                </div> 
+                            </Link>
+                            <Link className="link" to="/faq" >
+                                <div className="item-menu-header-mobile-faq flex-center"> 
+                                    
+                                </div> 
+                            </Link>
+                        </nav>
+                    </div>
+                </header>       
             </Fragment>   
         );  
     }   

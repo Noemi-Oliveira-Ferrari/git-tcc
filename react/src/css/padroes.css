@@ -156,7 +156,7 @@ textarea::-webkit-scrollbar-thumb:hover {
     font-weight: bold;
 }
 
-@media screen and (min-device-width: 100px){
+@media screen and (min-device-width: 1000px){
     
     .voltar-topo{
         cursor: pointer;
