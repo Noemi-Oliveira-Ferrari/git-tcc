@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class Pedido implements Serializable {
 
 
-    private int idPedido;
+    private Integer idPedido;
     private String descricao;
     private String dataHora;
     private String horasServico;
@@ -26,12 +26,11 @@ public class Pedido implements Serializable {
     private Cliente cliente;
     private Profissional profissional;
 
-
-    public int getIdPedido() {
+    public Integer getIdPedido() {
         return idPedido;
     }
 
-    public void setIdPedido(int idPedido) {
+    public void setIdPedido(Integer idPedido) {
         this.idPedido = idPedido;
     }
 
@@ -155,7 +154,6 @@ public class Pedido implements Serializable {
         this.profissional = profissional;
     }
 
-
     @Override
     public String toString() {
         return "Pedido{" +
@@ -177,6 +175,5 @@ public class Pedido implements Serializable {
                 ", profissional=" + profissional +
                 '}';
     }
-
 }
 

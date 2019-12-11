@@ -21,17 +21,19 @@ public class MenuClienteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_cliente);
-        BottomNavigationView navView = findViewById(R.id.nav_view_cliente);
+        BottomNavigationView navView = findViewById(R.id.nav_view);
         getWindow().setStatusBarColor(Color.parseColor("#77C9D4"));
 
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder( R.id.navigation_dashboard_cliente).build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_cliente);
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder( R.id.navigation_dashboard).build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupWithNavController(navView, navController);
 
         Intent intent = getIntent();
         if (intent.getSerializableExtra("cliente") != null) {
             Cliente cliente = (Cliente) intent.getSerializableExtra("cliente");
-
+        }
+        if (intent.getSerializableExtra("tokenCliente") != null) {
+            String tokenCliente = (String) intent.getSerializableExtra("tokenCliente");
         }
 
 

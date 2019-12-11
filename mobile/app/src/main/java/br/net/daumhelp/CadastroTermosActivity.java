@@ -1,7 +1,9 @@
 package br.net.daumhelp;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -68,6 +70,13 @@ public class CadastroTermosActivity extends AppCompatActivity {
                     btnProximo.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+
+
+                            final ProgressDialog progressDialog = new ProgressDialog(CadastroTermosActivity.this);
+                            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                            progressDialog.show();
+                            progressDialog.setContentView(R.layout.layout_progressbar);
+
                             int i = 1;
                             Intent intent = new Intent(CadastroTermosActivity.this, MainActivity.class);
                             intent.putExtra("cadastro", i);
@@ -85,7 +94,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
 
                                     Profissional profissional = new Profissional();
                                     profissional.setNome(listaDados[0]);
-                                    Date data = Data.stringToDate(listaDados[1]);
+                                    Date data = Data.brStringToDate(listaDados[1]);
                                     String dataFormatada = Data.dataToString(data);
                                     profissional.setDataNasc(dataFormatada);
                                     profissional.setCpf(listaDados[2]);
@@ -98,17 +107,19 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     tipoUsuario.setIdTipoUsuario(1);
                                     tipoUsuario.setTipoDeUsuario('p');
                                     profissional.setTipoUsuario(tipoUsuario);
-                                    profissional.setFoto("foto.png");
+                                    //profissional.setFoto("foto.png");
 
                                     Call<Profissional> callPro = new RetroFitConfig().getProfissionalService().cadastrarProfissional(profissional);
                                     callPro.enqueue(new Callback<Profissional>() {
 
                                         @Override
                                         public void onResponse(Call<Profissional> call, Response<Profissional> response) {
+                                            progressDialog.dismiss();
                                             response.body();
                                         }
                                         @Override
                                         public void onFailure(Call<Profissional> call, Throwable t) {
+                                            progressDialog.dismiss();
                                           Log.i("BOM DIA", t.getMessage());
                                         }
 
@@ -154,7 +165,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
 
                                     Cliente cliente = new Cliente();
                                     cliente.setNome(listaDados[0]);
-                                    Date data = Data.stringToDate(listaDados[1]);
+                                    Date data = Data.brStringToDate(listaDados[1]);
                                     String dataFormatada = Data.dataToString(data);
                                     cliente.setDataNasc(dataFormatada);
                                     cliente.setCpf(listaDados[2]);
@@ -164,7 +175,7 @@ public class CadastroTermosActivity extends AppCompatActivity {
                                     tipoUsuario.setIdTipoUsuario(2);
                                     tipoUsuario.setTipoDeUsuario('c');
                                     cliente.setTipoUsuario(tipoUsuario);
-                                    cliente.setFoto("foto.png");
+                                    //cliente.setFoto("foto.png");
 
                                     Call<Cliente> callCli = new RetroFitConfig().getClienteService().cadastrarCliente(cliente);
                                     callCli.enqueue(new Callback<Cliente>() {

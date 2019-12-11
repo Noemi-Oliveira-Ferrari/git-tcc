@@ -22,8 +22,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-
-            android:text="Pedro de Almeida Santos"
             android:textSize="20dp"
             android:ellipsize="end"
             android:singleLine="true"
@@ -47,7 +45,6 @@
             android:layout_marginTop="50dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="Jardineiro"
             android:textSize="18dp" />
 
         <TextView
@@ -66,7 +63,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="120dp"
             android:layout_marginTop="90dp"
-            android:text="R$ 50,00"
             android:textSize="18dp" />
 
         <TextView
@@ -87,7 +83,6 @@
             android:layout_marginTop="125dp"
             android:ellipsize="end"
             android:singleLine="true"
-            android:text="Jandira - SP"
             android:textSize="18dp" />
 
 
@@ -98,7 +93,7 @@
             android:layout_marginStart="280dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="8dp"
-            android:src="@drawable/pedro"
+            android:src="@drawable/user"
             app:civ_border_color="@color/colorTest2"
             app:civ_border_width="1dp" />
 

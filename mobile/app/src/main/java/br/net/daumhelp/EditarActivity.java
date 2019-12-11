@@ -1,8 +1,10 @@
 package br.net.daumhelp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +20,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -74,9 +78,11 @@ public class EditarActivity extends AppCompatActivity {
     private String categoriaAtt;
     private String subCategoriaAtt;
     private Button btnAtualizar;
+    private ImageView ivFotoProfissional;
     private int contBack = 0;
     private Profissional profissionalAtualizado;
     private EnderecoViaCep enderecoViaCep;
+    private String tokenProfissional;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -109,6 +115,7 @@ public class EditarActivity extends AppCompatActivity {
         etCategoria = findViewById(R.id.et_categoria);
         etSubcategoria = findViewById(R.id.et_subcategoria);
         btnAtualizar = findViewById(R.id.btn_atualizar_dados);
+        ivFotoProfissional = findViewById(R.id.profile_image);
 
 
         desativarCamposDadosPessoais();
@@ -126,6 +133,11 @@ public class EditarActivity extends AppCompatActivity {
 
         /*PEGANDO PROFISSIONAL PARA CARREGAR O PERFIL*/
         Intent intent = getIntent();
+
+        if (intent.getSerializableExtra("tokenProfissional") != null) {
+            tokenProfissional = (String) intent.getSerializableExtra("tokenProfissional");
+        }
+
         if (intent.getSerializableExtra("profissional") != null) {
             profissional = (Profissional) intent.getSerializableExtra("profissional");
 
@@ -193,6 +205,11 @@ public class EditarActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
 
+                            final ProgressDialog progressDialog = new ProgressDialog(EditarActivity.this);
+                            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                            progressDialog.show();
+                            progressDialog.setContentView(R.layout.layout_progressbar);
+
                             String cep = etCep.getText().toString();
                             /*VALIDAÇÃO DO TAMANHO DO CEP*/
                             if(etCep.length() == 8 || etCep.length() == 9){
@@ -200,6 +217,9 @@ public class EditarActivity extends AppCompatActivity {
                                 call.enqueue(new Callback<EnderecoViaCep>() {
                                     @Override
                                     public void onResponse(Call<EnderecoViaCep> call, Response<EnderecoViaCep> response) {
+
+                                        progressDialog.dismiss();
+
                                         if(response.code() == 404){
                                             etCep.setError("CPF inválido");
                                         }else{
@@ -210,12 +230,14 @@ public class EditarActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<EnderecoViaCep> call, Throwable t) {
+                                        progressDialog.dismiss();
                                         Log.i("Retrofit Endereço", t.getMessage());
                                         etCep.setError("CEP inválido");
                                     }
 
                                 });
                             }else{
+                                progressDialog.dismiss();
                                 etCep.setError("CEP inválido");
                             }
                         }
@@ -268,23 +290,13 @@ public class EditarActivity extends AppCompatActivity {
                     }
                 });
 
-
                 if(tvEditarServico.getText().equals("Editar")){
-
                     tvEditarServico.setVisibility(View.INVISIBLE);
-
                     contBack = 1;
-
-
                 }
-
-
-
-
 
             }
         });
-
 
         /*CHAMADA DAS SUBCATEGORIAS*/
         Call<List<Subcategoria>> callsub = new RetroFitConfig().getSubcategoriaService().buscarSubcategorias(Integer.parseInt(profissional.getSubcategoria().getCategoria().getIdCategoria().toString()));
@@ -307,12 +319,20 @@ public class EditarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
+                final ProgressDialog progressDialog = new ProgressDialog(EditarActivity.this);
+                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.layout_progressbar);
+
+
                 /*VERIFICANDO SE AS SENHAS SÃO IGUAIS*/
                 if(etSenhaConfirmacao.getText().toString().equals(etSenha.getText().toString())) {
 
                     /*VALIDANDO OS CAMPOS*/
                     if (validar() == true) {
 
+                        progressDialog.dismiss();
                         /*MONTANDO O OBJETO PROFISSIONAL QUE SERÁ ATUALIZADO*/
                         profissional.setNome(etNome.getText().toString());
                         profissional.setDataNasc(etData.getText().toString());
@@ -346,7 +366,7 @@ public class EditarActivity extends AppCompatActivity {
                         if (validar() == true){
 
                             /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
-                            Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(profissional.getEndereco().getIdEndereco(), endereco);
+                            Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(tokenProfissional, profissional.getEndereco().getIdEndereco(), endereco);
                             call.enqueue(new Callback<Endereco>() {
                                 @Override
                                 public void onResponse(Call<Endereco> call, Response<Endereco> response) {
@@ -354,17 +374,20 @@ public class EditarActivity extends AppCompatActivity {
                                     response.body();
 
                                     /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
-                                    Call<Profissional> call2 = new RetroFitConfig().getProfissionalService().atualizarPro(profissional.getIdProfissional(), profissional);
+                                    Call<Profissional> call2 = new RetroFitConfig().getProfissionalService().atualizarPro(tokenProfissional, profissional.getIdProfissional(), profissional);
                                     call2.enqueue(new Callback<Profissional>() {
                                         @Override
                                         public void onResponse(Call<Profissional> call2, Response<Profissional> response) {
+                                            progressDialog.dismiss();
                                             profissionalAtualizado = response.body();
                                             contBack = 0;
                                             tvNome.setText(etNome.getText());
                                             Toast.makeText(EditarActivity.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
+                                            finish();
                                         }
                                         @Override
                                         public void onFailure(Call<Profissional> call2, Throwable t) {
+                                            progressDialog.dismiss();
                                             Log.i("PROFISSIONAL", t.getMessage());
                                         }
                                     });
@@ -375,17 +398,16 @@ public class EditarActivity extends AppCompatActivity {
                                 }
                             });
 
+                        }else{
+                            progressDialog.dismiss();
                         }
-
-
-
+                    }else{
+                        progressDialog.dismiss();
                     }
                 }else{
+                    progressDialog.dismiss();
                     Toast.makeText(EditarActivity.this, "As senhas não correspondem", Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
 
@@ -488,6 +510,9 @@ public class EditarActivity extends AppCompatActivity {
         etBairro.setText(profissional.getEndereco().getBairro());
         etResumo.setText(profissional.getResumoQualificacoes());
         etValorHora.setText(String.valueOf(profissional.getValorHora()));
+
+        String fotoPro = profissional.getFoto();
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoPro).resize(100,100).into(ivFotoProfissional);
 
         etCategoria.setText(profissional.getSubcategoria().getCategoria().getCategoria());
         etSubcategoria.setText(profissional.getSubcategoria().getSubcategoria());

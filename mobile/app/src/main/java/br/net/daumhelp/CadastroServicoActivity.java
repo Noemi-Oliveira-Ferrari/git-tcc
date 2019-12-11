@@ -1,6 +1,8 @@
 package br.net.daumhelp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -44,6 +46,10 @@ public class CadastroServicoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_servico);
 
+        final ProgressDialog progressDialog = new ProgressDialog(CadastroServicoActivity.this);
+        progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+        progressDialog.show();
+        progressDialog.setContentView(R.layout.layout_progressbar);
 
         btnProximo = findViewById(R.id.btn_proximo);
         btnVoltar = findViewById(R.id.btn_voltar);
@@ -107,6 +113,7 @@ public class CadastroServicoActivity extends AppCompatActivity {
             public void onResponse(Call<List<Categoria>> call, Response<List<Categoria>> response) {
 
                 carregarCategorias(response.body());
+                progressDialog.dismiss();
 
             }
 

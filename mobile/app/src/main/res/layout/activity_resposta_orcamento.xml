@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_nome_profissional"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="26dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_subcategoria_profissional"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:textSize="18dp"
+        android:textStyle="italic"
+        android:textAlignment="center"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nome_profissional" />
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_foto_profissional"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/user"
+        app:civ_border_color="@color/colorTest2"
+        app:civ_border_width="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subcategoria_profissional" />
+
+    <View
+        android:id="@+id/v_balao_ola"
+        android:layout_width="280dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/balaochat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_foto_profissional" />
+
+    <TextView
+        android:id="@+id/tv_ola"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="5dp"
+        android:textSize="15dp"
+        android:text="Olá. \nAnalisei o pedido que você enviou \npara mim."
+        app:layout_constraintStart_toStartOf="@+id/v_balao_ola"
+        app:layout_constraintTop_toTopOf="@+id/v_balao_ola" />
+
+    <View
+        android:id="@+id/v_balao_orcamento"
+        android:layout_width="295dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/balaochat"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_balao_ola" />
+
+    <TextView
+        android:id="@+id/tv_orcamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:textSize="15dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="@+id/v_balao_orcamento"
+        app:layout_constraintTop_toTopOf="@+id/v_balao_orcamento" />
+
+
+    <View
+        android:id="@+id/v_resposta"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/balaoinvertidob"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_balao_orcamento" />
+
+    <TextView
+        android:id="@+id/tv_resposta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/v_resposta"
+        app:layout_constraintEnd_toEndOf="@+id/v_resposta"
+        app:layout_constraintStart_toStartOf="@+id/v_resposta"
+        app:layout_constraintTop_toTopOf="@+id/v_resposta" />
+
+    <View
+        android:id="@+id/v_linha"
+        android:layout_width="145dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="86dp"
+        android:background="@color/colorTest2"
+        app:layout_constraintEnd_toStartOf="@+id/profile_image"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subcategoria_profissional" />
+
+    <View
+        android:id="@+id/view14"
+        android:layout_width="145dp"
+        android:layout_height="2dp"
+        android:layout_marginTop="85dp"
+        android:background="@color/colorTest2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/tv_subcategoria_profissional" />
+
+        <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view11">
+
+        <Button
+            android:id="@+id/btn_aceitar"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/colorTest2"
+            android:text="Aceitar"
+            android:textColor="@color/colorWhite" />
+
+        <Button
+            android:id="@+id/btn_recusar"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_filtro_cancelar"
+            android:text="Recusar"
+            android:textColor="@color/colorTest2" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

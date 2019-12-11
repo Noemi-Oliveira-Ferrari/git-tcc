@@ -159,6 +159,8 @@ public class PedidosResource {
 		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.ACEITO.getValue()).get();		
 		pedido.setStatus(statusPedido);
 		
+		System.out.println("--------ACEITOO------" + statusPedido);
+		
 		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
 		
 		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
@@ -192,6 +194,8 @@ public class PedidosResource {
 		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.REJEITADO.getValue()).get();
 		pedido.setStatus(statusPedido);
 		
+		System.out.println("--------REJEITADOOO------" + statusPedido);
+		
 		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
 		
 		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
@@ -205,6 +209,8 @@ public class PedidosResource {
 		
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
 		StatusPedido statusPedido = pedido.getStatus();
+
+		System.out.println("--------CANCELADOO------" + statusPedido);
 		
 		if(usuario.equals("cliente")) {
 			ProfissionalDTO proPedido = proDTORepository.findById(pedido.getProfissional().getIdProfissional()).get();

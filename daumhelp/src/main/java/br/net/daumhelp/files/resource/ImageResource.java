@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +21,7 @@ import br.net.daumhelp.dto.repository.ClienteDTORepository;
 import br.net.daumhelp.dto.repository.ProfissionalDTORepository;
 import br.net.daumhelp.files.Disco;
 import br.net.daumhelp.model.Pedido;
+import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.repository.PedidoRepository;
 
 //REQUISIÇOES QUE REALIZAM O UPLOAD DE IMAGENS DA PLATAFORMA
@@ -100,6 +103,8 @@ public class ImageResource {
 		//**1
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
 		
+		
+		
 		//ARRAY QUE GUARDA CAMINHO DAS IMAGENS DO PEDIDO
 		ArrayList<String> imgsPedidoCaminho = new ArrayList<String>();
 
@@ -113,6 +118,8 @@ public class ImageResource {
 		
 
 		for(MultipartFile img : imgs) {
+			
+			System.out.println("entrou aqui!!! ---->>>  " + img.getName());
 			if(img != null) {				
 				System.out.println(img.getOriginalFilename());
 				//VERIFICA SE A IMAGEM EXISTE
@@ -131,7 +138,9 @@ public class ImageResource {
 				}
 			}
 		}
-//		
+
+		
+		
 //		//ATUALIZA O PEDIDO NO BANCO
 		Pedido pedidoSalvo = pedidoRepository.save(pedido);
 		return pedidoSalvo;

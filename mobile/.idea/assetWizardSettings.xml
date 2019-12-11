@@ -25,6 +25,7 @@
                                               <map>
                                                 <entry key="color" value="000000" />
                                                 <entry key="opacityPercent" value="80" />
+                                                <entry key="paddingPercent" value="20" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -35,7 +36,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_close_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_thumb_up_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -45,9 +46,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_recusar" />
+                                      <entry key="outputName" value="ic_like_ok" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="985e6d" />
+                                      <entry key="themeColor" value="77c9d4" />
                                     </map>
                                   </option>
                                 </PersistentState>

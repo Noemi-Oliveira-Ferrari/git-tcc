@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        android:text="Como foi sua experiência?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_foto_profissional"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="44dp"
+        android:src="@drawable/user"
+        app:civ_border_color="@color/colorTest2"
+        app:civ_border_width="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/tv_nome_profissional"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="60dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/iv_foto_profissional"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <TextView
+        android:id="@+id/tv_subcategoria"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="2dp"
+        android:textStyle="italic"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintStart_toEndOf="@+id/iv_foto_profissional"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nome_profissional" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Comente sobre o profissional e seu serviço"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_foto_profissional" />
+
+    <EditText
+        android:id="@+id/et_comentario"
+        android:layout_width="330dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <RatingBar
+        android:id="@+id/rb_avaliacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:max="10"
+        android:numStars="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_comentario" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view11">
+
+        <Button
+            android:id="@+id/btn_enviar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="75dp"
+            android:background="@color/colorTest2"
+            android:text="ENVIAR"
+            android:textColor="@color/colorWhite"
+            tools:layout_editor_absoluteY="638dp" />
+
+        <Button
+            android:id="@+id/btn_cancelar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/button_filtro_cancelar"
+            android:text="CANCELAR"
+            android:textColor="@color/colorTest2" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,8 +1,10 @@
 package br.net.daumhelp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,11 +18,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+
+//import org.apache.commons.codec.binary.Base64;
+
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Cliente;
+import br.net.daumhelp.model.JwtToken;
 import br.net.daumhelp.model.Login;
 import br.net.daumhelp.model.Profissional;
+import br.net.daumhelp.model.TokenBodyCliente;
+import br.net.daumhelp.model.TokenBodyProfissional;
+import br.net.daumhelp.recursos.Base64Utils;
 import br.net.daumhelp.recursos.EncryptString;
+import br.net.daumhelp.recursos.HandleJson;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -35,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvSucesso;
     private EditText etSenha;
     private EditText etEmail;
+//    private Base64 base64;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             if (conmag.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnected()) {
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-                alert.setTitle("Conexão").setMessage("Você não está conectado ao WIFI, isso pode gerar cobranças adicionais. \n Deseja continuar?").setPositiveButton("SIM", new DialogInterface.OnClickListener() {
+                alert.setTitle("Conexão").setMessage("Você não está conectado ao WIFI, isso pode gerar cobranças adicionais. \nDeseja continuar?").setPositiveButton("SIM", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
@@ -114,55 +125,117 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                final ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.layout_progressbar);
+
+
                 final String senha = EncryptString.gerarHash(etSenha.getText().toString());
                 final String email = etEmail.getText().toString();
-                /*Login login = new Login();
+
+                final Login login = new Login();
                 login.setEmail(email);
-                login.setSenha(senha);*/
-
-                final Profissional profissional = new Profissional();
-                profissional.setEmail(email);
-                profissional.setSenha(senha);
+                login.setSenha(senha);
 
 
-                Call<Profissional> call = new RetroFitConfig().getLoginService().buscarPro(profissional);
-                call.enqueue(new Callback<Profissional>() {
+                Call<JwtToken> call = new RetroFitConfig().getLoginService().buscarPro(login);
+                call.enqueue(new Callback<JwtToken>() {
                     @Override
-                    public void onResponse(Call<Profissional> call, Response<Profissional> response) {
-                        response.body();
+                    public void onResponse(Call<JwtToken> call, Response<JwtToken> response) {
 
-                        Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
-                        intent.putExtra("profissional", response.body());
-                        startActivity(intent);
+                        String data = null;
+                        String tokenBody = null;
+                        String token = response.body().getToken();
+                        progressDialog.dismiss();
+
+                        try {
+                            tokenBody = Base64Utils.getTokenBody(token);
+                            data = Base64Utils.getJson(tokenBody);
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+
+                        TokenBodyProfissional tokenBodyProfissional = HandleJson.getJsonTokenBodyProfissional(data);
+                        Profissional profissionalToken = tokenBodyProfissional.getProfissional();
+                        Log.d("TOKEN", profissionalToken.getIdProfissional() + " <----");
+
+                        if(profissionalToken.getFoto() == null || profissionalToken.getFoto() == ""){
+
+                            Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
+                            intent.putExtra("profissional", profissionalToken);
+                            intent.putExtra("tokenProfissional", token);
+                            finish();
+                            startActivity(intent);
+
+                        }else{
+
+                            Intent intent = new Intent(MainActivity.this, MenuActivity.class);
+                            intent.putExtra("profissional", profissionalToken);
+                            intent.putExtra("tokenProfissional", token);
+                            finish();
+                            startActivity(intent);
+                        }
                     }
 
                     @Override
-                    public void onFailure(Call<Profissional> call, Throwable t) {
+                    public void onFailure(Call<JwtToken> call, Throwable t) {
 
-                        Cliente cliente = new Cliente();
-                        cliente.setEmail(email);
-                        cliente.setSenha(senha);
+//                        Login login = new Login();
+                        login.setEmail(email);
+                        login.setSenha(senha);
 
-                        Call<Cliente> call2 = new RetroFitConfig().getLoginService().buscarCli(cliente);
-                        call2.enqueue(new Callback<Cliente>() {
+                        Call<JwtToken> call2 = new RetroFitConfig().getLoginService().buscarCli(login);
+                        call2.enqueue(new Callback<JwtToken>() {
                             @Override
-                            public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
-                                response.body();
-                                Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
-                                intent.putExtra("cliente", response.body());
-                                startActivity(intent);
+                            public void onResponse(Call<JwtToken> call2, Response<JwtToken> response) {
+
+                                String data = null;
+                                String tokenBody = null;
+                                String token = response.body().getToken();
+
+                                try {
+                                    tokenBody = Base64Utils.getTokenBody(token);
+                                    data = Base64Utils.getJson(tokenBody);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                                TokenBodyCliente tokenBodyCliente = HandleJson.getJsonTokenBodyCliente(data);
+                                Cliente clienteToken = tokenBodyCliente.getCliente();
+                                Log.d("TOKEN", clienteToken.getIdCliente() + " <----");
+
+                                if(tokenBodyCliente.getCliente().getFoto() == null  || tokenBodyCliente.getCliente().getFoto() == ""){
+
+                                    Intent intent = new Intent(MainActivity.this, CadastroFotoActivity.class);
+                                    intent.putExtra("cliente", clienteToken);
+                                    intent.putExtra("tokenCliente", token);
+                                    finish();
+                                    startActivity(intent);
+
+
+                                }else{
+
+                                    Intent intent = new Intent(MainActivity.this, MenuClienteActivity.class);
+                                    intent.putExtra("cliente", clienteToken);
+                                    intent.putExtra("tokenCliente", token);
+                                    finish();
+                                    startActivity(intent);
+                                }
+
                             }
 
                             @Override
-                            public void onFailure(Call<Cliente> call, Throwable t) {
+                            public void onFailure(Call<JwtToken> call, Throwable t) {
                                 Log.i("Retrofit LOGIN", t.getMessage());
+                                progressDialog.dismiss();
                                 Toast.makeText(MainActivity.this, "Esse usuario não existe", Toast.LENGTH_SHORT).show();
                             }
                         });
                     }
                 });
 
-                Intent intent = new Intent(MainActivity.this, EscolhaActivity.class);
+               // Intent intent = new Intent(MainActivity.this, EscolhaActivity.class);
             }
         });
 

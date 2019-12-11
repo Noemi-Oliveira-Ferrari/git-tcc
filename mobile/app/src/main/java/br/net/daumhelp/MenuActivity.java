@@ -14,14 +14,20 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.ArrayList;
+
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Cliente;
+import br.net.daumhelp.model.Pedido;
 import br.net.daumhelp.model.Profissional;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MenuActivity extends AppCompatActivity {
+
+//    public ArrayList<Pedido> lista = new ArrayList<Pedido>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +44,9 @@ public class MenuActivity extends AppCompatActivity {
             Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
         }
 
-
-
+        if (intent.getSerializableExtra("tokenProfissional") != null) {
+            String tokenProfissional = (String) intent.getSerializableExtra("tokenProfissional");
+        }
 
     }
 
@@ -49,10 +56,7 @@ public class MenuActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if (intent.getSerializableExtra("profissional") != null) {
-
             Profissional profissional = (Profissional) intent.getSerializableExtra("profissional");
-
-
         }
     }
 }

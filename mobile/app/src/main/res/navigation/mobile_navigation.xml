@@ -18,6 +18,12 @@
         tools:layout="@layout/activity_fragment_pagamento" />
 
     <fragment
+        android:id="@+id/navigation_resposta"
+        android:name="br.net.daumhelp.menu.resposta.RespostaFragmentActivity"
+        android:label="@string/title_resposta"
+        tools:layout="@layout/activity_fragment_resposta" />
+
+    <fragment
         android:id="@+id/navigation_notifications"
         android:name="br.net.daumhelp.menu.perfil.PerfilFragmentActivity"
         android:label="@string/title_notification"

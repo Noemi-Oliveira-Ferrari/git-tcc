@@ -13,7 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,18 +22,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import java.util.ArrayList;
+import com.squareup.picasso.Picasso;
 
-import br.net.daumhelp.PerfilClienteActivity;
 import br.net.daumhelp.R;
-import br.net.daumhelp.adapter.ListaAdapterComentario;
 import br.net.daumhelp.configretrofit.RetroFitConfig;
 import br.net.daumhelp.model.Cidade;
 import br.net.daumhelp.model.Cliente;
-import br.net.daumhelp.model.Comentario;
 import br.net.daumhelp.model.Endereco;
 import br.net.daumhelp.model.EnderecoViaCep;
-import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.model.TipoUsuario;
 import br.net.daumhelp.recursos.EncryptString;
 import br.net.daumhelp.recursos.Mascara;
@@ -67,6 +63,8 @@ public class PerfilCliFragmentActivity extends Fragment {
     private Endereco endereco;
     private Long idCidade;
     private EnderecoViaCep enderecoViaCep;
+    private ImageView ivFotoCliente;
+    private String tokenCliente;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -104,6 +102,9 @@ public class PerfilCliFragmentActivity extends Fragment {
         btnEditar = getView().findViewById(R.id.ib_editar);
         btnSalvar = getView().findViewById(R.id.ib_salvar);
         btnAjuda = getView().findViewById(R.id.ib_ajuda);
+        ivFotoCliente = getView().findViewById(R.id.profile_image_cliente);
+
+
 
         desativarCamposDadosPessoais();
         desativarCamposDadosEndereco();
@@ -112,6 +113,12 @@ public class PerfilCliFragmentActivity extends Fragment {
         etCep.addTextChangedListener(maskCep);
 
         Intent intent = getActivity().getIntent();
+
+        if (intent.getSerializableExtra("tokenCliente") != null) {
+            tokenCliente = (String) intent.getSerializableExtra("tokenCliente");
+        }
+
+
         if (intent.getSerializableExtra("cliente") != null) {
 
             cliente = (Cliente) intent.getSerializableExtra("cliente");
@@ -245,15 +252,15 @@ public class PerfilCliFragmentActivity extends Fragment {
                 if (validar() == true){
 
                     /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
-                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(cliente.getEndereco().getIdEndereco(), endereco);
+                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(tokenCliente, cliente.getEndereco().getIdEndereco(), endereco);
                     call.enqueue(new Callback<Endereco>() {
                         @Override
                         public void onResponse(Call<Endereco> call, Response<Endereco> response) {
 
                             response.body();
 
-                            /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
-                            Call<Cliente> call2 = new RetroFitConfig().getClienteService().atualizarCli(cliente.getIdCliente(), cliente);
+                            /*CHAMADA PARA ATUALIZAR CLIENTE*/
+                            Call<Cliente> call2 = new RetroFitConfig().getClienteService().atualizarCli(tokenCliente, cliente.getIdCliente(), cliente);
                             call2.enqueue(new Callback<Cliente>() {
                                 @Override
                                 public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
@@ -319,7 +326,9 @@ public class PerfilCliFragmentActivity extends Fragment {
         etLogradouro.setText(cliente.getEndereco().getLogradouro());
         etUf.setText(cliente.getEndereco().getCidade().getMicrorregiao().getUf().getUf());
         etBairro.setText(cliente.getEndereco().getBairro());
-        tvNome.setText(cliente.getNome());
+        tvNome.setText(cliente.getNome().toUpperCase());
+        String fotoCli = cliente.getFoto();
+        Picasso.get().load("http://ec2-3-220-68-195.compute-1.amazonaws.com/" + fotoCli).resize(100,100).into(ivFotoCliente);
 
     }
 

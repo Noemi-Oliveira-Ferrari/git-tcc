@@ -23,7 +23,7 @@
             android:layout_height="match_parent">
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/iv_comentario"
+                android:id="@+id/profile_image"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:layout_marginStart="16dp"
@@ -43,7 +43,7 @@
                 android:text="PEDRO DE ALMEIDA SANTOS"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_comentario"
+                app:layout_constraintStart_toEndOf="@+id/profile_image"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <RatingBar
@@ -55,7 +55,7 @@
                 android:layout_marginTop="12dp"
                 android:isIndicator="true"
                 android:numStars="5"
-                app:layout_constraintStart_toEndOf="@+id/iv_comentario"
+                app:layout_constraintStart_toEndOf="@+id/profile_image"
                 app:layout_constraintTop_toBottomOf="@+id/tv_nome" />
 
             <TextView
@@ -78,7 +78,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_comentario" />
+                app:layout_constraintTop_toBottomOf="@+id/profile_image" />
 
             <Button
                 android:id="@+id/btn_ler"

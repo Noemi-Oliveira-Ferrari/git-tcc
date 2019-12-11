@@ -1,6 +1,8 @@
 package br.net.daumhelp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -65,6 +67,11 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                final ProgressDialog progressDialog = new ProgressDialog(CadastroEnderecoActivity.this);
+                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.layout_progressbar);
+
                 String cep = etCep.getText().toString();
                 /*VALIDAÇÃO DO TAMANHO DO CEP*/
                 if(etCep.length() == 8 || etCep.length() == 9){
@@ -74,6 +81,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<EnderecoViaCep> call, Response<EnderecoViaCep> response) {
 
+                                progressDialog.dismiss();
 
                                 if(response.code() == 404){
                                     etCep.setError("CEP inválido");
@@ -86,6 +94,7 @@ public class CadastroEnderecoActivity extends AppCompatActivity {
                             @Override
                             public void onFailure(Call<EnderecoViaCep> call, Throwable t) {
 
+                                progressDialog.dismiss();
                                 Log.i("Retrofit Endereço" + call, t.getMessage());
                                 etCep.setError("CEP inválido");
                             }

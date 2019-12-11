@@ -1,8 +1,10 @@
 package br.net.daumhelp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -119,6 +121,11 @@ public class PerfilClienteActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
 
+                            final ProgressDialog progressDialog = new ProgressDialog(PerfilClienteActivity.this);
+                            progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                            progressDialog.show();
+                            progressDialog.setContentView(R.layout.layout_progressbar);
+
                             String cep = etCep.getText().toString();
                             /*VALIDAÇÃO DO TAMANHO DO CEP*/
                             if(etCep.length() == 8 || etCep.length() == 9){
@@ -126,6 +133,9 @@ public class PerfilClienteActivity extends AppCompatActivity {
                                 call.enqueue(new Callback<EnderecoViaCep>() {
                                     @Override
                                     public void onResponse(Call<EnderecoViaCep> call, Response<EnderecoViaCep> response) {
+
+                                        progressDialog.dismiss();
+
                                         if(response.code() == 404){
                                             etCep.setError("CPF inválido");
                                         }else{
@@ -135,6 +145,8 @@ public class PerfilClienteActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<EnderecoViaCep> call, Throwable t) {
+                                        progressDialog.dismiss();
+
                                         Log.i("Retrofit Endereço", t.getMessage());
                                         etCep.setError("CEP inválido");
                                     }
@@ -190,6 +202,12 @@ public class PerfilClienteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                final ProgressDialog progressDialog = new ProgressDialog(PerfilClienteActivity.this);
+                progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                progressDialog.show();
+                progressDialog.setContentView(R.layout.layout_progressbar);
+
+
                 /*MONTANDO O OBJETO PROFISSIONAL QUE SERÁ ATUALIZADO*/
                 cliente.setNome(etNome.getText().toString());
                 cliente.setDataNasc(etData.getText().toString());
@@ -218,33 +236,33 @@ public class PerfilClienteActivity extends AppCompatActivity {
                 if (validar() == true){
 
                     /*CHAMADA PARA ATUALIZAR ENDEREÇO*/
-                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(cliente.getEndereco().getIdEndereco(), endereco);
-                    call.enqueue(new Callback<Endereco>() {
-                        @Override
-                        public void onResponse(Call<Endereco> call, Response<Endereco> response) {
-
-                            response.body();
-
-                            /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
-                            Call<Cliente> call2 = new RetroFitConfig().getClienteService().atualizarCli(cliente.getIdCliente(), cliente);
-                            call2.enqueue(new Callback<Cliente>() {
-                                @Override
-                                public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
-                                    response.body();
-                                    tvNome.setText(etNome.getText());
-                                    Toast.makeText(PerfilClienteActivity.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
-                                }
-                                @Override
-                                public void onFailure(Call<Cliente> call2, Throwable t) {
-                                    Log.i("CLIENTE", t.getMessage());
-                                }
-                            });
-                        }
-                        @Override
-                        public void onFailure(Call<Endereco> call, Throwable t) {
-                            Log.i("ENDERECO", t.getMessage());
-                        }
-                    });
+//                    Call<Endereco> call = new RetroFitConfig().getEnderecoService().atualizarEndereco(cliente.getEndereco().getIdEndereco(), endereco);
+//                    call.enqueue(new Callback<Endereco>() {
+//                        @Override
+//                        public void onResponse(Call<Endereco> call, Response<Endereco> response) {
+//
+//                            response.body();
+//
+//                            /*CHAMADA PARA ATUALIZAR PROFISSIONAL*/
+//                            Call<Cliente> call2 = new RetroFitConfig().getClienteService().atualizarCli(cliente.getIdCliente(), cliente);
+//                            call2.enqueue(new Callback<Cliente>() {
+//                                @Override
+//                                public void onResponse(Call<Cliente> call2, Response<Cliente> response) {
+//                                    response.body();
+//                                    tvNome.setText(etNome.getText());
+//                                    Toast.makeText(PerfilClienteActivity.this, "Dados atualizados!", Toast.LENGTH_SHORT).show();
+//                                }
+//                                @Override
+//                                public void onFailure(Call<Cliente> call2, Throwable t) {
+//                                    Log.i("CLIENTE", t.getMessage());
+//                                }
+//                            });
+//                        }
+//                        @Override
+//                        public void onFailure(Call<Endereco> call, Throwable t) {
+//                            Log.i("ENDERECO", t.getMessage());
+//                        }
+//                    });
 
                 }
 

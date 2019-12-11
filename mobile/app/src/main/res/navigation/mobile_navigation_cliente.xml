@@ -18,9 +18,18 @@
         android:label="@string/title_dashboard"
         tools:layout="@layout/activity_fragment_pagamento" />
 
+
+    <fragment
+        android:id="@+id/navigation_resposta"
+        android:name="br.net.daumhelp.menuCli.respostaCli.RespostaCliFragmentActivity"
+        android:label="@string/title_resposta"
+        tools:layout="@layout/activity_fragment_resposta_cliente" />
+
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="br.net.daumhelp.menuCli.perfilCli.PerfilCliFragmentActivity"
         android:label="@string/title_notification"
         tools:layout="@layout/activity_fragment_perfil_cliente" />
+
+
 </navigation>
