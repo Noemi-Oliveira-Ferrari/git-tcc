@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/cv_perfil"
+        android:layout_width="match_parent"
+        android:layout_height="303dp"
+        android:background="@color/colorTest"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:civ_border_color="#E8DFDFDF"
+        app:civ_border_width="1dp"
+        android:src="@drawable/user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cv_perfil" />
+
+    <TextView
+        android:id="@+id/tv_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="PEDRO DE ALMEIDA SANTOS"
+        android:textSize="22dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+
+    <TextView
+        android:id="@+id/tv_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="São Paulo, Jandira"
+        android:textSize="20dp"
+        android:drawableLeft="@drawable/ic_location"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nome" />
+
+    <View
+        android:id="@+id/cv_inf"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/borda_view"
+        app:layout_constraintCircleRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nome" />
+
+    <TextView
+        android:id="@+id/tv_serv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:text="Serviços"
+        app:layout_constraintStart_toStartOf="@+id/cv_inf"
+        app:layout_constraintTop_toTopOf="@+id/cv_inf" />
+
+    <TextView
+        android:id="@+id/tv_avaliacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:text="Avaliações"
+        app:layout_constraintEnd_toStartOf="@+id/tv_config"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toEndOf="@+id/tv_serv"
+        app:layout_constraintTop_toTopOf="@+id/cv_inf" />
+
+    <TextView
+        android:id="@+id/tv_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:text="Configs"
+        app:layout_constraintEnd_toEndOf="@+id/cv_inf"
+        app:layout_constraintTop_toTopOf="@+id/cv_inf" />
+
+    <TextView
+        android:id="@+id/tv_qtd_serv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="18dp"
+        android:text="395"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/cv_inf"
+        app:layout_constraintTop_toBottomOf="@+id/tv_serv" />
+
+    <TextView
+        android:id="@+id/tv_porc_av"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="18dp"
+        android:text="95%"
+        android:textSize="26dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tv_qtd_serv"
+        app:layout_constraintTop_toBottomOf="@+id/tv_avaliacoes" />
+
+    <ImageButton
+        android:id="@+id/ic_config"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="28dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/cv_inf"
+        app:layout_constraintTop_toBottomOf="@+id/tv_config"
+        app:srcCompat="@drawable/ic_config" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="350dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ListView
+            android:id="@+id/lv_comentarios"
+            android:layout_width="match_parent"
+            android:layout_height="461dp"
+            android:divider="#00FFFFFF"
+            android:dividerHeight="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </ListView>
+
+    </LinearLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

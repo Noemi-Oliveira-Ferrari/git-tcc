@@ -1,0 +1,481 @@
+div, h1, h2, h3, h4, h5, h6, html, body, figure, img, p{
+    padding: 0px;
+    margin: 0px;
+}
+
+@font-face 
+{
+    font-family: 'Lexend Deca';
+    src: url("../fontes/LexendDeca-Regular.ttf");
+}
+
+@font-face 
+{
+    font-family: 'Manjari';
+    src: url("../fontes/Manjari-Regular.ttf");
+}
+
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px)
+{
+
+
+    /*----- Padronização -----*/
+    
+
+    html
+    {
+        height: 100%;
+    }
+
+    body
+    {
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+
+    #all{
+        /* min-height: 100%; */
+        flex: 1;
+    }
+
+    /*----- Cabeçalho -----*/
+    header
+    {
+        width: 100%;
+        height: 80px;
+        background-color: #000000;
+        box-shadow: 10px 0px 30px #000000;
+    }
+    
+    /*----- Conteudo -----*/
+    .container-conteudo
+    {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .container-login
+    {
+        width: 100%;
+        height: 755px;
+    }
+    
+    .container-centro
+    {
+        width: 1200px;
+        height: inherit;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .caixa-texto
+    {
+        width: 400px;
+        height: inherit;
+        color: #ffffff;
+        text-align: right;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        box-sizing: border-box;
+        /* background-color: #002420; */
+    }
+
+    .conteudo-caixa-texto
+    {
+        font-family: 'Lexend Deca';
+        font-size: 40px;
+        padding: 50px;
+        text-align: center;
+    }
+
+    .caixa-conteudo
+    {
+        width: 800px;
+        height: inherit;
+        position: relative;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .card-login
+    {
+        width: 600px;
+        height: 610px;
+        border-radius: 10px;
+        background-color: rgb(235, 230, 230);
+        background-image: url(../imagens/fundo03.jpg);
+        background-size: cover;
+        box-shadow: 15px 15px 30px #015249;
+    }
+
+    .conteudo-card
+    {
+        width: 550px;
+        height: 570px;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        /* background-color: rgb(146, 39, 189); */
+    }
+
+    .logotipo
+    {
+        width: 80px;
+        height: 80px;
+        background-color: #d6d6d6;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .titulo
+    {
+        width: inherit;
+        height: 65px;
+        font-family: 'Lexend Deca';
+        font-size: 25px;
+        /* font-weight: bold; */
+        color: #000000;
+        text-align: center;
+        /* background-color: rgb(108, 157, 231); */
+    }
+
+    .container-campos-login
+    {
+        width: 530px;
+        height: fit-content;
+        /* background-color: rgb(245, 198, 145); */
+        margin: auto;
+        text-align: center;
+        font-family: 'Manjari';
+        margin-top: 60px;
+    }
+
+    .container-txt-login
+    {
+        width: inherit;
+        height: 200px;
+        margin-bottom: 0px;
+        /* background-color: #ff0000; */
+    }   
+
+    .caixa-campo-login
+    {
+        width: inherit;
+        height: fit-content;
+        /* background-color: rgb(34, 61, 65); */
+        margin-bottom: 30px;
+
+        font-family: 'Manjari';
+        font-size: 26px;
+        text-align: left;
+    }
+    .caixa-campo-login label
+    {
+        margin-left: 10px;
+    }
+
+    .input-login
+    {
+        width: inherit;
+        height: 45px;
+        border-radius: 8px;
+        border: 0px;
+        outline: none;
+        box-sizing: border-box;
+        padding-left: 20px;
+        background-color: #d6d6d6;
+        transition: .2s ease;
+        font-size: 18px;
+    }
+
+    .input-login:hover
+    {
+        background-color: #d7e6de;
+        transition: .2s ease;
+    }
+
+    .btn-entrar
+    {
+        width: 140px;
+        height: 45px;
+        border-radius: 10px;
+        border: 0px;
+        outline: none;
+        font-size: 20px;
+        margin-top: 25px;
+        font-family: 'Lexend Deca';
+        letter-spacing: 1.5px;
+        background-color: #015249;
+        color: #ffffff;
+    }
+    
+    .btn-entrar:hover
+    {
+        cursor: pointer;
+        background-color: #026359;
+    }
+
+    .texto-card
+    {
+        font-family: 'Manjari';
+        font-size: 20px;
+        margin-top: 45px;
+        margin-right: 15px;
+        text-align: right;
+    }
+
+    .link-cadastro
+    {
+        text-decoration: none;
+        font-weight: bold;
+        color: #002420;
+    }
+    
+    .link-cadastro:hover
+    {
+        text-decoration: underline;
+    }
+    
+    .espaco
+    {
+        display: none;
+    }
+    
+    /*----- Footer -----*/
+    footer
+    {
+        width: 100%;
+        height: 150px;
+        background-color: #030303;
+        /* background-color: #015249; */
+    }
+    
+
+}
+
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:880px)
+{
+    body{
+        background-image: linear-gradient(to bottom right, #57bc90, #77c9d4);
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    body, html
+    {
+        min-height: 100%;
+        margin: 0;
+    }
+    
+    * html #all
+    {
+        height: 100%;
+    }
+
+    #all{
+        min-height: calc(100vh - 300px);
+    }
+
+    .caixa-texto{
+        display: none;
+    }
+    
+    /*----- Cabeçalho -----*/
+    header
+    {
+        width: 100%;
+        height: 200px;
+        background-color: #000000;
+        box-shadow: 10px 0px 30px #00000000;
+        margin-bottom: 80px;
+    } 
+ 
+    /*----- Conteudo -----*/
+    .container-conteudo
+    {
+        width: 100%;
+        height: 70%;
+        /* background: rgba(240, 102, 22, 0.75); */
+        margin-bottom: 80px;
+    }
+    .container-login
+    {
+        width: 90%;
+        min-height: 100%;
+        /* background: rgba(11, 93, 107); */
+        margin: auto;
+    }
+    .container-centro
+    {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        /* background-color: #002420 */
+    }
+
+    .caixa-conteudo
+    {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: rgb(255, 0, 0); */
+    }
+
+    .card-login
+    {
+        width: 100%;
+        height: 100%;
+        /* background-color: rgb(86, 86, 190); */
+    }
+    
+    .conteudo-card
+    {
+        width: 100%;
+        height: 100%;
+        padding: 15px;
+        box-sizing: border-box;
+        /* background-color: rgb(50, 190, 85); */
+    }
+
+    .logotipo
+    {
+        width: 250px;
+        height: 250px;
+        background-color: #d6d6d6;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+    
+    .titulo
+    {
+        width: inherit;
+        height: 5%;
+        font-family: 'Lexend Deca';
+        font-size: 2.95em;
+        color: #000000;
+        /* background-color: yellowgreen; */
+        text-align: center;
+    }
+
+    .container-campos-login
+    {
+        width: 100%;
+        height: 50%;
+        text-align: center;
+        color: rgb(3, 22, 26);
+        /* background-color: rgb(14, 148, 148); */
+        margin-top: 45px;
+    }
+    
+    .container-txt-login
+    {
+        width: inherit;
+        height: 450px;
+        /* background-color: #438d5b; */
+        margin-bottom: 40px;
+    }
+
+    .caixa-campo-login
+    {
+        width: inherit;
+        height: 200px;
+        font-family: 'Manjari';
+        font-size: 3.5em;
+        text-align: left;
+        margin-bottom: 40px;
+        /* background-color: #d45421; */
+    }
+
+    .input-login
+    {
+        width: 100%;
+        height: 110px;
+        border-radius: 15px;
+        border: 0px;
+        outline: none;
+        padding-left: 15px;
+        box-sizing: border-box;
+        background-color: #efefef;
+        font-size: 1em;
+        margin-bottom: 20px;
+        font-family: sans-serif;
+    }
+    
+    .input-login:hover
+    {
+        background-color: #cadbd1;
+    }
+
+    .btn-entrar
+    {    
+        width: 234px;
+        height: 88px;
+        border-radius: 20px;
+        letter-spacing: 4.5px;
+        background-color: #fdfdfd00;
+        border: solid 0.12em #ffffff;
+        font-weight: bold;
+        font-family: 'Lexend Deca';
+        outline: none;
+        font-size: 2.2em;
+        color: #ffffff;
+    }
+
+    .texto-card
+    {
+        height: 20%;
+        font-family: 'Manjari';
+        font-size: 3em;
+        margin-top: 60px;
+        /* background-color: violet; */
+    }
+    
+    .link-cadastro
+    {
+        text-decoration: none;
+        font-weight: bold;
+        color: #002420;
+    }
+    
+    .link-cadastro:hover
+    {
+        text-decoration: underline;
+    }
+
+    /*----- Rodapé -----*/
+    
+    footer, .espaco
+    {
+        height: 300px;
+        width: 100%;
+        background-color: #015249;
+    }
+    
+}

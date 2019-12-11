@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:id="@+id/cv_perfil"
+        android:layout_width="match_parent"
+        android:layout_height="330dp"
+        android:background="@color/colorTest2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile_image"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:civ_border_color="#E8DFDFDF"
+        app:civ_border_width="1dp"
+        android:src="@drawable/user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cv_perfil" />
+
+    <TextView
+        android:id="@+id/tv_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="PEDRO DE ALMEIDA SANTOS"
+        android:textSize="22dp"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+
+    <TextView
+        android:id="@+id/tv_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="São Paulo, Jandira"
+        android:textSize="20dp"
+        android:drawableLeft="@drawable/ic_location"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nome" />
+
+    <View
+        android:id="@+id/cv_inf"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="95dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/borda_view"
+        app:layout_constraintCircleRadius="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nome" />
+
+    <TextView
+        android:id="@+id/tv_serv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:text="Valor/hora \n R$"
+        app:layout_constraintStart_toStartOf="@+id/cv_inf"
+        app:layout_constraintTop_toTopOf="@+id/cv_inf" />
+
+    <TextView
+        android:id="@+id/tv_avaliacoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:text="Serviços \n Realizados"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toStartOf="@+id/tv_config"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toEndOf="@+id/tv_serv"
+        app:layout_constraintTop_toTopOf="@+id/cv_inf" />
+
+    <TextView
+        android:id="@+id/tv_config"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:textAlignment="center"
+        android:text="Solicitar \n Serviço"
+        app:layout_constraintEnd_toEndOf="@+id/cv_inf"
+        app:layout_constraintTop_toTopOf="@+id/cv_inf" />
+
+    <TextView
+        android:id="@+id/tv_valor_hora"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:textAlignment="center"
+        android:text="R$ 00,00"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/cv_inf"
+        app:layout_constraintTop_toBottomOf="@+id/tv_serv" />
+
+    <TextView
+        android:id="@+id/tv_serv_realizado"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="12dp"
+        android:text="0"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tv_valor_hora"
+        app:layout_constraintTop_toBottomOf="@+id/tv_avaliacoes" />
+
+    <ImageButton
+        android:id="@+id/ic_solicitar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:background="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/cv_inf"
+        app:layout_constraintTop_toBottomOf="@+id/tv_config"
+        app:srcCompat="@drawable/ic_solicitar" />
+
+    <Button
+        android:id="@+id/btn_resumo"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="66dp"
+        android:layout_marginEnd="66dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/button_cadastrar"
+        android:text="Visualizar Descrição"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="10dp"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_local" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="390dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/ic_avaliar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="102dp"
+                    android:background="#00FFFFFF"
+                    app:layout_constraintEnd_toStartOf="@+id/ic_salvar"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_avaliar" />
+
+                <ImageButton
+                    android:id="@+id/ic_salvar"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginEnd="102dp"
+                    android:background="#00FFFFFF"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_favorito" />
+
+                <TextView
+                    android:id="@+id/tv_avaliar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="104dp"
+                    android:text="Avaliar"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ic_avaliar" />
+
+                <TextView
+                    android:id="@+id/tv_salvar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="106dp"
+                    android:text="Salvar"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ic_salvar" />
+
+                <ListView
+                    android:id="@+id/lv_comentarios"
+                    android:layout_width="match_parent"
+                    android:layout_height="461dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="75dp"
+                    android:divider="#00FFFFFF"
+                    android:dividerHeight="5dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ic_salvar">
+
+                </ListView>
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_backw" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

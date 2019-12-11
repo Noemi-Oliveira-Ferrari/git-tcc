@@ -1,0 +1,189 @@
+@font-face 
+{
+    font-family: "lexend deca";
+    src: url("../fontes/Lexend_Deca/LexendDeca-Regular.ttf");
+}
+@font-face 
+{
+    font-family: "manjari bold";
+    src: url("../fontes/Manjari/Manjari-Bold.ttf");
+}
+@font-face 
+{
+    font-family: "manjari regular";
+    src: url("../fontes/Manjari/Manjari-Regular.ttf");
+}
+@font-face 
+{
+    font-family: "manjari thin";
+    src: url("../fontes/Manjari/Manjari-Thin.ttf");
+}
+
+body, html, figure, input, img, h2, a{
+    margin: 0;
+    padding: 0;
+}
+
+body, html{
+    height: 100%;
+}
+
+#all{
+    min-height: 100%;
+    position: relative;
+}
+
+* html #all{
+    height: 100%;
+}
+
+body{
+    /* background-image: linear-gradient(to bottom right, #57BC90, #77C9D4);  */
+    
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;                                                                                 ;
+}
+
+a{
+    color: currentColor;
+}
+
+p, h1, div{
+    font-family: 'lexend deca', sans-serif;
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flex-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* MENUUUU */
+
+.menu{
+    width: 1500px;
+    height: 200px;
+    /* background-color: chartreuse; */
+}
+
+header{
+    width: 100%;
+    height: 250px;
+    background-color: rgb(255, 255, 255);
+}
+
+.caixa-header{
+    width: 100%;
+    height: 50px;
+    background-color: #c0e0dd;
+}
+
+.menu-1{
+    width: 1500px;
+    height: 50px;
+    background-color: #c0e0dd;
+}
+
+
+.entrar-cad{
+    width: 400px;
+    height: 50px;
+    float: left;
+    /* background-color: pink; */
+    margin-left: 1200px;
+}
+
+
+.sing{
+    width: 250px;
+    height: 50px;
+    /* background-color: coral; */
+    float: left;
+}
+
+.sing img{
+    width: 30px;
+    height: 30px;
+    float: left;
+}
+
+.name{
+    float: left;
+    width: 160px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 16px;
+    box-sizing: border-box;
+    border: solid 2px rgb(255, 255, 255);
+    margin-left: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    transition: .5s;
+}
+
+
+
+.name:hover{
+    transform: scale(1.1);
+    transition: .5s;
+    cursor: pointer;
+}
+
+
+.menu-2{
+    width: 100%;
+    height: 100px;
+    /* background-color: #321f72; */
+    font-size: 70px;
+    color: #57BC90;
+}
+
+.menu-3{
+    width: 100%;
+    height: 100px;
+    /* background-color: #2ce4ce; */
+}
+.itens{
+    float: left;
+    border-top: 1px solid black;
+    width: 150px;
+    height: 80px;
+    justify-items: center;
+    text-align: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+    padding-top: 10px;
+
+}
+
+.itens img:hover{
+    transform: scale(1.5);
+    transition: .5s;
+    cursor: pointer;
+}
+
+.itens img{
+    width: 40px;
+    height: 40px;
+    flex-wrap: wrap;
+    transition: .5s;
+
+    
+}
+
+.name-menu{
+    width: 150px;
+    height: 20px;
+    /* background-color: aqua; */
+    flex-wrap: wrap;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding-top: 10px;
+}

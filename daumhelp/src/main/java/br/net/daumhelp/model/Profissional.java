@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,31 +19,49 @@ public class Profissional {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idProfissional;
 	@NotNull
-	@Size(min = 3, max = 100)
+	@Size(min = 3, max = 200, message = "O nome não pode ter menos que 3 caractéres")
 	private String nome;
 	@NotNull
-	@Size(min = 10, max = 100)
+	@Size(min = 5, max = 255, message = "O e-mail digitado é pssui menos que 5 caractéres")
 	private String email;
-	@NotNull
+
 	@Size(min = 4, max = 150)
 	private String foto;
-	@Size(min = 14, max = 20)
+
+	@Size(min = 11, max = 20, message = "CNPJ menor que 14 digitos")
 	private String cnpj;
-	@Size(min = 11, max = 20)
+
+	@Size(min = 11, max = 20, message = "CPF menor que 11 digitos")
 	private String cpf;
+
 	@NotNull
-	@Size(min = 8, max = 128)
+	@Size(min = 8, max = 128, message = "A senha deve conter pelo ao menos 8 caractéres")
 	private String senha;
-	@NotNull
-	@Size(min = 6, max = 20)
+	
+	@Size(min = 6, max = 20, message = "Data digitado tem menos que 6 digitos")
 	private String dataNasc;
+
 	@NotNull
-	@Size(min = 2, max = 5)
 	private Double valorHora;
+
+	private String resumoQualificacoes;
+
 	@NotNull
-	private Long idEndereco;
+	@OneToOne
+	@JoinColumn(name = "idEndereco")
+	private Endereco endereco;
 	@NotNull
-	private Long idSubcategoria;
+	@OneToOne
+	@JoinColumn(name = "idSubcategoria")
+	private Subcategoria subcategoria;
+
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "idTipoUsuario")
+	private TipoUsuario tipoUsuario;
+
+	private String criadoEm;
+	private String atualizadoEm;
 
 	public Long getIdProfissional() {
 		return idProfissional;
@@ -114,29 +135,61 @@ public class Profissional {
 		this.valorHora = valorHora;
 	}
 
-	public Long getIdEndereco() {
-		return idEndereco;
+	public String getResumoQualificacoes() {
+		return resumoQualificacoes;
 	}
 
-	public void setIdEndereco(Long idEndereco) {
-		this.idEndereco = idEndereco;
+	public void setResumoQualificacoes(String resumoQualificacoes) {
+		this.resumoQualificacoes = resumoQualificacoes;
 	}
 
-	public Long getIdSubcategoria() {
-		return idSubcategoria;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public void setIdSubcategoria(Long idSubcategoria) {
-		this.idSubcategoria = idSubcategoria;
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public Subcategoria getSubcategoria() {
+		return subcategoria;
+	}
+
+	public void setSubcategoria(Subcategoria subcategoria) {
+		this.subcategoria = subcategoria;
+	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	public String getCriadoEm() {
+		return criadoEm;
+	}
+
+	public void setCriadoEm(String criadoEm) {
+		this.criadoEm = criadoEm;
+	}
+
+	public String getAtualizadoEm() {
+		return atualizadoEm;
+	}
+
+	public void setAtualizadoEm(String atualizadoEm) {
+		this.atualizadoEm = atualizadoEm;
 	}
 
 	@Override
 	public String toString() {
 		return "Profissional [idProfissional=" + idProfissional + ", nome=" + nome + ", email=" + email + ", foto="
 				+ foto + ", cnpj=" + cnpj + ", cpf=" + cpf + ", senha=" + senha + ", dataNasc=" + dataNasc
-				+ ", valorHora=" + valorHora + ", idEndereco=" + idEndereco + ", idSubcategoria=" + idSubcategoria
-				+ "]";
+				+ ", valorHora=" + valorHora + ", resumoQualificacoes=" + resumoQualificacoes + ", endereco=" + endereco
+				+ ", subcategoria=" + subcategoria + ", tipoUsuario=" + tipoUsuario + ", criadoEm=" + criadoEm
+				+ ", atualizadoEm=" + atualizadoEm + "]";
 	}
 
-	
 }

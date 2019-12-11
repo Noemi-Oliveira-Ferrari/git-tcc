@@ -1,0 +1,378 @@
+/* DESKTOOPPPPP  */
+@media screen and (min-device-width:1000px){
+    
+    /*----- Conteudo -----*/
+    .container-conteudo-login
+    {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container-login
+    {
+        width: 100%;
+        height: 755px;
+    }
+
+    .container-centro
+    {
+        width: 1200px;
+        height: inherit;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .caixa-texto
+    {
+        width: 400px;
+        height: inherit;
+        color: #ffffff;
+        text-align: right;
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+        box-sizing: border-box;
+    }
+
+    .conteudo-caixa-texto
+    {
+        padding: 50px;
+        text-align: center;
+    }
+    .conteudo-caixa-texto h2{
+        font-family: 'Lexend Deca';
+        font-size: 45px;
+    }
+
+    .caixa-conteudo
+    {
+        width: 800px;
+        height: inherit;
+        position: relative;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .card-login
+    {
+        width: 550px;
+        height: 610px;
+        border-radius: 10px;
+        background-color: rgb(235, 230, 230);
+        background-image: url(../img/fundo03.jpg);
+        background-size: cover;
+        box-shadow: 15px 15px 30px #015249;
+    }
+
+    .conteudo-card
+    {
+        width: 550px;
+        height: 570px;
+        box-sizing: border-box;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        /* background-color: rgb(146, 39, 189); */
+    }
+
+    .titulo-card-login
+    {
+        width: 300px;
+        height: 95px;
+        margin-top: 20px;
+        text-align: center;
+        /* background-color: rgb(108, 157, 231); */
+    }
+    .titulo-card-login h2{
+    font-family: 'Lexend Deca';
+    font-size: 35px;
+    color: #00000071;
+    }
+
+    .icon-login
+    {
+        width: 80px;
+        height: 80px;
+        /* background-color: #d6d6d6; */
+        border-radius: 10px;
+    }
+
+    .icon-login img
+    {
+        width: 80px;
+        height: 80px;
+        /* background-color: #d6d6d6; */
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container-campos-login
+    {
+        width: 500px;
+        height: fit-content;
+        /* background-color: rgb(245, 198, 145); */
+        margin: auto;
+        text-align: center;
+        font-family: 'Manjari';
+        margin-top: 20px;
+    }
+
+    .container-txt-login
+    {
+        width: inherit;
+        height: 200px;
+        margin-bottom: 0px;
+        /* background-color: #ff0000; */
+    }   
+
+    .caixa-campo-login
+    {
+        width: inherit;
+        height: fit-content;
+        /* background-color: rgb(34, 61, 65); */
+        margin-bottom: 30px;
+
+        font-family: 'Manjari';
+        font-size: 26px;
+        text-align: left;
+    }
+    .caixa-campo-login label
+    {
+        margin-left: 10px;
+    }
+
+    .input-login
+    {
+        width: inherit;
+        height: 45px;
+        border-radius: 8px;
+        border: 0px;
+        outline: none;
+        box-sizing: border-box;
+        padding-left: 20px;
+        background-color: #d6d6d6 !important;
+        transition: .2s ease;
+        font-size: 18px;
+    }
+
+    .input-login:hover
+    {
+        background-color: #d7e6de;
+        transition: .2s ease;
+    }
+
+    .btn-entrar
+    {
+        width: 140px;
+        height: 45px;
+        border-radius: 30px;
+        border: 0px;
+        outline: none;
+        font-size: 20px;
+        margin-top: 30px;
+        font-family: 'Lexend Deca';
+        letter-spacing: 1.5px;
+        background-color: #51ce92;
+        color: #ffffff;
+        transition: .3s;
+    }
+
+    .btn-entrar:hover
+    {
+        cursor: pointer;
+        background-color: #40bd81;
+        transition: .3s;
+    }
+
+    .texto-card
+    {
+        font-family: 'Manjari';
+        font-size: 20px;
+        margin-top: 45px;
+        margin-right: 15px;
+        text-align: right;
+    }
+
+    .link-cadastro
+    {
+        text-decoration: none;
+        font-weight: bold;
+        color: #002420;
+    }
+
+    .link-cadastro:hover
+    {
+        text-decoration: underline;
+    }
+
+}
+
+
+/* RESPONSIVOOOO */
+@media screen and (max-device-width:880px){
+    .container-conteudo-login
+    {
+        width: 100%;
+        height: 70%;
+        /* background: rgba(240, 102, 22, 0.75); */
+        margin-bottom: 80px;
+    }
+    .container-login
+    {
+        width: 90%;
+        min-height: 100%;
+        /* background: rgba(11, 93, 107); */
+        margin: auto;
+    }
+    .container-centro
+    {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        /* background-color: #002420 */
+    }
+
+    .caixa-texto
+    {
+        display: none;
+    }
+
+    .caixa-conteudo
+    {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: rgb(255, 0, 0); */
+    }
+
+    .card-login
+    {
+        width: 100%;
+        height: 100%;
+        /* background-color: rgb(86, 86, 190); */
+    }
+    
+    .conteudo-card
+    {
+        width: 100%;
+        height: 100%;
+        margin-top: 20px;
+        padding: 15px;
+        box-sizing: border-box;
+        /* background-color: rgb(50, 190, 85); */
+    }
+    
+    .titulo-card-login
+    {
+        width: inherit;
+        height: 5%;
+        font-family: 'Lexend Deca';
+        font-size: 2.95em;
+        color: #ededed;
+        /* background-color: yellowgreen; */
+        text-align: center;
+    }
+
+    .icon-login
+    {
+        display: none;
+    }
+
+    .container-campos-login
+    {
+        width: 100%;
+        height: 50%;
+        text-align: center;
+        color: rgb(3, 22, 26);
+        /* background-color: rgb(14, 148, 148); */
+        margin-top: 45px;
+    }
+    
+    .container-txt-login
+    {
+        width: 100%;
+        height: 250px;
+        /* background-color: #c7e7d1; */
+        margin-bottom: 20px;
+    }
+
+    .caixa-campo-login
+    {
+        width: inherit;
+        height: 100px;
+        font-family: 'Manjari';
+        font-size: 20px;
+        text-align: left;
+        margin-bottom: 18px;
+        /* background-color: #d45421; */
+    }
+
+    .caixa-campo-login label{
+        font-size: 22px !important;
+    }
+
+    .input-login
+    {
+        width: 100%;
+        height: 50px;
+        border-radius: 5px;
+        border: 0px;
+        outline: none;
+        padding-left: 15px;
+        box-sizing: border-box;
+        background-color: #efefef;
+        font-size: 1em;
+        margin-bottom: 20px;
+        font-family: sans-serif;
+        box-shadow: 4px 3px 4px #0000002c;
+    }
+    
+
+    .btn-entrar
+    {    
+        width: 150px;
+        height: 60px;
+        border-radius: 30px;
+        letter-spacing: 1.5;
+        background-color: #fdfdfd00;
+        border: solid 0.096em #ffffff;
+        font-weight: bold;
+        font-family: 'Lexend Deca';
+        outline: none;
+        font-size: 23px;
+        color: #ffffff;
+    }
+
+    .texto-card
+    {
+        height: 20%;
+        font-family: 'Manjari';
+        font-size: 22px;
+        margin-top: 28px;
+    }
+    
+    .link-cadastro
+    {
+        text-decoration: none;
+        font-weight: bold;
+        color: #002420;
+    }
+    
+    .link-cadastro:hover
+    {
+        text-decoration: underline;
+    }
+}

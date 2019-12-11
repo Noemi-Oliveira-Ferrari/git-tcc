@@ -1,0 +1,1029 @@
+﻿/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px){
+    
+    /*----- Conteudo -----*/
+    .container-conteudo-cadastro-pro
+    {
+        width: 1200px;
+        min-height: 700px;
+        height: auto;
+        overflow: hidden;
+        margin: auto;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        box-sizing: border-box;
+    }
+    .caixa-title-cadastro{
+        width: inherit;
+        min-height: 50px;
+        font-size: 45px;
+        text-align: center;
+        color: white;
+        font-family: 'Lexend Deca'erroAlt;
+        margin-bottom: 30px;
+    }
+
+    .card-formulario-pessoal,
+    .card-formulario-servico
+    {
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+    }
+    .card-formulario-pessoal
+    {
+        width: 850px;
+        min-height: 650px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
+    .card-formulario-servico
+    {
+        width: 850px;
+        height: 400px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
+
+
+    .caixa-title-card{
+        width: inherit;
+        height: 65px;
+        box-sizing: border-box;
+        padding-left: 50px;
+        padding-right: 50px;
+        color: #00000071;
+        /* background-color: rgb(153, 153, 29); */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    
+    .title-card-pro{
+        width: 300px;
+        /* background-color: rgb(32, 194, 167); */
+        display: flex;
+        align-items: center;
+        height: inherit;
+        box-sizing: border-box;
+
+        font-size: 32px;
+        color: #00000071;
+    }
+    .title-card-pjPf{
+        width: 100%;
+        height: 30px;;
+        align-self: flex-start;
+        box-sizing: border-box;
+        padding-left: 50px;
+        display: flex;
+        /* align-items: center; */
+        box-sizing: border-box;
+        /* font-size: 11px !important; */
+        /* background-color: rgb(233, 134, 20); */
+    }
+    .caixa-rdo-pf label,.caixa-rdo-pj label,
+    .caixa-rdo-pf input[type="radio"], .caixa-rdo-pj input[type="radio"]
+    {
+        cursor: pointer;
+    }
+    .caixa-rdo-pf{
+        width: 200px;
+        height: 50%;
+        /* background-color: rgb(72, 87, 218); */
+        box-sizing: border-box;
+        padding-top: 3px;
+    }
+    .caixa-rdo-pj{
+        width: 200px;
+        height: 50%;
+        /* background-color: rgb(180, 29, 168); */
+        box-sizing: border-box;
+        padding-top: 3px;
+    }
+    #rdo-pf{margin-left: 7px;} #rdo-pj{margin-left: 7px;}
+
+
+    #rdo-pf, #rdo-pj{
+        top: 0;
+        left: 0;
+        height: 21px;
+        width: 21px;
+        /* background-color: #77c9d4; */
+        border-radius: 50%;
+        vertical-align: sub;
+    }
+
+    .title-card
+    {
+        width: inherit;
+        height: fit-content;
+        box-sizing: border-box;
+        padding-left: 50px;
+        margin-top: 15px;
+        color: #00000071;
+        /* background-color: rgb(245, 245, 220); */
+    }
+ 
+   
+    .form-inputs
+    {
+        flex-direction: column;
+    }
+    .container-servico-pro
+    {
+        width: 350px;
+        height: 260px;
+        /* background-color: #984366; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .campos-dados
+    {
+        width: 750px;
+        height: 450px;
+        /* background-color: rgb(238, 130, 238); */
+        margin-bottom: 20px;
+    }
+
+    option{
+        font-size: 18px;
+    }
+    
+    #txt-nome,
+    #txt-dataNasc,
+    #txt-cpfCnpj,
+    #txt-cpf,
+    #txt-email,
+    #txt-senha,
+    #txt-confirmar-senha,
+    #txt-cep,
+    #txt-logradouro,
+    #txt-numero,
+    #txt-bairro,
+    #txt-cidade,
+    #txt-uf,
+    #slt-categoria,
+    #slt-subcat,
+    #txt-valor-hora{
+        height: 50px;
+        font-family: "Manjari";
+        font-size: 22px;
+        box-sizing: border-box;
+        padding-top: 10px;
+        background-color: #cce5e9;
+        /* text-transform: capitalize; */
+    }
+    
+    #txt-uf{
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .container-nome-dataNasc,
+    .container-cpfCnpj-email,
+    .container-cpf-email,
+    .container-senha,
+    .container-cep-logradouro,
+    .container-bairro-cidade-uf,
+    .container-categoria,
+    .container-subcat,
+    .container-valor-hora
+    {
+        width: inherit;
+        height: fit-content;
+        /* background-color: rgb(15, 221, 66); */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2px;
+    }
+
+    .form-input
+    {
+        margin-top: -25px;
+    }
+    
+    .form-input-pro
+    {
+        margin-top: -8px;
+    }
+
+    .caixa-nome, .caixa-dataNasc,
+    .caixa-cpfCnpj, .caixa-cpf, .caixa-email,
+    .caixa-senha, .caixa-confirmar-senha,
+    .caixa-cep, .caixa-logradouro,
+    .caixa-numero, .caixa-bairro, 
+    .caixa-cidade, .caixa-uf
+    {
+        height: 90px;
+        /* background-color: rgb(117, 179, 238); */
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .caixa-nome
+    {
+        width: 365px;
+    }
+    .caixa-dataNasc
+    {
+        width: 365px;
+    }
+    .caixa-cpfCnpj
+    {
+        width: 275px;
+    }
+
+    .caixa-cpf
+    {
+        width: 275px;
+    }
+
+    .caixa-email
+    {
+        width: 455px;
+    }
+    .caixa-senha
+    {
+        width: 365px;
+    }
+    .caixa-confirmar-senha 
+    {
+        width: 365px;
+    }
+
+    .caixa-cep
+    {
+        max-width: 27%;
+        margin-left: 5px;
+        margin-right: 5px;
+        /* width: 195px; */
+    }
+
+    .caixa-logradouro
+    {
+        width: 70%;
+        margin-left: 5px;
+        margin-right: 5px;
+        /* width: 395px; */
+    }
+
+    .caixa-numero
+    {
+        width: 23%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .caixa-bairro
+    {
+        width: 310px;
+    }
+
+    .caixa-cidade
+    {
+        width: 350px;
+    }
+    
+    .caixa-uf
+    {
+        width: 60px;
+    }
+   
+    
+
+    .campos-servicos
+    {
+        width: 800px;
+        height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        /* background-color: #f7dede; */
+    }
+
+    .caixa-categoria,
+    .caixa-subcat,
+    .caixa-valor-hora
+    {
+        width: 330px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        /* background-color: #57bc90; */
+    }
+    .container-qualificacoes{
+        width: inherit;
+        height: inherit;
+        /* background-color: #57bc90; */
+    }
+ 
+    .caixa-qualificacoes
+    {        
+        width: inherit;
+        height: inherit;
+        justify-content: space-around;
+        box-sizing: border-box;
+        padding-top: 5px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    #txt-qualificacoes
+    {
+        height: 225px;
+        resize: none;
+        overflow: auto;
+        font-size: 18px;
+        font-family: "Manjari";
+        background-color: #cce5e9;
+    }
+
+/* CONTEUDO DA CAIXA DE TERMOS DE USO */
+  
+    .card-formulario-termos
+    {
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+    }
+
+    .card-formulario-termos
+    {
+        width: 850px;
+        height: 500px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
+
+    .caixa-termos
+    {
+        width: 800px;
+        height: 290px;
+        /* background-color: rgb(218, 204, 12); */
+        /* padding-top: 35px; */
+        /* padding-left: 35px;
+        padding-right: 35px; */
+        /* padding-bottom: 0px;             */
+        text-align: justify;
+        /* margin-top: 25px; */
+    }
+
+
+    .caixa-confirmacao-termos
+    {
+        width: 800px;
+        height: 50px;
+        /* background-color: greenyellow; */
+        padding-top: 15px;
+        padding-left: 35px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        /* align-items: center; */
+        box-sizing: border-box;
+        margin-top: 15px;
+        /* flex-direction: column; */
+        box-shadow: none;
+        font-family: "Manjari";
+    }
+
+    .caixa-confirmacao-termos input[type='checkbox']{
+        cursor: pointer;
+    }
+    .caixa-confirmacao-termos label{
+        margin-top: -3px;
+        cursor: pointer;
+    }
+    .caixa-button
+    {
+        width: inherit;
+        height: auto;
+        flex-direction: column;
+    }
+
+    .btn-prox,
+    .btn-voltar{
+        width: 120px;
+        height: 45px;
+        border:0px;
+        font-size: 18px;
+        justify-items:right;
+        outline: none;
+        cursor: pointer;
+        transition: 0.4s;
+        border-radius: 30px;
+        border: solid 2px #57bc90;
+    }
+    .btn-voltar{
+        background-color: #fefefe;
+        color: #57afbb;
+    }
+    
+    .btn-voltar:hover
+    {
+        transition: 0.4s;
+        background-color: #eaeaea;
+    }
+    
+    .btn-prox
+    {
+        background-color: #51ce92;
+        color: #ffffff;
+    }
+    .btn-prox:hover
+    {
+        transition: 0.4s;
+        background-color: #46ab80;
+    }
+
+    .confirmar-termos
+    {
+        width: 15px;
+        height: 15px;
+        margin-right: 5px;
+        margin-top: 2px;
+    }
+
+    .text-termos
+    {
+        width: 780px;
+        height: 270px;
+        /* max-height: 290px; */
+        /* background-color: gray; */
+        font-family: "Manjari";
+        overflow: auto;
+        font-size: 18px;
+        /* padding-top: 80px; */
+    }
+
+    /* .text-termos::-webkit-scrollbar {
+        width: 10px;
+        cursor: pointer;
+    }
+
+    .text-termos::-webkit-scrollbar-track {
+        background: #cbf3e1;
+        cursor: pointer;
+    }
+
+    .text-termos::-webkit-scrollbar-thumb {
+        background: #a2dee6;
+        cursor: pointer;
+    }
+
+    .text-termos::-webkit-scrollbar-thumb:hover {
+        background: #77c9d4;
+        cursor: pointer;    
+    } */
+
+    .termo
+    {
+        margin-top: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .caixa-voltar-termos
+    {
+        width: 360px;
+        height: fit-content;
+        /* background-color: aqua; */
+        float: left;
+        display: flex;
+        /* align-items: flex-end; */
+        justify-content: flex-start;
+        /* margin-top: 10px; */
+    }
+
+    .caixa-continuar-termos
+    {
+        width: 380px;
+        height: fit-content;
+        /* background-color: yellow;   */
+        float: left;      
+        display: flex;
+        /* align-items: flex-end; */
+        justify-content: flex-end;
+        /* margin-top: 10px; */
+    }
+}
+
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:880px){
+    /*----- Conteudo -----*/
+    .container-conteudo-cadastro-pro
+    {
+        width: 100%;
+        height: 100%;
+        /* background-color: rgb(89, 0, 255); */
+        margin: auto;
+        box-sizing: border-box;
+        padding-top: 20px;
+        margin-bottom: 20%;
+    }
+
+    .caixa-title-cadastro{
+        width: inherit;
+        min-height: 50px;
+        font-size: 45px;
+        text-align: center;
+        color: #ffffff;
+        font-family: 'Lexend Deca';
+        margin-bottom: 30px;
+        /* background-color: brown; */
+    }
+
+    .card-formulario-pessoal,
+    .card-formulario-servico
+    {
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-wrap: wrap;
+        padding: 10px;
+        margin-bottom: 40px;
+    }
+    .card-formulario-pessoal
+    {
+        width: 95%;
+        min-height: 500px;
+        height: fit-content;
+        overflow: hidden;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+        padding-bottom: 10px;
+    }
+
+    .card-formulario-servico
+    {
+        width: 95%;
+        min-height: 500px;
+        height: fit-content;
+        overflow: hidden;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+    }
+
+    .container-flex
+    {  
+        display: flex;
+        justify-content: center;
+        /* background-color: rgb(95, 248, 56); */
+        padding-top: 20px;
+        height: fit-content;
+        /* padding-bottom: 50px */
+    }
+
+    .caixa-title-card
+    {
+        width: 100%;
+        height: fit-content;
+        box-sizing: border-box;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        /* background-color: rgb(32, 194, 167); */
+
+        color: #00000071;
+    }
+
+  
+    .title-card-pro{
+        font-size: 35px;
+        color: #00000071;
+        text-align: center;
+    }
+
+    .title-card
+    {
+        width: 100%;
+        height: fit-content;
+        box-sizing: border-box;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        /* background-color: rgb(32, 194, 167); */
+
+        font-size: 35px;
+        color: #00000071;
+        text-align: center;
+    }
+
+    .title-card-pjPf{
+        width: 100%;
+        height: 80px;
+        align-self: flex-start;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        box-sizing: border-box;
+        /* padding-left: 45px; */
+        /* background-color: rgb(233, 134, 20); */
+    }
+    .caixa-rdo-pf{
+        width: 100%;
+        height: 50%;
+        /* background-color: rgb(72, 87, 218); */
+        box-sizing: border-box;
+        padding-top: 3px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .caixa-rdo-pj{
+        width: 100%;
+        height: 50%;
+        /* background-color: rgb(180, 29, 168); */
+        box-sizing: border-box;
+        padding-top: 3px;
+        display: flex;
+        justify-content: center;
+    }
+    #rdo-pf{margin-left: 32px;} #rdo-pj{margin-left: 15px;}
+
+
+    #rdo-pf, #rdo-pj{
+        top: 0;
+        left: 0;
+        height: 21px;
+        width: 21px;
+        /* background-color: #77c9d4; */
+        border-radius: 50%;
+        vertical-align: sub;
+        margin-top: 3px;
+    }
+
+    .campos-dados
+    {
+        width: 100%;
+        height: fit-content;
+        /* background-color: rgb(255, 238, 0); */
+        margin-top: 20px;
+    }
+
+    .campos-servicos
+    {
+        width: 98%;
+        min-height: 500px;
+        height: auto;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-start;
+        /* background-color: #129bf6; */
+        flex-wrap: wrap;
+    }
+    
+
+    .container-servico-pro
+    {
+        width: 100%;
+        min-height: 200px;
+        height: auto;
+        overflow: hidden;
+        /* background-color: rgb(230, 32, 32); */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+
+    #txt-nome,
+    #txt-dataNasc,
+    #txt-cpfCnpj,
+    #txt-cpf,
+    #txt-email,
+    #txt-senha,
+    #txt-confirmar-senha,
+    #txt-cep,
+    #txt-logradouro,
+    #txt-numero,
+    #txt-bairro,
+    #txt-cidade,
+    #txt-uf,
+    #slt-categoria,
+    #slt-subcat,
+    #txt-valor-hora{
+        height: 50px;
+        font-family: "Manjari";
+        font-size: 19px;
+        box-sizing: border-box;
+        padding-top: 10px;
+        background-color: #dee0e0;
+        /* height: 50px;
+        font-family: "Manjari";
+        font-size: 19px;
+        box-sizing: border-box;
+        padding-top: 10px;
+        background-color: #6ce3e300;
+        border: none;
+        border-bottom: solid 1px #00000068; */
+
+    }
+    #txt-uf{
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .container-nome-dataNasc,
+    .container-cpfCnpj-email,
+    .container-cpf-email,
+    .container-senha,
+    .container-cep-logradouro,
+    .container-bairro-cidade-uf,
+    .container-categoria,
+    .container-subcat,
+    .container-valor-hora
+    {
+        width: 100%;
+        height: fit-content;
+        /* background-color: rgb(42, 197, 37); */
+        justify-content: space-around;
+        margin-top: 7px;
+        flex-wrap: wrap;
+    }
+
+    .form-input
+    {
+        margin-top: -25px;
+    }
+    .form-label
+    {
+        font-size: 22px;
+        /* fon */
+    }
+    .form-input-pro
+    {
+        margin-top: -25px;
+    }
+
+    .caixa-nome, .caixa-dataNasc,
+    .caixa-cpfCnpj, .caixa-cpf, .caixa-email,
+    .caixa-senha, .caixa-confirmar-senha,
+    .caixa-cep, .caixa-logradouro,
+    .caixa-bairro, .caixa-cidade,
+    .caixa-cep, .caixa-numero,
+    .caixa-uf
+    {
+        width: 98%;
+        height: 110px;
+        /* background-color: rgb(57, 160, 207); */
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-top: 7px;
+    }
+
+    .caixa-senha,
+    .caixa-confirmar-senha 
+    {
+        width: 100%;
+    }
+    .caixa-cep
+    {
+        width: 100%;
+    }
+
+    .caixa-logradouro
+    {
+        width: 100%;
+    }
+
+    .caixa-cidade
+    {
+        width: 74%;
+    }
+
+    .caixa-numero
+    {
+        width: 100%;
+    }
+
+    .caixa-uf
+    {
+        width: 22%;
+    }
+
+    .caixa-categoria,
+    .caixa-subcat,
+    .caixa-valor-hora
+    {
+        width: 100%;
+        height: 110px;
+        /* background-color: rgb(136, 106, 241); */
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 7px;
+        box-sizing: border-box;
+
+    }
+ 
+    .container-qualificacoes{
+        width: 100%;
+        height: 100%;
+        /* background-color: #b457bc; */
+    }
+ 
+    .caixa-qualificacoes
+    {        
+        width: inherit;
+        height: inherit;
+        justify-content: space-around;
+        box-sizing: border-box;
+        padding-top: 18px;
+        /* background-color: rgb(172, 223, 243); */
+    }
+    .caixa-qualificacoes label{
+        margin-bottom: 27px;
+    }
+
+    #txt-qualificacoes
+    {
+        height: 250px;
+        resize: none;
+        overflow: auto;
+        background-color: #dee0e0;
+        font-size: 18px;
+    }
+
+
+    /* CONTEUDO DA CAIXA DE TERMOS DE USO */
+    
+    .card-formulario-termos
+    {
+        width: 95%;
+        height: fit-content;
+        background-color: rgb(255, 255, 255);
+        box-shadow: #0000005b 3px 3px 5px;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        padding-top: 15px;
+        padding: 10px;
+    }
+
+    .caixa-termos
+    {
+        width: 100%;
+        height: 290px;
+        /* background-color: rgb(206, 199, 103); */
+        text-align: justify;
+    }
+
+    .text-termos
+    {
+        width: 100%;
+        height: 100%;
+        /* background-color: gray; */
+        font-family: "Manjari";
+        overflow: auto;
+        font-size: 18px;
+    }
+
+    .termo
+    {
+        margin-top: 0;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .caixa-confirmacao-termos
+    {
+        width: 100%;
+        height: 100px;
+        /* background-color: greenyellow; */
+        padding: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        box-sizing: border-box;
+        margin-top: 15px;
+        box-shadow: none;
+        font-family: "Manjari";
+        margin-bottom: 10px;
+    }
+
+    .caixa-confirmacao-termos label{
+        margin-top: -3px;
+    }
+
+    .confirmar-termos
+    {
+        width: 50px;
+        height: 50px;
+        margin-right: 5px;
+        margin-top: 13px;
+    }
+
+    /* .text-termos::-webkit-scrollbar {
+        width: 10px;
+        cursor: pointer;
+    }
+
+    .text-termos::-webkit-scrollbar-track {
+        background: #cbf3e1;
+        cursor: pointer;
+    }
+
+    .text-termos::-webkit-scrollbar-thumb {
+        background: #a2dee6;
+        cursor: pointer;
+    }
+
+    .text-termos::-webkit-scrollbar-thumb:hover {
+        background: #77c9d4;
+        cursor: pointer;    
+    } */
+    .caixa-voltar-termos,
+    .caixa-continuar-termos{
+        width: 50%;
+        height: fit-content;
+        float: left;
+        display: flex;
+        font-family: 'Manjari';
+        font-weight: bold;
+    }
+
+    .caixa-voltar-termos
+    {
+        /* background-color: aqua; */
+        /* align-items: flex-end; */
+        justify-content: flex-start;
+        /* margin-top: 10px; */
+    }
+
+    .caixa-continuar-termos
+    {
+        /* background-color: rgb(235, 91, 72);   */
+        /* align-items: flex-end; */
+        justify-content: flex-end;
+        /* margin-top: 10px; */
+    }
+
+
+
+    .btn-voltar
+    {
+        width: 120px;
+        height: 45px;
+        border:0px;
+        background: none;
+        /* border: solid 3px #ffa52e; */
+        border-radius: 5px;
+        color: #57bc90;
+        font-size: 18px;
+        outline: none;
+        padding-top: 7px;
+    }
+
+    .btn-prox
+    {
+        width: 120px;
+        height: 45px;
+        border:0px;
+        background: none;
+        /* border: solid 3px #25dd1e; */
+        border-radius: 5px;
+        color: #57bc90;
+        padding-top: 7px;
+        font-size: 18px;
+        justify-items:right;
+        outline: none;
+    }
+
+}

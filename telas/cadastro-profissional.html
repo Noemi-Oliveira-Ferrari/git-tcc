@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Cadastro Profissional</title>
+        <link rel="icon" href="">
+        <link rel="stylesheet" type="text/css" href="css/style-cadastro-profissional.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-4.3.1/css/bootstrap.css">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet"> -->
+    </head>
+    <body>
+        <div id="all">
+            <header>
+            </header>
+            <div class="container-conteudo">
+                <form name="form_profissional" method="GET" action="">
+                    <div class="container-flex">
+                        <div class="card-formulario-pessoal">
+                            <h3 class="title-card">Dados Pessoais</h3>
+                            <!-- <div class="float caixa-foto-perfil">
+                                <div class="foto-perfil">
+                                    <figure>
+                                        <img id="img-perfil" class="img-perfil" src="img/avatar.png" alt="Avatar" title="Avatar"/>
+                                    </figure>
+                                </div>
+                            </div> -->
+                            <div class="float campos-dados">
+                                <div class="flex-center container-nome-dataNasc">
+                                    <div class="caixa-nome">
+                                        <label class="form-label">Nome:</label>
+                                        <input maxlength="100" id="txt-nome"type="text" value="" name="" class="form-control form-input">
+                                    </div>
+                                    <div class="caixa-dataNasc">    
+                                        <label class="form-label">Data Nasc:.</label>
+                                        <input maxlength="10" id="txt-dataNasc"type="text" value="" name="" class="form-control form-input">
+                                    </div>
+                                </div>
+                                <div class="flex-center container-cpfCnpj-email">
+                                    <div class="caixa-cpfCnpj">
+                                        <label class="form-label">CPF/CNPJ:</label>
+                                        <input maxlength="20" id="txt-cpfCnpj"type="text" value="" name="" class="form-control form-input">
+                                    </div>
+                                    <div class="caixa-email">
+                                        <label class="form-label">E-mail:</label>
+                                        <input maxlength="150" id="txt-email"type="text" value="" name="" class="form-control form-input">
+                                    </div>
+                                    
+                                </div>
+                                <div class="flex-center container-senha">
+                                    <div class="caixa-senha">
+                                        <label class="form-label">Senha:</label>
+                                        <input maxlength="127" id="txt-senha" type="password" value="" name="" class="form-control form-input">
+                                    </div>
+                                    <div class="caixa-confirmar-senha">
+                                        <label class="form-label">Confirmar Senha:</label>
+                                        <input maxlength="127" id="txt-confirmar-senha"type="password" value="" name="" class="form-control form-input">
+                                    </div>
+                                </div>
+                                <div class="flex-center container-cep-logradouro">
+                                    <div class="caixa-cep">
+                                        <label class="form-label">CEP:</label>
+                                        <input maxlength="10" id="txt-cep"type="text" value="" name="" class="form-control form-input">
+                                    </div>
+                                    <div class="caixa-logradouro">
+                                        <label class="form-label">Logradouro:</label>
+                                        <input maxlength="120" id="txt-logradouro"type="text" value="" name="" class="form-control form-input">
+                                    </div>
+                                </div>
+                                <div class="flex-center container-bairro-cidade-uf">
+                                    <div class="caixa-bairro">
+                                        <label class="form-label">Bairro:</label>
+                                        <input maxlength="120" id="txt-bairro"type="text" value="" name="" class="form-control form-input">
+                                    </div>
+                                    <div class="caixa-cidade">
+                                        <label class="form-label">Cidade:</label>
+                                        <input maxlength="120" id="txt-cidade"type="text" value="" name="" class="form-control form-input">
+                                    </div>
+                                    <div class="caixa-uf">
+                                        <label class="form-label">UF:</label>
+                                        <input maxlength="2" id="txt-uf"type="text" value="" name="" class="form-control form-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-flex">
+                        <div class="card-formulario-servico">
+                            <h3 class="title-card">Descrição de Serviço</h3>
+                            <div class="flex-center campos-servicos">
+                                <div class="container-servico-pro">
+                                    <div class="flex-center container-categoria">
+                                        <div class="caixa-categoria">
+                                            <label class="form-label">Tipo de Serviço:</label>
+                                            <select id="txt-categoria"name="" class="form-control form-input-pro">
+                                                <option>imprescindível</option>
+                                                <option>condescendente</option>
+                                                <option>característica</option>
+                                                <option>demasiadamente</option>
+                                                <option>extraordinário</option>
+                                                <option>idiossincrasia</option>
+                                                <option>concupiscência</option>
+                                                <option>consubstanciar</option>
+                                                <option>intercorrência</option>
+                                                <option>irrepreensível</option>
+                                                <option>preponderância</option>
+                                                <option>incomensurável</option>
+                                                <option>discricionário</option>
+                                                <option>arbitrariedade</option>
+                                                <option>especificidade</option>
+                                                <option>posteriormente</option>
+                                                <option>imprescritível</option>
+                                                <option>empreendimento</option>
+                                                <option>atenciosamente</option>
+                                                <option>revolucionário</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="flex-center container-subcat">
+                                        <div class="caixa-subcat">
+                                            <label class="form-label">Serviço:</label>
+                                            <select id="txt-subcat"name="" class="form-control form-input-pro">
+                                                <option>entretenimento</option>
+                                                <option>superveniência</option>
+                                                <option>periodicamente</option>
+                                                <option>infraestrutura</option>
+                                                <option>paulatinamente</option>
+                                                <option>diligentemente</option>
+                                                <option>intransigência</option>
+                                                <option>insignificante</option>
+                                                <option>aplicabilidade</option>
+                                                <option>espontaneidade</option>
+                                                <option>intransponível</option>
+                                                <option>contextualizar</option>
+                                                <option>credenciamento</option>
+                                                <option>inconsistência</option>
+                                                <option>desprendimento</option>
+                                                <option>prestatividade</option>
+                                                <option>arrependimento</option>
+                                                <option>transcendental</option>
+                                                <option>exequibilidade</option>
+                                                <option>congratulações</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="flex-center container-valor-hora">
+                                        <div class="caixa-valor-hora">
+                                            <label class="form-label">Valor/Hora:</label>
+                                            <input id="txt-valor-hora" type="text" value="" name="" class="form-control form-input-pro txt-valor-hora">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container-servico-pro">
+                                    <div class="container-qualificacoes">
+                                        <div class="float caixa-qualificacoes">
+                                            <label class="form-label">Resumo de Qualificações:</label>
+                                            <textarea id="txt-qualificacoes" class="txt-qualificacoes form-control form-input-pro"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-flex">
+                        <div class="card-formulario-termos">
+                            <h3 class="title-card">Termos de Uso</h3>
+                            <div class="flex-center caixa-termos">
+                                <div class="text-termos">
+                                    <p class="termo">
+                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque sint obcaecati dignissimos dolorum iste consequuntur repellendus aliquid illum! Numquam odio ad consectetur. Quisquam culpa facilis laborum quo inventore! Dolore ullam provident nam nobis cumque veritatis laudantium nostrum repellat explicabo minus, sapiente magni sunt commodi debitis praesentium ut eius hic vero. Beatae at ducimus repudiandae sunt officia, pariatur odio quod reiciendis aut eos rem? Libero odio enim quam, placeat, magni, officia neque ab ipsum quas at facilis repellendus quibusdam dolore quasi! Impedit suscipit sint officia inventore molestias deleniti hic ad eaque id veniam est, optio laboriosam aperiam architecto laudantium beatae fugiat facilis libero reiciendis obcaecati odit porro voluptates. Quibusdam soluta omnis tenetur eum laborum maiores distinctio incidunt odio illum, ipsam velit maxime esse culpa dolorum nostrum nam exercitationem quia consequuntur nihil iusto sequi fugit iste ut magnam. Inventore corporis sit maxime ratione maiores. Ad eligendi veritatis excepturi nobis. Vero ipsa dolorum eius sapiente velit eveniet voluptatibus alias illum, excepturi quo rem accusantium! Ipsam reprehenderit, consectetur distinctio iste dolor exercitationem ducimus quo laudantium, nam officiis fugiat id natus deleniti et dolorem dolorum odit, tempora dolore nobis voluptatum suscipit facilis esse harum quidem? Explicabo incidunt necessitatibus laudantium illo! Voluptates officiis minima possimus explicabo ut vitae error, doloremque sequi? Maxime similique cupiditate nam neque fugiat aliquid excepturi, voluptas veritatis? Similique quis neque, velit, molestias, autem ipsa voluptate inventore molestiae nihil ad provident tempore hic. Dolores, voluptas sapiente soluta illum beatae vitae eius optio quibusdam distinctio dolor quia est alias tempore voluptatem amet itaque dolore mollitia. Repudiandae beatae, reprehenderit omnis velit aut deleniti placeat dolores! Impedit necessitatibus adipisci itaque debitis? Debitis dicta nobis vel, sunt, esse adipisci est non officiis, aliquid sit quasi itaque quod! Molestiae rerum magni facilis animi recusandae fugit expedita minus ab quisquam voluptatum laboriosam, odit consequuntur unde amet quibusdam tempora assumenda cum doloremque quia velit at in explicabo? Nesciunt voluptatem illum accusamus vero pariatur porro maiores consequuntur maxime harum, officiis doloremque, distinctio, voluptatibus non qui? Fuga necessitatibus dolorum, quasi quisquam totam aut. Fugiat, ab illo libero voluptatum eos, dicta reprehenderit similique expedita blanditiis dignissimos unde rem culpa ratione laborum ipsum sit neque alias animi quos! Beatae sapiente fugiat animi facilis commodi nemo voluptates tempore explicabo aspernatur inventore eveniet maiores consequuntur esse, neque, vel quisquam quae possimus odit asperiores dolor amet ipsa. Ipsa, asperiores voluptatibus. Velit id recusandae perspiciatis iste optio nulla vero obcaecati maxime, quasi, fugiat tempore qui consequatur incidunt earum consectetur voluptas dolorum laborum labore quas! Vel consectetur sed architecto quis dicta et reprehenderit eveniet ratione maiores ullam amet laboriosam corporis voluptas eos nisi nemo ad fugit officia numquam, beatae officiis, molestias illo id eaque! Eveniet necessitatibus excepturi asperiores perferendis a ut exercitationem iure non quibusdam adipisci nesciunt ipsa doloribus, quaerat est, minima provident distinctio suscipit eius, minus commodi optio veritatis dolorum velit. Soluta aliquam expedita nam nostrum, modi laudantium magni, quaerat 
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="caixa-confirmacao ">
+                                <input type="checkbox" value="" class="checar"> Declaro estar cientes com os <a href="#" class="">Termos de Uso e Politica de privacidade</a><br>
+                                <div class="caixa-dir">
+                                    <button class="btn-voltar" value="">Voltar</button>
+                                </div>
+                                <div class="caixa-esq">
+                                    <button class="btn-prox" value="">Continuar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            <!-- div para separa o conteudo do footer -->
+            </div>
+            <div class="espaco">
+
+            </div>
+            <footer>
+
+            </footer>
+        </div>
+    </body>
+</html>

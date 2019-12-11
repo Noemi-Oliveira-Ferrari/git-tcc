@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="br.net.daumhelp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+
+        android:networkSecurityConfig="@xml/config"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        >
+        <activity
+            android:name=".SplashScreenActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EscolhaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroDadosPessoaisActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroEnderecoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroServicoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroTermosActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+        android:name=".EditarActivity"
+        android:screenOrientation="portrait" />
+        <activity
+            android:name=".ConfirmarEmailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PerfilClienteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MenuClienteActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PerfilProfissionalBuscaActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CadastroFotoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DetalhesSolicitacaoServicoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".VisualizarDetalhesServicoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RespostaOrcamentoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ComentarioActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RespostaOrcamentoFinalActivity"
+            android:screenOrientation="portrait" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+
+        </provider>
+
+    </application>
+
+</manifest>

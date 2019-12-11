@@ -1,0 +1,266 @@
+ /* ********************* TELA DE ESCOLHA ********************** */
+
+/* DESKTOOPPPPP  */
+@media screen and (min-device-width:1000px){
+
+    .container-conteudo-escolha{
+        width: 1300px;
+        height: 850px;
+        margin: auto;
+        box-sizing: border-box;
+        padding-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    .title-caixa-escolha{
+        /* width: 1000px; */
+        width: inherit;
+        min-height: 50px;
+        /* background-color: rgb(222, 184, 135);  */
+        font-size: 35px;
+        text-align: center;
+        color: white;
+        font-family: 'Lexend Deca', sans-serif;
+        margin-bottom: 50px;
+    }
+    
+    .caixa-escolha{
+        width: inherit;
+        height: 600px;
+        /* background-color: rgb(235, 80, 8); */
+        margin-bottom: 100px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+
+    }
+    
+    /* caixa de escolhas */
+    .caixa-cliente{
+        width: 450px;
+        min-height: 400px;
+        height: auto;
+        overflow: hidden;
+        background-color: rgb(255, 255, 255);
+        float: left;
+        /* margin-right: 10%; */
+        box-shadow: 10px 10px 15px #0152497e;
+        border-radius: 10px;
+        cursor: default;
+        transition: .4s;   
+        display: flex;
+        align-items: center ;
+        justify-content: center;
+        flex-wrap: wrap;
+        cursor: pointer;
+    }
+    
+    .caixa-profissional{
+        width: 450px;
+        min-height: 400px;
+        height: auto;   
+        overflow: hidden;
+        background-color: rgb(255, 255, 255);
+        float: left;
+        border-radius: 10px;
+        box-shadow: 10px 10px 15px #0152497e; 
+        cursor: default;  
+        transition: .4s;   
+        display: flex;
+        align-items: center ;
+        justify-content: center;
+        flex-wrap: wrap;
+        cursor: pointer;
+    }
+    
+    /*conteudo das caixas de escolhas */
+    .title-escolha{
+        width: inherit;
+        height: 50px;
+        /* background-color: rgb(220, 220, 220); */
+        font-size: 40px;
+        text-align: center;
+        box-sizing: border-box;
+        /* padding-top: 20px; */
+        margin-top: 20px;
+        color: #84848D;     
+        font-family: 'Lexend Deca', sans-serif;
+
+    }
+    
+    .texto-escolha{
+        width: 350px;
+        height: 180px;
+        /* background-color: rgb(240, 230, 140); */
+        box-sizing: border-box;
+        font-size: 26px;
+        display: flex;
+        align-items: center ;
+        justify-content: center;
+        text-align: center;
+        color: #A5A5AF;
+        font-family: 'Manjari-Regular', sans-serif;
+    }
+    
+    .img-escolha{
+        width: inherit;
+        height: 200px;
+        /* background-color:#A5A5AF; */
+        box-sizing: border-box;
+        margin-bottom: 50px;
+    
+    }
+    
+    .icon-escolha{
+        max-height: 200px;
+        /* background-color:#A5A5AF; */
+        margin-left: 25%;
+    }
+    
+    .botao-escolha{
+        width: 450px;
+        height: 0;
+        background-color: #caf9ff;
+        box-sizing: border-box;
+        /* padding-left: 85%; */
+        /* padding-right: 10px;  */
+        /* margin-bottom: 0px; */
+        transition: .5s;
+        display: flex;
+        align-items: center;
+        cursor: pointer;             
+    }
+    
+    .seta img{
+        width: 35px;
+        height: 35px;
+        visibility: hidden;
+        opacity: 0;
+        transition: .5s;
+        /* background-color: rgb(138, 43, 226); */
+        margin-top: 12px;
+    }
+}
+
+@media screen and (max-device-width:880px){
+
+    .container-conteudo{
+        width: 100%;
+        min-height: 800px;
+        height: auto;
+        overflow: hidden;
+        /* margin: auto; */
+        box-sizing: border-box;
+        /* background-color: #015249; */
+        padding-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+    }
+    .title-caixa-escolha{
+        width:100%;
+        min-height: 50px;
+        /* background-color: rgb(222, 184, 135); */
+        font-size: 40px;
+        text-align: center;
+        color: white;
+    }
+
+    .caixa-escolha{
+        width: inherit;
+        height: 1200px;
+        background-color: rgba(247, 128, 31, 0.336);
+        margin-bottom: 100px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    /* caixa de escolhas */
+    .caixa-cliente{
+        width: 700px;
+        width: 75%;
+        height: 400px;
+        background-color: rgb(255, 255, 255);
+        /* float: left; */
+        /* margin-right: 10%; */
+        box-shadow: 10px 10px 15px #0152497e;
+        border-radius: 10px;
+    }
+
+    .caixa-profissional{
+        width: 700px;
+        width: 75%;
+        height: 400px;
+        background-color: rgb(255, 255, 255);
+        /* float: left; */
+        border-radius: 10px;
+        box-shadow: 10px 10px 15px #0152497e;
+    }
+
+    /*conteudo das caixas de escolhas */
+    .title-escolha{
+        width: 100%;
+        height: 50px;
+        /* background-color: rgb(220, 220, 220); */
+        font-size: 45px;
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 20px;
+        /* color: rgb(111, 111, 112);
+        */
+        color: #84848D;        
+    }
+
+    .texto-escolha{
+        width: 100%;
+        height: 200px;
+        /* background-color: rgb(240, 230, 140); */
+        box-sizing: border-box;
+        font-size: 2em;
+        padding: 55px;
+        text-align: center;
+        color: #A5A5AF;
+
+    }
+
+    .img-escolha{
+        width: 40%;
+        height: 250px;
+        /* background-color: lightblue; */
+        /* background-color:#A5A5AF; */
+        box-sizing: border-box;
+        padding: 10px;
+        /* margin-top: 100px; */
+        float: left;
+        margin-left: 70px;
+
+    }
+
+    .img{
+        width: 100%;
+        /* height: 200px; */
+        height: 100%;
+        /* background-color:rgb(37, 37, 228); */
+    }
+
+    .botao-escolha{
+        width: 80px;
+        height: 80px;
+        /* background-color: rgb(248, 0, 0); */
+        /* box-sizing: border-box;   */
+        margin-left: 250px;
+        margin-top: 50px;
+        float: left;
+        
+    }
+
+    .seta img{
+        width: 60px;
+        height: 60px;
+        /* background-color: blueviolet; */
+    }
+}

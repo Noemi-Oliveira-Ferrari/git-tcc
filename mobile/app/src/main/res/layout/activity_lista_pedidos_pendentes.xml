@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="379dp"
+        android:layout_height="190dp"
+        android:layout_marginTop="6dp"
+        app:cardCornerRadius="15dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ImageView
+            android:layout_width="36dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/duh_icon_translucido"
+            />
+
+        <TextView
+            android:id="@+id/tv_nome_cliente"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_cidade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cidade:"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="50dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_cidade_cliente"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="50dp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="58dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/user"
+            app:civ_border_color="@color/colorTest"
+            app:civ_border_width="1dp" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="230dp"
+            android:layout_height="2dp"
+            android:background="@color/colorTest"
+            android:layout_marginTop="96dp"/>
+
+        <View
+            android:id="@+id/view2"
+            android:layout_width="55dp"
+            android:layout_height="2dp"
+            android:layout_gravity="end"
+            android:background="@color/colorTest"
+            android:layout_marginTop="96dp"/>
+
+
+        <Button
+            android:id="@+id/ib_recusar"
+            android:layout_width="70dp"
+            android:layout_height="48dp"
+            android:text="Recusar"
+            android:textColor="#985e6d"
+            android:drawableTop="@drawable/ic_recusar"
+            android:layout_marginTop="120dp"
+            android:layout_marginStart="30dp"
+            android:background="#00FFFFFF" />
+
+        <Button
+            android:id="@+id/ib_analisar"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:text="Analisar"
+            android:textColor="#57bc90"
+            android:layout_marginTop="120dp"
+            android:layout_marginStart="120dp"
+            android:background="#00FFFFFF"
+            android:drawableTop="@drawable/ic_analisar"/>
+
+        <TextView
+            android:id="@+id/tv_solicitacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="140dp"
+            android:textSize="12dp"
+            android:layout_marginEnd="30dp"
+            android:text="Solicitação" />
+
+        <TextView
+            android:id="@+id/tv_solicitacao_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:textSize="12dp"
+            android:layout_marginEnd="10dp"
+            android:text="03/10/2000 13:30" />
+    </androidx.cardview.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>

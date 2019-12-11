@@ -1,0 +1,12 @@
+body
+{
+    background-color: blue;
+}
+
+.modal
+{
+    width: 500px;
+    height: 500px;
+    border-radius: 10px;
+    background-color: blue;
+}

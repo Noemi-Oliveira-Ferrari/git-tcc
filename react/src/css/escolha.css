@@ -1,0 +1,258 @@
+ /* ********************* TELA DE ESCOLHA ********************** */
+
+/* DESKTOOPPPPP  */
+@media screen and (min-device-width:1000px){
+
+    .container-conteudo-escolha{
+        width: 1200px;
+        height: 550px;
+        margin: auto;
+        box-sizing: border-box;
+        padding-top: 20px;
+        margin-bottom: 50px;
+        /* background-color: rgb(135, 205, 222);  */
+    }
+
+    .title-caixa-escolha{
+        /* width: 1000px; */
+        width: inherit;
+        min-height: 50px;
+        /* background-color: rgb(222, 184, 135);  */
+        font-size: 35px;
+        text-align: center;
+        color: white;
+        font-family: 'Lexend Deca';
+        margin-bottom: 18px;
+    }
+    
+    .caixa-escolha{
+        width: inherit;
+        height: 450px;
+        /* background-color: rgb(235, 80, 8); */
+        margin-bottom: 100px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-around;
+
+    }
+    
+    /* caixa de escolhas */
+    .caixa-profissional{
+        width: 450px;
+        min-height: 390px;
+        background-color: rgb(255, 255, 255);
+        /* float: left; */
+        border-radius: 10px;
+        box-shadow: 10px 10px 15px #0000005d; 
+        cursor: default;  
+        transition: .4s;   
+        display: flex;
+        align-items: center ;
+        justify-content: center;
+        flex-wrap: wrap;
+        cursor: pointer;
+    }
+    
+    .caixa-cliente{
+        width: 450px;
+        min-height: 390px;
+        height: auto;
+        overflow: hidden;
+        background-color: rgb(255, 255, 255);
+        float: left;
+        /* margin-right: 10%; */
+        box-shadow: 10px 10px 15px #0152497e;
+        border-radius: 10px;
+        cursor: default;
+        transition: .4s;   
+        display: flex;
+        align-items: center ;
+        justify-content: center;
+        flex-wrap: wrap;
+        cursor: pointer;
+    }
+    
+    /*conteudo das caixas de escolhas */
+    .title-escolha{
+        width: inherit;
+        height: 45px;
+        /* background-color: rgb(220, 220, 220); */
+        font-size: 40px;
+        text-align: center;
+        box-sizing: border-box;
+        /* padding-bottom: 10px; */
+        margin-top: 20px;
+        color: #84848D;     
+        font-family: 'Lexend Deca';
+
+    }
+    
+    .texto-escolha{
+        max-width: 95%;
+        height: 140px;
+        /* background-color: rgb(240, 230, 140); */
+        box-sizing: border-box;
+        font-size: 24px;
+        display: flex;
+        align-items: center ;
+        justify-content: center;
+        text-align: center;
+        color: #A5A5AF;
+        font-family: 'Manjari';
+    }
+    
+    .img-escolha{
+        width: fit-content;
+        height: 185px;
+        /* background-color:#A5A5AF; */
+        box-sizing: border-box;
+        margin-bottom: 5px;    
+    }
+    
+    .icon-escolha{
+        max-height: 170px;
+        /* background-color:#A5A5AF; */
+        /* margin-left: 25%; */
+    }
+    
+    .botao-escolha{
+        width: 450px;
+        height: 0;
+        background-color: #caf9ff;
+        box-sizing: border-box;
+        border-radius: 0 0 10px 10px;
+        transition: .5s;
+        display: flex;
+        align-items: center;
+        cursor: pointer;             
+    }
+    
+    .seta img{
+        width: 35px;
+        height: 35px;
+        visibility: hidden;
+        opacity: 0;
+        transition: .5s;
+        /* background-color: rgb(138, 43, 226); */
+        margin-top: 0px;
+    }
+}
+
+@media screen and (max-device-width:880px){
+
+    .container-conteudo{
+        width: 100%;
+        min-height: 800px;
+        height: auto;
+        overflow: hidden;
+        /* margin: auto; */
+        box-sizing: border-box;
+        background-color: #015249;
+        padding-top: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+
+    }
+    .title-caixa-escolha{
+        width: 95%;
+        max-height: 200px;
+        height: auto;
+        overflow: hidden;
+        margin-bottom: 10px;
+        margin-top: 20px;
+        /* background-color: rgb(222, 184, 135); */
+        
+        font-family: 'Lexend Deca';
+        font-size: 31px;
+        text-align: center;
+        color: white;
+    }
+
+    .caixa-escolha{
+        width: inherit;
+        min-height: 850px;
+        /* background-color: rgb(247, 128, 31); */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    /* caixa de escolhas */
+    .caixa-cliente{
+        width: 90%;
+        height: 400px;
+        background-color: rgb(255, 255, 255);
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 10px 10px 15px #0152497e;
+    }
+
+    .caixa-profissional{
+        width: 90%;
+        height: 400px;
+        background-color: rgb(255, 255, 255);
+        margin: auto;
+        border-radius: 10px;
+        box-shadow: 10px 10px 15px #0152497e;
+    }
+
+    /*conteudo das caixas de escolhas */
+    .title-escolha{
+        width: 100%;
+        height: 70px;
+        /* background-color: rgb(220, 220, 220); */
+        box-sizing: border-box;
+        padding-top: 20px;
+
+        font-family: 'Lexend Deca';
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+        color: #84848D;        
+    }
+
+    .texto-escolha{
+        width: 100%;
+        height: 140px;
+        /* background-color: rgb(240, 230, 140); */
+        box-sizing: border-box;
+        font-size: 23px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 7px;
+        text-align: center;
+        color: #A5A5A5;
+    }
+
+    .img-escolha{
+        width: 53%;
+        min-height: 50px;
+        height: auto;
+        overflow: hidden;
+        /* background-color: lightblue; */
+        /* background-color:#A5A5AF; */
+        box-sizing: border-box;
+        padding: 10px;
+        margin: auto;
+
+    }
+
+    .icon-escolha{
+        max-width: 100%;
+    }
+
+    .botao-escolha{
+        display: none;
+        
+    }
+
+    .seta img{
+        width: 60px;
+        height: 60px;
+        /* background-color: blueviolet; */
+    }
+}
