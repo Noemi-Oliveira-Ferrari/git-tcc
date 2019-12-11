@@ -225,7 +225,6 @@
     
     .close-modal figure img{
         max-width: 20px;
-        margin-top: 15px;
     }
     
     /* MODAL ERROS */
@@ -244,6 +243,7 @@
     .titulo-modal-erros{
         width: 550px;
         height: 50px;
+        /* background-color: #ff4d4d; */
         background-color: #eaeaea;
         color: #ca422a;
         /* color: #55a7b2; */
@@ -258,7 +258,8 @@
         /* background-color: rgb(61, 228, 83); */
         overflow: auto;
         box-sizing: border-box;
-        padding: 20px;
+        padding-left: 40px;
+        padding-top: 20px;
         text-align: left;
         font-family: 'Manjari';
         clear: both;
@@ -266,6 +267,10 @@
     /* MODAL ERROS FUNCTION */
     
     /* MODAL ERROS */
+    .modal-content{
+        border-radius: 10px 0 0 10px !important;
+    }
+
     .caixa-modal-erros-function {
         /* width: 600px; */
         /* height: 320px; */
@@ -306,7 +311,8 @@
         height: 270px;
         overflow: auto;
         box-sizing: border-box;
-        padding: 20px;
+        padding-top: 20px;
+        padding-left: 35px;
         /* border-radius: 0 0 10px 10px; */
     
         font-size: 22px;
@@ -659,7 +665,8 @@
         /* background-color: rgb(61, 228, 83); */
         overflow: auto;
         box-sizing: border-box;
-        padding: 20px;
+        padding-left: 40px;
+        padding-top: 20px;
         text-align: left;
         font-family: 'Manjari';
         clear: both;

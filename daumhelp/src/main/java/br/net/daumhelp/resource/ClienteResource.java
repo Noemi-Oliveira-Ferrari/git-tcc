@@ -28,9 +28,9 @@ import br.net.daumhelp.model.Confirmacao;
 import br.net.daumhelp.repository.ClienteRepository;
 import br.net.daumhelp.utils.HandleEmails;
 
-//@CrossOrigin
+@CrossOrigin
 //@CrossOrigin(origins = "http://localhost:3000")
-@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
+//@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/clientes")
 public class ClienteResource {

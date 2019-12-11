@@ -1,7 +1,18 @@
 import React, { Component, Fragment } from 'react';
-import '../css/perfil-pro.css';
-import '../css/bootstrap.css';
-import '../css/padroes.css';
+import '../css/capa-perfil-pro.css';
+import axios from 'axios';
+import { Botao } from '../components/Botao';
+import { DOMINIO, DOMINIO_IMG } from '../global';
+import { getTipoLogado, getUsuario, getToken,setUsuarioPro, verificarLogado } from '../utils/verificaSessionStrg';
+import {ModalLoadConst, ModalAlertas} from './ModaisLoad';
+import ToTop from './ToTop';
+import $ from 'jquery';
+import iconServico from '../img/servico.png';
+import iconLocal from '../img/local.png';
+import iconAvaliacao from '../img/star.png';
+import iconValor from '../img/money.png';
+
+verificarLogado();
 
 export class CapaPerfilPro extends Component{
    render(){
@@ -25,11 +36,9 @@ export class CapaPerfilPro extends Component{
                         <div class="caixa-info1">{this.props.texto4}</div>
                     </div>
                 </div>
-            </div>
-        </Fragment>
-    );
-   }
-
+            </Fragment>
+        );
+    }
 }
 
 export default CapaPerfilPro;

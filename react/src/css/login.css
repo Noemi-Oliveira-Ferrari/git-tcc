@@ -171,21 +171,23 @@
     {
         width: 140px;
         height: 45px;
-        border-radius: 10px;
+        border-radius: 30px;
         border: 0px;
         outline: none;
         font-size: 20px;
-        margin-top: 25px;
+        margin-top: 30px;
         font-family: 'Lexend Deca';
         letter-spacing: 1.5px;
-        background-color: #015249;
+        background-color: #51ce92;
         color: #ffffff;
+        transition: .3s;
     }
 
     .btn-entrar:hover
     {
         cursor: pointer;
-        background-color: #026359;
+        background-color: #40bd81;
+        transition: .3s;
     }
 
     .texto-card
@@ -338,16 +340,12 @@
         box-shadow: 4px 3px 4px #0000002c;
     }
     
-    .input-login:hover
-    {
-        background-color: #cadbd1;
-    }
 
     .btn-entrar
     {    
         width: 150px;
         height: 60px;
-        border-radius: 10px;
+        border-radius: 30px;
         letter-spacing: 1.5;
         background-color: #fdfdfd00;
         border: solid 0.096em #ffffff;

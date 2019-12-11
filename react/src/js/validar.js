@@ -34,8 +34,12 @@ export const validarConfirmacaoSenha = (senha, confirmSenha) =>{
     }
 }
 
-export const moveToError = () =>{
-    window.scrollTo(0, 200);
+export const moveToError = (altura) =>{
+    window.scrollTo(0, altura);
+}
+
+export const movePage = (altura) =>{
+    window.scrollTo(0, altura);
 }
 
 export const generateHash = (input) =>{
@@ -138,16 +142,20 @@ export const validarString = (input) =>{
 export const validarVazios = (campos) =>{
     let semErro = [];
 
-
+    
     for(let i = 0; i< campos.length; i++){
-        if(campos[i].value === ""){
-            // console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
-            console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)-/g, ""));
-            semErro.push(withError(campos[i]));
+        if($(campos[i]).attr("id") === "txt-dataNasc"){
+
         }else{
-            // console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
-            console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)-/g, ""));
-            semErro.push(withoutError(campos[i]));
+            if(campos[i].value === ""){
+                // console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+                console.log("ERRO vazio "+$(campos[i]).attr("id").replace(/(txt)-/g, ""));
+                semErro.push(withError(campos[i]));
+            }else{
+                // console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)\-/g, ""));
+                console.log("SHOW vazio "+$(campos[i]).attr("id").replace(/(txt)-/g, ""));
+                semErro.push(withoutError(campos[i]));
+            }
         }
     }
     
@@ -168,13 +176,17 @@ export const retirarSimbolos = (texto) =>{
 export const limpaValor = (valor) =>{
     valor = valor.replace(/(R\$)/g, "");
     let num;
-    let decimal = valor.substring(valor.length-3, valor.length);
-    // array = array.replace(/./g, "");
+    let decimal;
+    let valorLength = valor.length;
+    let decimalCorte = valorLength <= 4 ? 2 : 3;
+
     if(valor.includes(",")){
-        valor = valor.substring(0, valor.length-3);
+        decimal = valor.substring(valorLength-decimalCorte, valorLength);
+        decimal = decimal.replace(/,/g, ".");
+        valor = valor.substring(0, valorLength-decimalCorte);
     }
     valor = valor.replace(/\./g, "");
-    decimal = decimal.replace(/,/g, ".");
+
     num = parseFloat(valor+decimal);
     return num;
 }

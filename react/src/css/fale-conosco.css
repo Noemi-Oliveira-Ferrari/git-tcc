@@ -1,0 +1,751 @@
+/*----- Web-Desktop -----*/
+@media screen and (min-device-width:1000px)
+{
+
+    .tamanho-caixa-contato
+    {
+        width: 100%;
+        height: 1600px;
+        /* background-color: green; */
+        background-image: url(../img/fundo-fale2.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+        background-attachment: fixed;
+    }
+
+    .caixa-contato
+    {
+        width: 1180px;
+        height: 500px;
+        background-color: transparent;
+        margin: auto;
+        box-sizing: border-box;
+        padding-top: 105px;
+        /* position: absolute; */
+    }
+
+    .caixa-informacoes-empresa-contato
+    {        
+        width: inherit;
+        height: 820px;
+        background-color: rgba(231, 237, 234, 0.897);
+        position: absolute;
+        margin-top: 100px;
+        border-radius: 8px 8px 0px 0px;
+        box-sizing: border-box;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 75px;    
+        /* box-shadow: 20px 20px 30px #00000055; */
+        z-index: 2;
+    }
+
+    .titulo-contato
+    {
+        font-size: 2em;
+        color: #47525E;
+        font-family: 'Lexend Deca';
+        text-align: left;
+    }
+
+    .subtitulo-contato
+    {
+        font-size: 1.4em;
+        color: #35A675;
+        font-family: 'Lexend Deca';
+    }
+
+    .caixa-inputs-formulario-contato
+    {
+        width: 1070px;
+        height: 585px;
+        background-color: transparent;
+        position: absolute;
+        z-index: 2;
+        display: flex;
+    }
+
+    /*----- Formulário -----*/
+    .container-flex-contato
+    {
+        display: flex;
+        width: 1075px;
+        height: inherit;
+        justify-content: center;
+    }
+
+    .container-flex-contato
+    {  
+        display: flex;
+        justify-content: center;
+    }
+
+    .card-formulario-contato
+    {
+        width: 1075px;
+        min-height: 600px;
+        height: auto;
+        overflow: hidden;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+        flex-wrap: wrap;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+    }
+
+    .campos-dados-contato
+    {
+        width: 1075px;
+        height: 450px;
+        /* background-color: violet; */
+    }
+
+    .container-nome-cpf-contato,
+    .container-email-telefone-contato,
+    .container-mensagem,
+    .container-enviar-contato
+    {
+        width: inherit;
+        height: fit-content;
+        /* background-color: rgb(219, 231, 110); */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-bottom: 2px;
+    }
+
+    .form-input-contato
+    {
+        margin-top: -25px;
+    }
+
+    .caixa-nome-contato,
+    .caixa-cpf-contato,
+    .caixa-email-contato, 
+    .caixa-telefone-contato,
+    .caixa-mensagem-contato
+    {
+        height: 90px;
+        /* background-color: rgb(57, 207, 115); */
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .caixa-nome-contato
+    {
+        width: 690px;
+    }
+
+    .caixa-cpf-contato
+    {
+        width: 360px;
+    }
+
+    .caixa-email-contato
+    {
+        width: 690px;
+    }
+
+    .caixa-telefone-contato
+    {
+        width: 360px;
+    }
+
+    .caixa-mensagem-contato
+    {
+        width: 1070px;
+    }
+
+    .btn-enviar-fomr-fale-conosco
+    {
+        width: 350px;
+        height: 55px;
+        background-color: #5fce9e;
+        border: 0px;
+        border-radius: 28px;
+        font-family: 'Lexend Deca'; 
+        font-size: 1.2em;
+        color: rgba(231, 237, 234, 0.897);
+        margin-top: 200px;
+        outline: none;
+        transition: .4s;
+    }
+
+    #txt-nome-contato,
+    #txt-cpf-contato,
+    #txt-email-contato,
+    #txt-telefone-contato,
+    #txt-mensagem-contato
+    {
+        height: 50px;
+        font-family: "manjari regular";
+        font-size: 18px;
+        box-sizing: border-box;
+        padding-top: 10px;
+        border: 1px solid #35A675;
+        background-color: transparent;
+        outline: none;
+    }
+
+    #txt-mensagem-contato
+    {
+        height: 210px;
+        font-family: "manjari regular";
+        font-size: 18px;
+        box-sizing: border-box;
+        padding-top: 10px;
+        border: 1px solid #35A675;
+        background-color: transparent;
+        margin-top: 1px;
+        outline: none;
+    }
+
+    .caixa-outras-formas-contato
+    {
+        width: 100%;
+        height: 578px;
+        background-color: gainsboro;
+        margin-top: -578px;
+        position: absolute;
+        z-index: 2
+    }
+
+    .caixa-titulo-outros-contato
+    {    
+        width: 100%;
+        height: 138px;
+        background-color: #5fce9e;
+        box-sizing: border-box;
+        padding-top: 20px;
+    
+    }
+
+    .title-principal-outras-formas-contato
+    {
+        font-size: 2.2em;
+        color: #47525E;
+        font-family: 'Lexend Deca';
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 30px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .caixa-outros-contato
+    {
+        width: 1300px;
+        height: 400px;
+        margin: auto;
+        /* background-color: rgb(243, 236, 174); */
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .caixas-itens-outras-formas-contato
+    {
+        width: 350px;
+        height: 250px;
+        /* background-color: lightcoral; */
+        margin: 5px;
+    }
+
+    .image-outras-contato1
+    {    
+        width: 180px;
+        height: 150px;
+        /* background-color: rgb(158, 158, 158); */
+        background-image: url(../img/icon/email.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        margin: auto;
+        border-radius: 8px;
+    }
+
+    .image-outras-contato2
+    {    
+        width: 150px;
+        height: 150px;
+        /* background-color: rgb(158, 158, 158); */
+        background-image: url(../img/icon/faq.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        margin: auto;
+        border-radius: 8px;
+    }
+
+    .caixa-conteudo-itens-outras-contato
+    {    
+        width: inherit;
+        height: 220px;
+        /* background-color: #c9c9c9; */
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    .title-outras-formas-contato
+    {
+        text-align: center;
+        font-family: 'Lexend Deca';
+        padding-top: 10px;
+        color: #4290aa
+    }
+
+    .text-outras-formas-contato
+    {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-family: 'Manjari';
+        font-size: 1.32rem;
+    }
+    
+    /* Efeito fundo */
+    .wrapper 
+    {
+        /* background: #50a3a2;  */
+    /* background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%); */
+    /* background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%); */
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: inherit;
+    margin-top: -289px;
+    overflow: hidden;
+    }
+    
+    .bg-bubbles 
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .bg-bubbles li 
+    {
+        position: absolute;
+        list-style: none;
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(255, 255, 255, 0.226);
+        bottom: -160px;
+        -webkit-animation: square 25s infinite;
+        animation: square 25s infinite;
+        -webkit-transition-timing-function: linear;
+        transition-timing-function: linear;
+    }
+
+    .bg-bubbles li:nth-child(1) 
+    {
+        left: 10%;
+    }
+
+    .bg-bubbles li:nth-child(2) 
+    {
+        left: 20%;
+        width: 80px;
+        height: 80px;
+        -webkit-animation-delay: 2s;
+                animation-delay: 2s;
+        -webkit-animation-duration: 17s;
+                animation-duration: 17s;
+    }
+
+    .bg-bubbles li:nth-child(3) 
+    {
+        left: 25%;
+        -webkit-animation-delay: 4s;
+                animation-delay: 4s;
+    }
+
+    .bg-bubbles li:nth-child(4) 
+    {
+        left: 40%;
+        width: 60px;
+        height: 60px;
+        -webkit-animation-duration: 22s;
+                animation-duration: 22s;
+        background-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .bg-bubbles li:nth-child(5) 
+    {
+        left: 70%;
+    }
+
+    .bg-bubbles li:nth-child(6) 
+    {
+        left: 80%;
+        width: 120px;
+        height: 120px;
+        -webkit-animation-delay: 3s;
+                animation-delay: 3s;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .bg-bubbles li:nth-child(7) 
+    {
+        left: 32%;
+        width: 160px;
+        height: 160px;
+        -webkit-animation-delay: 7s;
+                animation-delay: 7s;
+    }
+
+    .bg-bubbles li:nth-child(8) 
+    {
+        left: 55%;
+        width: 20px;
+        height: 20px;
+        -webkit-animation-delay: 15s;
+                animation-delay: 15s;
+        -webkit-animation-duration: 40s;
+                animation-duration: 40s;
+    }
+
+    .bg-bubbles li:nth-child(9) 
+    {
+        left: 25%;
+        width: 10px;
+        height: 10px;
+        -webkit-animation-delay: 2s;
+                animation-delay: 2s;
+        -webkit-animation-duration: 40s;
+                animation-duration: 40s;
+        background-color: rgba(255, 255, 255, 0.425);
+    }
+
+    .bg-bubbles li:nth-child(10) 
+    {
+        left: 90%;
+        width: 160px;
+        height: 160px;
+        -webkit-animation-delay: 11s;
+                animation-delay: 11s;
+    }
+
+    @-webkit-keyframes square 
+    {
+        0% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        }
+        100% {
+        -webkit-transform: translateY(-700px) rotate(600deg);
+                transform: translateY(-700px) rotate(600deg);
+        }
+    }
+
+    @keyframes square 
+    {
+        0% {
+        -webkit-transform: translateY(0);
+                transform: translateY(0);
+        }
+        100% {
+        -webkit-transform: translateY(-700px) rotate(600deg);
+                transform: translateY(-700px) rotate(600deg);
+        }
+    }
+
+}
+
+/*----- Web-Responsivo -----*/
+@media screen and (max-device-width:880px)
+{
+    
+    .tamanho-caixa-contato
+    {
+        width: 100%;
+        height: 580px;
+        /* background-color: green; */
+        background-image: url(../img/fundo-fale2.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        /* background-attachment: fixed; */
+    }
+
+    .caixa-contato
+    {
+        width: 100%;
+        height: 500px;
+        background-color: transparent;
+        margin: auto;
+        box-sizing: border-box;
+        padding-top: 105px;
+        /* position: absolute; */
+    }
+
+    .caixa-informacoes-empresa-contato
+    {        
+        width: inherit;
+        height: 1885px;
+        background-color: rgba(231, 237, 234, 0.897);
+        position: absolute;
+        margin-top: 100px;
+        border-radius: 8px 8px 0px 0px;
+        box-sizing: border-box;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-top: 75px;    
+        /* box-shadow: 20px 20px 30px #00000055; */
+        z-index: 2;
+        box-sizing: border-box;
+        padding-left: 70px;
+        padding-right: 70px;
+        border-radius: 40px 40px 0px 0px;
+    }
+
+    .titulo-contato
+    {
+        font-size: 3em;
+        color: #47525E;
+        font-family: 'Lexend Deca';
+        text-align: center;    
+    }
+
+    .subtitulo-contato
+    {
+        font-size: 3em;
+        color: #35A675;
+        font-family: 'Lexend Deca';
+        text-align: center;    
+    }
+
+    .caixa-inputs-formulario-contato
+    {
+        width: 100%;
+        height: 1260px;
+        background-color: transparent;
+        position: absolute;
+        z-index: 2;
+        display: flex;
+    }
+
+    /*----- Formulário -----*/
+    .container-flex-contato
+    {  
+        display: flex;
+        justify-content: center;
+        /* background-color: rgb(95, 248, 56); */
+        padding-top: 20px;
+        height: fit-content;
+        /* padding-bottom: 50px */
+    }
+
+    .card-formulario-contato
+    {
+        width: 100%;
+        min-height: 500px;
+        height: fit-content;
+        overflow: hidden;
+        /* background-color: rgb(255, 255, 255); */
+        /* box-shadow: #0000005b 3px 3px 5px; */
+        padding-bottom: 20px;
+    }
+
+    .campos-dados-contato
+    {
+        width: 100%;
+        height: fit-content;
+        /* background-color: rgb(255, 238, 0); */
+    }
+
+    .container-nome-cpf-contato,
+    .container-email-telefone-contato,
+    .container-mensagem-contato
+    {
+        width: 100%;
+        height: fit-content;
+        /* background-color: rgb(221, 255, 71); */
+        justify-content: space-around;
+        margin-top: 10px;
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container-enviar-contato
+    {
+        width: 100%;
+        height: fit-content;
+        /* background-color: rgb(221, 255, 71); */
+        justify-content: space-around;
+        margin-top: -120px;
+        flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+    }
+
+    .caixa-nome-contato,
+    .caixa-cpf-contato,
+    .caixa-email-contato,
+    .caixa-telefone-contato,
+    .caixa-mensagem-contato
+    {
+        width: 100%;
+    }
+
+
+    #txt-nome-contato,
+    #txt-cpf-contato,
+    #txt-email-contato,
+    #txt-telefone-contato
+    {
+        height: 110px;
+        font-family: "manjari regular";
+        font-size: 18px;
+        box-sizing: border-box;
+        padding-top: 10px;
+        border: 2.5px solid #35A675;
+        background-color: transparent;
+        margin-top: -8px;
+        margin-bottom: 15px;
+        outline: none;
+    }
+
+    #txt-mensagem-contato
+    {
+        height: 380px;
+        font-family: "manjari regular";
+        font-size: 18px;
+        box-sizing: border-box;
+        padding-top: 10px;
+        border: 2.5px solid #35A675;
+        background-color: transparent;
+        margin-top: -8px;
+        margin-bottom: 15px;
+        outline: none;
+    }
+
+    .form-input-contato
+    {
+        margin-top: -25px;
+    }
+
+    .btn-enviar-fomr-fale-conosco
+    {
+        width: 100%;
+        height: 110px;
+        background-color: #5fce9e;
+        border: 0px;
+        border-radius: 55px;
+        font-family: 'Lexend Deca';
+        font-size: 3.2em;
+        color: rgba(231, 237, 234, 0.897);
+        margin-top: 200px;
+        outline: none;
+    }
+
+    .caixa-outras-formas-contato
+    {
+        width: 100%;
+        height: 2480px;
+        background-color: #dcdcdc;
+        margin-top: 0px;
+        /* position: absolute; */
+        /* z-index: 2; */
+    }
+
+    .bg-bubbles li
+    {
+        visibility: hidden;
+    }
+
+    .caixa-titulo-outros-contato
+    {    
+        width: 100%;
+        height: 180px;
+        background-color: #5fce9e;
+        box-sizing: border-box;
+        padding-top: 30px;
+        margin-top: -255px;
+    }
+
+    .title-principal-outras-formas-contato
+    {
+        font-size: em;
+        color: #47525E;
+        font-family: 'Lexend Deca';
+        text-align: center;
+        box-sizing: border-box;
+        padding-top: 30px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .caixa-outros-contato
+    {
+        width: 100%;
+        height: 1400px;
+        margin: auto;
+        /* background-color: rgb(243, 236, 174); */
+        /* display: flex; */
+        justify-content: center;
+        margin-top: 100px;
+        position: relative;
+        z-index: 3;
+    }
+
+    .caixas-itens-outras-formas-contato
+    {
+        width: 800px;
+        height: 720px;
+        /* background-color: lightcoral; */
+        margin: auto;
+    }
+
+    .image-outras-contato
+    {    
+        width: 350px;
+        height: 265px;
+        background-color: rgb(158, 158, 158);
+        margin: auto;
+        border-radius: 8px;
+    }
+
+    .caixa-conteudo-itens-outras-contato
+    {    
+        width: inherit;
+        height: 220px;
+        /* background-color: #c9c9c9; */
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+    .title-outras-formas-contato
+    {
+        text-align: center;
+        font-family: 'Lexend Deca';
+        font-family: 'Lexend Deca';
+        padding-top: 10px;
+        font-size: 3em;
+    
+    }
+
+    .text-outras-formas-contato
+    {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-family: 'Lexend Deca';
+        font-size: 3em;
+    }
+
+}

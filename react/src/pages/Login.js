@@ -5,6 +5,7 @@ import { Botao } from '../components/Botao';
 import {Inputs} from '../components/FormElements';
 import IconLogin from '../img/log-in.png';
 import {DOMINIO} from '../global';
+import { getToken, getUsuario, getTipoLogado } from '../utils/verificaSessionStrg';
 import $ from 'jquery';
 import axios from 'axios';
 import {ModalLoadConst, ModalAlertas} from '../components/Modais';
@@ -70,7 +71,7 @@ export class Login extends Component{
 		axios({
 			method: "POST",
 			// url: `${DOMINIO}clientes/id/1`,
-			url: `${DOMINIO}profissionais/login`,
+			url: `${DOMINIO}login/profissional`,
 			data: {
 				email: this.state.email,
 				senha: generateHash(this.state.senha)
@@ -78,29 +79,39 @@ export class Login extends Component{
 			timeout: 30000
 		})
 		.then((response)=>{
-			let jsonPro = response.data;
-			console.log("procura pro");
-			console.log(jsonPro);
+			let tokenJson = response.data;
+			let tokenDecoded = jwtDecoder(tokenJson.token);
+			let jsonPro = tokenDecoded.profissional;
+			let token = tokenJson.token;
+			console.log(token);
+			
 			if(jsonPro === null || jsonPro === ''){
 				console.log("pro nao encontrado");
-				this.buscarCliente();
+				// this.buscarCliente();
 			}else{
 				console.log("pro logado");
-				this.logarUsuario(jsonPro, "profissional");
+				this.logarUsuario(jsonPro, "profissional", token);
 			}
 			setTimeout(()=>{this.modalLoad()}, 500);
 		})
-		.catch((error)=>{
+		.catch(error=>{
 			console.log("sem conexao pro");
-			this.noConnection();
+			console.log(error);
+			if(error.message === "Network Error"){
+				this.noConnection();
+			}else{
+				console.log("pro nao encontrado");
+				this.buscarCliente();
+			}
 			this.modalLoad();
 		})
 		.onload = this.modalLoad();
 	}
-	buscarCliente(){
+	buscarCliente(){		
+		let erros = [];
 		axios({
 			method: "POST",
-			url: `${DOMINIO}clientes/login`,
+			url: `${DOMINIO}login/cliente`,
 			data: {
 				email: this.state.email,
 				senha: generateHash(this.state.senha)
@@ -108,9 +119,15 @@ export class Login extends Component{
 			timeout: 30000
 		})
 		.then((response)=>{
-			let jsonCliente = response.data;
-			console.log("procura cliente");
+			let tokenJson = response.data;
+			let tokenDecoded = jwtDecoder(tokenJson.token);
+			let jsonCliente = tokenDecoded.cliente;
+			let token = tokenJson.token;
 			console.log(jsonCliente);
+
+			console.log(jsonCliente);
+			console.log(token);
+
 			if(jsonCliente === null || jsonCliente === ''){
 				let erros = [`Nenhum usuário com essas credenciais foi encontrado.`];
 				this.setState({erros: erros});
@@ -118,23 +135,41 @@ export class Login extends Component{
 				this.setState({titleAlt: "ERRO!"});
 				setTimeout(()=>{this.ModalAlertas();}, 200);
 			}else{
-				this.logarUsuario(jsonCliente, "cliente");
+				this.logarUsuario(jsonCliente, "cliente", token);
 				console.log("cliente logado");
 			}
 			setTimeout(()=>{this.modalLoad()}, 500);
 		})
 		.catch((error)=>{
 			console.log("sem conexao cliente");
-			this.noConnection();
+			if(error.message === "Network Error"){
+				this.noConnection();
+			}else{
+				console.log("cliente nao encontrado");
+				erros = [`Nenhum usuário com essas credenciais foi encontrado.`];
+				this.setState({erros: erros});
+				this.setState({tipoAlerta: "alertaAlt"});
+				this.setState({titleAlt: "ERRO!"});
+				setTimeout(()=>{this.ModalAlertas();}, 200);
+			}
 			this.modalLoad();
 		})
 		.onload = this.modalLoad();
 	}
 
-	logarUsuario(jsonUser, user){
-		sessionStorage.setItem(user, JSON.stringify(jsonUser));
-		sessionStorage.setItem("app", user);
-		browserHistory.push(`/app/${user}/perfil`);
+	logarUsuario(jsonUser, user, token){
+		localStorage.clear();
+		localStorage.setItem(user, JSON.stringify(jsonUser));
+		localStorage.setItem("app", user);
+		localStorage.setItem("token", token);
+		if(user === "profissional"){
+			localStorage.setItem("categoria", jsonUser.subcategoria.categoria.idCategoria);
+			localStorage.setItem("subcategoria", jsonUser.subcategoria.idSubcategoria);
+			browserHistory.push(`/app/${user}/servicos`);
+		}else{
+			browserHistory.push(`/app/${user}/perfil`);
+		}
+
 	}
 
 
@@ -195,7 +230,8 @@ export class Login extends Component{
 								<div className="card-login">
 									<div className="conteudo-card">
 										<div className="titulo-card-login center flex-center">
-											<h2>Bem-Vindo à DaUmHelp!</h2>
+											<h2>Bem-Vindo à <DaUmHelp/> </h2>
+											{/* <h2>Bem-Vindo à <span cl1ass="titulo-daumhelp">DaUmHelp!</span></h2> */}
 										</div>
 										<div className="icon-login center">
 											<figure>
@@ -217,7 +253,7 @@ export class Login extends Component{
 													classInput="input-login"
 													type="email"
 													name="txt_email"
-													id="txt-email"
+													id="txt-email-login"
 													onChange={this.setEmail}
 													// onBlur={this.getEmail}
 													disabled="false"/>
@@ -228,7 +264,7 @@ export class Login extends Component{
 													classInput="input-login"
 													type="password"
 													name="txt_senha"
-													id="txt-senha"
+													id="txt-senha-login"
 													onChange={this.setSenha}
 													disabled="true"/>
 

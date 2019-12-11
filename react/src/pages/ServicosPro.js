@@ -60,12 +60,11 @@ export class ServicosPro extends Component{
                        </div>
                     </div>
                 </div>
-            </div>
-        </Fragment>
+            </Fragment>
 
 
-    );
-   }
+        );
+    }
 
 }
 

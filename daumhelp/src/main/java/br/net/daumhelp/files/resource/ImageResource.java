@@ -44,7 +44,7 @@ public class ImageResource {
 
 	//FAZ UPLOAD DE IMAGENS DE CLIENTES
 	@PostMapping("/cliente")
-	public void uploadImgCliente(@RequestParam MultipartFile img, @RequestParam Long idCliente) {
+	public ClienteDTO uploadImgCliente(@RequestParam MultipartFile img, @RequestParam Long idCliente) {
 
 		//BUSCA CLIENTE PARA DA FOTO **1
 		ClienteDTO cliente = clienteDTOrepository.findById(idCliente).get();
@@ -60,12 +60,15 @@ public class ImageResource {
 		
 		//COLOCA O CAMINHO DA IMGAME NO CLIENTE E O AUTALIZA NO BANCO **5
 		cliente.setFoto(imgClienteCaminho);
-		clienteDTOrepository.save(cliente);	
+		ClienteDTO clienteSalvo = clienteDTOrepository.save(cliente);
+		return clienteSalvo;
 	}
 	
 	//FAZ UPLOADS DE IUMAGENS DE PROFISSIONAIS
 	@PostMapping("/profissional")
-	public void uploadImgPro(@RequestParam MultipartFile img, @RequestParam Long idPro) {
+	public ProfissionalDTO uploadImgPro(@RequestParam MultipartFile img, @RequestParam Long idPro) {
+		
+		System.out.println(img.getOriginalFilename());
 		
 		//**1
 		ProfissionalDTO pro = proDTOrepository.findById(idPro).get();
@@ -82,12 +85,13 @@ public class ImageResource {
 		
 		//**5
 		pro.setFoto(imgProCaminho);
-		proDTOrepository.save(pro);	
+		ProfissionalDTO proSalvo = proDTOrepository.save(pro);	
+		return proSalvo;
 	} 
 	
 	//FAZ UPLOAD DE ATÉ 3 IMAGENS DE UMA VEZ DE PEDIDOS
 	@PostMapping("/pedido")
-	public void uploadImgsPedido(
+	public Pedido uploadImgsPedido(
 			@Nullable @RequestParam MultipartFile img1,
 			@Nullable @RequestParam MultipartFile img2,
 			@Nullable @RequestParam MultipartFile img3,
@@ -129,7 +133,8 @@ public class ImageResource {
 		}
 //		
 //		//ATUALIZA O PEDIDO NO BANCO
-		pedidoRepository.save(pedido);
+		Pedido pedidoSalvo = pedidoRepository.save(pedido);
+		return pedidoSalvo;
 		
 	}
 	

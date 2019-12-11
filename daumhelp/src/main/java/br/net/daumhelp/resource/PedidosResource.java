@@ -2,6 +2,7 @@ package br.net.daumhelp.resource;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,8 +29,9 @@ import br.net.daumhelp.model.StatusPedido;
 import br.net.daumhelp.repository.PedidoRepository;
 import br.net.daumhelp.repository.StatusPedidosRepository;
 
-
 @CrossOrigin
+//@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/pedidos")
 public class PedidosResource {
@@ -52,24 +54,53 @@ public class PedidosResource {
 		return pedidoRepository.findAll();
 	}
 	
+	//POR ID
+	@GetMapping("/id/{idPedido}")
+	public Optional<Pedido> getPedidoById(@PathVariable Long idPedido){
+		return pedidoRepository.findById(idPedido);
+	}
+	
+	//POR CLIENTE
 	@GetMapping("/cliente/{idCliente}")
 	public List<Pedido> getPedidoByCliente(@PathVariable Long idCliente){
 		return pedidoRepository.buscarPorCliente(idCliente);
 	}
 	
+	//POR CLIENTE E STATUS
 	@GetMapping("/cliente/{idCliente}/status/{idStatusPedido}")
 	public List<Pedido> getPedidoByCliente(@PathVariable Long idCliente, @PathVariable Long idStatusPedido){
 		return pedidoRepository.buscarPorClienteStatus(idCliente, idStatusPedido);
 	}
 	
+	//TODOS DE UM CLIENTE NÃO ENCERRADOS
+	@GetMapping("/cliente/{idCliente}/status/{idStatusOrcado}/{idStatusRejeitado}")
+	public List<Pedido> getPedidosParaCliente(
+			@PathVariable Long idCliente, 
+			@PathVariable Long idStatusOrcado,
+			@PathVariable Long idStatusRejeitado){
+		return pedidoRepository.buscarParaCliente(idCliente, idStatusOrcado, idStatusRejeitado);
+	}
+	
+	//POR PRO
 	@GetMapping("/profissional/{idProfissional}")
 	public List<Pedido> getPedidoByPro(@PathVariable Long idProfissional){
 		return pedidoRepository.buscarPorPro(idProfissional);
 	}
 	
+	//POR PRO E STATUS
 	@GetMapping("/profissional/{idProfissional}/status/{idStatusPedido}")
 	public List<Pedido> getPedidoByPro(@PathVariable Long idProfissional, @PathVariable Long idStatusPedido){
-		return pedidoRepository.buscarPorClienteStatus(idProfissional, idStatusPedido);
+		return pedidoRepository.buscarPorProfissionalStatus(idProfissional, idStatusPedido);
+	}
+	
+	//TODOS DE UM PRO NÃO ENCERRADOS
+	@GetMapping("/profissional/{idProfissional}/status/{idStatusSolicitado}/{idStatusAceito}/{idStatusRejeitado}")
+	public List<Pedido> getPedidosParaProfissional(
+			@PathVariable Long idProfissional, 
+			@PathVariable Long idStatusSolicitado,
+			@PathVariable Long idStatusAceito,
+			@PathVariable Long idStatusRejeitado){
+		return pedidoRepository.buscarParaProfissional(idProfissional, idStatusSolicitado, idStatusAceito, idStatusRejeitado);
 	}
 
 	@PostMapping("/solicitar")
@@ -135,9 +166,25 @@ public class PedidosResource {
 		
 		return ResponseEntity.ok(pedido);
 	}
-	
-	@PutMapping("/rejeitar/{idPedido}")
-	public ResponseEntity<Pedido> rejeitarPedido(@PathVariable Long idPedido){
+
+	@PutMapping("/cliente/rejeitar/{idPedido}")
+	public ResponseEntity<Pedido> clienteRejeitarPedido(@PathVariable Long idPedido){
+		
+		Pedido pedido = pedidoRepository.findById(idPedido).get();
+
+		//DEFINE O NOVO STATUS DO PEDIDO ATUAL
+		StatusPedido statusPedido = statusRepository.findById((long)CodeStatusPedido.CANCELADO_CLIENTE.getValue()).get();
+		pedido.setStatus(statusPedido);
+		
+		Pedido pedidoSalvo = pedidoRepository.findById(idPedido).get();
+		
+		BeanUtils.copyProperties(pedido, pedidoSalvo, "idPedido", "criadoEm", "atualizadoEm", "cliente", "profissional");
+		pedidoRepository.save(pedidoSalvo);
+		
+		return ResponseEntity.ok(pedido);
+	}
+	@PutMapping("/profissional/rejeitar/{idPedido}")
+	public ResponseEntity<Pedido> proRejeitarPedido(@PathVariable Long idPedido){
 		
 		Pedido pedido = pedidoRepository.findById(idPedido).get();
 

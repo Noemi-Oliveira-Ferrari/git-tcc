@@ -62,7 +62,7 @@ class CardsEscolha extends Component {
 		return(
 			<div className="container-conteudo-escolha">
 				<div className="title-caixa-escolha center">
-					<h1>O que você gostaria de fazer?</h1>
+					<h1>Você gostaria de ser um...</h1>
 				</div>
 				<div className="caixa-escolha">
 
@@ -74,7 +74,6 @@ class CardsEscolha extends Component {
 						img={worker}
 						seta="seta-worker"
 						idBtn="btn-escolha-worker"/>
-
 					<Escolha 
 						classCaixa="caixa-cliente"
 						toCadastro="/cliente/cadastro"

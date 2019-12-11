@@ -26,7 +26,6 @@ export class CardServico extends Component{
         </div>
     );
    }
-
 }
 
 export default CardServico;

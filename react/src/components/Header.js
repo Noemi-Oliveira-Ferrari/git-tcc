@@ -17,6 +17,17 @@ import {Link} from 'react-router';
 import HeaderLogin from './HeaderLogin';
 import HeaderUsuario from './HeaderUsuario';
 
+export class HeaderLogin extends Component{
+    render(){
+        return(
+            <div className="entrar-cadastro">
+                <Link to="/login" className="link"><div className="box-entrar flex-center">Entre</div></Link>
+                <Link to="/escolha" className="link"><div className="box-cadastrar flex-center">Cadastra-se</div></Link>
+            </div>
+        );  
+    }   
+}
+export class HeaderUsuario extends Component{
 
 export default class Header extends Component{
 

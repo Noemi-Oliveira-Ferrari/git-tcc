@@ -29,8 +29,8 @@ import br.net.daumhelp.model.Profissional;
 import br.net.daumhelp.repository.ProfissionalRepository;
 import br.net.daumhelp.utils.HandleEmails;
 
-//@CrossOrigin
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
+//@CrossOrigin(origins = "http://localhost:3000")
 //@CrossOrigin(origins = "http://ec2-3-220-68-195.compute-1.amazonaws.com")
 @RestController
 @RequestMapping("/profissionais")

@@ -22,7 +22,7 @@
         text-align: center;
         color: white;
         font-family: 'Lexend Deca';
-        margin-bottom: 10px;
+        margin-bottom: 18px;
     }
     
     .caixa-escolha{
@@ -134,7 +134,7 @@
         opacity: 0;
         transition: .5s;
         /* background-color: rgb(138, 43, 226); */
-        margin-top: 12px;
+        margin-top: 0px;
     }
 }
 

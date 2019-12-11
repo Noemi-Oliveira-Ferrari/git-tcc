@@ -8,7 +8,7 @@
 		width: 1300px;
 		min-height: 880px;
 		/* overflow: auto; */
-		/* background-color: #57bc90; */
+		/* background-color: #da2020; */
 		margin: auto;
 		margin-top: 20px;
 	}
@@ -54,10 +54,11 @@
 	{
 		width: 520px;
 		height: 300px;
+		/* max-height: 320px; */
 		/* background-color:rgb(32, 32, 219); */
         background-color: #57bc902f;
 		border-radius: 10px;
-		padding-top: 40px;
+		padding-top: 25px;
 		box-sizing: border-box;
 		margin: auto;
 		margin-bottom: 40px;
@@ -74,16 +75,15 @@
 		font-size: 1.6em;
 		/* background-color: lightcyan; */
 		margin: 0;
-		
 	}
 	.cliente-servico{
 		width: inherit;
 		height: 25px;
-		/* background-color: ivory; */
+		/* background-color: rgb(28, 30, 155); */
 		font-size: 17px;
-		text-align: right;
+		text-align: center;
 		box-sizing: border-box;
-		padding-right: 20px;
+		/* padding-right: 20px; */
 		color: #84848D;
 	}
 	
@@ -97,6 +97,7 @@
 	
 	.text-servico
 	{
+		width: 85%;
 		height: 100px;
 		/* background-color: lawngreen; */
 		text-align: center;
@@ -107,7 +108,10 @@
 		font-size: 1.1em;
 		display: flex;
 		justify-content: center;
-		margin: 0;
+		margin: auto;
+		overflow-x: auto;
+		overflow-y: none;
+		word-wrap: break-word;
 	}
 	
 	
@@ -119,14 +123,20 @@
 		display: flex;
 		box-sizing: border-box;
 		margin-left: 400px;
-		margin-top: -10px;
+		/* margin-top: -10px; */
+		cursor: pointer;
+		transition: all .4s;
+	}
+	.caixa-link:hover{
+		transform: scale(1.06);
+		transition: all .4s;
 	}
 	
 	.caixa-link img
 	{
-		width:40px;
+		width: 40px;
 		height: 40px;
-		/* background-color:rgb(255, 255, 255); */
+		background-color:rgb(255, 255, 255);
         background-color: #57bc900e;
 		border: 0px;
 		text-align: center;

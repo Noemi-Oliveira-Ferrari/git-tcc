@@ -89,6 +89,11 @@
         /* font-size: 11px !important; */
         /* background-color: rgb(233, 134, 20); */
     }
+    .caixa-rdo-pf label,.caixa-rdo-pj label,
+    .caixa-rdo-pf input[type="radio"], .caixa-rdo-pj input[type="radio"]
+    {
+        cursor: pointer;
+    }
     .caixa-rdo-pf{
         width: 200px;
         height: 50%;
@@ -178,13 +183,6 @@
         padding-top: 10px;
         background-color: #cce5e9;
         /* text-transform: capitalize; */
-    }
-
-    #txt-nome,
-    #txt-logradouro,
-    #txt-bairro,
-    #txt-cidade{
-        text-transform: capitalize;
     }
     
     #txt-uf{
@@ -413,8 +411,12 @@
         font-family: "Manjari";
     }
 
+    .caixa-confirmacao-termos input[type='checkbox']{
+        cursor: pointer;
+    }
     .caixa-confirmacao-termos label{
         margin-top: -3px;
+        cursor: pointer;
     }
     .caixa-button
     {
@@ -423,43 +425,39 @@
         flex-direction: column;
     }
 
-    .btn-voltar
-    {
+    .btn-prox,
+    .btn-voltar{
         width: 120px;
         height: 45px;
         border:0px;
-        background-color: #57bc90;
-        border-radius: 8px;
-        color: #ffffff;
-        font-size: 18px;
-        outline: none;
-    }
-
-    .btn-voltar:hover
-    {
-        transition: 0.5s;
-        background-color: #5fce9e;
-        cursor: pointer;
-    }
-
-    .btn-prox
-    {
-        width: 120px;
-        height: 45px;
-        border:0px;
-        background-color: #57bc90;
-        border-radius: 8px;
-        color: #ffffff;
         font-size: 18px;
         justify-items:right;
         outline: none;
+        cursor: pointer;
+        transition: 0.4s;
+        border-radius: 30px;
+        border: solid 2px #57bc90;
     }
-
+    .btn-voltar{
+        background-color: #fefefe;
+        color: #57afbb;
+    }
+    
+    .btn-voltar:hover
+    {
+        transition: 0.4s;
+        background-color: #eaeaea;
+    }
+    
+    .btn-prox
+    {
+        background-color: #51ce92;
+        color: #ffffff;
+    }
     .btn-prox:hover
     {
-        transition: 0.5s;
-        background-color: #5fce9e;
-        cursor: pointer;
+        transition: 0.4s;
+        background-color: #46ab80;
     }
 
     .confirmar-termos
@@ -736,10 +734,18 @@
     #txt-valor-hora{
         height: 50px;
         font-family: "Manjari";
-        font-size: 23px;
+        font-size: 19px;
         box-sizing: border-box;
         padding-top: 10px;
         background-color: #dee0e0;
+        /* height: 50px;
+        font-family: "Manjari";
+        font-size: 19px;
+        box-sizing: border-box;
+        padding-top: 10px;
+        background-color: #6ce3e300;
+        border: none;
+        border-bottom: solid 1px #00000068; */
 
     }
     #txt-uf{
@@ -867,7 +873,7 @@
         resize: none;
         overflow: auto;
         background-color: #dee0e0;
-        font-size: 23px;
+        font-size: 18px;
     }
 
 

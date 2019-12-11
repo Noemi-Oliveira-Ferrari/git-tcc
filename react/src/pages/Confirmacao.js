@@ -22,9 +22,9 @@ function Confirmacao() {
     const [codeConfirm] = useState(random(1000, 9999));
     let [txtCodeConfirm, setTxtCodeConfirm] = useState("");
     const [renderizar, setRenderizar] = useState(true);
-    const [profissional] = useState(JSON.parse(sessionStorage.getItem("profissional")));
-    const [cliente] = useState(JSON.parse(sessionStorage.getItem("cliente")));
-    const [endereco] = useState(JSON.parse(sessionStorage.getItem("endereco")));
+    const [profissional] = useState(JSON.parse(localStorage.getItem("profissional")));
+    const [cliente] = useState(JSON.parse(localStorage.getItem("cliente")));
+    const [endereco] = useState(JSON.parse(localStorage.getItem("endereco")));
     const [tipoAlerta, setTipoAlerta] = useState("erroAlt");
     const [tituloAlerta, setTituloAlerta] = useState("erroAlt");
 
@@ -45,7 +45,7 @@ function Confirmacao() {
                     idCidade: endereco.cidade.idCidade
                 },
                 logradouro: endereco.logradouro,
-                numero: null
+                numero: endereco.numero
             }
         })
         .then((response)=>{
@@ -90,7 +90,7 @@ function Confirmacao() {
                 }
             })
             .then((response)=>{
-                sessionStorage.clear();
+                localStorage.clear();
                 setInitLoad(false);
                 setModalSucessoShow(true);
             })
@@ -123,7 +123,7 @@ function Confirmacao() {
                 }
             })
             .then((response)=>{
-                sessionStorage.clear();
+                localStorage.clear();
                 setInitLoad(false);
                 setModalSucessoShow(true);
             })
@@ -213,6 +213,7 @@ function Confirmacao() {
             console.clear();
             console.log(codeConfirm);
             // setModalAlertas(true);
+            // setModalSucessoShow(true);
             getUsuario();
             // setModalSucessoShow(true);
             setRenderizar(false);
